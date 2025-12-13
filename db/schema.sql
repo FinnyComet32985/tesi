@@ -15,8 +15,7 @@ CREATE TABLE IF NOT EXISTS players (
 -- TABELLA CARTE
 -- ================================
 CREATE TABLE IF NOT EXISTS cards (
-    card_id INTEGER PRIMARY KEY AUTOINCREMENT,
-    card_name TEXT UNIQUE NOT NULL,
+    card_name TEXT PRIMARY KEY,
     rarity TEXT CHECK(rarity IN ('Common', 'Rare', 'Epic', 'Legendary', 'Champion')) NOT NULL DEFAULT 'Common',
     type TEXT CHECK(type IN ('Normal', 'Champion', 'Tower')) NOT NULL DEFAULT 'Normal',
     elixir_cost INTEGER DEFAULT 0,
@@ -106,17 +105,17 @@ END;
 -- ================================
 CREATE TABLE player_card (
     player_tag     INTEGER NOT NULL,
-    card_id       INTEGER NOT NULL,
+    card_name       TEXT NOT NULL,
 
     level         INTEGER,           -- livello carta (NULL se non applicabile)
-    found         INTEGER NOT NULL,   -- 0/1 → il player possiede la carta
+    found         INTEGER,   -- 0/1 → il player possiede la carta
     has_evolution INTEGER NOT NULL DEFAULT 0, -- il player ha sbloccato l’evo
     has_hero INTEGER NOT NULL DEFAULT 0, -- il player ha sbloccato l’eroe
 
-    PRIMARY KEY (player_tag, card_id),
+    PRIMARY KEY (player_tag, card_name),
 
     FOREIGN KEY (player_tag) REFERENCES players(player_tag) ON DELETE CASCADE,
-    FOREIGN KEY (card_id)   REFERENCES cards(id)   ON DELETE CASCADE,
+    FOREIGN KEY (card_name)   REFERENCES cards(card_name)   ON DELETE CASCADE,
 
     CHECK (found IN (0,1)),
     CHECK (has_evolution IN (0,1))
@@ -133,7 +132,7 @@ BEGIN
              AND (
                 SELECT is_evolved
                 FROM cards
-                WHERE id = NEW.card_id
+                WHERE card_name = NEW.card_name
              ) = 0
             THEN
                 RAISE(ABORT, 'Card has no evolution in game')
@@ -150,7 +149,7 @@ BEGIN
              AND (
                 SELECT is_hero
                 FROM cards
-                WHERE id = NEW.card_id
+                WHERE card_name = NEW.card_name
              ) = 0
             THEN
                 RAISE(ABORT, 'Card has no hero in game')
@@ -167,7 +166,7 @@ BEGIN
              AND (
                 SELECT is_evolved
                 FROM cards
-                WHERE id = NEW.card_id
+                WHERE card_name = NEW.card_name
              ) = 0
             THEN
                 RAISE(ABORT, 'Card has no evolution in game')
@@ -184,7 +183,7 @@ BEGIN
              AND (
                 SELECT is_hero
                 FROM cards
-                WHERE id = NEW.card_id
+                WHERE card_name = NEW.card_name
              ) = 0
             THEN
                 RAISE(ABORT, 'Card has no hero in game')

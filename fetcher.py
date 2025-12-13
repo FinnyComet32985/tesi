@@ -1,3 +1,4 @@
+from ast import Pass
 from encodings import undefined
 from math import exp
 import requests
@@ -87,7 +88,44 @@ def fetch_player(tag: str):
 
         CURSOR.execute("UPDATE players SET last_updated = ? WHERE player_tag = ?", (current_time, tag))
 
-        CONNECTION.commit()        
+        CONNECTION.commit()     
+
+
+        towers, heroes = parse_towers_and_heroes(soup)
+        evolutions = parse_evolutions(soup)
+
+        for tower in towers:
+            CURSOR.execute("INSERT OR REPLACE INTO player_card(player_tag, card_name, level, found, has_evolution, has_hero) VALUES(?, ?, ?, ?, 0, 0)", (tag, tower["name"], tower["level"], 1 if tower["level"] > 0 else 0))
+        
+        CONNECTION.commit()  
+        
+
+
+        for hero in heroes:
+            CURSOR.execute("SELECT * FROM player_card WHERE player_tag = ? AND card_name = ?", (tag, hero["name"]))
+            row = CURSOR.fetchone()
+
+            if row is None:
+                CURSOR.execute("INSERT INTO player_card(player_tag, card_name, has_hero) VALUES(?, ?, ?)", (tag, hero["name"], 1 if hero["found"] else 0))
+            else:
+                CURSOR.execute("UPDATE player_card SET has_hero = ? WHERE player_tag = ? AND card_name = ?", (1 if hero["found"] else 0, tag, hero["name"]))
+
+        CONNECTION.commit()
+
+
+        print(evolutions)
+        for evolution in evolutions:
+            CURSOR.execute("SELECT * FROM player_card WHERE player_tag = ? AND card_name = ?", (tag, evolution["name"]))
+            row = CURSOR.fetchone()
+
+            if row is None:
+                CURSOR.execute("INSERT INTO player_card(player_tag, card_name, has_evolution) VALUES(?, ?, ?)", (tag, evolution["name"], 1 if evolution["found"] else 0))
+            else:
+                CURSOR.execute("UPDATE player_card SET has_evolution = ? WHERE player_tag = ? AND card_name = ?", (1 if evolution["found"] else 0, tag, evolution["name"]))
+
+        CONNECTION.commit()
+
+  
     else:
         print(f"Error Code: {response.status_code}")
 
@@ -129,8 +167,6 @@ def get_player_data(soup):
 
     return player_name, clan_name, trophies, arena, rank
 
-def fetch_card(tag: str):
-    pass
 
 def parse_towers_and_heroes(soup):
     towers = []
@@ -193,7 +229,6 @@ def main_loop():
     tags = load_tags()
     for tag in tags:
         fetch_player(tag)
-        fetch_card(tag)
     #     print(profile)
         # games = fetch_games(tag)
         # print(games)
