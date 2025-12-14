@@ -1,15 +1,28 @@
 -- ================================
 -- TABELLA GIOCATORI
 -- ================================
-CREATE TABLE IF NOT EXISTS players (
+CREATE TABLE players (
     player_tag TEXT PRIMARY KEY,
-    name TEXT,
-    clan TEXT,
+
+    player_name TEXT,
+    clan_name TEXT,
+
     trophies INTEGER,
     arena TEXT,
     rank TEXT,
+
+    wins INTEGER,
+    losses INTEGER,
+    three_crown_wins INTEGER,
+    total_games INTEGER,
+
+    account_age_seconds INTEGER,
+    time_spent_seconds INTEGER,
+    games_per_day REAL,
+
     last_updated DATETIME
 );
+
 
 -- ================================
 -- TABELLA CARTE
@@ -194,31 +207,42 @@ END;
 -- ================================
 -- MATCHES / PARTITE
 -- ================================
-CREATE TABLE IF NOT EXISTS matches (
-    match_id INTEGER PRIMARY KEY AUTOINCREMENT,
+CREATE TABLE IF NOT EXISTS battles (
+    battle_id TEXT PRIMARY KEY,          -- es: 1765577323.0
+    battle_type TEXT,                    -- PvP, Challenge, ecc
+    game_mode TEXT,                      -- Ladder
+    timestamp INTEGER,                   -- unix timestamp
     player_tag TEXT,
-    timestamp DATETIME,
-    result INTEGER,                   -- 1 vittoria, 0 sconfitta, 2 pareggio
-    trophy_before INTEGER,
-    trophy_after INTEGER,
-    streak_before INTEGER,
     opponent_tag TEXT,
-    opponent_king_level INTEGER,
-    opponent_card_levels JSON,
-    opponent_deck JSON,
-    matchup_score REAL,               -- da -1 (full counter) a +1 (super favorevole)
-    raw_match_json JSON,
-    FOREIGN KEY (player_tag) REFERENCES players(player_tag)
+    player_crowns INTEGER,
+    opponent_crowns INTEGER,
+    win INTEGER,                          -- 1 win, 0 loss
+    trophy_change INTEGER,
+    avg_elixir REAL,
+    shortest_cycle REAL,
+    elixir_leaked REAL,
+    level_diff REAL,
+    battle_timestamp INTEGER
 );
 
--- ================================
--- INDICI (per ricerche più veloci)
--- ================================
-CREATE INDEX IF NOT EXISTS idx_matches_timestamp
-    ON matches(timestamp);
+CREATE TABLE IF NOT EXISTS battle_decks (
+    battle_id TEXT,
+    player_tag TEXT,
+    card_name TEXT,
+    card_level INTEGER,
+    PRIMARY KEY (battle_id, player_tag, card_name)
+);
 
-CREATE INDEX IF NOT EXISTS idx_matches_streak
-    ON matches(streak_before);
 
-CREATE INDEX IF NOT EXISTS idx_player_cards_player
-    ON player_card(player_tag);
+
+-- -- ================================
+-- -- INDICI (per ricerche più veloci)
+-- -- ================================
+-- CREATE INDEX IF NOT EXISTS idx_matches_timestamp
+--     ON matches(timestamp);
+
+-- CREATE INDEX IF NOT EXISTS idx_matches_streak
+--     ON matches(streak_before);
+
+-- CREATE INDEX IF NOT EXISTS idx_player_cards_player
+--     ON player_card(player_tag);
