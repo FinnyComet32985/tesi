@@ -31,7 +31,7 @@ def load_tags():
         return [row[0] for row in rows]
     except Exception as e:
         print(f"Error Message: {e}")
-        close_connection()
+        CONNECTION.close()
         return None
 
 def fetch_player(tag: str):
@@ -360,7 +360,7 @@ def parse_battle(div, player_tag):
     trophy_change = None
     labels = div.select(".trophy_container .ui.basic.label")
     if labels:
-        tc_text = labels[0].get_text(strip=True).replace("+", "")
+        tc_text = labels[0].contents[0].strip().replace("+", "")
         trophy_change = int(tc_text)
 
     # Opponent tag
@@ -373,22 +373,23 @@ def parse_battle(div, player_tag):
         opponent_tag = href.split("/player/")[-1].replace("/battles", "")
 
     # Stats
-    avg_elixir = elixir_leaked = None
+    elixir_leaked_player = elixir_leaked_opponent = None
 
     for stat in div.select(".battle_stats .stats .item"):
-        name = stat.select_one(".name")
-        value = stat.select_one(".value")
-
-        if not name or not value:
+        label_tag = stat.select_one(".name")
+        value_tag = stat.select_one(".value")
+        if not label_tag or not value_tag:
             continue
+        label = label_tag.get_text(strip=True).lower()
+        val = value_tag.get_text(strip=True)
+    
+        if label == "elixir leaked":
+        # Controllo posizione: se è la prima, player; se seconda, opponent
+            if elixir_leaked_player is None:
+                elixir_leaked_player = float(val.removeprefix("Elixir Leaked"))
+            else:
+                elixir_leaked_opponent = float(val.removeprefix("Elixir Leaked"))
 
-        label = name.get_text(strip=True).lower()
-        val = value.get_text(strip=True)
-
-        if label == "avg elixir":
-            avg_elixir = float(val.removeprefix("Avg Elixir"))
-        elif label == "elixir leaked":
-            elixir_leaked = float(val.removeprefix("Elixir Leaked"))
 
     # Level diff
     level_diff = None
@@ -412,8 +413,8 @@ def parse_battle(div, player_tag):
         "opponent_crowns": opponent_crowns,
         "win": win,
         "trophy_change": trophy_change,
-        "avg_elixir": avg_elixir,
-        "elixir_leaked": elixir_leaked,
+        "elixir_leaked_player": elixir_leaked_player,
+        "elixir_leaked_opponent": elixir_leaked_opponent,
         "level_diff": level_diff
     }
 
@@ -431,12 +432,11 @@ def insert_battle(b):
             opponent_crowns,
             win,
             trophy_change,
-            avg_elixir,
-            shortest_cycle,
-            elixir_leaked,
+            elixir_leaked_player,
+            elixir_leaked_opponent,
             level_diff,
             battle_timestamp
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         b["battle_id"],
         b["battle_type"],
@@ -448,9 +448,8 @@ def insert_battle(b):
         b["opponent_crowns"],
         b["win"],
         b["trophy_change"],
-        b["avg_elixir"],
-        b["shortest_cycle"],
-        b["elixir_leaked"],
+        b["elixir_leaked_player"],
+        b["elixir_leaked_opponent"],
         b["level_diff"],
         b["battle_timestamp"]
     ))
@@ -476,6 +475,10 @@ def collect_scroll(tag, last_db_ts):
                 break
 
             insert_battle(battle)
+            # Aggiunto parsing del deck anche qui
+            parse_and_insert_deck(div, battle["battle_id"], tag, is_opponent=False)
+            if battle["opponent_tag"]:
+                parse_and_insert_deck(div, battle["battle_id"], battle["opponent_tag"], is_opponent=True)
 
         CONNECTION.commit()
 
@@ -514,6 +517,8 @@ def collect_history(tag, last_db_ts, start_ts):
                 break
 
             insert_battle(battle)
+            parse_and_insert_deck(div, battle["battle_id"], tag, is_opponent=False)
+            parse_and_insert_deck(div, battle["battle_id"], battle["opponent_tag"], is_opponent=True)
 
         CONNECTION.commit()
 
@@ -537,33 +542,51 @@ def fetch_all_battles(tag):
 
     if newest_ts:
         collect_history(tag, last_db_ts, newest_ts)
+        
 
 def parse_and_insert_deck(div, battle_id, player_tag, is_opponent=False):
     segments = div.select(".team-segment")
-    segment = segments[1] if is_opponent else segments[0]
+    if not segments:
+        return
+    
+    if is_opponent:
+        segment = segments[-1]
+    else:
+        segment = segments[0]
 
-    deck = segment.select(".deck_card")
+    # Seleziona i contenitori delle carte per trovare più facilmente il livello associato
+    deck_containers = segment.select(".deck_card__four_wide")
+    if not deck_containers: # Fallback per altre strutture
+        deck_containers = segment.select(".deck_card")
 
-    for card in deck:
-        name = card.get("alt")
-        level_tag = card.find_next_sibling("div", class_="card-level")
+    for card_container in deck_containers:
+        card_img = card_container.select_one("img.deck_card")
+        if not card_img:
+            continue
+
+        name = card_img.get("alt")
+        card_key = card_img.get("data-card-key", "")
+
+        has_evolution = 1 if "-ev" in card_key else 0
+        has_hero = 1 if "-hero" in card_key else 0
+
+        level_tag = card_container.select_one(".card-level")
         level = None
-
         if level_tag:
-            level = int(
-                level_tag.get_text(strip=True)
-                .replace("Lvl", "")
-                .strip()
-            )
+            level_text = level_tag.get_text(strip=True).replace("Lvl", "").strip()
+            if level_text.isdigit():
+                level = int(level_text)
 
         CURSOR.execute("""
             INSERT OR IGNORE INTO battle_decks (
                 battle_id,
                 player_tag,
                 card_name,
-                card_level
-            ) VALUES (?, ?, ?, ?)
-        """, (battle_id, player_tag, name, level))
+                card_level,
+                has_evolution,
+                has_hero
+            ) VALUES (?, ?, ?, ?, ?, ?)
+        """, (battle_id, player_tag, name, level, has_evolution, has_hero))
 
 
 

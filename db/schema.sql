@@ -218,9 +218,8 @@ CREATE TABLE IF NOT EXISTS battles (
     opponent_crowns INTEGER,
     win INTEGER,                          -- 1 win, 0 loss
     trophy_change INTEGER,
-    avg_elixir REAL,
-    shortest_cycle REAL,
-    elixir_leaked REAL,
+    elixir_leaked_player REAL,
+    elixir_leaked_opponent REAL,
     level_diff REAL,
     battle_timestamp INTEGER
 );
@@ -230,6 +229,8 @@ CREATE TABLE IF NOT EXISTS battle_decks (
     player_tag TEXT,
     card_name TEXT,
     card_level INTEGER,
+    has_evolution INTEGER,
+    has_hero INTEGER,
     PRIMARY KEY (battle_id, player_tag, card_name)
 );
 
