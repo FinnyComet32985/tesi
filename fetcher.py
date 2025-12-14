@@ -588,6 +588,25 @@ def parse_and_insert_deck(div, battle_id, player_tag, is_opponent=False):
             ) VALUES (?, ?, ?, ?, ?, ?)
         """, (battle_id, player_tag, name, level, has_evolution, has_hero))
 
+    # Aggiungiamo il parsing per la carta torre
+    tower_container = segment.select_one(".deck_tower_card__container")
+    if tower_container:
+        tower_img = tower_container.select_one("img.deck_card")
+        tower_name = tower_img.get("alt") if tower_img else None
+        
+        level_div = tower_container.select_one(".level")
+        tower_level = None
+        if level_div and "Lvl" in level_div.get_text():
+            level_text = level_div.get_text(strip=True).split("Lvl")[-1].strip()
+            if level_text.isdigit():
+                tower_level = int(level_text)
+        
+        if tower_name:
+            CURSOR.execute("""
+                INSERT OR IGNORE INTO battle_decks (
+                    battle_id, player_tag, card_name, card_level, has_evolution, has_hero
+                ) VALUES (?, ?, ?, ?, 0, 0)
+            """, (battle_id, player_tag, tower_name, tower_level))
 
 
 
