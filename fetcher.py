@@ -1,6 +1,7 @@
 from math import exp
 import sqlite3
 import requests
+import hashlib
 import time
 from datetime import datetime
 import os
@@ -312,7 +313,7 @@ def parse_evolutions(soup):
 #* BATTAGLIE
 def get_last_battle_timestamp(player_tag):
     CURSOR.execute("""
-        SELECT MAX(battle_timestamp)
+        SELECT MAX(timestamp)
         FROM battles
         WHERE player_tag = ?
     """, (player_tag,))
@@ -394,19 +395,18 @@ def parse_battle(div, player_tag):
     # Level diff
     level_diff = None
     lvl = div.select_one(".battle_level_diff")
-    if lvl:
-        level_diff = float(
-            lvl.get_text(strip=True)
-               .replace("Δ Lvl:", "")
-               .strip()
-        )
+    if lvl and "Δ Lvl:" in lvl.get_text():
+        level_diff_text = lvl.get_text(strip=True).replace("Δ Lvl:", "").strip()
+        try:
+            level_diff = float(level_diff_text)
+        except ValueError:
+            level_diff = None
 
     return {
         "battle_id": battle_id,
         "battle_type": battle_type,
         "game_mode": game_mode,
         "timestamp": timestamp,
-        "battle_timestamp": timestamp,
         "player_tag": player_tag,
         "opponent_tag": opponent_tag,
         "player_crowns": player_crowns,
@@ -419,7 +419,7 @@ def parse_battle(div, player_tag):
     }
 
 
-def insert_battle(b):
+def insert_battle(b, player_deck_id, opponent_deck_id):
     CURSOR.execute("""
         INSERT OR IGNORE INTO battles (
             battle_id,
@@ -427,31 +427,33 @@ def insert_battle(b):
             game_mode,
             timestamp,
             player_tag,
+            player_deck_id,
             opponent_tag,
+            opponent_deck_id,
             player_crowns,
             opponent_crowns,
             win,
             trophy_change,
             elixir_leaked_player,
-            elixir_leaked_opponent,
-            level_diff,
-            battle_timestamp
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            elixir_leaked_opponent, 
+            level_diff
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         b["battle_id"],
         b["battle_type"],
         b["game_mode"],
         b["timestamp"],
         b["player_tag"],
+        player_deck_id,
         b["opponent_tag"],
+        opponent_deck_id,
         b["player_crowns"],
         b["opponent_crowns"],
         b["win"],
         b["trophy_change"],
         b["elixir_leaked_player"],
         b["elixir_leaked_opponent"],
-        b["level_diff"],
-        b["battle_timestamp"]
+        b["level_diff"]
     ))
 
 
@@ -470,15 +472,14 @@ def collect_scroll(tag, last_db_ts):
         for div in battles:
             battle = parse_battle(div, tag)
 
-            if last_db_ts and battle["battle_timestamp"] <= last_db_ts:
+            if last_db_ts and battle["timestamp"] <= last_db_ts:
                 stop = True
                 break
 
-            insert_battle(battle)
-            # Aggiunto parsing del deck anche qui
-            parse_and_insert_deck(div, battle["battle_id"], tag, is_opponent=False)
-            if battle["opponent_tag"]:
-                parse_and_insert_deck(div, battle["battle_id"], battle["opponent_tag"], is_opponent=True)
+            player_deck_id = parse_and_insert_deck(div, is_opponent=False)
+            opponent_deck_id = parse_and_insert_deck(div, is_opponent=True) if battle["opponent_tag"] else None
+
+            insert_battle(battle, player_deck_id, opponent_deck_id)
 
         CONNECTION.commit()
 
@@ -512,13 +513,14 @@ def collect_history(tag, last_db_ts, start_ts):
         for div in battles:
             battle = parse_battle(div, tag)
 
-            if last_db_ts and battle["battle_timestamp"] <= last_db_ts:
+            if last_db_ts and battle["timestamp"] <= last_db_ts:
                 stop = True
                 break
 
-            insert_battle(battle)
-            parse_and_insert_deck(div, battle["battle_id"], tag, is_opponent=False)
-            parse_and_insert_deck(div, battle["battle_id"], battle["opponent_tag"], is_opponent=True)
+            player_deck_id = parse_and_insert_deck(div, is_opponent=False)
+            opponent_deck_id = parse_and_insert_deck(div, is_opponent=True) if battle["opponent_tag"] else None
+
+            insert_battle(battle, player_deck_id, opponent_deck_id)
 
         CONNECTION.commit()
 
@@ -543,32 +545,35 @@ def fetch_all_battles(tag):
     if newest_ts:
         collect_history(tag, last_db_ts, newest_ts)
         
+def generate_deck_hash(cards):
+    # Ordina le carte per nome per garantire un hash consistente
+    sorted_cards = sorted(cards, key=lambda x: x['name'])
+    
+    # Crea una stringa canonica
+    # es: "Fireball:14:0:0,Hog Rider:16:0:0,..."
+    canonical_string = ",".join([
+        f"{c['name']}:{c['level']}:{c['has_evolution']}:{c['has_hero']}"
+        for c in sorted_cards
+    ])
+    
+    # Restituisce l'hash SHA256 della stringa
+    return hashlib.sha256(canonical_string.encode()).hexdigest()
 
-def parse_and_insert_deck(div, battle_id, player_tag, is_opponent=False):
+def parse_and_insert_deck(div, is_opponent=False):
     segments = div.select(".team-segment")
     if not segments:
-        return
+        return None
     
-    if is_opponent:
-        segment = segments[-1]
-    else:
-        segment = segments[0]
+    segment = segments[-1] if is_opponent else segments[0]
 
-    # Seleziona i contenitori delle carte per trovare più facilmente il livello associato
+    parsed_cards = []
+
+    # Parsing delle 8 carte del mazzo
     deck_containers = segment.select(".deck_card__four_wide")
-    if not deck_containers: # Fallback per altre strutture
-        deck_containers = segment.select(".deck_card")
-
     for card_container in deck_containers:
         card_img = card_container.select_one("img.deck_card")
         if not card_img:
             continue
-
-        name = card_img.get("alt")
-        card_key = card_img.get("data-card-key", "")
-
-        has_evolution = 1 if "-ev" in card_key else 0
-        has_hero = 1 if "-hero" in card_key else 0
 
         level_tag = card_container.select_one(".card-level")
         level = None
@@ -577,37 +582,45 @@ def parse_and_insert_deck(div, battle_id, player_tag, is_opponent=False):
             if level_text.isdigit():
                 level = int(level_text)
 
-        CURSOR.execute("""
-            INSERT OR IGNORE INTO battle_decks (
-                battle_id,
-                player_tag,
-                card_name,
-                card_level,
-                has_evolution,
-                has_hero
-            ) VALUES (?, ?, ?, ?, ?, ?)
-        """, (battle_id, player_tag, name, level, has_evolution, has_hero))
+        card_key = card_img.get("data-card-key", "")
+        parsed_cards.append({
+            "name": card_img.get("alt"),
+            "level": level,
+            "has_evolution": 1 if "-ev" in card_key else 0,
+            "has_hero": 1 if "-hero" in card_key else 0
+        })
 
-    # Aggiungiamo il parsing per la carta torre
+    # Parsing della carta torre
     tower_container = segment.select_one(".deck_tower_card__container")
     if tower_container:
         tower_img = tower_container.select_one("img.deck_card")
-        tower_name = tower_img.get("alt") if tower_img else None
-        
         level_div = tower_container.select_one(".level")
         tower_level = None
-        if level_div and "Lvl" in level_div.get_text():
+        if tower_img and level_div and "Lvl" in level_div.get_text():
             level_text = level_div.get_text(strip=True).split("Lvl")[-1].strip()
             if level_text.isdigit():
                 tower_level = int(level_text)
-        
-        if tower_name:
-            CURSOR.execute("""
-                INSERT OR IGNORE INTO battle_decks (
-                    battle_id, player_tag, card_name, card_level, has_evolution, has_hero
-                ) VALUES (?, ?, ?, ?, 0, 0)
-            """, (battle_id, player_tag, tower_name, tower_level))
+            parsed_cards.append({
+                "name": tower_img.get("alt"),
+                "level": tower_level,
+                "has_evolution": 0,
+                "has_hero": 0
+            })
 
+    if not parsed_cards:
+        return None
+
+    deck_hash = generate_deck_hash(parsed_cards)
+
+    # Inserisci il mazzo se non esiste già (INSERT OR IGNORE)
+    CURSOR.execute("INSERT OR IGNORE INTO decks (deck_hash) VALUES (?)", (deck_hash,))
+    
+    # Inserisci le carte del mazzo
+    for card in parsed_cards:
+        CURSOR.execute("INSERT OR IGNORE INTO deck_cards (deck_hash, card_name, card_level, has_evolution, has_hero) VALUES (?, ?, ?, ?, ?)",
+                       (deck_hash, card['name'], card['level'], card['has_evolution'], card['has_hero']))
+
+    return deck_hash
 
 
 

@@ -213,25 +213,38 @@ CREATE TABLE IF NOT EXISTS battles (
     game_mode TEXT,                      -- Ladder
     timestamp INTEGER,                   -- unix timestamp
     player_tag TEXT,
+    player_deck_id TEXT,                 -- FK to decks.deck_hash
     opponent_tag TEXT,
+    opponent_deck_id TEXT,               -- FK to decks.deck_hash
     player_crowns INTEGER,
     opponent_crowns INTEGER,
     win INTEGER,                          -- 1 win, 0 loss
     trophy_change INTEGER,
     elixir_leaked_player REAL,
     elixir_leaked_opponent REAL,
-    level_diff REAL,
-    battle_timestamp INTEGER
+    level_diff REAL
 );
 
-CREATE TABLE IF NOT EXISTS battle_decks (
-    battle_id TEXT,
-    player_tag TEXT,
+-- ================================
+-- TABELLA MAZZI UNICI
+-- ================================
+CREATE TABLE IF NOT EXISTS decks (
+    deck_hash TEXT PRIMARY KEY, -- Hash SHA256 della composizione del mazzo
+    avg_elixir REAL,
+    four_card_cycle REAL
+);
+
+-- ================================
+-- CARTE CONTENUTE IN UN MAZZO
+-- ================================
+CREATE TABLE IF NOT EXISTS deck_cards (
+    deck_hash TEXT,
     card_name TEXT,
     card_level INTEGER,
     has_evolution INTEGER,
     has_hero INTEGER,
-    PRIMARY KEY (battle_id, player_tag, card_name)
+    PRIMARY KEY (deck_hash, card_name),
+    FOREIGN KEY (deck_hash) REFERENCES decks(deck_hash) ON DELETE CASCADE
 );
 
 
