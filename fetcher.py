@@ -1,12 +1,8 @@
-from math import exp
-import sqlite3
 import requests
 import hashlib
 import time
 from datetime import datetime
-import os
 from bs4 import BeautifulSoup
-from utils import connection
 from utils.tools import parse_duration_to_seconds
 from utils.connection import open_connection
 
@@ -22,8 +18,8 @@ DB_PATH = "db/clash.db"
 CONNECTION = None
 CURSOR = None
 
-
-
+#* Init
+# carica i TAG dei giocatori su cui fare le analisi dal db
 def load_tags():
     try:
         CURSOR.execute("SELECT player_tag FROM players")
@@ -35,6 +31,8 @@ def load_tags():
         CONNECTION.close()
         return None
 
+#* Update player profile
+# aggiorna i dati del player nel db (stats, torri, eroi, evoluzioni)
 def fetch_player(tag: str):
     print(f"[+] Fetch player data for {tag}")
     url = f"{BASE_URL}/player/{tag}"
@@ -43,35 +41,37 @@ def fetch_player(tag: str):
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, "html.parser")
 
-        player_data = get_player_data(soup)
+        player_data = parse_player_data(soup)
 
         CURSOR.execute("SELECT player_name, clan_name, trophies, arena, rank, wins, losses, three_crown_wins, total_games, account_age_seconds, time_spent_seconds, games_per_day FROM players WHERE player_tag = ?", (tag,))
         row = CURSOR.fetchone()
 
         column =  ['player_name', 'clan_name', 'trophies', 'arena', 'rank', 'wins', 'losses', 'three_crown_wins', 'total_games', 'account_age_seconds', 'time_spent_seconds', 'games_per_day']
         
+        # se non ci sono dati o quelli presenti non sono aggiornati li modifichiamo
         if row is not None:
             for i in range(len(row)):
                 if row[i] != player_data[i]: 
                     CURSOR.execute(f"UPDATE players SET {column[i]} = ? WHERE player_tag = ?", (player_data[i], tag))
 
+        # impostiamo la data dell'ultimo aggiornamento
         current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
         CURSOR.execute("UPDATE players SET last_updated = ? WHERE player_tag = ?", (current_time, tag))
 
         CONNECTION.commit()     
 
-
+        # recuperiamo i dati delle torri, degli eroi e delle evoluzioni sbloccate
         towers, heroes = parse_towers_and_heroes(soup)
         evolutions = parse_evolutions(soup)
 
+        # aggiorniamo i dati delle torri
         for tower in towers:
             CURSOR.execute("INSERT OR REPLACE INTO player_card(player_tag, card_name, level, found, has_evolution, has_hero) VALUES(?, ?, ?, ?, 0, 0)", (tag, tower["name"], tower["level"], 1 if tower["level"] > 0 else 0))
         
         CONNECTION.commit()  
         
 
-
+        # aggiorniamo i dati degli eroi
         for hero in heroes:
             CURSOR.execute("SELECT * FROM player_card WHERE player_tag = ? AND card_name = ?", (tag, hero["name"]))
             row = CURSOR.fetchone()
@@ -83,6 +83,7 @@ def fetch_player(tag: str):
 
         CONNECTION.commit()
 
+        # aggiorniamo i dati delle evoluzioni
         for evolution in evolutions:
             CURSOR.execute("SELECT * FROM player_card WHERE player_tag = ? AND card_name = ?", (tag, evolution["name"]))
             row = CURSOR.fetchone()
@@ -94,8 +95,10 @@ def fetch_player(tag: str):
 
         CONNECTION.commit()
 
+        # recuperiamo i dati delle carte
         cards = get_cards(tag)
 
+        # aggiorniamo i dati delle carte
         for card in cards:
             CURSOR.execute("SELECT * FROM player_card WHERE player_tag = ? AND card_name = ?", (tag, card["name"]))
             row = CURSOR.fetchone()
@@ -109,10 +112,13 @@ def fetch_player(tag: str):
     else:
         print(f"Error Code: {response.status_code}")
 
-def get_player_data(soup):
+# recuperiamo i dati del player dalla pagina
+def parse_player_data(soup):
+    # recuperiamo il nome del giocatore dal tag con classe .p_head_item h1
     name_tag = soup.select_one(".p_head_item h1")
     player_name = name_tag.get_text(strip=True) if name_tag else None
 
+    # recuperiamo la lega del giocatore dal tag con classe .league_info_container
     league_blocks = soup.select(".league_info_container")
 
     trophies = None
@@ -135,6 +141,7 @@ def get_player_data(soup):
         if len(items) >= 2:
             rank = items[1].get_text(strip=True)
 
+    # recuperiamo il tag del clan 
     clan_tag = soup.select_one(".player_aux_info .ui.header.item")
 
     if not clan_tag:
@@ -216,7 +223,7 @@ def get_player_data(soup):
 
     return player_name, clan_name, trophies, arena, rank, wins, losses, three_crown_wins, total_games, account_age_seconds, time_spent_seconds, games_per_day
 
-
+# recuperiamo i dati delle carte dalla pagina
 def get_cards(tag: str):
     print(f"[+] Fetch cards for {tag}")
     url = f"{BASE_URL}/player/{tag}/cards"
@@ -252,7 +259,6 @@ def get_cards(tag: str):
     else:
         print(f"Error Code: {response.status_code}")
     
-
 def parse_towers_and_heroes(soup):
     towers = []
     heroes = []
