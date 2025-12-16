@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from utils.tools import parse_duration_to_seconds
+import logging
 
 def parse_player_data(soup: BeautifulSoup) -> tuple | None:
     """Estrae le statistiche principali del giocatore dalla pagina del profilo."""
@@ -252,21 +253,59 @@ def parse_deck_from_battle(div: BeautifulSoup, is_opponent: bool = False) -> lis
             "has_hero": 1 if "-hero" in card_key else 0
         })
 
-    # Parsing della carta torre
-    tower_container = segment.select_one(".deck_tower_card__container")
-    if tower_container:
-        tower_img = tower_container.select_one("img.deck_card")
-        level_div = tower_container.select_one(".level")
-        tower_level = None
-        if tower_img and level_div and "Lvl" in level_div.get_text():
-            level_text = level_div.get_text(strip=True).split("Lvl")[-1].strip()
-            if level_text.isdigit():
-                tower_level = int(level_text)
-            parsed_cards.append({
-                "name": tower_img.get("alt"),
-                "level": tower_level,
-                "has_evolution": 0,
-                "has_hero": 0
-            })
+    # La carta torre viene ignorata per mantenere la consistenza con l'hash
+    # calcolato dalla pagina /decks, che non la include.
 
     return parsed_cards if parsed_cards else None
+
+def parse_all_deck_stats_from_page(soup: BeautifulSoup) -> dict[str, dict]:
+    """
+    Estrae le statistiche per tutti i mazzi presenti nella pagina /decks di un giocatore.
+
+    Args:
+        soup: L'oggetto BeautifulSoup della pagina /player/{tag}/decks.
+
+    Returns:
+        Un dizionario dove la chiave è l'archetype_hash del mazzo e il valore
+        è un dizionario con le sue statistiche (battles, wins).
+    """
+    from db_manager import _generate_deck_hashes # Importazione locale per evitare dipendenza circolare
+    
+    all_deck_stats = {}
+    deck_segments = soup.select("div.deck_segment")
+
+    for segment in deck_segments:
+        try:
+            # 1. Estrai le carte per calcolare l'archetype_hash
+            card_elements = segment.select("img.deck_card")
+            cards_for_hash = []
+            for img in card_elements:
+                card_key = img.get("data-card-key", "")
+                cards_for_hash.append({
+                    "name": img.get("alt"),
+                    "has_evolution": 1 if "-ev" in card_key else 0,
+                    "has_hero": 1 if "-hero" in card_key else 0 # Anche se non usato, per coerenza
+                })
+            
+            if not cards_for_hash:
+                continue
+
+            _, archetype_hash = _generate_deck_hashes(cards_for_hash)
+
+            # 2. Estrai le statistiche di gioco
+            player_stats_row = segment.find('td', string='Player')
+            
+            if not player_stats_row:
+                continue
+            row_cells = player_stats_row.find_parent('tr').find_all('td')
+            
+            battles = int(row_cells[1].get_text(strip=True))
+            win_rate = float(row_cells[2].get_text(strip=True).replace('%', ''))
+            wins = round(battles * (win_rate / 100))
+
+            all_deck_stats[archetype_hash] = {"battles": battles, "wins": int(wins)}
+        except (AttributeError, IndexError, ValueError, TypeError) as e:
+            logging.warning(f"Impossibile parsare le statistiche per un mazzo: {e}")
+            continue
+
+    return all_deck_stats

@@ -1,7 +1,7 @@
 import logging
 from api_client import fetch_page
-from parsers import parse_battle_data, parse_oldest_timestamp_from_page, parse_deck_from_battle
-from db_manager import get_last_battle_timestamp, insert_battle_and_decks
+from parsers import parse_battle_data, parse_oldest_timestamp_from_page, parse_deck_from_battle, parse_all_deck_stats_from_page
+from db_manager import get_last_battle_timestamp, insert_battle_and_decks, update_player_deck_stats
 
 def _collect_battles_from_page(soup, tag, last_db_ts, conn, cursor):
     """Funzione helper per processare le battaglie di una singola pagina."""
@@ -55,6 +55,37 @@ def _collect_history(tag, last_db_ts, start_ts, conn, cursor):
         
         before_ms = oldest_ts * 1000
 
+def _update_all_deck_stats_for_player(tag: str, conn, cursor):
+    """
+    Recupera le statistiche (confidence) per tutti i mazzi usati da un giocatore.
+    """
+    logging.info(f"Inizio aggiornamento statistiche mazzi per il giocatore {tag}")
+    
+    # 1. Scarica la pagina /decks del giocatore
+    decks_page_soup = fetch_page(f"/player/{tag}/decks")
+    if not decks_page_soup:
+        logging.warning(f"Impossibile recuperare la pagina delle statistiche dei mazzi per {tag}.")
+        return
+
+    # 2. Esegui il parsing di TUTTI i mazzi e le loro statistiche dalla pagina,
+    #    mappandoli tramite il loro archetype_hash.
+    stats_by_archetype = parse_all_deck_stats_from_page(decks_page_soup)
+    if not stats_by_archetype:
+        logging.info(f"Nessuna statistica di mazzo trovata sulla pagina per {tag}.")
+        return
+
+    # 3. Per ogni mazzo nel nostro DB, controlla se esiste una corrispondenza
+    #    di archetipo nelle statistiche appena scaricate.
+    cursor.execute("SELECT deck_hash, archetype_hash FROM decks WHERE deck_hash IN (SELECT DISTINCT player_deck_id FROM battles WHERE player_tag = ?)", (tag,))
+    player_decks = cursor.fetchall()
+    
+    for deck_hash, archetype_hash in player_decks:
+        if archetype_hash in stats_by_archetype:
+            stats = stats_by_archetype[archetype_hash]
+            update_player_deck_stats(cursor, tag, deck_hash, stats)
+            
+    conn.commit()
+
 def fetch_all_battles(tag: str, conn, cursor):
     """
     Orchestra il recupero di tutta la cronologia battaglie di un giocatore,
@@ -76,5 +107,8 @@ def fetch_all_battles(tag: str, conn, cursor):
 
     if start_history_ts:
         _collect_history(tag, last_db_ts, start_history_ts, conn, cursor)
-        
+    
+    # Dopo aver recuperato tutte le nuove battaglie, aggiorniamo le statistiche dei mazzi
+    _update_all_deck_stats_for_player(tag, conn, cursor)
+
     logging.info(f"Recupero battaglie per {tag} completato.")

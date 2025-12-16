@@ -55,22 +55,66 @@ def get_last_battle_timestamp(cursor, player_tag: str) -> int | None:
     row = cursor.fetchone()
     return row[0] if row and row[0] else None
 
-def _generate_deck_hash(cards: list) -> str:
-    """Genera un hash SHA256 per un mazzo di carte."""
-    sorted_cards = sorted(cards, key=lambda x: x['name'])
-    canonical_string = ",".join([
-        f"{c['name']}:{c.get('level', '')}:{c['has_evolution']}:{c['has_hero']}"
+def get_player_deck_hashes(cursor, player_tag: str) -> list:
+    """Recupera tutti gli hash dei mazzi unici usati da un giocatore."""
+    cursor.execute("SELECT DISTINCT player_deck_id FROM battles WHERE player_tag = ? AND player_deck_id IS NOT NULL", (player_tag,))
+    rows = cursor.fetchall()
+    return [row[0] for row in rows]
+
+def get_card_keys_for_deck(cursor, deck_hash: str) -> list:
+    """Recupera i nomi delle carte (con suffisso -ev1/-hero) per un dato deck_hash."""
+    cursor.execute("SELECT card_name, has_evolution, has_hero FROM deck_cards WHERE deck_hash = ?", (deck_hash,))
+    rows = cursor.fetchall()
+    card_keys = []
+    for name, has_evo, has_hero in rows:
+        key = name.lower().replace(' ', '-')
+        if has_evo:
+            key += '-ev1'
+        # Nota: l'HTML non sembra usare un suffisso per gli eroi nel deck identifier,
+        # ma lo aggiungiamo per coerenza se dovesse servire.
+        # if has_hero:
+        #     key += '-hero'
+        card_keys.append(key)
+    return sorted(card_keys)
+
+def update_player_deck_stats(cursor, player_tag: str, deck_hash: str, stats: dict):
+    """Inserisce o aggiorna le statistiche di un mazzo per un giocatore."""
+    confidence = stats['wins'] / stats['battles'] if stats['battles'] > 0 else 0
+    current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    cursor.execute("""
+        INSERT INTO player_deck_stats (player_tag, deck_hash, battles_last_30d, wins_last_30d, confidence, last_updated) VALUES (?, ?, ?, ?, ?, ?)
+        ON CONFLICT(player_tag, deck_hash) DO UPDATE SET battles_last_30d=excluded.battles_last_30d, wins_last_30d=excluded.wins_last_30d, confidence=excluded.confidence, last_updated=excluded.last_updated
+    """, (player_tag, deck_hash, stats['battles'], stats['wins'], confidence, current_time))
+
+def _generate_deck_hashes(cards: list) -> tuple[str, str]:
+    """Genera due hash SHA256 per un mazzo: uno con livelli (deck_hash) e uno senza (archetype_hash)."""
+    # Normalizza i nomi delle carte PRIMA di ordinarli per garantire consistenza.
+    # La chiave di ordinamento è la forma normalizzata del nome.
+    sorted_cards = sorted(cards, key=lambda c: c['name'].lower().replace(' ', '-'))
+    
+    # Hash con i livelli (per unicità della battaglia)
+    level_dependent_string = ",".join([
+        f"{c['name']}:{c.get('level', '')}:{c.get('has_evolution', 0)}:{c.get('has_hero', 0)}"
         for c in sorted_cards
     ])
-    return hashlib.sha256(canonical_string.encode()).hexdigest()
+    deck_hash = hashlib.sha256(level_dependent_string.encode()).hexdigest()
+
+    # Hash senza i livelli (per l'archetipo)
+    level_independent_string = ",".join([
+        f"{c['name'].lower().replace(' ', '-')}:{c.get('has_evolution', 0)}:{c.get('has_hero', 0)}"
+        for c in sorted_cards
+    ])
+    archetype_hash = hashlib.sha256(level_independent_string.encode()).hexdigest()
+
+    return deck_hash, archetype_hash
 
 def _insert_deck(cursor, cards: list) -> str | None:
-    """Inserisce un mazzo e le sue carte nel DB, se non presenti, e restituisce l'hash."""
+    """Inserisce un mazzo e le sue carte nel DB, se non presenti, e restituisce il deck_hash (con livelli)."""
     if not cards:
         return None
     
-    deck_hash = _generate_deck_hash(cards)
-    cursor.execute("INSERT OR IGNORE INTO decks (deck_hash) VALUES (?)", (deck_hash,))
+    deck_hash, archetype_hash = _generate_deck_hashes(cards)
+    cursor.execute("INSERT OR IGNORE INTO decks (deck_hash, archetype_hash) VALUES (?, ?)", (deck_hash, archetype_hash))
     
     for card in cards:
         cursor.execute("""

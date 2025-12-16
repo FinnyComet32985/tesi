@@ -230,6 +230,7 @@ CREATE TABLE IF NOT EXISTS battles (
 -- ================================
 CREATE TABLE IF NOT EXISTS decks (
     deck_hash TEXT PRIMARY KEY, -- Hash SHA256 della composizione del mazzo
+    archetype_hash TEXT,        -- Hash SHA256 della composizione del mazzo (senza livelli)
     avg_elixir REAL,
     four_card_cycle REAL
 );
@@ -244,6 +245,24 @@ CREATE TABLE IF NOT EXISTS deck_cards (
     has_evolution INTEGER,
     has_hero INTEGER,
     PRIMARY KEY (deck_hash, card_name),
+    FOREIGN KEY (deck_hash) REFERENCES decks(deck_hash) ON DELETE CASCADE
+);
+
+-- ================================
+-- STATISTICHE DI UTILIZZO MAZZO-GIOCATORE
+-- ================================
+CREATE TABLE IF NOT EXISTS player_deck_stats (
+    player_tag TEXT NOT NULL,
+    deck_hash TEXT NOT NULL,
+
+    battles_last_30d INTEGER,
+    wins_last_30d INTEGER,
+    confidence REAL, -- Es. win_rate (wins / battles)
+
+    last_updated DATETIME,
+
+    PRIMARY KEY (player_tag, deck_hash),
+    FOREIGN KEY (player_tag) REFERENCES players(player_tag) ON DELETE CASCADE,
     FOREIGN KEY (deck_hash) REFERENCES decks(deck_hash) ON DELETE CASCADE
 );
 
