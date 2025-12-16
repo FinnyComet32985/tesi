@@ -125,24 +125,28 @@ def _insert_deck(cursor, cards: list) -> str | None:
     
     return deck_hash
 
-def insert_battle_and_decks(cursor, battle_data: dict, player_deck: list, opponent_deck: list | None):
+def insert_battle_and_decks(cursor, battle_data: dict, player_deck: list, opponent_deck: list | None, matchup_data: dict | None):
     """
     Inserisce i mazzi e la battaglia nel database.
     """
     player_deck_id = _insert_deck(cursor, player_deck)
     opponent_deck_id = _insert_deck(cursor, opponent_deck) if opponent_deck else None
+    
+    win_rate = matchup_data.get("winRate") if matchup_data else None
+    probabilities = str(matchup_data.get("probabilities")) if matchup_data and matchup_data.get("probabilities") is not None else None
 
     cursor.execute("""
         INSERT OR IGNORE INTO battles (
             battle_id, battle_type, game_mode, timestamp, player_tag, player_deck_id,
             opponent_tag, opponent_deck_id, player_crowns, opponent_crowns, win,
-            trophy_change, elixir_leaked_player, elixir_leaked_opponent, level_diff
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            trophy_change, elixir_leaked_player, elixir_leaked_opponent, level_diff,
+            matchup_win_rate, matchup_probabilities
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         battle_data["battle_id"], battle_data["battle_type"], battle_data["game_mode"],
         battle_data["timestamp"], battle_data["player_tag"], player_deck_id,
         battle_data["opponent_tag"], opponent_deck_id, battle_data["player_crowns"],
         battle_data["opponent_crowns"], battle_data["win"], battle_data["trophy_change"],
         battle_data["elixir_leaked_player"], battle_data["elixir_leaked_opponent"],
-        battle_data["level_diff"]
+        battle_data["level_diff"], win_rate, probabilities
     ))

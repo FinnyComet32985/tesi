@@ -253,8 +253,20 @@ def parse_deck_from_battle(div: BeautifulSoup, is_opponent: bool = False) -> lis
             "has_hero": 1 if "-hero" in card_key else 0
         })
 
-    # La carta torre viene ignorata per mantenere la consistenza con l'hash
-    # calcolato dalla pagina /decks, che non la include.
+    # Parsing della carta torre
+    tower_container = segment.select_one(".deck_tower_card__container")
+    if tower_container:
+        tower_img = tower_container.select_one("img.deck_card")
+        if tower_img:
+            level = None
+            # Il livello è nel secondo div dentro al div con classe "level"
+            level_divs = tower_container.select(".level div")
+            if len(level_divs) > 1:
+                level_text = level_divs[1].get_text(strip=True).replace("Lvl", "").strip()
+                if level_text.isdigit():
+                    level = int(level_text)
+            
+            parsed_cards.append({"name": tower_img.get("alt"), "level": level, "has_evolution": 0, "has_hero": 0})
 
     return parsed_cards if parsed_cards else None
 

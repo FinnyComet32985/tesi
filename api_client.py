@@ -21,3 +21,25 @@ def fetch_page(path: str) -> BeautifulSoup | None:
     except requests.RequestException as e:
         logging.error(f"Errore durante la richiesta a {url}: {e}")
         return None
+
+def fetch_matchup(player_deck: list, opponent_deck: list) -> dict | None:
+    """
+    Esegue una richiesta POST a deckai.app per ottenere il win rate di un matchup.
+    """
+    url = "https://deckai.app/api/main/get-matchup"
+    
+    # Prepara i dati nel formato richiesto dall'API
+    payload = [
+        [{"name": card["name"], "level": card["level"]} for card in player_deck],
+        [{"name": card["name"], "level": card["level"]} for card in opponent_deck]
+    ]
+
+    try:
+        print("exec")
+        response = requests.post(url, json=payload, headers=HEADERS)
+        print(response.status_code)
+        response.raise_for_status()
+        return response.json()  # Restituisce {"winRate": 0.535, "probabilities": null, ...}
+    except requests.RequestException as e:
+        logging.error(f"Errore durante la richiesta di matchup a {url}: {e}")
+        return None

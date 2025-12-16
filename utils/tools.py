@@ -35,9 +35,3 @@ def parse_battle_datetime(battle):
     dt = dt.replace(tzinfo=timezone.utc)
 
     return dt.isoformat(), int(dt.timestamp())
-
-
-
-# https://royaleapi.com/player/YVQJ8CVV/battles/scroll/1765576269/type/all
-# /player/YVQJ8CVV/battles/scroll/1765394858/type/all
-# 	/player/YVQJ8CVV/battles/scroll/1765314048/type/all

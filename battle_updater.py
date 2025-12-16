@@ -1,5 +1,6 @@
 import logging
-from api_client import fetch_page
+import json
+from api_client import fetch_page, fetch_matchup
 from parsers import parse_battle_data, parse_oldest_timestamp_from_page, parse_deck_from_battle, parse_all_deck_stats_from_page
 from db_manager import get_last_battle_timestamp, insert_battle_and_decks, update_player_deck_stats
 
@@ -20,7 +21,15 @@ def _collect_battles_from_page(soup, tag, last_db_ts, conn, cursor):
         player_deck_cards = parse_deck_from_battle(div, is_opponent=False)
         opponent_deck_cards = parse_deck_from_battle(div, is_opponent=True) if battle["opponent_tag"] else None
 
-        insert_battle_and_decks(cursor, battle, player_deck_cards, opponent_deck_cards)
+        
+
+        matchup_data = None
+        if player_deck_cards and opponent_deck_cards:
+            # Assicurati che entrambi i mazzi abbiano 9 carte (8 + torre)
+            if len(player_deck_cards) == 9 and len(opponent_deck_cards) == 9:
+                matchup_data = fetch_matchup(player_deck_cards, opponent_deck_cards)
+
+        insert_battle_and_decks(cursor, battle, player_deck_cards, opponent_deck_cards, matchup_data)
 
     conn.commit()
     oldest_ts = parse_oldest_timestamp_from_page(soup)

@@ -222,7 +222,9 @@ CREATE TABLE IF NOT EXISTS battles (
     trophy_change INTEGER,
     elixir_leaked_player REAL,
     elixir_leaked_opponent REAL,
-    level_diff REAL
+    level_diff REAL,
+    matchup_win_rate REAL,
+    matchup_probabilities TEXT
 );
 
 -- ================================
