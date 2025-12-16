@@ -3,6 +3,7 @@ from utils.connection import open_connection, close_connection
 from db_manager import load_tags
 from player_updater import update_player_profile
 from battle_updater import fetch_all_battles
+import time
 
 DB_PATH = "db/clash.db"
 
@@ -29,6 +30,9 @@ def main():
 
     close_connection(conn)
     logging.info("Processo di fetching completato.")
+    time.sleep(30 * 60)
+
 
 if __name__ == "__main__":
-    main()
+    while True:
+        main()

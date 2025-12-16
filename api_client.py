@@ -35,9 +35,8 @@ def fetch_matchup(player_deck: list, opponent_deck: list) -> dict | None:
     ]
 
     try:
-        print("exec")
         response = requests.post(url, json=payload, headers=HEADERS)
-        print(response.status_code)
+
         response.raise_for_status()
         return response.json()  # Restituisce {"winRate": 0.535, "probabilities": null, ...}
     except requests.RequestException as e:
