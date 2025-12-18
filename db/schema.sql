@@ -234,7 +234,6 @@ CREATE TABLE IF NOT EXISTS decks (
     deck_hash TEXT PRIMARY KEY, -- Hash SHA256 della composizione del mazzo
     archetype_hash TEXT,        -- Hash SHA256 della composizione del mazzo (senza livelli)
     avg_elixir REAL,
-    four_card_cycle REAL
 );
 
 -- ================================
