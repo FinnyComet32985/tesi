@@ -14,6 +14,9 @@ def parse_player_data(soup: BeautifulSoup) -> tuple | None:
         rank = None
         arena = None
 
+        #! LEAGUE ERRATO 
+        #TODO la lega attuale raccolta è quella di clash mini e non quella della ranked
+        #TODO se ha raggiunto le medagliette salvare quelle
         if len(league_blocks) >= 1:
             items = league_blocks[0].select(".item")
             if len(items) >= 1:

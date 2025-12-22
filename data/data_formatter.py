@@ -53,7 +53,7 @@ def data_provider(cursor, player_tag: str):
     query = """
     SELECT timestamp, win, matchup_win_rate
     FROM battles
-    WHERE player_tag = ? AND battle_type = 'PvP' -- Filtra per un tipo di battaglia consistente
+    WHERE player_tag = ? -- AND battle_type = 'PvP' -- Filtra per un tipo di battaglia consistente
     ORDER BY timestamp ASC;
     """
     cursor.execute(query, (player_tag,))

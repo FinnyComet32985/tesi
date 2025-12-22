@@ -41,4 +41,5 @@ def fetch_matchup(player_deck: list, opponent_deck: list) -> dict | None:
         return response.json()  # Restituisce {"winRate": 0.535, "probabilities": null, ...}
     except requests.RequestException as e:
         logging.error(f"Errore durante la richiesta di matchup a {url}: {e}")
+        logging.error(f"Payload inviato: {payload}")
         return None

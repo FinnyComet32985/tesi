@@ -30,7 +30,7 @@ def main():
 
     close_connection(conn)
     logging.info("Processo di fetching completato.")
-    time.sleep(30 * 60)
+    time.sleep(10 * 60)
 
 
 if __name__ == "__main__":
