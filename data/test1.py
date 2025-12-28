@@ -51,7 +51,9 @@ def main():
     connection, cursor = open_connection("db/clash.db")
 
     # tag di test
-    PLAYER_TAG_TO_TEST = "QJU20YUL" 
+    #PLAYER_TAG_TO_TEST = "YU889LRR0" # ragnar
+    PLAYER_TAG_TO_TEST = "RP9GVG9" # max
+    #PLAYER_TAG_TO_TEST = "QJU20YUL" # blas
 
     data = data_provider(cursor, PLAYER_TAG_TO_TEST)
     test1(data)

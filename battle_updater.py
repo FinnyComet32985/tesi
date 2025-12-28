@@ -1,5 +1,4 @@
 import logging
-import json
 from api_client import fetch_page, fetch_matchup
 from parsers import parse_battle_data, parse_oldest_timestamp_from_page, parse_deck_from_battle, parse_all_deck_stats_from_page
 from db_manager import get_last_battle_timestamp, insert_battle_and_decks, update_player_deck_stats

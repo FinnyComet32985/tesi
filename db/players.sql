@@ -8,4 +8,5 @@ insert or ignore into players(player_tag) values
 ('CCYRVRJCU'), -- Alexander
 ('YU889LRR0'), -- ragnar Lodbrok
 ('RP9GVG9'), -- max
-('2RU2VCY80'); -- Murlok
+('2RU2VCY80'), -- Murlok
+('RQ9JQPL90'); -- Britplus

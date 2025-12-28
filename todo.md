@@ -10,7 +10,8 @@
 
 
 ## TO DISCUSS
-1. matchup with levels
-2. matchup deck confidece
-3. player classification
-4. 
+1. matchup deck confidece
+2. player classification
+3. **level cap ranked**
+
+
