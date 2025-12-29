@@ -16,7 +16,7 @@ def main():
     query = """
         SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate
         FROM battles
-        WHERE player_tag = ? AND game_mode not like '%Draft%' and battle_type not like 'riverRace%'
+        WHERE player_tag = ? -- AND game_mode not like '%Draft%' and battle_type not like 'riverRace%'
         ORDER BY timestamp ASC;
     """
 
