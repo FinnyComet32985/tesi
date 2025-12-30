@@ -1,13 +1,14 @@
 import sys
 import os
 
-from classifier import classifier
+from classifier import get_player_profiles
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '../utils'))
 
 from connection import open_connection, close_connection
 
-from test_extreme_matchup import test_extreme_matchup
+from test_extreme_matchup import get_extreme_matchup_stats
+from reporter import generate_report
 
 
 def load_tags(cursor) -> list:
@@ -26,18 +27,16 @@ def main():
     tags = load_tags(cursor)
 
     # raccolta dei dati utili per la classificazione del player
-    classifier(cursor, tags)
+    profiles = get_player_profiles(cursor, tags)
 
+    # raccolta statistiche matchup
+    matchup_stats = get_extreme_matchup_stats(cursor, tags)
 
-    test_extreme_matchup(cursor, tags)
-
-
+    # generazione report e salvataggio
+    generate_report(profiles, matchup_stats)
 
 
     close_connection(connection)
 
 if __name__ == "__main__":
     main()
-
-
-

@@ -14,7 +14,7 @@ def load_tags(cursor) -> list:
 
 def update_player_stats(cursor, tag: str, player_data: tuple):
     """Aggiorna le statistiche base di un giocatore nel database."""
-    columns = ['player_name', 'clan_name', 'trophies', 'arena', 'rank', 'wins', 'losses', 'three_crown_wins', 'total_games', 'account_age_seconds', 'time_spent_seconds', 'games_per_day']
+    columns = ['player_name', 'clan_name', 'trophies', 'arena', 'rank', 'ranked_trophies', 'wins', 'losses', 'three_crown_wins', 'total_games', 'account_age_seconds', 'time_spent_seconds', 'games_per_day']
     
     for i, col_name in enumerate(columns):
         cursor.execute(f"UPDATE players SET {col_name} = ? WHERE player_tag = ?", (player_data[i], tag))

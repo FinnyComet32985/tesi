@@ -1,32 +1,19 @@
-import os
-from datetime import datetime
-
-def classifier(cursor, tags):
+def get_player_profiles(cursor, tags):
+    """Recupera i profili comportamentali per una lista di giocatori."""
     query = """
         SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate
         FROM battles
         WHERE player_tag = ? -- AND game_mode not like '%Draft%' and battle_type not like 'riverRace%'
         ORDER BY timestamp ASC;
     """
-
-    # Preparazione cartella e file di output
-    results_dir = os.path.join(os.path.dirname(__file__), 'results')
-    os.makedirs(results_dir, exist_ok=True)
-    output_path = os.path.join(results_dir, 'classifier_results.txt')
-
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(f"Analisi Classificatore eseguita il: {datetime.now()}\n")
-
-        for tag in tags:
-            cursor.execute(query, (tag,))
-            battles = cursor.fetchall()
-            profile = get_player_profile(battles)
-            
-            if profile:
-                print_profile(profile, tag, f)
-
-    print(f"\nI risultati sono stati salvati in: {output_path}")
-
+    profiles = {}
+    for tag in tags:
+        cursor.execute(query, (tag,))
+        battles = cursor.fetchall()
+        profile = get_player_profile(battles)
+        if profile:
+            profiles[tag] = profile
+    return profiles
 
 def get_player_profile(battles):
     """
@@ -107,32 +94,3 @@ def get_player_profile(battles):
         'ragequit_rate': round(ragequit_rate, 2),
         'avg_matchup_pct': round(avg_matchup, 2)
     }
-
-def print_profile(profile, tag, file):
-    """Stampa il profilo del giocatore in formato tabellare su console e file."""
-    def log(msg):
-        print(msg)
-        file.write(msg + "\n")
-
-    labels = {
-        'total_matches': 'Totale Partite',
-        'num_sessions': 'Numero Sessioni',
-        'avg_session_min': 'Durata Media Sess. (min)',
-        'matches_per_session': 'Partite per Sessione',
-        'l_streak_count': 'Losing Streaks (>=3L)',
-        'w_streak_count': 'Winning Streaks (>=3W)',
-        'ragequit_rate': 'Ragequit Rate (%)',
-        'avg_matchup_pct': 'Matchup Medio (%)'
-    }
-
-    log("\n" + "="*45)
-    log(f" PLAYER: {tag}")
-    log("="*45)
-    log(f"{'METRICA':<30} | {'VALORE':<10}")
-    log("-" * 45)
-    
-    for key, label in labels.items():
-        val = profile.get(key, "N/A")
-        log(f"{label:<30} | {str(val):<10}")
-    
-    log("-" * 45)

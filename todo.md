@@ -1,8 +1,15 @@
+# TODO
+
 ## FIX
-1. matchup request error
-2. ranked parser fix
+1. matchup request error (livello torri = 0)
+2. ~~ranked parser fix~~
 3. 
 
+## ADD 
+1. add new player to te db
+2. 
+
+----
 
 ## FEATURES
 1. server exec

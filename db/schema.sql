@@ -10,6 +10,7 @@ CREATE TABLE players (
     trophies INTEGER,
     arena TEXT,
     rank TEXT,
+    ranked_trophies INTEGER,
 
     wins INTEGER,
     losses INTEGER,

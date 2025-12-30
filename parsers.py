@@ -13,22 +13,60 @@ def parse_player_data(soup: BeautifulSoup) -> tuple | None:
         trophies = None
         rank = None
         arena = None
+        ranked_trophies = None
 
-        #! LEAGUE ERRATO 
-        #TODO la lega attuale raccolta è quella di clash mini e non quella della ranked
-        #TODO se ha raggiunto le medagliette salvare quelle
-        if len(league_blocks) >= 1:
-            items = league_blocks[0].select(".item")
-            if len(items) >= 1:
-                text = items[0].get_text(strip=True)
-                trophies = int(text.split("/")[0].strip())
-            if len(items) >= 2:
-                arena = items[1].get_text(strip=True)
+        # 1. Parsing Trofei Standard e Arena (Header)
+        # Cerchiamo il blocco che contiene specificamente l'icona del trofeo
+        for block in league_blocks:
+            if block.select_one(".item_icon.trophy"):
+                items = block.select(".item")
+                if len(items) >= 1:
+                    text = items[0].get_text(strip=True)
+                    try:
+                        # Es: "11068 / 11309 PB" -> prende 11068
+                        trophies = int(text.split("/")[0].strip().replace(",", ""))
+                    except (ValueError, IndexError):
+                        pass
+                if len(items) >= 2:
+                    arena = items[1].get_text(strip=True)
+                break # Trovato il blocco trofei, usciamo dal loop
 
-        if len(league_blocks) >= 2:
-            items = league_blocks[1].select(".item")
-            if len(items) >= 2:
-                rank = items[1].get_text(strip=True)
+        # 2. Parsing Ranked Stats (Tabella)
+        # Cerchiamo la sezione "Ranked Stats" e poi la tabella successiva
+        ranked_header = soup.find("h3", string=lambda t: t and "Ranked Stats" in t)
+        if ranked_header:
+            table = ranked_header.find_next("table")
+            if table:
+                rows = table.select("tr")
+                in_current_season = False
+                
+                for row in rows:
+                    # Controllo intestazioni di sezione (Best Season, Current Season, etc.)
+                    header_cell = row.select_one("h5")
+                    if header_cell:
+                        if "Current Season" in header_cell.get_text(strip=True):
+                            in_current_season = True
+                            continue
+                        elif in_current_season:
+                            break # Usciamo se incontriamo un'altra intestazione (es. Last Season)
+                    
+                    if in_current_season:
+                        cols = row.select("td")
+                        if len(cols) == 2:
+                            label = cols[0].get_text(strip=True).lower()
+                            val_text = cols[1].get_text(strip=True)
+                            
+                            if label == "league":
+                                rank = val_text
+                            elif label == "rank" and "unranked" not in val_text.lower():
+                                # Se c'è un rank specifico (es. Ultimate Champion), sovrascrive la lega
+                                rank = val_text
+                            elif label in ["trophies", "ratings"]:
+                                try:
+                                    # Es: "1625 <img...>" -> prende 1625
+                                    ranked_trophies = int(val_text.split()[0].replace(",", ""))
+                                except (ValueError, IndexError):
+                                    pass
 
         clan_tag = soup.select_one(".player_aux_info .ui.header.item")
         clan_name = clan_tag.get_text(strip=True) if clan_tag else 'None'
@@ -87,7 +125,7 @@ def parse_player_data(soup: BeautifulSoup) -> tuple | None:
             elif label == "three crown wins":
                 three_crown_wins = int(value)
 
-        return (player_name, clan_name, trophies, arena, rank, wins, losses, three_crown_wins, total_games, account_age_seconds, time_spent_seconds, games_per_day)
+        return (player_name, clan_name, trophies, arena, rank, ranked_trophies, wins, losses, three_crown_wins, total_games, account_age_seconds, time_spent_seconds, games_per_day)
     except (AttributeError, IndexError, ValueError) as e:
         print(f"Errore durante il parsing dei dati del giocatore: {e}")
         return None
