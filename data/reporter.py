@@ -1,9 +1,7 @@
 import os
 from datetime import datetime
-import math
-import scipy.stats as stats
 
-def generate_report(profiles, matchup_stats):
+def generate_report(profiles, matchup_stats, correlation_results=None):
     """Genera i report su file e console basandosi sui dati calcolati."""
     results_dir = os.path.join(os.path.dirname(__file__), 'results')
     os.makedirs(results_dir, exist_ok=True)
@@ -12,7 +10,11 @@ def generate_report(profiles, matchup_stats):
     _save_classifier_report(profiles, results_dir)
     
     # 2. Report Extreme Matchup
-    _save_matchup_report(matchup_stats, profiles, results_dir)
+    _save_matchup_report(matchup_stats, results_dir)
+
+    # 3. Report Correlation
+    if correlation_results:
+        _save_correlation_report(correlation_results, results_dir)
 
 def _save_classifier_report(profiles, results_dir):
     output_path = os.path.join(results_dir, 'classifier_results.txt')
@@ -24,12 +26,9 @@ def _save_classifier_report(profiles, results_dir):
             
     print(f"\nI risultati del classificatore sono stati salvati in: {output_path}")
 
-def _save_matchup_report(matchup_stats, profiles, results_dir):
+def _save_matchup_report(matchup_stats, results_dir):
     output_path = os.path.join(results_dir, 'fisher_extreme_matchup_results.txt')
     
-    pity_odds_ratios = []
-    ragequit_ratios = []
-
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(f"Analisi Extreme Matchup eseguita il: {datetime.now()}\n")
 
@@ -47,30 +46,29 @@ def _save_matchup_report(matchup_stats, profiles, results_dir):
             punish_stats = stats_data['punish']
             _print_fisher_table(punish_stats, "MATCHUP PUNITIVI", "Dopo Win Streak (>=3W)", "Matchup < 40%", f)
 
-            # Raccolta dati per correlazione
-            if tag in profiles:
-                rq_rate = profiles[tag].get('ragequit_rate', 0)
-                or_pity = pity_stats['odds_ratio']
-                
-                if not math.isinf(or_pity) and not math.isnan(or_pity):
-                    pity_odds_ratios.append(or_pity)
-                    ragequit_ratios.append(rq_rate)
-
-        # Calcolo Correlazione Spearman
-        if len(pity_odds_ratios) > 2:
-            corr, p_val = stats.spearmanr(pity_odds_ratios, ragequit_ratios)
-            
-            log_msg = "\n" + "="*60 + "\n"
-            log_msg += " ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs Ragequit)\n"
-            log_msg += "="*60 + "\n"
-            log_msg += f"Correlazione: {corr:.4f}\n"
-            log_msg += f"P-value: {p_val:.4f}\n"
-            log_msg += f"Campione: {len(pity_odds_ratios)} giocatori\n" + "="*60
-            
-            print(log_msg)
-            f.write(log_msg + "\n")
-
     print(f"\nI risultati dell'analisi matchup sono stati salvati in: {output_path}")
+
+def _save_correlation_report(correlation_results, results_dir):
+    output_path = os.path.join(results_dir, 'correlation_results.txt')
+    
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(f"Analisi Correlazione eseguita il: {datetime.now()}\n")
+
+        corr = correlation_results['correlation']
+        p_val = correlation_results['p_value']
+        sample_size = correlation_results['sample_size']
+        
+        log_msg = "\n" + "="*60 + "\n"
+        log_msg += " ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs Ragequit)\n"
+        log_msg += "="*60 + "\n"
+        log_msg += f"Correlazione: {corr:.4f}\n"
+        log_msg += f"P-value: {p_val:.4f}\n"
+        log_msg += f"Campione: {sample_size} giocatori\n" + "="*60
+        
+        print(log_msg)
+        f.write(log_msg + "\n")
+    
+    print(f"\nI risultati della correlazione sono stati salvati in: {output_path}")
 
 def _print_profile(profile, tag, file):
     def log(msg):

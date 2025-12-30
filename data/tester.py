@@ -8,6 +8,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../utils'))
 from connection import open_connection, close_connection
 
 from test_extreme_matchup import get_extreme_matchup_stats
+from test_odds_and_quitrate_correlation import calculate_correlation_pity_ragequit
 from reporter import generate_report
 
 
@@ -32,8 +33,11 @@ def main():
     # raccolta statistiche matchup
     matchup_stats = get_extreme_matchup_stats(cursor, tags)
 
+    # calcolo correlazione tra odds ratio e ragequit
+    correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
+
     # generazione report e salvataggio
-    generate_report(profiles, matchup_stats)
+    generate_report(profiles, matchup_stats, correlation_results)
 
 
     close_connection(connection)

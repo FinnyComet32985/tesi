@@ -1,10 +1,10 @@
-from data.temp.data_formatter import data_provider
+from data_formatter import data_provider
 import sys
 import os
 import pandas as pd
 from scipy.stats import chi2_contingency
 
-sys.path.append(os.path.join(os.path.dirname(__file__), '../utils'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '../../utils'))
 
 from connection import open_connection, close_connection
 
@@ -51,8 +51,8 @@ def main():
     connection, cursor = open_connection("db/clash.db")
 
     # tag di test
-    #PLAYER_TAG_TO_TEST = "YU889LRR0" # ragnar
-    PLAYER_TAG_TO_TEST = "RP9GVG9" # max
+    PLAYER_TAG_TO_TEST = "YU889LRR0" # ragnar
+    #PLAYER_TAG_TO_TEST = "RP9GVG9" # max
     #PLAYER_TAG_TO_TEST = "QJU20YUL" # blas
 
     data = data_provider(cursor, PLAYER_TAG_TO_TEST)
