@@ -57,6 +57,7 @@ def _save_correlation_report(correlation_results, results_dir):
         corr = correlation_results['correlation']
         p_val = correlation_results['p_value']
         sample_size = correlation_results['sample_size']
+        details = correlation_results.get('details', [])
         
         log_msg = "\n" + "="*60 + "\n"
         log_msg += " ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs Ragequit)\n"
@@ -67,6 +68,22 @@ def _save_correlation_report(correlation_results, results_dir):
         
         print(log_msg)
         f.write(log_msg + "\n")
+
+        if details:
+            # Ordina per Odds Ratio decrescente per evidenziare i casi più estremi
+            details.sort(key=lambda x: x['odds_ratio'], reverse=True)
+
+            table_header = f"\n{'='*60}\n DETTAGLIO GIOCATORI\n{'='*60}\n"
+            table_header += f"{'PLAYER TAG':<20} | {'PITY ODDS':<15} | {'RAGEQUIT %':<15}\n"
+            table_header += f"{'-'*60}"
+            
+            print(table_header)
+            f.write(table_header + "\n")
+            
+            for d in details:
+                line = f"{d['tag']:<20} | {d['odds_ratio']:<15.2f} | {d['ragequit_rate']:<15.2f}"
+                print(line)
+                f.write(line + "\n")
     
     print(f"\nI risultati della correlazione sono stati salvati in: {output_path}")
 
