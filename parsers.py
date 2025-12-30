@@ -299,12 +299,12 @@ def parse_deck_from_battle(div: BeautifulSoup, is_opponent: bool = False) -> lis
     if tower_container:
         tower_img = tower_container.select_one("img.deck_card")
         if tower_img:
-            level = None
+            level = 16 # Default a 16 se non trovato o 0, per garantire il calcolo del matchup
             # Il livello è nel secondo div dentro al div con classe "level"
             level_divs = tower_container.select(".level div")
             if len(level_divs) > 1:
                 level_text = level_divs[1].get_text(strip=True).replace("Lvl", "").strip()
-                if level_text.isdigit():
+                if level_text.isdigit() and int(level_text) > 0:
                     level = int(level_text)
             
             parsed_cards.append({"name": tower_img.get("alt"), "level": level, "has_evolution": 0, "has_hero": 0})
