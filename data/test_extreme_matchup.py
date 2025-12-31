@@ -34,10 +34,10 @@ def get_fisher_matrices(battles):
             continue
         
         matchup_val = matchup * 100
-        last_3_wins = [battles[i-j][WIN_IDX] for j in range(1, 4)]
+        last_3_results = [battles[i-j][WIN_IDX] for j in range(1, 4)]
         
-        is_losing_streak = all(w == 0 for w in last_3_wins)
-        is_winning_streak = all(w == 1 for w in last_3_wins)
+        is_losing_streak = all(w == 0 for w in last_3_results)
+        is_winning_streak = all(w == 1 for w in last_3_results)
 
         # Riempimento Pity Match
         if is_losing_streak:

@@ -59,10 +59,10 @@ def get_player_profile(battles):
         
         # Conteggio Streak (su blocchi di 3)
         if i >= 3:
-            last_3_wins = [battles[i-j][WIN_IDX] for j in range(1, 4)]
-            if all(w == 0 for w in last_3_wins):
+            last_3_results = [battles[i-j][WIN_IDX] for j in range(1, 4)]
+            if all(w == 0 for w in last_3_results):
                 l_streak_count += 1
-            if all(w == 1 for w in last_3_wins): 
+            if all(w == 1 for w in last_3_results): 
                 w_streak_count += 1
 
     # Aggiungi l'ultima sessione rimasta aperta

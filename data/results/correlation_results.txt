@@ -1,11 +1,11 @@
-Analisi Correlazione eseguita il: 2025-12-30 17:38:33.971036
+Analisi Correlazione eseguita il: 2025-12-31 11:48:52.045715
 
 ============================================================
  ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs Ragequit)
 ============================================================
-Correlazione: 0.3515
-P-value: 0.3192
-Campione: 10 giocatori
+Correlazione: 0.2173
+P-value: 0.3314
+Campione: 22 giocatori
 ============================================================
 
 ============================================================
@@ -13,13 +13,25 @@ Campione: 10 giocatori
 ============================================================
 PLAYER TAG           | PITY ODDS       | RAGEQUIT %     
 ------------------------------------------------------------
-2RU2VCY80            | 16.17           | 57.14          
-RP9GVG9              | 4.55            | 15.00          
-U9CYGUYRP            | 1.79            | 41.46          
-20GLGG298R           | 0.00            | 23.88          
-CCYRVRJCU            | 0.00            | 33.33          
-POGYQQ8UC            | 0.00            | 9.77           
-QJU20YUL             | 0.00            | 27.16          
-RQ9JQPL90            | 0.00            | 36.36          
-YU889LRR0            | 0.00            | 18.47          
+2RU2VCY80            | 17.17           | 56.82          
+RP9GVG9              | 4.85            | 13.38          
+PQVYL0VJJ            | 2.17            | 56.52          
+U9CYGUYRP            | 1.63            | 40.00          
+VQPU0R89G            | 1.57            | 22.22          
+UQJCY9JYJ            | 1.36            | 42.86          
+20GLGG298R           | 0.00            | 24.29          
+20JGRJGY2Q           | 0.00            | 36.84          
+20QU8VLGU8           | 0.00            | 55.00          
+2PVCYY2Y             | 0.00            | 52.63          
+9JJRVRJL             | 0.00            | 27.78          
+CCYRVRJCU            | 0.00            | 32.26          
+G0YP2GJV             | 0.00            | 62.50          
+P9QQ0CL2             | 0.00            | 15.79          
+POGYQQ8UC            | 0.00            | 10.95          
+QJU20YUL             | 0.00            | 26.74          
+R82CV2C              | 0.00            | 32.35          
+RQ9JQPL90            | 0.00            | 41.67          
+VCU8QQ98C            | 0.00            | 11.63          
+VYURQLR00            | 0.00            | 25.00          
+YU889LRR0            | 0.00            | 18.45          
 YVQJ8CVV             | 0.00            | 33.33          
