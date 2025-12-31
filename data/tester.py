@@ -9,6 +9,7 @@ from connection import open_connection, close_connection
 
 from test_extreme_matchup import get_extreme_matchup_stats
 from test_odds_and_quitrate_correlation import calculate_correlation_pity_ragequit
+from ragequit_and_odds import ragequit_and_odds_correlation
 from reporter import generate_report
 
 
@@ -39,6 +40,10 @@ def main():
     # generazione report e salvataggio
     generate_report(profiles, matchup_stats, correlation_results)
 
+    ragequit_and_odds_correlation(profiles, matchup_stats) 
+
+
+    print("Processo di report completato.")
 
     close_connection(connection)
 

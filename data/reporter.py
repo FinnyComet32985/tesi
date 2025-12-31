@@ -146,3 +146,5 @@ def _print_fisher_table(stats_data, label, condition_name, effect_name, file):
     
     log(f"IPOTESI: {status}")
     log("="*60)
+
+
