@@ -10,6 +10,7 @@ from connection import open_connection, close_connection
 from test_extreme_matchup import get_extreme_matchup_stats
 from test_odds_and_quitrate_correlation import calculate_correlation_pity_ragequit
 from ragequit_and_odds import ragequit_and_odds_correlation
+from test_indipendenza import get_chi2_independence_stats
 from reporter import generate_report
 
 
@@ -37,8 +38,11 @@ def main():
     # calcolo correlazione tra odds ratio e ragequit
     correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
 
+    # calcolo chi quadro indipendenza (streak vs matchup)
+    chi2_results = get_chi2_independence_stats(cursor, tags)
+
     # generazione report e salvataggio
-    generate_report(profiles, matchup_stats, correlation_results)
+    generate_report(profiles, matchup_stats, correlation_results, chi2_results)
 
     ragequit_and_odds_correlation(profiles, matchup_stats) 
 

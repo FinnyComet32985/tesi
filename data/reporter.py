@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-def generate_report(profiles, matchup_stats, correlation_results=None):
+def generate_report(profiles, matchup_stats, correlation_results=None, chi2_results=None):
     """Genera i report su file e console basandosi sui dati calcolati."""
     results_dir = os.path.join(os.path.dirname(__file__), 'results')
     os.makedirs(results_dir, exist_ok=True)
@@ -15,6 +15,10 @@ def generate_report(profiles, matchup_stats, correlation_results=None):
     # 3. Report Correlation
     if correlation_results:
         _save_correlation_report(correlation_results, results_dir)
+
+    # 4. Report Chi-Square Independence
+    if chi2_results:
+        _save_chi2_report(chi2_results, results_dir)
 
 def _save_classifier_report(profiles, results_dir):
     output_path = os.path.join(results_dir, 'classifier_results.txt')
@@ -87,6 +91,81 @@ def _save_correlation_report(correlation_results, results_dir):
     
     print(f"\nI risultati della correlazione sono stati salvati in: {output_path}")
 
+def _save_chi2_report(chi2_results, results_dir):
+    output_path = os.path.join(results_dir, 'chi_square_independence_results.txt')
+    with open(output_path, 'w', encoding='utf-8') as f:
+        f.write(f"Analisi Chi-Quadro Indipendenza (Streak vs Matchup) eseguita il: {datetime.now()}\n")
+        
+        significant_count = 0
+        total_count = len(chi2_results)
+
+        for tag, res in chi2_results.items():
+            if res['significant']:
+                significant_count += 1
+            
+            f.write(f"\n\n{'#'*60}\n# PLAYER: {tag}\n{'#'*60}\n")
+            f.write(f"Statistica Chi-Quadro: {res['chi2_stat']:.4f}\n")
+            f.write(f"Valore Critico (95%):  {res['critical_value']:.4f}\n")
+            f.write(f"P-value:               {res['p_value']:.4f}\n")
+            f.write(f"Risultato:             {'DIPENDENZA SIGNIFICATIVA' if res['significant'] else 'Indipendenza (Nulla non rifiutata)'}\n")
+            
+            f.write("\n")
+            f.write(_format_dataframe_table(res['observed'], "TABELLA OSSERVATA (Conteggi Reali)"))
+            f.write("\n")
+            f.write(_format_dataframe_table(res['expected'], "TABELLA ATTESA (Teorica)"))
+
+        if total_count > 0:
+            summary = f"\n\n{'='*60}\n RIEPILOGO GENERALE\n{'='*60}\n"
+            summary += f"Totale Giocatori Analizzati: {total_count}\n"
+            summary += f"Giocatori con Dipendenza Significativa: {significant_count} ({(significant_count/total_count*100):.2f}%)\n"
+            f.write(summary)
+            print(f"\nI risultati del test Chi-Quadro sono stati salvati in: {output_path}")
+
+def _format_dataframe_table(df, title):
+    """Formatta un DataFrame pandas in una tabella testuale allineata."""
+    lines = []
+    lines.append(f"--- {title} ---")
+    
+    # L'indice del DF contiene le categorie di Streak (es. Losing Streak)
+    row_labels = [str(x) for x in df.index]
+    col_labels = [str(x) for x in df.columns]
+    
+    # Calcolo larghezza prima colonna (etichette righe)
+    # 'Streak' è l'intestazione fittizia per l'indice
+    first_col_width = max(len("Streak"), max([len(x) for x in row_labels]) if row_labels else 0) + 5
+    
+    # Calcolo larghezza colonne dati
+    col_widths = []
+    for col in df.columns:
+        w = len(str(col))
+        for val in df[col]:
+            if isinstance(val, float):
+                w = max(w, len(f"{val:.2f}"))
+            else:
+                w = max(w, len(str(val)))
+        col_widths.append(w + 5) # Padding abbondante
+        
+    # Costruzione Header
+    header = f"{'Streak':<{first_col_width}} | " + " | ".join(f"{c:<{w}}" for c, w in zip(col_labels, col_widths))
+    lines.append(header)
+    lines.append("-" * len(header))
+    
+    # Costruzione Righe
+    for idx in df.index:
+        row_str = f"{str(idx):<{first_col_width}} | "
+        vals = []
+        for i, col in enumerate(df.columns):
+            val = df.at[idx, col]
+            if isinstance(val, float):
+                val_str = f"{val:.2f}"
+            else:
+                val_str = str(val)
+            vals.append(f"{val_str:<{col_widths[i]}}")
+        row_str += " | ".join(vals)
+        lines.append(row_str)
+        
+    return "\n".join(lines) + "\n"
+
 def _print_profile(profile, tag, file):
     def log(msg):
         print(msg)
@@ -146,5 +225,3 @@ def _print_fisher_table(stats_data, label, condition_name, effect_name, file):
     
     log(f"IPOTESI: {status}")
     log("="*60)
-
-

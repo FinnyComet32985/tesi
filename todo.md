@@ -22,3 +22,4 @@
 3. **level cap ranked**
 
 
+05/01/2026 nuova season
