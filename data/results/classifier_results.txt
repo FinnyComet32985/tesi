@@ -1,18 +1,18 @@
-Analisi Classificatore eseguita il: 2026-01-06 15:32:46.766238
+Analisi Classificatore eseguita il: 2026-01-06 18:34:34.617190
 
 =============================================
  PLAYER: 20CCVVLUP0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 316       
-Numero Sessioni                | 63        
-Durata Media Sess. (min)       | 23.17     
-Partite per Sessione           | 5.02      
-Losing Streaks (>=3L)          | 30        
-Winning Streaks (>=3W)         | 48        
-Ragequit Rate (%)              | 23.97     
-Matchup Medio (%)              | 52.03     
+Totale Partite                 | 330       
+Numero Sessioni                | 66        
+Durata Media Sess. (min)       | 22.88     
+Partite per Sessione           | 5.0       
+Losing Streaks (>=3L)          | 32        
+Winning Streaks (>=3W)         | 50        
+Ragequit Rate (%)              | 23.38     
+Matchup Medio (%)              | 51.95     
 ---------------------------------------------
 
 =============================================
@@ -35,14 +35,14 @@ Matchup Medio (%)              | 48.78
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 121       
-Numero Sessioni                | 27        
-Durata Media Sess. (min)       | 18.26     
-Partite per Sessione           | 4.48      
+Totale Partite                 | 131       
+Numero Sessioni                | 29        
+Durata Media Sess. (min)       | 18.55     
+Partite per Sessione           | 4.52      
 Losing Streaks (>=3L)          | 8         
-Winning Streaks (>=3W)         | 19        
-Ragequit Rate (%)              | 36.0      
-Matchup Medio (%)              | 57.18     
+Winning Streaks (>=3W)         | 21        
+Ragequit Rate (%)              | 35.85     
+Matchup Medio (%)              | 57.02     
 ---------------------------------------------
 
 =============================================
@@ -50,14 +50,14 @@ Matchup Medio (%)              | 57.18
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 91        
-Numero Sessioni                | 55        
-Durata Media Sess. (min)       | 21.03     
-Partite per Sessione           | 1.65      
+Totale Partite                 | 93        
+Numero Sessioni                | 56        
+Durata Media Sess. (min)       | 21.02     
+Partite per Sessione           | 1.66      
 Losing Streaks (>=3L)          | 7         
-Winning Streaks (>=3W)         | 5         
+Winning Streaks (>=3W)         | 7         
 Ragequit Rate (%)              | 55.32     
-Matchup Medio (%)              | 46.05     
+Matchup Medio (%)              | 46.09     
 ---------------------------------------------
 
 =============================================
@@ -95,13 +95,13 @@ Matchup Medio (%)              | 51.04
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 190       
-Numero Sessioni                | 70        
-Durata Media Sess. (min)       | 14.49     
-Partite per Sessione           | 2.71      
-Losing Streaks (>=3L)          | 6         
+Totale Partite                 | 192       
+Numero Sessioni                | 71        
+Durata Media Sess. (min)       | 14.27     
+Partite per Sessione           | 2.7       
+Losing Streaks (>=3L)          | 7         
 Winning Streaks (>=3W)         | 60        
-Ragequit Rate (%)              | 56.45     
+Ragequit Rate (%)              | 56.25     
 Matchup Medio (%)              | 56.26     
 ---------------------------------------------
 
@@ -110,14 +110,14 @@ Matchup Medio (%)              | 56.26
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 122       
+Totale Partite                 | 127       
 Numero Sessioni                | 26        
-Durata Media Sess. (min)       | 14.76     
-Partite per Sessione           | 4.69      
+Durata Media Sess. (min)       | 15.49     
+Partite per Sessione           | 4.88      
 Losing Streaks (>=3L)          | 14        
 Winning Streaks (>=3W)         | 11        
-Ragequit Rate (%)              | 22.95     
-Matchup Medio (%)              | 51.37     
+Ragequit Rate (%)              | 22.22     
+Matchup Medio (%)              | 51.3      
 ---------------------------------------------
 
 =============================================
@@ -170,14 +170,14 @@ Matchup Medio (%)              | 57.2
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 165       
+Totale Partite                 | 174       
 Numero Sessioni                | 52        
-Durata Media Sess. (min)       | 18.94     
-Partite per Sessione           | 3.17      
+Durata Media Sess. (min)       | 20.33     
+Partite per Sessione           | 3.35      
 Losing Streaks (>=3L)          | 6         
-Winning Streaks (>=3W)         | 58        
+Winning Streaks (>=3W)         | 65        
 Ragequit Rate (%)              | 43.4      
-Matchup Medio (%)              | 50.8      
+Matchup Medio (%)              | 51.11     
 ---------------------------------------------
 
 =============================================
@@ -185,14 +185,14 @@ Matchup Medio (%)              | 50.8
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 174       
-Numero Sessioni                | 55        
+Totale Partite                 | 175       
+Numero Sessioni                | 56        
 Durata Media Sess. (min)       | 12.26     
-Partite per Sessione           | 3.16      
+Partite per Sessione           | 3.12      
 Losing Streaks (>=3L)          | 5         
 Winning Streaks (>=3W)         | 54        
 Ragequit Rate (%)              | 45.45     
-Matchup Medio (%)              | 49.88     
+Matchup Medio (%)              | 49.83     
 ---------------------------------------------
 
 =============================================
@@ -215,14 +215,14 @@ Matchup Medio (%)              | 41.8
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 223       
-Numero Sessioni                | 45        
-Durata Media Sess. (min)       | 29.49     
-Partite per Sessione           | 4.96      
-Losing Streaks (>=3L)          | 72        
+Totale Partite                 | 229       
+Numero Sessioni                | 46        
+Durata Media Sess. (min)       | 29.3      
+Partite per Sessione           | 4.98      
+Losing Streaks (>=3L)          | 77        
 Winning Streaks (>=3W)         | 13        
-Ragequit Rate (%)              | 20.81     
-Matchup Medio (%)              | 40.44     
+Ragequit Rate (%)              | 20.78     
+Matchup Medio (%)              | 40.19     
 ---------------------------------------------
 
 =============================================
@@ -230,14 +230,14 @@ Matchup Medio (%)              | 40.44
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 106       
-Numero Sessioni                | 33        
-Durata Media Sess. (min)       | 20.15     
-Partite per Sessione           | 3.21      
+Totale Partite                 | 112       
+Numero Sessioni                | 34        
+Durata Media Sess. (min)       | 20.36     
+Partite per Sessione           | 3.29      
 Losing Streaks (>=3L)          | 18        
-Winning Streaks (>=3W)         | 4         
-Ragequit Rate (%)              | 39.34     
-Matchup Medio (%)              | 39.24     
+Winning Streaks (>=3W)         | 6         
+Ragequit Rate (%)              | 39.68     
+Matchup Medio (%)              | 40.55     
 ---------------------------------------------
 
 =============================================
@@ -305,14 +305,14 @@ Matchup Medio (%)              | 47.98
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 148       
-Numero Sessioni                | 67        
-Durata Media Sess. (min)       | 17.0      
-Partite per Sessione           | 2.21      
+Totale Partite                 | 151       
+Numero Sessioni                | 69        
+Durata Media Sess. (min)       | 16.62     
+Partite per Sessione           | 2.19      
 Losing Streaks (>=3L)          | 11        
 Winning Streaks (>=3W)         | 19        
-Ragequit Rate (%)              | 51.43     
-Matchup Medio (%)              | 55.93     
+Ragequit Rate (%)              | 51.39     
+Matchup Medio (%)              | 55.96     
 ---------------------------------------------
 
 =============================================
@@ -320,14 +320,14 @@ Matchup Medio (%)              | 55.93
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 158       
-Numero Sessioni                | 43        
-Durata Media Sess. (min)       | 20.32     
-Partite per Sessione           | 3.67      
-Losing Streaks (>=3L)          | 42        
+Totale Partite                 | 163       
+Numero Sessioni                | 44        
+Durata Media Sess. (min)       | 20.16     
+Partite per Sessione           | 3.7       
+Losing Streaks (>=3L)          | 43        
 Winning Streaks (>=3W)         | 18        
-Ragequit Rate (%)              | 27.17     
-Matchup Medio (%)              | 48.95     
+Ragequit Rate (%)              | 27.66     
+Matchup Medio (%)              | 49.16     
 ---------------------------------------------
 
 =============================================
@@ -335,14 +335,14 @@ Matchup Medio (%)              | 48.95
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 224       
-Numero Sessioni                | 56        
-Durata Media Sess. (min)       | 15.51     
-Partite per Sessione           | 4.0       
-Losing Streaks (>=3L)          | 54        
-Winning Streaks (>=3W)         | 29        
-Ragequit Rate (%)              | 18.25     
-Matchup Medio (%)              | 50.91     
+Totale Partite                 | 231       
+Numero Sessioni                | 58        
+Durata Media Sess. (min)       | 16.03     
+Partite per Sessione           | 3.98      
+Losing Streaks (>=3L)          | 55        
+Winning Streaks (>=3W)         | 31        
+Ragequit Rate (%)              | 17.83     
+Matchup Medio (%)              | 50.78     
 ---------------------------------------------
 
 =============================================
@@ -350,14 +350,14 @@ Matchup Medio (%)              | 50.91
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 186       
-Numero Sessioni                | 38        
+Totale Partite                 | 187       
+Numero Sessioni                | 39        
 Durata Media Sess. (min)       | 30.6      
-Partite per Sessione           | 4.89      
+Partite per Sessione           | 4.79      
 Losing Streaks (>=3L)          | 10        
 Winning Streaks (>=3W)         | 44        
-Ragequit Rate (%)              | 32.86     
-Matchup Medio (%)              | 42.78     
+Ragequit Rate (%)              | 33.8      
+Matchup Medio (%)              | 42.77     
 ---------------------------------------------
 
 =============================================
@@ -365,14 +365,14 @@ Matchup Medio (%)              | 42.78
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 457       
-Numero Sessioni                | 105       
-Durata Media Sess. (min)       | 37.63     
-Partite per Sessione           | 4.35      
+Totale Partite                 | 462       
+Numero Sessioni                | 106       
+Durata Media Sess. (min)       | 37.29     
+Partite per Sessione           | 4.36      
 Losing Streaks (>=3L)          | 47        
 Winning Streaks (>=3W)         | 61        
-Ragequit Rate (%)              | 11.31     
-Matchup Medio (%)              | 59.1      
+Ragequit Rate (%)              | 11.56     
+Matchup Medio (%)              | 59.0      
 ---------------------------------------------
 
 =============================================
@@ -455,14 +455,14 @@ Matchup Medio (%)              | 53.59
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 154       
-Numero Sessioni                | 33        
-Durata Media Sess. (min)       | 21.95     
-Partite per Sessione           | 4.67      
-Losing Streaks (>=3L)          | 15        
+Totale Partite                 | 156       
+Numero Sessioni                | 34        
+Durata Media Sess. (min)       | 21.34     
+Partite per Sessione           | 4.59      
+Losing Streaks (>=3L)          | 16        
 Winning Streaks (>=3W)         | 30        
-Ragequit Rate (%)              | 27.14     
-Matchup Medio (%)              | 52.28     
+Ragequit Rate (%)              | 28.17     
+Matchup Medio (%)              | 52.11     
 ---------------------------------------------
 
 =============================================
@@ -470,14 +470,14 @@ Matchup Medio (%)              | 52.28
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 297       
-Numero Sessioni                | 47        
-Durata Media Sess. (min)       | 35.67     
-Partite per Sessione           | 6.32      
-Losing Streaks (>=3L)          | 56        
-Winning Streaks (>=3W)         | 15        
-Ragequit Rate (%)              | 16.0      
-Matchup Medio (%)              | 53.59     
+Totale Partite                 | 308       
+Numero Sessioni                | 48        
+Durata Media Sess. (min)       | 35.57     
+Partite per Sessione           | 6.42      
+Losing Streaks (>=3L)          | 57        
+Winning Streaks (>=3W)         | 18        
+Ragequit Rate (%)              | 15.56     
+Matchup Medio (%)              | 53.47     
 ---------------------------------------------
 
 =============================================
@@ -500,14 +500,14 @@ Matchup Medio (%)              | 34.3
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 620       
-Numero Sessioni                | 97        
-Durata Media Sess. (min)       | 41.08     
-Partite per Sessione           | 6.39      
+Totale Partite                 | 634       
+Numero Sessioni                | 98        
+Durata Media Sess. (min)       | 41.15     
+Partite per Sessione           | 6.47      
 Losing Streaks (>=3L)          | 68        
-Winning Streaks (>=3W)         | 86        
-Ragequit Rate (%)              | 18.47     
-Matchup Medio (%)              | 41.14     
+Winning Streaks (>=3W)         | 97        
+Ragequit Rate (%)              | 18.75     
+Matchup Medio (%)              | 41.26     
 ---------------------------------------------
 
 =============================================
