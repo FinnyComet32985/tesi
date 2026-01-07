@@ -11,6 +11,7 @@ from test_extreme_matchup import get_extreme_matchup_stats
 from test_odds_and_quitrate_correlation import calculate_correlation_pity_ragequit
 from ragequit_and_odds import ragequit_and_odds_correlation
 from test_indipendenza import get_chi2_independence_stats
+from test_gatekeeping import get_gatekeeping_stats # Importazione nuovo test
 from reporter import generate_report
 
 
@@ -26,7 +27,7 @@ def load_tags(cursor) -> list:
 
 def main():
     connection, cursor = open_connection("db/clash.db")
-
+    
     tags = load_tags(cursor)
 
     # raccolta dei dati utili per la classificazione del player
@@ -41,8 +42,11 @@ def main():
     # calcolo chi quadro indipendenza (streak vs matchup)
     chi2_results = get_chi2_independence_stats(cursor, tags)
 
+    # calcolo gatekeeping (danger zone vs hard counter)
+    gatekeeping_results = get_gatekeeping_stats(cursor, tags, danger_range=80)
+
     # generazione report e salvataggio
-    generate_report(profiles, matchup_stats, correlation_results, chi2_results)
+    generate_report(profiles, matchup_stats, correlation_results, chi2_results, gatekeeping_results)
 
     ragequit_and_odds_correlation(profiles, matchup_stats) 
 

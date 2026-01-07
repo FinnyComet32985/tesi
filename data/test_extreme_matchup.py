@@ -5,7 +5,7 @@ def get_extreme_matchup_stats(cursor, tags):
     query = """
         SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate
         FROM battles
-        WHERE player_tag = ? -- AND game_mode not like '%Draft%' and battle_type not like 'riverRace%'
+        WHERE player_tag = ? AND game_mode not like '%Draft%' and battle_type not like 'riverRace%' AND game_mode != '2v2 League'
         ORDER BY timestamp ASC;
     """
     results = {}

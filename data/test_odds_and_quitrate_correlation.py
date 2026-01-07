@@ -7,12 +7,12 @@ def calculate_correlation_pity_ragequit(profiles, matchup_stats):
     e il Ragequit Rate (dai profili).
     """
     pity_odds_ratios = []
-    ragequit_ratios = []
+    fsi_ratios = []
     details = []
 
     for tag, stats_data in matchup_stats.items():
         if tag in profiles:
-            rq_rate = profiles[tag].get('ragequit_rate', 0)
+            fsi = profiles[tag].get('avg_fsi', 0)
             
             # stats_data ha la struttura {'pity': {...}, 'punish': {...}}
             pity_stats = stats_data.get('pity', {})
@@ -20,11 +20,11 @@ def calculate_correlation_pity_ragequit(profiles, matchup_stats):
             
             if or_pity is not None and not math.isinf(or_pity) and not math.isnan(or_pity):
                 pity_odds_ratios.append(or_pity)
-                ragequit_ratios.append(rq_rate)
-                details.append({'tag': tag, 'odds_ratio': or_pity, 'ragequit_rate': rq_rate})
+                fsi_ratios.append(fsi)
+                details.append({'tag': tag, 'odds_ratio': or_pity, 'fsi': fsi})
 
     if len(pity_odds_ratios) > 2:
-        corr, p_val = stats.spearmanr(pity_odds_ratios, ragequit_ratios)
+        corr, p_val = stats.spearmanr(pity_odds_ratios, fsi_ratios)
         return {
             "correlation": corr, 
             "p_value": p_val, 

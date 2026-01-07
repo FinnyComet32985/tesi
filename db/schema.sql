@@ -1,4 +1,12 @@
 -- ================================
+-- TABELLA ARENE
+-- ================================
+CREATE TABLE IF NOT EXISTS arenas (
+    arena_name TEXT PRIMARY KEY,
+    trophy_limit INTEGER
+);
+
+-- ================================
 -- TABELLA GIOCATORI
 -- ================================
 CREATE TABLE players (
@@ -21,7 +29,9 @@ CREATE TABLE players (
     time_spent_seconds INTEGER,
     games_per_day REAL,
 
-    last_updated DATETIME
+    last_updated DATETIME,
+
+    FOREIGN KEY (arena) REFERENCES arenas(arena_name) ON UPDATE CASCADE
 );
 
 

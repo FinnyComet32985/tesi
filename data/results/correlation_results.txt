@@ -1,47 +1,45 @@
-Analisi Correlazione eseguita il: 2026-01-06 18:34:34.675402
+Analisi Correlazione eseguita il: 2026-01-07 21:16:20.746158
 
 ============================================================
- ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs Ragequit)
+ ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs FSI)
 ============================================================
-Correlazione: 0.3090
-P-value: 0.0853
-Campione: 32 giocatori
+Correlazione: -0.3101
+P-value: 0.0954
+Campione: 30 giocatori
 ============================================================
 
 ============================================================
  DETTAGLIO GIOCATORI
 ============================================================
-PLAYER TAG           | PITY ODDS       | RAGEQUIT %     
+PLAYER TAG           | PITY ODDS       | FSI            
 ------------------------------------------------------------
-RQ9JQPL90            | 12.83           | 45.71          
-CGJJVRVJ0            | 8.05            | 43.40          
-G0YP2GJV             | 4.31            | 45.45          
-2RU2VCY80            | 4.25            | 56.25          
-RP9GVG9              | 3.76            | 11.56          
-LJ9JU0CQU            | 3.64            | 43.18          
-8YGG82QR2            | 3.47            | 22.22          
-PQVYL0VJJ            | 3.42            | 51.39          
-UQJCY9JYJ            | 2.70            | 40.00          
-20CCVVLUP0           | 1.90            | 23.38          
-U9CYGUYRP            | 1.83            | 39.58          
-20JGRJGY2Q           | 1.76            | 35.85          
-QJU20YUL             | 1.45            | 17.83          
-POGYQQ8UC            | 1.19            | 12.64          
-P9QQ0CL2             | 0.94            | 13.21          
-VYURQLR00            | 0.84            | 28.17          
-JPLLR2V0V            | 0.68            | 20.78          
-VQPU0R89G            | 0.57            | 16.33          
-20GLGG298R           | 0.00            | 29.63          
-20QU8VLGU8           | 0.00            | 55.32          
-2PVCYY2Y             | 0.00            | 33.33          
-2Q0JU0RR             | 0.00            | 18.42          
-9988CY9C             | 0.00            | 23.08          
-9JJRVRJL             | 0.00            | 37.84          
-CCYRVRJCU            | 0.00            | 35.90          
-J92L2CU0Q            | 0.00            | 35.00          
-JYRRRVVJJ            | 0.00            | 26.67          
-PY8YG0LJR            | 0.00            | 27.66          
-R82CV2C              | 0.00            | 33.80          
-VCU8QQ98C            | 0.00            | 9.72           
-YU889LRR0            | 0.00            | 18.75          
-YVQJ8CVV             | 0.00            | 33.33          
+CGJJVRVJ0            | 8.45            | 0.80           
+8YGG82QR2            | 7.58            | 1.09           
+2RU2VCY80            | 7.40            | 0.88           
+RP9GVG9              | 2.75            | 0.39           
+U9CYGUYRP            | 2.56            | 1.03           
+20JGRJGY2Q           | 2.13            | 1.14           
+POGYQQ8UC            | 1.97            | 0.78           
+PQVYL0VJJ            | 1.94            | 1.03           
+20CCVVLUP0           | 1.91            | 1.16           
+QJU20YUL             | 1.52            | 0.74           
+P9QQ0CL2             | 1.37            | 0.77           
+LJ9JU0CQU            | 1.36            | 1.84           
+VYURQLR00            | 0.89            | 1.11           
+JPLLR2V0V            | 0.58            | 1.93           
+20GLGG298R           | 0.00            | 1.03           
+20QU8VLGU8           | 0.00            | 1.01           
+2PVCYY2Y             | 0.00            | 1.86           
+2Q0JU0RR             | 0.00            | 0.58           
+9988CY9C             | 0.00            | 1.29           
+9JJRVRJL             | 0.00            | 1.28           
+CCYRVRJCU            | 0.00            | 0.81           
+J92L2CU0Q            | 0.00            | 1.35           
+JYRRRVVJJ            | 0.00            | 0.88           
+PY8YG0LJR            | 0.00            | 1.77           
+R82CV2C              | 0.00            | 1.46           
+RQ9JQPL90            | 0.00            | 0.85           
+VCU8QQ98C            | 0.00            | 0.93           
+VQPU0R89G            | 0.00            | 1.16           
+YU889LRR0            | 0.00            | 1.20           
+YVQJ8CVV             | 0.00            | 0.91           

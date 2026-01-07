@@ -42,7 +42,7 @@ def _get_player_data(cursor, player_tag: str):
     query = """
     SELECT timestamp, win, matchup_win_rate
     FROM battles
-    WHERE player_tag = ? -- AND game_mode='Ladder'
+    WHERE player_tag = ? AND game_mode not like '%Draft%' and battle_type not like 'riverRace%' AND game_mode != '2v2 League' -- AND game_mode='Ladder'
     ORDER BY timestamp ASC;
     """
     cursor.execute(query, (player_tag,))

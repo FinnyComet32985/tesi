@@ -1,0 +1,380 @@
+Analisi Gatekeeping (Danger Zone vs Hard Counter) eseguita il: 2026-01-07 21:16:20.760815
+
+############################################################
+# PLAYER: 20CCVVLUP0
+############################################################
+P-value: 0.0437
+Odds Ratio: 1.74
+Risultato: GATEKEEPING RILEVATO
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 25              | 29             
+Safe Zone            | 109             | 220            
+
+############################################################
+# PLAYER: 20GLGG298R
+############################################################
+P-value: 0.5294
+Odds Ratio: 1.14
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 6               | 7              
+Safe Zone            | 40              | 53             
+
+############################################################
+# PLAYER: 20JGRJGY2Q
+############################################################
+P-value: 0.6274
+Odds Ratio: 0.96
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 4               | 14             
+Safe Zone            | 27              | 91             
+
+############################################################
+# PLAYER: 20QU8VLGU8
+############################################################
+P-value: 0.1232
+Odds Ratio: 1.82
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 19              | 12             
+Safe Zone            | 34              | 39             
+
+############################################################
+# PLAYER: 2PVCYY2Y
+############################################################
+P-value: 0.0328
+Odds Ratio: 3.53
+Risultato: GATEKEEPING RILEVATO
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 9               | 5              
+Safe Zone            | 26              | 51             
+
+############################################################
+# PLAYER: 2Q0JU0RR
+############################################################
+P-value: 0.3782
+Odds Ratio: 2.79
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 3               | 1              
+Safe Zone            | 14              | 13             
+
+############################################################
+# PLAYER: 2RU2VCY80
+############################################################
+P-value: 1.0000
+Odds Ratio: 0.00
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 0               | 4              
+Safe Zone            | 6               | 53             
+
+############################################################
+# PLAYER: 8YGG82QR2
+############################################################
+P-value: 0.3453
+Odds Ratio: 1.68
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 4               | 5              
+Safe Zone            | 30              | 63             
+
+############################################################
+# PLAYER: 9988CY9C
+############################################################
+P-value: 0.5449
+Odds Ratio: 1.15
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 3               | 8              
+Safe Zone            | 33              | 101            
+
+############################################################
+# PLAYER: CCYRVRJCU
+############################################################
+P-value: 1.0000
+Odds Ratio: 0.00
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 0               | 2              
+Safe Zone            | 9               | 40             
+
+############################################################
+# PLAYER: CGJJVRVJ0
+############################################################
+P-value: 1.0000
+Odds Ratio: 0.00
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 5               | 5              
+Safe Zone            | 1               | 0              
+
+############################################################
+# PLAYER: G0YP2GJV
+############################################################
+P-value: 0.5158
+Odds Ratio: 1.67
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 5               | 6              
+Safe Zone            | 2               | 4              
+
+############################################################
+# PLAYER: JPLLR2V0V
+############################################################
+P-value: 0.7360
+Odds Ratio: 1.03
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 2               | 1              
+Safe Zone            | 29              | 15             
+
+############################################################
+# PLAYER: JPYQPY8Y0
+############################################################
+P-value: 0.3447
+Odds Ratio: 1.58
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 11              | 4              
+Safe Zone            | 40              | 23             
+
+############################################################
+# PLAYER: JYRRRVVJJ
+############################################################
+P-value: 0.2067
+Odds Ratio: 2.83
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 3               | 5              
+Safe Zone            | 7               | 33             
+
+############################################################
+# PLAYER: LJ9JU0CQU
+############################################################
+P-value: 0.8395
+Odds Ratio: 0.64
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 8               | 4              
+Safe Zone            | 25              | 8              
+
+############################################################
+# PLAYER: P9QQ0CL2
+############################################################
+P-value: 0.7905
+Odds Ratio: 0.69
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 2               | 6              
+Safe Zone            | 36              | 75             
+
+############################################################
+# PLAYER: POGYQQ8UC
+############################################################
+P-value: 0.7224
+Odds Ratio: 0.85
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 4               | 4              
+Safe Zone            | 93              | 79             
+
+############################################################
+# PLAYER: PQVYL0VJJ
+############################################################
+P-value: 0.6745
+Odds Ratio: 1.04
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 1               | 3              
+Safe Zone            | 39              | 122            
+
+############################################################
+# PLAYER: QJU20YUL
+############################################################
+P-value: 0.2863
+Odds Ratio: 1.58
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 8               | 8              
+Safe Zone            | 31              | 49             
+
+############################################################
+# PLAYER: R82CV2C
+############################################################
+P-value: 0.5119
+Odds Ratio: inf
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 3               | 0              
+Safe Zone            | 54              | 14             
+
+############################################################
+# PLAYER: RP9GVG9
+############################################################
+P-value: 0.9070
+Odds Ratio: 0.41
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 1               | 23             
+Safe Zone            | 7               | 66             
+
+############################################################
+# PLAYER: RQ9JQPL90
+############################################################
+P-value: 0.7401
+Odds Ratio: 0.87
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 1               | 3              
+Safe Zone            | 10              | 26             
+
+############################################################
+# PLAYER: U9CYGUYRP
+############################################################
+P-value: 1.0000
+Odds Ratio: 0.00
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 0               | 5              
+Safe Zone            | 4               | 19             
+
+############################################################
+# PLAYER: UQJCY9JYJ
+############################################################
+P-value: 1.0000
+Odds Ratio: nan
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 0               | 6              
+Safe Zone            | 0               | 43             
+
+############################################################
+# PLAYER: VCU8QQ98C
+############################################################
+P-value: 0.6512
+Odds Ratio: 0.93
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 14              | 14             
+Safe Zone            | 83              | 77             
+
+############################################################
+# PLAYER: VQPU0R89G
+############################################################
+P-value: 0.3000
+Odds Ratio: 6.67
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 1               | 3              
+Safe Zone            | 1               | 20             
+
+############################################################
+# PLAYER: VYURQLR00
+############################################################
+P-value: 0.3893
+Odds Ratio: 1.63
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 3               | 5              
+Safe Zone            | 25              | 68             
+
+############################################################
+# PLAYER: YLCYCJ2YL
+############################################################
+P-value: 0.3611
+Odds Ratio: 2.56
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 5               | 1              
+Safe Zone            | 41              | 21             
+
+############################################################
+# PLAYER: YU889LRR0
+############################################################
+P-value: 0.8410
+Odds Ratio: 0.70
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 15              | 7              
+Safe Zone            | 126             | 41             
+
+############################################################
+# PLAYER: YVQJ8CVV
+############################################################
+P-value: 1.0000
+Odds Ratio: nan
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 0               | 1              
+Safe Zone            | 0               | 11             
+
+
+============================================================
+ RIEPILOGO GATEKEEPING
+============================================================
+Totale Giocatori: 31
+Casi Significativi: 2 (6.45%)

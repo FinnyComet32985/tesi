@@ -3,16 +3,16 @@ import math
 def ragequit_and_odds_correlation(profiles, matchup_stats):
     """
     Calcola la correlazione di Spearman tra il Pity Odds Ratio (dai matchup) 
-    e il Ragequit Rate (dai profili).
+    e l'Indice di Frustrazione (FSI) (dai profili).
     """
     pity_odds_ratios = []
     punitive_odds_ratios = []
-    ragequit_ratios = []
+    fsi_ratios = []
     details = []
 
     for tag, stats_data in matchup_stats.items():
         if tag in profiles:
-            rq_rate = profiles[tag].get('ragequit_rate', 0)
+            fsi = profiles[tag].get('avg_fsi', 0)
             
             # stats_data ha la struttura {'pity': {...}, 'punish': {...}}
             pity_stats = stats_data.get('pity', {})
@@ -25,38 +25,38 @@ def ragequit_and_odds_correlation(profiles, matchup_stats):
             if (or_pity is not None and not math.isinf(or_pity) and not math.isnan(or_pity)) or (or_punish is not None and not math.isinf(or_punish) and not math.isnan(or_punish)):
                 pity_odds_ratios.append(or_pity)
                 punitive_odds_ratios.append(or_punish)
-                ragequit_ratios.append(rq_rate)
-                details.append({'tag': tag, 'pity_odds_ratio': or_pity, 'punish_odds_ratio': or_punish, 'ragequit_rate': rq_rate})
+                fsi_ratios.append(fsi)
+                details.append({'tag': tag, 'pity_odds_ratio': or_pity, 'punish_odds_ratio': or_punish, 'fsi': fsi})
 
     _print_table(details)
     #return details
 
 def _print_table(details):
     # Ordina per Ragequit Rate decrescente
-    details.sort(key=lambda x: x['ragequit_rate'], reverse=True)
+    details.sort(key=lambda x: x['fsi'], reverse=True)
 
     print(f"\n{'='*85}")
     print(f" DETTAGLIO COMPLETO ({len(details)} giocatori)")
     print(f"{'='*85}")
-    print(f"{'PLAYER TAG':<15} | {'RAGEQUIT %':<15} | {'PITY ODDS':<15} | {'PUNISH ODDS':<15}")
+    print(f"{'PLAYER TAG':<15} | {'FSI':<15} | {'PITY ODDS':<15} | {'PUNISH ODDS':<15}")
     print(f"{'-'*85}")
 
     for d in details:
         pity = f"{d['pity_odds_ratio']:.2f}" if _is_valid(d['pity_odds_ratio']) else "-"
         punish = f"{d['punish_odds_ratio']:.2f}" if _is_valid(d['punish_odds_ratio']) else "-"
-        print(f"{d['tag']:<15} | {d['ragequit_rate']:<15.2f} | {pity:<15} | {punish:<15}")
+        print(f"{d['tag']:<15} | {d['fsi']:<15.2f} | {pity:<15} | {punish:<15}")
     
     print(f"{'='*85}\n")
 
-    # Raggruppamento per fasce di Ragequit
+    # Raggruppamento per fasce di FSI
     groups = {
-        "Ragequit < 25%": [d for d in details if d['ragequit_rate'] < 25],
-        "Ragequit 25-45%": [d for d in details if 25 <= d['ragequit_rate'] <= 45],
-        "Ragequit > 45%": [d for d in details if d['ragequit_rate'] > 45]
+        "Low FSI (< 0.85)": [d for d in details if d['fsi'] < 0.85],
+        "Medium FSI (0.85 - 1.30)": [d for d in details if 0.85 <= d['fsi'] <= 1.30],
+        "High FSI (> 1.30)": [d for d in details if d['fsi'] > 1.30]
     }
 
     print(f"{'='*85}")
-    print(" ANALISI PER FASCE DI RAGEQUIT")
+    print(" ANALISI PER FASCE DI FSI")
     print(f"{'='*85}")
 
     for label, group in groups.items():
@@ -65,7 +65,7 @@ def _print_table(details):
             print("Nessun giocatore in questa fascia.")
             continue
 
-        print(f"{'PLAYER TAG':<15} | {'RAGEQUIT %':<15} | {'PITY ODDS':<15} | {'PUNISH ODDS':<15}")
+        print(f"{'PLAYER TAG':<15} | {'FSI':<15} | {'PITY ODDS':<15} | {'PUNISH ODDS':<15}")
         print(f"{'-'*85}")
 
         valid_pity = []
@@ -85,7 +85,7 @@ def _print_table(details):
                 valid_punish.append(punish_val)
                 punish_str = f"{punish_val:.2f}"
 
-            print(f"{d['tag']:<15} | {d['ragequit_rate']:<15.2f} | {pity_str:<15} | {punish_str:<15}")
+            print(f"{d['tag']:<15} | {d['fsi']:<15.2f} | {pity_str:<15} | {punish_str:<15}")
 
         avg_pity = sum(valid_pity) / len(valid_pity) if valid_pity else 0
         avg_punish = sum(valid_punish) / len(valid_punish) if valid_punish else 0

@@ -20,7 +20,7 @@ def main():
         ORDER BY timestamp ASC;
     """
 
-    PLAYER_TAG = "20GLGG298R"
+    PLAYER_TAG = "QJU20YUL"
 
     cursor.execute(query, (PLAYER_TAG,))
     battles = cursor.fetchall()
