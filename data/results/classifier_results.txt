@@ -1,18 +1,18 @@
-Analisi Classificatore eseguita il: 2026-01-07 21:16:20.661003
+Analisi Classificatore eseguita il: 2026-01-08 16:15:11.546681
 
 =============================================
  PLAYER: 20CCVVLUP0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 385       
-Numero Sessioni                | 78        
-Durata Media Sess. (min)       | 22.36     
-Partite per Sessione           | 4.94      
+Totale Partite                 | 421       
+Numero Sessioni                | 82        
+Durata Media Sess. (min)       | 22.91     
+Partite per Sessione           | 5.13      
 Losing Streaks (>=3L)          | 34        
-Winning Streaks (>=3W)         | 55        
-Matchup Medio (%)              | 51.74     
-Indice Frustrazione (FSI)      | 1.159     
+Winning Streaks (>=3W)         | 58        
+Matchup Medio (%)              | 51.64     
+Indice Frustrazione (FSI)      | 1.127     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -22,16 +22,17 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 193       
-Numero Sessioni                | 40        
-Durata Media Sess. (min)       | 25.36     
-Partite per Sessione           | 4.83      
+Totale Partite                 | 209       
+Numero Sessioni                | 42        
+Durata Media Sess. (min)       | 25.45     
+Partite per Sessione           | 4.98      
 Losing Streaks (>=3L)          | 12        
-Winning Streaks (>=3W)         | 49        
-Matchup Medio (%)              | 49.01     
-Indice Frustrazione (FSI)      | 1.032     
+Winning Streaks (>=3W)         | 53        
+Matchup Medio (%)              | 48.82     
+Indice Frustrazione (FSI)      | 0.983     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
+ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 ---------------------------------------------
 
 =============================================
@@ -39,14 +40,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 154       
-Numero Sessioni                | 31        
-Durata Media Sess. (min)       | 19.94     
-Partite per Sessione           | 4.97      
+Totale Partite                 | 165       
+Numero Sessioni                | 33        
+Durata Media Sess. (min)       | 20.44     
+Partite per Sessione           | 5.0       
 Losing Streaks (>=3L)          | 8         
-Winning Streaks (>=3W)         | 20        
-Matchup Medio (%)              | 55.76     
-Indice Frustrazione (FSI)      | 1.135     
+Winning Streaks (>=3W)         | 24        
+Matchup Medio (%)              | 55.18     
+Indice Frustrazione (FSI)      | 1.152     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -56,14 +57,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 108       
-Numero Sessioni                | 66        
-Durata Media Sess. (min)       | 21.6      
+Totale Partite                 | 110       
+Numero Sessioni                | 67        
+Durata Media Sess. (min)       | 20.95     
 Partite per Sessione           | 1.64      
 Losing Streaks (>=3L)          | 9         
 Winning Streaks (>=3W)         | 8         
-Matchup Medio (%)              | 45.39     
-Indice Frustrazione (FSI)      | 1.015     
+Matchup Medio (%)              | 45.27     
+Indice Frustrazione (FSI)      | 1.0       
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -92,14 +93,14 @@ ANALISI: Player sensibile (High FSI). Target ideale per EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 133       
-Numero Sessioni                | 21        
-Durata Media Sess. (min)       | 20.48     
-Partite per Sessione           | 6.33      
+Totale Partite                 | 135       
+Numero Sessioni                | 22        
+Durata Media Sess. (min)       | 19.52     
+Partite per Sessione           | 6.14      
 Losing Streaks (>=3L)          | 3         
-Winning Streaks (>=3W)         | 64        
-Matchup Medio (%)              | 52.01     
-Indice Frustrazione (FSI)      | 0.576     
+Winning Streaks (>=3W)         | 65        
+Matchup Medio (%)              | 52.14     
+Indice Frustrazione (FSI)      | 0.55      
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -110,14 +111,14 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 162       
-Numero Sessioni                | 67        
-Durata Media Sess. (min)       | 14.58     
-Partite per Sessione           | 2.42      
-Losing Streaks (>=3L)          | 5         
+Totale Partite                 | 166       
+Numero Sessioni                | 69        
+Durata Media Sess. (min)       | 15.02     
+Partite per Sessione           | 2.41      
+Losing Streaks (>=3L)          | 6         
 Winning Streaks (>=3W)         | 56        
-Matchup Medio (%)              | 55.61     
-Indice Frustrazione (FSI)      | 0.879     
+Matchup Medio (%)              | 55.7      
+Indice Frustrazione (FSI)      | 0.897     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -128,14 +129,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 103       
-Numero Sessioni                | 24        
-Durata Media Sess. (min)       | 15.23     
-Partite per Sessione           | 4.29      
+Totale Partite                 | 105       
+Numero Sessioni                | 25        
+Durata Media Sess. (min)       | 14.59     
+Partite per Sessione           | 4.2       
 Losing Streaks (>=3L)          | 7         
 Winning Streaks (>=3W)         | 12        
-Matchup Medio (%)              | 50.25     
-Indice Frustrazione (FSI)      | 1.092     
+Matchup Medio (%)              | 50.09     
+Indice Frustrazione (FSI)      | 1.132     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -145,14 +146,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 194       
-Numero Sessioni                | 19        
-Durata Media Sess. (min)       | 46.62     
-Partite per Sessione           | 10.21     
-Losing Streaks (>=3L)          | 3         
-Winning Streaks (>=3W)         | 64        
-Matchup Medio (%)              | 57.13     
-Indice Frustrazione (FSI)      | 1.289     
+Totale Partite                 | 198       
+Numero Sessioni                | 20        
+Durata Media Sess. (min)       | 44.91     
+Partite per Sessione           | 9.9       
+Losing Streaks (>=3L)          | 4         
+Winning Streaks (>=3W)         | 65        
+Matchup Medio (%)              | 57.12     
+Indice Frustrazione (FSI)      | 1.225     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -162,14 +163,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 71        
-Numero Sessioni                | 24        
-Durata Media Sess. (min)       | 21.38     
-Partite per Sessione           | 2.96      
+Totale Partite                 | 74        
+Numero Sessioni                | 26        
+Durata Media Sess. (min)       | 20.25     
+Partite per Sessione           | 2.85      
 Losing Streaks (>=3L)          | 6         
 Winning Streaks (>=3W)         | 7         
-Matchup Medio (%)              | 57.17     
-Indice Frustrazione (FSI)      | 1.279     
+Matchup Medio (%)              | 56.32     
+Indice Frustrazione (FSI)      | 1.288     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -180,14 +181,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 84        
-Numero Sessioni                | 39        
+Totale Partite                 | 85        
+Numero Sessioni                | 40        
 Durata Media Sess. (min)       | 12.03     
-Partite per Sessione           | 2.15      
+Partite per Sessione           | 2.12      
 Losing Streaks (>=3L)          | 5         
-Winning Streaks (>=3W)         | 16        
-Matchup Medio (%)              | 58.26     
-Indice Frustrazione (FSI)      | 0.813     
+Winning Streaks (>=3W)         | 17        
+Matchup Medio (%)              | 58.18     
+Indice Frustrazione (FSI)      | 0.792     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -198,14 +199,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 182       
-Numero Sessioni                | 55        
-Durata Media Sess. (min)       | 20.41     
-Partite per Sessione           | 3.31      
+Totale Partite                 | 186       
+Numero Sessioni                | 56        
+Durata Media Sess. (min)       | 20.5      
+Partite per Sessione           | 3.32      
 Losing Streaks (>=3L)          | 6         
 Winning Streaks (>=3W)         | 68        
-Matchup Medio (%)              | 50.98     
-Indice Frustrazione (FSI)      | 0.796     
+Matchup Medio (%)              | 50.93     
+Indice Frustrazione (FSI)      | 0.832     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -252,14 +253,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 230       
-Numero Sessioni                | 43        
-Durata Media Sess. (min)       | 28.46     
-Partite per Sessione           | 5.35      
+Totale Partite                 | 242       
+Numero Sessioni                | 45        
+Durata Media Sess. (min)       | 28.19     
+Partite per Sessione           | 5.38      
 Losing Streaks (>=3L)          | 76        
 Winning Streaks (>=3W)         | 13        
-Matchup Medio (%)              | 39.59     
-Indice Frustrazione (FSI)      | 1.933     
+Matchup Medio (%)              | 39.61     
+Indice Frustrazione (FSI)      | 1.847     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player sensibile (High FSI). Target ideale per EOMM.
@@ -270,14 +271,14 @@ ANALISI: Player sensibile (High FSI). Target ideale per EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 117       
-Numero Sessioni                | 35        
-Durata Media Sess. (min)       | 19.74     
-Partite per Sessione           | 3.34      
-Losing Streaks (>=3L)          | 17        
-Winning Streaks (>=3W)         | 10        
-Matchup Medio (%)              | 40.78     
-Indice Frustrazione (FSI)      | 1.766     
+Totale Partite                 | 122       
+Numero Sessioni                | 37        
+Durata Media Sess. (min)       | 19.56     
+Partite per Sessione           | 3.3       
+Losing Streaks (>=3L)          | 18        
+Winning Streaks (>=3W)         | 11        
+Matchup Medio (%)              | 41.19     
+Indice Frustrazione (FSI)      | 1.784     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -305,14 +306,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 67        
-Numero Sessioni                | 23        
-Durata Media Sess. (min)       | 17.66     
-Partite per Sessione           | 2.91      
-Losing Streaks (>=3L)          | 19        
+Totale Partite                 | 76        
+Numero Sessioni                | 25        
+Durata Media Sess. (min)       | 17.28     
+Partite per Sessione           | 3.04      
+Losing Streaks (>=3L)          | 22        
 Winning Streaks (>=3W)         | 2         
-Matchup Medio (%)              | 43.56     
-Indice Frustrazione (FSI)      | 1.839     
+Matchup Medio (%)              | 43.69     
+Indice Frustrazione (FSI)      | 1.852     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -323,14 +324,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 119       
-Numero Sessioni                | 20        
-Durata Media Sess. (min)       | 25.79     
-Partite per Sessione           | 5.95      
+Totale Partite                 | 126       
+Numero Sessioni                | 22        
+Durata Media Sess. (min)       | 25.35     
+Partite per Sessione           | 5.73      
 Losing Streaks (>=3L)          | 15        
-Winning Streaks (>=3W)         | 20        
-Matchup Medio (%)              | 52.85     
-Indice Frustrazione (FSI)      | 0.77      
+Winning Streaks (>=3W)         | 21        
+Matchup Medio (%)              | 52.72     
+Indice Frustrazione (FSI)      | 0.7       
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -341,14 +342,14 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 271       
-Numero Sessioni                | 52        
+Totale Partite                 | 272       
+Numero Sessioni                | 53        
 Durata Media Sess. (min)       | 24.7      
-Partite per Sessione           | 5.21      
+Partite per Sessione           | 5.13      
 Losing Streaks (>=3L)          | 31        
 Winning Streaks (>=3W)         | 39        
-Matchup Medio (%)              | 47.02     
-Indice Frustrazione (FSI)      | 0.783     
+Matchup Medio (%)              | 47.06     
+Indice Frustrazione (FSI)      | 0.768     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -359,14 +360,14 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 165       
-Numero Sessioni                | 78        
-Durata Media Sess. (min)       | 16.59     
-Partite per Sessione           | 2.12      
+Totale Partite                 | 175       
+Numero Sessioni                | 80        
+Durata Media Sess. (min)       | 17.73     
+Partite per Sessione           | 2.19      
 Losing Streaks (>=3L)          | 16        
-Winning Streaks (>=3W)         | 15        
-Matchup Medio (%)              | 55.84     
-Indice Frustrazione (FSI)      | 1.035     
+Winning Streaks (>=3W)         | 20        
+Matchup Medio (%)              | 56.44     
+Indice Frustrazione (FSI)      | 1.027     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -377,14 +378,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 150       
-Numero Sessioni                | 36        
+Totale Partite                 | 151       
+Numero Sessioni                | 37        
 Durata Media Sess. (min)       | 18.91     
-Partite per Sessione           | 4.17      
+Partite per Sessione           | 4.08      
 Losing Streaks (>=3L)          | 42        
 Winning Streaks (>=3W)         | 14        
-Matchup Medio (%)              | 49.38     
-Indice Frustrazione (FSI)      | 1.767     
+Matchup Medio (%)              | 49.46     
+Indice Frustrazione (FSI)      | 1.759     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -394,14 +395,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 198       
-Numero Sessioni                | 54        
-Durata Media Sess. (min)       | 14.71     
-Partite per Sessione           | 3.67      
-Losing Streaks (>=3L)          | 54        
-Winning Streaks (>=3W)         | 22        
-Matchup Medio (%)              | 50.18     
-Indice Frustrazione (FSI)      | 0.741     
+Totale Partite                 | 209       
+Numero Sessioni                | 58        
+Durata Media Sess. (min)       | 14.16     
+Partite per Sessione           | 3.6       
+Losing Streaks (>=3L)          | 57        
+Winning Streaks (>=3W)         | 23        
+Matchup Medio (%)              | 50.82     
+Indice Frustrazione (FSI)      | 0.75      
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -412,14 +413,14 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 200       
-Numero Sessioni                | 45        
-Durata Media Sess. (min)       | 26.62     
-Partite per Sessione           | 4.44      
+Totale Partite                 | 210       
+Numero Sessioni                | 47        
+Durata Media Sess. (min)       | 26.78     
+Partite per Sessione           | 4.47      
 Losing Streaks (>=3L)          | 10        
-Winning Streaks (>=3W)         | 48        
-Matchup Medio (%)              | 43.36     
-Indice Frustrazione (FSI)      | 1.46      
+Winning Streaks (>=3W)         | 51        
+Matchup Medio (%)              | 43.83     
+Indice Frustrazione (FSI)      | 1.43      
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -429,14 +430,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 496       
-Numero Sessioni                | 100       
-Durata Media Sess. (min)       | 41.9      
-Partite per Sessione           | 4.96      
-Losing Streaks (>=3L)          | 64        
-Winning Streaks (>=3W)         | 55        
-Matchup Medio (%)              | 58.39     
-Indice Frustrazione (FSI)      | 0.393     
+Totale Partite                 | 525       
+Numero Sessioni                | 104       
+Durata Media Sess. (min)       | 42.35     
+Partite per Sessione           | 5.05      
+Losing Streaks (>=3L)          | 67        
+Winning Streaks (>=3W)         | 56        
+Matchup Medio (%)              | 58.02     
+Indice Frustrazione (FSI)      | 0.416     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -465,14 +466,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 93        
-Numero Sessioni                | 40        
-Durata Media Sess. (min)       | 13.39     
-Partite per Sessione           | 2.33      
-Losing Streaks (>=3L)          | 12        
+Totale Partite                 | 97        
+Numero Sessioni                | 42        
+Durata Media Sess. (min)       | 14.33     
+Partite per Sessione           | 2.31      
+Losing Streaks (>=3L)          | 13        
 Winning Streaks (>=3W)         | 14        
-Matchup Medio (%)              | 54.26     
-Indice Frustrazione (FSI)      | 1.03      
+Matchup Medio (%)              | 53.78     
+Indice Frustrazione (FSI)      | 1.079     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -501,14 +502,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 327       
-Numero Sessioni                | 40        
-Durata Media Sess. (min)       | 45.74     
-Partite per Sessione           | 8.18      
-Losing Streaks (>=3L)          | 46        
-Winning Streaks (>=3W)         | 27        
-Matchup Medio (%)              | 42.7      
-Indice Frustrazione (FSI)      | 0.927     
+Totale Partite                 | 363       
+Numero Sessioni                | 42        
+Durata Media Sess. (min)       | 48.03     
+Partite per Sessione           | 8.64      
+Losing Streaks (>=3L)          | 48        
+Winning Streaks (>=3W)         | 36        
+Matchup Medio (%)              | 44.16     
+Indice Frustrazione (FSI)      | 0.919     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
@@ -537,14 +538,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 162       
-Numero Sessioni                | 35        
-Durata Media Sess. (min)       | 20.18     
-Partite per Sessione           | 4.63      
+Totale Partite                 | 164       
+Numero Sessioni                | 36        
+Durata Media Sess. (min)       | 19.69     
+Partite per Sessione           | 4.56      
 Losing Streaks (>=3L)          | 16        
 Winning Streaks (>=3W)         | 32        
-Matchup Medio (%)              | 51.82     
-Indice Frustrazione (FSI)      | 1.106     
+Matchup Medio (%)              | 51.41     
+Indice Frustrazione (FSI)      | 1.153     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -554,14 +555,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 318       
-Numero Sessioni                | 48        
-Durata Media Sess. (min)       | 35.66     
-Partite per Sessione           | 6.62      
-Losing Streaks (>=3L)          | 60        
+Totale Partite                 | 331       
+Numero Sessioni                | 49        
+Durata Media Sess. (min)       | 36.04     
+Partite per Sessione           | 6.76      
+Losing Streaks (>=3L)          | 62        
 Winning Streaks (>=3W)         | 19        
-Matchup Medio (%)              | 53.58     
-Indice Frustrazione (FSI)      | 1.329     
+Matchup Medio (%)              | 53.54     
+Indice Frustrazione (FSI)      | 1.373     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------
@@ -571,14 +572,14 @@ Affidabilità Campione          | ALTA
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 69        
-Numero Sessioni                | 38        
+Totale Partite                 | 72        
+Numero Sessioni                | 41        
 Durata Media Sess. (min)       | 11.29     
-Partite per Sessione           | 1.82      
+Partite per Sessione           | 1.76      
 Losing Streaks (>=3L)          | 12        
-Winning Streaks (>=3W)         | 6         
-Matchup Medio (%)              | 33.7      
-Indice Frustrazione (FSI)      | 1.303     
+Winning Streaks (>=3W)         | 7         
+Matchup Medio (%)              | 34.5      
+Indice Frustrazione (FSI)      | 1.295     
 Affidabilità Campione          | BASSA (Rumore)
 ---------------------------------------------
 ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
@@ -589,14 +590,14 @@ ANALISI: Campione insufficiente o sessioni troppo brevi per analisi EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 595       
-Numero Sessioni                | 93        
-Durata Media Sess. (min)       | 38.67     
-Partite per Sessione           | 6.4       
+Totale Partite                 | 603       
+Numero Sessioni                | 95        
+Durata Media Sess. (min)       | 37.86     
+Partite per Sessione           | 6.35      
 Losing Streaks (>=3L)          | 57        
-Winning Streaks (>=3W)         | 94        
-Matchup Medio (%)              | 41.18     
-Indice Frustrazione (FSI)      | 1.2       
+Winning Streaks (>=3W)         | 95        
+Matchup Medio (%)              | 41.27     
+Indice Frustrazione (FSI)      | 1.204     
 Affidabilità Campione          | ALTA      
 ---------------------------------------------
 ---------------------------------------------

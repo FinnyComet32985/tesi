@@ -226,6 +226,12 @@ def parse_battle_data(div: BeautifulSoup, player_tag: str) -> dict:
         except ValueError:
             trophy_change = None
 
+    # Fix per Arena Gate: se sconfitta (win=0) ma variazione positiva,
+    # significa che siamo al limite dell'arena (perdita 0) e il parser
+    # ha letto erroneamente i trofei vinti dall'avversario.
+    if win == 0 and trophy_change is not None and trophy_change > 0:
+        trophy_change = 0
+
     opponent_link = div.select_one(".team-segment:last-child a.player_name_header")
     opponent_tag = None
     if opponent_link and '/player/' in opponent_link.get("href", ""):

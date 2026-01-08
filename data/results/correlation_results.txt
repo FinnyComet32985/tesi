@@ -1,10 +1,10 @@
-Analisi Correlazione eseguita il: 2026-01-07 21:16:20.746158
+Analisi Correlazione eseguita il: 2026-01-08 16:15:11.604506
 
 ============================================================
  ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs FSI)
 ============================================================
-Correlazione: -0.3101
-P-value: 0.0954
+Correlazione: -0.2951
+P-value: 0.1134
 Campione: 30 giocatori
 ============================================================
 
@@ -13,33 +13,33 @@ Campione: 30 giocatori
 ============================================================
 PLAYER TAG           | PITY ODDS       | FSI            
 ------------------------------------------------------------
-CGJJVRVJ0            | 8.45            | 0.80           
-8YGG82QR2            | 7.58            | 1.09           
-2RU2VCY80            | 7.40            | 0.88           
-RP9GVG9              | 2.75            | 0.39           
-U9CYGUYRP            | 2.56            | 1.03           
-20JGRJGY2Q           | 2.13            | 1.14           
-POGYQQ8UC            | 1.97            | 0.78           
-PQVYL0VJJ            | 1.94            | 1.03           
-20CCVVLUP0           | 1.91            | 1.16           
-QJU20YUL             | 1.52            | 0.74           
-P9QQ0CL2             | 1.37            | 0.77           
-LJ9JU0CQU            | 1.36            | 1.84           
-VYURQLR00            | 0.89            | 1.11           
-JPLLR2V0V            | 0.58            | 1.93           
-20GLGG298R           | 0.00            | 1.03           
-20QU8VLGU8           | 0.00            | 1.01           
+CGJJVRVJ0            | 8.65            | 0.83           
+8YGG82QR2            | 7.75            | 1.13           
+2RU2VCY80            | 6.04            | 0.90           
+RP9GVG9              | 2.78            | 0.42           
+20JGRJGY2Q           | 2.30            | 1.15           
+U9CYGUYRP            | 2.23            | 1.08           
+POGYQQ8UC            | 1.97            | 0.77           
+PQVYL0VJJ            | 1.88            | 1.03           
+QJU20YUL             | 1.75            | 0.75           
+P9QQ0CL2             | 1.47            | 0.70           
+20CCVVLUP0           | 1.44            | 1.13           
+LJ9JU0CQU            | 1.33            | 1.85           
+VYURQLR00            | 0.90            | 1.15           
+JPLLR2V0V            | 0.65            | 1.85           
+20GLGG298R           | 0.00            | 0.98           
+20QU8VLGU8           | 0.00            | 1.00           
 2PVCYY2Y             | 0.00            | 1.86           
-2Q0JU0RR             | 0.00            | 0.58           
-9988CY9C             | 0.00            | 1.29           
-9JJRVRJL             | 0.00            | 1.28           
-CCYRVRJCU            | 0.00            | 0.81           
+2Q0JU0RR             | 0.00            | 0.55           
+9988CY9C             | 0.00            | 1.23           
+9JJRVRJL             | 0.00            | 1.29           
+CCYRVRJCU            | 0.00            | 0.79           
 J92L2CU0Q            | 0.00            | 1.35           
 JYRRRVVJJ            | 0.00            | 0.88           
-PY8YG0LJR            | 0.00            | 1.77           
-R82CV2C              | 0.00            | 1.46           
+PY8YG0LJR            | 0.00            | 1.76           
+R82CV2C              | 0.00            | 1.43           
 RQ9JQPL90            | 0.00            | 0.85           
-VCU8QQ98C            | 0.00            | 0.93           
+VCU8QQ98C            | 0.00            | 0.92           
 VQPU0R89G            | 0.00            | 1.16           
 YU889LRR0            | 0.00            | 1.20           
 YVQJ8CVV             | 0.00            | 0.91           

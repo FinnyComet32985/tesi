@@ -43,7 +43,7 @@ def main():
     chi2_results = get_chi2_independence_stats(cursor, tags)
 
     # calcolo gatekeeping (danger zone vs hard counter)
-    gatekeeping_results = get_gatekeeping_stats(cursor, tags, danger_range=80)
+    gatekeeping_results = get_gatekeeping_stats(cursor, tags, danger_range=50)
 
     # generazione report e salvataggio
     generate_report(profiles, matchup_stats, correlation_results, chi2_results, gatekeeping_results)

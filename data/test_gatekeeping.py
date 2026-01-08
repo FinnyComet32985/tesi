@@ -47,6 +47,12 @@ def get_gatekeeping_stats(cursor, tags, danger_range=150):
         simulated_trophies = current_trophies
 
         for win, trophy_change, matchup_win_rate in battles:
+            # Fix per Arena Gate: se sconfitta (win=0) ma variazione positiva,
+            # significa che siamo al limite dell'arena (perdita 0) e il parser
+            # ha letto erroneamente i trofei vinti dall'avversario.
+            if win == 0 and trophy_change > 0:
+                trophy_change = 0
+
             # Calcoliamo i trofei che il player aveva PRIMA di questa partita
             # Se la battaglia è finita, i trofei attuali sono post-change.
             # Quindi pre-match = post-match - change
