@@ -1113,15 +1113,35 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Long (18 ore, 57 minuti)]
+
+--- SESSIONE 67 ---
+[2026-01-10 14:08:44] Draft Battle vs VRYU88LVQ | WIN -> 1-0 | MU: 73.7% - ΔLvl: 0.0
+[2026-01-10 14:12:38] Draft Battle vs 2PR9QYYQ2 | WIN -> 1-0 | MU: 57.8% - ΔLvl: 0.0
+[2026-01-10 14:15:56] Triple Elixir Battle vs Y228JCVY | LOSE -> 1-3 | MU: 47.4% - ΔLvl: -0.62
+[2026-01-10 14:19:57] Triple Elixir Battle vs Q2P89GUVL | LOSE -> 0-1 | MU: 35.3% - ΔLvl: -0.5
+[2026-01-10 14:23:02] Triple Elixir Battle vs 80C20YQJR | WIN -> 3-1 | MU: 68.6% - ΔLvl: -0.38
+[2026-01-10 14:26:26] Triple Elixir Battle vs Y8U90CUGR | LOSE -> 1-2 | MU: 12.2% - ΔLvl: -0.75
+
+   [METRICHE SESSIONE]
+   Battaglie: 6
+   Win Rate: 50.0%
+   Avg Matchup: 49.2% (StdDev: 22.9%)
+   Matchup Drift: -8.2016
+   Avg Level Diff: -0.38
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 2.91
-   Avg Win Rate: 63.2%
-   Avg Matchup: 45.6% (Avg StdDev: 7.7%)
-   Avg Matchup Drift: 0.2815
+   Avg Battaglie/Sessione: 2.96
+   Avg Win Rate: 63.0%
+   Avg Matchup: 45.6% (Avg StdDev: 7.9%)
+   Avg Matchup Drift: 0.1548
    Avg Level Diff: -0.04
-   Avg Extreme Matchups: 0.86
-   Avg Win % (Negative MU): 19.8%
+   Avg Extreme Matchups: 0.88
+   Avg Win % (Negative MU): 19.5%
    Avg Lose % (Positive MU): 1.5%
 ========================================

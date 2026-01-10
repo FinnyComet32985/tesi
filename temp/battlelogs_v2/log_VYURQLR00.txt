@@ -821,15 +821,34 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (21 ore, 12 minuti)]
+
+--- SESSIONE 46 ---
+[2026-01-10 14:31:11] Draft Battle vs QUP9CRGPQ | WIN -> 1-0 | MU: 39.8% - ΔLvl: 0.0
+[2026-01-10 14:34:58] Draft Battle vs 8G809VLGR | WIN -> 2-1 | MU: 55.9% - ΔLvl: 0.0
+[2026-01-10 14:39:00] Draft Battle vs VP2G0QQLR | WIN -> 1-0 | MU: 52.2% - ΔLvl: 0.0
+[2026-01-10 14:41:16] Draft Battle vs VU8RQPPGY | LOSE -> 0-3 | MU: 41.8% - ΔLvl: 0.0
+[2026-01-10 14:44:44] Draft Battle vs 20YJG82JCG | WIN -> 3-1 | MU: 56.1% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 80.0%
+   Avg Matchup: 49.1% (StdDev: 7.8%)
+   Matchup Drift: 1.8355
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 4.31
-   Avg Win Rate: 52.0%
-   Avg Matchup: 50.5% (Avg StdDev: 11.5%)
-   Avg Matchup Drift: 0.7666
+   Avg Battaglie/Sessione: 4.33
+   Avg Win Rate: 52.7%
+   Avg Matchup: 50.4% (Avg StdDev: 11.4%)
+   Avg Matchup Drift: 0.7899
    Avg Level Diff: -0.14
-   Avg Extreme Matchups: 1.56
-   Avg Win % (Negative MU): 23.1%
+   Avg Extreme Matchups: 1.54
+   Avg Win % (Negative MU): 24.8%
    Avg Lose % (Positive MU): 0.0%
 ========================================

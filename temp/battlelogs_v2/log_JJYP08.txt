@@ -1610,15 +1610,47 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (22 ore, 16 minuti)]
+
+--- SESSIONE 78 ---
+[2026-01-10 13:31:11] Ladder vs CV08L8LC | WIN -> 1-0 | 11800 -> 11828 (+28) | MU: 48.9% - ΔLvl: -0.38
+[2026-01-10 13:34:40] Ranked vs L90Q82U9 | WIN -> 2-0 | MU: 43.8% - ΔLvl: 0.5
+[2026-01-10 13:38:07] Ranked vs 82VR0V0R | WIN -> 2-1 | MU: 81.6% - ΔLvl: 0.0
+[2026-01-10 13:41:38] Ranked vs 9CRUGQ8Y | LOSE -> 1-2 | MU: 28.1% - ΔLvl: 0.0
+[2026-01-10 13:45:04] Ranked vs 2PUUVR0P | WIN -> 1-0 | MU: 74.1% - ΔLvl: 0.0
+[2026-01-10 13:48:35] Ranked vs 2UVGYCQPG | WIN -> 1-0 | MU: 40.1% - ΔLvl: 0.0
+[2026-01-10 13:55:18] Ranked vs YUVJGUR02 | LOSE -> 0-1 | MU: 36.3% - ΔLvl: 0.0
+[2026-01-10 13:58:35] Ranked vs 2QP8LJYQU | WIN -> 1-0 | MU: 45.3% - ΔLvl: 0.12
+[2026-01-10 14:08:28] 2v2 Battle vs 8800CRUV | LOSE -> 0-1 | MU: null - ΔLvl: 0.0
+[2026-01-10 14:13:02] 2v2 Battle vs 9Q2V8PJP | WIN -> 1-0 | MU: null - ΔLvl: 0.0
+[2026-01-10 14:17:38] 2v2 Battle vs P989LCYYG | WIN -> 2-1 | MU: null - ΔLvl: 0.0
+[2026-01-10 14:20:50] 2v2 Battle vs 9L2QQQ2RG | WIN -> 1-0 | MU: null - ΔLvl: 0.0
+[2026-01-10 14:27:25] Triple Draft vs JL8RPC0 | WIN -> 1-0 | MU: 86.1% - ΔLvl: 0.0
+[2026-01-10 14:32:07] Triple Draft vs JL8RPC0 | WIN -> 1-0 | MU: 59.2% - ΔLvl: 0.0
+[2026-01-10 14:36:35] Triple Draft vs JL8RPC0 | WIN -> 1-0 | MU: 49.0% - ΔLvl: 0.0
+[2026-01-10 14:47:34] Triple Draft vs JL8RPC0 | LOSE -> 0-1 | MU: 46.2% - ΔLvl: 0.0
+[2026-01-10 14:52:24] Draft Battle vs JL8RPC0 | WIN -> 1-0 | MU: 46.1% - ΔLvl: 0.0
+[2026-01-10 14:57:17] 1v1 Battle vs JL8RPC0 | WIN -> 1-0 | MU: 64.8% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 18
+   Win Rate: 77.8%
+   Avg Matchup: 53.5% (StdDev: 17.2%)
+   Matchup Drift: 0.2886
+   Avg Level Diff: 0.01
+   Extreme Matchups: 4
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 6.95
-   Avg Win Rate: 53.9%
-   Avg Matchup: 45.9% (Avg StdDev: 6.6%)
-   Avg Matchup Drift: 0.3027
+   Avg Battaglie/Sessione: 7.09
+   Avg Win Rate: 54.2%
+   Avg Matchup: 46.0% (Avg StdDev: 6.8%)
+   Avg Matchup Drift: 0.3025
    Avg Level Diff: 0.05
-   Avg Extreme Matchups: 1.90
-   Avg Win % (Negative MU): 27.2%
+   Avg Extreme Matchups: 1.92
+   Avg Win % (Negative MU): 26.8%
    Avg Lose % (Positive MU): 1.3%
 ========================================

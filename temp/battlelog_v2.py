@@ -3,10 +3,13 @@ import statistics
 import sys
 import os
 import numpy as np
+from scipy.stats import spearmanr, fisher_exact
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '../utils'))
+sys.path.append(os.path.join(os.path.dirname(__file__), '../data'))
 
 from connection import open_connection, close_connection
+from classifier import get_player_profile
 
 BATTLE_ID_IDX = 0
 GAME_MODE_IDX = 2
@@ -289,6 +292,142 @@ def print_sessions(sessions, output_file=None):
     log("="*40)
 
 
+def calculate_variance_ratio(data):
+    low_fsi_variances = []
+    high_fsi_variances = []
+
+    print("\n" + "="*60)
+    print(" ANALISI VARIANZA SESSIONI vs FSI")
+    print("="*60)
+
+    for p in data:
+        variance = p['std_dev'] ** 2
+        fsi = p['fsi']
+        
+        print(f"Player: {p['tag']:<10} | FSI: {fsi:.2f} | StdDev: {p['std_dev']:.2f} | Var: {variance:.2f}")
+
+        if fsi < 0.81:
+            low_fsi_variances.append(variance)
+        elif fsi > 1.20:
+            high_fsi_variances.append(variance)
+
+    avg_var_low = statistics.mean(low_fsi_variances) if low_fsi_variances else 0
+    avg_var_high = statistics.mean(high_fsi_variances) if high_fsi_variances else 0
+
+    print("\n" + "-"*60)
+    print(f"Gruppo Low FSI (<0.81)  [n={len(low_fsi_variances)}]: Avg Varianza = {avg_var_low:.2f}")
+    print(f"Gruppo High FSI (>1.20) [n={len(high_fsi_variances)}]: Avg Varianza = {avg_var_high:.2f}")
+    
+    if avg_var_low > 0:
+        ratio = avg_var_high / avg_var_low
+        print(f"RAPPORTO (High/Low): {ratio:.2f}")
+    else:
+        print("RAPPORTO: N/A (Varianza Low = 0)")
+    print("="*60 + "\n")
+
+
+def calculate_fsi_variance_correlation(data):
+    print("\n" + "="*60)
+    print(" CORRELAZIONE SPEARMAN: FSI vs VARIANZA")
+    print("="*60)
+
+    if len(data) < 3:
+        print("Campione insufficiente per il calcolo della correlazione.")
+        print("="*60 + "\n")
+        return
+
+    fsi_values = [d['fsi'] for d in data]
+    variances = [d['std_dev'] ** 2 for d in data]
+
+    corr, p_value = spearmanr(fsi_values, variances)
+
+    print(f"Campione:     {len(data)} giocatori")
+    print(f"Coefficiente: {corr:.4f}")
+    print(f"P-value:      {p_value:.4f}")
+    print("="*60 + "\n")
+
+
+def analyze_session_pity(players_sessions):
+    output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'session_pity_test_results.txt')
+
+    print(f"\nGenerazione report test sessioni per player in: {output_file}")
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI FISHER: SESSION PITY (Low Avg MU -> High Avg MU) PER PLAYER\n")
+        f.write("Ipotesi: Una sessione con Avg Matchup < 45% è seguita da una con Avg Matchup > 55%?\n")
+        f.write("="*80 + "\n")
+
+        LOW_THRESH = 45.0
+        HIGH_THRESH = 55.0
+        
+        global_significant = 0
+        total_tested = 0
+
+        for p in players_sessions:
+            tag = p['tag']
+            sessions = p['sessions']
+            
+            # Matrix per player: [[A, B], [C, D]]
+            matrix = [[0, 0], [0, 0]]
+            count = 0
+
+            for i in range(len(sessions) - 1):
+                s_prev = sessions[i]
+                s_next = sessions[i+1]
+                
+                if 'analysis' not in s_prev or 'analysis' not in s_next:
+                    continue
+                
+                if s_prev['analysis']['tot_battles'] == 0 or s_next['analysis']['tot_battles'] == 0:
+                    continue
+
+                mu_prev = s_prev['analysis']['avg_matchup']
+                mu_next = s_next['analysis']['avg_matchup']
+                
+                is_prev_low = mu_prev < LOW_THRESH
+                is_next_high = mu_next > HIGH_THRESH
+                
+                if is_prev_low:
+                    if is_next_high:
+                        matrix[0][0] += 1
+                    else:
+                        matrix[0][1] += 1
+                else:
+                    if is_next_high:
+                        matrix[1][0] += 1
+                    else:
+                        matrix[1][1] += 1
+                count += 1
+            
+            if count < 2: # Skip se dati insufficienti
+                continue
+
+            total_tested += 1
+            odds_ratio, p_value = fisher_exact(matrix, alternative='greater')
+            
+            is_sig = p_value < 0.05
+            if is_sig:
+                global_significant += 1
+
+            f.write(f"\nPLAYER: {tag}\n")
+            f.write(f"Coppie di sessioni: {count}\n")
+            f.write(f"Matrice: {matrix}\n")
+            f.write(f"Odds Ratio: {odds_ratio:.4f}\n")
+            f.write(f"P-value:    {p_value:.4f}\n")
+            f.write(f"Risultato:  {'SIGNIFICATIVO' if is_sig else 'Non significativo'}\n")
+            f.write("-" * 40 + "\n")
+
+        f.write("\n" + "="*80 + "\n")
+        f.write(f"RIEPILOGO:\n")
+        f.write(f"Totale Player Analizzati: {total_tested}\n")
+        f.write(f"Player con P-value < 0.05: {global_significant}\n")
+        if total_tested > 0:
+            f.write(f"Percentuale Significativi: {(global_significant/total_tested)*100:.2f}%\n")
+        f.write("="*80 + "\n")
+
+
 def analyze_std_correlation(players_sessions):
     data = []
 
@@ -300,15 +439,99 @@ def analyze_std_correlation(players_sessions):
 
         avg_matchup = [s['analysis']['avg_matchup'] for s in long_sessions]
         std_matchups = statistics.stdev(avg_matchup)
+        fsi = player_sessions.get('fsi', 0)
 
         print(f"Player: {player_sessions['tag']}     -     std_dev: {std_matchups:.2f}")
         data.append({
             'tag': player_sessions['tag'],
-            'std_dev': std_matchups
+            'std_dev': std_matchups,
+            'fsi': fsi
         })
         
+    calculate_variance_ratio(data)
+    calculate_fsi_variance_correlation(data)
+
+
+def analyze_extreme_matchup_streak(players_sessions):
+    print("\n" + "="*60)
+    print(" ANALISI STREAK MATCHUP ESTREMI (>= 3 consecutivi in sessione)")
+    print("="*60)
+
+    # Soglie
+    HIGH_THRESH = 80.0
+    LOW_THRESH = 40.0
+    STREAK_LEN = 3
+
+    total_valid_battles = 0
+    count_high = 0
+    count_low = 0
+
+    streak_opportunities = 0
+    found_high_streaks = 0
+    found_low_streaks = 0
+
+    for p in players_sessions:
+        for session in p['sessions']:
+            # Estrai matchups validi della sessione
+            matchups = [b['matchup'] for b in session['battles'] if b['matchup'] is not None]
+            
+            # Aggiorna statistiche globali per calcolo probabilità teorica
+            for m in matchups:
+                total_valid_battles += 1
+                if m > HIGH_THRESH:
+                    count_high += 1
+                elif m < LOW_THRESH:
+                    count_low += 1
+            
+            # Analisi Streak nella sessione (Sliding Window)
+            if len(matchups) >= STREAK_LEN:
+                for i in range(len(matchups) - STREAK_LEN + 1):
+                    streak_opportunities += 1
+                    window = matchups[i : i+STREAK_LEN]
+                    
+                    if all(m > HIGH_THRESH for m in window):
+                        found_high_streaks += 1
+                    
+                    if all(m < LOW_THRESH for m in window):
+                        found_low_streaks += 1
+
+    if total_valid_battles == 0 or streak_opportunities == 0:
+        print("Dati insufficienti per l'analisi.")
+        print("="*60 + "\n")
+        return
+
+    # Calcolo Probabilità
+    p_high = count_high / total_valid_battles
+    p_low = count_low / total_valid_battles
+
+    prob_theory_high = p_high ** STREAK_LEN
+    prob_theory_low = p_low ** STREAK_LEN
+
+    prob_obs_high = found_high_streaks / streak_opportunities
+    prob_obs_low = found_low_streaks / streak_opportunities
+
+    print(f"Totale Battaglie Analizzate: {total_valid_battles}")
+    print(f"Finestre di {STREAK_LEN} partite analizzate: {streak_opportunities}")
+    print("-" * 60)
     
-        
+    ratio_high = prob_obs_high / prob_theory_high if prob_theory_high > 0 else 0
+    print(f"MATCHUP FAVOREVOLI (> {HIGH_THRESH}%)")
+    print(f"  Freq. Base Osservata (p): {p_high*100:.2f}%")
+    print(f"  Prob. Teorica 3-in-a-row (p^3): {prob_theory_high*100:.4f}%")
+    print(f"  Prob. Reale Osservata:          {prob_obs_high*100:.4f}%")
+    print(f"  Ratio (Obs/Theory):             {ratio_high:.2f}x")
+    
+    print("-" * 60)
+
+    ratio_low = prob_obs_low / prob_theory_low if prob_theory_low > 0 else 0
+    print(f"MATCHUP SFAVOREVOLI (< {LOW_THRESH}%)")
+    print(f"  Freq. Base Osservata (p): {p_low*100:.2f}%")
+    print(f"  Prob. Teorica 3-in-a-row (p^3): {prob_theory_low*100:.4f}%")
+    print(f"  Prob. Reale Osservata:          {prob_obs_low*100:.4f}%")
+    print(f"  Ratio (Obs/Theory):             {ratio_low:.2f}x")
+
+    print("="*60 + "\n")
+
 
 
 def load_tags(cursor) -> list:
@@ -372,10 +595,14 @@ def main():
         trophies_history = define_trophies_history(battles, current_trophies)
         
         sessions = define_sessions(battles, trophies_history)
+        
+        profile = get_player_profile(battles)
+        fsi = profile['avg_fsi'] if profile else 0
 
         players_sessions.append({
             'tag': tag,
-            'sessions': sessions
+            'sessions': sessions,
+            'fsi': fsi
         })
         
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
@@ -387,6 +614,8 @@ def main():
         print(f"Log generato per {tag}")
 
     analyze_std_correlation(players_sessions)
+    analyze_session_pity(players_sessions)
+    analyze_extreme_matchup_streak(players_sessions)
 
 
 

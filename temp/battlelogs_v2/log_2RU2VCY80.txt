@@ -1470,26 +1470,29 @@
 --- SESSIONE 90 ---
 [2026-01-10 13:05:16] Ranked vs CPJR29YP | WIN -> 2-1 | MU: 58.1% - ΔLvl: 0.12
 [2026-01-10 13:08:02] Triple Elixir Battle vs JRYUP9JY | WIN -> 3-1 | MU: 36.5% - ΔLvl: -1.38
+[2026-01-10 13:11:23] Triple Elixir Battle vs VGYQQV009 | WIN -> 2-1 | MU: 33.3% - ΔLvl: -0.12
+[2026-01-10 13:14:36] Triple Elixir Battle vs LQ9L8VCUY | LOSE -> 0-1 | MU: 39.4% - ΔLvl: -1.12
+[2026-01-10 13:16:58] Triple Elixir Battle vs 80LY8PJCU | WIN -> 3-0 | MU: 54.1% - ΔLvl: 0.88
 
    [METRICHE SESSIONE]
-   Battaglie: 2
-   Win Rate: 100.0%
-   Avg Matchup: 47.3% (StdDev: 15.3%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -0.63
-   Extreme Matchups: 1
-   Win % (Negative MU <40%): 100.0%
+   Battaglie: 5
+   Win Rate: 80.0%
+   Avg Matchup: 44.3% (StdDev: 11.1%)
+   Matchup Drift: -0.5062
+   Avg Level Diff: -0.32
+   Extreme Matchups: 3
+   Win % (Negative MU <40%): 66.7%
    Lose % (Positive MU >80%): 0.0%
 
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 2.49
-   Avg Win Rate: 55.8%
+   Avg Battaglie/Sessione: 2.52
+   Avg Win Rate: 55.6%
    Avg Matchup: 52.6% (Avg StdDev: 5.5%)
-   Avg Matchup Drift: 0.4978
-   Avg Level Diff: 0.14
-   Avg Extreme Matchups: 0.42
-   Avg Win % (Negative MU): 10.0%
+   Avg Matchup Drift: 0.4922
+   Avg Level Diff: 0.15
+   Avg Extreme Matchups: 0.44
+   Avg Win % (Negative MU): 9.6%
    Avg Lose % (Positive MU): 2.2%
 ========================================

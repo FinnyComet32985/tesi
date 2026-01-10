@@ -752,15 +752,30 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Short (1 ore, 49 minuti)]
+
+--- SESSIONE 49 ---
+[2026-01-10 14:57:14] Ladder vs VL8092L00 | LOSE -> 0-3 | 9568 -> 9538 (-30) | MU: 30.5% - ΔLvl: -0.62
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 30.5% (StdDev: 0.0%)
+   Matchup Drift: 0.0000
+   Avg Level Diff: -0.62
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 1.73
-   Avg Win Rate: 45.1%
-   Avg Matchup: 33.0% (Avg StdDev: 6.7%)
-   Avg Matchup Drift: -0.1665
-   Avg Level Diff: -0.32
+   Avg Battaglie/Sessione: 1.71
+   Avg Win Rate: 44.1%
+   Avg Matchup: 33.0% (Avg StdDev: 6.6%)
+   Avg Matchup Drift: -0.1631
+   Avg Level Diff: -0.33
    Avg Extreme Matchups: 0.98
-   Avg Win % (Negative MU): 23.6%
+   Avg Win % (Negative MU): 23.1%
    Avg Lose % (Positive MU): 0.0%
 ========================================
