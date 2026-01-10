@@ -256,9 +256,7 @@ def print_sessions(sessions, output_file=None):
 
         if session['stop_type'] != 'End':
             log(f"\n[STOP: {session['stop_type']} ({session['duration']})]")
-    print_global_metrics(global_metrics, log)
 
-def print_global_metrics(global_metrics, log):
     # Stampa Medie Globali
     log("\n" + "="*40)
     log(" MEDIA GLOBALE METRICHE (Su tutte le sessioni)")
@@ -289,6 +287,28 @@ def print_global_metrics(global_metrics, log):
     else:
         log("   Nessun dato disponibile per le medie.")
     log("="*40)
+
+
+def analyze_std_correlation(players_sessions):
+    data = []
+
+    for player_sessions in players_sessions:
+        long_sessions = [s for s in player_sessions['sessions'] if len(s['battles']) >= 3]
+
+        if not long_sessions or len(long_sessions) < 3:
+            continue
+
+        avg_matchup = [s['analysis']['avg_matchup'] for s in long_sessions]
+        std_matchups = statistics.stdev(avg_matchup)
+
+        print(f"Player: {player_sessions['tag']}     -     std_dev: {std_matchups:.2f}")
+        data.append({
+            'tag': player_sessions['tag'],
+            'std_dev': std_matchups
+        })
+        
+    
+        
 
 
 def load_tags(cursor) -> list:
@@ -340,8 +360,11 @@ def format_duration(seconds):
 def main():
     connection, cursor = open_connection("db/clash.db")
 
-    #tags = load_tags(cursor)
-    tags = ['JJYP08']
+    tags = load_tags(cursor)
+    #tags = ['JJYP08']
+
+    players_sessions = []
+
     for tag in tags:
         battles = load_battles(cursor, tag)
         current_trophies = load_trophies(cursor, tag)
@@ -349,12 +372,22 @@ def main():
         trophies_history = define_trophies_history(battles, current_trophies)
         
         sessions = define_sessions(battles, trophies_history)
+
+        players_sessions.append({
+            'tag': tag,
+            'sessions': sessions
+        })
         
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
         os.makedirs(output_dir, exist_ok=True)
         with open(os.path.join(output_dir, f"log_{tag}.txt"), "w", encoding="utf-8") as f:
             print_sessions(sessions, output_file=f)
+
+
         print(f"Log generato per {tag}")
+
+    analyze_std_correlation(players_sessions)
+
 
 
     close_connection(connection)
