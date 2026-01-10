@@ -21,10 +21,16 @@ def main():
         return
 
     tags = load_tags(cursor)
+    
     if not tags:
         logging.warning("Nessun tag giocatore trovato nel database.")
     else:
-        for tag in tags:
+        for i, tag in enumerate(tags):
+            progress_percent = (i / len(tags)) * 100
+            active_elements = round(progress_percent / 10)
+            progress_bar = '#' * active_elements + '-' * (10 - active_elements)
+            print(f"{'-'*30} Passaggio {i+1}/{len(tags)} - [{progress_bar}] {tag} {'-'*30}")
+
             update_player_profile(tag, conn, cursor)
             fetch_all_battles(tag, conn, cursor)
 

@@ -34,4 +34,6 @@ insert or ignore into players(player_tag) values
 ('VYURQLR00'), -- guaxinim
 ('20CCVVLUP0'), -- Mblack
 ('20QU8VLGU8'), -- GALATASARAY FC
-('J92L2CU0Q'); -- TrBaro
+('J92L2CU0Q'), -- TrBaro
+('JJYP08'), -- GRAX
+('JYLQC0VQ2'); -- MIKY!!¥¥007

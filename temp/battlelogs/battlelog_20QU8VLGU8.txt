@@ -109,6 +109,11 @@ Match 106: 📉 Peggiorato di 20.5% (da 48.1% a 27.6%)
 Match 107: 📈 Migliorato di 9.9% (da 27.6% a 37.5%)
 Match 108: 📈 Migliorato di 3.9% (da 37.5% a 41.4%)
 Match 109: 📉 Peggiorato di 5.5% (da 41.4% a 35.9%)
+Match 110: 📉 Peggiorato di 29.3% (da 35.9% a 6.6%)
+Match 111: 📈 Migliorato di 28.8% (da 6.6% a 35.4%)
+Match 112: 📈 Migliorato di 42.2% (da 35.4% a 77.6%)
+Match 113: 📉 Peggiorato di 57.1% (da 77.6% a 20.4%)
+Match 114: 📈 Migliorato di 15.0% (da 20.4% a 35.5%)
 id: 1765975944.0, gamemode: Ladder, win: 0, trophies: 6989 -> 6959 (-30), leveldiff: 0.0, matchup: 29.1, timestamp: 2025-12-17 13:52:24
 
 ========================================
@@ -744,3 +749,43 @@ Long stop: 17 ore, 40 minuti (Ultime partite: W)
 
 id: 1767875370.0, gamemode: Ladder, win: 1, trophies: 6946 -> 6976 (+30), leveldiff: 0.25, matchup: 41.4, timestamp: 2026-01-08 13:29:30
 id: 1767875687.0, gamemode: Ladder, win: 1, trophies: 6976 -> 7004 (+28), leveldiff: -0.25, matchup: 35.9, timestamp: 2026-01-08 13:34:47
+
+========================================
+
+Long stop: 4 ore, 35 minuti (Ultime partite: W-W)
+
+========================================
+
+id: 1767892215.0, gamemode: Ladder, win: 0, trophies: 7004 -> 7000 (-4), leveldiff: -2.25, matchup: 6.6, timestamp: 2026-01-08 18:10:15
+
+========================================
+
+Short stop: 1 ore, 16 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767896775.0, gamemode: Ladder, win: 0, trophies: 7000 -> 7000 (+0), leveldiff: -0.25, matchup: 35.4, timestamp: 2026-01-08 19:26:15
+
+========================================
+
+Short stop: 35 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767898928.0, gamemode: Ladder, win: 1, trophies: 7000 -> 7030 (+30), leveldiff: 1.25, matchup: 77.6, timestamp: 2026-01-08 20:02:08
+
+========================================
+
+Long stop: 15 ore, 29 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767954717.0, gamemode: Ladder, win: 0, trophies: 7030 -> 7003 (-27), leveldiff: -0.12, matchup: 20.4, timestamp: 2026-01-09 11:31:57
+
+========================================
+
+Short stop: 1 ore, 26 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767959915.0, gamemode: Ladder, win: 0, trophies: 7003 -> 7000 (-3), leveldiff: 0.0, matchup: 35.5, timestamp: 2026-01-09 12:58:35

@@ -174,6 +174,19 @@ Match 173: 📉 Peggiorato di 16.9% (da 43.5% a 26.6%)
 Match 174: 📈 Migliorato di 39.2% (da 26.6% a 65.8%)
 Match 175: 📉 Peggiorato di 8.6% (da 65.8% a 57.2%)
 Match 176: 📈 Migliorato di 4.1% (da 57.2% a 61.3%)
+Match 177: 📉 Peggiorato di 8.9% (da 61.3% a 52.4%)
+Match 178: 📈 Migliorato di 2.5% (da 52.4% a 54.9%)
+Match 179: 📉 Peggiorato di 19.6% (da 54.9% a 35.2%)
+Match 180: 📉 Peggiorato di 5.8% (da 35.2% a 29.5%)
+Match 181: 📈 Migliorato di 21.6% (da 29.5% a 51.0%)
+Match 182: 📉 Peggiorato di 3.6% (da 51.0% a 47.4%)
+Match 183: 📈 Migliorato di 11.8% (da 47.4% a 59.2%)
+Match 184: 📉 Peggiorato di 13.9% (da 59.2% a 45.2%)
+Match 185: 📈 Migliorato di 35.2% (da 45.2% a 80.5%)
+Match 186: 📉 Peggiorato di 21.3% (da 80.5% a 59.2%)
+Match 187: 📉 Peggiorato di 6.4% (da 59.2% a 52.8%)
+Match 188: 📈 Migliorato di 23.3% (da 52.8% a 76.1%)
+Match 189: 📈 Migliorato di 3.6% (da 76.1% a 79.7%)
 id: 1766195289.0, gamemode: 2v2 League, win: 1, trophies: 4683 -> 4683 (+0), leveldiff: 0.0, matchup: N/A, timestamp: 2025-12-20 02:48:09
 id: 1766195745.0, gamemode: 2v2 League, win: 1, trophies: 4683 -> 4683 (+0), leveldiff: 1.38, matchup: N/A, timestamp: 2025-12-20 02:55:45
 
@@ -603,3 +616,30 @@ Long stop: 14 ore, 29 minuti (Ultime partite: L)
 ========================================
 
 id: 1767888059.0, gamemode: Draft Battle, win: 0, trophies: 5437 -> 5437 (+0), leveldiff: 0.0, matchup: 61.3, timestamp: 2026-01-08 17:00:59
+
+========================================
+
+Long stop: 8 ore, 37 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767919134.0, gamemode: Ladder, win: 1, trophies: 5437 -> 5465 (+28), leveldiff: 0.25, matchup: 52.4, timestamp: 2026-01-09 01:38:54
+id: 1767919455.0, gamemode: Ladder, win: 1, trophies: 5465 -> 5494 (+29), leveldiff: 0.25, matchup: 54.9, timestamp: 2026-01-09 01:44:15
+id: 1767919671.0, gamemode: Ladder, win: 1, trophies: 5494 -> 5523 (+29), leveldiff: -0.12, matchup: 35.2, timestamp: 2026-01-09 01:47:51
+id: 1767919945.0, gamemode: Ladder, win: 0, trophies: 5523 -> 5500 (-23), leveldiff: 0.0, matchup: 29.5, timestamp: 2026-01-09 01:52:25
+id: 1767920234.0, gamemode: Ladder, win: 0, trophies: 5500 -> 5500 (+0), leveldiff: 0.0, matchup: 51.0, timestamp: 2026-01-09 01:57:14
+id: 1767920449.0, gamemode: Ladder, win: 1, trophies: 5500 -> 5530 (+30), leveldiff: 0.5, matchup: 47.4, timestamp: 2026-01-09 02:00:49
+id: 1767920672.0, gamemode: Ladder, win: 0, trophies: 5530 -> 5500 (-30), leveldiff: 0.75, matchup: 59.2, timestamp: 2026-01-09 02:04:32
+id: 1767920949.0, gamemode: Ladder, win: 1, trophies: 5500 -> 5530 (+30), leveldiff: 0.75, matchup: 45.2, timestamp: 2026-01-09 02:09:09
+id: 1767921277.0, gamemode: Ladder, win: 1, trophies: 5530 -> 5560 (+30), leveldiff: 1.75, matchup: 80.5, timestamp: 2026-01-09 02:14:37
+id: 1767921449.0, gamemode: Ladder, win: 0, trophies: 5560 -> 5531 (-29), leveldiff: 0.5, matchup: 59.2, timestamp: 2026-01-09 02:17:29
+
+========================================
+
+Long stop: 2 ore, 41 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767931126.0, gamemode: Ladder, win: 0, trophies: 5531 -> 5502 (-29), leveldiff: 0.62, matchup: 52.8, timestamp: 2026-01-09 04:58:46
+id: 1767931325.0, gamemode: Ladder, win: 1, trophies: 5502 -> 5531 (+29), leveldiff: 0.62, matchup: 76.1, timestamp: 2026-01-09 05:02:05
+id: 1767931510.0, gamemode: Ladder, win: 0, trophies: 5531 -> 5504 (-27), leveldiff: 1.12, matchup: 79.7, timestamp: 2026-01-09 05:05:10

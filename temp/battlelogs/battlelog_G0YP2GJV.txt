@@ -173,6 +173,12 @@ Match 174: 📈 Migliorato di 16.3% (da 24.3% a 40.6%)
 Match 175: 📈 Migliorato di 2.3% (da 40.6% a 42.9%)
 Match 176: 📉 Peggiorato di 4.7% (da 42.9% a 38.2%)
 Match 177: 📉 Peggiorato di 0.5% (da 38.2% a 37.7%)
+Match 178: 📈 Migliorato di 21.3% (da 37.7% a 59.0%)
+Match 179: 📉 Peggiorato di 15.9% (da 59.0% a 43.1%)
+Match 180: 📈 Migliorato di 2.4% (da 43.1% a 45.5%)
+Match 181: 📈 Migliorato di 10.6% (da 45.5% a 56.0%)
+Match 182: 📈 Migliorato di 18.4% (da 56.0% a 74.4%)
+Match 183: 📉 Peggiorato di 19.8% (da 74.4% a 54.6%)
 id: 1639140214.0, gamemode: Triple Elixir Battle, win: 0, trophies: 10373 -> 10373 (+0), leveldiff: -0.38, matchup: 11.8, timestamp: 2021-12-10 13:43:34
 
 ========================================
@@ -764,3 +770,30 @@ Quit: 1 giorni, 8 ore, 47 minuti (Ultime partite: W)
 ========================================
 
 id: 1767889260.0, gamemode: Triple Elixir Battle, win: 0, trophies: 10577 -> 10577 (+0), leveldiff: -0.5, matchup: 37.7, timestamp: 2026-01-08 17:21:00
+
+========================================
+
+Short stop: 1 ore, 54 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767896152.0, gamemode: Draft Battle, win: 0, trophies: 10577 -> 10577 (+0), leveldiff: 0.0, matchup: 59.0, timestamp: 2026-01-08 19:15:52
+
+========================================
+
+Long stop: 6 ore, 18 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767918847.0, gamemode: Draft Battle, win: 1, trophies: 10577 -> 10577 (+0), leveldiff: 0.0, matchup: 43.1, timestamp: 2026-01-09 01:34:07
+id: 1767919519.0, gamemode: Triple Elixir Battle, win: 0, trophies: 10577 -> 10577 (+0), leveldiff: 0.12, matchup: 45.5, timestamp: 2026-01-09 01:45:19
+id: 1767919714.0, gamemode: Triple Elixir Battle, win: 0, trophies: 10577 -> 10577 (+0), leveldiff: -0.75, matchup: 56.0, timestamp: 2026-01-09 01:48:34
+id: 1767919918.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10577 -> 10577 (+0), leveldiff: 0.88, matchup: 74.4, timestamp: 2026-01-09 01:51:58
+
+========================================
+
+Long stop: 10 ore, 18 minuti (Ultime partite: L-L-W)
+
+========================================
+
+id: 1767957030.0, gamemode: Draft Battle, win: 1, trophies: 10577 -> 10577 (+0), leveldiff: 0.0, matchup: 54.6, timestamp: 2026-01-09 12:10:30

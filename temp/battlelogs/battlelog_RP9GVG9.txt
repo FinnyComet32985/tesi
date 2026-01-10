@@ -518,6 +518,9 @@ Match 548: 📉 Peggiorato di 5.3% (da 55.4% a 50.2%)
 Match 549: 📈 Migliorato di 26.6% (da 50.2% a 76.7%)
 Match 550: 📉 Peggiorato di 27.1% (da 76.7% a 49.6%)
 Match 551: 📉 Peggiorato di 7.2% (da 49.6% a 42.4%)
+Match 554: 📉 Peggiorato di 0.3% (da 64.4% a 64.0%)
+Match 555: 📉 Peggiorato di 26.1% (da 64.0% a 38.0%)
+Match 556: 📈 Migliorato di 20.1% (da 38.0% a 58.1%)
 id: 1639607637.0, gamemode: Ladder, win: 0, trophies: 11489 -> 11462 (-27), leveldiff: 0.0, matchup: N/A, timestamp: 2021-12-15 23:33:57
 
 ========================================
@@ -1987,3 +1990,29 @@ Short stop: 1 ore, 2 minuti (Ultime partite: W-L-W)
 
 id: 1767885099.0, gamemode: Ranked, win: 1, trophies: 11825 -> 11825 (+0), leveldiff: 0.0, matchup: 49.6, timestamp: 2026-01-08 16:11:39
 id: 1767885420.0, gamemode: Ranked, win: 1, trophies: 11825 -> 11825 (+0), leveldiff: 0.0, matchup: 42.4, timestamp: 2026-01-08 16:17:00
+
+========================================
+
+Long stop: 17 ore, 11 minuti (Ultime partite: W-W)
+
+========================================
+
+id: 1767947323.0, gamemode: Duel, win: 1, trophies: 11825 -> 11825 (+0), leveldiff: 0.88, matchup: N/A, timestamp: 2026-01-09 09:28:43
+id: 1767947888.0, gamemode: 1v1, win: 0, trophies: 11825 -> 11825 (+0), leveldiff: 0.25, matchup: 64.4, timestamp: 2026-01-09 09:38:08
+id: 1767948083.0, gamemode: 1v1, win: 1, trophies: 11825 -> 11825 (+0), leveldiff: 0.38, matchup: 64.0, timestamp: 2026-01-09 09:41:23
+
+========================================
+
+Short stop: 58 minuti (Ultime partite: W-L-W)
+
+========================================
+
+id: 1767951622.0, gamemode: Ranked, win: 1, trophies: 11825 -> 11825 (+0), leveldiff: 0.0, matchup: 38.0, timestamp: 2026-01-09 10:40:22
+
+========================================
+
+Short stop: 1 ore, 42 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767957801.0, gamemode: Ranked, win: 0, trophies: 11825 -> 11825 (+0), leveldiff: 0.0, matchup: 58.1, timestamp: 2026-01-09 12:23:21

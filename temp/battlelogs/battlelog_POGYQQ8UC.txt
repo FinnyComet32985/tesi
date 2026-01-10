@@ -289,6 +289,18 @@ Match 397: 📈 Migliorato di 3.7% (da 61.0% a 64.7%)
 Match 398: 📉 Peggiorato di 9.5% (da 64.7% a 55.3%)
 Match 399: 📈 Migliorato di 1.2% (da 55.3% a 56.4%)
 Match 400: 📈 Migliorato di 2.7% (da 56.4% a 59.1%)
+Match 401: 📉 Peggiorato di 7.2% (da 59.1% a 51.9%)
+Match 402: 📈 Migliorato di 4.7% (da 51.9% a 56.6%)
+Match 403: 📈 Migliorato di 30.6% (da 56.6% a 87.2%)
+Match 404: 📉 Peggiorato di 33.1% (da 87.2% a 54.1%)
+Match 405: 📈 Migliorato di 9.5% (da 54.1% a 63.6%)
+Match 406: 📉 Peggiorato di 23.8% (da 63.6% a 39.7%)
+Match 407: 📈 Migliorato di 13.3% (da 39.7% a 53.0%)
+Match 408: 📈 Migliorato di 11.9% (da 53.0% a 64.9%)
+Match 409: 📉 Peggiorato di 34.2% (da 64.9% a 30.7%)
+Match 410: 📈 Migliorato di 20.0% (da 30.7% a 50.7%)
+Match 411: 📈 Migliorato di 6.2% (da 50.7% a 56.9%)
+Match 412: 📉 Peggiorato di 18.6% (da 56.9% a 38.3%)
 id: 1765963565.0, gamemode: 1v1 Battle, win: 1, trophies: 10617 -> 10617 (+0), leveldiff: 0.0, matchup: 57.4, timestamp: 2025-12-17 10:26:05
 id: 1765963941.0, gamemode: 1v1 Battle, win: 0, trophies: 10617 -> 10617 (+0), leveldiff: 0.0, matchup: 44.8, timestamp: 2025-12-17 10:32:21
 id: 1765964089.0, gamemode: 1v1 Battle, win: 0, trophies: 10617 -> 10617 (+0), leveldiff: 0.0, matchup: 47.3, timestamp: 2025-12-17 10:34:49
@@ -1229,3 +1241,29 @@ Long stop: 2 ore, 1 minuti (Ultime partite: L-W-W)
 ========================================
 
 id: 1767870090.0, gamemode: 1v1 Showdown, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 59.1, timestamp: 2026-01-08 12:01:30
+
+========================================
+
+Long stop: 6 ore, 40 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767894100.0, gamemode: 1v1 Showdown, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 51.9, timestamp: 2026-01-08 18:41:40
+id: 1767894332.0, gamemode: 1v1 Showdown, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 56.6, timestamp: 2026-01-08 18:45:32
+id: 1767894541.0, gamemode: 1v1 Showdown, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 87.2, timestamp: 2026-01-08 18:49:01
+id: 1767894918.0, gamemode: 1v1 Showdown, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 54.1, timestamp: 2026-01-08 18:55:18
+
+========================================
+
+Long stop: 16 ore, 8 minuti (Ultime partite: W-W-W)
+
+========================================
+
+id: 1767953032.0, gamemode: Triple Draft, win: 0, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 63.6, timestamp: 2026-01-09 11:03:52
+id: 1767953822.0, gamemode: Triple Draft, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 39.7, timestamp: 2026-01-09 11:17:02
+id: 1767954195.0, gamemode: Triple Draft, win: 0, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 53.0, timestamp: 2026-01-09 11:23:15
+id: 1767954459.0, gamemode: Triple Draft, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 64.9, timestamp: 2026-01-09 11:27:39
+id: 1767954708.0, gamemode: Triple Draft, win: 0, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 30.7, timestamp: 2026-01-09 11:31:48
+id: 1767954941.0, gamemode: Triple Draft, win: 1, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 50.7, timestamp: 2026-01-09 11:35:41
+id: 1767955186.0, gamemode: Triple Draft, win: 0, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 56.9, timestamp: 2026-01-09 11:39:46
+id: 1767955559.0, gamemode: Triple Draft, win: 0, trophies: 11186 -> 11186 (+0), leveldiff: 0.0, matchup: 38.3, timestamp: 2026-01-09 11:45:59

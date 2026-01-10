@@ -1,5 +1,6 @@
 import sys
 import os
+from tkinter import N
 import pandas as pd
 import plotly.graph_objects as go
 from datetime import datetime
@@ -26,7 +27,7 @@ def main():
 
     for tag in tags:
         query = """
-            SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate, trophy_change
+            SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate, trophy_change, opponent_tag, player_crowns, opponent_crowns
             FROM battles
             WHERE player_tag = ? -- AND game_mode not like '%Draft%' and battle_type not like 'riverRace%'
             ORDER BY timestamp ASC;
@@ -71,26 +72,63 @@ def analyze_matchup_diffs(battles, log_func):
             log_func(f"Match {i}: {trend} di {abs(delta):.1f}% (da {m_prev*100:.1f}% a {m_curr*100:.1f}%)")
 
 # --- NUOVA FUNZIONE 2: GRAFICO TEMPORALE MATCHUP ---
-def plot_matchup_trend(battles, tag, output_dir):
+def plot_matchup_trend(battles, tag, output_dir, current_trophies):
     """Genera un grafico interattivo del matchup (HTML)."""
+    GAME_MODE_IDX = 2
     TIMESTAMP_IDX = 3
     WIN_IDX = 4
     MATCHUP_IDX = 6
+    TROPHY_CHANGE_IDX = 7
+    OPPONENT_TAG_IDX = 8
+    PLAYER_CROWNS_IDX = 9
+    OPPONENT_CROWNS_IDX = 10
     
     # Soglie in secondi (coerenti con print_battlelog)
-    SHORT_STOP = 20 * 60
-    LONG_STOP = 2 * 60 * 60
+    SHORT_STOP = 2 * 60 * 60
+    LONG_STOP = 10 * 60 * 60
     QUIT = 20 * 60 * 60
+
+    # Calcolo storico trofei (copia logica da print_battlelog)
+    trophies_history = [0] * len(battles)
+    trophies_history[-1] = current_trophies
+
+    for i in range(len(battles) - 1, 0, -1):
+        change = battles[i][TROPHY_CHANGE_IDX]
+        win = battles[i][WIN_IDX]
+        if change is None: 
+            change = 0
+        if win == 0 and change > 0: 
+            change = 0
+        trophies_history[i-1] = trophies_history[i] - change
 
     # Filtriamo i dati validi
     data = []
     for i, b in enumerate(battles):
         if b[MATCHUP_IDX] is not None:
+            # Dati per tooltip
+            trophies_after = trophies_history[i]
+            change = b[TROPHY_CHANGE_IDX] if b[TROPHY_CHANGE_IDX] is not None else 0
+            if b[WIN_IDX] == 0 and change > 0: 
+                change = 0
+            trophies_before = trophies_after - change
+            
+            ladder_info = ""
+            if b[GAME_MODE_IDX] == 'Ladder':
+                ladder_info = f"Trofei: {trophies_before} -> {trophies_after} ({change:+})"
+            
+            p_crowns = b[PLAYER_CROWNS_IDX] if b[PLAYER_CROWNS_IDX] is not None else "?"
+            o_crowns = b[OPPONENT_CROWNS_IDX] if b[OPPONENT_CROWNS_IDX] is not None else "?"
+            crowns_res = f"{p_crowns}-{o_crowns}"
+
             data.append({
                 'seq_id': i + 1,
                 'timestamp': datetime.fromtimestamp(b[TIMESTAMP_IDX]),
+                'timestamp_str': datetime.fromtimestamp(b[TIMESTAMP_IDX]).strftime('%Y-%m-%d %H:%M:%S'),
                 'matchup': b[MATCHUP_IDX] * 100,
-                'result': "Vittoria" if b[WIN_IDX] else "Sconfitta",
+                'game_mode': b[GAME_MODE_IDX],
+                'crowns_result': crowns_res,
+                'opponent': b[OPPONENT_TAG_IDX] if b[OPPONENT_TAG_IDX] else "N/A",
+                'ladder_info': ladder_info,
                 'color': 'green' if b[WIN_IDX] else 'red'
             })
 
@@ -101,30 +139,47 @@ def plot_matchup_trend(battles, tag, output_dir):
 
     fig = go.Figure()
 
+    # 1. Linea di tendenza generale (Sfondo)
     fig.add_trace(go.Scatter(
         x=df['seq_id'],
         y=df['matchup'],
-        mode='lines+markers',
-        name='Matchup',
-        text=df['timestamp'].dt.strftime('%Y-%m-%d %H:%M:%S') + " - " + df['result'],
-        hovertemplate="<b>Partita %{x}</b><br>Matchup: %{y:.1f}%<br>%{text}<extra></extra>",
+        mode='lines',
+        name='Trend Generale',
         line=dict(color='lightgray', width=1),
-        marker=dict(size=8, color=df['color'], line=dict(width=1, color='black'))
+        hoverinfo='skip'
     ))
 
-    # Aggiunta tracce fittizie per la legenda degli stop
-    fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines', 
-                             line=dict(color='blue', dash='dash', width=1), 
-                             name='Quit (> 20h)'))
-    fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines', 
-                             line=dict(color='purple', dash='dash', width=1), 
-                             name='Long Stop (> 2h)'))
-    fig.add_trace(go.Scatter(x=[None], y=[None], mode='lines', 
-                             line=dict(color='skyblue', dash='dash', width=1), 
-                             name='Short Stop (> 20m)'))
+    # 2. Punti raggruppati per Game Mode (per permettere filtro in legenda)
+    modes = df['game_mode'].unique()
+    for mode in modes:
+        df_mode = df[df['game_mode'] == mode]
+        
+        fig.add_trace(go.Scatter(
+            x=df_mode['seq_id'],
+            y=df_mode['matchup'],
+            mode='markers',
+            name=mode,
+            customdata=df_mode[['game_mode', 'crowns_result', 'opponent', 'ladder_info', 'timestamp_str']].values,
+            hovertemplate=(
+                "<b>Partita %{x}</b><br>" +
+                "Matchup: %{y:.1f}%<br>" +
+                "Modalità: %{customdata[0]}<br>" +
+                "Risultato: %{customdata[1]}<br>" +
+                "Avversario: %{customdata[2]}<br>" +
+                "%{customdata[3]}<br>" +
+                "Data: %{customdata[4]}<extra></extra>"
+            ),
+            marker=dict(size=8, color=df_mode['color'], line=dict(width=1, color='black'))
+        ))
 
-    # Aggiunta linee verticali per le pause (Sessioni)
-    # Iteriamo sui dati filtrati per trovare i "buchi" temporali tra un punto e l'altro
+    # Preparazione dati per le linee di stop (Sessioni)
+    # Usiamo tracce reali invece di add_vline per permettere il toggle dalla legenda
+    stops_data = {
+        'Quit (> 20h)': {'x': [], 'y': [], 'color': 'blue'},
+        'Long Stop (> 10h)': {'x': [], 'y': [], 'color': 'purple'},
+        'Short Stop (> 2h)': {'x': [], 'y': [], 'color': 'skyblue'}
+    }
+
     for k in range(len(df) - 1):
         curr_row = df.iloc[k]
         next_row = df.iloc[k+1]
@@ -133,18 +188,31 @@ def plot_matchup_trend(battles, tag, output_dir):
         t2 = next_row['timestamp']
         diff = (t2 - t1).total_seconds()
         
-        line_color = None
+        cat = None
         if diff >= QUIT:
-            line_color = "blue"       # Quit (> 20h)
+            cat = 'Quit (> 20h)'
         elif diff >= LONG_STOP:
-            line_color = "purple"     # Long (> 2h)
+            cat = 'Long Stop (> 10h)'
         elif diff >= SHORT_STOP:
-            line_color = "skyblue"    # Short (> 20m) - Celeste
+            cat = 'Short Stop (> 2h)'
             
-        if line_color:
-            # Posizioniamo la linea a metà tra i due punti sull'asse X (seq_id)
+        if cat:
             x_pos = (curr_row['seq_id'] + next_row['seq_id']) / 2
-            fig.add_vline(x=x_pos, line_width=1, line_dash="dash", line_color=line_color)
+            # Aggiungiamo coordinate per disegnare il segmento verticale (0-100%)
+            stops_data[cat]['x'].extend([x_pos, x_pos, None])
+            stops_data[cat]['y'].extend([0, 100, None])
+
+    # Aggiunta delle tracce per gli stop
+    for label, s_data in stops_data.items():
+        if s_data['x']:
+            fig.add_trace(go.Scatter(
+                x=s_data['x'],
+                y=s_data['y'],
+                mode='lines',
+                line=dict(color=s_data['color'], dash='dash', width=1),
+                name=label,
+                hoverinfo='skip'
+            ))
 
     # Linea di equilibrio (50%)
     fig.add_hline(y=50, line_dash="dash", line_color="red", annotation_text="Equilibrio (50%)")
@@ -204,7 +272,7 @@ def print_battlelog(battles, thropy, tag, output_file=None, output_dir=None):
     analyze_matchup_diffs(battles, log)
 
     if output_dir:
-        plot_matchup_trend(battles, tag, output_dir)
+        plot_matchup_trend(battles, tag, output_dir, thropy)
 
     # trophies_history[i] = Trofei posseduti DOPO la battaglia i
     trophies_history = [0] * len(battles)

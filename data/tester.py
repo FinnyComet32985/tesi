@@ -18,7 +18,7 @@ from reporter import generate_report
 def load_tags(cursor) -> list:
     """Carica i TAG dei giocatori dal database."""
     try:
-        cursor.execute("SELECT player_tag FROM players")
+        cursor.execute("SELECT player_tag FROM players -- WHERE player_tag IS NOT 'YVQJ8CVV'")
         rows = cursor.fetchall()
         return [row[0] for row in rows]
     except Exception as e:

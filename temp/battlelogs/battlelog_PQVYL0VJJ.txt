@@ -169,6 +169,20 @@ Match 178: 📉 Peggiorato di 0.7% (da 75.1% a 74.4%)
 Match 179: 📉 Peggiorato di 5.5% (da 74.4% a 68.9%)
 Match 180: 📉 Peggiorato di 1.7% (da 68.9% a 67.2%)
 Match 181: 📉 Peggiorato di 5.5% (da 67.2% a 61.7%)
+Match 182: 📈 Migliorato di 8.2% (da 61.7% a 69.9%)
+Match 183: 📉 Peggiorato di 14.3% (da 69.9% a 55.5%)
+Match 184: 📉 Peggiorato di 18.4% (da 55.5% a 37.1%)
+Match 185: 📈 Migliorato di 4.4% (da 37.1% a 41.5%)
+Match 186: 📈 Migliorato di 6.8% (da 41.5% a 48.2%)
+Match 187: 📈 Migliorato di 26.0% (da 48.2% a 74.3%)
+Match 188: 📉 Peggiorato di 2.4% (da 74.3% a 71.8%)
+Match 189: 📉 Peggiorato di 9.4% (da 71.8% a 62.4%)
+Match 190: 📉 Peggiorato di 0.6% (da 62.4% a 61.9%)
+Match 191: 📉 Peggiorato di 5.2% (da 61.9% a 56.7%)
+Match 192: 📈 Migliorato di 0.8% (da 56.7% a 57.5%)
+Match 193: 📈 Migliorato di 21.3% (da 57.5% a 78.8%)
+Match 194: 📉 Peggiorato di 37.3% (da 78.8% a 41.5%)
+Match 195: 📉 Peggiorato di 15.2% (da 41.5% a 26.3%)
 id: 1765681937.0, gamemode: Ladder, win: 0, trophies: 10318 -> 10289 (-29), leveldiff: -0.25, matchup: 30.0, timestamp: 2025-12-14 04:12:17
 
 ========================================
@@ -946,3 +960,59 @@ Long stop: 6 ore, 9 minuti (Ultime partite: W-W-L)
 ========================================
 
 id: 1767890236.0, gamemode: Ladder, win: 0, trophies: 10385 -> 10356 (-29), leveldiff: 0.12, matchup: 61.7, timestamp: 2026-01-08 17:37:16
+id: 1767890512.0, gamemode: Ladder, win: 1, trophies: 10356 -> 10386 (+30), leveldiff: -0.5, matchup: 69.9, timestamp: 2026-01-08 17:41:52
+id: 1767890717.0, gamemode: Ladder, win: 1, trophies: 10386 -> 10416 (+30), leveldiff: -0.12, matchup: 55.5, timestamp: 2026-01-08 17:45:17
+id: 1767890865.0, gamemode: Ladder, win: 1, trophies: 10416 -> 10445 (+29), leveldiff: -0.12, matchup: 37.1, timestamp: 2026-01-08 17:47:45
+id: 1767891507.0, gamemode: Ladder, win: 0, trophies: 10445 -> 10415 (-30), leveldiff: -0.12, matchup: 41.5, timestamp: 2026-01-08 17:58:27
+
+========================================
+
+Short stop: 44 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767894199.0, gamemode: Ladder, win: 1, trophies: 10415 -> 10445 (+30), leveldiff: -0.12, matchup: 48.2, timestamp: 2026-01-08 18:43:19
+id: 1767894540.0, gamemode: Ladder, win: 1, trophies: 10445 -> 10474 (+29), leveldiff: 1.0, matchup: 74.3, timestamp: 2026-01-08 18:49:00
+id: 1767895015.0, gamemode: Ladder, win: 1, trophies: 10474 -> 10502 (+28), leveldiff: 0.38, matchup: 71.8, timestamp: 2026-01-08 18:56:55
+id: 1767895347.0, gamemode: Ladder, win: 0, trophies: 10502 -> 10500 (-2), leveldiff: 0.5, matchup: 62.4, timestamp: 2026-01-08 19:02:27
+
+========================================
+
+Long stop: 2 ore, 27 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767904180.0, gamemode: Ladder, win: 1, trophies: 10500 -> 10530 (+30), leveldiff: -0.12, matchup: 61.9, timestamp: 2026-01-08 21:29:40
+id: 1767904455.0, gamemode: Ladder, win: 0, trophies: 10530 -> 10500 (-30), leveldiff: 0.12, matchup: 56.7, timestamp: 2026-01-08 21:34:15
+
+========================================
+
+Long stop: 8 ore (Ultime partite: W-L)
+
+========================================
+
+id: 1767933296.0, gamemode: Ladder, win: 0, trophies: 10500 -> 10500 (+0), leveldiff: 0.5, matchup: 57.5, timestamp: 2026-01-09 05:34:56
+
+========================================
+
+Short stop: 31 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767935156.0, gamemode: Ladder, win: 1, trophies: 10500 -> 10530 (+30), leveldiff: 0.38, matchup: 78.8, timestamp: 2026-01-09 06:05:56
+
+========================================
+
+Long stop: 2 ore, 49 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767945333.0, gamemode: Ladder, win: 0, trophies: 10530 -> 10501 (-29), leveldiff: -0.5, matchup: 41.5, timestamp: 2026-01-09 08:55:33
+
+========================================
+
+Short stop: 42 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767947884.0, gamemode: Ladder, win: 0, trophies: 10501 -> 10500 (-1), leveldiff: -1.0, matchup: 26.3, timestamp: 2026-01-09 09:38:04

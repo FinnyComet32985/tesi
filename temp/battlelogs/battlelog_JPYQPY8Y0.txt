@@ -98,6 +98,21 @@ Match 131: 📈 Migliorato di 10.1% (da 43.5% a 53.6%)
 Match 132: 📈 Migliorato di 3.4% (da 53.6% a 57.0%)
 Match 133: 📉 Peggiorato di 2.1% (da 57.0% a 54.9%)
 Match 134: 📉 Peggiorato di 20.7% (da 54.9% a 34.2%)
+Match 135: 📉 Peggiorato di 0.5% (da 34.2% a 33.7%)
+Match 136: 📈 Migliorato di 33.4% (da 33.7% a 67.1%)
+Match 137: 📉 Peggiorato di 12.1% (da 67.1% a 55.0%)
+Match 138: 📈 Migliorato di 27.9% (da 55.0% a 82.9%)
+Match 139: 📉 Peggiorato di 56.3% (da 82.9% a 26.6%)
+Match 140: 📉 Peggiorato di 8.3% (da 26.6% a 18.3%)
+Match 141: 📈 Migliorato di 47.6% (da 18.3% a 65.9%)
+Match 142: 📈 Migliorato di 0.1% (da 65.9% a 66.0%)
+Match 143: 📉 Peggiorato di 16.8% (da 66.0% a 49.2%)
+Match 144: 📈 Migliorato di 10.7% (da 49.2% a 59.9%)
+Match 145: 📉 Peggiorato di 33.3% (da 59.9% a 26.6%)
+Match 146: 📈 Migliorato di 50.9% (da 26.6% a 77.5%)
+Match 147: 📉 Peggiorato di 30.0% (da 77.5% a 47.4%)
+Match 148: 📉 Peggiorato di 10.9% (da 47.4% a 36.5%)
+Match 149: 📈 Migliorato di 8.6% (da 36.5% a 45.2%)
 id: 1765724329.0, gamemode: It’s Raining Gifts (Santa Hog Rider), win: 0, trophies: 7558 -> 7558 (+0), leveldiff: 0.0, matchup: 58.4, timestamp: 2025-12-14 15:58:49
 
 ========================================
@@ -555,3 +570,53 @@ id: 1767836752.0, gamemode: Ladder, win: 1, trophies: 7623 -> 7653 (+30), leveld
 id: 1767837090.0, gamemode: Ladder, win: 1, trophies: 7653 -> 7683 (+30), leveldiff: 0.75, matchup: 57.0, timestamp: 2026-01-08 02:51:30
 id: 1767837432.0, gamemode: Ladder, win: 1, trophies: 7683 -> 7713 (+30), leveldiff: 0.38, matchup: 54.9, timestamp: 2026-01-08 02:57:12
 id: 1767837630.0, gamemode: Ladder, win: 0, trophies: 7713 -> 7684 (-29), leveldiff: -0.5, matchup: 34.2, timestamp: 2026-01-08 03:00:30
+
+========================================
+
+Long stop: 15 ore, 49 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767894596.0, gamemode: Ladder, win: 0, trophies: 7684 -> 7654 (-30), leveldiff: -0.75, matchup: 33.7, timestamp: 2026-01-08 18:49:56
+
+========================================
+
+Short stop: 40 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767897036.0, gamemode: Ladder, win: 1, trophies: 7654 -> 7684 (+30), leveldiff: 0.38, matchup: 67.1, timestamp: 2026-01-08 19:30:36
+id: 1767897297.0, gamemode: Ladder, win: 1, trophies: 7684 -> 7712 (+28), leveldiff: 0.62, matchup: 55.0, timestamp: 2026-01-08 19:34:57
+id: 1767897598.0, gamemode: Ladder, win: 0, trophies: 7712 -> 7683 (-29), leveldiff: -0.12, matchup: 82.9, timestamp: 2026-01-08 19:39:58
+
+========================================
+
+Short stop: 1 ore, 2 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767901362.0, gamemode: Ladder, win: 0, trophies: 7683 -> 7653 (-30), leveldiff: -0.75, matchup: 26.6, timestamp: 2026-01-08 20:42:42
+
+========================================
+
+Long stop: 2 ore, 6 minuti (Ultime partite: L)
+
+========================================
+
+id: 1767908922.0, gamemode: Ladder, win: 0, trophies: 7653 -> 7623 (-30), leveldiff: -0.5, matchup: 18.3, timestamp: 2026-01-08 22:48:42
+id: 1767909116.0, gamemode: Ladder, win: 1, trophies: 7623 -> 7653 (+30), leveldiff: -0.12, matchup: 65.9, timestamp: 2026-01-08 22:51:56
+id: 1767909579.0, gamemode: Ladder, win: 1, trophies: 7653 -> 7682 (+29), leveldiff: 0.12, matchup: 66.0, timestamp: 2026-01-08 22:59:39
+id: 1767909879.0, gamemode: Ladder, win: 0, trophies: 7682 -> 7653 (-29), leveldiff: 0.25, matchup: 49.2, timestamp: 2026-01-08 23:04:39
+id: 1767910103.0, gamemode: Ladder, win: 1, trophies: 7653 -> 7683 (+30), leveldiff: 0.0, matchup: 59.9, timestamp: 2026-01-08 23:08:23
+id: 1767910306.0, gamemode: Ladder, win: 0, trophies: 7683 -> 7653 (-30), leveldiff: 0.12, matchup: 26.6, timestamp: 2026-01-08 23:11:46
+
+========================================
+
+Short stop: 1 ore, 14 minuti (Ultime partite: L-W-L)
+
+========================================
+
+id: 1767914760.0, gamemode: Ladder, win: 0, trophies: 7653 -> 7623 (-30), leveldiff: 0.62, matchup: 77.5, timestamp: 2026-01-09 00:26:00
+id: 1767915616.0, gamemode: Ladder, win: 1, trophies: 7623 -> 7653 (+30), leveldiff: -0.62, matchup: 47.4, timestamp: 2026-01-09 00:40:16
+id: 1767915810.0, gamemode: Ladder, win: 1, trophies: 7653 -> 7683 (+30), leveldiff: -0.25, matchup: 36.5, timestamp: 2026-01-09 00:43:30
+id: 1767916020.0, gamemode: Ladder, win: 0, trophies: 7683 -> 7653 (-30), leveldiff: -0.75, matchup: 45.2, timestamp: 2026-01-09 00:47:00

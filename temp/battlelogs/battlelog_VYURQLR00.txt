@@ -164,6 +164,22 @@ Match 163: 📈 Migliorato di 23.3% (da 16.2% a 39.5%)
 Match 164: 📉 Peggiorato di 27.1% (da 39.5% a 12.4%)
 Match 165: 📈 Migliorato di 11.6% (da 12.4% a 24.0%)
 Match 166: 📈 Migliorato di 10.7% (da 24.0% a 34.7%)
+Match 167: 📈 Migliorato di 4.7% (da 34.7% a 39.4%)
+Match 168: 📉 Peggiorato di 13.3% (da 39.4% a 26.1%)
+Match 169: 📈 Migliorato di 31.8% (da 26.1% a 57.9%)
+Match 170: 📉 Peggiorato di 3.9% (da 57.9% a 54.0%)
+Match 171: 📉 Peggiorato di 15.0% (da 54.0% a 39.0%)
+Match 172: 📈 Migliorato di 16.9% (da 39.0% a 55.8%)
+Match 173: 📈 Migliorato di 3.4% (da 55.8% a 59.2%)
+Match 174: 📉 Peggiorato di 8.6% (da 59.2% a 50.6%)
+Match 175: 📈 Migliorato di 15.7% (da 50.6% a 66.3%)
+Match 176: 📉 Peggiorato di 6.8% (da 66.3% a 59.5%)
+Match 177: 📈 Migliorato di 7.2% (da 59.5% a 66.7%)
+Match 178: 📉 Peggiorato di 39.6% (da 66.7% a 27.1%)
+Match 179: 📈 Migliorato di 29.0% (da 27.1% a 56.0%)
+Match 180: 📈 Migliorato di 23.2% (da 56.0% a 79.2%)
+Match 181: 📉 Peggiorato di 56.2% (da 79.2% a 23.0%)
+Match 182: 📈 Migliorato di 25.5% (da 23.0% a 48.5%)
 id: 1767033858.0, gamemode: 7x Elixir, win: 0, trophies: 4001 -> 4001 (+0), leveldiff: 0.0, matchup: 57.1, timestamp: 2025-12-29 19:44:18
 id: 1767033960.0, gamemode: 7x Elixir, win: 0, trophies: 4001 -> 4001 (+0), leveldiff: 0.0, matchup: 41.9, timestamp: 2025-12-29 19:46:00
 id: 1767034206.0, gamemode: 7x Elixir, win: 0, trophies: 4001 -> 4001 (+0), leveldiff: 0.0, matchup: 18.5, timestamp: 2025-12-29 19:50:06
@@ -597,3 +613,47 @@ Long stop: 15 ore, 28 minuti (Ultime partite: L-L)
 ========================================
 
 id: 1767884628.0, gamemode: Ladder, win: 1, trophies: 4670 -> 4700 (+30), leveldiff: -0.12, matchup: 34.7, timestamp: 2026-01-08 16:03:48
+
+========================================
+
+Long stop: 3 ore, 20 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767896687.0, gamemode: Ladder, win: 0, trophies: 4700 -> 4670 (-30), leveldiff: -0.75, matchup: 39.4, timestamp: 2026-01-08 19:24:47
+id: 1767896920.0, gamemode: Ladder, win: 0, trophies: 4670 -> 4640 (-30), leveldiff: -0.62, matchup: 26.1, timestamp: 2026-01-08 19:28:40
+id: 1767897190.0, gamemode: Ladder, win: 1, trophies: 4640 -> 4670 (+30), leveldiff: -0.12, matchup: 57.9, timestamp: 2026-01-08 19:33:10
+
+========================================
+
+Short stop: 1 ore, 3 minuti (Ultime partite: L-L-W)
+
+========================================
+
+id: 1767900997.0, gamemode: Ladder, win: 1, trophies: 4670 -> 4700 (+30), leveldiff: -0.5, matchup: 54.0, timestamp: 2026-01-08 20:36:37
+id: 1767901194.0, gamemode: Ladder, win: 0, trophies: 4700 -> 4670 (-30), leveldiff: -0.5, matchup: 39.0, timestamp: 2026-01-08 20:39:54
+id: 1767901416.0, gamemode: Ladder, win: 1, trophies: 4670 -> 4700 (+30), leveldiff: 0.12, matchup: 55.8, timestamp: 2026-01-08 20:43:36
+
+========================================
+
+Long stop: 4 ore, 16 minuti (Ultime partite: W-L-W)
+
+========================================
+
+id: 1767916805.0, gamemode: Ladder, win: 1, trophies: 4700 -> 4730 (+30), leveldiff: -0.25, matchup: 59.2, timestamp: 2026-01-09 01:00:05
+id: 1767917071.0, gamemode: Draft Battle, win: 1, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 50.6, timestamp: 2026-01-09 01:04:31
+id: 1767917347.0, gamemode: Draft Battle, win: 1, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 66.3, timestamp: 2026-01-09 01:09:07
+id: 1767917575.0, gamemode: Draft Battle, win: 0, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 59.5, timestamp: 2026-01-09 01:12:55
+
+========================================
+
+Long stop: 11 ore, 44 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767959855.0, gamemode: Draft Battle, win: 1, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 66.7, timestamp: 2026-01-09 12:57:35
+id: 1767960078.0, gamemode: Draft Battle, win: 1, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 27.1, timestamp: 2026-01-09 13:01:18
+id: 1767960289.0, gamemode: Draft Battle, win: 1, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 56.0, timestamp: 2026-01-09 13:04:49
+id: 1767961096.0, gamemode: Draft Battle, win: 1, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 79.2, timestamp: 2026-01-09 13:18:16
+id: 1767961316.0, gamemode: Draft Battle, win: 0, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 23.0, timestamp: 2026-01-09 13:21:56
+id: 1767961550.0, gamemode: Draft Battle, win: 0, trophies: 4730 -> 4730 (+0), leveldiff: 0.0, matchup: 48.5, timestamp: 2026-01-09 13:25:50

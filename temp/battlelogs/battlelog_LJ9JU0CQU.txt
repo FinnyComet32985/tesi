@@ -65,6 +65,10 @@ Match 72: 📉 Peggiorato di 35.8% (da 82.9% a 47.1%)
 Match 73: 📈 Migliorato di 13.1% (da 47.1% a 60.2%)
 Match 81: 📈 Migliorato di 19.9% (da 35.3% a 55.2%)
 Match 82: 📉 Peggiorato di 6.7% (da 55.2% a 48.5%)
+Match 83: 📈 Migliorato di 3.6% (da 48.5% a 52.0%)
+Match 84: 📈 Migliorato di 21.5% (da 52.0% a 73.5%)
+Match 85: 📉 Peggiorato di 56.7% (da 73.5% a 16.8%)
+Match 86: 📈 Migliorato di 33.6% (da 16.8% a 50.4%)
 id: 1766494434.0, gamemode: Ladder, win: 0, trophies: 9500 -> 9500 (+0), leveldiff: -1.12, matchup: 39.6, timestamp: 2025-12-23 13:53:54
 id: 1766494635.0, gamemode: Ladder, win: 0, trophies: 9500 -> 9500 (+0), leveldiff: -0.88, matchup: 30.4, timestamp: 2025-12-23 13:57:15
 
@@ -358,3 +362,21 @@ Long stop: 5 ore, 55 minuti (Ultime partite: L-L-L)
 id: 1767866632.0, gamemode: 1v1 Showdown, win: 1, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 35.3, timestamp: 2026-01-08 11:03:52
 id: 1767866819.0, gamemode: 1v1 Showdown, win: 1, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 55.2, timestamp: 2026-01-08 11:06:59
 id: 1767867036.0, gamemode: 1v1 Showdown, win: 0, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 48.5, timestamp: 2026-01-08 11:10:36
+
+========================================
+
+Long stop: 8 ore, 20 minuti (Ultime partite: W-W-L)
+
+========================================
+
+id: 1767897088.0, gamemode: 1v1 Showdown, win: 1, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 52.0, timestamp: 2026-01-08 19:31:28
+
+========================================
+
+Short stop: 1 ore, 18 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767901768.0, gamemode: Draft Battle, win: 0, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 73.5, timestamp: 2026-01-08 20:49:28
+id: 1767901982.0, gamemode: Draft Battle, win: 0, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 16.8, timestamp: 2026-01-08 20:53:02
+id: 1767902114.0, gamemode: Draft Battle, win: 0, trophies: 9527 -> 9527 (+0), leveldiff: 0.0, matchup: 50.4, timestamp: 2026-01-08 20:55:14

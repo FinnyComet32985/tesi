@@ -170,6 +170,11 @@ Match 201: 📈 Migliorato di 23.8% (da 46.1% a 69.9%)
 Match 202: 📈 Migliorato di 1.3% (da 69.9% a 71.2%)
 Match 203: 📉 Peggiorato di 19.6% (da 71.2% a 51.6%)
 Match 204: 📉 Peggiorato di 6.0% (da 51.6% a 45.6%)
+Match 205: 📉 Peggiorato di 24.1% (da 45.6% a 21.4%)
+Match 206: 📈 Migliorato di 14.8% (da 21.4% a 36.2%)
+Match 207: 📈 Migliorato di 0.6% (da 36.2% a 36.8%)
+Match 208: 📈 Migliorato di 48.0% (da 36.8% a 84.8%)
+Match 209: 📉 Peggiorato di 19.0% (da 84.8% a 65.7%)
 id: 1749245472.0, gamemode: Ranked, win: 0, trophies: 10724 -> 10724 (+0), leveldiff: 0.0, matchup: 47.7, timestamp: 2025-06-06 23:31:12
 
 ========================================
@@ -949,3 +954,22 @@ Short stop: 26 minuti (Ultime partite: W)
 
 id: 1767853075.0, gamemode: Ranked, win: 1, trophies: 11500 -> 11500 (+0), leveldiff: 0.0, matchup: 51.6, timestamp: 2026-01-08 07:17:55
 id: 1767853286.0, gamemode: Ranked, win: 0, trophies: 11500 -> 11500 (+0), leveldiff: 0.0, matchup: 45.6, timestamp: 2026-01-08 07:21:26
+
+========================================
+
+Long stop: 10 ore, 55 minuti (Ultime partite: W-L)
+
+========================================
+
+id: 1767892612.0, gamemode: Triple Elixir Battle, win: 0, trophies: 11500 -> 11500 (+0), leveldiff: -1.12, matchup: 21.4, timestamp: 2026-01-08 18:16:52
+id: 1767892688.0, gamemode: Triple Elixir Battle, win: 1, trophies: 11500 -> 11500 (+0), leveldiff: -0.5, matchup: 36.2, timestamp: 2026-01-08 18:18:08
+id: 1767892906.0, gamemode: Triple Elixir Battle, win: 0, trophies: 11500 -> 11500 (+0), leveldiff: 0.0, matchup: 36.8, timestamp: 2026-01-08 18:21:46
+id: 1767893135.0, gamemode: Triple Elixir Battle, win: 1, trophies: 11500 -> 11500 (+0), leveldiff: 1.5, matchup: 84.8, timestamp: 2026-01-08 18:25:35
+
+========================================
+
+Long stop: 16 ore, 59 minuti (Ultime partite: W-L-W)
+
+========================================
+
+id: 1767954301.0, gamemode: Ranked, win: 0, trophies: 11500 -> 11500 (+0), leveldiff: 0.75, matchup: 65.7, timestamp: 2026-01-09 11:25:01

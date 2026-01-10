@@ -158,6 +158,18 @@ Match 160: 📉 Peggiorato di 3.3% (da 57.2% a 53.9%)
 Match 161: 📈 Migliorato di 16.0% (da 53.9% a 69.9%)
 Match 162: 📉 Peggiorato di 17.1% (da 69.9% a 52.8%)
 Match 163: 📈 Migliorato di 33.0% (da 52.8% a 85.8%)
+Match 164: 📉 Peggiorato di 9.8% (da 85.8% a 76.0%)
+Match 165: 📈 Migliorato di 8.2% (da 76.0% a 84.2%)
+Match 166: 📉 Peggiorato di 54.4% (da 84.2% a 29.8%)
+Match 167: 📈 Migliorato di 25.9% (da 29.8% a 55.8%)
+Match 168: 📉 Peggiorato di 10.4% (da 55.8% a 45.4%)
+Match 169: 📈 Migliorato di 2.6% (da 45.4% a 48.0%)
+Match 170: 📉 Peggiorato di 13.2% (da 48.0% a 34.8%)
+Match 171: 📈 Migliorato di 17.4% (da 34.8% a 52.2%)
+Match 172: 📉 Peggiorato di 33.3% (da 52.2% a 18.9%)
+Match 173: 📈 Migliorato di 34.0% (da 18.9% a 52.9%)
+Match 174: 📉 Peggiorato di 13.5% (da 52.9% a 39.4%)
+Match 175: 📉 Peggiorato di 12.9% (da 39.4% a 26.5%)
 id: 1765722225.0, gamemode: Rage Battle, win: 1, trophies: 9671 -> 9671 (+0), leveldiff: -2.0, matchup: 4.9, timestamp: 2025-12-14 15:23:45
 
 ========================================
@@ -546,3 +558,43 @@ Long stop: 16 ore, 2 minuti (Ultime partite: W-W)
 ========================================
 
 id: 1767883512.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10145 -> 10145 (+0), leveldiff: 2.38, matchup: 85.8, timestamp: 2026-01-08 15:45:12
+
+========================================
+
+Long stop: 7 ore, 29 minuti (Ultime partite: W)
+
+========================================
+
+id: 1767910461.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10145 -> 10145 (+0), leveldiff: 0.38, matchup: 76.0, timestamp: 2026-01-08 23:14:21
+id: 1767910638.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10145 -> 10145 (+0), leveldiff: 2.12, matchup: 84.2, timestamp: 2026-01-08 23:17:18
+id: 1767910860.0, gamemode: Triple Elixir Battle, win: 0, trophies: 10145 -> 10145 (+0), leveldiff: -0.75, matchup: 29.8, timestamp: 2026-01-08 23:21:00
+id: 1767911243.0, gamemode: Ladder, win: 1, trophies: 10145 -> 10175 (+30), leveldiff: -0.62, matchup: 55.8, timestamp: 2026-01-08 23:27:23
+id: 1767911451.0, gamemode: Ladder, win: 0, trophies: 10175 -> 10148 (-27), leveldiff: -0.12, matchup: 45.4, timestamp: 2026-01-08 23:30:51
+
+========================================
+
+Long stop: 8 ore, 12 minuti (Ultime partite: L-W-L)
+
+========================================
+
+id: 1767940971.0, gamemode: Ladder, win: 1, trophies: 10148 -> 10178 (+30), leveldiff: -0.62, matchup: 48.0, timestamp: 2026-01-09 07:42:51
+id: 1767941198.0, gamemode: Ladder, win: 0, trophies: 10178 -> 10148 (-30), leveldiff: -0.25, matchup: 34.8, timestamp: 2026-01-09 07:46:38
+id: 1767941390.0, gamemode: Ladder, win: 1, trophies: 10148 -> 10179 (+31), leveldiff: -0.38, matchup: 52.2, timestamp: 2026-01-09 07:49:50
+
+========================================
+
+Long stop: 3 ore, 21 minuti (Ultime partite: W-L-W)
+
+========================================
+
+id: 1767953505.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10179 -> 10179 (+0), leveldiff: 0.12, matchup: 18.9, timestamp: 2026-01-09 11:11:45
+id: 1767953826.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10179 -> 10179 (+0), leveldiff: 0.38, matchup: 52.9, timestamp: 2026-01-09 11:17:06
+id: 1767954013.0, gamemode: Triple Elixir Battle, win: 1, trophies: 10179 -> 10179 (+0), leveldiff: -1.25, matchup: 39.4, timestamp: 2026-01-09 11:20:13
+
+========================================
+
+Short stop: 22 minuti (Ultime partite: W-W-W)
+
+========================================
+
+id: 1767955342.0, gamemode: Triple Elixir Battle, win: 0, trophies: 10179 -> 10179 (+0), leveldiff: -0.25, matchup: 26.5, timestamp: 2026-01-09 11:42:22
