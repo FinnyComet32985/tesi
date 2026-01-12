@@ -1,6 +1,6 @@
+from json import load
 import logging
 from utils.connection import open_connection, close_connection
-from db_manager import load_tags
 from player_updater import update_player_profile
 from battle_updater import fetch_all_battles
 import time
@@ -15,12 +15,12 @@ def main():
     """
     logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-    conn, cursor = open_connection(DB_PATH)
+    conn, cursor, load_tags = open_connection(DB_PATH)
     if not conn:
         logging.critical("Impossibile connettersi al database. Uscita.")
         return
 
-    tags = load_tags(cursor)
+    tags = load_tags()
     
     if not tags:
         logging.warning("Nessun tag giocatore trovato nel database.")

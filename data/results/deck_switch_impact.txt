@@ -1,0 +1,23 @@
+ANALISI IMPATTO CAMBIO DECK (ARCHETIPO) SUL PATTERN MATCHUP
+Obiettivo: Verificare se il cambio di mazzo interrompe il pattern di matchup (es. serie negativa) o se esso persiste.
+Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->Bad) dovrebbe continuare anche cambiando mazzo.
+         Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.
+================================================================================
+
+Totale Transizioni Analizzate: 6874
+  - Senza cambio mazzo: 6213
+  - Con cambio mazzo:   661
+--------------------------------------------------------------------------------
+PATTERN                   | NO SWITCH (Baseline) | SWITCH (Test)        | DELTA     
+--------------------------------------------------------------------------------
+Persistenza Matchup Negativo | 48.93               % | 48.53               % | -0.40     %
+Persistenza Matchup Positivo | 47.38               % | 39.50               % | -7.88     %
+Recupero (Bad -> Good)    | 26.27               % | 29.97               % | +3.69     %
+Punizione (Good -> Bad)   | 28.01               % | 34.50               % | +6.49     %
+--------------------------------------------------------------------------------
+INTERPRETAZIONE:
+1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,
+   significa che cambiare mazzo NON aiuta a uscire dalla serie negativa (il sistema forza il matchup).
+2. Se 'Persistenza Matchup Negativo' crolla con SWITCH,
+   significa che il cambio mazzo ha effetto reale e il matchmaking risponde al nuovo mazzo.
+================================================================================

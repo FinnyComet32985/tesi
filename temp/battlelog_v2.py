@@ -288,16 +288,7 @@ def print_sessions(sessions, output_file=None):
         log("   Nessun dato disponibile per le medie.")
     log("="*40)
 
-
-def load_tags(cursor) -> list:
-    """Carica i TAG dei giocatori dal database."""
-    try:
-        cursor.execute("SELECT player_tag FROM players")
-        rows = cursor.fetchall()
-        return [row[0] for row in rows]
-    except Exception as e:
-        print(f"Errore durante il caricamento dei tag: {e}")
-        return []
+    
 
 def load_battles(cursor, tag):
     query = """
@@ -337,8 +328,8 @@ def format_duration(seconds):
 
 
 def get_players_sessions(mode_filter='all'):
-    connection, cursor = open_connection("db/clash.db")
-    tags = load_tags(cursor)
+    connection, cursor, load_tags = open_connection("db/clash.db")
+    tags = load_tags()
 
     players_sessions = []
 

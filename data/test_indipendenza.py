@@ -21,14 +21,16 @@ def get_matchup_category(win_rate: float) -> str:
     else:
         return 'Even'
 
-def get_chi2_independence_stats(cursor, tags):
+def get_chi2_independence_stats(players_sessions):
     """
     Calcola le statistiche del Chi-Quadro per l'indipendenza tra streak e matchup
     per una lista di giocatori.
     """
     results = {}
-    for tag in tags:
-        data = _get_player_data(cursor, tag)
+    for p in players_sessions:
+        tag = p['tag']
+        sessions = p['sessions']
+        data = _get_player_data(sessions)
         if not data:
             continue
         
@@ -37,40 +39,31 @@ def get_chi2_independence_stats(cursor, tags):
             results[tag] = stats
     return results
 
-def _get_player_data(cursor, player_tag: str):
+def _get_player_data(sessions):
     """Recupera e formatta i dati per il test (logica importata da data_formatter)."""
-    query = """
-    SELECT timestamp, win, matchup_win_rate
-    FROM battles
-    WHERE player_tag = ? AND game_mode not like '%Draft%' and battle_type not like 'riverRace%' AND game_mode != '2v2 League' -- AND game_mode='Ladder'
-    ORDER BY timestamp ASC;
-    """
-    cursor.execute(query, (player_tag,))
-    battles = cursor.fetchall()
-
-    if not battles:
-        return []
-
-    # Calcolo delle streak
-    streaks_before_match = [0]
-    current_streak = 0
-    for i in range(len(battles) - 1):
-        win = battles[i][1]
-        if win == 1:
-            current_streak = max(1, current_streak + 1)
-        else:
-            current_streak = min(-1, current_streak - 1)
-        streaks_before_match.append(current_streak)
-
-    # Formattazione dati
     formatted_data = []
-    for i, battle in enumerate(battles):
-        matchup_win_rate = battle[2]
-        streak_category = get_streak_category(streaks_before_match[i])
-        matchup_category = get_matchup_category(matchup_win_rate)
+    
+    for session in sessions:
+        battles = session['battles']
+        current_streak = 0
         
-        if matchup_category != 'Unknown':
-            formatted_data.append((streak_category, matchup_category))
+        for battle in battles:
+            matchup_val = battle['matchup']
+            matchup_win_rate = matchup_val / 100.0 if matchup_val is not None else None
+            
+            streak_category = get_streak_category(current_streak)
+            matchup_category = get_matchup_category(matchup_win_rate)
+            
+            if matchup_category != 'Unknown':
+                formatted_data.append((streak_category, matchup_category))
+            
+            # Update streak for next battle
+            win = battle['win']
+            if win == 1:
+                current_streak = max(1, current_streak + 1)
+            else:
+                current_streak = min(-1, current_streak - 1)
+
 
     return formatted_data
 

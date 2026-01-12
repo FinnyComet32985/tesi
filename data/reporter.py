@@ -76,16 +76,32 @@ def _save_correlation_report(correlation_results, results_dir):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(f"Analisi Correlazione eseguita il: {datetime.now()}\n")
 
-        corr = correlation_results['correlation']
-        p_val = correlation_results['p_value']
+        # Gestione nuova struttura con doppio test
+        res_fsi = correlation_results.get('fsi', {})
+        res_ers = correlation_results.get('ers', {})
         sample_size = correlation_results['sample_size']
         details = correlation_results.get('details', [])
         
         log_msg = "\n" + "="*60 + "\n"
-        log_msg += " ANALISI CORRELAZIONE SPEARMAN (Pity Odds vs FSI)\n"
+        log_msg += " ANALISI CORRELAZIONE SPEARMAN\n"
         log_msg += "="*60 + "\n"
-        log_msg += f"Correlazione: {corr:.4f}\n"
-        log_msg += f"P-value: {p_val:.4f}\n"
+        
+        log_msg += "1. Pity Odds vs FSI (Frustration Sensitivity)\n"
+        log_msg += f"   Correlazione: {res_fsi.get('correlation', 0):.4f}\n"
+        log_msg += f"   P-value:      {res_fsi.get('p_value', 1):.4f}\n\n"
+        
+        log_msg += "2. Pity Odds vs ERS (Impulsività * exp(-FSI))\n"
+        log_msg += f"   Correlazione: {res_ers.get('correlation', 0):.4f}\n"
+        log_msg += f"   P-value:      {res_ers.get('p_value', 1):.4f}\n"
+
+        perm_p = res_ers.get('perm_p_value')
+        if perm_p is not None:
+            log_msg += f"   P-value (Shuffle 10k): {perm_p:.4f}\n"
+            if perm_p < 0.05:
+                log_msg += "   -> RISULTATO ROBUSTO (Molto improbabile sia casuale)\n"
+            else:
+                log_msg += "   -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)\n"
+
         log_msg += f"Campione: {sample_size} giocatori\n" + "="*60
         
         print(log_msg)
@@ -95,15 +111,16 @@ def _save_correlation_report(correlation_results, results_dir):
             # Ordina per Odds Ratio decrescente per evidenziare i casi più estremi
             details.sort(key=lambda x: x['odds_ratio'], reverse=True)
 
-            table_header = f"\n{'='*60}\n DETTAGLIO GIOCATORI\n{'='*60}\n"
-            table_header += f"{'PLAYER TAG':<20} | {'PITY ODDS':<15} | {'FSI':<15}\n"
-            table_header += f"{'-'*60}"
+            table_header = f"\n{'='*75}\n DETTAGLIO GIOCATORI\n{'='*75}\n"
+            table_header += f"{'PLAYER TAG':<20} | {'PITY ODDS':<15} | {'FSI':<15} | {'ERS':<15}\n"
+            table_header += f"{'-'*75}"
             
             print(table_header)
             f.write(table_header + "\n")
             
             for d in details:
-                line = f"{d['tag']:<20} | {d['odds_ratio']:<15.2f} | {d['fsi']:<15.2f}"
+                ers_val = d.get('ers', 0)
+                line = f"{d['tag']:<20} | {d['odds_ratio']:<15.2f} | {d['fsi']:<15.2f} | {ers_val:<15.2f}"
                 print(line)
                 f.write(line + "\n")
     
@@ -263,11 +280,16 @@ def _print_profile_advanced(profile, tag, file):
         'num_sessions': 'Numero Sessioni',
         'avg_session_min': 'Durata Media Sess. (min)',
         'matches_per_session': 'Partite per Sessione',
-        'l_streak_count': 'Losing Streaks (>=3L)',
-        'w_streak_count': 'Winning Streaks (>=3W)',
         'avg_matchup_pct': 'Matchup Medio (%)',
         'avg_fsi': 'Indice Frustrazione (FSI)', # Nuova
-        'is_reliable': 'Affidabilità Campione'    # Nuova
+        'quit_impulsivity': 'Impulsività Quit (Avg)', # Nuova
+        'ers': 'ERS (Impulsività * exp(-FSI))', # Nuova
+        'is_reliable': 'Affidabilità Campione',    # Nuova
+        'max_loss_streak_tolerated': 'Max Loss Streak (Toll.)',
+        'win_continuation_rate': 'Win Continuation (%)',
+        'loss_continuation_rate': 'Loss Continuation (%)',
+        'counter_streak_continuations': 'Counter Streak Cont.',
+        'l_streak_count': 'Resilienza (Partite in Loss)'
     }
 
     log("\n" + "="*45)

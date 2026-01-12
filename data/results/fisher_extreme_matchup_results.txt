@@ -1,4 +1,4 @@
-Analisi Extreme Matchup eseguita il: 2026-01-11 19:58:55.948346
+Analisi Extreme Matchup eseguita il: 2026-01-12 20:13:10.157956
 
 ########################################
 # PLAYER: 20CCVVLUP0
@@ -9,11 +9,11 @@ Analisi Extreme Matchup eseguita il: 2026-01-11 19:58:55.948346
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 23              | 28             
-Situazione Normale        | 166             | 326            
+Dopo Losing Streak (>=3L) | 8               | 14             
+Situazione Normale        | 80              | 161            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.61
-Significatività (p-value): 0.072850
+Rapporto di probabilità (Odds Ratio): 1.15
+Significatività (p-value): 0.465206
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -22,11 +22,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 19              | 53             
-Situazione Normale        | 110             | 361            
+Dopo Win Streak (>=3W)    | 10              | 24             
+Situazione Normale        | 56              | 173            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.18
-Significatività (p-value): 0.333488
+Rapporto di probabilità (Odds Ratio): 1.29
+Significatività (p-value): 0.333086
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -39,11 +39,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 11             
-Situazione Normale        | 48              | 171            
+Dopo Losing Streak (>=3L) | 0               | 3              
+Situazione Normale        | 11              | 38             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.32
-Significatività (p-value): 0.947181
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -52,11 +52,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 18              | 44             
-Situazione Normale        | 54              | 115            
+Dopo Win Streak (>=3W)    | 3               | 7              
+Situazione Normale        | 12              | 30             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.87
-Significatività (p-value): 0.718457
+Rapporto di probabilità (Odds Ratio): 1.07
+Significatività (p-value): 0.603779
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -69,11 +69,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 5               | 3              
-Situazione Normale        | 88              | 132            
+Dopo Losing Streak (>=3L) | 2               | 3              
+Situazione Normale        | 33              | 52             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.50
-Significatività (p-value): 0.182010
+Rapporto di probabilità (Odds Ratio): 1.05
+Significatività (p-value): 0.649239
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -82,11 +82,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 6               | 39             
-Situazione Normale        | 35              | 148            
+Dopo Win Streak (>=3W)    | 3               | 20             
+Situazione Normale        | 14              | 53             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.65
-Significatività (p-value): 0.871328
+Rapporto di probabilità (Odds Ratio): 0.57
+Significatività (p-value): 0.875110
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -99,11 +99,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 2               | 7              
-Situazione Normale        | 13              | 91             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 1               | 4              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.00
-Significatività (p-value): 0.341018
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -112,11 +112,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 5               | 4              
-Situazione Normale        | 37              | 67             
+Dopo Win Streak (>=3W)    | 0               | 1              
+Situazione Normale        | 1               | 3              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.26
-Significatività (p-value): 0.201377
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -129,11 +129,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 2               | 9              
-Situazione Normale        | 27              | 66             
+Dopo Losing Streak (>=3L) | 1               | 0              
+Situazione Normale        | 15              | 50             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.54
-Significatività (p-value): 0.870263
+Rapporto di probabilità (Odds Ratio): inf
+Significatività (p-value): 0.242424
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -142,11 +142,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 2               | 13             
-Situazione Normale        | 19              | 70             
+Dopo Win Streak (>=3W)    | 2               | 11             
+Situazione Normale        | 14              | 39             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.57
-Significatività (p-value): 0.858086
+Rapporto di probabilità (Odds Ratio): 0.51
+Significatività (p-value): 0.887659
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -159,11 +159,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 3              
-Situazione Normale        | 37              | 102            
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 2               | 15             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.92
-Significatività (p-value): 0.713788
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -172,11 +172,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 14              | 53             
-Situazione Normale        | 16              | 60             
+Dopo Win Streak (>=3W)    | 3               | 2              
+Situazione Normale        | 4               | 9              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.99
-Significatività (p-value): 0.589393
+Rapporto di probabilità (Odds Ratio): 3.38
+Significatività (p-value): 0.272059
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -189,11 +189,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 5               | 2              
-Situazione Normale        | 68              | 112            
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 18              | 25             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 4.12
-Significatività (p-value): 0.083169
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -202,11 +202,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 8               | 52             
-Situazione Normale        | 13              | 114            
+Dopo Win Streak (>=3W)    | 4               | 20             
+Situazione Normale        | 5               | 15             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.35
-Significatività (p-value): 0.345670
+Rapporto di probabilità (Odds Ratio): 0.60
+Significatività (p-value): 0.854659
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -219,11 +219,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 3               | 7              
-Situazione Normale        | 33              | 111            
+Dopo Losing Streak (>=3L) | 1               | 3              
+Situazione Normale        | 17              | 46             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.44
-Significatività (p-value): 0.426245
+Rapporto di probabilità (Odds Ratio): 0.90
+Significatività (p-value): 0.723573
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -232,11 +232,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 5               | 14             
-Situazione Normale        | 19              | 116            
+Dopo Win Streak (>=3W)    | 2               | 5              
+Situazione Normale        | 12              | 48             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.18
-Significatività (p-value): 0.148972
+Rapporto di probabilità (Odds Ratio): 1.60
+Significatività (p-value): 0.453172
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -249,11 +249,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 7              
-Situazione Normale        | 91              | 125            
+Dopo Losing Streak (>=3L) | 1               | 3              
+Situazione Normale        | 43              | 77             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.20
-Significatività (p-value): 0.986708
+Rapporto di probabilità (Odds Ratio): 0.60
+Significatività (p-value): 0.831411
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -262,11 +262,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 9               | 59             
-Situazione Normale        | 33              | 123            
+Dopo Win Streak (>=3W)    | 5               | 21             
+Situazione Normale        | 23              | 75             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.57
-Significatività (p-value): 0.946501
+Rapporto di probabilità (Odds Ratio): 0.78
+Significatività (p-value): 0.760455
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -279,11 +279,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 3               | 3              
-Situazione Normale        | 28              | 41             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 6               | 12             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.46
-Significatività (p-value): 0.484258
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -292,11 +292,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 2               | 5              
-Situazione Normale        | 13              | 55             
+Dopo Win Streak (>=3W)    | 0               | 2              
+Situazione Normale        | 5               | 11             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.69
-Significatività (p-value): 0.427072
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -309,11 +309,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 2               | 3              
-Situazione Normale        | 38              | 37             
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 4               | 0              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.65
-Significatività (p-value): 0.820566
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -322,11 +322,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 1               | 16             
-Situazione Normale        | 12              | 51             
+Dopo Win Streak (>=3W)    | 0               | 3              
+Situazione Normale        | 0               | 2              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.27
-Significatività (p-value): 0.966781
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -339,11 +339,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 3               | 4              
-Situazione Normale        | 52              | 138            
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 1               | 11             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.99
-Significatività (p-value): 0.304395
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -352,11 +352,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 18              | 55             
-Situazione Normale        | 25              | 99             
+Dopo Win Streak (>=3W)    | 5               | 4              
+Situazione Normale        | 2               | 1              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.30
-Significatività (p-value): 0.286104
+Rapporto di probabilità (Odds Ratio): 0.62
+Significatività (p-value): 0.840909
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -369,11 +369,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 0              
-Situazione Normale        | 37              | 98             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 0               | 0              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): inf
-Significatività (p-value): 0.279412
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -382,11 +382,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 9               | 45             
-Situazione Normale        | 14              | 68             
+Dopo Win Streak (>=3W)    | 0               | 0              
+Situazione Normale        | 0               | 0              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.97
-Significatività (p-value): 0.612136
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -399,10 +399,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 0               | 1              
-Situazione Normale        | 17              | 67             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 7               | 24             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.00
+Rapporto di probabilità (Odds Ratio): nan
 Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
@@ -412,11 +412,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 10              | 17             
-Situazione Normale        | 23              | 35             
+Dopo Win Streak (>=3W)    | 5               | 9              
+Situazione Normale        | 9               | 8              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.90
-Significatività (p-value): 0.678546
+Rapporto di probabilità (Odds Ratio): 0.49
+Significatività (p-value): 0.907349
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -429,11 +429,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 13              | 59             
-Situazione Normale        | 78              | 369            
+Dopo Losing Streak (>=3L) | 12              | 51             
+Situazione Normale        | 61              | 228            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.04
-Significatività (p-value): 0.505995
+Rapporto di probabilità (Odds Ratio): 0.88
+Significatività (p-value): 0.698672
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -442,11 +442,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 21              | 67             
-Situazione Normale        | 123             | 308            
+Dopo Win Streak (>=3W)    | 9               | 39             
+Situazione Normale        | 75              | 229            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.78
-Significatività (p-value): 0.847078
+Rapporto di probabilità (Odds Ratio): 0.70
+Significatività (p-value): 0.860244
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -459,11 +459,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 5               | 46             
-Situazione Normale        | 11              | 139            
+Dopo Losing Streak (>=3L) | 1               | 23             
+Situazione Normale        | 3               | 52             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.37
-Significatività (p-value): 0.381372
+Rapporto di probabilità (Odds Ratio): 0.75
+Significatività (p-value): 0.773008
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -472,11 +472,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 6               | 3              
-Situazione Normale        | 110             | 82             
+Dopo Win Streak (>=3W)    | 1               | 0              
+Situazione Normale        | 50              | 28             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.49
-Significatività (p-value): 0.423516
+Rapporto di probabilità (Odds Ratio): inf
+Significatività (p-value): 0.645570
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -489,11 +489,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 4               | 18             
-Situazione Normale        | 22              | 99             
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 2               | 22             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.00
-Significatività (p-value): 0.601243
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -502,11 +502,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 5               | 9              
-Situazione Normale        | 63              | 66             
+Dopo Win Streak (>=3W)    | 3               | 6              
+Situazione Normale        | 9               | 7              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.58
-Significatività (p-value): 0.888698
+Rapporto di probabilità (Odds Ratio): 0.39
+Significatività (p-value): 0.936654
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -519,11 +519,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 7               | 51             
-Situazione Normale        | 37              | 318            
+Dopo Losing Streak (>=3L) | 4               | 29             
+Situazione Normale        | 21              | 171            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.18
-Significatività (p-value): 0.424671
+Rapporto di probabilità (Odds Ratio): 1.12
+Significatività (p-value): 0.516996
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -532,11 +532,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 10              | 39             
-Situazione Normale        | 80              | 284            
+Dopo Win Streak (>=3W)    | 2               | 8              
+Situazione Normale        | 49              | 166            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.91
-Significatività (p-value): 0.659642
+Rapporto di probabilità (Odds Ratio): 0.85
+Significatività (p-value): 0.705439
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -549,10 +549,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 0               | 1              
-Situazione Normale        | 27              | 19             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 6               | 5              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.00
+Rapporto di probabilità (Odds Ratio): nan
 Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
@@ -562,12 +562,12 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 4               | 5              
-Situazione Normale        | 4               | 34             
+Dopo Win Streak (>=3W)    | 3               | 1              
+Situazione Normale        | 1               | 6              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 6.80
-Significatività (p-value): 0.033149
-IPOTESI: CONFERMATA (EOMM Probabile)
+Rapporto di probabilità (Odds Ratio): 18.00
+Significatività (p-value): 0.087879
+IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
 ########################################
@@ -579,11 +579,11 @@ IPOTESI: CONFERMATA (EOMM Probabile)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 5               | 12             
-Situazione Normale        | 15              | 43             
+Dopo Losing Streak (>=3L) | 1               | 1              
+Situazione Normale        | 3               | 9              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.19
-Significatività (p-value): 0.497258
+Rapporto di probabilità (Odds Ratio): 3.00
+Significatività (p-value): 0.505495
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -592,11 +592,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 1               | 2              
-Situazione Normale        | 28              | 44             
+Dopo Win Streak (>=3W)    | 1               | 1              
+Situazione Normale        | 6               | 6              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.79
-Significatività (p-value): 0.775194
+Rapporto di probabilità (Odds Ratio): 1.00
+Significatività (p-value): 0.769231
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -609,11 +609,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 6               | 12             
-Situazione Normale        | 45              | 112            
+Dopo Losing Streak (>=3L) | 3               | 12             
+Situazione Normale        | 28              | 73             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.24
-Significatività (p-value): 0.432864
+Rapporto di probabilità (Odds Ratio): 0.65
+Significatività (p-value): 0.825881
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -622,12 +622,12 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 9               | 20             
-Situazione Normale        | 19              | 127            
+Dopo Win Streak (>=3W)    | 5               | 9              
+Situazione Normale        | 16              | 86             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 3.01
-Significatività (p-value): 0.020828
-IPOTESI: CONFERMATA (EOMM Probabile)
+Rapporto di probabilità (Odds Ratio): 2.99
+Significatività (p-value): 0.079012
+IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
 ########################################
@@ -639,11 +639,11 @@ IPOTESI: CONFERMATA (EOMM Probabile)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 6               | 25             
-Situazione Normale        | 47              | 199            
+Dopo Losing Streak (>=3L) | 3               | 9              
+Situazione Normale        | 19              | 77             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.02
-Significatività (p-value): 0.567515
+Rapporto di probabilità (Odds Ratio): 1.35
+Significatività (p-value): 0.458851
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -652,11 +652,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 16              | 27             
-Situazione Normale        | 85              | 149            
+Dopo Win Streak (>=3W)    | 9               | 6              
+Situazione Normale        | 33              | 60             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.04
-Significatività (p-value): 0.520208
+Rapporto di probabilità (Odds Ratio): 2.73
+Significatività (p-value): 0.065449
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -669,11 +669,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 10              | 9              
-Situazione Normale        | 74              | 115            
+Dopo Losing Streak (>=3L) | 0               | 2              
+Situazione Normale        | 12              | 21             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.73
-Significatività (p-value): 0.184563
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -682,11 +682,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 3               | 21             
-Situazione Normale        | 23              | 161            
+Dopo Win Streak (>=3W)    | 0               | 9              
+Situazione Normale        | 4               | 22             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.00
-Significatività (p-value): 0.604740
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -699,11 +699,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 7               | 37             
-Situazione Normale        | 43              | 88             
+Dopo Losing Streak (>=3L) | 0               | 14             
+Situazione Normale        | 14              | 42             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.39
-Significatività (p-value): 0.992495
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -712,11 +712,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 3               | 23             
-Situazione Normale        | 42              | 107            
+Dopo Win Streak (>=3W)    | 3               | 11             
+Situazione Normale        | 17              | 39             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.33
-Significatività (p-value): 0.985120
+Rapporto di probabilità (Odds Ratio): 0.63
+Significatività (p-value): 0.839067
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -729,11 +729,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 16              | 35             
-Situazione Normale        | 35              | 89             
+Dopo Losing Streak (>=3L) | 1               | 3              
+Situazione Normale        | 6               | 19             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.16
-Significatività (p-value): 0.403961
+Rapporto di probabilità (Odds Ratio): 1.06
+Significatività (p-value): 0.692013
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -742,11 +742,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 7               | 15             
-Situazione Normale        | 35              | 118            
+Dopo Win Streak (>=3W)    | 0               | 1              
+Situazione Normale        | 4               | 24             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.57
-Significatività (p-value): 0.251204
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -789,11 +789,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 2               | 10             
-Situazione Normale        | 26              | 195            
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 9               | 78             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.50
-Significatività (p-value): 0.435282
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -802,11 +802,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 21              | 37             
-Situazione Normale        | 72              | 103            
+Dopo Win Streak (>=3W)    | 18              | 17             
+Situazione Normale        | 22              | 30             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.81
-Significatività (p-value): 0.793295
+Rapporto di probabilità (Odds Ratio): 1.44
+Significatività (p-value): 0.268305
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -819,11 +819,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 31              | 45             
-Situazione Normale        | 196             | 309            
+Dopo Losing Streak (>=3L) | 30              | 35             
+Situazione Normale        | 112             | 153            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.09
-Significatività (p-value): 0.416946
+Rapporto di probabilità (Odds Ratio): 1.17
+Significatività (p-value): 0.333329
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -832,11 +832,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 2               | 57             
-Situazione Normale        | 37              | 485            
+Dopo Win Streak (>=3W)    | 0               | 20             
+Situazione Normale        | 26              | 284            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.46
-Significatività (p-value): 0.924042
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -849,11 +849,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 2               | 0              
-Situazione Normale        | 22              | 60             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 2               | 2              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): inf
-Significatività (p-value): 0.079174
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -862,11 +862,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 4               | 22             
-Situazione Normale        | 9               | 49             
+Dopo Win Streak (>=3W)    | 0               | 1              
+Situazione Normale        | 2               | 1              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.99
-Significatività (p-value): 0.622873
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -879,11 +879,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 4               | 4              
-Situazione Normale        | 22              | 55             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 1               | 2              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.50
-Significatività (p-value): 0.194846
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -892,11 +892,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 4               | 9              
-Situazione Normale        | 13              | 59             
+Dopo Win Streak (>=3W)    | 0               | 1              
+Situazione Normale        | 0               | 2              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.02
-Significatività (p-value): 0.240158
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -909,11 +909,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 3               | 0              
-Situazione Normale        | 53              | 2              
+Dopo Losing Streak (>=3L) | 1               | 0              
+Situazione Normale        | 16              | 1              
 ------------------------------------------------------------
 Rapporto di probabilità (Odds Ratio): inf
-Significatività (p-value): 0.898367
+Significatività (p-value): 0.944444
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -922,8 +922,8 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 0               | 14             
-Situazione Normale        | 0               | 44             
+Dopo Win Streak (>=3W)    | 0               | 3              
+Situazione Normale        | 0               | 15             
 ------------------------------------------------------------
 Rapporto di probabilità (Odds Ratio): nan
 Significatività (p-value): 1.000000
@@ -939,11 +939,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 9               | 50             
-Situazione Normale        | 79              | 260            
+Dopo Losing Streak (>=3L) | 3               | 27             
+Situazione Normale        | 29              | 128            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.59
-Significatività (p-value): 0.943402
+Rapporto di probabilità (Odds Ratio): 0.49
+Significatività (p-value): 0.925950
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -952,11 +952,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 15              | 23             
-Situazione Normale        | 154             | 206            
+Dopo Win Streak (>=3W)    | 4               | 4              
+Situazione Normale        | 96              | 83             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.87
-Significatività (p-value): 0.711854
+Rapporto di probabilità (Odds Ratio): 0.86
+Significatività (p-value): 0.713869
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -969,11 +969,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 2              
-Situazione Normale        | 31              | 37             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 6               | 6              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.60
-Significatività (p-value): 0.840101
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -982,11 +982,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 1               | 17             
-Situazione Normale        | 9               | 44             
+Dopo Win Streak (>=3W)    | 1               | 6              
+Situazione Normale        | 0               | 5              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.29
-Significatività (p-value): 0.957770
+Rapporto di probabilità (Odds Ratio): inf
+Significatività (p-value): 0.583333
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -999,11 +999,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 5               | 13             
-Situazione Normale        | 51              | 113            
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 8               | 19             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.85
-Significatività (p-value): 0.704249
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1012,11 +1012,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 7               | 29             
-Situazione Normale        | 49              | 97             
+Dopo Win Streak (>=3W)    | 1               | 10             
+Situazione Normale        | 5               | 12             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.48
-Significatività (p-value): 0.971100
+Rapporto di probabilità (Odds Ratio): 0.24
+Significatività (p-value): 0.967150
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1029,11 +1029,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 21              | 76             
-Situazione Normale        | 84              | 246            
+Dopo Losing Streak (>=3L) | 9               | 40             
+Situazione Normale        | 56              | 162            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.81
-Significatività (p-value): 0.815057
+Rapporto di probabilità (Odds Ratio): 0.65
+Significatività (p-value): 0.899350
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1042,11 +1042,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 1               | 18             
-Situazione Normale        | 38              | 370            
+Dopo Win Streak (>=3W)    | 0               | 11             
+Situazione Normale        | 22              | 234            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.54
-Significatività (p-value): 0.844532
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1059,11 +1059,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 3               | 10             
-Situazione Normale        | 9               | 54             
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 2               | 2              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.80
-Significatività (p-value): 0.334587
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1072,11 +1072,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 5               | 2              
-Situazione Normale        | 39              | 30             
+Dopo Win Streak (>=3W)    | 1               | 0              
+Situazione Normale        | 1               | 3              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.92
-Significatività (p-value): 0.367246
+Rapporto di probabilità (Odds Ratio): inf
+Significatività (p-value): 0.400000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1089,11 +1089,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 58             
-Situazione Normale        | 22              | 513            
+Dopo Losing Streak (>=3L) | 0               | 31             
+Situazione Normale        | 16              | 320            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.40
-Significatività (p-value): 0.914081
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1102,11 +1102,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 49              | 45             
-Situazione Normale        | 220             | 280            
+Dopo Win Streak (>=3W)    | 33              | 32             
+Situazione Normale        | 136             | 166            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.39
-Significatività (p-value): 0.090408
+Rapporto di probabilità (Odds Ratio): 1.26
+Significatività (p-value): 0.240293
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1119,11 +1119,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 3               | 8              
-Situazione Normale        | 15              | 15             
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 2               | 1              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.38
-Significatività (p-value): 0.953481
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -1132,10 +1132,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 1               | 6              
-Situazione Normale        | 3               | 31             
+Dopo Win Streak (>=3W)    | 0               | 2              
+Situazione Normale        | 0               | 1              
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.72
-Significatività (p-value): 0.542056
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================

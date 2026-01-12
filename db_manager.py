@@ -2,16 +2,6 @@ import hashlib
 import logging
 from datetime import datetime
 
-def load_tags(cursor) -> list:
-    """Carica i TAG dei giocatori dal database."""
-    try:
-        cursor.execute("SELECT player_tag FROM players")
-        rows = cursor.fetchall()
-        return [row[0] for row in rows]
-    except Exception as e:
-        logging.error(f"Errore durante il caricamento dei tag: {e}")
-        return []
-
 def update_player_stats(cursor, tag: str, player_data: tuple):
     """Aggiorna le statistiche base di un giocatore nel database."""
     columns = ['player_name', 'clan_name', 'trophies', 'arena', 'rank', 'ranked_trophies', 'wins', 'losses', 'three_crown_wins', 'total_games', 'account_age_seconds', 'time_spent_seconds', 'games_per_day']

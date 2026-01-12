@@ -1,0 +1,23 @@
+ANALISI FATTORI CONFONDENTI: ORARIO E DECK
+Obiettivo: Dimostrare che le streak sono indipendenti da orario e mazzo usato.
+================================================================================
+
+1. ANALISI ORARIA (Globale)
+Fascia Oraria             | Tot Finestre    | Streak Trovate  | Streak Rate %  
+--------------------------------------------------------------------------------
+Notte (00-06)             | 709             | 38              | 5.36           %
+Mattina (06-12)           | 649             | 33              | 5.08           %
+Pomeriggio (12-18)        | 1323            | 92              | 6.95           %
+Sera (18-24)              | 1299            | 62              | 4.77           %
+--------------------------------------------------------------------------------
+Test Chi-Quadro Indipendenza Oraria:
+P-value: 0.0861
+Risultato: INDIPENDENTE (L'orario NON influisce)
+
+2. ANALISI DECK (Aggregata per Player)
+Verifica se la probabilità di streak cambia cambiando mazzo (tra i mazzi più usati).
+--------------------------------------------------------------------------------
+Player analizzati (con almeno 2 mazzi usati >10 volte): 18
+Player con streak INDIPENDENTI dal mazzo (p > 0.05):    13
+Percentuale Indipendenza: 72.22%
+================================================================================
