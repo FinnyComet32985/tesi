@@ -41,12 +41,12 @@ def get_fisher_matrices(battles):
 
         # Riempimento Pity Match
         if is_losing_streak:
-            if matchup_val > 80: 
+            if matchup_val > 60: 
                 matrix_pity[0][0] += 1
             else: 
                 matrix_pity[0][1] += 1
         else:
-            if matchup_val > 80: 
+            if matchup_val > 60: 
                 matrix_pity[1][0] += 1
             else: 
                 matrix_pity[1][1] += 1

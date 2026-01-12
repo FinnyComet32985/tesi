@@ -1,0 +1,25 @@
+ANALISI STATISTICA MATCHUP PER FASCIA ORARIA
+Obiettivo: Verificare se Media e Varianza del matchup cambiano durante il giorno.
+================================================================================
+
+Fascia Oraria        | N. Partite   | Media MU   | StdDev     | Varianza  
+---------------------------------------------------------------------------
+Notte (00-06)        | 1526         | 52.04      | 16.68      | 278.24    
+Mattina (06-12)      | 1428         | 50.12      | 15.51      | 240.51    
+Pomeriggio (12-18)   | 2754         | 49.83      | 16.60      | 275.65    
+Sera (18-24)         | 2839         | 49.57      | 16.94      | 286.87    
+---------------------------------------------------------------------------
+
+TEST STATISTICI:
+1. Kruskal-Wallis (Confronto Medie/Distribuzione):
+   P-value: 0.0000
+   Risultato: DIFFERENZA SIGNIFICATIVA (Il matchup medio cambia?)
+
+2. Levene Test (Confronto Varianze):
+   P-value: 0.0015
+   Risultato: DIFFERENZA SIGNIFICATIVA (La variabilità del matchup cambia?)
+
+   NOTA: Una varianza diversa suggerisce che in certe fasce orarie
+   il matchmaking è più 'lasco' o la popolazione di player è diversa,
+   creando più matchup estremi (streak) anche se la media è simile.
+================================================================================

@@ -6,7 +6,6 @@
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 57.8% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.25
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -18,11 +17,10 @@
 [2025-12-15 23:28:55] 2v2 League vs 2CQL0GY20 | WIN -> 2-0 | MU: null - ΔLvl: -1.12
 
    [METRICHE SESSIONE]
-   Battaglie: 1
-   Win Rate: 100.0%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -1.12
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -33,11 +31,10 @@
 [2025-12-16 02:37:41] 2v2 League vs G2PGLJRPQ | LOSE -> 0-3 | MU: null - ΔLvl: -3.5
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -3.50
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -48,11 +45,10 @@
 [2025-12-16 17:31:08] 2v2 League vs GCU0CG080 | WIN -> 3-0 | MU: null - ΔLvl: 1.12
 
    [METRICHE SESSIONE]
-   Battaglie: 1
-   Win Rate: 100.0%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: 1.12
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -66,7 +62,6 @@
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 57.9% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.12
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -78,11 +73,10 @@
 [2025-12-19 02:05:08] 2v2 League vs CQPLQ22G2 | LOSE -> 0-3 | MU: null - ΔLvl: -3.0
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -3.00
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -96,13 +90,12 @@
 [2025-12-19 02:45:19] 1v1 Battle vs CRLG2UQ8Q | LOSE -> 0-1 | MU: 28.0% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 4
-   Win Rate: 75.0%
-   Avg Matchup: 46.1% (StdDev: 17.5%)
-   Matchup Drift: -13.4000
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
    Avg Level Diff: 0.00
-   Extreme Matchups: 2
-   Win % (Negative MU <40%): 50.0%
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Long (14 ore, 41 minuti)]
@@ -111,11 +104,10 @@
 [2025-12-19 17:26:37] 2v2 League vs GP8GVY2QG | LOSE -> 0-1 | MU: null - ΔLvl: -0.62
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -0.62
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -131,11 +123,10 @@
 [2025-12-22 01:01:26] 2v2 League vs LGCV2V9LJ | LOSE -> 0-1 | MU: null - ΔLvl: 0.12
 
    [METRICHE SESSIONE]
-   Battaglie: 6
-   Win Rate: 66.7%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -0.52
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -146,11 +137,10 @@
 [2025-12-22 08:13:35] 2v2 League vs Y22CJCYLU | LOSE -> 0-1 | MU: null - ΔLvl: -2.38
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -2.38
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -164,7 +154,6 @@
    Battaglie: 1
    Win Rate: 0.0%
    Avg Matchup: 19.5% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -1.00
    Extreme Matchups: 1
    Win % (Negative MU <40%): 0.0%
@@ -182,7 +171,6 @@
    Battaglie: 4
    Win Rate: 100.0%
    Avg Matchup: 32.5% (StdDev: 12.7%)
-   Matchup Drift: -3.4600
    Avg Level Diff: -0.88
    Extreme Matchups: 3
    Win % (Negative MU <40%): 100.0%
@@ -203,11 +191,10 @@
 [2025-12-29 02:57:45] Ranked vs U0VL9PYCJ | LOSE -> 0-1 | MU: 34.1% - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
-   Battaglie: 10
-   Win Rate: 50.0%
+   Battaglie: 7
+   Win Rate: 57.1%
    Avg Matchup: 32.5% (StdDev: 7.9%)
-   Matchup Drift: -0.4000
-   Avg Level Diff: -0.86
+   Avg Level Diff: -1.23
    Extreme Matchups: 6
    Win % (Negative MU <40%): 50.0%
    Lose % (Positive MU >80%): 0.0%
@@ -229,7 +216,6 @@
    Battaglie: 9
    Win Rate: 0.0%
    Avg Matchup: 33.8% (StdDev: 7.5%)
-   Matchup Drift: 0.9150
    Avg Level Diff: -0.79
    Extreme Matchups: 8
    Win % (Negative MU <40%): 0.0%
@@ -250,7 +236,6 @@
    Battaglie: 7
    Win Rate: 28.6%
    Avg Matchup: 30.3% (StdDev: 10.8%)
-   Matchup Drift: -1.3036
    Avg Level Diff: -0.62
    Extreme Matchups: 6
    Win % (Negative MU <40%): 33.3%
@@ -262,10 +247,9 @@
 [2025-12-30 04:44:11] 1v1 Battle vs CRG9LCGR9 | WIN -> 1-0 | MU: 46.1% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 1
-   Win Rate: 100.0%
-   Avg Matchup: 46.1% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -280,7 +264,6 @@
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 28.3% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -1.00
    Extreme Matchups: 1
    Win % (Negative MU <40%): 100.0%
@@ -296,7 +279,6 @@
    Battaglie: 2
    Win Rate: 50.0%
    Avg Matchup: 37.2% (StdDev: 13.7%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.81
    Extreme Matchups: 1
    Win % (Negative MU <40%): 0.0%
@@ -311,7 +293,6 @@
    Battaglie: 1
    Win Rate: 0.0%
    Avg Matchup: 28.4% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.62
    Extreme Matchups: 1
    Win % (Negative MU <40%): 0.0%
@@ -328,7 +309,6 @@
    Battaglie: 3
    Win Rate: 33.3%
    Avg Matchup: 46.1% (StdDev: 14.0%)
-   Matchup Drift: -10.5500
    Avg Level Diff: -0.54
    Extreme Matchups: 1
    Win % (Negative MU <40%): 0.0%
@@ -351,7 +331,6 @@
    Battaglie: 9
    Win Rate: 22.2%
    Avg Matchup: 27.4% (StdDev: 16.1%)
-   Matchup Drift: 4.6317
    Avg Level Diff: -0.93
    Extreme Matchups: 7
    Win % (Negative MU <40%): 28.6%
@@ -378,11 +357,10 @@
 [2026-01-01 04:59:30] Ranked vs V2R92QJ2L | LOSE -> 0-3 | MU: 29.0% - ΔLvl: -0.88
 
    [METRICHE SESSIONE]
-   Battaglie: 16
-   Win Rate: 31.2%
+   Battaglie: 15
+   Win Rate: 33.3%
    Avg Matchup: 36.9% (StdDev: 9.3%)
-   Matchup Drift: -0.9286
-   Avg Level Diff: -0.74
+   Avg Level Diff: -0.79
    Extreme Matchups: 10
    Win % (Negative MU <40%): 20.0%
    Lose % (Positive MU >80%): 0.0%
@@ -395,10 +373,9 @@
 [2026-01-01 05:57:43] 1v1 Battle vs J2JL0C8G9 | WIN -> 3-0 | MU: 58.2% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 3
-   Win Rate: 33.3%
-   Avg Matchup: 49.2% (StdDev: 7.9%)
-   Matchup Drift: 7.4500
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -414,7 +391,6 @@
    Battaglie: 2
    Win Rate: 50.0%
    Avg Matchup: 29.6% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.81
    Extreme Matchups: 2
    Win % (Negative MU <40%): 50.0%
@@ -432,7 +408,6 @@
    Battaglie: 4
    Win Rate: 25.0%
    Avg Matchup: 53.1% (StdDev: 31.1%)
-   Matchup Drift: -10.2900
    Avg Level Diff: -0.28
    Extreme Matchups: 3
    Win % (Negative MU <40%): 0.0%
@@ -445,11 +420,10 @@
 [2026-01-01 23:23:11] Infinite Elixir vs JCPRRPRQG | WIN -> 1-0 | MU: 61.2% - ΔLvl: 0.12
 
    [METRICHE SESSIONE]
-   Battaglie: 2
-   Win Rate: 100.0%
-   Avg Matchup: 69.1% (StdDev: 11.2%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: 0.87
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -466,7 +440,6 @@
    Battaglie: 4
    Win Rate: 25.0%
    Avg Matchup: 42.0% (StdDev: 15.9%)
-   Matchup Drift: 4.9000
    Avg Level Diff: -0.78
    Extreme Matchups: 2
    Win % (Negative MU <40%): 50.0%
@@ -486,7 +459,6 @@
    Battaglie: 6
    Win Rate: 33.3%
    Avg Matchup: 35.4% (StdDev: 9.9%)
-   Matchup Drift: -4.4400
    Avg Level Diff: -0.73
    Extreme Matchups: 4
    Win % (Negative MU <40%): 50.0%
@@ -504,13 +476,12 @@
 [2026-01-02 20:54:06] Ranked vs UPUPR9299 | LOSE -> 0-2 | MU: 43.0% - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
-   Battaglie: 7
-   Win Rate: 42.9%
-   Avg Matchup: 47.6% (StdDev: 29.2%)
-   Matchup Drift: 6.2857
-   Avg Level Diff: -0.11
-   Extreme Matchups: 4
-   Win % (Negative MU <40%): 66.7%
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 43.0% (StdDev: 0.0%)
+   Avg Level Diff: -0.75
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Long (4 ore, 48 minuti)]
@@ -521,11 +492,10 @@
 [2026-01-03 01:50:58] Ranked vs PVJ2LC8GP | LOSE -> 0-3 | MU: 41.9% - ΔLvl: -0.88
 
    [METRICHE SESSIONE]
-   Battaglie: 3
-   Win Rate: 33.3%
+   Battaglie: 2
+   Win Rate: 0.0%
    Avg Matchup: 44.8% (StdDev: 4.0%)
-   Matchup Drift: 0.0000
-   Avg Level Diff: -0.67
+   Avg Level Diff: -1.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -539,7 +509,6 @@
    Battaglie: 1
    Win Rate: 0.0%
    Avg Matchup: 33.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.88
    Extreme Matchups: 1
    Win % (Negative MU <40%): 0.0%
@@ -555,7 +524,6 @@
    Battaglie: 2
    Win Rate: 50.0%
    Avg Matchup: 61.6% (StdDev: 14.8%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.07
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -569,10 +537,9 @@
 [2026-01-03 16:51:11] 1v1 Battle vs 20GP0P09CV | WIN -> 1-0 | MU: 57.7% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 3
-   Win Rate: 66.7%
-   Avg Matchup: 57.7% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -593,12 +560,11 @@
 [2026-01-03 18:17:02] 1v1 Battle vs 20GP0P09CV | WIN -> 1-0 | MU: 53.0% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 10
-   Win Rate: 40.0%
-   Avg Matchup: 53.4% (StdDev: 13.9%)
-   Matchup Drift: 2.9230
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
    Avg Level Diff: 0.00
-   Extreme Matchups: 4
+   Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
@@ -618,10 +584,9 @@
 [2026-01-03 21:03:13] 2v2 Battle vs UCQJCUUUL | LOSE -> 0-1 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 11
-   Win Rate: 45.5%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -634,10 +599,9 @@
 [2026-01-03 22:09:32] 2v2 Battle vs 8PY2CUGGG | LOSE -> 0-1 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 2
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -656,10 +620,9 @@
 [2026-01-03 23:04:12] 2v2 Battle vs V80J922C2 | WIN -> 1-0 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 8
-   Win Rate: 50.0%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -673,10 +636,9 @@
 [2026-01-04 01:26:31] 2v2 Battle vs 80RC808CY | LOSE -> 0-2 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 3
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -697,11 +659,10 @@
 [2026-01-04 04:14:52] 2v2 Battle vs GLV2QQ9Y8 | LOSE -> 0-1 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 10
-   Win Rate: 10.0%
+   Battaglie: 6
+   Win Rate: 0.0%
    Avg Matchup: 39.6% (StdDev: 7.5%)
-   Matchup Drift: 0.7743
-   Avg Level Diff: -0.42
+   Avg Level Diff: -0.71
    Extreme Matchups: 4
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -712,10 +673,9 @@
 [2026-01-04 15:44:24] 2v2 Battle vs 2GJ2LPYJG | LOSE -> 0-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -738,10 +698,9 @@
 [2026-01-04 17:12:09] 2v2 Battle vs RUPVUUJ0 | LOSE -> 0-1 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 12
-   Win Rate: 33.3%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -761,7 +720,6 @@
    Battaglie: 6
    Win Rate: 16.7%
    Avg Matchup: 37.3% (StdDev: 13.9%)
-   Matchup Drift: -3.0686
    Avg Level Diff: -0.88
    Extreme Matchups: 3
    Win % (Negative MU <40%): 33.3%
@@ -778,11 +736,10 @@
 [2026-01-04 22:32:02] Ranked vs 2QYPPJCY | LOSE -> 0-3 | MU: 25.7% - ΔLvl: -1.0
 
    [METRICHE SESSIONE]
-   Battaglie: 6
+   Battaglie: 4
    Win Rate: 0.0%
    Avg Matchup: 37.1% (StdDev: 12.1%)
-   Matchup Drift: -2.8800
-   Avg Level Diff: -0.56
+   Avg Level Diff: -0.84
    Extreme Matchups: 2
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
@@ -797,10 +754,9 @@
 [2026-01-04 23:28:23] 2v2 Battle vs 99L8PGLV | LOSE -> 0-1 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 5
-   Win Rate: 20.0%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -825,7 +781,6 @@
    Battaglie: 11
    Win Rate: 36.4%
    Avg Matchup: 43.4% (StdDev: 20.5%)
-   Matchup Drift: -1.7791
    Avg Level Diff: -0.43
    Extreme Matchups: 7
    Win % (Negative MU <40%): 16.7%
@@ -837,10 +792,9 @@
 [2026-01-05 20:45:40] 2v2 Battle vs PR8L9RRQ2 | LOSE -> 0-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -853,10 +807,9 @@
 [2026-01-05 22:04:00] 2v2 Battle vs GRCYGQY2R | LOSE -> 0-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 2
-   Win Rate: 50.0%
+   Battaglie: 0
+   Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -870,10 +823,9 @@
 [2026-01-06 00:18:27] 2v2 Battle vs 2R2QG09U | LOSE -> 1-2 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 3
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -891,10 +843,9 @@
 [2026-01-06 01:14:17] 2v2 Battle vs QJ29CRP88 | LOSE -> 0-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 7
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -906,10 +857,9 @@
 [2026-01-06 03:28:33] 2v2 Battle vs QGL8YVRLG | LOSE -> 0-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -921,10 +871,9 @@
 [2026-01-06 03:56:53] 2v2 Battle vs QL2GVJGUR | LOSE -> 1-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -939,10 +888,9 @@
 [2026-01-06 04:52:04] 2v2 Battle vs GLR8RVG8V | LOSE -> 1-3 | MU: null - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 4
+   Battaglie: 0
    Win Rate: 0.0%
    Avg Matchup: 0.0% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -962,7 +910,6 @@
    Battaglie: 6
    Win Rate: 16.7%
    Avg Matchup: 34.4% (StdDev: 11.9%)
-   Matchup Drift: -1.7314
    Avg Level Diff: -0.70
    Extreme Matchups: 3
    Win % (Negative MU <40%): 0.0%
@@ -980,7 +927,6 @@
    Battaglie: 4
    Win Rate: 50.0%
    Avg Matchup: 46.8% (StdDev: 22.3%)
-   Matchup Drift: -2.9700
    Avg Level Diff: -0.41
    Extreme Matchups: 4
    Win % (Negative MU <40%): 33.3%
@@ -995,11 +941,10 @@
 [2026-01-06 20:15:14] Duel vs GCUUCVJQ2 | LOSE -> 0-2 | MU: null - ΔLvl: -2.12
 
    [METRICHE SESSIONE]
-   Battaglie: 4
-   Win Rate: 75.0%
-   Avg Matchup: 37.2% (StdDev: 24.6%)
-   Matchup Drift: 19.6500
-   Avg Level Diff: -0.97
+   Battaglie: 2
+   Win Rate: 100.0%
+   Avg Matchup: 23.1% (StdDev: 4.3%)
+   Avg Level Diff: -1.94
    Extreme Matchups: 2
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
@@ -1019,7 +964,6 @@
    Battaglie: 7
    Win Rate: 42.9%
    Avg Matchup: 36.9% (StdDev: 12.7%)
-   Matchup Drift: 2.5857
    Avg Level Diff: -0.77
    Extreme Matchups: 4
    Win % (Negative MU <40%): 25.0%
@@ -1034,7 +978,6 @@
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 49.3% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.50
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -1052,7 +995,6 @@
    Battaglie: 4
    Win Rate: 25.0%
    Avg Matchup: 36.0% (StdDev: 14.8%)
-   Matchup Drift: -6.6500
    Avg Level Diff: -0.75
    Extreme Matchups: 2
    Win % (Negative MU <40%): 50.0%
@@ -1069,13 +1011,12 @@
 [2026-01-08 00:02:33] Ladder vs QGYC9YC2 | WIN -> 3-1 | 10505 -> 10537 (+32) | MU: 41.6% - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
-   Battaglie: 6
-   Win Rate: 66.7%
-   Avg Matchup: 36.7% (StdDev: 6.1%)
-   Matchup Drift: 1.2238
-   Avg Level Diff: -0.21
-   Extreme Matchups: 3
-   Win % (Negative MU <40%): 33.3%
+   Battaglie: 4
+   Win Rate: 50.0%
+   Avg Matchup: 39.3% (StdDev: 2.4%)
+   Avg Level Diff: -0.31
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Long (2 ore, 43 minuti)]
@@ -1094,7 +1035,6 @@
    Battaglie: 8
    Win Rate: 50.0%
    Avg Matchup: 40.2% (StdDev: 17.8%)
-   Matchup Drift: -1.4859
    Avg Level Diff: -0.78
    Extreme Matchups: 4
    Win % (Negative MU <40%): 50.0%
@@ -1115,7 +1055,6 @@
    Battaglie: 7
    Win Rate: 14.3%
    Avg Matchup: 43.5% (StdDev: 18.1%)
-   Matchup Drift: 3.3861
    Avg Level Diff: -0.59
    Extreme Matchups: 4
    Win % (Negative MU <40%): 0.0%
@@ -1135,7 +1074,6 @@
    Battaglie: 6
    Win Rate: 66.7%
    Avg Matchup: 48.3% (StdDev: 18.1%)
-   Matchup Drift: -3.2189
    Avg Level Diff: -0.54
    Extreme Matchups: 2
    Win % (Negative MU <40%): 0.0%
@@ -1151,7 +1089,6 @@
    Battaglie: 2
    Win Rate: 0.0%
    Avg Matchup: 25.7% (StdDev: 3.3%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.38
    Extreme Matchups: 2
    Win % (Negative MU <40%): 0.0%
@@ -1169,7 +1106,6 @@
    Battaglie: 4
    Win Rate: 75.0%
    Avg Matchup: 29.9% (StdDev: 10.6%)
-   Matchup Drift: -7.3139
    Avg Level Diff: -0.97
    Extreme Matchups: 3
    Win % (Negative MU <40%): 66.7%
@@ -1185,7 +1121,6 @@
    Battaglie: 2
    Win Rate: 50.0%
    Avg Matchup: 59.8% (StdDev: 3.4%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.69
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -1200,7 +1135,6 @@
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 53.6% (StdDev: 0.0%)
-   Matchup Drift: 0.0000
    Avg Level Diff: -0.38
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -1219,21 +1153,50 @@
    Battaglie: 5
    Win Rate: 40.0%
    Avg Matchup: 27.4% (StdDev: 8.3%)
-   Matchup Drift: 0.0987
    Avg Level Diff: -0.80
    Extreme Matchups: 4
    Win % (Negative MU <40%): 50.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (1 giorni, 1 ore, 54 minuti)]
+
+--- SESSIONE 68 ---
+[2026-01-10 22:36:59] Ladder vs V9JL2JVUJ | LOSE -> 0-1 | 10565 -> 10536 (-29) | MU: 25.1% - ΔLvl: -1.12
+[2026-01-10 22:39:18] Ladder vs P8CUVC2YC | LOSE -> 0-3 | 10536 -> 10506 (-30) | MU: 22.4% - ΔLvl: -0.75
+[2026-01-10 22:42:28] Ladder vs 20Q9VCR2C0 | WIN -> 1-0 | 10506 -> 10538 (+32) | MU: 54.7% - ΔLvl: -0.38
+[2026-01-10 22:45:37] Ladder vs 9P0P9QQ02 | WIN -> 2-1 | 10538 -> 10568 (+30) | MU: 38.4% - ΔLvl: -0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 50.0%
+   Avg Matchup: 35.2% (StdDev: 14.8%)
+   Avg Level Diff: -0.66
+   Extreme Matchups: 3
+   Win % (Negative MU <40%): 33.3%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (1 giorni, 3 ore, 23 minuti)]
+
+--- SESSIONE 69 ---
+[2026-01-12 02:09:15] Ladder vs 8V0URCQ9V | WIN -> 1-0 | 10568 -> 10598 (+30) | MU: 29.6% - ΔLvl: -0.88
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 29.6% (StdDev: 0.0%)
+   Avg Level Diff: -0.88
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 4.33
-   Avg Win Rate: 38.7%
-   Avg Matchup: 28.4% (Avg StdDev: 7.1%)
-   Avg Matchup Drift: -0.3141
-   Avg Level Diff: -0.51
-   Avg Extreme Matchups: 1.79
-   Avg Win % (Negative MU): 15.8%
+   Avg Battaglie/Sessione: 2.58
+   Avg Win Rate: 26.0%
+   Avg Matchup: 23.6% (Avg StdDev: 5.6%)
+   Avg Level Diff: -0.43
+   Avg Extreme Matchups: 1.64
+   Avg Win % (Negative MU): 15.1%
    Avg Lose % (Positive MU): 0.0%
 ========================================
