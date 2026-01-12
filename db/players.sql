@@ -36,4 +36,9 @@ insert or ignore into players(player_tag) values
 ('20QU8VLGU8'), -- GALATASARAY FC
 ('J92L2CU0Q'), -- TrBaro
 ('JJYP08'), -- GRAX
-('JYLQC0VQ2'); -- MIKY!!¥¥007
+('JYLQC0VQ2'), -- MIKY!!¥¥007
+('J0L9GQCL'), -- Slava Ukrani!
+('28LQ8Y2V'), -- mutante
+('LPY29QCLV'), -- {{Son Luck}}
+('202PQ0VP90'), -- lebron
+('2GR0990RQ'); -- haxer penta

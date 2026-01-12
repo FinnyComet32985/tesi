@@ -21,7 +21,11 @@ from test import (
     analyze_confounding_factors,
     analyze_time_matchup_stats,
     analyze_deck_switch_impact,
-    analyze_ers_pity_hypothesis
+    analyze_ers_pity_hypothesis,
+    analyze_return_matchups_vs_ers,
+    analyze_pity_impact_on_session_length,
+    analyze_pity_impact_on_return_time,
+    analyze_churn_probability_vs_pity
 )
 
 def main():
@@ -67,6 +71,10 @@ def main():
     analyze_time_matchup_stats(players_sessions, output_dir=results_dir)
     analyze_deck_switch_impact(players_sessions, output_dir=results_dir)
     analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=results_dir)
+    analyze_return_matchups_vs_ers(players_sessions, output_dir=results_dir)
+    analyze_pity_impact_on_session_length(players_sessions, output_dir=results_dir)
+    analyze_pity_impact_on_return_time(players_sessions, output_dir=results_dir)
+    analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_dir=results_dir)
 
     print("Processo di report completato.")
 

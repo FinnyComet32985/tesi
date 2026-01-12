@@ -1,0 +1,59 @@
+ANALISI IMPATTO PITY MATCH SU TEMPO DI RITORNO (PREVENZIONE RAGEQUIT)
+Obiettivo: Capire se ricevere un Pity Match riduce il tempo di pausa prima della sessione successiva.
+Definizione Pity Match: Matchup > 60.0%
+================================================================================
+
+--- EVENTO: Loss ---
+Gruppo          | N        | Avg Return Time (Ore)    
+-------------------------------------------------------
+Con Pity        | 582      | 9.08                     
+Senza Pity      | 1794     | 7.26                     
+-------------------------------------------------------
+Test Mann-Whitney U (Pity < NoPity):
+P-value: 0.9750
+RISULTATO: NON SIGNIFICATIVO.
+
+--- EVENTO: Loss Streak (>=2) ---
+Gruppo          | N        | Avg Return Time (Ore)    
+-------------------------------------------------------
+Con Pity        | 210      | 8.56                     
+Senza Pity      | 692      | 6.91                     
+-------------------------------------------------------
+Test Mann-Whitney U (Pity < NoPity):
+P-value: 0.8561
+RISULTATO: NON SIGNIFICATIVO.
+
+--- EVENTO: Loss Streak (>=3) ---
+Gruppo          | N        | Avg Return Time (Ore)    
+-------------------------------------------------------
+Con Pity        | 79       | 8.44                     
+Senza Pity      | 310      | 6.73                     
+-------------------------------------------------------
+Test Mann-Whitney U (Pity < NoPity):
+P-value: 0.9679
+RISULTATO: NON SIGNIFICATIVO.
+
+--- EVENTO: Counter (Loss <40%) ---
+Gruppo          | N        | Avg Return Time (Ore)    
+-------------------------------------------------------
+Con Pity        | 146      | 8.89                     
+Senza Pity      | 692      | 7.70                     
+-------------------------------------------------------
+Test Mann-Whitney U (Pity < NoPity):
+P-value: 0.4410
+RISULTATO: NON SIGNIFICATIVO.
+
+--- EVENTO: Counter Streak (>=2) ---
+Gruppo          | N        | Avg Return Time (Ore)    
+-------------------------------------------------------
+Con Pity        | 20       | 12.30                    
+Senza Pity      | 151      | 6.86                     
+-------------------------------------------------------
+Test Mann-Whitney U (Pity < NoPity):
+P-value: 0.9863
+RISULTATO: NON SIGNIFICATIVO.
+
+--- EVENTO: Counter Streak (>=3) ---
+Dati insufficienti per questo evento.
+
+================================================================================

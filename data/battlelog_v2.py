@@ -142,6 +142,7 @@ def define_sessions(battles, trophies_history, mode_filter='all'):
                 'battles': current_session_battles,
                 'stop_type': stop_type,
                 'duration': format_duration(time_diff),
+                'break_duration_seconds': time_diff,
                 'analysis': analysis_results
             })
             current_session_battles = [battle_obj]
@@ -152,6 +153,7 @@ def define_sessions(battles, trophies_history, mode_filter='all'):
             'battles': current_session_battles,
             'stop_type': 'End',
             'duration': '',
+            'break_duration_seconds': None,
             'analysis': analysis_results
         })
 

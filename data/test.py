@@ -1,4 +1,5 @@
 from datetime import datetime
+import math
 import random
 import statistics 
 import sys
@@ -71,9 +72,6 @@ def calculate_fsi_variance_correlation(data, f=None):
     log(f"P-value:      {p_value:.4f}")
     log("="*60 + "\n")
 
-
-def analyze_matchup_correlation(players_sessions):
-    pass
 
 
 def analyze_session_pity(players_sessions, output_dir=None):
@@ -179,8 +177,10 @@ def analyze_std_correlation(players_sessions, output_dir=None):
             fsi = player_sessions.get('fsi', 0)
 
             msg = f"Player: {player_sessions['tag']}     -     std_dev: {std_matchups:.2f}"
-            if f: f.write(msg + "\n")
-            else: print(msg)
+            if f: 
+                f.write(msg + "\n")
+            else: 
+                print(msg)
 
             data.append({
                 'tag': player_sessions['tag'],
@@ -191,7 +191,8 @@ def analyze_std_correlation(players_sessions, output_dir=None):
         calculate_variance_ratio(data, f)
         calculate_fsi_variance_correlation(data, f)
     finally:
-        if f: f.close()
+        if f: 
+            f.close()
 
 
 def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
@@ -235,8 +236,10 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
             # Stats per Teorico
             for m in mus:
                 total_battles += 1
-                if m > HIGH_THRESH: count_high += 1
-                elif m < LOW_THRESH: count_low += 1
+                if m > HIGH_THRESH: 
+                    count_high += 1
+                elif m < LOW_THRESH: 
+                    count_low += 1
             
             # Osservato
             if len(mus) >= STREAK_LEN:
@@ -738,7 +741,7 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
         
         f.write("-" * 80 + "\n")
         f.write("TEST STATISTICO (Mann-Whitney U):\n")
-        f.write(f"Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)\n")
+        f.write("Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)\n")
         f.write(f"U-statistic: {stat}\n")
         f.write(f"P-value:     {p_value:.4f}\n\n")
         
@@ -747,6 +750,400 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
         else:
             f.write("RISULTATO: NON SIGNIFICATIVO. Non c'è evidenza statistica sufficiente per confermare l'ipotesi.\n")
         
+        f.write("="*80 + "\n")
+
+
+def analyze_return_matchups_vs_ers(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'return_matchup_ers_results.txt')
+
+    print(f"\nGenerazione report Return Matchup vs ERS in: {output_file}")
+
+    data_points = []
+
+    for p in players_sessions:
+        tag = p['tag']
+        profile = p['profile']
+        sessions = p['sessions']
+        
+        if not profile:
+            continue
+            
+        ers = profile.get('ers')
+        if ers is None:
+            continue
+
+        return_matchups = []
+        # Itera sulle sessioni per trovare i "ritorni"
+        # Se la sessione i finisce con Long o Quit, la sessione i+1 è un "ritorno"
+        for i in range(len(sessions) - 1):
+            stop_type = sessions[i]['stop_type']
+            if stop_type in ['Long', 'Quit']:
+                # Controlla la prima battaglia della sessione successiva
+                next_session = sessions[i+1]
+                if next_session['battles']:
+                    first_b = next_session['battles'][0]
+                    if first_b['matchup'] is not None:
+                        return_matchups.append(first_b['matchup'])
+        
+        if return_matchups:
+            avg_return_mu = statistics.mean(return_matchups)
+            data_points.append({
+                'tag': tag,
+                'ers': ers,
+                'avg_return_mu': avg_return_mu,
+                'count': len(return_matchups)
+            })
+
+    if len(data_points) < 4:
+        with open(output_file, "w", encoding="utf-8") as f:
+            f.write("Dati insufficienti per l'analisi.")
+        return
+
+    # Sort by ERS
+    data_points.sort(key=lambda x: x['ers'])
+    
+    mid = len(data_points) // 2
+    low_ers = data_points[:mid]
+    high_ers = data_points[mid:]
+    
+    vals_low = [x['avg_return_mu'] for x in low_ers]
+    vals_high = [x['avg_return_mu'] for x in high_ers]
+    
+    avg_low = statistics.mean(vals_low) if vals_low else 0
+    avg_high = statistics.mean(vals_high) if vals_high else 0
+    
+    # Mann-Whitney U (High ERS > Low ERS?)
+    stat, p_value = mannwhitneyu(vals_high, vals_low, alternative='greater')
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI: ERS vs MATCHUP AL RITORNO (Dopo Long/Quit)\n")
+        f.write("Ipotesi: I giocatori con alto ERS ricevono matchup migliori quando ritornano a giocare?\n")
+        f.write("="*80 + "\n\n")
+        
+        f.write(f"Totale Giocatori: {len(data_points)}\n")
+        f.write(f"Soglia ERS (Mediana): {data_points[mid]['ers']:.3f}\n")
+        f.write("-" * 80 + "\n")
+        
+        f.write(f"{'GRUPPO':<20} | {'N':<5} | {'AVG RETURN MU':<15} | {'RANGE ERS':<20}\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"{'LOW ERS':<20} | {len(low_ers):<5} | {avg_low:<15.2f}% | {low_ers[0]['ers']:.3f} - {low_ers[-1]['ers']:.3f}\n")
+        f.write(f"{'HIGH ERS':<20} | {len(high_ers):<5} | {avg_high:<15.2f}% | {high_ers[0]['ers']:.3f} - {high_ers[-1]['ers']:.3f}\n")
+        
+        f.write("-" * 80 + "\n")
+        f.write("TEST STATISTICO (Mann-Whitney U):\n")
+        f.write(f"Ipotesi Alternativa: Return Matchup (High ERS) > Return Matchup (Low ERS)\n")
+        f.write(f"P-value: {p_value:.4f}\n")
+        f.write(f"Risultato: {'SIGNIFICATIVO (Retention EOMM Probabile)' if p_value < 0.05 else 'Non significativo'}\n")
+        
+        f.write("="*80 + "\n")
+
+
+def analyze_pity_impact_on_session_length(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'pity_impact_on_session_length.txt')
+
+    print(f"\nGenerazione report Impatto Pity su Durata Sessione in: {output_file}")
+
+    # Struttura dati: event_type -> { 'pity': [remaining_matches], 'no_pity': [remaining_matches] }
+    distributions = {
+        'Loss': {'pity': [], 'no_pity': []},
+        'Loss Streak (>=2)': {'pity': [], 'no_pity': []},
+        'Loss Streak (>=3)': {'pity': [], 'no_pity': []},
+        'Counter (Loss <40%)': {'pity': [], 'no_pity': []},
+        'Counter Streak (>=2)': {'pity': [], 'no_pity': []},
+        'Counter Streak (>=3)': {'pity': [], 'no_pity': []}
+    }
+    
+    PITY_THRESH = 60.0
+    BAD_MU_THRESH = 40.0
+
+    for p in players_sessions:
+        for session in p['sessions']:
+            battles = session['battles']
+            n_battles = len(battles)
+            if n_battles < 2: 
+                continue
+            
+            # Iteriamo fino al penultimo, perché dobbiamo guardare il "next match"
+            for i in range(n_battles - 1):
+                curr = battles[i]
+                next_b = battles[i+1]
+                
+                # Se il prossimo match non ha dati matchup, saltiamo
+                if next_b['matchup'] is None:
+                    continue
+                
+                is_next_pity = next_b['matchup'] > PITY_THRESH
+                group_key = 'pity' if is_next_pity else 'no_pity'
+                
+                # Calcolo partite rimanenti (inclusa la next_b)
+                # Se siamo a i, e lunghezza è N. i va da 0 a N-2.
+                # Remaining = (N - 1) - i. 
+                # Es: N=10. i=8 (penultimo). Next=9 (ultimo). Remaining = 1.
+                remaining = (n_battles - 1) - i
+                
+                # --- Identificazione Eventi di Rischio ---
+                
+                # 1. Loss
+                if curr['win'] == 0:
+                    distributions['Loss'][group_key].append(remaining)
+                    
+                    # Loss Streak Logic
+                    # Controlliamo se anche la precedente (i-1) era loss
+                    if i > 0 and battles[i-1]['win'] == 0:
+                        distributions['Loss Streak (>=2)'][group_key].append(remaining)
+                        
+                        if i > 1 and battles[i-2]['win'] == 0:
+                            distributions['Loss Streak (>=3)'][group_key].append(remaining)
+                    
+                    # Counter Logic (Loss + Bad Matchup)
+                    if curr['matchup'] is not None and curr['matchup'] < BAD_MU_THRESH:
+                        distributions['Counter (Loss <40%)'][group_key].append(remaining)
+                        
+                        # Counter Streak Logic
+                        if i > 0 and battles[i-1]['win'] == 0 and battles[i-1]['matchup'] is not None and battles[i-1]['matchup'] < BAD_MU_THRESH:
+                            distributions['Counter Streak (>=2)'][group_key].append(remaining)
+                            
+                            if i > 1 and battles[i-2]['win'] == 0 and battles[i-2]['matchup'] is not None and battles[i-2]['matchup'] < BAD_MU_THRESH:
+                                distributions['Counter Streak (>=3)'][group_key].append(remaining)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI IMPATTO PITY MATCH SU DURATA SESSIONE (RETENTION)\n")
+        f.write("Obiettivo: Capire se ricevere un Pity Match dopo un evento negativo estende la sessione.\n")
+        f.write(f"Definizione Pity Match: Matchup > {PITY_THRESH}%\n")
+        f.write("="*80 + "\n\n")
+        
+        for event_name, groups in distributions.items():
+            pity_vals = groups['pity']
+            nopity_vals = groups['no_pity']
+            
+            f.write(f"--- EVENTO: {event_name} ---\n")
+            if len(pity_vals) < 10 or len(nopity_vals) < 10:
+                f.write("Dati insufficienti per questo evento.\n\n")
+                continue
+                
+            avg_pity = statistics.mean(pity_vals)
+            avg_nopity = statistics.mean(nopity_vals)
+            
+            # Mann-Whitney U Test (Greater: Pity > NoPity)
+            stat, p_val = mannwhitneyu(pity_vals, nopity_vals, alternative='greater')
+            
+            f.write(f"{'Gruppo':<15} | {'N':<8} | {'Avg Remaining Matches':<25}\n")
+            f.write("-" * 55 + "\n")
+            f.write(f"{'Con Pity':<15} | {len(pity_vals):<8} | {avg_pity:<25.2f}\n")
+            f.write(f"{'Senza Pity':<15} | {len(nopity_vals):<8} | {avg_nopity:<25.2f}\n")
+            f.write("-" * 55 + "\n")
+            f.write(f"Test Mann-Whitney U (Pity > NoPity):\n")
+            f.write(f"P-value: {p_val:.4f}\n")
+            
+            if p_val < 0.05:
+                f.write("RISULTATO: SIGNIFICATIVO. Il Pity Match estende la sessione.\n")
+            else:
+                f.write("RISULTATO: NON SIGNIFICATIVO.\n")
+            f.write("\n")
+        f.write("="*80 + "\n")
+
+
+def analyze_pity_impact_on_return_time(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'pity_impact_on_return_time.txt')
+
+    print(f"\nGenerazione report Impatto Pity su Tempo di Ritorno in: {output_file}")
+
+    # Struttura dati: event_type -> { 'pity': [return_seconds], 'no_pity': [return_seconds] }
+    distributions = {
+        'Loss': {'pity': [], 'no_pity': []},
+        'Loss Streak (>=2)': {'pity': [], 'no_pity': []},
+        'Loss Streak (>=3)': {'pity': [], 'no_pity': []},
+        'Counter (Loss <40%)': {'pity': [], 'no_pity': []},
+        'Counter Streak (>=2)': {'pity': [], 'no_pity': []},
+        'Counter Streak (>=3)': {'pity': [], 'no_pity': []}
+    }
+    
+    PITY_THRESH = 60.0
+    BAD_MU_THRESH = 40.0
+
+    for p in players_sessions:
+        for session in p['sessions']:
+            # Saltiamo l'ultima sessione che non ha un tempo di ritorno definito
+            if session.get('break_duration_seconds') is None:
+                continue
+                
+            return_time = session['break_duration_seconds']
+            battles = session['battles']
+            n_battles = len(battles)
+            
+            if n_battles < 2: 
+                continue
+            
+            # Iteriamo fino al penultimo
+            for i in range(n_battles - 1):
+                curr = battles[i]
+                next_b = battles[i+1]
+                
+                if next_b['matchup'] is None:
+                    continue
+                
+                is_next_pity = next_b['matchup'] > PITY_THRESH
+                group_key = 'pity' if is_next_pity else 'no_pity'
+                
+                # --- Identificazione Eventi di Rischio ---
+                if curr['win'] == 0:
+                    distributions['Loss'][group_key].append(return_time)
+                    
+                    if i > 0 and battles[i-1]['win'] == 0:
+                        distributions['Loss Streak (>=2)'][group_key].append(return_time)
+                        
+                        if i > 1 and battles[i-2]['win'] == 0:
+                            distributions['Loss Streak (>=3)'][group_key].append(return_time)
+                    
+                    if curr['matchup'] is not None and curr['matchup'] < BAD_MU_THRESH:
+                        distributions['Counter (Loss <40%)'][group_key].append(return_time)
+                        
+                        if i > 0 and battles[i-1]['win'] == 0 and battles[i-1]['matchup'] is not None and battles[i-1]['matchup'] < BAD_MU_THRESH:
+                            distributions['Counter Streak (>=2)'][group_key].append(return_time)
+                            
+                            if i > 1 and battles[i-2]['win'] == 0 and battles[i-2]['matchup'] is not None and battles[i-2]['matchup'] < BAD_MU_THRESH:
+                                distributions['Counter Streak (>=3)'][group_key].append(return_time)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI IMPATTO PITY MATCH SU TEMPO DI RITORNO (PREVENZIONE RAGEQUIT)\n")
+        f.write("Obiettivo: Capire se ricevere un Pity Match riduce il tempo di pausa prima della sessione successiva.\n")
+        f.write(f"Definizione Pity Match: Matchup > {PITY_THRESH}%\n")
+        f.write("="*80 + "\n\n")
+        
+        for event_name, groups in distributions.items():
+            pity_vals = groups['pity']
+            nopity_vals = groups['no_pity']
+            
+            f.write(f"--- EVENTO: {event_name} ---\n")
+            if len(pity_vals) < 10 or len(nopity_vals) < 10:
+                f.write("Dati insufficienti per questo evento.\n\n")
+                continue
+            
+            # Convertiamo in ore per leggibilità
+            avg_pity = (statistics.mean(pity_vals) / 3600)
+            avg_nopity = (statistics.mean(nopity_vals) / 3600)
+            
+            # Mann-Whitney U Test (Less: Pity < NoPity -> Return Faster)
+            stat, p_val = mannwhitneyu(pity_vals, nopity_vals, alternative='less')
+            
+            f.write(f"{'Gruppo':<15} | {'N':<8} | {'Avg Return Time (Ore)':<25}\n")
+            f.write("-" * 55 + "\n")
+            f.write(f"{'Con Pity':<15} | {len(pity_vals):<8} | {avg_pity:<25.2f}\n")
+            f.write(f"{'Senza Pity':<15} | {len(nopity_vals):<8} | {avg_nopity:<25.2f}\n")
+            f.write("-" * 55 + "\n")
+            f.write(f"Test Mann-Whitney U (Pity < NoPity):\n")
+            f.write(f"P-value: {p_val:.4f}\n")
+            
+            if p_val < 0.05:
+                f.write("RISULTATO: SIGNIFICATIVO. Il Pity Match riduce il tempo di assenza (Retention).\n")
+            else:
+                f.write("RISULTATO: NON SIGNIFICATIVO.\n")
+            f.write("\n")
+        f.write("="*80 + "\n")
+
+
+def analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'churn_probability_vs_pity_results.txt')
+
+    print(f"\nGenerazione report Probabilità Churn vs Pity in: {output_file}")
+
+    # 1. Trova l'ultimo timestamp globale (approssimazione di "Oggi" nel dataset)
+    max_ts = 0
+    player_last_ts = {}
+
+    for p in players_sessions:
+        tag = p['tag']
+        sessions = p['sessions']
+        if not sessions:
+            continue
+        
+        # L'ultima sessione è l'ultima della lista
+        last_session = sessions[-1]
+        if not last_session['battles']:
+            continue
+            
+        last_battle = last_session['battles'][-1]
+        ts_str = last_battle['timestamp']
+        # Converti stringa in timestamp
+        dt = datetime.strptime(ts_str, '%Y-%m-%d %H:%M:%S')
+        ts = dt.timestamp()
+        
+        if ts > max_ts:
+            max_ts = ts
+        
+        player_last_ts[tag] = ts
+
+    # Soglia Churn: 7 giorni (in secondi)
+    CHURN_THRESHOLD = 7 * 24 * 60 * 60
+    
+    churned_pity = []
+    active_pity = []
+
+    for tag, last_ts in player_last_ts.items():
+        if tag not in matchup_stats:
+            continue
+            
+        pity_stats = matchup_stats[tag].get('pity', {})
+        pity_odds = pity_stats.get('odds_ratio')
+        
+        if pity_odds is None or math.isnan(pity_odds) or math.isinf(pity_odds):
+            continue
+            
+        is_churned = (max_ts - last_ts) > CHURN_THRESHOLD
+        
+        if is_churned:
+            churned_pity.append(pity_odds)
+        else:
+            active_pity.append(pity_odds)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI PROBABILITÀ CHURN vs PITY ODDS\n")
+        f.write("Obiettivo: Verificare se i giocatori con Pity Odds più alti hanno meno probabilità di abbandonare il gioco (Churn).\n")
+        f.write(f"Definizione Churn: Assenza > 7 giorni rispetto all'ultimo dato globale ({datetime.fromtimestamp(max_ts)}).\n")
+        f.write("="*80 + "\n\n")
+        
+        if len(churned_pity) < 5 or len(active_pity) < 5:
+            f.write(f"numero churned pity: {len(churned_pity)}\n")
+            f.write(f"numero active pity: {len(active_pity)}\n")
+            f.write("Dati insufficienti per l'analisi Churn (pochi giocatori attivi o churned nel campione).\n")
+            return
+
+        avg_churned = statistics.mean(churned_pity)
+        avg_active = statistics.mean(active_pity)
+        
+        # Mann-Whitney U Test
+        # Ipotesi Alternativa 'greater': Active Pity > Churned Pity
+        # Se significativo, significa che chi rimane attivo riceve più "aiuti" di chi se ne va.
+        stat, p_value = mannwhitneyu(active_pity, churned_pity, alternative='greater')
+        
+        f.write(f"{'GRUPPO':<20} | {'N':<5} | {'AVG PITY ODDS':<15}\n")
+        f.write("-" * 50 + "\n")
+        f.write(f"{'CHURNED (Inactive)':<20} | {len(churned_pity):<5} | {avg_churned:<15.4f}\n")
+        f.write(f"{'ACTIVE':<20} | {len(active_pity):<5} | {avg_active:<15.4f}\n")
+        
+        f.write("-" * 50 + "\n")
+        f.write("TEST STATISTICO (Mann-Whitney U):\n")
+        f.write(f"Ipotesi Alternativa: Pity Odds (Active) > Pity Odds (Churned)\n")
+        f.write(f"P-value: {p_value:.4f}\n\n")
+        
+        if p_value < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. I giocatori attivi hanno Pity Odds significativamente più alti dei giocatori che hanno abbandonato.\n")
+            f.write("INTERPRETAZIONE: Il Pity Match potrebbe essere un fattore di protezione efficace contro l'abbandono definitivo.\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. Non sembra esserci evidenza che i Pity Odds influenzino la probabilità di abbandono.\n")
+            
         f.write("="*80 + "\n")
 
 
@@ -763,6 +1160,10 @@ def main():
     analyze_confounding_factors(players_sessions)
     analyze_time_matchup_stats(players_sessions)
     analyze_deck_switch_impact(players_sessions)
+    analyze_return_matchups_vs_ers(players_sessions)
+    analyze_pity_impact_on_session_length(players_sessions)
+    analyze_pity_impact_on_return_time(players_sessions)
+    analyze_churn_probability_vs_pity(players_sessions, {}) # Placeholder per test locale
 
 if __name__ == "__main__":
     main()

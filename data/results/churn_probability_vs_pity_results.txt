@@ -1,0 +1,8 @@
+ANALISI PROBABILITÀ CHURN vs PITY ODDS
+Obiettivo: Verificare se i giocatori con Pity Odds più alti hanno meno probabilità di abbandonare il gioco (Churn).
+Definizione Churn: Assenza > 7 giorni rispetto all'ultimo dato globale (2026-01-12 22:16:21).
+================================================================================
+
+numero churned pity: 1
+numero active pity: 23
+Dati insufficienti per l'analisi Churn (pochi giocatori attivi o churned nel campione).

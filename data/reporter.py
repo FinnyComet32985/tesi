@@ -76,53 +76,59 @@ def _save_correlation_report(correlation_results, results_dir):
     with open(output_path, 'w', encoding='utf-8') as f:
         f.write(f"Analisi Correlazione eseguita il: {datetime.now()}\n")
 
-        # Gestione nuova struttura con doppio test
-        res_fsi = correlation_results.get('fsi', {})
-        res_ers = correlation_results.get('ers', {})
-        sample_size = correlation_results['sample_size']
-        details = correlation_results.get('details', [])
-        
-        log_msg = "\n" + "="*60 + "\n"
-        log_msg += " ANALISI CORRELAZIONE SPEARMAN\n"
-        log_msg += "="*60 + "\n"
-        
-        log_msg += "1. Pity Odds vs FSI (Frustration Sensitivity)\n"
-        log_msg += f"   Correlazione: {res_fsi.get('correlation', 0):.4f}\n"
-        log_msg += f"   P-value:      {res_fsi.get('p_value', 1):.4f}\n\n"
-        
-        log_msg += "2. Pity Odds vs ERS (Impulsività * exp(-FSI))\n"
-        log_msg += f"   Correlazione: {res_ers.get('correlation', 0):.4f}\n"
-        log_msg += f"   P-value:      {res_ers.get('p_value', 1):.4f}\n"
-
-        perm_p = res_ers.get('perm_p_value')
-        if perm_p is not None:
-            log_msg += f"   P-value (Shuffle 10k): {perm_p:.4f}\n"
-            if perm_p < 0.05:
-                log_msg += "   -> RISULTATO ROBUSTO (Molto improbabile sia casuale)\n"
-            else:
-                log_msg += "   -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)\n"
-
-        log_msg += f"Campione: {sample_size} giocatori\n" + "="*60
-        
-        print(log_msg)
-        f.write(log_msg + "\n")
-
-        if details:
-            # Ordina per Odds Ratio decrescente per evidenziare i casi più estremi
-            details.sort(key=lambda x: x['odds_ratio'], reverse=True)
-
-            table_header = f"\n{'='*75}\n DETTAGLIO GIOCATORI\n{'='*75}\n"
-            table_header += f"{'PLAYER TAG':<20} | {'PITY ODDS':<15} | {'FSI':<15} | {'ERS':<15}\n"
-            table_header += f"{'-'*75}"
+        for metric_type in ['pity', 'punish']:
+            res_data = correlation_results.get(metric_type)
+            if not res_data:
+                continue
+                
+            res_fsi = res_data.get('fsi', {})
+            res_ers = res_data.get('ers', {})
+            sample_size = res_data['sample_size']
+            details = res_data.get('details', [])
             
-            print(table_header)
-            f.write(table_header + "\n")
+            label = "PITY ODDS" if metric_type == 'pity' else "PUNISH ODDS"
             
-            for d in details:
-                ers_val = d.get('ers', 0)
-                line = f"{d['tag']:<20} | {d['odds_ratio']:<15.2f} | {d['fsi']:<15.2f} | {ers_val:<15.2f}"
-                print(line)
-                f.write(line + "\n")
+            log_msg = "\n" + "="*60 + "\n"
+            log_msg += f" ANALISI CORRELAZIONE SPEARMAN ({label})\n"
+            log_msg += "="*60 + "\n"
+            
+            log_msg += f"1. {label} vs FSI (Frustration Sensitivity)\n"
+            log_msg += f"   Correlazione: {res_fsi.get('correlation', 0):.4f}\n"
+            log_msg += f"   P-value:      {res_fsi.get('p_value', 1):.4f}\n\n"
+            
+            log_msg += f"2. {label} vs ERS (Impulsività * exp(-FSI))\n"
+            log_msg += f"   Correlazione: {res_ers.get('correlation', 0):.4f}\n"
+            log_msg += f"   P-value:      {res_ers.get('p_value', 1):.4f}\n"
+
+            perm_p = res_ers.get('perm_p_value')
+            if perm_p is not None:
+                log_msg += f"   P-value (Shuffle 10k): {perm_p:.4f}\n"
+                if perm_p < 0.05:
+                    log_msg += "   -> RISULTATO ROBUSTO (Molto improbabile sia casuale)\n"
+                else:
+                    log_msg += "   -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)\n"
+
+            log_msg += f"Campione: {sample_size} giocatori\n" + "="*60
+            
+            print(log_msg)
+            f.write(log_msg + "\n")
+
+            if details:
+                # Ordina per Odds Ratio decrescente per evidenziare i casi più estremi
+                details.sort(key=lambda x: x['odds_ratio'], reverse=True)
+
+                table_header = f"\n{'='*75}\n DETTAGLIO GIOCATORI ({label})\n{'='*75}\n"
+                table_header += f"{'PLAYER TAG':<20} | {'ODDS RATIO':<15} | {'FSI':<15} | {'ERS':<15}\n"
+                table_header += f"{'-'*75}"
+                
+                print(table_header)
+                f.write(table_header + "\n")
+                
+                for d in details:
+                    ers_val = d.get('ers', 0)
+                    line = f"{d['tag']:<20} | {d['odds_ratio']:<15.2f} | {d['fsi']:<15.2f} | {ers_val:<15.2f}"
+                    print(line)
+                    f.write(line + "\n")
     
     print(f"\nI risultati della correlazione sono stati salvati in: {output_path}")
 
