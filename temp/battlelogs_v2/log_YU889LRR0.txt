@@ -2246,12 +2246,36 @@
 --- SESSIONE 123 ---
 [2026-01-12 11:03:43] Ranked vs 9G9VG90PY | WIN -> 3-1 | MU: 55.5% - ΔLvl: 0.0
 [2026-01-12 11:07:23] Ranked vs YYRL9JP9 | WIN -> 1-0 | MU: 29.3% - ΔLvl: 0.25
+[2026-01-12 11:11:54] Ranked vs P00GC9G8V | WIN -> 1-0 | MU: 47.4% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 2
+   Battaglie: 3
    Win Rate: 100.0%
-   Avg Matchup: 42.4% (StdDev: 18.5%)
-   Avg Level Diff: 0.12
+   Avg Matchup: 44.1% (StdDev: 13.4%)
+   Avg Level Diff: 0.08
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 26 minuti)]
+
+--- SESSIONE 124 ---
+[2026-01-12 12:38:30] Ranked vs PYP8LVG22 | LOSE -> 1-2 | MU: 53.6% - ΔLvl: 0.12
+[2026-01-12 12:41:14] Ranked vs PLYQG02RR | WIN -> 3-0 | MU: 71.7% - ΔLvl: 0.25
+[2026-01-12 12:43:52] Ranked vs 9UQ99V88 | WIN -> 3-0 | MU: 59.7% - ΔLvl: 0.0
+[2026-01-12 12:47:16] Ranked vs 820YUCGRV | WIN -> 1-0 | MU: 46.7% - ΔLvl: 0.12
+[2026-01-12 12:51:37] Ranked vs 2J8R8Q9PC | LOSE -> 2-3 | MU: 41.1% - ΔLvl: 0.25
+[2026-01-12 12:54:51] Ranked vs V8YGY82G | WIN -> 3-1 | MU: 49.9% - ΔLvl: 0.0
+[2026-01-12 12:58:02] Ranked vs 8YCY9JCUL | WIN -> 1-0 | MU: 32.2% - ΔLvl: 0.12
+[2026-01-12 12:59:30] Ranked vs 9Q8V2RP9J | WIN -> 3-0 | MU: 72.7% - ΔLvl: 0.0
+[2026-01-12 13:02:44] Ranked vs 8LG8RC9R8 | LOSE -> 0-1 | MU: 61.3% - ΔLvl: 0.0
+[2026-01-12 13:06:31] Ranked vs YRL98P2CP | LOSE -> 0-1 | MU: 65.1% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 10
+   Win Rate: 60.0%
+   Avg Matchup: 55.4% (StdDev: 13.2%)
+   Avg Level Diff: 0.09
    Extreme Matchups: 1
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
@@ -2259,11 +2283,11 @@
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 4.85
-   Avg Win Rate: 42.8%
-   Avg Matchup: 35.7% (Avg StdDev: 5.6%)
+   Avg Battaglie/Sessione: 4.90
+   Avg Win Rate: 42.9%
+   Avg Matchup: 35.8% (Avg StdDev: 5.6%)
    Avg Level Diff: -0.11
-   Avg Extreme Matchups: 2.20
-   Avg Win % (Negative MU): 22.3%
+   Avg Extreme Matchups: 2.19
+   Avg Win % (Negative MU): 22.9%
    Avg Lose % (Positive MU): 0.0%
 ========================================

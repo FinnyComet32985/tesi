@@ -1593,14 +1593,29 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Long (11 ore, 52 minuti)]
+
+--- SESSIONE 81 ---
+[2026-01-12 12:09:10] Duel vs 8R0V2PYR | LOSE -> 1-2 | MU: null - ΔLvl: 0.5
+[2026-01-12 12:15:48] 1v1 vs YRLC2UGUJ | LOSE -> 0-1 | MU: 33.8% - ΔLvl: -1.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 6.41
-   Avg Win Rate: 49.5%
-   Avg Matchup: 41.6% (Avg StdDev: 6.6%)
+   Avg Battaglie/Sessione: 6.33
+   Avg Win Rate: 48.8%
+   Avg Matchup: 41.1% (Avg StdDev: 6.5%)
    Avg Level Diff: 0.04
-   Avg Extreme Matchups: 1.84
-   Avg Win % (Negative MU): 25.7%
+   Avg Extreme Matchups: 1.81
+   Avg Win % (Negative MU): 25.4%
    Avg Lose % (Positive MU): 1.2%
 ========================================

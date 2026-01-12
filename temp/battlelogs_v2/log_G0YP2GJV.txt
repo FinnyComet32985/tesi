@@ -1112,13 +1112,27 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (1 giorni, 1 ore, 6 minuti)]
+
+--- SESSIONE 71 ---
+[2026-01-12 12:32:28] Ladder vs VGLYRYR9J | WIN -> 1-0 | 10577 -> 10606 (+29) | MU: 58.4% - ΔLvl: 0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 58.4% (StdDev: 0.0%)
+   Avg Level Diff: 0.38
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 0.24
-   Avg Win Rate: 17.1%
-   Avg Matchup: 12.2% (Avg StdDev: 0.0%)
-   Avg Level Diff: -0.03
+   Avg Battaglie/Sessione: 0.25
+   Avg Win Rate: 18.3%
+   Avg Matchup: 12.9% (Avg StdDev: 0.0%)
+   Avg Level Diff: -0.02
    Avg Extreme Matchups: 0.01
    Avg Win % (Negative MU): 0.0%
    Avg Lose % (Positive MU): 0.0%

@@ -1506,14 +1506,28 @@
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Long (3 ore, 24 minuti)]
+
+--- SESSIONE 98 ---
+[2026-01-12 13:25:43] Ranked vs 8998RR9P | WIN -> 1-0 | MU: 60.6% - ΔLvl: 0.12
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 60.6% (StdDev: 0.0%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 1.84
-   Avg Win Rate: 48.2%
-   Avg Matchup: 48.1% (Avg StdDev: 3.9%)
+   Avg Battaglie/Sessione: 1.83
+   Avg Win Rate: 48.7%
+   Avg Matchup: 48.2% (Avg StdDev: 3.9%)
    Avg Level Diff: 0.15
    Avg Extreme Matchups: 0.27
-   Avg Win % (Negative MU): 6.9%
+   Avg Win % (Negative MU): 6.8%
    Avg Lose % (Positive MU): 0.0%
 ========================================

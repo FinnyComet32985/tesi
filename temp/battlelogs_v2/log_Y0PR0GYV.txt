@@ -1371,14 +1371,30 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Long (3 ore, 5 minuti)]
+
+--- SESSIONE 73 ---
+[2026-01-12 12:48:05] Ranked vs 890VG82QV | LOSE -> 0-1 | MU: 67.8% - ΔLvl: 0.0
+[2026-01-12 12:51:56] Ranked vs QJVYLJG | LOSE -> 0-1 | MU: 61.7% - ΔLvl: 0.12
+[2026-01-12 12:54:55] Ranked vs RCRL2PRYJ | LOSE -> 0-3 | MU: 48.3% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 0.0%
+   Avg Matchup: 59.3% (StdDev: 10.0%)
+   Avg Level Diff: 0.04
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 5.96
-   Avg Win Rate: 43.2%
-   Avg Matchup: 52.1% (Avg StdDev: 6.1%)
+   Avg Battaglie/Sessione: 5.92
+   Avg Win Rate: 42.6%
+   Avg Matchup: 52.2% (Avg StdDev: 6.2%)
    Avg Level Diff: 0.01
-   Avg Extreme Matchups: 0.54
-   Avg Win % (Negative MU): 2.0%
+   Avg Extreme Matchups: 0.53
+   Avg Win % (Negative MU): 1.9%
    Avg Lose % (Positive MU): 0.0%
 ========================================
