@@ -207,7 +207,7 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
     HIGH_THRESH = 80.0
     LOW_THRESH = 30.0
     STREAK_LEN = 3
-    NUM_SIMULATIONS = 1000
+    NUM_SIMULATIONS = 10000
 
     # Accumulatori
     total_battles = 0
@@ -1086,7 +1086,7 @@ def analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_di
         player_last_ts[tag] = ts
 
     # Soglia Churn: 7 giorni (in secondi)
-    CHURN_THRESHOLD = 7 * 24 * 60 * 60
+    CHURN_THRESHOLD = 3 * 24 * 60 * 60
     
     churned_pity = []
     active_pity = []
@@ -1152,7 +1152,7 @@ def main():
     mode_filter = 'all' 
     print(f"Esecuzione test con filtro modalità: {mode_filter}")
     
-    players_sessions = get_players_sessions(mode_filter=mode_filter)
+    players_sessions = get_players_sessions(mode_filter=mode_filter, exclude_unreliable=True)
 
     analyze_std_correlation(players_sessions)
     analyze_session_pity(players_sessions)

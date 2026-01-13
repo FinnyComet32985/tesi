@@ -35,7 +35,7 @@ def main():
 
     # Caricamento sessioni e profili tramite battlelog_v2
     # Questo assicura che le sessioni siano definite consistentemente
-    players_sessions = get_players_sessions(mode_filter='Ladder_Ranked')
+    players_sessions = get_players_sessions(mode_filter='Ladder_Ranked', exclude_unreliable=True)
 
     # Definizione cartella risultati
     results_dir = os.path.join(os.path.dirname(__file__), 'results')

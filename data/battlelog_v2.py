@@ -495,7 +495,7 @@ def format_duration(seconds):
     return ", ".join(parts) if parts else "< 1 minuto"
 
 
-def get_players_sessions(mode_filter='all'):
+def get_players_sessions(mode_filter='all', exclude_unreliable=False):
     connection, cursor, load_tags = open_connection("db/clash.db")
     tags = load_tags()
 
@@ -509,6 +509,10 @@ def get_players_sessions(mode_filter='all'):
         sessions = define_sessions(battles, trophies_history, mode_filter=mode_filter)
         
         profile = calculate_profile_from_sessions(sessions)
+        
+        if exclude_unreliable and (not profile or not profile.get('is_reliable', False)):
+            continue
+
         fsi = profile['avg_fsi'] if profile else 0
 
         players_sessions.append({
