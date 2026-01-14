@@ -35,8 +35,8 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: 2PVCYY2Y
-Coppie di sessioni: 12
-Matrice: [[0, 1], [4, 7]]
+Coppie di sessioni: 11
+Matrice: [[0, 2], [3, 6]]
 Odds Ratio: 0.0000
 P-value:    1.0000
 Risultato:  Non significativo
@@ -51,16 +51,8 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: 2RU2VCY80
-Coppie di sessioni: 20
-Matrice: [[0, 2], [12, 6]]
-Odds Ratio: 0.0000
-P-value:    1.0000
-Risultato:  Non significativo
-----------------------------------------
-
-PLAYER: 8PVC08GC
-Coppie di sessioni: 4
-Matrice: [[0, 0], [0, 4]]
+Coppie di sessioni: 5
+Matrice: [[0, 0], [5, 0]]
 Odds Ratio: nan
 P-value:    1.0000
 Risultato:  Non significativo
@@ -83,16 +75,8 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: 9JJRVRJL
-Coppie di sessioni: 13
-Matrice: [[0, 2], [4, 7]]
-Odds Ratio: 0.0000
-P-value:    1.0000
-Risultato:  Non significativo
-----------------------------------------
-
-PLAYER: CGJJVRVJ0
-Coppie di sessioni: 6
-Matrice: [[0, 3], [1, 2]]
+Coppie di sessioni: 14
+Matrice: [[0, 2], [5, 7]]
 Odds Ratio: 0.0000
 P-value:    1.0000
 Risultato:  Non significativo
@@ -106,27 +90,11 @@ P-value:    1.0000
 Risultato:  Non significativo
 ----------------------------------------
 
-PLAYER: JJYP08
-Coppie di sessioni: 42
-Matrice: [[0, 10], [2, 30]]
-Odds Ratio: 0.0000
-P-value:    1.0000
-Risultato:  Non significativo
-----------------------------------------
-
-PLAYER: JL8RPC0
-Coppie di sessioni: 21
-Matrice: [[1, 2], [3, 15]]
-Odds Ratio: 2.5000
-P-value:    0.4887
-Risultato:  Non significativo
-----------------------------------------
-
 PLAYER: JPLLR2V0V
-Coppie di sessioni: 30
-Matrice: [[1, 23], [1, 5]]
-Odds Ratio: 0.2174
-P-value:    0.9655
+Coppie di sessioni: 18
+Matrice: [[1, 14], [1, 2]]
+Odds Ratio: 0.1429
+P-value:    0.9804
 Risultato:  Non significativo
 ----------------------------------------
 
@@ -135,14 +103,6 @@ Coppie di sessioni: 32
 Matrice: [[3, 18], [1, 10]]
 Odds Ratio: 1.6667
 P-value:    0.5733
-Risultato:  Non significativo
-----------------------------------------
-
-PLAYER: JYLQC0VQ2
-Coppie di sessioni: 45
-Matrice: [[1, 9], [1, 34]]
-Odds Ratio: 3.7778
-P-value:    0.3990
 Risultato:  Non significativo
 ----------------------------------------
 
@@ -171,10 +131,10 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: POGYQQ8UC
-Coppie di sessioni: 18
-Matrice: [[2, 5], [2, 9]]
-Odds Ratio: 1.8000
-P-value:    0.5147
+Coppie di sessioni: 17
+Matrice: [[2, 4], [2, 9]]
+Odds Ratio: 2.2500
+P-value:    0.4454
 Risultato:  Non significativo
 ----------------------------------------
 
@@ -187,9 +147,9 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: PY8YG0LJR
-Coppie di sessioni: 29
-Matrice: [[0, 8], [12, 9]]
-Odds Ratio: 0.0000
+Coppie di sessioni: 10
+Matrice: [[0, 0], [8, 2]]
+Odds Ratio: nan
 P-value:    1.0000
 Risultato:  Non significativo
 ----------------------------------------
@@ -203,17 +163,17 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: R82CV2C
-Coppie di sessioni: 29
-Matrice: [[0, 16], [1, 12]]
-Odds Ratio: 0.0000
+Coppie di sessioni: 19
+Matrice: [[0, 14], [0, 5]]
+Odds Ratio: nan
 P-value:    1.0000
 Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: RP9GVG9
-Coppie di sessioni: 49
-Matrice: [[0, 2], [25, 22]]
-Odds Ratio: 0.0000
+Coppie di sessioni: 9
+Matrice: [[0, 0], [9, 0]]
+Odds Ratio: nan
 P-value:    1.0000
 Risultato:  Non significativo
 ----------------------------------------
@@ -227,10 +187,10 @@ Risultato:  Non significativo
 ----------------------------------------
 
 PLAYER: VCU8QQ98C
-Coppie di sessioni: 35
-Matrice: [[1, 21], [4, 9]]
-Odds Ratio: 0.1071
-P-value:    0.9960
+Coppie di sessioni: 31
+Matrice: [[2, 14], [4, 11]]
+Odds Ratio: 0.3929
+P-value:    0.9279
 Risultato:  Non significativo
 ----------------------------------------
 
@@ -242,25 +202,17 @@ P-value:    1.0000
 Risultato:  Non significativo
 ----------------------------------------
 
-PLAYER: Y0PR0GYV
-Coppie di sessioni: 45
-Matrice: [[1, 2], [9, 33]]
-Odds Ratio: 1.8333
-P-value:    0.5388
-Risultato:  Non significativo
-----------------------------------------
-
 PLAYER: YU889LRR0
-Coppie di sessioni: 58
-Matrice: [[1, 38], [0, 19]]
-Odds Ratio: inf
-P-value:    0.6724
+Coppie di sessioni: 29
+Matrice: [[0, 26], [0, 3]]
+Odds Ratio: nan
+P-value:    1.0000
 Risultato:  Non significativo
 ----------------------------------------
 
 ================================================================================
 RIEPILOGO:
-Totale Player Analizzati: 32
+Totale Player Analizzati: 26
 Player con P-value < 0.05: 0
 Percentuale Significativi: 0.00%
 ================================================================================

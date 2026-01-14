@@ -2,16 +2,16 @@ ANALISI: ERS vs MATCHUP AL RITORNO (Dopo Long/Quit)
 Ipotesi: I giocatori con alto ERS ricevono matchup migliori quando ritornano a giocare?
 ================================================================================
 
-Totale Giocatori: 32
+Totale Giocatori: 26
 Soglia ERS (Mediana): 0.847
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG RETURN MU   | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 16    | 48.94          % | 0.492 - 0.847
-HIGH ERS             | 16    | 52.77          % | 0.847 - 3.084
+LOW ERS              | 13    | 49.49          % | 0.438 - 0.837
+HIGH ERS             | 13    | 54.43          % | 0.847 - 2.838
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Return Matchup (High ERS) > Return Matchup (Low ERS)
-P-value: 0.1590
+P-value: 0.1525
 Risultato: Non significativo
 ================================================================================

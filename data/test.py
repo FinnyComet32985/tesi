@@ -211,7 +211,7 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
     HIGH_THRESH = 80.0
     LOW_THRESH = 30.0
     STREAK_LEN = 3
-    NUM_SIMULATIONS = 1000
+    NUM_SIMULATIONS = 10000
 
     # Accumulatori
     total_battles = 0

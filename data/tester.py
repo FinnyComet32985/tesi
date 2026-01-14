@@ -14,6 +14,7 @@ from ragequit_and_odds import ragequit_and_odds_correlation
 from test_indipendenza import get_chi2_independence_stats
 from test_gatekeeping import get_gatekeeping_stats # Importazione nuovo test
 from reporter import generate_report
+from test_veloci import analyze_pity_odds_vs_total_matches, analyze_pity_odds_vs_current_trophies
 from test import (
     analyze_std_correlation,
     analyze_session_pity,
@@ -33,9 +34,11 @@ def main():
     
     tags = load_tags()
 
+    mode_filter = 'Ladder'
+
     # Caricamento sessioni e profili tramite battlelog_v2
     # Questo assicura che le sessioni siano definite consistentemente
-    players_sessions = get_players_sessions(mode_filter='Ladder_Ranked', exclude_unreliable=True)
+    players_sessions = get_players_sessions(mode_filter, exclude_unreliable=True)
 
     # Definizione cartella risultati
     results_dir = os.path.join(os.path.dirname(__file__), 'results')
@@ -75,6 +78,11 @@ def main():
     analyze_pity_impact_on_session_length(players_sessions, output_dir=results_dir)
     analyze_pity_impact_on_return_time(players_sessions, output_dir=results_dir)
     analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_dir=results_dir)
+
+    # --- TEST VELOCI ---
+    analyze_pity_odds_vs_total_matches(profiles, matchup_stats)
+    if mode_filter == 'Ladder':
+        analyze_pity_odds_vs_current_trophies(profiles, matchup_stats, cursor)
 
     print("Processo di report completato.")
 
