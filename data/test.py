@@ -2,7 +2,6 @@ from datetime import datetime
 import math
 import random
 import statistics 
-import sys
 import os
 import numpy as np
 from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu
@@ -10,10 +9,13 @@ from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, leve
 # Import data loader from battlelog_v2
 from battlelog_v2 import get_players_sessions
 
+
 def calculate_variance_ratio(data, f=None):
     def log(msg):
-        if f: f.write(msg + "\n")
-        else: print(msg)
+        if f:
+            f.write(msg + "\n")
+        else: 
+            print(msg)
 
     low_fsi_variances = []
     high_fsi_variances = []
@@ -47,11 +49,12 @@ def calculate_variance_ratio(data, f=None):
         log("RAPPORTO: N/A (Varianza Low = 0)")
     log("="*60 + "\n")
 
-
 def calculate_fsi_variance_correlation(data, f=None):
     def log(msg):
-        if f: f.write(msg + "\n")
-        else: print(msg)
+        if f: 
+            f.write(msg + "\n")
+        else: 
+            print(msg)
 
     log("\n" + "="*60)
     log(" CORRELAZIONE SPEARMAN: FSI vs VARIANZA")
@@ -174,7 +177,8 @@ def analyze_std_correlation(players_sessions, output_dir=None):
 
             avg_matchup = [s['analysis']['avg_matchup'] for s in long_sessions]
             std_matchups = statistics.stdev(avg_matchup)
-            fsi = player_sessions.get('fsi', 0)
+            profile = player_sessions.get('profile')
+            fsi = profile.get('avg_fsi', 0) if profile else 0
 
             msg = f"Player: {player_sessions['tag']}     -     std_dev: {std_matchups:.2f}"
             if f: 

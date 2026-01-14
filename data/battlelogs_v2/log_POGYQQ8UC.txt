@@ -1518,14 +1518,61 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (1 giorni, 23 ore, 18 minuti)]
+
+--- SESSIONE 85 ---
+[2026-01-13 15:36:27] 1v1 vs L0RVJUV99 | WIN -> 1-0 | MU: 87.8% - ΔLvl: 0.5
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (6 ore, 8 minuti)]
+
+--- SESSIONE 86 ---
+[2026-01-13 21:45:04] 1v1 vs ULC0YPPR | LOSE -> 0-1 | MU: 34.6% - ΔLvl: -0.88
+[2026-01-13 21:48:51] Ladder vs 20892PU9YC | WIN -> 1-0 | 11129 -> 11159 (+30) | MU: 69.2% - ΔLvl: 0.75
+[2026-01-13 21:53:10] 1v1 Showdown vs 2RJRGGCCY | LOSE -> 0-1 | MU: 66.9% - ΔLvl: 0.0
+[2026-01-13 21:59:09] Ladder vs Q8LQYYYVV | WIN -> 1-0 | 11159 -> 11190 (+31) | MU: 50.4% - ΔLvl: 1.0
+[2026-01-13 22:04:17] 1v1 Showdown vs PRLQ899GV | WIN -> 1-0 | MU: 49.2% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 100.0%
+   Avg Matchup: 59.8% (StdDev: 13.3%)
+   Avg Level Diff: 0.43
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (10 ore, 11 minuti)]
+
+--- SESSIONE 87 ---
+[2026-01-14 08:15:56] 1v1 Showdown vs PV02LRJR | LOSE -> 0-3 | MU: 40.7% - ΔLvl: 0.0
+[2026-01-14 08:30:32] 1v1 Showdown vs 89U80GV8P | LOSE -> 0-1 | MU: 51.6% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 2.27
-   Avg Win Rate: 24.3%
+   Avg Battaglie/Sessione: 2.22
+   Avg Win Rate: 24.6%
    Avg Matchup: 20.5% (Avg StdDev: 3.9%)
    Avg Level Diff: 0.05
-   Avg Extreme Matchups: 0.98
-   Avg Win % (Negative MU): 11.2%
+   Avg Extreme Matchups: 0.94
+   Avg Win % (Negative MU): 10.8%
    Avg Lose % (Positive MU): 0.0%
 ========================================

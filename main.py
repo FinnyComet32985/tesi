@@ -1,4 +1,3 @@
-from json import load
 import logging
 from utils.connection import open_connection, close_connection
 from player_updater import update_player_profile

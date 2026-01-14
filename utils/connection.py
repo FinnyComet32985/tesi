@@ -26,7 +26,7 @@ def close_connection(connection):
 def load_tags() -> list:
     """Carica i TAG dei giocatori dal database."""
     try:
-        CURSOR.execute("SELECT player_tag FROM players -- WHERE player_tag IS NOT 'YVQJ8CVV'")
+        CURSOR.execute("SELECT player_tag FROM players -- WHERE player_name IS NULL")
         rows = CURSOR.fetchall()
         return [row[0] for row in rows]
     except Exception as e:

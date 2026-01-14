@@ -732,14 +732,28 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Long (7 ore, 2 minuti)]
+
+--- SESSIONE 51 ---
+[2026-01-12 22:37:19] Ladder vs Q8LRPQQ2J | LOSE -> 0-3 | 9568 -> 9538 (-30) | MU: 38.0% - ΔLvl: -0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 38.0% (StdDev: 0.0%)
+   Avg Level Diff: -0.38
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 1.60
-   Avg Win Rate: 39.1%
-   Avg Matchup: 33.4% (Avg StdDev: 6.4%)
+   Avg Battaglie/Sessione: 1.59
+   Avg Win Rate: 38.3%
+   Avg Matchup: 33.5% (Avg StdDev: 6.3%)
    Avg Level Diff: -0.32
    Avg Extreme Matchups: 0.96
-   Avg Win % (Negative MU): 22.7%
+   Avg Win % (Negative MU): 22.2%
    Avg Lose % (Positive MU): 0.0%
 ========================================

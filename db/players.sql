@@ -36,7 +36,7 @@ insert or ignore into players(player_tag) values
 ('20QU8VLGU8'), -- GALATASARAY FC
 ('J92L2CU0Q'), -- TrBaro
 ('JJYP08'), -- GRAX
--- nuovi
+-- nuovi inactive
 ('JYLQC0VQ2'), -- MIKY!!¥¥007
 ('J0L9GQCL'), -- Slava Ukrani!
 ('28LQ8Y2V'), -- mutante
@@ -50,4 +50,32 @@ insert or ignore into players(player_tag) values
 ('29YQ0V9JC'),
 ('VPVLJQCGG'),
 ('VLVCQ2LQ2'),
-('RLCGLJUJG');
+('RLCGLJUJG'),
+-- nuovi active
+('8PVC08GC'),
+('Y9VQJVU08'),
+('89Y9PGL28'),
+('P8YJL0Y0'),
+('CLUYL0JV9'),
+('C2JGVP99G'),
+('2URPJVGLJ'),
+('UJLG2Q0'),
+('UJ0L0RLVJ'),
+('CYUU2C8CC'),
+('YGPVUYJVR'),
+('CUGJJP9JL'),
+('9C28GG0Y'),
+('VR9C8YC'),
+('VPJUGG8Y8'),
+('V9VPPPQL9'),
+('20UV9C0CL'),
+('8JCU0GJRR'),
+('P2RVYJ2UY'),
+('PQR0UUJYL'),
+('CJVRQ8LGU'),
+-- cont creat
+('20QG9YJ'),
+('R02GVLURG'),
+('JV0V80UV'),
+('8YQU0GCPC'),
+('JL8RPC0');

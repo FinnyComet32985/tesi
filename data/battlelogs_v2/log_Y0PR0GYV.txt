@@ -1406,14 +1406,65 @@
    Win % (Negative MU <40%): 50.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (22 ore, 50 minuti)]
+
+--- SESSIONE 75 ---
+[2026-01-13 13:16:52] Ranked vs PVVPUUC2R | LOSE -> 0-1 | MU: 52.5% - ΔLvl: 0.0
+[2026-01-13 13:19:20] Ranked vs QVGR9CU | LOSE -> 0-3 | MU: 70.3% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 0.0%
+   Avg Matchup: 61.4% (StdDev: 12.6%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (21 minuti)]
+
+--- SESSIONE 76 ---
+[2026-01-13 13:41:08] Ranked vs 9L22Q8JG | WIN -> 2-0 | MU: 53.2% - ΔLvl: 0.12
+[2026-01-13 13:46:08] Ranked vs 2J8920CG0 | LOSE -> 0-1 | MU: 51.7% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 50.0%
+   Avg Matchup: 52.4% (StdDev: 1.1%)
+   Avg Level Diff: 0.06
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (16 ore, 48 minuti)]
+
+--- SESSIONE 77 ---
+[2026-01-14 06:35:02] Ranked vs 288RU9QJ9 | WIN -> 1-0 | MU: 55.3% - ΔLvl: 0.0
+[2026-01-14 06:40:37] Ranked vs 82GP9PCC2 | WIN -> 1-0 | MU: 55.8% - ΔLvl: 0.0
+[2026-01-14 06:44:00] Ranked vs RGJPUY2C | WIN -> 1-0 | MU: 63.6% - ΔLvl: 0.0
+[2026-01-14 06:48:42] Ranked vs YUVYRPGL | LOSE -> 0-1 | MU: 36.6% - ΔLvl: 0.0
+[2026-01-14 06:53:49] Ranked vs 29GCR0V9 | WIN -> 1-0 | MU: 68.5% - ΔLvl: 0.0
+[2026-01-14 06:57:16] Ranked vs 9YV8UJCR | LOSE -> 0-1 | MU: 57.0% - ΔLvl: 0.0
+[2026-01-14 07:00:31] Ranked vs CCPVGYY9V | LOSE -> 0-1 | MU: 51.3% - ΔLvl: 0.0
+[2026-01-14 07:03:48] Ranked vs PRGGLRL90 | LOSE -> 0-1 | MU: 65.8% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 8
+   Win Rate: 50.0%
+   Avg Matchup: 56.7% (StdDev: 10.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 5.92
-   Avg Win Rate: 42.3%
-   Avg Matchup: 52.1% (Avg StdDev: 6.3%)
+   Avg Battaglie/Sessione: 5.84
+   Avg Win Rate: 41.9%
+   Avg Matchup: 52.3% (Avg StdDev: 6.4%)
    Avg Level Diff: 0.01
    Avg Extreme Matchups: 0.55
-   Avg Win % (Negative MU): 2.6%
+   Avg Win % (Negative MU): 2.5%
    Avg Lose % (Positive MU): 0.0%
 ========================================

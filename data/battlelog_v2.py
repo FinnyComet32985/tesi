@@ -513,16 +513,11 @@ def get_players_sessions(mode_filter='all', exclude_unreliable=False):
         if exclude_unreliable and (not profile or not profile.get('is_reliable', False)):
             continue
 
-        fsi = profile['avg_fsi'] if profile else 0
-
         players_sessions.append({
             'tag': tag,
             'sessions': sessions,
-            'profile': profile,
-            'fsi': fsi
+            'profile': profile
         })
-
-        
     
     close_connection(connection)
     return players_sessions

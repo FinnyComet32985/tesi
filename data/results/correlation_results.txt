@@ -1,18 +1,18 @@
-Analisi Correlazione eseguita il: 2026-01-13 17:21:13.931025
+Analisi Correlazione eseguita il: 2026-01-14 12:47:19.258048
 
 ============================================================
  ANALISI CORRELAZIONE SPEARMAN (PITY ODDS)
 ============================================================
 1. PITY ODDS vs FSI (Frustration Sensitivity)
-   Correlazione: -0.1993
-   P-value:      0.3618
+   Correlazione: -0.1686
+   P-value:      0.4204
 
 2. PITY ODDS vs ERS (Impulsività * exp(-FSI))
-   Correlazione: 0.5329
-   P-value:      0.0088
-   P-value (Shuffle 10k): 0.0079
+   Correlazione: 0.5160
+   P-value:      0.0083
+   P-value (Shuffle 10k): 0.0102
    -> RISULTATO ROBUSTO (Molto improbabile sia casuale)
-Campione: 23 giocatori
+Campione: 25 giocatori
 ============================================================
 
 ===========================================================================
@@ -20,26 +20,28 @@ Campione: 23 giocatori
 ===========================================================================
 PLAYER TAG           | ODDS RATIO      | FSI             | ERS            
 ---------------------------------------------------------------------------
-2PVCYY2Y             | 3.56            | 0.77            | 1.27           
-LJ9JU0CQU            | 3.33            | 0.98            | 0.69           
-POGYQQ8UC            | 1.35            | 0.34            | 1.30           
-P9QQ0CL2             | 1.24            | 0.20            | 1.78           
-20CCVVLUP0           | 1.20            | 0.20            | 0.72           
-RP9GVG9              | 1.19            | 0.17            | 1.60           
-JYLQC0VQ2            | 1.10            | 0.28            | 1.10           
-20JGRJGY2Q           | 1.04            | 0.72            | 0.89           
+2PVCYY2Y             | 3.62            | 0.75            | 1.28           
+LJ9JU0CQU            | 2.20            | 1.00            | 0.67           
+POGYQQ8UC            | 1.35            | 0.36            | 1.27           
+20CCVVLUP0           | 1.30            | 0.19            | 0.71           
+P9QQ0CL2             | 1.24            | 0.21            | 1.68           
+JYLQC0VQ2            | 1.18            | 0.27            | 1.10           
+20JGRJGY2Q           | 1.04            | 0.78            | 0.89           
+RP9GVG9              | 1.02            | 0.16            | 1.61           
 8YGG82QR2            | 0.90            | 0.56            | 1.15           
-JJYP08               | 0.89            | 0.18            | 1.44           
-QJU20YUL             | 0.79            | 0.35            | 1.17           
-JPLLR2V0V            | 0.78            | 0.17            | 0.70           
-Y0PR0GYV             | 0.65            | 0.24            | 0.97           
-9988CY9C             | 0.60            | 0.35            | 1.04           
-VCU8QQ98C            | 0.45            | 0.11            | 0.76           
-20GLGG298R           | 0.00            | 0.55            | 0.79           
-2Q0JU0RR             | 0.00            | 0.42            | 0.79           
-2RU2VCY80            | 0.00            | 1.49            | 0.48           
-JPYQPY8Y0            | 0.00            | 0.70            | 0.61           
-PQVYL0VJJ            | 0.00            | 0.84            | 0.67           
+JJYP08               | 0.90            | 0.18            | 1.44           
+JL8RPC0              | 0.88            | 0.21            | 3.08           
+QJU20YUL             | 0.79            | 0.36            | 1.15           
+Y0PR0GYV             | 0.64            | 0.24            | 0.98           
+9988CY9C             | 0.63            | 0.36            | 1.04           
+JPLLR2V0V            | 0.53            | 0.17            | 0.71           
+VCU8QQ98C            | 0.44            | 0.12            | 0.77           
+20GLGG298R           | 0.00            | 0.52            | 0.81           
+2Q0JU0RR             | 0.00            | 0.35            | 0.85           
+2RU2VCY80            | 0.00            | 1.43            | 0.49           
+8PVC08GC             | 0.00            | 0.71            | 0.87           
+JPYQPY8Y0            | 0.00            | 0.70            | 0.62           
+PQVYL0VJJ            | 0.00            | 0.82            | 0.66           
 PY8YG0LJR            | 0.00            | 0.32            | 0.85           
 VYURQLR00            | 0.00            | 0.90            | 0.71           
 YU889LRR0            | 0.00            | 0.30            | 1.13           
@@ -48,15 +50,15 @@ YU889LRR0            | 0.00            | 0.30            | 1.13
  ANALISI CORRELAZIONE SPEARMAN (PUNISH ODDS)
 ============================================================
 1. PUNISH ODDS vs FSI (Frustration Sensitivity)
-   Correlazione: -0.3791
-   P-value:      0.0562
+   Correlazione: -0.2868
+   P-value:      0.1244
 
 2. PUNISH ODDS vs ERS (Impulsività * exp(-FSI))
-   Correlazione: 0.2089
-   P-value:      0.3057
-   P-value (Shuffle 10k): 0.2981
+   Correlazione: 0.1910
+   P-value:      0.3120
+   P-value (Shuffle 10k): 0.3158
    -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)
-Campione: 26 giocatori
+Campione: 30 giocatori
 ============================================================
 
 ===========================================================================
@@ -64,29 +66,33 @@ Campione: 26 giocatori
 ===========================================================================
 PLAYER TAG           | ODDS RATIO      | FSI             | ERS            
 ---------------------------------------------------------------------------
-2Q0JU0RR             | 3.38            | 0.42            | 0.79           
-POGYQQ8UC            | 2.73            | 0.34            | 1.30           
-P9QQ0CL2             | 2.67            | 0.20            | 1.78           
-VCU8QQ98C            | 1.67            | 0.11            | 0.76           
+JYRRRVVJJ            | 18.00           | 1.34            | 0.70           
+POGYQQ8UC            | 2.73            | 0.36            | 1.27           
+P9QQ0CL2             | 2.67            | 0.21            | 1.68           
+2Q0JU0RR             | 2.25            | 0.35            | 0.85           
+VCU8QQ98C            | 1.89            | 0.12            | 0.77           
 8YGG82QR2            | 1.60            | 0.56            | 1.15           
-20CCVVLUP0           | 1.41            | 0.20            | 0.72           
-R82CV2C              | 1.29            | 0.63            | 0.72           
+R82CV2C              | 1.38            | 0.63            | 0.72           
+20CCVVLUP0           | 1.37            | 0.19            | 0.71           
 YU889LRR0            | 1.20            | 0.30            | 1.13           
-JYLQC0VQ2            | 0.86            | 0.28            | 1.10           
-JJYP08               | 0.85            | 0.18            | 1.44           
-9988CY9C             | 0.78            | 0.35            | 1.04           
-20GLGG298R           | 0.70            | 0.55            | 0.79           
+20QG9YJ              | 1.09            | 1.18            | 0.66           
+8PVC08GC             | 1.00            | 0.71            | 0.87           
+Y0PR0GYV             | 0.98            | 0.24            | 0.98           
+JL8RPC0              | 0.85            | 0.21            | 3.08           
+JYLQC0VQ2            | 0.82            | 0.27            | 1.10           
+JJYP08               | 0.80            | 0.18            | 1.44           
+9JJRVRJL             | 0.79            | 0.71            | 0.83           
+9988CY9C             | 0.73            | 0.36            | 1.04           
+JPYQPY8Y0            | 0.67            | 0.70            | 0.62           
 PY8YG0LJR            | 0.63            | 0.32            | 0.85           
-CGJJVRVJ0            | 0.62            | 1.35            | 0.60           
-2RU2VCY80            | 0.60            | 1.49            | 0.48           
-20JGRJGY2Q           | 0.59            | 0.72            | 0.89           
-LJ9JU0CQU            | 0.50            | 0.98            | 0.69           
-J92L2CU0Q            | 0.49            | 0.50            | 0.72           
-JPYQPY8Y0            | 0.48            | 0.70            | 0.61           
-2PVCYY2Y             | 0.38            | 0.77            | 1.27           
+20GLGG298R           | 0.62            | 0.52            | 0.81           
+2RU2VCY80            | 0.60            | 1.43            | 0.49           
+20JGRJGY2Q           | 0.59            | 0.78            | 0.89           
+CGJJVRVJ0            | 0.42            | 1.64            | 0.49           
+J92L2CU0Q            | 0.42            | 0.45            | 0.69           
+2PVCYY2Y             | 0.36            | 0.75            | 1.28           
 VYURQLR00            | 0.24            | 0.90            | 0.71           
-9JJRVRJL             | 0.00            | 0.80            | 0.76           
-PQVYL0VJJ            | 0.00            | 0.84            | 0.67           
-QJU20YUL             | 0.00            | 0.35            | 1.17           
-RP9GVG9              | 0.00            | 0.17            | 1.60           
-Y0PR0GYV             | 0.00            | 0.24            | 0.97           
+LJ9JU0CQU            | 0.20            | 1.00            | 0.67           
+PQVYL0VJJ            | 0.00            | 0.82            | 0.66           
+QJU20YUL             | 0.00            | 0.36            | 1.15           
+RP9GVG9              | 0.00            | 0.16            | 1.61           

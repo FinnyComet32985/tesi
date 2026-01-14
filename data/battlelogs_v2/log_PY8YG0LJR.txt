@@ -947,14 +947,28 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (1 giorni, 13 ore, 25 minuti)]
+
+--- SESSIONE 59 ---
+[2026-01-12 21:45:38] 1v1 Battle vs VL2U9L8YR | WIN -> 1-0 | MU: 50.3% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 3.02
-   Avg Win Rate: 33.2%
-   Avg Matchup: 39.6% (Avg StdDev: 7.3%)
-   Avg Level Diff: 0.14
-   Avg Extreme Matchups: 0.93
-   Avg Win % (Negative MU): 12.8%
+   Avg Battaglie/Sessione: 2.97
+   Avg Win Rate: 32.7%
+   Avg Matchup: 38.9% (Avg StdDev: 7.2%)
+   Avg Level Diff: 0.13
+   Avg Extreme Matchups: 0.92
+   Avg Win % (Negative MU): 12.6%
    Avg Lose % (Positive MU): 1.1%
 ========================================

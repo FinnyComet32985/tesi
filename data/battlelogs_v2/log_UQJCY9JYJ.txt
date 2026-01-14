@@ -473,14 +473,29 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (22 ore, 7 minuti)]
+
+--- SESSIONE 31 ---
+[2026-01-13 13:00:56] Duel vs G0L0RYQ2Y | LOSE -> 0-2 | MU: null - ΔLvl: -2.38
+[2026-01-13 13:02:40] Sudden Death Battle vs GC9CPVGC2 | LOSE -> 0-1 | MU: 11.4% - ΔLvl: -0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 2.33
-   Avg Win Rate: 49.8%
-   Avg Matchup: 59.3% (Avg StdDev: 4.4%)
-   Avg Level Diff: 1.14
-   Avg Extreme Matchups: 1.03
+   Avg Battaglie/Sessione: 2.26
+   Avg Win Rate: 48.2%
+   Avg Matchup: 57.4% (Avg StdDev: 4.2%)
+   Avg Level Diff: 1.10
+   Avg Extreme Matchups: 1.00
    Avg Win % (Negative MU): 0.0%
-   Avg Lose % (Positive MU): 10.4%
+   Avg Lose % (Positive MU): 10.1%
 ========================================

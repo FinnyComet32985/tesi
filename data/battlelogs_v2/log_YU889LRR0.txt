@@ -2280,14 +2280,42 @@
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (21 ore, 52 minuti)]
+
+--- SESSIONE 125 ---
+[2026-01-13 10:58:43] Ranked vs 9LL9GU29P | WIN -> 2-1 | MU: 45.7% - ΔLvl: 0.12
+[2026-01-13 11:02:36] Ranked vs 8Q2L9VRCR | WIN -> 1-0 | MU: 43.3% - ΔLvl: 0.0
+[2026-01-13 11:06:25] Ranked vs 2U8VVY8YU | WIN -> 1-0 | MU: 57.0% - ΔLvl: 0.0
+[2026-01-13 11:14:09] Ranked vs 8VRU9R80 | LOSE -> 0-1 | MU: 51.6% - ΔLvl: 0.12
+[2026-01-13 11:19:13] Ranked vs YLYY0V2G9 | WIN -> 2-1 | MU: 54.3% - ΔLvl: 0.0
+[2026-01-13 11:22:30] Ranked vs 2PV9LU0YL | LOSE -> 0-2 | MU: 43.0% - ΔLvl: 0.0
+[2026-01-13 11:23:43] Ranked vs 22UGGQQCQ | WIN -> 3-0 | MU: 63.2% - ΔLvl: 0.0
+[2026-01-13 11:25:55] Ranked vs JLYVRY0C | WIN -> 3-0 | MU: 48.2% - ΔLvl: 0.0
+[2026-01-13 11:29:12] Ranked vs GRYUQU20U | WIN -> 1-0 | MU: 54.7% - ΔLvl: 0.0
+[2026-01-13 11:32:27] Ranked vs 90UPL2GQ9 | LOSE -> 1-2 | MU: 52.3% - ΔLvl: 0.0
+[2026-01-13 11:35:22] Ranked vs VRUC9UP99 | WIN -> 3-2 | MU: 64.0% - ΔLvl: 0.0
+[2026-01-13 11:38:40] Ranked vs 2QUGL9YP0 | WIN -> 3-1 | MU: 68.6% - ΔLvl: 0.0
+[2026-01-13 11:42:19] Ranked vs UC9QP8JY9 | WIN -> 1-0 | MU: 29.6% - ΔLvl: 0.0
+[2026-01-13 11:48:15] Ranked vs QU8J0GYLV | LOSE -> 0-1 | MU: 52.2% - ΔLvl: 0.12
+[2026-01-13 11:51:43] Ranked vs C2GP9JYQ | LOSE -> 1-2 | MU: 43.3% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 15
+   Win Rate: 66.7%
+   Avg Matchup: 51.4% (StdDev: 9.9%)
+   Avg Level Diff: 0.02
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 4.90
-   Avg Win Rate: 42.9%
-   Avg Matchup: 35.8% (Avg StdDev: 5.6%)
+   Avg Battaglie/Sessione: 4.98
+   Avg Win Rate: 43.1%
+   Avg Matchup: 35.9% (Avg StdDev: 5.6%)
    Avg Level Diff: -0.11
-   Avg Extreme Matchups: 2.19
-   Avg Win % (Negative MU): 22.9%
+   Avg Extreme Matchups: 2.18
+   Avg Win % (Negative MU): 23.6%
    Avg Lose % (Positive MU): 0.0%
 ========================================

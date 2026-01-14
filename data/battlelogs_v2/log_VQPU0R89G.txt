@@ -381,14 +381,60 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (2 giorni, 4 ore, 34 minuti)]
+
+--- SESSIONE 21 ---
+[2026-01-12 20:24:14] Ladder vs CVL2L98PY | WIN -> 1-0 | 6933 -> 6961 (+28) | MU: 82.0% - ΔLvl: 0.88
+[2026-01-12 20:30:50] Ladder vs VLGVGJY92 | WIN -> 1-0 | 6961 -> 7000 (+39) | MU: 75.1% - ΔLvl: -0.38
+[2026-01-12 20:35:15] Ladder vs UCP2J8VUL | WIN -> 1-0 | 7000 -> 7030 (+30) | MU: 97.9% - ΔLvl: 2.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 100.0%
+   Avg Matchup: 85.0% (StdDev: 11.7%)
+   Avg Level Diff: 0.83
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (9 ore, 51 minuti)]
+
+--- SESSIONE 22 ---
+[2026-01-13 06:26:55] Triple Draft vs 202890CQPV | LOSE -> 1-3 | MU: 52.9% - ΔLvl: 0.0
+[2026-01-13 06:31:52] Triple Draft vs 202890CQPV | LOSE -> 1-3 | MU: 53.0% - ΔLvl: 0.0
+[2026-01-13 06:36:05] Draft Battle vs 202890CQPV | WIN -> 2-1 | MU: 50.8% - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (12 ore, 10 minuti)]
+
+--- SESSIONE 23 ---
+[2026-01-13 18:46:43] Ladder vs V8RRQ9VQJ | WIN -> 1-0 | 7030 -> 7056 (+26) | MU: 67.2% - ΔLvl: 0.62
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 67.2% (StdDev: 0.0%)
+   Avg Level Diff: 0.62
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 2.20
-   Avg Win Rate: 39.7%
-   Avg Matchup: 37.9% (Avg StdDev: 8.2%)
-   Avg Level Diff: 0.19
+   Avg Battaglie/Sessione: 2.09
+   Avg Win Rate: 43.2%
+   Avg Matchup: 39.6% (Avg StdDev: 7.6%)
+   Avg Level Diff: 0.23
    Avg Extreme Matchups: 0.70
-   Avg Win % (Negative MU): 5.0%
-   Avg Lose % (Positive MU): 7.5%
+   Avg Win % (Negative MU): 4.3%
+   Avg Lose % (Positive MU): 6.5%
 ========================================

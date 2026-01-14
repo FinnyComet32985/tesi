@@ -147,7 +147,9 @@ def _save_chi2_report(chi2_results, results_dir):
             f.write(f"\n\n{'#'*60}\n# PLAYER: {tag}\n{'#'*60}\n")
             f.write(f"Statistica Chi-Quadro: {res['chi2_stat']:.4f}\n")
             f.write(f"Valore Critico (95%):  {res['critical_value']:.4f}\n")
-            f.write(f"P-value:               {res['p_value']:.4f}\n")
+            f.write(f"P-value:               {res['p_value']:.4f} ({res.get('method', 'Asymptotic')})\n")
+            if res.get('low_expected', False):
+                f.write("WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)\n")
             f.write(f"Risultato:             {'DIPENDENZA SIGNIFICATIVA' if res['significant'] else 'Indipendenza (Nulla non rifiutata)'}\n")
             
             f.write("\n")

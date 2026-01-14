@@ -773,14 +773,30 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Quit (1 giorni, 2 ore, 56 minuti)]
+
+--- SESSIONE 44 ---
+[2026-01-13 11:26:38] Ladder vs GRCYY88 | WIN -> 1-0 | 11298 -> 11329 (+31) | MU: 61.3% - ΔLvl: 0.5
+[2026-01-13 11:29:47] Ladder vs LYC2009J | LOSE -> 0-1 | 11329 -> 11301 (-28) | MU: 50.4% - ΔLvl: 0.25
+[2026-01-13 11:33:00] Ladder vs 2J0PL9QUY | LOSE -> 0-1 | 11301 -> 11271 (-30) | MU: 55.9% - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 33.3%
+   Avg Matchup: 55.9% (StdDev: 5.5%)
+   Avg Level Diff: 0.33
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 3.67
-   Avg Win Rate: 50.2%
-   Avg Matchup: 45.0% (Avg StdDev: 7.3%)
+   Avg Battaglie/Sessione: 3.66
+   Avg Win Rate: 49.8%
+   Avg Matchup: 45.2% (Avg StdDev: 7.2%)
    Avg Level Diff: 0.51
-   Avg Extreme Matchups: 0.63
-   Avg Win % (Negative MU): 7.8%
+   Avg Extreme Matchups: 0.61
+   Avg Win % (Negative MU): 7.6%
    Avg Lose % (Positive MU): 0.0%
 ========================================

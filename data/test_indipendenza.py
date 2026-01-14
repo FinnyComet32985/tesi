@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 from scipy.stats import chi2_contingency, chi2
 
 def get_streak_category(streak_count: int, threshold: int = 2) -> str:
@@ -90,6 +91,44 @@ def _calculate_chi2(data):
         
         expected_df = pd.DataFrame(expected, index=contingency_table.index, columns=contingency_table.columns)
 
+                # --- Analisi Robustezza (Monte Carlo) ---
+        low_expected = (expected < 5).any()
+        method = "Asymptotic"
+        
+        # Se ci sono celle con pochi dati o il p-value è interessante (< 0.10), usiamo Monte Carlo
+        if low_expected or p_value < 0.10:
+            method = "Monte Carlo (10k)"
+            n_sims = 10000
+            
+            # Preparazione dati per numpy (più veloce di pandas nel loop)
+            s_vals = df['Streak'].values
+            m_vals = df['Matchup'].values
+            
+            # Mappatura categorie -> interi (ordinati come in crosstab/unique)
+            s_cats = np.sort(df['Streak'].unique())
+            m_cats = np.sort(df['Matchup'].unique())
+            s_map = {cat: i for i, cat in enumerate(s_cats)}
+            m_map = {cat: i for i, cat in enumerate(m_cats)}
+            
+            s_int = np.array([s_map[x] for x in s_vals])
+            m_int = np.array([m_map[x] for x in m_vals])
+            
+            # Calcolo Monte Carlo
+            # La matrice Expected è costante sotto permutazione di una colonna
+            valid_mask = expected > 0
+            E_valid = expected[valid_mask]
+            better_count = 0
+            
+            for _ in range(n_sims):
+                np.random.shuffle(m_int)
+                O_sim, _, _ = np.histogram2d(s_int, m_int, bins=[len(s_cats), len(m_cats)], range=[[0, len(s_cats)], [0, len(m_cats)]])
+                chi2_sim = np.sum((O_sim[valid_mask] - E_valid)**2 / E_valid)
+                if chi2_sim >= chi2_stat:
+                    better_count += 1
+            
+            p_value = (better_count + 1) / (n_sims + 1)
+
+
         return {
             "chi2_stat": chi2_stat,
             "p_value": p_value,
@@ -97,7 +136,9 @@ def _calculate_chi2(data):
             "critical_value": critical_value,
             "observed": contingency_table,
             "expected": expected_df,
-            "significant": chi2_stat >= critical_value
+            "significant": p_value < 0.05,
+            "method": method,
+            "low_expected": low_expected
         }
     except ValueError:
         return None
