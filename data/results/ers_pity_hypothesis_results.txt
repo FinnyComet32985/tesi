@@ -3,17 +3,17 @@ Obiettivo: Verificare se i giocatori con ERS alto (Engagement Resilience Score) 
 ================================================================================
 
 Totale Giocatori Validi: 25
-Soglia ERS (Mediana): 0.885
+Soglia ERS (Mediana): 0.910
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG PITY ODDS   | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 12    | 0.3722          | 0.494 - 0.872
-HIGH ERS             | 13    | 1.0917          | 0.885 - 3.084
+LOW ERS              | 12    | 0.4352          | 0.512 - 0.865
+HIGH ERS             | 13    | 1.0486          | 0.910 - 3.084
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)
-U-statistic: 127.0
-P-value:     0.0035
+U-statistic: 117.5
+P-value:     0.0155
 
 RISULTATO: SIGNIFICATIVO. I giocatori con ERS alto sembrano ricevere sistematicamente più Pity Match.
 ================================================================================
