@@ -34,7 +34,7 @@ def main():
     
     tags = load_tags()
 
-    mode_filter = 'Ladder'
+    mode_filter = 'Ranked'
 
     # Caricamento sessioni e profili tramite battlelog_v2
     # Questo assicura che le sessioni siano definite consistentemente

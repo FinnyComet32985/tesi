@@ -1,4 +1,4 @@
-Analisi Gatekeeping (Danger Zone vs Hard Counter) eseguita il: 2026-01-14 22:33:22.550392
+Analisi Gatekeeping (Danger Zone vs Hard Counter) eseguita il: 2026-01-15 12:27:55.228430
 
 ############################################################
 # PLAYER: 202PQ0VP90
@@ -15,14 +15,14 @@ Safe Zone            | 15              | 13
 ############################################################
 # PLAYER: 20CCVVLUP0
 ############################################################
-P-value: 0.0373
-Odds Ratio: 1.83
+P-value: 0.0458
+Odds Ratio: 1.78
 Risultato: GATEKEEPING RILEVATO
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 22              | 22             
-Safe Zone            | 239             | 438            
+Safe Zone            | 255             | 453            
 
 ############################################################
 # PLAYER: 20GLGG298R
@@ -82,7 +82,7 @@ Risultato: Nessuna evidenza
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 0               | 2              
-Safe Zone            | 12              | 22             
+Safe Zone            | 17              | 24             
 
 ############################################################
 # PLAYER: 2GR0990RQ
@@ -111,14 +111,14 @@ Safe Zone            | 41              | 58
 ############################################################
 # PLAYER: 2Q0JU0RR
 ############################################################
-P-value: 0.2873
+P-value: 0.3159
 Odds Ratio: inf
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 2               | 0              
-Safe Zone            | 32              | 29             
+Safe Zone            | 37              | 30             
 
 ############################################################
 # PLAYER: 2RU2VCY80
@@ -205,28 +205,40 @@ Danger Zone          | 4               | 4
 Safe Zone            | 2               | 1              
 
 ############################################################
-# PLAYER: G0YP2GJV
+# PLAYER: CLUYL0JV9
 ############################################################
-P-value: 0.5532
-Odds Ratio: 1.32
+P-value: 0.4286
+Odds Ratio: inf
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
-Danger Zone          | 3               | 5              
-Safe Zone            | 5               | 11             
+Danger Zone          | 1               | 0              
+Safe Zone            | 2               | 4              
+
+############################################################
+# PLAYER: G0YP2GJV
+############################################################
+P-value: 0.2004
+Odds Ratio: 3.05
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 4               | 3              
+Safe Zone            | 7               | 16             
 
 ############################################################
 # PLAYER: J92L2CU0Q
 ############################################################
-P-value: 0.8288
-Odds Ratio: 0.65
+P-value: 0.8208
+Odds Ratio: 0.67
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 2               | 2              
-Safe Zone            | 68              | 44             
+Safe Zone            | 69              | 46             
 
 ############################################################
 # PLAYER: JJYP08
@@ -262,7 +274,7 @@ Risultato: Nessuna evidenza
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 0               | 1              
-Safe Zone            | 91              | 75             
+Safe Zone            | 92              | 77             
 
 ############################################################
 # PLAYER: JYRRRVVJJ
@@ -310,7 +322,7 @@ Risultato: Nessuna evidenza
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 0               | 1              
-Safe Zone            | 51              | 194            
+Safe Zone            | 52              | 197            
 
 ############################################################
 # PLAYER: PY8YG0LJR
@@ -423,14 +435,14 @@ Safe Zone            | 0               | 65
 ############################################################
 # PLAYER: VCU8QQ98C
 ############################################################
-P-value: 0.8614
-Odds Ratio: 0.70
+P-value: 0.7249
+Odds Ratio: 0.86
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
-Danger Zone          | 13              | 14             
-Safe Zone            | 142             | 107            
+Danger Zone          | 21              | 18             
+Safe Zone            | 143             | 106            
 
 ############################################################
 # PLAYER: VPVLJQCGG
@@ -454,7 +466,7 @@ Risultato: Nessuna evidenza
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 0               | 4              
-Safe Zone            | 3               | 41             
+Safe Zone            | 3               | 42             
 
 ############################################################
 # PLAYER: VYURQLR00
@@ -508,5 +520,5 @@ Safe Zone            | 0               | 11
 ============================================================
  RIEPILOGO GATEKEEPING
 ============================================================
-Totale Giocatori: 42
-Casi Significativi: 1 (2.38%)
+Totale Giocatori: 43
+Casi Significativi: 1 (2.33%)
