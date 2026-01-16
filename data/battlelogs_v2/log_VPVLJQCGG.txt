@@ -1,19 +1,5 @@
 
 --- SESSIONE 1 ---
-[2025-11-24 02:23:31] Infinite Elixir vs 2000RYYVLR | LOSE -> 0-3 | MU: 65.6% - ΔLvl: 0.0
-
-   [METRICHE SESSIONE]
-   Battaglie: 0
-   Win Rate: 0.0%
-   Avg Matchup: 0.0% (StdDev: 0.0%)
-   Avg Level Diff: 0.00
-   Extreme Matchups: 0
-   Win % (Negative MU <40%): 0.0%
-   Lose % (Positive MU >80%): 0.0%
-
-[STOP: Quit (22 ore, 38 minuti)]
-
---- SESSIONE 2 ---
 [2025-11-25 01:02:29] Ladder vs VYRCCRPG8 | WIN -> 3-0 | 600 -> 630 (+30) | MU: 53.7% - ΔLvl: -0.62
 [2025-11-25 01:04:00] Ladder vs 20Y8J9JR80 | WIN -> 3-0 | 630 -> 660 (+30) | MU: 73.6% - ΔLvl: 0.25
 [2025-11-25 01:09:32] Ladder vs VQL2JQC8L | WIN -> 3-0 | 660 -> 690 (+30) | MU: 79.7% - ΔLvl: 0.75
@@ -36,15 +22,10 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Short (48 minuti)]
+[STOP: Short (58 minuti)]
 
---- SESSIONE 3 ---
-[2025-11-25 02:32:04] Draft Battle vs RL90URP2L | WIN -> 1-0 | MU: 58.9% - ΔLvl: 0.0
-[2025-11-25 02:35:17] Mega Draft Challenge vs RL90URP2L | LOSE -> 0-3 | MU: 63.0% - ΔLvl: 0.0
+--- SESSIONE 2 ---
 [2025-11-25 02:41:45] Ladder vs V2GUC090G | WIN -> 3-0 | 959 -> 991 (+32) | MU: 77.0% - ΔLvl: 1.75
-[2025-11-25 02:45:55] Triple Draft vs RL90URP2L | LOSE -> 1-3 | MU: 54.7% - ΔLvl: 0.0
-[2025-11-25 02:49:42] Triple Draft vs RL90URP2L | WIN -> 1-0 | MU: 54.4% - ΔLvl: 0.0
-[2025-11-25 02:53:44] Triple Draft vs RL90URP2L | WIN -> 1-0 | MU: 41.6% - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -55,9 +36,9 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Long (19 ore, 2 minuti)]
+[STOP: Long (19 ore, 14 minuti)]
 
---- SESSIONE 4 ---
+--- SESSIONE 3 ---
 [2025-11-25 21:55:51] Ladder vs 20LYULPCVP | WIN -> 3-0 | 991 -> 1021 (+30) | MU: 54.8% - ΔLvl: 0.25
 [2025-11-25 21:58:39] Ladder vs VYJL008PL | WIN -> 3-0 | 1021 -> 1049 (+28) | MU: 84.1% - ΔLvl: 0.88
 [2025-11-25 22:03:03] Ladder vs 20Y8VR8L90 | WIN -> 1-0 | 1049 -> 1078 (+29) | MU: 62.3% - ΔLvl: 0.0
@@ -76,7 +57,7 @@
 
 [STOP: Long (3 ore, 39 minuti)]
 
---- SESSIONE 5 ---
+--- SESSIONE 4 ---
 [2025-11-26 01:53:02] Ladder vs VLVY9J2YJ | WIN -> 3-0 | 1108 -> 1136 (+28) | MU: 42.6% - ΔLvl: -1.0
 [2025-11-26 01:57:24] Ladder vs VYYU9080R | WIN -> 3-0 | 1136 -> 1164 (+28) | MU: 42.3% - ΔLvl: -0.5
 [2025-11-26 02:01:23] Ladder vs 20J0Y9Y9UV | LOSE -> 0-3 | 1164 -> 1133 (-31) | MU: 62.6% - ΔLvl: 0.5
@@ -92,7 +73,7 @@
 
 [STOP: Quit (2 giorni, 50 minuti)]
 
---- SESSIONE 6 ---
+--- SESSIONE 5 ---
 [2025-11-28 02:51:52] Ladder vs VLVUCULQQ | WIN -> 3-0 | 1133 -> 1163 (+30) | MU: 73.8% - ΔLvl: 0.62
 [2025-11-28 02:57:54] Ladder vs 20JJ9RVG09 | LOSE -> 0-2 | 1163 -> 1135 (-28) | MU: 50.4% - ΔLvl: -0.62
 
@@ -108,11 +89,11 @@
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 4.00
-   Avg Win Rate: 66.7%
-   Avg Matchup: 53.7% (Avg StdDev: 8.9%)
-   Avg Level Diff: 0.29
-   Avg Extreme Matchups: 1.00
-   Avg Win % (Negative MU): 16.7%
+   Avg Battaglie/Sessione: 4.80
+   Avg Win Rate: 80.0%
+   Avg Matchup: 64.4% (Avg StdDev: 10.7%)
+   Avg Level Diff: 0.34
+   Avg Extreme Matchups: 1.20
+   Avg Win % (Negative MU): 20.0%
    Avg Lose % (Positive MU): 0.0%
 ========================================

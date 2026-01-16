@@ -699,12 +699,13 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
             continue
             
         ers = profile.get('ers')
+        total_matches = profile.get('total_matches', 0)
         pity_stats = matchup_stats[tag].get('pity', {})
         pity_odds = pity_stats.get('odds_ratio')
         
         # Filtra valori validi
         if ers is not None and pity_odds is not None and not (isinstance(pity_odds, float) and (np.isnan(pity_odds) or np.isinf(pity_odds))):
-             data_points.append({'tag': tag, 'ers': ers, 'pity_odds': pity_odds})
+             data_points.append({'tag': tag, 'ers': ers, 'pity_odds': pity_odds, 'total_matches': total_matches})
              
     if len(data_points) < 4:
         with open(output_file, "w", encoding="utf-8") as f:
@@ -721,6 +722,9 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
     low_pity_values = [x['pity_odds'] for x in low_ers_group]
     high_pity_values = [x['pity_odds'] for x in high_ers_group]
     
+    low_matches = [x['total_matches'] for x in low_ers_group]
+    high_matches = [x['total_matches'] for x in high_ers_group]
+
     avg_low = statistics.mean(low_pity_values) if low_pity_values else 0
     avg_high = statistics.mean(high_pity_values) if high_pity_values else 0
     
@@ -728,6 +732,19 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
     # Ipotesi Alternativa 'greater': High ERS Pity > Low ERS Pity
     stat, p_value = mannwhitneyu(high_pity_values, low_pity_values, alternative='greater')
     
+    # --- Analisi Correlazione Parziale (Controllo Confounding) ---
+    ers_vals = [x['ers'] for x in data_points]
+    pity_vals = [x['pity_odds'] for x in data_points]
+    matches_vals = [x['total_matches'] for x in data_points]
+
+    r_xy, p_xy = spearmanr(ers_vals, pity_vals)     # ERS vs Pity
+    r_xz, p_xz = spearmanr(ers_vals, matches_vals)  # ERS vs Matches
+    r_yz, p_yz = spearmanr(pity_vals, matches_vals) # Pity vs Matches
+
+    # Partial Correlation: r_xy.z
+    denom = math.sqrt((1 - r_xz**2) * (1 - r_yz**2))
+    r_partial = (r_xy - (r_xz * r_yz)) / denom if denom != 0 else 0
+
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("ANALISI IPOTESI: ERS ALTO -> AUMENTO PITY ODDS\n")
         f.write("Obiettivo: Verificare se i giocatori con ERS alto (Engagement Resilience Score) ricevono più 'aiuti' (Pity Match) dopo le sconfitte.\n")
@@ -737,11 +754,11 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
         f.write(f"Soglia ERS (Mediana): {data_points[mid]['ers']:.3f}\n")
         f.write("-" * 80 + "\n")
         
-        f.write(f"{'GRUPPO':<20} | {'N':<5} | {'AVG PITY ODDS':<15} | {'RANGE ERS':<20}\n")
+        f.write(f"{'GRUPPO':<20} | {'N':<5} | {'AVG PITY ODDS':<15} | {'AVG MATCHES':<15} | {'RANGE ERS':<20}\n")
         f.write("-" * 80 + "\n")
         
-        f.write(f"{'LOW ERS':<20} | {len(low_ers_group):<5} | {avg_low:<15.4f} | {low_ers_group[0]['ers']:.3f} - {low_ers_group[-1]['ers']:.3f}\n")
-        f.write(f"{'HIGH ERS':<20} | {len(high_ers_group):<5} | {avg_high:<15.4f} | {high_ers_group[0]['ers']:.3f} - {high_ers_group[-1]['ers']:.3f}\n")
+        f.write(f"{'LOW ERS':<20} | {len(low_ers_group):<5} | {avg_low:<15.4f} | {statistics.mean(low_matches):<15.1f} | {low_ers_group[0]['ers']:.3f} - {low_ers_group[-1]['ers']:.3f}\n")
+        f.write(f"{'HIGH ERS':<20} | {len(high_ers_group):<5} | {avg_high:<15.4f} | {statistics.mean(high_matches):<15.1f} | {high_ers_group[0]['ers']:.3f} - {high_ers_group[-1]['ers']:.3f}\n")
         
         f.write("-" * 80 + "\n")
         f.write("TEST STATISTICO (Mann-Whitney U):\n")
@@ -754,6 +771,15 @@ def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
         else:
             f.write("RISULTATO: NON SIGNIFICATIVO. Non c'è evidenza statistica sufficiente per confermare l'ipotesi.\n")
         
+        f.write("-" * 80 + "\n")
+        f.write("CONTROLLO VARIABILE CONFONDENTE (Numero Partite):\n")
+        f.write(f"Correlazione Pity vs Matches (r_yz):   {r_yz:.4f} (p={p_yz:.4f})\n")
+        f.write(f"Correlazione ERS vs Matches (r_xz):    {r_xz:.4f} (p={p_xz:.4f})\n")
+        f.write(f"Correlazione Diretta (ERS vs Pity):    {r_xy:.4f}\n")
+        f.write(f"Correlazione Parziale (Netta):         {r_partial:.4f}\n")
+        if abs(r_partial) < abs(r_xy) * 0.5:
+            f.write("WARNING: La correlazione sembra spiegata in gran parte dal numero di partite.\n")
+
         f.write("="*80 + "\n")
 
 
