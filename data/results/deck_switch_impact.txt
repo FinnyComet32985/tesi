@@ -4,16 +4,16 @@ Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->
          Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.
 ================================================================================
 
-Totale Transizioni Analizzate: 12025
-  - Senza cambio mazzo: 9345
-  - Con cambio mazzo:   2680
+Totale Transizioni Analizzate: 5737
+  - Senza cambio mazzo: 5332
+  - Con cambio mazzo:   405
 --------------------------------------------------------------------------------
 PATTERN                   | NO SWITCH (Baseline) | SWITCH (Test)        | DELTA     
 --------------------------------------------------------------------------------
-Persistenza Matchup Negativo | 46.82               % | 43.03               % | -3.79     %
-Persistenza Matchup Positivo | 46.82               % | 38.44               % | -8.38     %
-Recupero (Bad -> Good)    | 27.72               % | 32.18               % | +4.46     %
-Punizione (Good -> Bad)   | 27.91               % | 36.69               % | +8.78     %
+Persistenza Matchup Negativo | 50.36               % | 53.33               % | +2.98     %
+Persistenza Matchup Positivo | 51.70               % | 40.80               % | -10.90    %
+Recupero (Bad -> Good)    | 28.31               % | 30.00               % | +1.69     %
+Punizione (Good -> Bad)   | 27.05               % | 32.80               % | +5.75     %
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,

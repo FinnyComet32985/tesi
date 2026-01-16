@@ -2,24 +2,24 @@ ANALISI IPOTESI: ERS ALTO -> AUMENTO PITY ODDS
 Obiettivo: Verificare se i giocatori con ERS alto (Engagement Resilience Score) ricevono più 'aiuti' (Pity Match) dopo le sconfitte.
 ================================================================================
 
-Totale Giocatori Validi: 44
-Soglia ERS (Mediana): 0.959
+Totale Giocatori Validi: 24
+Soglia ERS (Mediana): 0.935
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG PITY ODDS   | AVG MATCHES     | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 22    | 0.5338          | 233.9           | 0.494 - 0.952
-HIGH ERS             | 22    | 1.0596          | 293.5           | 0.959 - 2.829
+LOW ERS              | 12    | 0.4869          | 210.2           | 0.545 - 0.890
+HIGH ERS             | 12    | 1.3251          | 142.4           | 0.935 - 2.845
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)
-U-statistic: 349.5
-P-value:     0.0050
+U-statistic: 93.0
+P-value:     0.1066
 
-RISULTATO: SIGNIFICATIVO. I giocatori con ERS alto sembrano ricevere sistematicamente più Pity Match.
+RISULTATO: NON SIGNIFICATIVO. Non c'è evidenza statistica sufficiente per confermare l'ipotesi.
 --------------------------------------------------------------------------------
 CONTROLLO VARIABILE CONFONDENTE (Numero Partite):
-Correlazione Pity vs Matches (r_yz):   0.0992 (p=0.5218)
-Correlazione ERS vs Matches (r_xz):    0.1253 (p=0.4177)
-Correlazione Diretta (ERS vs Pity):    0.4280
-Correlazione Parziale (Netta):         0.4210
+Correlazione Pity vs Matches (r_yz):   0.1390 (p=0.5171)
+Correlazione ERS vs Matches (r_xz):    -0.1105 (p=0.6074)
+Correlazione Diretta (ERS vs Pity):    0.4325
+Correlazione Parziale (Netta):         0.4550
 ================================================================================

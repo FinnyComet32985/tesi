@@ -5,19 +5,19 @@ Obiettivo: Dimostrare che le streak sono indipendenti da orario e mazzo usato.
 1. ANALISI ORARIA (Globale)
 Fascia Oraria             | Tot Finestre    | Streak Trovate  | Streak Rate %  
 --------------------------------------------------------------------------------
-Notte (00-06)             | 859             | 44              | 5.12           %
-Mattina (06-12)           | 1014            | 51              | 5.03           %
-Pomeriggio (12-18)        | 1890            | 107             | 5.66           %
-Sera (18-24)              | 1858            | 84              | 4.52           %
+Notte (00-06)             | 574             | 28              | 4.88           %
+Mattina (06-12)           | 499             | 30              | 6.01           %
+Pomeriggio (12-18)        | 893             | 69              | 7.73           %
+Sera (18-24)              | 1028            | 62              | 6.03           %
 --------------------------------------------------------------------------------
 Test Chi-Quadro Indipendenza Oraria:
-P-value: 0.4694
+P-value: 0.1556
 Risultato: INDIPENDENTE (L'orario NON influisce)
 
 2. ANALISI DECK (Aggregata per Player)
 Verifica se la probabilità di streak cambia cambiando mazzo (tra i mazzi più usati).
 --------------------------------------------------------------------------------
-Player analizzati (con almeno 2 mazzi usati >10 volte): 23
-Player con streak INDIPENDENTI dal mazzo (p > 0.05):    19
-Percentuale Indipendenza: 82.61%
+Player analizzati (con almeno 2 mazzi usati >10 volte): 16
+Player con streak INDIPENDENTI dal mazzo (p > 0.05):    14
+Percentuale Indipendenza: 87.50%
 ================================================================================

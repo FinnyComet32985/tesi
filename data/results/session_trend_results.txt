@@ -3,53 +3,53 @@ Obiettivo: Verificare se le sessioni iniziano con vittorie/matchup facili (Hook)
 Criteri: Sessioni con almeno 4 partite. Confronto Primi k vs Ultimi k match.
 ================================================================================
 
-Totale Sessioni Analizzate: 1192
+Totale Sessioni Analizzate: 555
 --------------------------------------------------------------------------------
 1. WIN RATE (Inizio vs Fine)
-   Media Win Rate INIZIO: 57.30%
-   Media Win Rate FINE:   51.99%
-   Delta:                 -5.31%
-   Test Wilcoxon (Inizio > Fine): p-value = 0.0001
+   Media Win Rate INIZIO: 60.54%
+   Media Win Rate FINE:   54.20%
+   Delta:                 -6.34%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0008
    RISULTATO: SIGNIFICATIVO. I giocatori vincono significativamente di più all'inizio della sessione.
 
 2. MATCHUP QUALITY (Inizio vs Fine)
-   Media Matchup INIZIO: 50.70%
-   Media Matchup FINE:   49.78%
-   Delta:                -0.92%
-   Test Wilcoxon (Inizio > Fine): p-value = 0.0394
+   Media Matchup INIZIO: 51.51%
+   Media Matchup FINE:   49.98%
+   Delta:                -1.53%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0071
    RISULTATO: SIGNIFICATIVO. I matchup sono significativamente migliori all'inizio della sessione.
 
 3. LEVEL DIFFERENCE (Inizio vs Fine)
-   Media Level Diff INIZIO: +0.02
+   Media Level Diff INIZIO: +0.03
    Media Level Diff FINE:   -0.02
    Delta:                   -0.04
-   Test Wilcoxon (Inizio > Fine): p-value = 0.0055
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0038
    RISULTATO: SIGNIFICATIVO (Livelli peggiori alla fine)
 
 ================================================================================
 ANALISI 2: HOOK PHASE (Primi 3) vs RESTO DELLA SESSIONE
 Obiettivo: Verificare se le prime partite sono sistematicamente più facili del resto della sessione.
 Criteri: Sessioni con > 3 partite. Confronto Primi 3 vs Rimanenti.
-Sessioni valide per questo test: 1192
+Sessioni valide per questo test: 555
 --------------------------------------------------------------------------------
 1. WIN RATE (Hook vs Resto)
-   Media Win Rate HOOK (Primi 3): 56.68%
-   Media Win Rate RESTO:          50.60%
-   Delta:                         -6.09%
-   Test Wilcoxon (Hook > Resto): p-value = 0.0005
+   Media Win Rate HOOK (Primi 3): 61.08%
+   Media Win Rate RESTO:          51.10%
+   Delta:                         -9.98%
+   Test Wilcoxon (Hook > Resto): p-value = 0.0001
    RISULTATO: SIGNIFICATIVO
 
 2. MATCHUP QUALITY (Hook vs Resto)
-   Media Matchup HOOK:  50.46%
-   Media Matchup RESTO: 49.46%
-   Delta:               -1.00%
-   Test Wilcoxon (Hook > Resto): p-value = 0.0059
+   Media Matchup HOOK:  51.39%
+   Media Matchup RESTO: 49.43%
+   Delta:               -1.96%
+   Test Wilcoxon (Hook > Resto): p-value = 0.0016
    RISULTATO: SIGNIFICATIVO
 
 3. LEVEL DIFFERENCE (Hook vs Resto)
-   Media Level Diff HOOK:  +0.01
-   Media Level Diff RESTO: -0.01
-   Delta:                  -0.02
-   Test Wilcoxon (Hook > Resto): p-value = 0.0126
+   Media Level Diff HOOK:  +0.02
+   Media Level Diff RESTO: -0.03
+   Delta:                  -0.05
+   Test Wilcoxon (Hook > Resto): p-value = 0.0031
    RISULTATO: SIGNIFICATIVO (Livelli peggiori nel resto)
 ================================================================================
