@@ -21,14 +21,21 @@ def _collect_battles_from_page(soup, tag, last_db_ts, conn, cursor):
         opponent_deck_cards = parse_deck_from_battle(div, is_opponent=True) if battle["opponent_tag"] else None
 
         
-
-        matchup_data = None
+        matchup_win_rate = None
+        matchup_no_lvl = None
+        
         if player_deck_cards and opponent_deck_cards:
             # Assicurati che entrambi i mazzi abbiano 9 carte (8 + torre)
             if len(player_deck_cards) == 9 and len(opponent_deck_cards) == 9:
                 matchup_data = fetch_matchup(player_deck_cards, opponent_deck_cards)
+                if matchup_data:
+                    matchup_win_rate = matchup_data.get("winRate")
+                
+                matchup_no_lvl_data = fetch_matchup(player_deck_cards, opponent_deck_cards, force_equal_levels=True)
+                if matchup_no_lvl_data:
+                    matchup_no_lvl = matchup_no_lvl_data.get("winRate")
 
-        insert_battle_and_decks(cursor, battle, player_deck_cards, opponent_deck_cards, matchup_data)
+        insert_battle_and_decks(cursor, battle, player_deck_cards, opponent_deck_cards, matchup_win_rate, matchup_no_lvl)
 
     conn.commit()
     oldest_ts = parse_oldest_timestamp_from_page(soup)

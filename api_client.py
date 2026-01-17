@@ -22,16 +22,20 @@ def fetch_page(path: str) -> BeautifulSoup | None:
         logging.error(f"Errore durante la richiesta a {url}: {e}")
         return None
 
-def fetch_matchup(player_deck: list, opponent_deck: list) -> dict | None:
+def fetch_matchup(player_deck: list, opponent_deck: list, force_equal_levels: bool = False) -> dict | None:
     """
     Esegue una richiesta POST a deckai.app per ottenere il win rate di un matchup.
+    Se force_equal_levels è True, imposta tutti i livelli a 11 per un confronto ad armi pari.
     """
     url = "https://deckai.app/api/main/get-matchup"
     
+    p_deck = [{"name": c["name"], "level": 11 if force_equal_levels else c["level"]} for c in player_deck]
+    o_deck = [{"name": c["name"], "level": 11 if force_equal_levels else c["level"]} for c in opponent_deck]
+
     # Prepara i dati nel formato richiesto dall'API
     payload = [
-        [{"name": card["name"], "level": card["level"]} for card in player_deck],
-        [{"name": card["name"], "level": card["level"]} for card in opponent_deck]
+        p_deck,
+        o_deck
     ]
 
     try:

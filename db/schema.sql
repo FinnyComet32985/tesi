@@ -235,7 +235,7 @@ CREATE TABLE IF NOT EXISTS battles (
     elixir_leaked_opponent REAL,
     level_diff REAL,
     matchup_win_rate REAL,
-    matchup_probabilities TEXT
+    matchup_no_lvl REAL
 );
 
 -- ================================

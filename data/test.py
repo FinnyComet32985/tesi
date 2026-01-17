@@ -1177,6 +1177,221 @@ def analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_di
         f.write("="*80 + "\n")
 
 
+def analyze_cannon_fodder(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'cannon_fodder_results.txt')
+    
+    print(f"\nGenerazione report Cannon Fodder (Dynamic Stress Analysis) in: {output_file}")
+    
+    # Grouped data
+    low_stress_matchups = []  # Stress == 0 (Low Risk)
+    high_stress_matchups = [] # Stress >= 2.0 (High Risk)
+    
+    all_stress = []
+    all_matchups = []
+    
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            
+            # Initialize Session State (Replicating battlelog_v2 logic)
+            current_stress = 0.0
+            current_win_streak = 0
+            
+            for b in battles:
+                # 1. Analyze State BEFORE this battle
+                if b['matchup'] is not None:
+                    all_stress.append(current_stress)
+                    all_matchups.append(b['matchup'])
+                    
+                    if current_stress <= 0.1: # Essentially 0
+                        low_stress_matchups.append(b['matchup'])
+                    elif current_stress >= 2.0: # High pressure
+                        high_stress_matchups.append(b['matchup'])
+                
+                # 2. Update State based on this battle outcome
+                is_win = (b['win'] == 1)
+                
+                if is_win:
+                    current_win_streak += 1
+                    stress_reduction = 2.0 * current_win_streak
+                    current_stress = max(0.0, current_stress - stress_reduction)
+                else:
+                    current_win_streak = 0
+                    battle_stress = 1.0
+                    
+                    if b['matchup'] is not None:
+                        if b['matchup'] < 45.0:
+                            battle_stress += 0.5
+                        if b['matchup'] < 35.0:
+                            battle_stress += 0.5
+                            
+                    current_stress += battle_stress
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI CANNON FODDER: DYNAMIC STRESS vs MATCHUP\n")
+        f.write("Ipotesi: Quando il giocatore è a 'Basso Rischio Quit' (Stress Basso), riceve matchup peggiori?\n")
+        f.write("Metodo: Calcolo dello Stress cumulativo partita per partita all'interno della sessione.\n")
+        f.write("="*80 + "\n\n")
+        
+        f.write(f"Totale Partite Analizzate: {len(all_matchups)}\n")
+        f.write(f"Partite in Low Stress (<=0.1): {len(low_stress_matchups)}\n")
+        f.write(f"Partite in High Stress (>=2.0): {len(high_stress_matchups)}\n")
+        f.write("-" * 80 + "\n")
+        
+        avg_low = statistics.mean(low_stress_matchups) if low_stress_matchups else 0
+        avg_high = statistics.mean(high_stress_matchups) if high_stress_matchups else 0
+        
+        f.write(f"{'STATO':<20} | {'AVG MATCHUP':<15}\n")
+        f.write("-" * 40 + "\n")
+        f.write(f"{'LOW STRESS (Safe)':<20} | {avg_low:<15.2f}%\n")
+        f.write(f"{'HIGH STRESS (Risk)':<20} | {avg_high:<15.2f}%\n")
+        
+        # Mann-Whitney U Test
+        # Alternative 'less': Low Stress < High Stress (Cannon Fodder Hypothesis)
+        stat, p_val = mannwhitneyu(low_stress_matchups, high_stress_matchups, alternative='less')
+        
+        f.write("-" * 80 + "\n")
+        f.write("TEST STATISTICO (Mann-Whitney U):\n")
+        f.write("Ipotesi Alternativa: Matchup(Low Stress) < Matchup(High Stress)\n")
+        f.write(f"P-value: {p_val:.4f}\n")
+        
+        if p_val < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. I giocatori rilassati ricevono matchup peggiori.\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO.\n")
+            
+        # Correlation
+        corr, p_corr = spearmanr(all_stress, all_matchups)
+        f.write(f"\nCorrelazione Spearman (Stress vs Matchup): {corr:.4f} (p={p_corr:.4f})\n")
+        f.write("(Correlazione positiva indica che all'aumentare dello stress migliora il matchup)\n")
+        f.write("="*80 + "\n")
+
+
+def analyze_dangerous_sequences(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'dangerous_sequences_results.txt')
+    
+    print(f"\nGenerazione report Sequenze Pericolose in: {output_file}")
+    
+    seq_counts = {} # "WLL" -> count occurrences
+    seq_quits = {}  # "WLL" -> count quits (session ends after this sequence)
+    
+    # Global counts for probabilities
+    global_counts = {'W': 0, 'L': 0, 'C': 0}
+    
+    SEQ_LEN = 3
+    
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            
+            # Convert session to outcome string
+            outcomes = []
+            for b in battles:
+                outcome = ''
+                if b['win'] == 1:
+                    outcome = 'W'
+                else:
+                    # Loss or Counter?
+                    if b['matchup'] is not None and b['matchup'] < 40.0:
+                        outcome = 'C' # Counter
+                    else:
+                        outcome = 'L' # Normal Loss
+                
+                outcomes.append(outcome)
+                global_counts[outcome] += 1
+            
+            if len(battles) < SEQ_LEN:
+                continue
+            
+            # Analyze triplets
+            for i in range(len(outcomes) - SEQ_LEN + 1):
+                triplet = "".join(outcomes[i : i+SEQ_LEN])
+                
+                seq_counts[triplet] = seq_counts.get(triplet, 0) + 1
+                
+                # Check if this is the end of the session (Quit)
+                if (i + SEQ_LEN) == len(outcomes):
+                    # Check stop type to be sure it's a real quit/break
+                    if s['stop_type'] in ['Long', 'Quit', 'Short']:
+                        seq_quits[triplet] = seq_quits.get(triplet, 0) + 1
+
+    # Calculate Global Probabilities
+    total_outcomes = sum(global_counts.values())
+    probs = {k: v / total_outcomes for k, v in global_counts.items()} if total_outcomes > 0 else {'W':0, 'L':0, 'C':0}
+    
+    total_triplets = sum(seq_counts.values())
+
+    # Calculate Stats per Sequence
+    results = []
+    for seq, count in seq_counts.items():
+        quit_count = seq_quits.get(seq, 0)
+        quit_rate = quit_count / count if count > 0 else 0
+        
+        # Expected Probability assuming independence
+        p_seq = 1.0
+        for char in seq:
+            p_seq *= probs.get(char, 0)
+            
+        exp_count = p_seq * total_triplets
+        ratio = count / exp_count if exp_count > 0 else 0.0
+        
+        results.append({
+            'seq': seq, 
+            'count': count, 
+            'quit_count': quit_count, 
+            'quit_rate': quit_rate,
+            'exp_count': exp_count,
+            'ratio': ratio
+        })
+        
+    # Sort by Quit Rate
+    results.sort(key=lambda x: x['quit_rate'], reverse=True)
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI SEQUENZE PERICOLOSE (OUTCOME -> QUIT)\n")
+        f.write("Legenda: W=Win, L=Loss (Normal), C=Counter (Loss & Matchup < 40%)\n")
+        f.write("Obiettivo: Identificare sequenze che causano quit e verificare se sono 'soppresse' (Ratio < 1) o 'frequenti' (Ratio > 1).\n")
+        f.write("="*80 + "\n\n")
+        
+        f.write(f"Totale Triplette: {total_triplets}\n")
+        f.write(f"Probabilità Globali: W={probs['W']:.2f}, L={probs['L']:.2f}, C={probs['C']:.2f}\n")
+        f.write("-" * 100 + "\n")
+        
+        f.write(f"{'SEQ':<5} | {'COUNT':<8} | {'QUITS':<8} | {'QUIT RATE':<10} | {'EXPECTED':<10} | {'RATIO (Obs/Exp)':<15}\n")
+        f.write("-" * 100 + "\n")
+        
+        for r in results:
+            if r['count'] < 10: continue # Filter rare sequences
+            f.write(f"{r['seq']:<5} | {r['count']:<8} | {r['quit_count']:<8} | {r['quit_rate']*100:.1f}%{'':<5} | {r['exp_count']:<10.1f} | {r['ratio']:<15.2f}\n")
+            
+        # Correlation Analysis
+        ratios = [r['ratio'] for r in results if r['count'] >= 10]
+        quit_rates = [r['quit_rate'] for r in results if r['count'] >= 10]
+        
+        if len(ratios) > 2:
+            corr, p_val = spearmanr(ratios, quit_rates)
+            f.write("-" * 100 + "\n")
+            f.write(f"CORRELAZIONE SPEARMAN (Ratio vs Quit Rate): {corr:.4f} (p={p_val:.4f})\n")
+            if corr < 0 and p_val < 0.05:
+                f.write("-> Correlazione NEGATIVA SIGNIFICATIVA: Le sequenze soppresse (Ratio < 1) tendono ad avere Quit Rate più alto.\n")
+                f.write("   (Possibile intervento dell'algoritmo per ridurre le sequenze tossiche)\n")
+            elif corr > 0 and p_val < 0.05:
+                f.write("-> Correlazione POSITIVA SIGNIFICATIVA: Le sequenze più frequenti causano più quit.\n")
+
+        f.write("-" * 100 + "\n")
+        f.write("INTERPRETAZIONE:\n")
+        f.write("1. QUIT RATE ALTO: Sequenze che frustrano il giocatore.\n")
+        f.write("2. RATIO < 1.0: La sequenza appare MENO del previsto (possibile intervento del sistema).\n")
+        f.write("3. RATIO > 1.0: La sequenza appare PIÙ del previsto (clustering naturale o forzatura).\n")
+        f.write("="*100 + "\n")
+
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1194,6 +1409,8 @@ def main():
     analyze_pity_impact_on_session_length(players_sessions)
     analyze_pity_impact_on_return_time(players_sessions)
     analyze_churn_probability_vs_pity(players_sessions, {}) # Placeholder per test locale
+    analyze_cannon_fodder(players_sessions)
+    analyze_dangerous_sequences(players_sessions)
 
 if __name__ == "__main__":
     main()

@@ -27,8 +27,11 @@ from test import (
     analyze_return_matchups_vs_ers,
     analyze_pity_impact_on_session_length,
     analyze_pity_impact_on_return_time,
-    analyze_churn_probability_vs_pity
+    analyze_churn_probability_vs_pity,
+    analyze_cannon_fodder,
+    analyze_dangerous_sequences,
 )
+from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
@@ -80,6 +83,9 @@ def main():
     analyze_pity_impact_on_return_time(players_sessions, output_dir=results_dir)
     analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_dir=results_dir)
     analyze_session_trends(players_sessions, output_dir=results_dir)
+    analyze_cannon_fodder(players_sessions, output_dir=results_dir)
+    analyze_dangerous_sequences(players_sessions, output_dir=results_dir)
+    analyze_matchup_no_lvl_stats(players_sessions, output_dir=results_dir)
 
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)
