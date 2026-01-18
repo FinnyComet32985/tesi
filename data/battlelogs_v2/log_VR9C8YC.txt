@@ -1,11 +1,12 @@
 
 --- SESSIONE 1 ---
-[2026-01-12 08:32:42] Ladder vs QRQ0R2L0V | WIN -> 3-0 | 11024 -> 11052 (+28) | MU: 58.7% - ΔLvl: 0.0
+[2026-01-12 08:32:42] Ladder vs QRQ0R2L0V | WIN -> 3-0 | 11024 -> 11052 (+28) | MU: 58.7% (NoLvl: 68.4%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 58.7% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 68.4% (StdDev: 0.0%)
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -17,6 +18,7 @@
    Avg Battaglie/Sessione: 1.00
    Avg Win Rate: 100.0%
    Avg Matchup: 58.7% (Avg StdDev: 0.0%)
+   Avg Matchup NoLvl: 68.4% (Avg StdDev: 0.0%)
    Avg Level Diff: 0.00
    Avg Extreme Matchups: 0.00
    Avg Win % (Negative MU): 0.0%

@@ -165,10 +165,12 @@ def analyze_session(battles):
 
     # Filtra battaglie con matchup valido per statistiche matchup
     valid_matchups = [b for b in battles if b['matchup'] is not None and (b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked')] 
+    valid_matchups_no_lvl = [b for b in battles if b.get('matchup_no_lvl') is not None and (b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked')]
     
     # tot_battles, avg_matchup, avg_level_diff, n_extreme_matchup,  winrate,
     tot_battles = len(valid_matchups)
     avg_matchup = sum(b['matchup'] for b in valid_matchups) / len(valid_matchups) if valid_matchups else 0
+    avg_matchup_no_lvl = sum(b['matchup_no_lvl'] for b in valid_matchups_no_lvl) / len(valid_matchups_no_lvl) if valid_matchups_no_lvl else 0
     avg_level_diff = sum(b['level_diff'] for b in battles) / tot_battles if tot_battles > 0 else 0
     n_extreme_matchup = sum(1 for b in valid_matchups if b['matchup'] > 80 or b['matchup'] < 40)
     if tot_battles > 0:
@@ -187,10 +189,15 @@ def analyze_session(battles):
     matchups = [b['matchup'] for b in valid_matchups]
     stdev = statistics.stdev(matchups) if len(matchups) > 1 else 0
 
+    matchups_no_lvl = [b['matchup_no_lvl'] for b in valid_matchups_no_lvl]
+    stdev_no_lvl = statistics.stdev(matchups_no_lvl) if len(matchups_no_lvl) > 1 else 0
+
     return {
         'tot_battles': tot_battles,
         'avg_matchup': avg_matchup,
+        'avg_matchup_no_lvl': avg_matchup_no_lvl,
         'stdev_matchup': stdev,
+        'stdev_matchup_no_lvl': stdev_no_lvl,
         'avg_level_diff': avg_level_diff,
         'n_extreme_matchup': n_extreme_matchup,
         'winrate': winrate,
@@ -383,7 +390,9 @@ def print_sessions(sessions, output_file=None):
     global_metrics = {
         'tot_battles': [],
         'avg_matchup': [],
+        'avg_matchup_no_lvl': [],
         'stdev_matchup': [],
+        'stdev_matchup_no_lvl': [],
         'avg_level_diff': [],
         'n_extreme_matchup': [],
         'winrate': [],
@@ -403,11 +412,12 @@ def print_sessions(sessions, output_file=None):
                 trophy_info = f" | {b['trophies_before']} -> {b['trophies_after']} ({b['variation']:+})"
             
             matchup_str = f" | MU: {b['matchup']:.1f}%" if b['matchup'] is not None else " | MU: null"
+            matchup_nolvl_str = f" (NoLvl: {b['matchup_no_lvl']:.1f}%)" if b.get('matchup_no_lvl') is not None else ""
             level_diff_str = f" - ΔLvl: {b['level_diff']}" if b['level_diff'] is not None else ""
             crowns = f"{b['player_crowns']}-{b['opponent_crowns']}"
             opponent = f" vs {b['opponent']}" if b['opponent'] else ""
             
-            line = f"[{b['timestamp']}] {b['game_mode']}{opponent} | {res} -> {crowns}{trophy_info}{matchup_str}{level_diff_str}"
+            line = f"[{b['timestamp']}] {b['game_mode']}{opponent} | {res} -> {crowns}{trophy_info}{matchup_str}{matchup_nolvl_str}{level_diff_str}"
             log(line)
         
         # Stampa metriche sessione
@@ -417,6 +427,7 @@ def print_sessions(sessions, output_file=None):
             log(f"   Battaglie: {analysis['tot_battles']}")
             log(f"   Win Rate: {analysis['winrate']*100:.1f}%")
             log(f"   Avg Matchup: {analysis['avg_matchup']:.1f}% (StdDev: {analysis['stdev_matchup']:.1f}%)")
+            log(f"   Avg Matchup NoLvl: {analysis['avg_matchup_no_lvl']:.1f}% (StdDev: {analysis['stdev_matchup_no_lvl']:.1f}%)")
             log(f"   Avg Level Diff: {analysis['avg_level_diff']:.2f}")
             log(f"   Extreme Matchups: {analysis['n_extreme_matchup']}")
             log(f"   Win % (Negative MU <40%): {analysis['perc_win_negative_matchup']*100:.1f}%")
@@ -442,7 +453,9 @@ def print_sessions(sessions, output_file=None):
         avg_battles = safe_avg(global_metrics['tot_battles'])
         avg_winrate = safe_avg(global_metrics['winrate'])
         avg_matchup = safe_avg(global_metrics['avg_matchup'])
+        avg_matchup_no_lvl = safe_avg(global_metrics['avg_matchup_no_lvl'])
         avg_stdev = safe_avg(global_metrics['stdev_matchup'])
+        avg_stdev_no_lvl = safe_avg(global_metrics['stdev_matchup_no_lvl'])
         avg_level = safe_avg(global_metrics['avg_level_diff'])
         avg_extreme = safe_avg(global_metrics['n_extreme_matchup'])
         avg_win_neg = safe_avg(global_metrics['perc_win_negative_matchup'])
@@ -451,6 +464,7 @@ def print_sessions(sessions, output_file=None):
         log(f"   Avg Battaglie/Sessione: {avg_battles:.2f}")
         log(f"   Avg Win Rate: {avg_winrate*100:.1f}%")
         log(f"   Avg Matchup: {avg_matchup:.1f}% (Avg StdDev: {avg_stdev:.1f}%)")
+        log(f"   Avg Matchup NoLvl: {avg_matchup_no_lvl:.1f}% (Avg StdDev: {avg_stdev_no_lvl:.1f}%)")
         log(f"   Avg Level Diff: {avg_level:.2f}")
         log(f"   Avg Extreme Matchups: {avg_extreme:.2f}")
         log(f"   Avg Win % (Negative MU): {avg_win_neg*100:.1f}%")

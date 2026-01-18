@@ -16,12 +16,15 @@ def analyze_session_trends(players_sessions, output_dir=None):
     win_pairs = []
     matchup_pairs = []
     level_pairs = []
+    matchup_nolvl_pairs = []
     
     # Accumulatori per statistiche descrittive
     start_winrates = []
     end_winrates = []
     start_matchups = []
     end_matchups = []
+    start_matchups_nolvl = []
+    end_matchups_nolvl = []
     start_levels = []
     end_levels = []
 
@@ -32,6 +35,9 @@ def analyze_session_trends(players_sessions, output_dir=None):
     tail_winrates = []
     head_matchups = []
     tail_matchups = []
+    matchup_nolvl_pairs_rem = []
+    head_matchups_nolvl = []
+    tail_matchups_nolvl = []
     level_pairs_rem = []
     head_levels = []
     tail_levels = []
@@ -78,6 +84,17 @@ def analyze_session_trends(players_sessions, output_dir=None):
                 start_matchups.append(m_start)
                 end_matchups.append(m_end)
 
+            # --- Calcolo Matchup No-Lvl ---
+            mus_nolvl_start = [b.get('matchup_no_lvl') for b in start_slice if b.get('matchup_no_lvl') is not None]
+            mus_nolvl_end = [b.get('matchup_no_lvl') for b in end_slice if b.get('matchup_no_lvl') is not None]
+            
+            if len(mus_nolvl_start) == k and len(mus_nolvl_end) == k:
+                m_start = statistics.mean(mus_nolvl_start)
+                m_end = statistics.mean(mus_nolvl_end)
+                matchup_nolvl_pairs.append((m_start, m_end))
+                start_matchups_nolvl.append(m_start)
+                end_matchups_nolvl.append(m_end)
+
             # --- Calcolo Level Diff ---
             levs_start = [b['level_diff'] for b in start_slice if b['level_diff'] is not None]
             levs_end = [b['level_diff'] for b in end_slice if b['level_diff'] is not None]
@@ -113,6 +130,16 @@ def analyze_session_trends(players_sessions, output_dir=None):
                     matchup_pairs_rem.append((m_head, m_tail))
                     head_matchups.append(m_head)
                     tail_matchups.append(m_tail)
+
+                mus_nolvl_head = [b.get('matchup_no_lvl') for b in head_slice if b.get('matchup_no_lvl') is not None]
+                mus_nolvl_tail = [b.get('matchup_no_lvl') for b in tail_slice if b.get('matchup_no_lvl') is not None]
+                
+                if len(mus_nolvl_head) >= (HOOK_SIZE - 1) and len(mus_nolvl_tail) > 0:
+                    m_head = statistics.mean(mus_nolvl_head)
+                    m_tail = statistics.mean(mus_nolvl_tail)
+                    matchup_nolvl_pairs_rem.append((m_head, m_tail))
+                    head_matchups_nolvl.append(m_head)
+                    tail_matchups_nolvl.append(m_tail)
 
                 levs_head = [b['level_diff'] for b in head_slice if b['level_diff'] is not None]
                 levs_tail = [b['level_diff'] for b in tail_slice if b['level_diff'] is not None]
@@ -186,11 +213,33 @@ def analyze_session_trends(players_sessions, output_dir=None):
             
         f.write("\n")
 
+        # --- ANALISI MATCHUP NO-LVL ---
+        avg_mnl_start = statistics.mean(start_matchups_nolvl) if start_matchups_nolvl else 0
+        avg_mnl_end = statistics.mean(end_matchups_nolvl) if end_matchups_nolvl else 0
+        
+        f.write("3. MATCHUP NO-LVL (Fair Play) (Inizio vs Fine)\n")
+        f.write(f"   Media Matchup No-Lvl INIZIO: {avg_mnl_start:.2f}%\n")
+        f.write(f"   Media Matchup No-Lvl FINE:   {avg_mnl_end:.2f}%\n")
+        f.write(f"   Delta:                       {avg_mnl_end - avg_mnl_start:+.2f}%\n")
+        
+        if len(matchup_nolvl_pairs) > 10:
+            try:
+                stat_mnl, p_mnl = wilcoxon([x[0] for x in matchup_nolvl_pairs], [x[1] for x in matchup_nolvl_pairs], alternative='greater')
+                f.write(f"   Test Wilcoxon (Inizio > Fine): p-value = {p_mnl:.4f}\n")
+                if p_mnl < 0.05:
+                    f.write("   RISULTATO: SIGNIFICATIVO. I matchup 'puri' sono migliori all'inizio.\n")
+                else:
+                    f.write("   RISULTATO: NON SIGNIFICATIVO.\n")
+            except Exception as e:
+                f.write(f"   Errore Test: {e}\n")
+        
+        f.write("\n")
+
         # --- ANALISI LEVEL DIFF ---
         avg_l_start = statistics.mean(start_levels) if start_levels else 0
         avg_l_end = statistics.mean(end_levels) if end_levels else 0
         
-        f.write("3. LEVEL DIFFERENCE (Inizio vs Fine)\n")
+        f.write("4. LEVEL DIFFERENCE (Inizio vs Fine)\n")
         f.write(f"   Media Level Diff INIZIO: {avg_l_start:+.2f}\n")
         f.write(f"   Media Level Diff FINE:   {avg_l_end:+.2f}\n")
         f.write(f"   Delta:                   {avg_l_end - avg_l_start:+.2f}\n")
@@ -247,10 +296,28 @@ def analyze_session_trends(players_sessions, output_dir=None):
                 
         f.write("\n")
 
+        avg_mnl_head = statistics.mean(head_matchups_nolvl) if head_matchups_nolvl else 0
+        avg_mnl_tail = statistics.mean(tail_matchups_nolvl) if tail_matchups_nolvl else 0
+        
+        f.write("3. MATCHUP NO-LVL (Hook vs Resto)\n")
+        f.write(f"   Media Matchup No-Lvl HOOK:  {avg_mnl_head:.2f}%\n")
+        f.write(f"   Media Matchup No-Lvl RESTO: {avg_mnl_tail:.2f}%\n")
+        f.write(f"   Delta:                      {avg_mnl_tail - avg_mnl_head:+.2f}%\n")
+        
+        if len(matchup_nolvl_pairs_rem) > 10:
+            try:
+                stat_mnl2, p_mnl2 = wilcoxon([x[0] for x in matchup_nolvl_pairs_rem], [x[1] for x in matchup_nolvl_pairs_rem], alternative='greater')
+                f.write(f"   Test Wilcoxon (Hook > Resto): p-value = {p_mnl2:.4f}\n")
+                f.write(f"   RISULTATO: {'SIGNIFICATIVO' if p_mnl2 < 0.05 else 'NON SIGNIFICATIVO'}\n")
+            except Exception as e:
+                f.write(f"   Errore Test: {e}\n")
+        
+        f.write("\n")
+
         avg_l_head = statistics.mean(head_levels) if head_levels else 0
         avg_l_tail = statistics.mean(tail_levels) if tail_levels else 0
         
-        f.write("3. LEVEL DIFFERENCE (Hook vs Resto)\n")
+        f.write("4. LEVEL DIFFERENCE (Hook vs Resto)\n")
         f.write(f"   Media Level Diff HOOK:  {avg_l_head:+.2f}\n")
         f.write(f"   Media Level Diff RESTO: {avg_l_tail:+.2f}\n")
         f.write(f"   Delta:                  {avg_l_tail - avg_l_head:+.2f}\n")

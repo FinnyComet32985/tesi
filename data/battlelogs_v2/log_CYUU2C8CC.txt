@@ -1,11 +1,12 @@
 
 --- SESSIONE 1 ---
-[2026-01-07 20:53:49] Ladder vs 2Q2JVUVR | WIN -> 1-0 | 11940 -> 11970 (+30) | MU: 50.9% - ΔLvl: 0.0
+[2026-01-07 20:53:49] Ladder vs 2Q2JVUVR | WIN -> 1-0 | 11940 -> 11970 (+30) | MU: 50.9% (NoLvl: 44.2%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 50.9% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 44.2% (StdDev: 0.0%)
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -14,12 +15,13 @@
 [STOP: Short (24 minuti)]
 
 --- SESSIONE 2 ---
-[2026-01-07 21:18:13] Ladder vs 90Q2V80Y0 | WIN -> 3-2 | 11970 -> 12000 (+30) | MU: 67.9% - ΔLvl: 0.0
+[2026-01-07 21:18:13] Ladder vs 90Q2V80Y0 | WIN -> 3-2 | 11970 -> 12000 (+30) | MU: 67.9% (NoLvl: 61.2%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 1
    Win Rate: 100.0%
    Avg Matchup: 67.9% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 61.2% (StdDev: 0.0%)
    Avg Level Diff: 0.00
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
@@ -31,6 +33,7 @@
    Avg Battaglie/Sessione: 1.00
    Avg Win Rate: 100.0%
    Avg Matchup: 59.4% (Avg StdDev: 0.0%)
+   Avg Matchup NoLvl: 52.7% (Avg StdDev: 0.0%)
    Avg Level Diff: 0.00
    Avg Extreme Matchups: 0.00
    Avg Win % (Negative MU): 0.0%
