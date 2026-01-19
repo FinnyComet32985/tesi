@@ -4,19 +4,19 @@ Obiettivo: Verificare se Media e Varianza del matchup cambiano durante il giorno
 
 Fascia Oraria        | N. Partite   | Media MU   | StdDev     | Varianza  
 ---------------------------------------------------------------------------
-Notte (00-06)        | 862          | 51.47      | 18.97      | 359.71    
-Mattina (06-12)      | 797          | 49.47      | 16.72      | 279.46    
-Pomeriggio (12-18)   | 1605         | 50.43      | 17.70      | 313.32    
-Sera (18-24)         | 1784         | 49.68      | 17.71      | 313.65    
+Notte (00-06)        | 872          | 51.43      | 18.93      | 358.30    
+Mattina (06-12)      | 834          | 49.48      | 16.84      | 283.65    
+Pomeriggio (12-18)   | 1685         | 50.38      | 17.72      | 313.97    
+Sera (18-24)         | 1889         | 49.29      | 17.57      | 308.88    
 ---------------------------------------------------------------------------
 
 TEST STATISTICI:
 1. Kruskal-Wallis (Confronto Medie/Distribuzione):
-   P-value: 0.0358
+   P-value: 0.0090
    Risultato: DIFFERENZA SIGNIFICATIVA (Il matchup medio cambia?)
 
 2. Levene Test (Confronto Varianze):
-   P-value: 0.0111
+   P-value: 0.0181
    Risultato: DIFFERENZA SIGNIFICATIVA (La variabilità del matchup cambia?)
 
    NOTA: Una varianza diversa suggerisce che in certe fasce orarie
