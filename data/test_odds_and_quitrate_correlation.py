@@ -13,10 +13,8 @@ def calculate_correlation_pity_ragequit(profiles, matchup_stats):
     }
 
 def _calculate_single_metric_correlation(profiles, matchup_stats, metric_type):
-    odds_ratios = []
-    fsi_ratios = []
-    ers_ratios = []
-    details = []
+    valid_data = []
+    finite_odds = []
 
     for tag, stats_data in matchup_stats.items():
         if tag in profiles:
@@ -28,11 +26,32 @@ def _calculate_single_metric_correlation(profiles, matchup_stats, metric_type):
             type_stats = stats_data.get(metric_type, {})
             odds = type_stats.get('odds_ratio')
             
-            if odds is not None and not math.isinf(odds) and not math.isnan(odds):
-                odds_ratios.append(odds)
-                fsi_ratios.append(fsi)
-                ers_ratios.append(ers)
-                details.append({'tag': tag, 'odds_ratio': odds, 'fsi': fsi, 'ers': ers})
+            # Escludiamo NaN (0/0: condizione mai verificata) e None.
+            # MANTENIAMO inf per ora.
+            if odds is not None and not math.isnan(odds):
+                valid_data.append({'tag': tag, 'odds': odds, 'fsi': fsi, 'ers': ers})
+                if not math.isinf(odds):
+                    finite_odds.append(odds)
+
+    # Gestione INF: Sostituiamo INF con un valore più alto del massimo finito osservato
+    # per preservare il rango (Spearman) senza rompere il calcolo.
+    max_finite = max(finite_odds) if finite_odds else 10.0
+    inf_replacement = max_finite * 1.5
+
+    odds_ratios = []
+    fsi_ratios = []
+    ers_ratios = []
+    details = []
+
+    for item in valid_data:
+        val = item['odds']
+        if math.isinf(val):
+            val = inf_replacement
+
+        odds_ratios.append(val)
+        fsi_ratios.append(item['fsi'])
+        ers_ratios.append(item['ers'])
+        details.append({'tag': item['tag'], 'odds_ratio': val, 'fsi': item['fsi'], 'ers': item['ers']})
 
     if len(odds_ratios) > 2:
         corr_fsi, p_val_fsi = stats.spearmanr(odds_ratios, fsi_ratios)

@@ -1,4 +1,4 @@
-Analisi Extreme Matchup eseguita il: 2026-01-19 18:00:10.848012
+Analisi Extreme Matchup eseguita il: 2026-01-20 18:51:40.081461
 
 ########################################
 # PLAYER: 20CCVVLUP0
@@ -9,11 +9,11 @@ Analisi Extreme Matchup eseguita il: 2026-01-19 18:00:10.848012
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 15              | 42             
-Situazione Normale        | 130             | 380            
+Dopo Losing Streak (>=3L) | 17              | 46             
+Situazione Normale        | 140             | 409            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.04
-Significatività (p-value): 0.501384
+Rapporto di probabilità (Odds Ratio): 1.08
+Significatività (p-value): 0.451263
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -22,12 +22,12 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 31              | 32             
-Situazione Normale        | 186             | 318            
+Dopo Win Streak (>=3W)    | 32              | 34             
+Situazione Normale        | 208             | 338            
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.66
-Significatività (p-value): 0.040628
-IPOTESI: CONFERMATA (EOMM Probabile)
+Rapporto di probabilità (Odds Ratio): 1.53
+Significatività (p-value): 0.067820
+IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
 ########################################
@@ -39,11 +39,11 @@ IPOTESI: CONFERMATA (EOMM Probabile)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 0               | 4              
-Situazione Normale        | 17              | 52             
+Dopo Losing Streak (>=3L) | 1               | 4              
+Situazione Normale        | 25              | 58             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.00
-Significatività (p-value): 1.000000
+Rapporto di probabilità (Odds Ratio): 0.58
+Significatività (p-value): 0.834821
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -52,11 +52,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Win Streak (>=3W)    | 3               | 13             
-Situazione Normale        | 17              | 40             
+Dopo Win Streak (>=3W)    | 5               | 21             
+Situazione Normale        | 17              | 45             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.54
-Significatività (p-value): 0.886829
+Rapporto di probabilità (Odds Ratio): 0.63
+Significatività (p-value): 0.860525
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -117,6 +117,36 @@ Situazione Normale        | 5               | 22
 ------------------------------------------------------------
 Rapporto di probabilità (Odds Ratio): 1.10
 Significatività (p-value): 0.605003
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+########################################
+# PLAYER: 20QU8VLGU8
+########################################
+
+============================================================
+ ANALISI STATISTICA: PITY MATCH
+============================================================
+CONDIZIONE                | Matchup > 80%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 1               | 4              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+============================================================
+ ANALISI STATISTICA: MATCHUP PUNITIVI
+============================================================
+CONDIZIONE                | Matchup < 40%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Win Streak (>=3W)    | 0               | 1              
+Situazione Normale        | 1               | 3              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -250,10 +280,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Losing Streak (>=3L) | 2               | 3              
-Situazione Normale        | 19              | 55             
+Situazione Normale        | 19              | 56             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.93
-Significatività (p-value): 0.401363
+Rapporto di probabilità (Odds Ratio): 1.96
+Significatività (p-value): 0.394175
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -263,10 +293,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Win Streak (>=3W)    | 3               | 5              
-Situazione Normale        | 13              | 58             
+Situazione Normale        | 13              | 59             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.68
-Significatività (p-value): 0.199706
+Rapporto di probabilità (Odds Ratio): 2.72
+Significatività (p-value): 0.194049
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -331,6 +361,66 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
 ########################################
+# PLAYER: CCYRVRJCU
+########################################
+
+============================================================
+ ANALISI STATISTICA: PITY MATCH
+============================================================
+CONDIZIONE                | Matchup > 80%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 4               | 0              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+============================================================
+ ANALISI STATISTICA: MATCHUP PUNITIVI
+============================================================
+CONDIZIONE                | Matchup < 40%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Win Streak (>=3W)    | 0               | 3              
+Situazione Normale        | 0               | 2              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+########################################
+# PLAYER: G0YP2GJV
+########################################
+
+============================================================
+ ANALISI STATISTICA: PITY MATCH
+============================================================
+CONDIZIONE                | Matchup > 80%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Losing Streak (>=3L) | 0               | 0              
+Situazione Normale        | 1               | 5              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): nan
+Significatività (p-value): 1.000000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+============================================================
+ ANALISI STATISTICA: MATCHUP PUNITIVI
+============================================================
+CONDIZIONE                | Matchup < 40%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Win Streak (>=3W)    | 1               | 2              
+Situazione Normale        | 1               | 2              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): 1.00
+Significatività (p-value): 0.800000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+########################################
 # PLAYER: J92L2CU0Q
 ########################################
 
@@ -369,11 +459,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 1               | 10             
+Dopo Losing Streak (>=3L) | 1               | 11             
 Situazione Normale        | 8               | 66             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.82
-Significatività (p-value): 0.731563
+Rapporto di probabilità (Odds Ratio): 0.75
+Significatività (p-value): 0.759655
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -383,10 +473,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Win Streak (>=3W)    | 5               | 7              
-Situazione Normale        | 37              | 36             
+Situazione Normale        | 38              | 36             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.69
-Significatività (p-value): 0.812929
+Rapporto di probabilità (Odds Ratio): 0.68
+Significatività (p-value): 0.824405
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -571,6 +661,36 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
 ########################################
+# PLAYER: PQVYL0VJJ
+########################################
+
+============================================================
+ ANALISI STATISTICA: PITY MATCH
+============================================================
+CONDIZIONE                | Matchup > 80%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Losing Streak (>=3L) | 2               | 2              
+Situazione Normale        | 20              | 25             
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): 1.25
+Significatività (p-value): 0.613453
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+============================================================
+ ANALISI STATISTICA: MATCHUP PUNITIVI
+============================================================
+CONDIZIONE                | Matchup < 40%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Win Streak (>=3W)    | 0               | 11             
+Situazione Normale        | 5               | 33             
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+########################################
 # PLAYER: PY8YG0LJR
 ########################################
 
@@ -669,11 +789,11 @@ IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
-Dopo Losing Streak (>=3L) | 14              | 6              
+Dopo Losing Streak (>=3L) | 15              | 9              
 Situazione Normale        | 75              | 57             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.77
-Significatività (p-value): 0.192686
+Rapporto di probabilità (Odds Ratio): 1.27
+Significatività (p-value): 0.387646
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -683,7 +803,7 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Win Streak (>=3W)    | 0               | 13             
-Situazione Normale        | 5               | 134            
+Situazione Normale        | 6               | 137            
 ------------------------------------------------------------
 Rapporto di probabilità (Odds Ratio): 0.00
 Significatività (p-value): 1.000000
@@ -820,7 +940,7 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Losing Streak (>=3L) | 0               | 0              
-Situazione Normale        | 17              | 14             
+Situazione Normale        | 18              | 15             
 ------------------------------------------------------------
 Rapporto di probabilità (Odds Ratio): nan
 Significatività (p-value): 1.000000
@@ -833,10 +953,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Win Streak (>=3W)    | 1               | 6              
-Situazione Normale        | 4               | 20             
+Situazione Normale        | 5               | 21             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 0.83
-Significatività (p-value): 0.749846
+Rapporto di probabilità (Odds Ratio): 0.70
+Significatività (p-value): 0.792130
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -897,6 +1017,36 @@ Situazione Normale        | 5               | 12
 ------------------------------------------------------------
 Rapporto di probabilità (Odds Ratio): 0.24
 Significatività (p-value): 0.967150
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+########################################
+# PLAYER: YLCYCJ2YL
+########################################
+
+============================================================
+ ANALISI STATISTICA: PITY MATCH
+============================================================
+CONDIZIONE                | Matchup > 80%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Losing Streak (>=3L) | 0               | 1              
+Situazione Normale        | 2               | 2              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): 0.00
+Significatività (p-value): 1.000000
+IPOTESI: NON CONFERMATA (Casualità)
+============================================================
+
+============================================================
+ ANALISI STATISTICA: MATCHUP PUNITIVI
+============================================================
+CONDIZIONE                | Matchup < 40%   | Altro/Normale  
+------------------------------------------------------------
+Dopo Win Streak (>=3W)    | 1               | 0              
+Situazione Normale        | 1               | 3              
+------------------------------------------------------------
+Rapporto di probabilità (Odds Ratio): inf
+Significatività (p-value): 0.400000
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 

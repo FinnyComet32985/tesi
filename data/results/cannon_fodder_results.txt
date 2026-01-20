@@ -3,20 +3,20 @@ Ipotesi: Quando il giocatore è a 'Basso Rischio Quit' (Stress Basso), riceve ma
 Metodo: Calcolo dello Stress cumulativo partita per partita all'interno della sessione.
 ================================================================================
 
-Totale Partite Analizzate: 5280
-Partite in Low Stress (<=0.1): 3357
-Partite in High Stress (>=2.0): 1047
+Totale Partite Analizzate: 6115
+Partite in Low Stress (<=0.1): 3999
+Partite in High Stress (>=2.0): 1138
 --------------------------------------------------------------------------------
 STATO                | AVG MATCHUP    
 ----------------------------------------
-LOW STRESS (Safe)    | 50.09          %
-HIGH STRESS (Risk)   | 48.34          %
+LOW STRESS (Safe)    | 50.37          %
+HIGH STRESS (Risk)   | 48.35          %
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Matchup(Low Stress) < Matchup(High Stress)
-P-value: 0.9977
+P-value: 0.9998
 RISULTATO: NON SIGNIFICATIVO.
 
-Correlazione Spearman (Stress vs Matchup): -0.0226 (p=0.1007)
+Correlazione Spearman (Stress vs Matchup): -0.0264 (p=0.0390)
 (Correlazione positiva indica che all'aumentare dello stress migliora il matchup)
 ================================================================================

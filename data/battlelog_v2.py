@@ -238,6 +238,7 @@ def calculate_profile_from_sessions(sessions):
     
     # Dati generali
     all_matchups = []
+    all_level_diffs = []
     
     # Pesi per il tipo di stop
     STOP_WEIGHTS = {'Short': 1.0, 'Long': 2.5, 'Quit': 5.0, 'End': 0.0}
@@ -263,6 +264,10 @@ def calculate_profile_from_sessions(sessions):
             matchup = battle['matchup']
             if matchup is not None:
                 all_matchups.append(matchup)
+            
+            level_diff = battle.get('level_diff')
+            if level_diff is not None:
+                all_level_diffs.append(level_diff)
             
             is_win = battle['win'] == 1
             is_last_battle = (i == num_battles - 1)
@@ -345,6 +350,7 @@ def calculate_profile_from_sessions(sessions):
     ers = quit_impulsivity * math.exp(-avg_fsi)
     
     avg_matchup = statistics.mean(all_matchups) if all_matchups else 50.0
+    avg_level_diff = statistics.mean(all_level_diffs) if all_level_diffs else 0.0
     avg_session_min = (total_duration / 60) / len(sessions) if sessions else 0
     matches_per_session = total_battles / len(sessions) if sessions else 0
     
@@ -355,7 +361,7 @@ def calculate_profile_from_sessions(sessions):
     l_streak_count = loss_streak_continuations # Approssimazione basata sulle continuazioni
     
     # Affidabilità statistica
-    is_reliable = total_battles > 50 and matches_per_session > 2
+    is_reliable = total_battles > 50 # and matches_per_session > 2
 
     return {
         'total_matches': total_battles,
@@ -370,6 +376,7 @@ def calculate_profile_from_sessions(sessions):
         'win_continuation_rate': round(win_continuation_rate * 100, 1),
         'loss_continuation_rate': round(loss_continuation_rate * 100, 1),
         'avg_matchup_pct': round(avg_matchup, 2),
+        'avg_level_diff': round(avg_level_diff, 2),
         'is_reliable': is_reliable,
         'counter_streak_continuations': counter_streak_continuations
     }

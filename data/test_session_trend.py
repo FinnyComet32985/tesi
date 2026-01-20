@@ -1,7 +1,7 @@
 
 import os
 import statistics
-from scipy.stats import wilcoxon
+from scipy.stats import wilcoxon, spearmanr
 
 def analyze_session_trends(players_sessions, output_dir=None):
     if output_dir is None:
@@ -41,6 +41,12 @@ def analyze_session_trends(players_sessions, output_dir=None):
     level_pairs_rem = []
     head_levels = []
     tail_levels = []
+
+    # Accumulatori per correlazione (Lunghezza Sessione vs Delta)
+    corr_win = []
+    corr_mu = []
+    corr_munl = []
+    corr_lvl = []
 
     MIN_SESSION_LEN = 4
     HOOK_SIZE = 3
@@ -120,6 +126,9 @@ def analyze_session_trends(players_sessions, output_dir=None):
                 head_winrates.append(w_head)
                 tail_winrates.append(w_tail)
                 
+                # Add for correlation
+                corr_win.append((n, w_tail - w_head))
+                
                 mus_head = [b['matchup'] for b in head_slice if b['matchup'] is not None]
                 mus_tail = [b['matchup'] for b in tail_slice if b['matchup'] is not None]
                 
@@ -130,6 +139,8 @@ def analyze_session_trends(players_sessions, output_dir=None):
                     matchup_pairs_rem.append((m_head, m_tail))
                     head_matchups.append(m_head)
                     tail_matchups.append(m_tail)
+                    # Add for correlation
+                    corr_mu.append((n, m_tail - m_head))
 
                 mus_nolvl_head = [b.get('matchup_no_lvl') for b in head_slice if b.get('matchup_no_lvl') is not None]
                 mus_nolvl_tail = [b.get('matchup_no_lvl') for b in tail_slice if b.get('matchup_no_lvl') is not None]
@@ -140,6 +151,8 @@ def analyze_session_trends(players_sessions, output_dir=None):
                     matchup_nolvl_pairs_rem.append((m_head, m_tail))
                     head_matchups_nolvl.append(m_head)
                     tail_matchups_nolvl.append(m_tail)
+                    # Add for correlation
+                    corr_munl.append((n, m_tail - m_head))
 
                 levs_head = [b['level_diff'] for b in head_slice if b['level_diff'] is not None]
                 levs_tail = [b['level_diff'] for b in tail_slice if b['level_diff'] is not None]
@@ -150,6 +163,8 @@ def analyze_session_trends(players_sessions, output_dir=None):
                     level_pairs_rem.append((l_head, l_tail))
                     head_levels.append(l_head)
                     tail_levels.append(l_tail)
+                    # Add for correlation
+                    corr_lvl.append((n, l_tail - l_head))
                 
                 count_sessions_rem += 1
 
@@ -329,5 +344,39 @@ def analyze_session_trends(players_sessions, output_dir=None):
                 f.write(f"   RISULTATO: {'SIGNIFICATIVO (Livelli peggiori nel resto)' if p_l2 < 0.05 else 'NON SIGNIFICATIVO'}\n")
             except Exception as e:
                 f.write(f"   Errore Test: {e}\n")
+
+        # --- ANALISI CORRELAZIONE ---
+        f.write("\n" + "="*80 + "\n")
+        f.write("ANALISI 3: CORRELAZIONE LUNGHEZZA SESSIONE vs DELTA (Resto - Hook)\n")
+        f.write("Obiettivo: Capire se il peggioramento (Delta negativo) aumenta con la durata della sessione.\n")
+        f.write("-" * 80 + "\n")
+
+        def write_corr_section(title, data):
+            f.write(f"{title}\n")
+            if len(data) < 5:
+                f.write("   Dati insufficienti.\n\n")
+                return
+            
+            lens = [x[0] for x in data]
+            deltas = [x[1] for x in data]
+            
+            corr, p = spearmanr(lens, deltas)
+            f.write(f"   Correlazione (Spearman): {corr:.4f}\n")
+            f.write(f"   P-value:                 {p:.4f}\n")
+            
+            if p < 0.05:
+                if corr < 0:
+                    f.write("   RISULTATO: SIGNIFICATIVO NEGATIVO. Sessioni più lunghe -> Delta peggiore (più negativo).\n")
+                    f.write("              (Il vantaggio iniziale svanisce di più o lo svantaggio aumenta nelle sessioni lunghe)\n")
+                else:
+                    f.write("   RISULTATO: SIGNIFICATIVO POSITIVO. Sessioni più lunghe -> Delta migliore.\n")
+            else:
+                f.write("   RISULTATO: NON SIGNIFICATIVO.\n")
+            f.write("\n")
+
+        write_corr_section("1. Lunghezza vs Delta Win Rate", corr_win)
+        write_corr_section("2. Lunghezza vs Delta Matchup", corr_mu)
+        write_corr_section("3. Lunghezza vs Delta Matchup No-Lvl", corr_munl)
+        write_corr_section("4. Lunghezza vs Delta Level Diff", corr_lvl)
 
         f.write("="*80 + "\n")

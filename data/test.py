@@ -1392,6 +1392,174 @@ def analyze_dangerous_sequences(players_sessions, output_dir=None):
         f.write("="*100 + "\n")
 
 
+def analyze_short_session_bonus(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'short_session_bonus_results.txt')
+
+    print(f"\nGenerazione report Correlazione Bonus Sessioni Brevi in: {output_file}")
+
+    matches_per_session = []
+    avg_matchups = []
+    avg_level_diffs = []
+
+    for p in players_sessions:
+        profile = p.get('profile')
+        if not profile:
+            continue
+
+        mps = profile.get('matches_per_session')
+        avg_mu = profile.get('avg_matchup_pct')
+        avg_ld = profile.get('avg_level_diff')
+
+        if mps is not None and avg_mu is not None and avg_ld is not None:
+            matches_per_session.append(mps)
+            avg_matchups.append(avg_mu)
+            avg_level_diffs.append(avg_ld)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI CORRELAZIONE: BONUS PER SESSIONI BREVI\n")
+        f.write("Ipotesi: I giocatori con sessioni più corte (meno match/sessione) ricevono matchup mediamente migliori?\n")
+        f.write("="*80 + "\n\n")
+
+        if len(matches_per_session) < 5:
+            f.write("Dati insufficienti per l'analisi (meno di 5 giocatori con profili completi).\n")
+            return
+
+        f.write(f"Campione: {len(matches_per_session)} giocatori\n")
+        f.write("-" * 80 + "\n")
+
+        # 1. Correlazione vs Matchup
+        corr_mu, p_mu = spearmanr(matches_per_session, avg_matchups)
+        f.write("1. Correlazione: Match/Sessione vs. Matchup Medio\n")
+        f.write(f"   Coefficiente: {corr_mu:.4f}\n")
+        f.write(f"   P-value:      {p_mu:.4f}\n")
+        if p_mu < 0.05:
+            if corr_mu < 0:
+                f.write("   RISULTATO: SIGNIFICATIVO E NEGATIVO. Meno partite per sessione sono correlate a matchup MIGLIORI.\n")
+            else:
+                f.write("   RISULTATO: SIGNIFICATIVO E POSITIVO. Meno partite per sessione sono correlate a matchup PEGGIORI.\n")
+        else:
+            f.write("   RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione evidente.\n")
+        f.write("\n")
+
+        # 2. Correlazione vs Level Difference
+        corr_ld, p_ld = spearmanr(matches_per_session, avg_level_diffs)
+        f.write("2. Correlazione: Match/Sessione vs. Delta Livello Medio\n")
+        f.write("   (Delta Livello > 0 significa che il giocatore ha livelli più alti dell'avversario)\n")
+        f.write(f"   Coefficiente: {corr_ld:.4f}\n")
+        f.write(f"   P-value:      {p_ld:.4f}\n")
+        if p_ld < 0.05:
+            if corr_ld < 0:
+                f.write("   RISULTATO: SIGNIFICATIVO E NEGATIVO. Meno partite per sessione sono correlate a un Delta Livello INFERIORE (avversari più forti).\n")
+            else:
+                f.write("   RISULTATO: SIGNIFICATIVO E POSITIVO. Meno partite per sessione sono correlate a un Delta Livello SUPERIORE (avversari più deboli).\n")
+        else:
+            f.write("   RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione evidente.\n")
+        
+        f.write("="*80 + "\n")
+
+def analyze_matchup_markov_chain(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'matchup_markov_chain_results.txt')
+
+    print(f"\nGenerazione report Catene di Markov (Transizioni Matchup) in: {output_file}")
+
+    # Definizioni Stati
+    # 0: Unfavorable (<45%), 1: Even (45-55%), 2: Favorable (>55%)
+    states = ['Unfavorable', 'Even', 'Favorable']
+    
+    # Matrice di Transizione (Conteggi): transitions[FROM][TO]
+    transitions = [[0]*3 for _ in range(3)]
+    
+    total_transitions = 0
+
+    for p in players_sessions:
+        for session in p['sessions']:
+            battles = session['battles']
+            if len(battles) < 2: 
+                continue
+            
+            # Convertiamo la sessione in una sequenza di stati
+            session_states = []
+            for b in battles:
+                m = b['matchup']
+                if m is None:
+                    session_states.append(None)
+                    continue
+                
+                if m > 55.0: s = 2   # Favorable
+                elif m < 45.0: s = 0 # Unfavorable
+                else: s = 1          # Even
+                session_states.append(s)
+            
+            # Contiamo le transizioni i -> i+1
+            for i in range(len(session_states) - 1):
+                curr_s = session_states[i]
+                next_s = session_states[i+1]
+                
+                if curr_s is not None and next_s is not None:
+                    transitions[curr_s][next_s] += 1
+                    total_transitions += 1
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI CATENE DI MARKOV: TRANSIZIONI MATCHUP\n")
+        f.write("Obiettivo: Verificare se il matchup attuale influenza il prossimo (es. 'Bad' chiama 'Bad').\n")
+        f.write("Ipotesi Nera (Random): La probabilità del prossimo stato dipende solo dalla frequenza globale, non dallo stato precedente.\n")
+        f.write("="*80 + "\n\n")
+        
+        f.write(f"Totale Transizioni Analizzate: {total_transitions}\n")
+        f.write("-" * 80 + "\n")
+
+        # Calcolo Totali per Riga (From) e Colonna (To)
+        row_totals = [sum(transitions[i]) for i in range(3)]
+        col_totals = [sum(transitions[i][j] for i in range(3)) for j in range(3)]
+        grand_total = sum(row_totals)
+
+        if grand_total == 0:
+            f.write("Dati insufficienti.\n")
+            return
+
+        # Probabilità Globali (Attese se il sistema fosse senza memoria)
+        global_probs = [c / grand_total for c in col_totals]
+
+        f.write(f"{'STATO PRECEDENTE':<20} | {'SUCCESSIVO: Unfavorable':<25} | {'SUCCESSIVO: Even':<20} | {'SUCCESSIVO: Favorable':<20}\n")
+        f.write("-" * 95 + "\n")
+
+        for i, from_state in enumerate(states):
+            row_str = f"{from_state:<20} | "
+            for j, to_state in enumerate(states):
+                count = transitions[i][j]
+                total_from = row_totals[i] if row_totals[i] > 0 else 1
+                
+                obs_prob = count / total_from
+                exp_prob = global_probs[j] # Se indipendente, dovrebbe essere uguale alla media globale
+                
+                diff = obs_prob - exp_prob
+                marker = ""
+                if abs(diff) > 0.05: marker = "(!)" # Evidenzia scostamenti > 5%
+                
+                cell_str = f"{obs_prob*100:.1f}% (Exp {exp_prob*100:.1f}%) {marker}"
+                row_str += f"{cell_str:<25} | "
+            f.write(row_str + "\n")
+
+        f.write("-" * 95 + "\n")
+        
+        # Test Chi-Quadro sulla matrice di transizione
+        chi2, p, dof, ex = chi2_contingency(transitions)
+        f.write(f"Test Chi-Quadro (Indipendenza Transizioni):\n")
+        f.write(f"P-value: {p:.6f}\n")
+        
+        if p < 0.05:
+            f.write("RISULTATO: DIPENDENZA SIGNIFICATIVA. Il sistema ha 'memoria' (il matchup precedente influenza il successivo).\n")
+        else:
+            f.write("RISULTATO: INDIPENDENZA. Le transizioni sembrano casuali rispetto alla distribuzione globale.\n")
+        
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1411,6 +1579,7 @@ def main():
     analyze_churn_probability_vs_pity(players_sessions, {}) # Placeholder per test locale
     analyze_cannon_fodder(players_sessions)
     analyze_dangerous_sequences(players_sessions)
+    analyze_matchup_markov_chain(players_sessions)
 
 if __name__ == "__main__":
     main()

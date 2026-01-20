@@ -1,0 +1,17 @@
+ANALISI CATENE DI MARKOV: TRANSIZIONI MATCHUP
+Obiettivo: Verificare se il matchup attuale influenza il prossimo (es. 'Bad' chiama 'Bad').
+Ipotesi Nera (Random): La probabilità del prossimo stato dipende solo dalla frequenza globale, non dallo stato precedente.
+================================================================================
+
+Totale Transizioni Analizzate: 4358
+--------------------------------------------------------------------------------
+STATO PRECEDENTE     | SUCCESSIVO: Unfavorable   | SUCCESSIVO: Even     | SUCCESSIVO: Favorable
+-----------------------------------------------------------------------------------------------
+Unfavorable          | 53.6% (Exp 40.5%) (!)     | 18.9% (Exp 21.0%)         | 27.5% (Exp 38.6%) (!)     | 
+Even                 | 36.6% (Exp 40.5%)         | 22.4% (Exp 21.0%)         | 41.0% (Exp 38.6%)         | 
+Favorable            | 29.5% (Exp 40.5%) (!)     | 22.2% (Exp 21.0%)         | 48.3% (Exp 38.6%) (!)     | 
+-----------------------------------------------------------------------------------------------
+Test Chi-Quadro (Indipendenza Transizioni):
+P-value: 0.000000
+RISULTATO: DIPENDENZA SIGNIFICATIVA. Il sistema ha 'memoria' (il matchup precedente influenza il successivo).
+================================================================================

@@ -2,24 +2,24 @@ ANALISI IPOTESI: ERS ALTO -> AUMENTO PITY ODDS
 Obiettivo: Verificare se i giocatori con ERS alto (Engagement Resilience Score) ricevono più 'aiuti' (Pity Match) dopo le sconfitte.
 ================================================================================
 
-Totale Giocatori Validi: 19
-Soglia ERS (Mediana): 0.987
+Totale Giocatori Validi: 22
+Soglia ERS (Mediana): 0.935
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG PITY ODDS   | AVG MATCHES     | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 9     | 0.5617          | 280.8           | 0.622 - 0.935
-HIGH ERS             | 10    | 1.4107          | 174.2           | 0.987 - 2.852
+LOW ERS              | 11    | 0.6224          | 276.5           | 0.563 - 0.884
+HIGH ERS             | 11    | 1.2396          | 166.5           | 0.935 - 2.871
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)
-U-statistic: 64.0
-P-value:     0.0625
+U-statistic: 78.0
+P-value:     0.1283
 
 RISULTATO: NON SIGNIFICATIVO. Non c'è evidenza statistica sufficiente per confermare l'ipotesi.
 --------------------------------------------------------------------------------
 CONTROLLO VARIABILE CONFONDENTE (Numero Partite):
-Correlazione Pity vs Matches (r_yz):   -0.0232 (p=0.9250)
-Correlazione ERS vs Matches (r_xz):    -0.0193 (p=0.9375)
-Correlazione Diretta (ERS vs Pity):    0.4553
-Correlazione Parziale (Netta):         0.4550
+Correlazione Pity vs Matches (r_yz):   0.1785 (p=0.4269)
+Correlazione ERS vs Matches (r_xz):    -0.0367 (p=0.8712)
+Correlazione Diretta (ERS vs Pity):    0.3735
+Correlazione Parziale (Netta):         0.3866
 ================================================================================
