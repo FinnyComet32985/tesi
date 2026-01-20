@@ -1,0 +1,46 @@
+ANALISI RETURN MATCHUP DOPO BAD STREAK
+Domanda: Se un giocatore chiude la sessione dopo una serie di matchup sfavorevoli,
+         al ritorno viene 'punito' ancora (memoria) o il sistema si resetta (coin flip)?
+Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
+================================================================================
+
+--- STOP TYPE: Short ---
+Condizione Precedente     | N      | Avg Return Matchup  
+------------------------------------------------------------
+Bad Streak                | 84     | 40.87               %
+Control (No Streak)       | 492    | 52.58               %
+------------------------------------------------------------
+Delta: -11.71%
+Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
+           (Il matchup al ritorno è peggiore rispetto alla norma)
+Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.87%)
+           (Significativamente inferiore al 50% -> Sfavorevole)
+
+--- STOP TYPE: Long ---
+Condizione Precedente     | N      | Avg Return Matchup  
+------------------------------------------------------------
+Bad Streak                | 106    | 42.75               %
+Control (No Streak)       | 746    | 52.11               %
+------------------------------------------------------------
+Delta: -9.36%
+Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
+           (Il matchup al ritorno è peggiore rispetto alla norma)
+Test vs 50% (Coin Flip): p-value = 0.0001 (Avg: 42.75%)
+           (Significativamente inferiore al 50% -> Sfavorevole)
+
+--- STOP TYPE: Quit ---
+Condizione Precedente     | N      | Avg Return Matchup  
+------------------------------------------------------------
+Bad Streak                | 34     | 43.70               %
+Control (No Streak)       | 256    | 53.34               %
+------------------------------------------------------------
+Delta: -9.64%
+Test Mann-Whitney U (Bad < Control): p-value = 0.0025
+RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
+           (Il matchup al ritorno è peggiore rispetto alla norma)
+Test vs 50% (Coin Flip): p-value = 0.0397 (Avg: 43.70%)
+           (Significativamente inferiore al 50% -> Sfavorevole)
+
+================================================================================

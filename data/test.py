@@ -4,7 +4,7 @@ import random
 import statistics 
 import os
 import numpy as np
-from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu
+from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu, ttest_1samp
 
 # Import data loader from battlelog_v2
 from battlelog_v2 import get_players_sessions
@@ -1560,6 +1560,108 @@ def analyze_matchup_markov_chain(players_sessions, output_dir=None):
         
         f.write("="*80 + "\n")
 
+def analyze_return_after_bad_streak(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'return_after_bad_streak_results.txt')
+
+    print(f"\nGenerazione report Return Matchup dopo Bad Streak in: {output_file}")
+
+    # Config
+    BAD_THRESH = 45.0
+    STREAK_LEN = 2 
+    
+    # Storage: stop_type -> {'bad_streak': [], 'control': []}
+    data = {
+        'Short': {'bad_streak': [], 'control': []},
+        'Long': {'bad_streak': [], 'control': []},
+        'Quit': {'bad_streak': [], 'control': []}
+    }
+    
+    for p in players_sessions:
+        sessions = p['sessions']
+        for i in range(len(sessions) - 1):
+            curr_sess = sessions[i]
+            next_sess = sessions[i+1]
+            
+            stop_type = curr_sess['stop_type']
+            if stop_type not in data: continue 
+            
+            if not next_sess['battles']: continue
+            first_b = next_sess['battles'][0]
+            if first_b['matchup'] is None: continue
+            return_mu = first_b['matchup']
+            
+            battles = curr_sess['battles']
+            # Check last N matches
+            if len(battles) < STREAK_LEN:
+                data[stop_type]['control'].append(return_mu)
+                continue
+                
+            last_n = battles[-STREAK_LEN:]
+            if any(b['matchup'] is None for b in last_n):
+                continue
+                
+            is_bad_streak = all(b['matchup'] < BAD_THRESH for b in last_n)
+            
+            if is_bad_streak:
+                data[stop_type]['bad_streak'].append(return_mu)
+            else:
+                data[stop_type]['control'].append(return_mu)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI RETURN MATCHUP DOPO BAD STREAK\n")
+        f.write("Domanda: Se un giocatore chiude la sessione dopo una serie di matchup sfavorevoli,\n")
+        f.write("         al ritorno viene 'punito' ancora (memoria) o il sistema si resetta (coin flip)?\n")
+        f.write(f"Definizione Bad Streak: Ultimi {STREAK_LEN} match con Matchup < {BAD_THRESH}%\n")
+        f.write("="*80 + "\n\n")
+        
+        for stop_type in ['Short', 'Long', 'Quit']:
+            bad_vals = data[stop_type]['bad_streak']
+            ctrl_vals = data[stop_type]['control']
+            
+            f.write(f"--- STOP TYPE: {stop_type} ---\n")
+            if len(bad_vals) < 5 or len(ctrl_vals) < 5:
+                f.write("Dati insufficienti.\n\n")
+                continue
+                
+            avg_bad = statistics.mean(bad_vals)
+            avg_ctrl = statistics.mean(ctrl_vals)
+            
+            f.write(f"{'Condizione Precedente':<25} | {'N':<6} | {'Avg Return Matchup':<20}\n")
+            f.write("-" * 60 + "\n")
+            f.write(f"{'Bad Streak':<25} | {len(bad_vals):<6} | {avg_bad:<20.2f}%\n")
+            f.write(f"{'Control (No Streak)':<25} | {len(ctrl_vals):<6} | {avg_ctrl:<20.2f}%\n")
+            
+            # Test Mann-Whitney U
+            # H1: Bad Streak Return < Control Return (Punishment Continues)
+            stat, p_val = mannwhitneyu(bad_vals, ctrl_vals, alternative='less')
+            
+            f.write("-" * 60 + "\n")
+            f.write(f"Delta: {avg_bad - avg_ctrl:+.2f}%\n")
+            f.write(f"Test Mann-Whitney U (Bad < Control): p-value = {p_val:.4f}\n")
+            
+            if p_val < 0.05:
+                f.write("RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.\n")
+                f.write("           (Il matchup al ritorno è peggiore rispetto alla norma)\n")
+            else:
+                f.write("RISULTATO: NON SIGNIFICATIVO. Il sistema sembra resettarsi (o non c'è memoria).\n")
+            
+            # Test vs 50% (Coin Flip) for Bad Streak group
+            t_stat, p_50 = ttest_1samp(bad_vals, 50.0)
+            
+            f.write(f"Test vs 50% (Coin Flip): p-value = {p_50:.4f} (Avg: {avg_bad:.2f}%)\n")
+            if p_50 < 0.05 and avg_bad < 50:
+                 f.write("           (Significativamente inferiore al 50% -> Sfavorevole)\n")
+            elif p_50 < 0.05 and avg_bad > 50:
+                 f.write("           (Significativamente superiore al 50% -> Favorevole/Pity)\n")
+            else:
+                 f.write("           (Compatibile con 50% -> Coin Flip)\n")
+
+            f.write("\n")
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1580,6 +1682,7 @@ def main():
     analyze_cannon_fodder(players_sessions)
     analyze_dangerous_sequences(players_sessions)
     analyze_matchup_markov_chain(players_sessions)
+    analyze_return_after_bad_streak(players_sessions)
 
 if __name__ == "__main__":
     main()
