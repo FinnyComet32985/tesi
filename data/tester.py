@@ -33,6 +33,7 @@ from test import (
     analyze_short_session_bonus,
     analyze_matchup_markov_chain,
     analyze_return_after_bad_streak,
+    analyze_debt_extinction,
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
@@ -92,6 +93,7 @@ def main():
     analyze_short_session_bonus(players_sessions, output_dir=results_dir)
     analyze_matchup_markov_chain(players_sessions, output_dir=results_dir)
     analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
+    analyze_debt_extinction(players_sessions, output_dir=results_dir)
 
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)

@@ -1662,6 +1662,105 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             f.write("\n")
         f.write("="*80 + "\n")
 
+def analyze_debt_extinction(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'debt_extinction_results.txt')
+
+    print(f"\nGenerazione report Estinzione Debito (Unfavorable Win vs Loss) in: {output_file}")
+
+    # Soglia per definire un match "Unfavorable"
+    UNFAVORABLE_THRESH = 45.0
+    
+    # Gruppi di analisi
+    # A: Unfavorable + WIN
+    # B: Unfavorable + LOSS
+    
+    # Dati raccolti: Next Matchup
+    next_mu_win = []
+    next_mu_loss = []
+    
+    # Dati di controllo (per verificare che i gruppi siano omogenei)
+    ctrl_curr_mu_win = []
+    ctrl_curr_mu_loss = []
+    
+    ctrl_lvl_win = []
+    ctrl_lvl_loss = []
+    
+    ctrl_elixir_diff_win = [] # (Opponent Leaked - Player Leaked) -> Positivo = Opponent ha giocato peggio
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            for i in range(len(battles) - 1):
+                curr = battles[i]
+                next_b = battles[i+1]
+                
+                if curr['matchup'] is None or next_b['matchup'] is None: continue
+                
+                # Identifichiamo la condizione "Debito": Matchup Sfavorevole
+                if curr['matchup'] < UNFAVORABLE_THRESH:
+                    
+                    # Raccogliamo dati in base all'esito
+                    if curr['win'] == 1:
+                        next_mu_win.append(next_b['matchup'])
+                        ctrl_curr_mu_win.append(curr['matchup'])
+                        if curr['level_diff'] is not None: ctrl_lvl_win.append(curr['level_diff'])
+                        
+                        # Elixir Control
+                        if curr.get('elixir_leaked_player') is not None and curr.get('elixir_leaked_opponent') is not None:
+                            ctrl_elixir_diff_win.append(curr['elixir_leaked_opponent'] - curr['elixir_leaked_player'])
+                            
+                    else:
+                        next_mu_loss.append(next_b['matchup'])
+                        ctrl_curr_mu_loss.append(curr['matchup'])
+                        if curr['level_diff'] is not None: ctrl_lvl_loss.append(curr['level_diff'])
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI ESTINZIONE DEBITO (MMR DEBT)\n")
+        f.write("Ipotesi: Vincere un matchup sfavorevole NON estingue il debito (il sistema punisce ancora).\n")
+        f.write("         Perdere un matchup sfavorevole estingue il debito (il sistema dà tregua).\n")
+        f.write(f"Definizione Unfavorable: Matchup < {UNFAVORABLE_THRESH}%\n")
+        f.write("="*80 + "\n\n")
+        
+        if len(next_mu_win) < 10 or len(next_mu_loss) < 10:
+            f.write("Dati insufficienti.\n")
+            return
+
+        avg_next_win = statistics.mean(next_mu_win)
+        avg_next_loss = statistics.mean(next_mu_loss)
+        
+        f.write(f"{'ESITO MATCH PRECEDENTE':<30} | {'N':<6} | {'NEXT MATCHUP (Avg)':<20}\n")
+        f.write("-" * 65 + "\n")
+        f.write(f"{'Unfavorable + WIN (Debito?)':<30} | {len(next_mu_win):<6} | {avg_next_win:<20.2f}%\n")
+        f.write(f"{'Unfavorable + LOSS (Pagato?)':<30} | {len(next_mu_loss):<6} | {avg_next_loss:<20.2f}%\n")
+        
+        # Test Mann-Whitney U
+        # H1: Next(Win) < Next(Loss) -> Chi vince viene punito con matchup peggiori
+        stat, p_val = mannwhitneyu(next_mu_win, next_mu_loss, alternative='less')
+        
+        f.write("-" * 65 + "\n")
+        f.write(f"Delta: {avg_next_win - avg_next_loss:+.2f}%\n")
+        f.write(f"Test Mann-Whitney U (Win < Loss): p-value = {p_val:.4f}\n")
+        
+        if p_val < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. Vincere contro le probabilità porta a matchup futuri peggiori rispetto a perdere.\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. Il sistema sembra trattare i due casi in modo simile.\n")
+            
+        f.write("\n" + "="*80 + "\n")
+        f.write("CONTROLLI DI VALIDITÀ (Bias Check)\n")
+        f.write("Verifichiamo che le vittorie 'impossibili' non siano dovute a fattori esterni.\n")
+        f.write("-" * 80 + "\n")
+        
+        f.write(f"1. Matchup Iniziale (Avg): Win={statistics.mean(ctrl_curr_mu_win):.2f}% vs Loss={statistics.mean(ctrl_curr_mu_loss):.2f}%\n")
+        f.write(f"2. Level Diff (Avg):       Win={statistics.mean(ctrl_lvl_win):+.2f} vs Loss={statistics.mean(ctrl_lvl_loss):+.2f}\n")
+        if ctrl_elixir_diff_win:
+            f.write(f"3. Elixir Advantage (Win): {statistics.mean(ctrl_elixir_diff_win):+.2f} (Positivo = Opponent ha sprecato elisir)\n")
+            f.write("   (Se alto, la vittoria potrebbe essere dovuta a errori dell'avversario)\n")
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1683,6 +1782,7 @@ def main():
     analyze_dangerous_sequences(players_sessions)
     analyze_matchup_markov_chain(players_sessions)
     analyze_return_after_bad_streak(players_sessions)
+    analyze_debt_extinction(players_sessions)
 
 if __name__ == "__main__":
     main()

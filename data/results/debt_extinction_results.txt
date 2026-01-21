@@ -1,0 +1,24 @@
+ANALISI ESTINZIONE DEBITO (MMR DEBT)
+Ipotesi: Vincere un matchup sfavorevole NON estingue il debito (il sistema punisce ancora).
+         Perdere un matchup sfavorevole estingue il debito (il sistema dà tregua).
+Definizione Unfavorable: Matchup < 45.0%
+================================================================================
+
+ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
+-----------------------------------------------------------------
+Unfavorable + WIN (Debito?)    | 720    | 42.69               %
+Unfavorable + LOSS (Pagato?)   | 983    | 46.01               %
+-----------------------------------------------------------------
+Delta: -3.32%
+Test Mann-Whitney U (Win < Loss): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. Vincere contro le probabilità porta a matchup futuri peggiori rispetto a perdere.
+
+================================================================================
+CONTROLLI DI VALIDITÀ (Bias Check)
+Verifichiamo che le vittorie 'impossibili' non siano dovute a fattori esterni.
+--------------------------------------------------------------------------------
+1. Matchup Iniziale (Avg): Win=34.45% vs Loss=31.53%
+2. Level Diff (Avg):       Win=-0.34 vs Loss=-0.38
+3. Elixir Advantage (Win): +2.60 (Positivo = Opponent ha sprecato elisir)
+   (Se alto, la vittoria potrebbe essere dovuta a errori dell'avversario)
+================================================================================

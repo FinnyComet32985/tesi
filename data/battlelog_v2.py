@@ -23,6 +23,8 @@ OPPONENT_CROWNS_IDX = 10
 PLAYER_DECK_ID_IDX = 11
 ARCHETYPE_ID_IDX = 12
 MATCHUP_NO_LVL_IDX = 13
+ELIXIR_PLAYER_IDX = 14
+ELIXIR_OPPONENT_IDX = 15
     
 # Soglie in secondi
 SHORT_STOP = 20 * 60      # 20 minuti
@@ -102,7 +104,9 @@ def define_sessions(battles, trophies_history, mode_filter='all'):
             'matchup_no_lvl': battle_row[MATCHUP_NO_LVL_IDX] * 100 if len(battle_row) > MATCHUP_NO_LVL_IDX and battle_row[MATCHUP_NO_LVL_IDX] is not None else None,
             'timestamp': datetime.fromtimestamp(battle_row[TIMESTAMP_IDX]).strftime('%Y-%m-%d %H:%M:%S'),
             'deck_id': battle_row[PLAYER_DECK_ID_IDX],
-            'archetype_id': battle_row[ARCHETYPE_ID_IDX] if len(battle_row) > ARCHETYPE_ID_IDX else None
+            'archetype_id': battle_row[ARCHETYPE_ID_IDX] if len(battle_row) > ARCHETYPE_ID_IDX else None,
+            'elixir_leaked_player': battle_row[ELIXIR_PLAYER_IDX] if len(battle_row) > ELIXIR_PLAYER_IDX else None,
+            'elixir_leaked_opponent': battle_row[ELIXIR_OPPONENT_IDX] if len(battle_row) > ELIXIR_OPPONENT_IDX else None
         }
         
         # Integrazione dati Ladder
@@ -483,7 +487,7 @@ def print_sessions(sessions, output_file=None):
 
 def load_battles(cursor, tag):
     query = """
-            SELECT b.battle_id, b.battle_type, b.game_mode, b.timestamp, b.win, b.level_diff, b.matchup_win_rate, b.trophy_change, b.opponent_tag, b.player_crowns, b.opponent_crowns, b.player_deck_id, d.archetype_hash, b.matchup_no_lvl
+            SELECT b.battle_id, b.battle_type, b.game_mode, b.timestamp, b.win, b.level_diff, b.matchup_win_rate, b.trophy_change, b.opponent_tag, b.player_crowns, b.opponent_crowns, b.player_deck_id, d.archetype_hash, b.matchup_no_lvl, b.elixir_leaked_player, b.elixir_leaked_opponent
             FROM battles b
             LEFT JOIN decks d ON b.player_deck_id = d.deck_hash
             WHERE b.player_tag = ?
