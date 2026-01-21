@@ -1836,6 +1836,85 @@ def analyze_favorable_outcome_impact(players_sessions, output_dir=None):
             f.write(f"2. Elixir Advantage (Loss): {statistics.mean(ctrl_elixir_diff_loss):+.2f} (Se molto negativo, player ha giocato male)\n")
         f.write("="*80 + "\n")
 
+def analyze_defeat_quality_impact(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'defeat_quality_impact_results.txt')
+
+    print(f"\nGenerazione report Qualità della Sconfitta (Crushing vs Close) in: {output_file}")
+
+    # Gruppi
+    # A: Crushing Defeat (0-3). Segnale di resa/stomp.
+    # B: Close Defeat (Diff 1 corona). Segnale di match combattuto.
+    
+    crushing_next_mu = []
+    close_next_mu = []
+    
+    # Controllo Elixir Leaked (se disponibile) per confermare "volontarietà" o scarsa performance
+    crushing_leaked = []
+    close_leaked = []
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            for i in range(len(battles) - 1):
+                curr = battles[i]
+                next_b = battles[i+1]
+                
+                if curr['win'] == 0: # Solo sconfitte
+                    if curr['matchup'] is None or next_b['matchup'] is None: continue
+                    
+                    p_crowns = curr['player_crowns']
+                    o_crowns = curr['opponent_crowns']
+                    
+                    # Crushing Defeat: 0-3
+                    if p_crowns == 0 and o_crowns == 3:
+                        crushing_next_mu.append(next_b['matchup'])
+                        if curr.get('elixir_leaked_player') is not None:
+                            crushing_leaked.append(curr['elixir_leaked_player'])
+                            
+                    # Close Defeat: Differenza di 1 (es. 0-1, 1-2, 2-3)
+                    elif (o_crowns - p_crowns) == 1:
+                        close_next_mu.append(next_b['matchup'])
+                        if curr.get('elixir_leaked_player') is not None:
+                            close_leaked.append(curr['elixir_leaked_player'])
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI QUALITÀ DELLA SCONFITTA: CRUSHING (0-3) vs CLOSE (Diff 1)\n")
+        f.write("Domanda: Perdere malamente (0-3) estingue il debito meglio di una sconfitta combattuta?\n")
+        f.write("Ipotesi: Una sconfitta netta attiva meccanismi di protezione (Pity) più forti.\n")
+        f.write("="*80 + "\n\n")
+        
+        if len(crushing_next_mu) < 10 or len(close_next_mu) < 10:
+            f.write("Dati insufficienti.\n")
+            return
+
+        avg_crushing = statistics.mean(crushing_next_mu)
+        avg_close = statistics.mean(close_next_mu)
+        
+        f.write(f"{'TIPO SCONFITTA':<25} | {'N':<6} | {'NEXT MATCHUP (Avg)':<20} | {'AVG LEAKED ELIXIR':<20}\n")
+        f.write("-" * 80 + "\n")
+        
+        leak_crushing = f"{statistics.mean(crushing_leaked):.2f}" if crushing_leaked else "N/A"
+        leak_close = f"{statistics.mean(close_leaked):.2f}" if close_leaked else "N/A"
+        
+        f.write(f"{'Crushing (0-3)':<25} | {len(crushing_next_mu):<6} | {avg_crushing:<20.2f}% | {leak_crushing:<20}\n")
+        f.write(f"{'Close (Diff 1)':<25} | {len(close_next_mu):<6} | {avg_close:<20.2f}% | {leak_close:<20}\n")
+        
+        stat, p_val = mannwhitneyu(crushing_next_mu, close_next_mu, alternative='greater')
+        f.write("-" * 80 + "\n")
+        f.write(f"Delta: {avg_crushing - avg_close:+.2f}%\n")
+        f.write(f"Test Mann-Whitney U (Crushing > Close): p-value = {p_val:.4f}\n")
+        
+        if p_val < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. Farsi 'asfaltare' (0-3) porta a matchup successivi migliori.\n")
+            f.write("           (Il sistema rileva la frustrazione/incompetenza e compensa di più)\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. Il margine della sconfitta non sembra influenzare il prossimo matchup.\n")
+        
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1859,6 +1938,7 @@ def main():
     analyze_return_after_bad_streak(players_sessions)
     analyze_debt_extinction(players_sessions)
     analyze_favorable_outcome_impact(players_sessions)
+    analyze_defeat_quality_impact(players_sessions)
 
 if __name__ == "__main__":
     main()

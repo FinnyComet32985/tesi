@@ -35,6 +35,7 @@ from test import (
     analyze_return_after_bad_streak,
     analyze_debt_extinction,
     analyze_favorable_outcome_impact,
+    analyze_defeat_quality_impact,
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
@@ -96,6 +97,7 @@ def main():
     analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
     analyze_debt_extinction(players_sessions, output_dir=results_dir)
     analyze_favorable_outcome_impact(players_sessions, output_dir=results_dir)
+    analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
 
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)

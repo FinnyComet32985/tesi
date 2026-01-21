@@ -1,0 +1,14 @@
+ANALISI QUALITÀ DELLA SCONFITTA: CRUSHING (0-3) vs CLOSE (Diff 1)
+Domanda: Perdere malamente (0-3) estingue il debito meglio di una sconfitta combattuta?
+Ipotesi: Una sconfitta netta attiva meccanismi di protezione (Pity) più forti.
+================================================================================
+
+TIPO SCONFITTA            | N      | NEXT MATCHUP (Avg)   | AVG LEAKED ELIXIR   
+--------------------------------------------------------------------------------
+Crushing (0-3)            | 277    | 48.79               % | 6.66                
+Close (Diff 1)            | 1382   | 51.07               % | 3.57                
+--------------------------------------------------------------------------------
+Delta: -2.28%
+Test Mann-Whitney U (Crushing > Close): p-value = 0.9607
+RISULTATO: NON SIGNIFICATIVO. Il margine della sconfitta non sembra influenzare il prossimo matchup.
+================================================================================
