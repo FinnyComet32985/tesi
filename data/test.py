@@ -1761,6 +1761,81 @@ def analyze_debt_extinction(players_sessions, output_dir=None):
             f.write("   (Se alto, la vittoria potrebbe essere dovuta a errori dell'avversario)\n")
         f.write("="*80 + "\n")
 
+def analyze_favorable_outcome_impact(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'favorable_outcome_impact_results.txt')
+
+    print(f"\nGenerazione report Impatto Esito Matchup Favorevole in: {output_file}")
+
+    # Soglia per definire un match "Favorable"
+    FAVORABLE_THRESH = 55.0
+    
+    # Gruppi di analisi
+    # A: Favorable + WIN (Esito Atteso)
+    # B: Favorable + LOSS (Esito Inatteso / Choke)
+    
+    next_mu_win = []
+    next_mu_loss = []
+    
+    ctrl_curr_mu_win = []
+    ctrl_curr_mu_loss = []
+    ctrl_lvl_win = []
+    ctrl_lvl_loss = []
+    ctrl_elixir_diff_loss = [] 
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            for i in range(len(battles) - 1):
+                curr = battles[i]
+                next_b = battles[i+1]
+                
+                if curr['matchup'] is None or next_b['matchup'] is None: continue
+                
+                if curr['matchup'] > FAVORABLE_THRESH:
+                    if curr['win'] == 1:
+                        next_mu_win.append(next_b['matchup'])
+                        ctrl_curr_mu_win.append(curr['matchup'])
+                        if curr['level_diff'] is not None: ctrl_lvl_win.append(curr['level_diff'])
+                    else:
+                        next_mu_loss.append(next_b['matchup'])
+                        ctrl_curr_mu_loss.append(curr['matchup'])
+                        if curr['level_diff'] is not None: ctrl_lvl_loss.append(curr['level_diff'])
+                        
+                        if curr.get('elixir_leaked_player') is not None and curr.get('elixir_leaked_opponent') is not None:
+                            ctrl_elixir_diff_loss.append(curr['elixir_leaked_opponent'] - curr['elixir_leaked_player'])
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI IMPATTO ESITO SU MATCHUP FAVOREVOLE\n")
+        f.write("Domanda: Come reagisce il sistema quando vinci o perdi una partita che 'dovevi' vincere?\n")
+        f.write(f"Definizione Favorable: Matchup > {FAVORABLE_THRESH}%\n")
+        f.write("="*80 + "\n\n")
+        
+        if len(next_mu_win) < 10 or len(next_mu_loss) < 10:
+            f.write("Dati insufficienti.\n")
+            return
+
+        avg_next_win = statistics.mean(next_mu_win)
+        avg_next_loss = statistics.mean(next_mu_loss)
+        
+        f.write(f"{'ESITO MATCH PRECEDENTE':<30} | {'N':<6} | {'NEXT MATCHUP (Avg)':<20}\n")
+        f.write("-" * 65 + "\n")
+        f.write(f"{'Favorable + WIN (Atteso)':<30} | {len(next_mu_win):<6} | {avg_next_win:<20.2f}%\n")
+        f.write(f"{'Favorable + LOSS (Inatteso)':<30} | {len(next_mu_loss):<6} | {avg_next_loss:<20.2f}%\n")
+        
+        stat, p_val = mannwhitneyu(next_mu_win, next_mu_loss)
+        f.write("-" * 65 + "\n")
+        f.write(f"Delta: {avg_next_win - avg_next_loss:+.2f}%\n")
+        f.write(f"Test Mann-Whitney U (Differenza Significativa): p-value = {p_val:.4f}\n")
+        
+        f.write("\n" + "="*80 + "\n")
+        f.write(f"1. Matchup Iniziale (Avg): Win={statistics.mean(ctrl_curr_mu_win):.2f}% vs Loss={statistics.mean(ctrl_curr_mu_loss):.2f}%\n")
+        if ctrl_elixir_diff_loss:
+            f.write(f"2. Elixir Advantage (Loss): {statistics.mean(ctrl_elixir_diff_loss):+.2f} (Se molto negativo, player ha giocato male)\n")
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1783,6 +1858,7 @@ def main():
     analyze_matchup_markov_chain(players_sessions)
     analyze_return_after_bad_streak(players_sessions)
     analyze_debt_extinction(players_sessions)
+    analyze_favorable_outcome_impact(players_sessions)
 
 if __name__ == "__main__":
     main()

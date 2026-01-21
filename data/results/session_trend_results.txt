@@ -3,68 +3,68 @@ Obiettivo: Verificare se le sessioni iniziano con vittorie/matchup facili (Hook)
 Criteri: Sessioni con almeno 4 partite. Confronto Primi k vs Ultimi k match.
 ================================================================================
 
-Totale Sessioni Analizzate: 580
+Totale Sessioni Analizzate: 594
 --------------------------------------------------------------------------------
 1. WIN RATE (Inizio vs Fine)
-   Media Win Rate INIZIO: 59.37%
-   Media Win Rate FINE:   53.30%
-   Delta:                 -6.06%
-   Test Wilcoxon (Inizio > Fine): p-value = 0.0012
+   Media Win Rate INIZIO: 59.15%
+   Media Win Rate FINE:   53.14%
+   Delta:                 -6.00%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0011
    RISULTATO: SIGNIFICATIVO. I giocatori vincono significativamente di più all'inizio della sessione.
 
 2. MATCHUP QUALITY (Inizio vs Fine)
-   Media Matchup INIZIO: 50.89%
-   Media Matchup FINE:   49.41%
-   Delta:                -1.48%
-   Test Wilcoxon (Inizio > Fine): p-value = 0.0056
+   Media Matchup INIZIO: 50.95%
+   Media Matchup FINE:   49.45%
+   Delta:                -1.49%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0052
    RISULTATO: SIGNIFICATIVO. I matchup sono significativamente migliori all'inizio della sessione.
 
 3. MATCHUP NO-LVL (Fair Play) (Inizio vs Fine)
-   Media Matchup No-Lvl INIZIO: 48.99%
-   Media Matchup No-Lvl FINE:   48.85%
-   Delta:                       -0.14%
-   Test Wilcoxon (Inizio > Fine): p-value = 0.3983
+   Media Matchup No-Lvl INIZIO: 49.02%
+   Media Matchup No-Lvl FINE:   48.92%
+   Delta:                       -0.10%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.4255
    RISULTATO: NON SIGNIFICATIVO.
 
 4. LEVEL DIFFERENCE (Inizio vs Fine)
-   Media Level Diff INIZIO: +0.02
+   Media Level Diff INIZIO: +0.03
    Media Level Diff FINE:   -0.01
    Delta:                   -0.04
-   Test Wilcoxon (Inizio > Fine): p-value = 0.0053
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0035
    RISULTATO: SIGNIFICATIVO (Livelli peggiori alla fine)
 
 ================================================================================
 ANALISI 2: HOOK PHASE (Primi 3) vs RESTO DELLA SESSIONE
 Obiettivo: Verificare se le prime partite sono sistematicamente più facili del resto della sessione.
 Criteri: Sessioni con > 3 partite. Confronto Primi 3 vs Rimanenti.
-Sessioni valide per questo test: 580
+Sessioni valide per questo test: 594
 --------------------------------------------------------------------------------
 1. WIN RATE (Hook vs Resto)
-   Media Win Rate HOOK (Primi 3): 60.00%
-   Media Win Rate RESTO:          50.45%
-   Delta:                         -9.55%
-   Test Wilcoxon (Hook > Resto): p-value = 0.0001
+   Media Win Rate HOOK (Primi 3): 59.93%
+   Media Win Rate RESTO:          50.19%
+   Delta:                         -9.74%
+   Test Wilcoxon (Hook > Resto): p-value = 0.0000
    RISULTATO: SIGNIFICATIVO
 
 2. MATCHUP QUALITY (Hook vs Resto)
-   Media Matchup HOOK:  50.71%
-   Media Matchup RESTO: 49.07%
-   Delta:               -1.64%
-   Test Wilcoxon (Hook > Resto): p-value = 0.0043
+   Media Matchup HOOK:  50.73%
+   Media Matchup RESTO: 49.16%
+   Delta:               -1.57%
+   Test Wilcoxon (Hook > Resto): p-value = 0.0056
    RISULTATO: SIGNIFICATIVO
 
 3. MATCHUP NO-LVL (Hook vs Resto)
-   Media Matchup No-Lvl HOOK:  49.09%
-   Media Matchup No-Lvl RESTO: 48.68%
-   Delta:                      -0.41%
-   Test Wilcoxon (Hook > Resto): p-value = 0.1288
+   Media Matchup No-Lvl HOOK:  49.13%
+   Media Matchup No-Lvl RESTO: 48.75%
+   Delta:                      -0.38%
+   Test Wilcoxon (Hook > Resto): p-value = 0.1495
    RISULTATO: NON SIGNIFICATIVO
 
 4. LEVEL DIFFERENCE (Hook vs Resto)
    Media Level Diff HOOK:  +0.02
    Media Level Diff RESTO: -0.02
    Delta:                  -0.04
-   Test Wilcoxon (Hook > Resto): p-value = 0.0063
+   Test Wilcoxon (Hook > Resto): p-value = 0.0065
    RISULTATO: SIGNIFICATIVO (Livelli peggiori nel resto)
 
 ================================================================================
@@ -72,23 +72,23 @@ ANALISI 3: CORRELAZIONE LUNGHEZZA SESSIONE vs DELTA (Resto - Hook)
 Obiettivo: Capire se il peggioramento (Delta negativo) aumenta con la durata della sessione.
 --------------------------------------------------------------------------------
 1. Lunghezza vs Delta Win Rate
-   Correlazione (Spearman): 0.1479
-   P-value:                 0.0004
+   Correlazione (Spearman): 0.1516
+   P-value:                 0.0002
    RISULTATO: SIGNIFICATIVO POSITIVO. Sessioni più lunghe -> Delta migliore.
 
 2. Lunghezza vs Delta Matchup
-   Correlazione (Spearman): 0.0701
-   P-value:                 0.0918
+   Correlazione (Spearman): 0.0624
+   P-value:                 0.1288
    RISULTATO: NON SIGNIFICATIVO.
 
 3. Lunghezza vs Delta Matchup No-Lvl
-   Correlazione (Spearman): 0.0381
-   P-value:                 0.3592
+   Correlazione (Spearman): 0.0351
+   P-value:                 0.3932
    RISULTATO: NON SIGNIFICATIVO.
 
 4. Lunghezza vs Delta Level Diff
-   Correlazione (Spearman): 0.0230
-   P-value:                 0.5801
+   Correlazione (Spearman): 0.0172
+   P-value:                 0.6750
    RISULTATO: NON SIGNIFICATIVO.
 
 ================================================================================
