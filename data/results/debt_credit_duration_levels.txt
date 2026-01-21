@@ -1,0 +1,32 @@
+ANALISI DURATA DEBITO/CREDITO E CORRELAZIONE LIVELLI (PAY-TO-WIN CHECK)
+Obiettivo 1: Capire quanto durano i periodi di punizione (Debito) e gratificazione (Credito).
+Obiettivo 2: Verificare se durante il Debito il giocatore affronta avversari di livello più alto (incentivo shop).
+Soglie: Debito < 45.0%, Credito > 55.0%
+================================================================================
+
+--- 1. ANALISI STANDARD (Matchup Reale: include livelli) ---
+TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
+--------------------------------------------------------------------------------
+Debt            | 1543       | 1.61         | 10         | -0.36          
+Normal          | 1124       | 1.20         | 6          | 0.03           
+Credit          | 1642       | 1.52         | 15         | 0.37           
+
+Nota: Una correlazione qui è attesa se il Matchup include i livelli.
+--------------------------------------------------------------------------------
+
+--- 2. ANALISI PURA (Matchup No-Lvl: Solo Deck) ---
+Domanda: Quando il sistema ti countera il MAZZO (Debt), ti dà anche livelli più alti?
+TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
+--------------------------------------------------------------------------------
+Debt            | 1590       | 1.49         | 9          | 0.09           
+Normal          | 1478       | 1.32         | 6          | 0.01           
+Credit          | 1438       | 1.38         | 8          | -0.09          
+--------------------------------------------------------------------------------
+Confronto Livelli (Pure Debt vs Pure Credit):
+   Avg Level Diff in DEBT (Bad Deck):   +0.091
+   Avg Level Diff in CREDIT (Good Deck): -0.088
+   Test Mann-Whitney U (Debt < Credit): p-value = 1.0000
+
+RISULTATO: NON SIGNIFICATIVO.
+           Il livello degli avversari sembra indipendente dal fatto che tu abbia un mazzo favorevole o sfavorevole.
+================================================================================

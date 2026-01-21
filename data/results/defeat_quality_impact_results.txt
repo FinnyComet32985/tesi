@@ -5,10 +5,10 @@ Ipotesi: Una sconfitta netta attiva meccanismi di protezione (Pity) più forti.
 
 TIPO SCONFITTA            | N      | NEXT MATCHUP (Avg)   | AVG LEAKED ELIXIR   
 --------------------------------------------------------------------------------
-Crushing (0-3)            | 277    | 48.79               % | 6.66                
-Close (Diff 1)            | 1382   | 51.07               % | 3.57                
+Crushing (0-3)            | 278    | 48.77               % | 6.64                
+Close (Diff 1)            | 1386   | 51.08               % | 3.56                
 --------------------------------------------------------------------------------
-Delta: -2.28%
-Test Mann-Whitney U (Crushing > Close): p-value = 0.9607
+Delta: -2.31%
+Test Mann-Whitney U (Crushing > Close): p-value = 0.9638
 RISULTATO: NON SIGNIFICATIVO. Il margine della sconfitta non sembra influenzare il prossimo matchup.
 ================================================================================

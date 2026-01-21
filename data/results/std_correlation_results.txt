@@ -1,4 +1,4 @@
-Player: 20CCVVLUP0     -     std_dev: 7.80
+Player: 20CCVVLUP0     -     std_dev: 7.79
 Player: 20GLGG298R     -     std_dev: 8.88
 Player: 20JGRJGY2Q     -     std_dev: 10.25
 Player: 20QG9YJ     -     std_dev: 5.76
@@ -39,7 +39,7 @@ Player: YU889LRR0     -     std_dev: 5.67
 ============================================================
  ANALISI VARIANZA SESSIONI vs FSI
 ============================================================
-Player: 20CCVVLUP0 | FSI: 0.12 | StdDev: 7.80 | Var: 60.79
+Player: 20CCVVLUP0 | FSI: 0.12 | StdDev: 7.79 | Var: 60.65
 Player: 20GLGG298R | FSI: 0.52 | StdDev: 8.88 | Var: 78.91
 Player: 20JGRJGY2Q | FSI: 0.87 | StdDev: 10.25 | Var: 105.03
 Player: 20QG9YJ    | FSI: 1.31 | StdDev: 5.76 | Var: 33.20

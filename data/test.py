@@ -1915,6 +1915,163 @@ def analyze_defeat_quality_impact(players_sessions, output_dir=None):
         
         f.write("="*80 + "\n")
 
+def analyze_debt_credit_duration_and_levels(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'debt_credit_duration_levels.txt')
+
+    print(f"\nGenerazione report Durata Debito/Credito e Livelli in: {output_file}")
+
+    # Definizioni
+    BAD_THRESH = 45.0  # Debito
+    GOOD_THRESH = 55.0 # Credito
+    
+    # Storage
+    # lengths: lista di lunghezze delle streak
+    # levels: lista di tutti i level_diff incontrati durante quel tipo di streak
+    
+    # 1. Analisi Standard (Matchup Reale - include livelli)
+    stats_real = {
+        'Debt': {'lengths': [], 'levels': []},
+        'Credit': {'lengths': [], 'levels': []},
+        'Normal': {'lengths': [], 'levels': []} # 45-55%
+    }
+    # 2. Analisi Pura (Matchup No-Lvl - solo Deck)
+    stats_pure = {
+        'Debt': {'lengths': [], 'levels': []},
+        'Credit': {'lengths': [], 'levels': []},
+        'Normal': {'lengths': [], 'levels': []}
+    }
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            
+            current_type = None
+            current_len = 0
+            
+            current_type_pure = None
+            current_len_pure = 0
+            
+            for b in battles:
+                mu = b['matchup']
+                mu_pure = b.get('matchup_no_lvl')
+                lvl = b['level_diff']
+                
+                if mu is None or lvl is None: continue
+                
+                # --- LOGICA STANDARD (Reale) ---
+                if mu < BAD_THRESH: new_type = 'Debt'
+                elif mu > GOOD_THRESH: new_type = 'Credit'
+                else: new_type = 'Normal'
+                
+                if new_type != current_type:
+                    if current_type is not None:
+                        stats_real[current_type]['lengths'].append(current_len)
+                    current_type = new_type
+                    current_len = 1
+                else:
+                    current_len += 1
+                
+                stats_real[new_type]['levels'].append(lvl)
+                
+                # --- LOGICA PURA (No-Lvl) ---
+                if mu_pure is not None:
+                    if mu_pure < BAD_THRESH: new_type_pure = 'Debt'
+                    elif mu_pure > GOOD_THRESH: new_type_pure = 'Credit'
+                    else: new_type_pure = 'Normal'
+                    
+                    if new_type_pure != current_type_pure:
+                        if current_type_pure is not None:
+                            stats_pure[current_type_pure]['lengths'].append(current_len_pure)
+                        current_type_pure = new_type_pure
+                        current_len_pure = 1
+                    else:
+                        current_len_pure += 1
+                    
+                    # Qui verifichiamo se il livello è correlato al SOLO matchup di mazzo
+                    stats_pure[new_type_pure]['levels'].append(lvl)
+            
+            # Salva l'ultima streak della sessione
+            if current_type is not None:
+                stats_real[current_type]['lengths'].append(current_len)
+            
+            if current_type_pure is not None:
+                stats_pure[current_type_pure]['lengths'].append(current_len_pure)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI DURATA DEBITO/CREDITO E CORRELAZIONE LIVELLI (PAY-TO-WIN CHECK)\n")
+        f.write("Obiettivo 1: Capire quanto durano i periodi di punizione (Debito) e gratificazione (Credito).\n")
+        f.write("Obiettivo 2: Verificare se durante il Debito il giocatore affronta avversari di livello più alto (incentivo shop).\n")
+        f.write(f"Soglie: Debito < {BAD_THRESH}%, Credito > {GOOD_THRESH}%\n")
+        f.write("="*80 + "\n\n")
+        
+        f.write("--- 1. ANALISI STANDARD (Matchup Reale: include livelli) ---\n")
+        f.write(f"{'TIPO FASE':<15} | {'N. STREAK':<10} | {'AVG DURATA':<12} | {'MAX DURATA':<10} | {'AVG LEVEL DIFF':<15}\n")
+        f.write("-" * 80 + "\n")
+        
+        for phase in ['Debt', 'Normal', 'Credit']:
+            lens = stats_real[phase]['lengths']
+            levs = stats_real[phase]['levels']
+            
+            if not lens: continue
+            
+            avg_len = statistics.mean(lens)
+            max_len = max(lens)
+            avg_lvl = statistics.mean(levs) if levs else 0.0
+            
+            f.write(f"{phase:<15} | {len(lens):<10} | {avg_len:<12.2f} | {max_len:<10} | {avg_lvl:<15.2f}\n")
+
+        f.write("\nNota: Una correlazione qui è attesa se il Matchup include i livelli.\n")
+        f.write("-" * 80 + "\n")
+        
+        # --- ANALISI PURA ---
+        f.write("\n--- 2. ANALISI PURA (Matchup No-Lvl: Solo Deck) ---\n")
+        f.write("Domanda: Quando il sistema ti countera il MAZZO (Debt), ti dà anche livelli più alti?\n")
+        f.write(f"{'TIPO FASE':<15} | {'N. STREAK':<10} | {'AVG DURATA':<12} | {'MAX DURATA':<10} | {'AVG LEVEL DIFF':<15}\n")
+        f.write("-" * 80 + "\n")
+        
+        for phase in ['Debt', 'Normal', 'Credit']:
+            lens = stats_pure[phase]['lengths']
+            levs = stats_pure[phase]['levels']
+            
+            if not lens: continue
+            
+            avg_len = statistics.mean(lens)
+            max_len = max(lens)
+            avg_lvl = statistics.mean(levs) if levs else 0.0
+            
+            f.write(f"{phase:<15} | {len(lens):<10} | {avg_len:<12.2f} | {max_len:<10} | {avg_lvl:<15.2f}\n")
+
+        f.write("-" * 80 + "\n")
+        
+        # Test Statistici sui Livelli (PURA)
+        debt_lvls = stats_pure['Debt']['levels']
+        credit_lvls = stats_pure['Credit']['levels']
+        
+        if len(debt_lvls) > 10 and len(credit_lvls) > 10:
+            # Mann-Whitney U: Debt Level Diff < Credit Level Diff? (Più negativo = avversario più forte)
+            stat, p_val = mannwhitneyu(debt_lvls, credit_lvls, alternative='less')
+            
+            avg_debt = statistics.mean(debt_lvls)
+            avg_credit = statistics.mean(credit_lvls)
+            
+            f.write(f"Confronto Livelli (Pure Debt vs Pure Credit):\n")
+            f.write(f"   Avg Level Diff in DEBT (Bad Deck):   {avg_debt:+.3f}\n")
+            f.write(f"   Avg Level Diff in CREDIT (Good Deck): {avg_credit:+.3f}\n")
+            f.write(f"   Test Mann-Whitney U (Debt < Credit): p-value = {p_val:.4f}\n\n")
+            
+            if p_val < 0.05:
+                f.write("RISULTATO: SIGNIFICATIVO (DOPPIA PUNIZIONE).\n")
+                f.write("           Quando il sistema ti dà un mazzo contro (Counter Deck), ti assegna ANCHE avversari di livello superiore.\n")
+                f.write("           (Indizio molto forte di manipolazione Pay-to-Win).\n")
+            else:
+                f.write("RISULTATO: NON SIGNIFICATIVO.\n")
+                f.write("           Il livello degli avversari sembra indipendente dal fatto che tu abbia un mazzo favorevole o sfavorevole.\n")
+        
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -1939,6 +2096,7 @@ def main():
     analyze_debt_extinction(players_sessions)
     analyze_favorable_outcome_impact(players_sessions)
     analyze_defeat_quality_impact(players_sessions)
+    analyze_debt_credit_duration_and_levels(players_sessions)
 
 if __name__ == "__main__":
     main()

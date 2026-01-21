@@ -8,7 +8,7 @@ Soglia ERS (Mediana): 0.795
 GRUPPO               | N     | AVG RETURN MU   | RANGE ERS           
 --------------------------------------------------------------------------------
 LOW ERS              | 18    | 50.42          % | 0.333 - 0.781
-HIGH ERS             | 19    | 53.58          % | 0.795 - 2.889
+HIGH ERS             | 19    | 53.58          % | 0.795 - 2.332
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Return Matchup (High ERS) > Return Matchup (Low ERS)
