@@ -3,23 +3,23 @@ Obiettivo: Verificare se i giocatori con ERS alto (Engagement Resilience Score) 
 ================================================================================
 
 Totale Giocatori Validi: 22
-Soglia ERS (Mediana): 0.935
+Soglia ERS (Mediana): 0.852
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG PITY ODDS   | AVG MATCHES     | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 11    | 0.6329          | 284.0           | 0.563 - 0.868
-HIGH ERS             | 11    | 1.2317          | 170.0           | 0.935 - 2.332
+LOW ERS              | 11    | 0.6504          | 303.2           | 0.554 - 0.845
+HIGH ERS             | 11    | 1.2317          | 170.9           | 0.852 - 2.332
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)
-U-statistic: 75.0
-P-value:     0.1751
+U-statistic: 73.0
+P-value:     0.2116
 
 RISULTATO: NON SIGNIFICATIVO. Non c'è evidenza statistica sufficiente per confermare l'ipotesi.
 --------------------------------------------------------------------------------
 CONTROLLO VARIABILE CONFONDENTE (Numero Partite):
-Correlazione Pity vs Matches (r_yz):   0.2141 (p=0.3387)
-Correlazione ERS vs Matches (r_xz):    -0.0186 (p=0.9344)
-Correlazione Diretta (ERS vs Pity):    0.3185
-Correlazione Parziale (Netta):         0.3302
+Correlazione Pity vs Matches (r_yz):   0.2244 (p=0.3155)
+Correlazione ERS vs Matches (r_xz):    -0.0966 (p=0.6691)
+Correlazione Diretta (ERS vs Pity):    0.2691
+Correlazione Parziale (Netta):         0.2998
 ================================================================================

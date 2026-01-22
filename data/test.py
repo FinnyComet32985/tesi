@@ -2072,6 +2072,98 @@ def analyze_debt_credit_duration_and_levels(players_sessions, output_dir=None):
         
         f.write("="*80 + "\n")
 
+def analyze_punishment_tradeoff(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'punishment_tradeoff_results.txt')
+
+    print(f"\nGenerazione report Trade-off Punizione (Matchup vs Livelli) in: {output_file}")
+
+    # Soglie
+    BAD_MU_THRESH = 45.0
+    BAD_LVL_THRESH = -0.5 # Player underleveled (Svantaggio livelli)
+
+    matchups_no_lvl = []
+    level_diffs = []
+    
+    count_bad_mu = 0
+    count_bad_lvl = 0
+    count_double_whammy = 0
+    total_valid = 0
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] not in ['Ladder', 'Ranked']:
+                    continue
+                
+                mu = b.get('matchup_no_lvl')
+                lvl = b.get('level_diff')
+                
+                if mu is not None and lvl is not None:
+                    matchups_no_lvl.append(mu)
+                    level_diffs.append(lvl)
+                    total_valid += 1
+                    
+                    is_bad_mu = mu < BAD_MU_THRESH
+                    is_bad_lvl = lvl < BAD_LVL_THRESH
+                    
+                    if is_bad_mu: count_bad_mu += 1
+                    if is_bad_lvl: count_bad_lvl += 1
+                    if is_bad_mu and is_bad_lvl: count_double_whammy += 1
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI TRADE-OFF PUNIZIONE: MATCHUP PURO vs LIVELLI\n")
+        f.write("Ipotesi: Il sistema usa o il Counter Deck o i Livelli per svantaggiare, ma raramente entrambi insieme (Double Whammy).\n")
+        f.write(f"Soglie: Bad Matchup (No-Lvl) < {BAD_MU_THRESH}%, Bad Levels < {BAD_LVL_THRESH}\n")
+        f.write("="*80 + "\n\n")
+        
+        if total_valid < 100:
+            f.write("Dati insufficienti.\n")
+            return
+
+        # 1. Correlazione
+        corr, p_val = spearmanr(matchups_no_lvl, level_diffs)
+        
+        f.write("1. CORRELAZIONE (Matchup No-Lvl vs Level Diff)\n")
+        f.write(f"   Coefficiente Spearman: {corr:.4f}\n")
+        f.write(f"   P-value:               {p_val:.4f}\n")
+        
+        f.write("\n   Interpretazione:\n")
+        f.write("   - Correlazione NEGATIVA: Se il Matchup sale, i Livelli scendono (e viceversa). Supporta l'ipotesi di alternanza/trade-off.\n")
+        f.write("   - Correlazione POSITIVA: Se il Matchup sale, i Livelli salgono. (Doppio aiuto o Doppia punizione).\n")
+        f.write("   - Vicino a 0: Indipendenza.\n")
+        f.write("-" * 80 + "\n")
+        
+        # 2. Analisi Frequenza Double Whammy
+        prob_bad_mu = count_bad_mu / total_valid
+        prob_bad_lvl = count_bad_lvl / total_valid
+        
+        exp_double_whammy = prob_bad_mu * prob_bad_lvl * total_valid
+        obs_double_whammy = count_double_whammy
+        
+        ratio = obs_double_whammy / exp_double_whammy if exp_double_whammy > 0 else 0
+        
+        f.write("2. ANALISI DOUBLE WHAMMY (Doppia Punizione)\n")
+        f.write(f"   Totale Battaglie: {total_valid}\n")
+        f.write(f"   Bad Matchup Count: {count_bad_mu} ({prob_bad_mu*100:.2f}%)\n")
+        f.write(f"   Bad Levels Count:  {count_bad_lvl} ({prob_bad_lvl*100:.2f}%)\n\n")
+        
+        f.write(f"   Double Whammy ATTESI (Ipotesi Indipendenza):   {exp_double_whammy:.2f}\n")
+        f.write(f"   Double Whammy OSSERVATI:                       {obs_double_whammy}\n")
+        f.write(f"   RATIO (Obs/Exp):                               {ratio:.2f}x\n")
+        
+        f.write("\n   Conclusione:\n")
+        if ratio < 0.85:
+            f.write("   RATIO < 1: Il sistema EVITA la doppia punizione. (Conferma l'ipotesi 'o l'uno o l'altro').\n")
+        elif ratio > 1.15:
+            f.write("   RATIO > 1: Il sistema FORZA la doppia punizione. (Accanimento/Pay-to-Win pressure).\n")
+        else:
+            f.write("   RATIO ~ 1: Eventi indipendenti. Non c'è coordinazione evidente tra deck e livelli.\n")
+            
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -2097,6 +2189,7 @@ def main():
     analyze_favorable_outcome_impact(players_sessions)
     analyze_defeat_quality_impact(players_sessions)
     analyze_debt_credit_duration_and_levels(players_sessions)
+    analyze_punishment_tradeoff(players_sessions)
 
 if __name__ == "__main__":
     main()

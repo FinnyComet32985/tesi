@@ -1,0 +1,26 @@
+ANALISI TRADE-OFF PUNIZIONE: MATCHUP PURO vs LIVELLI
+Ipotesi: Il sistema usa o il Counter Deck o i Livelli per svantaggiare, ma raramente entrambi insieme (Double Whammy).
+Soglie: Bad Matchup (No-Lvl) < 45.0%, Bad Levels < -0.5
+================================================================================
+
+1. CORRELAZIONE (Matchup No-Lvl vs Level Diff)
+   Coefficiente Spearman: -0.1142
+   P-value:               0.0000
+
+   Interpretazione:
+   - Correlazione NEGATIVA: Se il Matchup sale, i Livelli scendono (e viceversa). Supporta l'ipotesi di alternanza/trade-off.
+   - Correlazione POSITIVA: Se il Matchup sale, i Livelli salgono. (Doppio aiuto o Doppia punizione).
+   - Vicino a 0: Indipendenza.
+--------------------------------------------------------------------------------
+2. ANALISI DOUBLE WHAMMY (Doppia Punizione)
+   Totale Battaglie: 6589
+   Bad Matchup Count: 2484 (37.70%)
+   Bad Levels Count:  1016 (15.42%)
+
+   Double Whammy ATTESI (Ipotesi Indipendenza):   383.02
+   Double Whammy OSSERVATI:                       273
+   RATIO (Obs/Exp):                               0.71x
+
+   Conclusione:
+   RATIO < 1: Il sistema EVITA la doppia punizione. (Conferma l'ipotesi 'o l'uno o l'altro').
+================================================================================

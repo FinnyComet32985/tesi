@@ -5,13 +5,13 @@ Definizione Favorable: Matchup > 55.0%
 
 ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
 -----------------------------------------------------------------
-Favorable + WIN (Atteso)       | 1269   | 53.53               %
-Favorable + LOSS (Inatteso)    | 490    | 57.34               %
+Favorable + WIN (Atteso)       | 1330   | 53.53               %
+Favorable + LOSS (Inatteso)    | 514    | 57.21               %
 -----------------------------------------------------------------
-Delta: -3.80%
+Delta: -3.68%
 Test Mann-Whitney U (Differenza Significativa): p-value = 0.0000
 
 ================================================================================
-1. Matchup Iniziale (Avg): Win=68.78% vs Loss=65.43%
-2. Elixir Advantage (Loss): -0.26 (Se molto negativo, player ha giocato male)
+1. Matchup Iniziale (Avg): Win=68.79% vs Loss=65.47%
+2. Elixir Advantage (Loss): -0.20 (Se molto negativo, player ha giocato male)
 ================================================================================
