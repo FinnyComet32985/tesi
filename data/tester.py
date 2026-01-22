@@ -40,6 +40,7 @@ from test import (
     analyze_punishment_tradeoff,
     analyze_extreme_level_streak,
     analyze_normalized_level_streak,
+    analyze_pity_probability_lift,
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
@@ -107,6 +108,7 @@ def main():
     analyze_punishment_tradeoff(players_sessions, output_dir=results_dir)
     analyze_extreme_level_streak(players_sessions, output_dir=results_dir)
     analyze_normalized_level_streak(players_sessions, output_dir=results_dir)
+    analyze_pity_probability_lift(players_sessions, output_dir=results_dir)
 
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)

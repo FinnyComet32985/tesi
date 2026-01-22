@@ -1,16 +1,16 @@
-Analisi Correlazione eseguita il: 2026-01-22 19:56:17.301140
+Analisi Correlazione eseguita il: 2026-01-22 21:09:34.531861
 
 ============================================================
  ANALISI CORRELAZIONE SPEARMAN (PITY ODDS)
 ============================================================
 1. PITY ODDS vs FSI (Frustration Sensitivity)
-   Correlazione: 0.0401
-   P-value:      0.8559
+   Correlazione: 0.0311
+   P-value:      0.8881
 
 2. PITY ODDS vs ERS (Impulsività * exp(-FSI))
    Correlazione: 0.2806
    P-value:      0.1947
-   P-value (Shuffle 10k): 0.1924
+   P-value (Shuffle 10k): 0.2021
    -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)
 Campione: 23 giocatori
 ============================================================
@@ -30,7 +30,7 @@ PQVYL0VJJ            | 1.29            | 0.81            | 0.66
 P8YJL0Y0             | 1.19            | 0.15            | 1.18           
 P9QQ0CL2             | 1.15            | 0.22            | 1.67           
 RP9GVG9              | 1.11            | 0.11            | 2.33           
-20JGRJGY2Q           | 1.03            | 0.90            | 0.81           
+20JGRJGY2Q           | 1.03            | 0.89            | 0.82           
 VCU8QQ98C            | 0.81            | 0.14            | 0.84           
 QJU20YUL             | 0.79            | 0.43            | 1.19           
 JPLLR2V0V            | 0.75            | 0.13            | 0.72           
@@ -48,13 +48,13 @@ YU889LRR0            | 0.00            | 0.33            | 1.11
  ANALISI CORRELAZIONE SPEARMAN (PUNISH ODDS)
 ============================================================
 1. PUNISH ODDS vs FSI (Frustration Sensitivity)
-   Correlazione: -0.0763
-   P-value:      0.6679
+   Correlazione: -0.0769
+   P-value:      0.6654
 
 2. PUNISH ODDS vs ERS (Impulsività * exp(-FSI))
    Correlazione: 0.0421
    P-value:      0.8129
-   P-value (Shuffle 10k): 0.8188
+   P-value (Shuffle 10k): 0.8203
    -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)
 Campione: 34 giocatori
 ============================================================
@@ -89,7 +89,7 @@ VGPLGPPQL            | 0.70            | 0.60            | 1.25
 JPLLR2V0V            | 0.68            | 0.13            | 0.72           
 20GLGG298R           | 0.63            | 0.54            | 0.81           
 JPYQPY8Y0            | 0.55            | 0.71            | 0.66           
-20JGRJGY2Q           | 0.50            | 0.90            | 0.81           
+20JGRJGY2Q           | 0.50            | 0.89            | 0.82           
 LJ9JU0CQU            | 0.29            | 1.18            | 0.58           
 VYURQLR00            | 0.17            | 0.89            | 0.71           
 20QU8VLGU8           | 0.00            | 1.03            | 0.47           

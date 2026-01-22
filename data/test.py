@@ -4,7 +4,7 @@ import random
 import statistics 
 import os
 import numpy as np
-from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu, ttest_1samp
+from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu, ttest_1samp, binomtest    
 
 # Import data loader from battlelog_v2
 from battlelog_v2 import get_players_sessions
@@ -2599,6 +2599,82 @@ def analyze_normalized_level_streak(players_sessions, output_dir=None):
         f.write("1. Ratio Global > 1: Le partite 'sfortunate' sono raggruppate in sessioni specifiche (Bad Sessions).\n")
         f.write("2. Ratio Intra > 1: L'ordine delle partite nella sessione è manipolato per creare filotti negativi.\n")
         f.write("="*80 + "\n")
+
+def analyze_pity_probability_lift(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'pity_probability_lift_results.txt')
+
+    print(f"\nGenerazione report Pity Probability Lift in: {output_file}")
+
+    PITY_THRESH = 60.0
+    STREAK_LEN = 3
+
+    # Accumulatori Globali
+    global_baseline_opportunities = 0
+    global_baseline_successes = 0
+    
+    global_streak_opportunities = 0
+    global_streak_successes = 0
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            n = len(battles)
+            if n < STREAK_LEN + 1: continue
+
+            # 1. Calcolo Baseline (Tutte le partite valide)
+            for b in battles:
+                if b['matchup'] is not None:
+                    global_baseline_opportunities += 1
+                    if b['matchup'] > PITY_THRESH:
+                        global_baseline_successes += 1
+
+            # 2. Calcolo Post-Streak
+            for i in range(n - STREAK_LEN):
+                # Finestra di 3 sconfitte
+                window = battles[i : i+STREAK_LEN]
+                next_b = battles[i+STREAK_LEN]
+                
+                if next_b['matchup'] is None: continue
+                
+                # Verifica Streak Sconfitte
+                if all(b['win'] == 0 for b in window):
+                    global_streak_opportunities += 1
+                    if next_b['matchup'] > PITY_THRESH:
+                        global_streak_successes += 1
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI PITY PROBABILITY LIFT (BASELINE vs STREAK)\n")
+        f.write("Obiettivo: Verificare se la probabilità di ricevere un Matchup > 60% aumenta dopo 3 sconfitte rispetto alla media globale.\n")
+        f.write("="*80 + "\n\n")
+        
+        baseline_rate = global_baseline_successes / global_baseline_opportunities if global_baseline_opportunities > 0 else 0
+        streak_rate = global_streak_successes / global_streak_opportunities if global_streak_opportunities > 0 else 0
+        lift = streak_rate / baseline_rate if baseline_rate > 0 else 0
+
+        f.write(f"Baseline Pity Rate (Globale): {baseline_rate*100:.2f}% ({global_baseline_successes}/{global_baseline_opportunities})\n")
+        f.write(f"Post-Streak Pity Rate (Dopo 3 Loss): {streak_rate*100:.2f}% ({global_streak_successes}/{global_streak_opportunities})\n")
+        f.write(f"LIFT (Aumento Probabilità): {lift:.2f}x\n")
+        f.write("-" * 80 + "\n")
+        
+        # Binomial Test
+        # H0: La probabilità dopo streak è uguale alla baseline
+        # H1: La probabilità dopo streak è MAGGIORE della baseline
+        res = binomtest(k=global_streak_successes, n=global_streak_opportunities, p=baseline_rate, alternative='greater')
+        
+        f.write(f"Test Binomiale (Streak Rate > Baseline Rate):\n")
+        f.write(f"P-value: {res.pvalue:.6f}\n")
+        
+        if res.pvalue < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. Il sistema aumenta artificialmente la probabilità di vittoria dopo le sconfitte.\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. La frequenza di aiuti dopo le sconfitte è in linea con la media normale.\n")
+        f.write("="*80 + "\n")
+
+
+
 
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'

@@ -41,7 +41,7 @@ Player: YU889LRR0     -     std_dev: 5.58
 ============================================================
 Player: 20CCVVLUP0 | FSI: 0.12 | StdDev: 8.13 | Var: 66.02
 Player: 20GLGG298R | FSI: 0.54 | StdDev: 8.81 | Var: 77.55
-Player: 20JGRJGY2Q | FSI: 0.90 | StdDev: 9.80 | Var: 96.10
+Player: 20JGRJGY2Q | FSI: 0.89 | StdDev: 9.80 | Var: 96.10
 Player: 20QG9YJ    | FSI: 1.23 | StdDev: 5.95 | Var: 35.38
 Player: 20QU8VLGU8 | FSI: 1.03 | StdDev: 11.83 | Var: 140.03
 Player: 20UV9C0CL  | FSI: 1.36 | StdDev: 8.52 | Var: 72.63
@@ -88,7 +88,7 @@ RAPPORTO (High/Low): 1.11
  CORRELAZIONE SPEARMAN: FSI vs VARIANZA
 ============================================================
 Campione:     37 giocatori
-Coefficiente: 0.2285
-P-value:      0.1737
+Coefficiente: 0.2283
+P-value:      0.1741
 ============================================================
 

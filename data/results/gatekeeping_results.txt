@@ -1,4 +1,4 @@
-Analisi Gatekeeping (Danger Zone vs Hard Counter) eseguita il: 2026-01-22 19:56:17.316585
+Analisi Gatekeeping (Danger Zone vs Hard Counter) eseguita il: 2026-01-22 21:09:34.543860
 
 ############################################################
 # PLAYER: 202PQ0VP90
@@ -15,14 +15,14 @@ Safe Zone            | 15              | 13
 ############################################################
 # PLAYER: 20CCVVLUP0
 ############################################################
-P-value: 0.0632
-Odds Ratio: 1.33
+P-value: 0.0676
+Odds Ratio: 1.32
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 72              | 70             
-Safe Zone            | 517             | 670            
+Safe Zone            | 521             | 671            
 
 ############################################################
 # PLAYER: 20GLGG298R
@@ -39,14 +39,14 @@ Safe Zone            | 88              | 147
 ############################################################
 # PLAYER: 20JGRJGY2Q
 ############################################################
-P-value: 0.2309
-Odds Ratio: 1.97
+P-value: 0.2285
+Odds Ratio: 1.98
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 4               | 7              
-Safe Zone            | 55              | 190            
+Safe Zone            | 55              | 191            
 
 ############################################################
 # PLAYER: 20QG9YJ
@@ -111,14 +111,14 @@ Safe Zone            | 41              | 58
 ############################################################
 # PLAYER: 2Q0JU0RR
 ############################################################
-P-value: 0.4169
+P-value: 0.4221
 Odds Ratio: inf
 Risultato: Nessuna evidenza
 
 Zone                 | Hard Counter    | Normal Match   
 --------------------------------------------------------
 Danger Zone          | 2               | 0              
-Safe Zone            | 55              | 31             
+Safe Zone            | 56              | 31             
 
 ############################################################
 # PLAYER: 2RU2VCY80
@@ -131,6 +131,18 @@ Zone                 | Hard Counter    | Normal Match
 --------------------------------------------------------
 Danger Zone          | 0               | 2              
 Safe Zone            | 6               | 55             
+
+############################################################
+# PLAYER: 2URPJVGLJ
+############################################################
+P-value: 0.2143
+Odds Ratio: inf
+Risultato: Nessuna evidenza
+
+Zone                 | Hard Counter    | Normal Match   
+--------------------------------------------------------
+Danger Zone          | 1               | 0              
+Safe Zone            | 2               | 11             
 
 ############################################################
 # PLAYER: 89Y9PGL28
@@ -580,5 +592,5 @@ Safe Zone            | 0               | 11
 ============================================================
  RIEPILOGO GATEKEEPING
 ============================================================
-Totale Giocatori: 48
-Casi Significativi: 1 (2.08%)
+Totale Giocatori: 49
+Casi Significativi: 1 (2.04%)
