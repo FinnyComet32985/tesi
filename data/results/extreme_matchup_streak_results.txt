@@ -1,7 +1,7 @@
-ANALISI STREAK MATCHUP ESTREMI (>= 3 consecutivi in sessione)
+ANALISI STREAK MATCHUP ESTREMI (REALE) (>= 3 consecutivi in sessione)
 ================================================================================
-Totale Battaglie: 6581
-Totale Finestre (Opportunità): 3483
+Totale Battaglie: 6632
+Totale Finestre (Opportunità): 3508
 Soglie: High > 80.0%, Low < 30.0%
 --------------------------------------------------------------------------------
 DEFINIZIONI:
@@ -14,16 +14,16 @@ DEFINIZIONI:
 --- MATCHUP FAVOREVOLI (> 80.0%) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
-Osservato                 | 9          | 0.2584     | 1.00x          
-Teorico (p^3)             | 0.52       | 0.0150     | 17.18          
-Global Shuffle            | 3.74       | 0.1075     | 2.40           
-Intra-Session Shuffle     | 7.44       | 0.2135     | 1.21           
+Osservato                 | 9          | 0.2566     | 1.00x          
+Teorico (p^3)             | 0.54       | 0.0155     | 16.59          
+Global Shuffle            | 3.76       | 0.1072     | 2.39           
+Intra-Session Shuffle     | 7.65       | 0.2180     | 1.18           
 
 --- MATCHUP SFAVOREVOLI (< 30.0%) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
-Osservato                 | 42         | 1.2059     | 1.00x          
-Teorico (p^3)             | 7.61       | 0.2185     | 5.52           
-Global Shuffle            | 20.01      | 0.5744     | 2.10           
-Intra-Session Shuffle     | 45.16      | 1.2967     | 0.93           
+Osservato                 | 42         | 1.1973     | 1.00x          
+Teorico (p^3)             | 7.84       | 0.2234     | 5.36           
+Global Shuffle            | 20.49      | 0.5841     | 2.05           
+Intra-Session Shuffle     | 46.79      | 1.3337     | 0.90           
 

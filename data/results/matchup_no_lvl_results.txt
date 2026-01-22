@@ -4,10 +4,10 @@ Obiettivo 2: Verificare se le 'Bad Streak' esistono anche ad armi pari (Counteri
 ================================================================================
 
 1. IMPATTO DEI LIVELLI
-   Media Matchup REALE:   50.34%
+   Media Matchup REALE:   50.31%
    Media Matchup NO-LVL:  49.18%
-   Delta Medio (Real-No): +1.16% (Positivo = Vantaggio Livelli)
-   Correlazione (Real vs NoLvl): 0.4402 (p=0.0000)
+   Delta Medio (Real-No): +1.14% (Positivo = Vantaggio Livelli)
+   Correlazione (Real vs NoLvl): 0.4413 (p=0.0000)
    (Alta correlazione = I livelli contano poco; Bassa = I livelli stravolgono il matchup)
 
    Test Wilcoxon (Differenza Significativa): p-value = 0.0000
@@ -15,11 +15,11 @@ Obiettivo 2: Verificare se le 'Bad Streak' esistono anche ad armi pari (Counteri
 --------------------------------------------------------------------------------
 2. ANALISI STREAK 'PURE' (Countering di Mazzo)
    Definizione: 3 partite consecutive con Matchup No-Lvl < 40.0%
-   Totale Finestre: 3485
-   Streak Osservate: 130
-   Probabilità Base Bad Matchup (<40.0%): 23.67%
-   Streak Attese (Teorico p^3): 46.24
-   RATIO (Osservato / Atteso): 2.81x
+   Totale Finestre: 3510
+   Streak Osservate: 136
+   Probabilità Base Bad Matchup (<40.0%): 23.76%
+   Streak Attese (Teorico p^3): 47.10
+   RATIO (Osservato / Atteso): 2.89x
 
    CONCLUSIONE: Le streak negative persistono anche senza livelli.
    Indizio forte di DECK COUNTERING (l'algoritmo sceglie mazzi counter).

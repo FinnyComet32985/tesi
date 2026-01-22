@@ -1,0 +1,29 @@
+ANALISI STREAK MATCHUP ESTREMI (NO-LVL) (>= 3 consecutivi in sessione)
+================================================================================
+Totale Battaglie: 6640
+Totale Finestre (Opportunità): 3510
+Soglie: High > 80.0%, Low < 30.0%
+--------------------------------------------------------------------------------
+DEFINIZIONI:
+1. OSSERVATO: Il numero reale di streak trovate nei dati.
+2. TEORICO: Probabilità p^3 basata sulla frequenza globale dei matchup (ipotesi indipendenza).
+3. GLOBAL SHUFFLE: Mescola tutte le partite del player. Verifica se i matchup si 'aggrumano' in sessioni specifiche.
+4. INTRA-SESSION SHUFFLE: Mescola solo dentro la sessione. Verifica se l'ordine interno è manipolato.
+================================================================================
+
+--- MATCHUP FAVOREVOLI (> 80.0%) ---
+Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
+----------------------------------------------------------------------
+Osservato                 | 0          | 0.0000     | 1.00x          
+Teorico (p^3)             | 0.00       | 0.0001     | 0.00           
+Global Shuffle            | 0.01       | 0.0003     | 0.00           
+Intra-Session Shuffle     | 0.05       | 0.0014     | 0.00           
+
+--- MATCHUP SFAVOREVOLI (< 30.0%) ---
+Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
+----------------------------------------------------------------------
+Osservato                 | 3          | 0.0855     | 1.00x          
+Teorico (p^3)             | 0.97       | 0.0275     | 3.10           
+Global Shuffle            | 4.56       | 0.1300     | 0.66           
+Intra-Session Shuffle     | 4.60       | 0.1311     | 0.65           
+

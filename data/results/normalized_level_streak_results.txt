@@ -1,0 +1,17 @@
+ANALISI STREAK LIVELLI NORMALIZZATI (Z-SCORE)
+Metodo: Normalizzazione per fascia trofei (Bucket 200). Z = (Diff - Mean) / Std.
+Obiettivo: Rilevare anomalie di matchmaking indipendenti dalla progressione naturale.
+================================================================================
+Soglia Z-Score (Svantaggio Anomalo): < -2
+Totale Opportunità: 3510
+--------------------------------------------------------------------------------
+METODO                    | STREAK COUNT    | RATIO     
+--------------------------------------------------------------------------------
+Osservato                 | 7               | 1.00x
+Global Shuffle            | 2.08            | 3.37x
+Intra-Session Shuffle     | 6.26            | 1.12x
+--------------------------------------------------------------------------------
+INTERPRETAZIONE:
+1. Ratio Global > 1: Le partite 'sfortunate' sono raggruppate in sessioni specifiche (Bad Sessions).
+2. Ratio Intra > 1: L'ordine delle partite nella sessione è manipolato per creare filotti negativi.
+================================================================================

@@ -199,13 +199,21 @@ def analyze_std_correlation(players_sessions, output_dir=None):
             f.close()
 
 
-def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
+def analyze_extreme_matchup_streak(players_sessions, output_dir=None, use_no_lvl=False):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
     os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'extreme_matchup_streak_results.txt')
 
-    print(f"\nGenerazione report streak matchup estremi in: {output_file}")
+    if use_no_lvl:
+        output_file = os.path.join(output_dir, 'extreme_matchup_streak_no_lvl_results.txt')
+        report_title = "ANALISI STREAK MATCHUP ESTREMI (NO-LVL) (>= 3 consecutivi in sessione)\n"
+        matchup_key = 'matchup_no_lvl'
+        print(f"\nGenerazione report streak matchup estremi (NO-LVL) in: {output_file}")
+    else:
+        output_file = os.path.join(output_dir, 'extreme_matchup_streak_results.txt')
+        report_title = "ANALISI STREAK MATCHUP ESTREMI (REALE) (>= 3 consecutivi in sessione)\n"
+        matchup_key = 'matchup'
+        print(f"\nGenerazione report streak matchup estremi (REALE) in: {output_file}")
 
     # Soglie
     HIGH_THRESH = 80.0
@@ -230,7 +238,7 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
         p_lengths = []
         
         for session in p['sessions']:
-            mus = [b['matchup'] for b in session['battles'] if b['matchup'] is not None and (b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked')]
+            mus = [b.get(matchup_key) for b in session['battles'] if b.get(matchup_key) is not None and (b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked')]
             if not mus: 
                 continue
             
@@ -317,7 +325,7 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None):
 
     # Scrittura Report
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI STREAK MATCHUP ESTREMI (>= 3 consecutivi in sessione)\n")
+        f.write(report_title)
         f.write("="*80 + "\n")
         f.write(f"Totale Battaglie: {total_battles}\n")
         f.write(f"Totale Finestre (Opportunità): {total_opportunities}\n")
@@ -601,8 +609,19 @@ def analyze_deck_switch_impact(players_sessions, output_dir=None):
     total_switches = 0
     total_noswitches = 0
 
+    # Traiettorie Post-Evento (per vedere se il sistema si riadatta)
+    LOOKAHEAD = 4
+    trajectories = {
+        True: {k: [] for k in range(1, LOOKAHEAD + 1)},
+        False: {k: [] for k in range(1, LOOKAHEAD + 1)}
+    }
+    trajectories_lvl = {
+        True: {k: [] for k in range(1, LOOKAHEAD + 1)},
+        False: {k: [] for k in range(1, LOOKAHEAD + 1)}
+    }
+
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI IMPATTO CAMBIO DECK (ARCHETIPO) SUL PATTERN MATCHUP\n")
+        f.write("ANALISI IMPATTO CAMBIO DECK (ARCHETIPO) SUL PATTERN MATCHUP (NO-LVL)\n")
         f.write("Obiettivo: Verificare se il cambio di mazzo interrompe il pattern di matchup (es. serie negativa) o se esso persiste.\n")
         f.write("Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->Bad) dovrebbe continuare anche cambiando mazzo.\n")
         f.write("         Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.\n")
@@ -618,8 +637,8 @@ def analyze_deck_switch_impact(players_sessions, output_dir=None):
                 b_curr = all_battles[i]
                 b_next = all_battles[i+1]
                 
-                mu_curr = b_curr.get('matchup')
-                mu_next = b_next.get('matchup')
+                mu_curr = b_curr.get('matchup_no_lvl')
+                mu_next = b_next.get('matchup_no_lvl')
                 
                 if mu_curr is None or mu_next is None: continue
                 
@@ -645,6 +664,26 @@ def analyze_deck_switch_impact(players_sessions, output_dir=None):
                 
                 if is_switch: total_switches += 1
                 else: total_noswitches += 1
+                
+                # --- Analisi Traiettoria (Solo se partiamo da Bad Matchup) ---
+                if zone_curr == 'Bad':
+                    target_deck_id = id_next # Il mazzo usato al passo i+1
+                    
+                    for k in range(1, LOOKAHEAD + 1):
+                        idx_future = i + k
+                        if idx_future >= len(all_battles): break
+                        
+                        b_future = all_battles[idx_future]
+                        mu_future = b_future.get('matchup_no_lvl')
+                        lvl_future = b_future.get('level_diff')
+                        id_future = b_future.get('archetype_id') or b_future.get('deck_id')
+                        
+                        if mu_future is None or id_future is None: break
+                        if id_future != target_deck_id: break # Deck cambiato di nuovo
+                        
+                        trajectories[is_switch][k].append(mu_future)
+                        if lvl_future is not None:
+                            trajectories_lvl[is_switch][k].append(lvl_future)
 
         # Calcolo Percentuali di Persistenza
         def calc_persistence(data, from_z, to_z):
@@ -681,6 +720,54 @@ def analyze_deck_switch_impact(players_sessions, output_dir=None):
         f.write("   significa che cambiare mazzo NON aiuta a uscire dalla serie negativa (il sistema forza il matchup).\n")
         f.write("2. Se 'Persistenza Matchup Negativo' crolla con SWITCH,\n")
         f.write("   significa che il cambio mazzo ha effetto reale e il matchmaking risponde al nuovo mazzo.\n")
+        f.write("="*80 + "\n")
+        
+        f.write("\n" + "="*80 + "\n")
+        f.write("ANALISI ADATTAMENTO SISTEMA (TRAIETTORIA POST-SWITCH)\n")
+        f.write("Domanda: Dopo aver cambiato mazzo per sfuggire a un counter, quanto dura l'effetto benefico?\n")
+        f.write("         Il sistema si 'riadatta' (matchup peggiora) dopo qualche partita?\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"{'Step':<10} | {'NO SWITCH (Avg MU)':<20} | {'SWITCH (Avg MU)':<20} | {'N. Switch':<10}\n")
+        f.write("-" * 80 + "\n")
+        
+        for k in range(1, LOOKAHEAD + 1):
+            vals_no = trajectories[False][k]
+            vals_sw = trajectories[True][k]
+            
+            avg_no = statistics.mean(vals_no) if vals_no else 0
+            avg_sw = statistics.mean(vals_sw) if vals_sw else 0
+            count_sw = len(vals_sw)
+            
+            f.write(f"+{k} Match  | {avg_no:<20.2f}% | {avg_sw:<20.2f}% | {count_sw:<10}\n")
+            
+        f.write("-" * 80 + "\n")
+        f.write("INTERPRETAZIONE:\n")
+        f.write("1. Se SWITCH parte alto (es. >50%) e scende nei match successivi (+2, +3),\n")
+        f.write("   potrebbe indicare che il sistema sta ricalibrando il matchmaking sul nuovo mazzo.\n")
+        f.write("2. Se SWITCH rimane costantemente alto rispetto a NO SWITCH, il cambio è efficace a lungo termine.\n")
+        f.write("="*80 + "\n")
+        
+        f.write("\n" + "="*80 + "\n")
+        f.write("ANALISI ADATTAMENTO LIVELLI (TRAIETTORIA POST-SWITCH)\n")
+        f.write("Domanda: Se cambio mazzo, il sistema mi punisce con livelli più alti (Level Diff più negativo)?\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"{'Step':<10} | {'NO SWITCH (Avg Lvl)':<20} | {'SWITCH (Avg Lvl)':<20} | {'N. Switch':<10}\n")
+        f.write("-" * 80 + "\n")
+        
+        for k in range(1, LOOKAHEAD + 1):
+            vals_no = trajectories_lvl[False][k]
+            vals_sw = trajectories_lvl[True][k]
+            
+            avg_no = statistics.mean(vals_no) if vals_no else 0
+            avg_sw = statistics.mean(vals_sw) if vals_sw else 0
+            count_sw = len(vals_sw)
+            
+            f.write(f"+{k} Match  | {avg_no:<20.2f} | {avg_sw:<20.2f} | {count_sw:<10}\n")
+            
+        f.write("-" * 80 + "\n")
+        f.write("INTERPRETAZIONE:\n")
+        f.write("1. Level Diff negativo = Avversario più forte (Svantaggio).\n")
+        f.write("2. Se SWITCH ha valori più negativi di NO SWITCH, il sistema compensa il cambio mazzo con livelli più alti.\n")
         f.write("="*80 + "\n")
 
 
@@ -2162,6 +2249,355 @@ def analyze_punishment_tradeoff(players_sessions, output_dir=None):
         else:
             f.write("   RATIO ~ 1: Eventi indipendenti. Non c'è coordinazione evidente tra deck e livelli.\n")
             
+        f.write("="*80 + "\n")
+
+def analyze_extreme_level_streak(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'extreme_level_streak_results.txt')
+
+    print(f"\nGenerazione report streak livelli estremi in: {output_file}")
+
+    # Soglie per Level Diff
+    # > 0.5: Vantaggio (es. metà mazzo +1)
+    # < -0.5: Svantaggio (es. metà mazzo -1)
+    HIGH_THRESH = 0.5 
+    LOW_THRESH = -0.5
+    STREAK_LEN = 3
+    NUM_SIMULATIONS = 10000
+
+    # Accumulatori
+    total_battles = 0
+    count_high = 0 # Advantage
+    count_low = 0  # Disadvantage
+    
+    obs_high_streaks = 0
+    obs_low_streaks = 0
+    total_opportunities = 0
+    
+    players_data = []
+
+    for p in players_sessions:
+        p_levels = []
+        p_lengths = []
+        
+        for session in p['sessions']:
+            # Filtriamo solo Ladder/Ranked
+            levs = [b.get('level_diff') for b in session['battles'] if b.get('level_diff') is not None and (b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked')]
+            if not levs: 
+                continue
+            
+            p_levels.extend(levs)
+            p_lengths.append(len(levs))
+            
+            for l in levs:
+                total_battles += 1
+                if l > HIGH_THRESH: count_high += 1
+                elif l < LOW_THRESH: count_low += 1
+            
+            if len(levs) >= STREAK_LEN:
+                for i in range(len(levs) - STREAK_LEN + 1):
+                    total_opportunities += 1
+                    window = levs[i : i+STREAK_LEN]
+                    if all(l > HIGH_THRESH for l in window): obs_high_streaks += 1
+                    if all(l < LOW_THRESH for l in window): obs_low_streaks += 1
+        
+        if p_levels:
+            players_data.append((p_levels, p_lengths))
+
+    if total_opportunities == 0:
+        print("Dati insufficienti per l'analisi streak livelli.")
+        return
+
+    # Calcolo Teorico
+    p_high = count_high / total_battles if total_battles else 0
+    p_low = count_low / total_battles if total_battles else 0
+    
+    exp_high_theory = total_opportunities * (p_high ** STREAK_LEN)
+    exp_low_theory = total_opportunities * (p_low ** STREAK_LEN)
+
+    # Simulazioni
+    sim_global_high = 0
+    sim_global_low = 0
+    sim_intra_high = 0
+    sim_intra_low = 0
+
+    print(f"Esecuzione di {NUM_SIMULATIONS} permutazioni (Livelli - Global & Intra Session)...")
+
+    for _ in range(NUM_SIMULATIONS):
+        for levs, lengths in players_data:
+            # --- Global Shuffle ---
+            global_shuffled = levs[:]
+            random.shuffle(global_shuffled)
+            
+            idx = 0
+            for l in lengths:
+                s = global_shuffled[idx : idx+l]
+                idx += l
+                if len(s) >= STREAK_LEN:
+                    for i in range(len(s) - STREAK_LEN + 1):
+                        if all(v > HIGH_THRESH for v in s[i:i+STREAK_LEN]): sim_global_high += 1
+                        if all(v < LOW_THRESH for v in s[i:i+STREAK_LEN]): sim_global_low += 1
+
+            # Intra-Session Shuffle (Unico valido per i livelli per evitare bias da climbing)
+            idx = 0
+            for l in lengths:
+                s_orig = levs[idx : idx+l]
+                idx += l
+                s_intra = s_orig[:]
+                random.shuffle(s_intra)
+                if len(s_intra) >= STREAK_LEN:
+                    for i in range(len(s_intra) - STREAK_LEN + 1):
+                        if all(v > HIGH_THRESH for v in s_intra[i:i+STREAK_LEN]): sim_intra_high += 1
+                        if all(v < LOW_THRESH for v in s_intra[i:i+STREAK_LEN]): sim_intra_low += 1
+
+    avg_global_high = sim_global_high / NUM_SIMULATIONS
+    avg_global_low = sim_global_low / NUM_SIMULATIONS
+    avg_intra_high = sim_intra_high / NUM_SIMULATIONS
+    avg_intra_low = sim_intra_low / NUM_SIMULATIONS
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI STREAK LIVELLI ESTREMI (PAY-TO-WIN PRESSURE)\n")
+        f.write("Obiettivo: Verificare se il sistema genera sequenze di partite con svantaggio di livello (Underleveled) più spesso del caso.\n")
+        f.write("Metodo: Confronto con Teorico, Global Shuffle e Intra-Session Shuffle.\n")
+        f.write("Nota: Global Shuffle può essere distorto dalla progressione naturale (Climbing). Intra-Session è il più affidabile.\n")
+        f.write("="*80 + "\n")
+        f.write(f"Totale Battaglie: {total_battles}\n")
+        f.write(f"Totale Finestre (Opportunità): {total_opportunities}\n")
+        f.write(f"Soglie: Vantaggio > {HIGH_THRESH}, Svantaggio < {LOW_THRESH} (Delta Livello)\n")
+        f.write("-" * 80 + "\n")
+        
+        def write_section(label, obs, exp_theory, avg_global, avg_intra):
+            f.write(f"--- {label} ---\n")
+            f.write(f"{'Metodo':<25} | {'Count':<10} | {'Prob %':<10} | {'Ratio (Obs/Exp)':<15}\n")
+            f.write("-" * 70 + "\n")
+            
+            prob_obs = obs / total_opportunities * 100
+            f.write(f"{'Osservato':<25} | {obs:<10} | {prob_obs:<10.4f} | {'1.00x':<15}\n")
+            
+            prob_theory = exp_theory / total_opportunities * 100
+            ratio_theory = obs / exp_theory if exp_theory > 0 else 0
+            f.write(f"{'Teorico (p^3)':<25} | {exp_theory:<10.2f} | {prob_theory:<10.4f} | {ratio_theory:<15.2f}\n")
+            
+            prob_global = avg_global / total_opportunities * 100
+            ratio_global = obs / avg_global if avg_global > 0 else 0
+            f.write(f"{'Global Shuffle':<25} | {avg_global:<10.2f} | {prob_global:<10.4f} | {ratio_global:<15.2f}\n")
+            
+            prob_intra = avg_intra / total_opportunities * 100
+            ratio_intra = obs / avg_intra if avg_intra > 0 else 0
+            f.write(f"{'Intra-Session Shuffle':<25} | {avg_intra:<10.2f} | {prob_intra:<10.4f} | {ratio_intra:<15.2f}\n")
+            f.write("\n")
+
+        write_section(f"Vantaggio Livelli (> {HIGH_THRESH})", obs_high_streaks, exp_high_theory, avg_global_high, avg_intra_high)
+        write_section(f"Svantaggio Livelli (< {LOW_THRESH})", obs_low_streaks, exp_low_theory, avg_global_low, avg_intra_low)
+        
+        f.write("="*80 + "\n")
+
+def analyze_normalized_level_streak(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'normalized_level_streak_results.txt')
+
+    print(f"\nGenerazione report streak livelli NORMALIZZATI (Z-Score) in: {output_file}")
+
+    # 1. Ricostruzione Trofei e Raccolta Dati per Baseline
+    # Bucket size per calcolare media/std locali
+    BUCKET_SIZE = 200 
+    bucket_stats = {} # { bucket_index: [list_of_level_diffs] }
+    global_level_diffs = [] # Fallback per chi non ha trofei
+
+    # Struttura temporanea per salvare i dati arricchiti
+    enriched_battles = [] # list of (player_tag, session_idx, battle_idx, z_score)
+    
+    processed_players = 0
+    processed_battles = 0
+
+    for p in players_sessions:
+        current_trophies = p['profile'].get('trophies') if p['profile'] else None
+        # if not current_trophies: continue # RIMOSSO: Non saltiamo chi non ha trofei
+
+        # Iteriamo le sessioni dalla più recente alla più vecchia per ricostruire i trofei
+        # Assumiamo che p['sessions'] sia ordinato cronologicamente o inversamente. 
+        # Solitamente i log sono Newest -> Oldest. Verifichiamo timestamp.
+        # Per semplicità, assumiamo l'ordine di lista e ricostruiamo a ritroso.
+        
+        # Appiattiamo tutte le battaglie del player in ordine inverso (dalla più recente)
+        all_battles_rev = []
+        for s_idx, s in enumerate(p['sessions']):
+            for b_idx, b in enumerate(s['battles']):
+                all_battles_rev.append((s_idx, b_idx, b))
+        
+        # Se i timestamp sono crescenti, invertiamo. Se decrescenti (log tipico), ok.
+        # Controlliamo i primi due per capire l'ordine
+        if len(all_battles_rev) > 1:
+            t1 = all_battles_rev[0][2]['timestamp']
+            t2 = all_battles_rev[-1][2]['timestamp']
+            if t1 < t2: # Ordine cronologico (Old -> New), invertiamo per partire dal current
+                all_battles_rev.reverse()
+
+        simulated_trophies = current_trophies
+        
+        for s_idx, b_idx, b in all_battles_rev:
+            if b['game_mode'] not in ['Ladder', 'Ranked']: continue
+            
+            lvl_diff = b.get('level_diff')
+            if lvl_diff is not None:
+                processed_battles += 1
+                global_level_diffs.append(lvl_diff)
+                
+                if simulated_trophies is not None:
+                    bucket_idx = simulated_trophies // BUCKET_SIZE
+                    if bucket_idx not in bucket_stats: bucket_stats[bucket_idx] = []
+                    bucket_stats[bucket_idx].append(lvl_diff)
+                
+                # Salviamo riferimento per dopo
+                enriched_battles.append({
+                    'tag': p['tag'],
+                    's_idx': s_idx,
+                    'lvl_diff': lvl_diff,
+                    'trophies': simulated_trophies
+                })
+
+            # Aggiorna trofei per il prossimo passo (indietro nel tempo)
+            # Se ho vinto +30, prima ne avevo 30 in meno.
+            if simulated_trophies is not None:
+                change = b.get('trophy_change')
+                if change is not None:
+                    if b['win']: simulated_trophies -= change
+                    else: simulated_trophies += change 
+        
+        processed_players += 1
+
+    print(f"Dati processati: {processed_players} giocatori, {processed_battles} battaglie.")
+
+    # 2. Calcolo Statistiche per Bucket (Mean, Std)
+    bucket_metrics = {}
+    for idx, values in bucket_stats.items():
+        if len(values) > 5: # Minimo campione
+            bucket_metrics[idx] = {
+                'mean': statistics.mean(values),
+                'std': statistics.stdev(values) if len(values) > 1 else 1.0
+            }
+            
+    # Statistiche Globali (Fallback)
+    global_mean = statistics.mean(global_level_diffs) if global_level_diffs else 0
+    global_std = statistics.stdev(global_level_diffs) if len(global_level_diffs) > 1 else 1.0
+    print(f"Global Stats (Fallback): Mean={global_mean:.3f}, Std={global_std:.3f}")
+
+    # 3. Calcolo Z-Score e Analisi Streak
+    # Riorganizziamo i dati per player/sessione per l'analisi streak
+    player_data_map = {} # tag -> { s_idx -> [z_scores] }
+
+    for entry in enriched_battles:
+        metrics = None
+        if entry['trophies'] is not None:
+            b_idx = entry['trophies'] // BUCKET_SIZE
+            metrics = bucket_metrics.get(b_idx)
+        
+        if metrics and metrics['std'] > 0:
+            z = (entry['lvl_diff'] - metrics['mean']) / metrics['std']
+        else:
+            # Fallback su Global Stats se mancano trofei o bucket vuoto
+            z = (entry['lvl_diff'] - global_mean) / global_std
+            
+        tag = entry['tag']
+        s_idx = entry['s_idx']
+        
+        if tag not in player_data_map: player_data_map[tag] = {}
+        if s_idx not in player_data_map[tag]: player_data_map[tag][s_idx] = []
+        
+        player_data_map[tag][s_idx].append(z)
+
+    # Analisi Streak su Z-Score
+    # Z < -1.5 indica uno svantaggio ANOMALO per quella fascia di trofei
+    Z_THRESH = -2
+    STREAK_LEN = 3
+    
+    obs_streaks = 0
+    total_opps = 0
+    
+    # Per simulazione
+    players_sim_data = [] # list of (flat_z, lengths)
+
+    for tag, sessions_map in player_data_map.items():
+        sorted_s_idxs = sorted(sessions_map.keys())
+        
+        p_z_flat = []
+        p_lengths = []
+        
+        for s_idx in sorted_s_idxs:
+            z_list = sessions_map[s_idx]
+            # z_list è popolata Newest->Oldest (perché enriched_battles è reverse)
+            z_list.reverse() 
+            
+            # Analisi Streak Osservata (Per Sessione)
+            if len(z_list) >= STREAK_LEN:
+                for i in range(len(z_list) - STREAK_LEN + 1):
+                    total_opps += 1
+                    if all(z < Z_THRESH for z in z_list[i:i+STREAK_LEN]):
+                        obs_streaks += 1
+            
+            p_z_flat.extend(z_list)
+            p_lengths.append(len(z_list))
+            
+        if p_z_flat:
+            players_sim_data.append((p_z_flat, p_lengths))
+
+    # Simulazione Global Shuffle (ora valida perché detrendizzata)
+    sim_streaks_global = 0
+    sim_streaks_intra = 0
+    NUM_SIM = 1000
+    
+    for _ in range(NUM_SIM):
+        for z_flat, lengths in players_sim_data:
+            # --- Global Shuffle ---
+            shuffled = z_flat[:]
+            random.shuffle(shuffled)
+            
+            idx = 0
+            for l in lengths:
+                s = shuffled[idx : idx+l]
+                idx += l
+                if len(s) >= STREAK_LEN:
+                    for i in range(len(s) - STREAK_LEN + 1):
+                        if all(z < Z_THRESH for z in s[i:i+STREAK_LEN]):
+                            sim_streaks_global += 1
+            
+            # --- Intra-Session Shuffle ---
+            idx = 0
+            for l in lengths:
+                s_orig = z_flat[idx : idx+l]
+                idx += l
+                s_intra = s_orig[:]
+                random.shuffle(s_intra)
+                
+                if len(s_intra) >= STREAK_LEN:
+                    for i in range(len(s_intra) - STREAK_LEN + 1):
+                        if all(z < Z_THRESH for z in s_intra[i:i+STREAK_LEN]):
+                            sim_streaks_intra += 1
+    
+    avg_sim_global = sim_streaks_global / NUM_SIM
+    avg_sim_intra = sim_streaks_intra / NUM_SIM
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI STREAK LIVELLI NORMALIZZATI (Z-SCORE)\n")
+        f.write("Metodo: Normalizzazione per fascia trofei (Bucket 200). Z = (Diff - Mean) / Std.\n")
+        f.write("Obiettivo: Rilevare anomalie di matchmaking indipendenti dalla progressione naturale.\n")
+        f.write("="*80 + "\n")
+        f.write(f"Soglia Z-Score (Svantaggio Anomalo): < {Z_THRESH}\n")
+        f.write(f"Totale Opportunità: {total_opps}\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"{'METODO':<25} | {'STREAK COUNT':<15} | {'RATIO':<10}\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"{'Osservato':<25} | {obs_streaks:<15} | 1.00x\n")
+        f.write(f"{'Global Shuffle':<25} | {avg_sim_global:<15.2f} | {obs_streaks/avg_sim_global if avg_sim_global else 0:.2f}x\n")
+        f.write(f"{'Intra-Session Shuffle':<25} | {avg_sim_intra:<15.2f} | {obs_streaks/avg_sim_intra if avg_sim_intra else 0:.2f}x\n")
+        f.write("-" * 80 + "\n")
+        f.write("INTERPRETAZIONE:\n")
+        f.write("1. Ratio Global > 1: Le partite 'sfortunate' sono raggruppate in sessioni specifiche (Bad Sessions).\n")
+        f.write("2. Ratio Intra > 1: L'ordine delle partite nella sessione è manipolato per creare filotti negativi.\n")
         f.write("="*80 + "\n")
 
 def main():

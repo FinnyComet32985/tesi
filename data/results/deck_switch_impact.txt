@@ -1,23 +1,57 @@
-ANALISI IMPATTO CAMBIO DECK (ARCHETIPO) SUL PATTERN MATCHUP
+ANALISI IMPATTO CAMBIO DECK (ARCHETIPO) SUL PATTERN MATCHUP (NO-LVL)
 Obiettivo: Verificare se il cambio di mazzo interrompe il pattern di matchup (es. serie negativa) o se esso persiste.
 Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->Bad) dovrebbe continuare anche cambiando mazzo.
          Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.
 ================================================================================
 
-Totale Transizioni Analizzate: 6541
-  - Senza cambio mazzo: 6104
-  - Con cambio mazzo:   437
+Totale Transizioni Analizzate: 6603
+  - Senza cambio mazzo: 6158
+  - Con cambio mazzo:   445
 --------------------------------------------------------------------------------
 PATTERN                   | NO SWITCH (Baseline) | SWITCH (Test)        | DELTA     
 --------------------------------------------------------------------------------
-Persistenza Matchup Negativo | 51.93               % | 52.40               % | +0.47     %
-Persistenza Matchup Positivo | 49.88               % | 40.16               % | -9.72     %
-Recupero (Bad -> Good)    | 27.83               % | 32.31               % | +4.48     %
-Punizione (Good -> Bad)   | 28.15               % | 34.65               % | +6.49     %
+Persistenza Matchup Negativo | 48.11               % | 36.25               % | -11.86    %
+Persistenza Matchup Positivo | 40.76               % | 35.46               % | -5.30     %
+Recupero (Bad -> Good)    | 22.92               % | 38.12               % | +15.20    %
+Punizione (Good -> Bad)   | 28.98               % | 31.91               % | +2.93     %
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,
    significa che cambiare mazzo NON aiuta a uscire dalla serie negativa (il sistema forza il matchup).
 2. Se 'Persistenza Matchup Negativo' crolla con SWITCH,
    significa che il cambio mazzo ha effetto reale e il matchmaking risponde al nuovo mazzo.
+================================================================================
+
+================================================================================
+ANALISI ADATTAMENTO SISTEMA (TRAIETTORIA POST-SWITCH)
+Domanda: Dopo aver cambiato mazzo per sfuggire a un counter, quanto dura l'effetto benefico?
+         Il sistema si 'riadatta' (matchup peggiora) dopo qualche partita?
+--------------------------------------------------------------------------------
+Step       | NO SWITCH (Avg MU)   | SWITCH (Avg MU)      | N. Switch 
+--------------------------------------------------------------------------------
++1 Match  | 46.06               % | 50.13               % | 160       
++2 Match  | 46.29               % | 48.59               % | 101       
++3 Match  | 46.01               % | 49.14               % | 83        
++4 Match  | 45.83               % | 51.44               % | 74        
+--------------------------------------------------------------------------------
+INTERPRETAZIONE:
+1. Se SWITCH parte alto (es. >50%) e scende nei match successivi (+2, +3),
+   potrebbe indicare che il sistema sta ricalibrando il matchmaking sul nuovo mazzo.
+2. Se SWITCH rimane costantemente alto rispetto a NO SWITCH, il cambio è efficace a lungo termine.
+================================================================================
+
+================================================================================
+ANALISI ADATTAMENTO LIVELLI (TRAIETTORIA POST-SWITCH)
+Domanda: Se cambio mazzo, il sistema mi punisce con livelli più alti (Level Diff più negativo)?
+--------------------------------------------------------------------------------
+Step       | NO SWITCH (Avg Lvl)  | SWITCH (Avg Lvl)     | N. Switch 
+--------------------------------------------------------------------------------
++1 Match  | 0.07                 | -0.24                | 160       
++2 Match  | 0.08                 | -0.02                | 101       
++3 Match  | 0.10                 | -0.04                | 83        
++4 Match  | 0.08                 | 0.01                 | 74        
+--------------------------------------------------------------------------------
+INTERPRETAZIONE:
+1. Level Diff negativo = Avversario più forte (Svantaggio).
+2. Se SWITCH ha valori più negativi di NO SWITCH, il sistema compensa il cambio mazzo con livelli più alti.
 ================================================================================

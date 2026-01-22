@@ -38,6 +38,8 @@ from test import (
     analyze_defeat_quality_impact,
     analyze_debt_credit_duration_and_levels,
     analyze_punishment_tradeoff,
+    analyze_extreme_level_streak,
+    analyze_normalized_level_streak,
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
@@ -81,7 +83,8 @@ def main():
     print("\nEsecuzione test aggiuntivi (Sessioni, Streak, Fattori Confondenti)...")
     analyze_std_correlation(players_sessions, output_dir=results_dir)
     analyze_session_pity(players_sessions, output_dir=results_dir)
-    analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir)
+    analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=False) # Con livelli (Reale)
+    analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=True)  # Senza livelli (Puro)
     analyze_confounding_factors(players_sessions, output_dir=results_dir)
     analyze_time_matchup_stats(players_sessions, output_dir=results_dir)
     analyze_deck_switch_impact(players_sessions, output_dir=results_dir)
@@ -102,6 +105,8 @@ def main():
     analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
     analyze_debt_credit_duration_and_levels(players_sessions, output_dir=results_dir)
     analyze_punishment_tradeoff(players_sessions, output_dir=results_dir)
+    analyze_extreme_level_streak(players_sessions, output_dir=results_dir)
+    analyze_normalized_level_streak(players_sessions, output_dir=results_dir)
 
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)
