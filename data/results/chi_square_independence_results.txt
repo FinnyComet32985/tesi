@@ -1,878 +1,473 @@
-Analisi Chi-Quadro Indipendenza (Streak vs Matchup) eseguita il: 2026-01-23 18:17:20.055409
-
-
-############################################################
-# PLAYER: 20CCVVLUP0
-############################################################
-Statistica Chi-Quadro: 13.5216
-Valore Critico (95%):  9.4877
-P-value:               0.0090 (Monte Carlo (10k))
-Risultato:             DIPENDENZA SIGNIFICATIVA
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 25        | 91             | 95              
-No Streak           | 181       | 343            | 401             
-Winning Streak      | 43        | 61             | 105             
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even        | Favorable      | Unfavorable     
----------------------------------------------------------------------
-Losing Streak       | 39.06       | 77.65          | 94.28           
-No Streak           | 171.25      | 340.43         | 413.33          
-Winning Streak      | 38.69       | 76.92          | 93.39           
-
-
-############################################################
-# PLAYER: 20GLGG298R
-############################################################
-Statistica Chi-Quadro: 6.5452
-Valore Critico (95%):  9.4877
-P-value:               0.1552 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 5         | 2              | 3               
-No Streak           | 34        | 82             | 67              
-Winning Streak      | 12        | 21             | 22              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 2.06       | 4.23           | 3.71            
-No Streak           | 37.63      | 77.48          | 67.89           
-Winning Streak      | 11.31      | 23.29          | 20.40           
-
-
-############################################################
-# PLAYER: 20JGRJGY2Q
-############################################################
-Statistica Chi-Quadro: 1.8279
-Valore Critico (95%):  9.4877
-P-value:               0.7770 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 4         | 5              | 4               
-No Streak           | 43        | 100            | 41              
-Winning Streak      | 17        | 29             | 14              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 3.24       | 6.78           | 2.98            
-No Streak           | 45.82      | 95.94          | 42.24           
-Winning Streak      | 14.94      | 31.28          | 13.77           
-
-
-############################################################
-# PLAYER: 20QG9YJ
-############################################################
-Statistica Chi-Quadro: 1.6186
-Valore Critico (95%):  9.4877
-P-value:               0.8235 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 1         | 2              | 0               
-No Streak           | 34        | 48             | 26              
-Winning Streak      | 11        | 19             | 12              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 0.90       | 1.35           | 0.75            
-No Streak           | 32.47      | 48.71          | 26.82           
-Winning Streak      | 12.63      | 18.94          | 10.43           
-
-
-############################################################
-# PLAYER: 20QU8VLGU8
-############################################################
-Statistica Chi-Quadro: 1.3754
-Valore Critico (95%):  5.9915
-P-value:               0.6119 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-No Streak           | 33        | 62             | 75              
-Winning Streak      | 1         | 3              | 1               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-No Streak           | 33.03      | 63.14          | 73.83           
-Winning Streak      | 0.97       | 1.86           | 2.17            
-
-
-############################################################
-# PLAYER: 20UV9C0CL
-############################################################
-Statistica Chi-Quadro: 3.7779
-Valore Critico (95%):  9.4877
-P-value:               0.4844 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0         | 0              | 1               
-No Streak           | 18        | 9              | 24              
-Winning Streak      | 5         | 7              | 8               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 0.32       | 0.22           | 0.46            
-No Streak           | 16.29      | 11.33          | 23.38           
-Winning Streak      | 6.39       | 4.44           | 9.17            
-
-
-############################################################
-# PLAYER: 2PVCYY2Y
-############################################################
-Statistica Chi-Quadro: 3.5530
-Valore Critico (95%):  9.4877
-P-value:               0.4722 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 1         | 6              | 7               
-No Streak           | 13        | 26             | 29              
-Winning Streak      | 7         | 8              | 7               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 2.83       | 5.38           | 5.79            
-No Streak           | 13.73      | 26.15          | 28.12           
-Winning Streak      | 4.44       | 8.46           | 9.10            
-
-
-############################################################
-# PLAYER: 2Q0JU0RR
-############################################################
-Statistica Chi-Quadro: 9.3378
-Valore Critico (95%):  9.4877
-P-value:               0.0513 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 3         | 1              | 2               
-No Streak           | 15        | 12             | 49              
-Winning Streak      | 0         | 4              | 17              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 1.05       | 0.99           | 3.96            
-No Streak           | 13.28      | 12.54          | 50.17           
-Winning Streak      | 3.67       | 3.47           | 13.86           
+Analisi Chi-Quadro Indipendenza (Streak vs Matchup) eseguita il: 2026-01-23 18:58:58.794242
 
 
 ############################################################
 # PLAYER: 2RU2VCY80
 ############################################################
-Statistica Chi-Quadro: 2.1157
+Statistica Chi-Quadro: 3.4265
+Valore Critico (95%):  9.4877
+P-value:               0.4948 (Monte Carlo (10k))
+WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 2         | 1              | 1               
+No Streak           | 40        | 63             | 38              
+Winning Streak      | 4         | 15             | 8               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 1.07       | 1.84           | 1.09            
+No Streak           | 37.71      | 64.76          | 38.53           
+Winning Streak      | 7.22       | 12.40          | 7.38            
+
+
+############################################################
+# PLAYER: 2URPJVGLJ
+############################################################
+Statistica Chi-Quadro: 3.5716
+Valore Critico (95%):  9.4877
+P-value:               0.4873 (Monte Carlo (10k))
+WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 2         | 3              | 2               
+No Streak           | 14        | 21             | 37              
+Winning Streak      | 6         | 4              | 6               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 1.62       | 2.06           | 3.32            
+No Streak           | 16.67      | 21.22          | 34.11           
+Winning Streak      | 3.71       | 4.72           | 7.58            
+
+
+############################################################
+# PLAYER: 89Y9PGL28
+############################################################
+Statistica Chi-Quadro: 4.2281
+Valore Critico (95%):  9.4877
+P-value:               0.3760 (Asymptotic)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 8         | 8              | 7               
+No Streak           | 35        | 34             | 25              
+Winning Streak      | 14        | 17             | 4               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 8.62       | 8.93           | 5.45            
+No Streak           | 35.25      | 36.49          | 22.26           
+Winning Streak      | 13.12      | 13.59          | 8.29            
+
+
+############################################################
+# PLAYER: 8JCU0GJRR
+############################################################
+Statistica Chi-Quadro: 2.8544
+Valore Critico (95%):  9.4877
+P-value:               0.5946 (Monte Carlo (10k))
+WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 11        | 6              | 9               
+No Streak           | 17        | 25             | 22              
+Winning Streak      | 2         | 2              | 2               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 8.12       | 8.94           | 8.94            
+No Streak           | 20.00      | 22.00          | 22.00           
+Winning Streak      | 1.88       | 2.06           | 2.06            
+
+
+############################################################
+# PLAYER: 8PVC08GC
+############################################################
+Statistica Chi-Quadro: 8.9141
+Valore Critico (95%):  9.4877
+P-value:               0.0609 (Monte Carlo (10k))
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 38        | 23             | 85              
+No Streak           | 83        | 49             | 154             
+Winning Streak      | 10        | 19             | 38              
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 38.33      | 26.63          | 81.05           
+No Streak           | 75.08      | 52.16          | 158.76          
+Winning Streak      | 17.59      | 12.22          | 37.19           
+
+
+############################################################
+# PLAYER: CGJJVRVJ0
+############################################################
+Statistica Chi-Quadro: 1.3721
 Valore Critico (95%):  5.9915
-P-value:               0.3714 (Monte Carlo (10k))
+P-value:               0.4824 (Monte Carlo (10k))
 WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-No Streak           | 14        | 33             | 4               
-Winning Streak      | 6         | 8              | 3               
+No Streak           | 13        | 28             | 18              
+Winning Streak      | 6         | 6              | 6               
 
 --- TABELLA ATTESA (Teorica) ---
 Streak              | Even       | Favorable      | Unfavorable     
 --------------------------------------------------------------------
-No Streak           | 15.00      | 30.75          | 5.25            
-Winning Streak      | 5.00       | 10.25          | 1.75            
+No Streak           | 14.56      | 26.05          | 18.39           
+Winning Streak      | 4.44       | 7.95           | 5.61            
 
 
 ############################################################
-# PLAYER: 8YGG82QR2
+# PLAYER: CLUYL0JV9
 ############################################################
-Statistica Chi-Quadro: 8.4235
-Valore Critico (95%):  9.4877
-P-value:               0.0723 (Monte Carlo (10k))
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 10        | 5              | 4               
-No Streak           | 54        | 59             | 43              
-Winning Streak      | 12        | 6              | 15              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 6.94       | 6.39           | 5.66            
-No Streak           | 57.00      | 52.50          | 46.50           
-Winning Streak      | 12.06      | 11.11          | 9.84            
-
-
-############################################################
-# PLAYER: 9988CY9C
-############################################################
-Statistica Chi-Quadro: 4.0457
-Valore Critico (95%):  9.4877
-P-value:               0.4073 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 1         | 8              | 4               
-No Streak           | 49        | 79             | 50              
-Winning Streak      | 14        | 25             | 22              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 3.30       | 5.78           | 3.92            
-No Streak           | 45.21      | 79.11          | 53.68           
-Winning Streak      | 15.49      | 27.11          | 18.40           
-
-
-############################################################
-# PLAYER: 9JJRVRJL
-############################################################
-Statistica Chi-Quadro: 2.6821
-Valore Critico (95%):  9.4877
-P-value:               0.6516 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0         | 2              | 2               
-No Streak           | 16        | 48             | 33              
-Winning Streak      | 1         | 4              | 6               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 0.61       | 1.93           | 1.46            
-No Streak           | 14.72      | 46.77          | 35.51           
-Winning Streak      | 1.67       | 5.30           | 4.03            
-
-
-############################################################
-# PLAYER: CCYRVRJCU
-############################################################
-Statistica Chi-Quadro: 1.9335
-Valore Critico (95%):  9.4877
-P-value:               0.8558 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0         | 3              | 1               
-No Streak           | 5         | 38             | 8               
-Winning Streak      | 1         | 5              | 0               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0.39      | 3.02           | 0.59            
-No Streak           | 5.02      | 38.46          | 7.52            
-Winning Streak      | 0.59      | 4.52           | 0.89            
-
-
-############################################################
-# PLAYER: G0YP2GJV
-############################################################
-Statistica Chi-Quadro: 0.8603
+Statistica Chi-Quadro: 3.1877
 Valore Critico (95%):  5.9915
-P-value:               0.7248 (Monte Carlo (10k))
+P-value:               0.2280 (Monte Carlo (10k))
 WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-No Streak           | 18        | 20             | 19              
-Winning Streak      | 2         | 2              | 4               
+No Streak           | 6         | 19             | 17              
+Winning Streak      | 6         | 5              | 8               
 
 --- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-No Streak           | 17.54      | 19.29          | 20.17           
-Winning Streak      | 2.46       | 2.71           | 2.83            
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+No Streak           | 8.26      | 16.52          | 17.21           
+Winning Streak      | 3.74      | 7.48           | 7.79            
 
 
 ############################################################
-# PLAYER: J92L2CU0Q
+# PLAYER: CYUU2C8CC
 ############################################################
-Statistica Chi-Quadro: 1.9253
+Statistica Chi-Quadro: 6.8698
 Valore Critico (95%):  9.4877
-P-value:               0.7804 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+P-value:               0.1429 (Asymptotic)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-Losing Streak       | 1         | 1              | 1               
-No Streak           | 23        | 28             | 65              
-Winning Streak      | 6         | 13             | 28              
+Losing Streak       | 2         | 11             | 6               
+No Streak           | 31        | 29             | 29              
+Winning Streak      | 4         | 9              | 5               
 
 --- TABELLA ATTESA (Teorica) ---
 Streak              | Even       | Favorable      | Unfavorable     
 --------------------------------------------------------------------
-Losing Streak       | 0.54       | 0.76           | 1.70            
-No Streak           | 20.96      | 29.35          | 65.69           
-Winning Streak      | 8.49       | 11.89          | 26.61           
+Losing Streak       | 5.58       | 7.39           | 6.03            
+No Streak           | 26.13      | 34.61          | 28.25           
+Winning Streak      | 5.29       | 7.00           | 5.71            
+
+
+############################################################
+# PLAYER: JJYP08
+############################################################
+Statistica Chi-Quadro: 11.3760
+Valore Critico (95%):  9.4877
+P-value:               0.0211 (Monte Carlo (10k))
+Risultato:             DIPENDENZA SIGNIFICATIVA
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 36        | 36             | 43              
+No Streak           | 92        | 90             | 143             
+Winning Streak      | 35        | 53             | 37              
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 33.18      | 36.43          | 45.39           
+No Streak           | 93.76      | 102.96         | 128.27          
+Winning Streak      | 36.06      | 39.60          | 49.34           
+
+
+############################################################
+# PLAYER: JL8RPC0
+############################################################
+Statistica Chi-Quadro: 2.4078
+Valore Critico (95%):  9.4877
+P-value:               0.6612 (Asymptotic)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 46        | 50             | 55              
+No Streak           | 107       | 129            | 118             
+Winning Streak      | 29        | 47             | 36              
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even        | Favorable      | Unfavorable     
+---------------------------------------------------------------------
+Losing Streak       | 44.54       | 55.31          | 51.15           
+No Streak           | 104.42      | 129.67         | 119.91          
+Winning Streak      | 33.04       | 41.02          | 37.94           
 
 
 ############################################################
 # PLAYER: JPLLR2V0V
 ############################################################
-Statistica Chi-Quadro: 3.0220
+Statistica Chi-Quadro: 1.8658
 Valore Critico (95%):  9.4877
-P-value:               0.5661 (Monte Carlo (10k))
+P-value:               0.7387 (Monte Carlo (10k))
 WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-Losing Streak       | 6         | 6              | 21              
-No Streak           | 19        | 20             | 80              
-Winning Streak      | 5         | 1              | 19              
+Losing Streak       | 7         | 1              | 25              
+No Streak           | 15        | 7              | 52              
+Winning Streak      | 1         | 0              | 2               
 
 --- TABELLA ATTESA (Teorica) ---
 Streak              | Even       | Favorable      | Unfavorable     
 --------------------------------------------------------------------
-Losing Streak       | 5.59       | 5.03           | 22.37           
-No Streak           | 20.17      | 18.15          | 80.68           
-Winning Streak      | 4.24       | 3.81           | 16.95           
+Losing Streak       | 6.90       | 2.40           | 23.70           
+No Streak           | 15.47      | 5.38           | 53.15           
+Winning Streak      | 0.63       | 0.22           | 2.15            
 
 
 ############################################################
-# PLAYER: JPYQPY8Y0
+# PLAYER: JYLQC0VQ2
 ############################################################
-Statistica Chi-Quadro: 5.9710
+Statistica Chi-Quadro: 2.2935
 Valore Critico (95%):  9.4877
-P-value:               0.2011 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+P-value:               0.6820 (Asymptotic)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-Losing Streak       | 2         | 2              | 7               
-No Streak           | 34        | 42             | 101             
-Winning Streak      | 14        | 7              | 17              
+Losing Streak       | 36        | 38             | 39              
+No Streak           | 183       | 134            | 164             
+Winning Streak      | 35        | 26             | 28              
 
 --- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 2.43       | 2.48           | 6.08            
-No Streak           | 39.16      | 39.94          | 97.90           
-Winning Streak      | 8.41       | 8.58           | 21.02           
-
-
-############################################################
-# PLAYER: JYRRRVVJJ
-############################################################
-Statistica Chi-Quadro: 3.8051
-Valore Critico (95%):  9.4877
-P-value:               0.5287 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0         | 1              | 0               
-No Streak           | 9         | 26             | 8               
-Winning Streak      | 0         | 4              | 3               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0.18      | 0.61           | 0.22            
-No Streak           | 7.59      | 26.14          | 9.27            
-Winning Streak      | 1.24      | 4.25           | 1.51            
-
-
-############################################################
-# PLAYER: LJ9JU0CQU
-############################################################
-Statistica Chi-Quadro: 5.4402
-Valore Critico (95%):  9.4877
-P-value:               0.2447 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0         | 3              | 3               
-No Streak           | 22        | 69             | 30              
-Winning Streak      | 7         | 10             | 4               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 1.18       | 3.32           | 1.50            
-No Streak           | 23.71      | 67.04          | 30.25           
-Winning Streak      | 4.11       | 11.64          | 5.25            
-
-
-############################################################
-# PLAYER: P2RVYJ2UY
-############################################################
-Statistica Chi-Quadro: 0.0000
-Valore Critico (95%):  nan
-P-value:               1.0000 (Asymptotic)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak         | Even      | Favorable      | Unfavorable     
---------------------------------------------------------------
-No Streak      | 17        | 20             | 30              
-
---- TABELLA ATTESA (Teorica) ---
-Streak         | Even       | Favorable      | Unfavorable     
----------------------------------------------------------------
-No Streak      | 17.00      | 20.00          | 30.00           
-
-
-############################################################
-# PLAYER: P8YJL0Y0
-############################################################
-Statistica Chi-Quadro: 7.2621
-Valore Critico (95%):  9.4877
-P-value:               0.1246 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 1         | 6              | 3               
-No Streak           | 16        | 8              | 15              
-Winning Streak      | 2         | 3              | 4               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 3.28       | 2.93           | 3.79            
-No Streak           | 12.78      | 11.43          | 14.79           
-Winning Streak      | 2.95       | 2.64           | 3.41            
-
-
-############################################################
-# PLAYER: P9QQ0CL2
-############################################################
-Statistica Chi-Quadro: 5.5372
-Valore Critico (95%):  9.4877
-P-value:               0.2365 (Asymptotic)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 8         | 25             | 8               
-No Streak           | 47        | 82             | 47              
-Winning Streak      | 13        | 14             | 13              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 10.85      | 19.30          | 10.85           
-No Streak           | 46.57      | 82.86          | 46.57           
-Winning Streak      | 10.58      | 18.83          | 10.58           
-
-
-############################################################
-# PLAYER: POGYQQ8UC
-############################################################
-Statistica Chi-Quadro: 2.8848
-Valore Critico (95%):  9.4877
-P-value:               0.5773 (Asymptotic)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 4         | 12             | 13              
-No Streak           | 24        | 33             | 68              
-Winning Streak      | 6         | 9              | 20              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 5.22       | 8.29           | 15.50           
-No Streak           | 22.49      | 35.71          | 66.80           
-Winning Streak      | 6.30       | 10.00          | 18.70           
-
-
-############################################################
-# PLAYER: PQVYL0VJJ
-############################################################
-Statistica Chi-Quadro: 0.6082
-Valore Critico (95%):  9.4877
-P-value:               0.9664 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 4         | 12             | 4               
-No Streak           | 71        | 173            | 58              
-Winning Streak      | 7         | 18             | 8               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 4.62       | 11.44          | 3.94            
-No Streak           | 69.76      | 172.69         | 59.55           
-Winning Streak      | 7.62       | 18.87          | 6.51            
+Streak              | Even        | Favorable      | Unfavorable     
+---------------------------------------------------------------------
+Losing Streak       | 42.02       | 32.76          | 38.22           
+No Streak           | 178.88      | 139.44         | 162.68          
+Winning Streak      | 33.10       | 25.80          | 30.10           
 
 
 ############################################################
 # PLAYER: PY8YG0LJR
 ############################################################
-Statistica Chi-Quadro: 6.1924
+Statistica Chi-Quadro: 14.3559
 Valore Critico (95%):  9.4877
-P-value:               0.1957 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 1         | 2              | 0               
-No Streak           | 5         | 33             | 5               
-Winning Streak      | 5         | 9              | 5               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0.51      | 2.03           | 0.46            
-No Streak           | 7.28      | 29.11          | 6.62            
-Winning Streak      | 3.22      | 12.86          | 2.92            
-
-
-############################################################
-# PLAYER: QJU20YUL
-############################################################
-Statistica Chi-Quadro: 6.5495
-Valore Critico (95%):  9.4877
-P-value:               0.1568 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 6         | 7              | 4               
-No Streak           | 25        | 51             | 44              
-Winning Streak      | 1         | 5              | 0               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 3.80       | 7.49           | 5.71            
-No Streak           | 26.85      | 52.87          | 40.28           
-Winning Streak      | 1.34       | 2.64           | 2.01            
-
-
-############################################################
-# PLAYER: R82CV2C
-############################################################
-Statistica Chi-Quadro: 5.6281
-Valore Critico (95%):  9.4877
-P-value:               0.2185 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 2         | 0              | 2               
-No Streak           | 19        | 15             | 84              
-Winning Streak      | 9         | 6              | 19              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 0.77       | 0.54           | 2.69            
-No Streak           | 22.69      | 15.88          | 79.42           
-Winning Streak      | 6.54       | 4.58           | 22.88           
-
-
-############################################################
-# PLAYER: RP9GVG9
-############################################################
-Statistica Chi-Quadro: 1.6878
-Valore Critico (95%):  9.4877
-P-value:               0.8112 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 17        | 34             | 6               
-No Streak           | 36        | 99             | 11              
-Winning Streak      | 9         | 25             | 2               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 14.79      | 37.68          | 4.53            
-No Streak           | 37.87      | 96.52          | 11.61           
-Winning Streak      | 9.34       | 23.80          | 2.86            
-
-
-############################################################
-# PLAYER: RQ9JQPL90
-############################################################
-Statistica Chi-Quadro: 1.1282
-Valore Critico (95%):  9.4877
-P-value:               0.9131 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 0         | 1              | 0               
-No Streak           | 11        | 30             | 12              
-Winning Streak      | 1         | 3              | 2               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 0.20       | 0.57           | 0.23            
-No Streak           | 10.60      | 30.03          | 12.37           
-Winning Streak      | 1.20       | 3.40           | 1.40            
-
-
-############################################################
-# PLAYER: UQJCY9JYJ
-############################################################
-Statistica Chi-Quadro: 0.9112
-Valore Critico (95%):  5.9915
-P-value:               0.5448 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable     
-------------------------------------------------
-Losing Streak       | 0         | 5             
-No Streak           | 2         | 53            
-Winning Streak      | 1         | 10            
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even      | Favorable     
-------------------------------------------------
-Losing Streak       | 0.21      | 4.79          
-No Streak           | 2.32      | 52.68         
-Winning Streak      | 0.46      | 10.54         
-
-
-############################################################
-# PLAYER: V9VPPPQL9
-############################################################
-Statistica Chi-Quadro: 4.3121
-Valore Critico (95%):  9.4877
-P-value:               0.3884 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 1         | 4              | 4               
-No Streak           | 17        | 30             | 20              
-Winning Streak      | 2         | 13             | 5               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 1.88       | 4.41           | 2.72            
-No Streak           | 13.96      | 32.80          | 20.24           
-Winning Streak      | 4.17       | 9.79           | 6.04            
-
-
-############################################################
-# PLAYER: VCU8QQ98C
-############################################################
-Statistica Chi-Quadro: 5.8198
-Valore Critico (95%):  9.4877
-P-value:               0.2130 (Asymptotic)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 13        | 11             | 26              
-No Streak           | 30        | 63             | 126             
-Winning Streak      | 4         | 11             | 24              
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 7.63       | 13.80          | 28.57           
-No Streak           | 33.42      | 60.44          | 125.14          
-Winning Streak      | 5.95       | 10.76          | 22.29           
-
-
-############################################################
-# PLAYER: VGPLGPPQL
-############################################################
-Statistica Chi-Quadro: 5.0012
-Valore Critico (95%):  9.4877
-P-value:               0.3018 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-Losing Streak       | 4         | 4              | 2               
-No Streak           | 14        | 30             | 15              
-Winning Streak      | 1         | 12             | 4               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 2.21       | 5.35           | 2.44            
-No Streak           | 13.03      | 31.56          | 14.41           
-Winning Streak      | 3.76       | 9.09           | 4.15            
-
-
-############################################################
-# PLAYER: VQPU0R89G
-############################################################
-Statistica Chi-Quadro: 2.5132
-Valore Critico (95%):  5.9915
-P-value:               0.2995 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
-Risultato:             Indipendenza (Nulla non rifiutata)
-
---- TABELLA OSSERVATA (Conteggi Reali) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-No Streak           | 3         | 29             | 3               
-Winning Streak      | 4         | 11             | 1               
-
---- TABELLA ATTESA (Teorica) ---
-Streak              | Even      | Favorable      | Unfavorable     
--------------------------------------------------------------------
-No Streak           | 4.80      | 27.45          | 2.75            
-Winning Streak      | 2.20      | 12.55          | 1.25            
-
-
-############################################################
-# PLAYER: VYURQLR00
-############################################################
-Statistica Chi-Quadro: 9.6710
-Valore Critico (95%):  9.4877
-P-value:               0.0418 (Monte Carlo (10k))
+P-value:               0.0049 (Monte Carlo (10k))
 WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
 Risultato:             DIPENDENZA SIGNIFICATIVA
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-Losing Streak       | 2         | 2              | 1               
-No Streak           | 38        | 48             | 54              
-Winning Streak      | 4         | 17             | 5               
+Losing Streak       | 10        | 0              | 18              
+No Streak           | 24        | 27             | 31              
+Winning Streak      | 4         | 1              | 5               
 
 --- TABELLA ATTESA (Teorica) ---
 Streak              | Even       | Favorable      | Unfavorable     
 --------------------------------------------------------------------
-Losing Streak       | 1.29       | 1.96           | 1.75            
-No Streak           | 36.02      | 54.85          | 49.12           
-Winning Streak      | 6.69       | 10.19          | 9.12            
+Losing Streak       | 8.87       | 6.53           | 12.60           
+No Streak           | 25.97      | 19.13          | 36.90           
+Winning Streak      | 3.17       | 2.33           | 4.50            
 
 
 ############################################################
-# PLAYER: YLCYCJ2YL
+# PLAYER: R82CV2C
 ############################################################
-Statistica Chi-Quadro: 1.9959
+Statistica Chi-Quadro: 1.9743
 Valore Critico (95%):  9.4877
-P-value:               0.7378 (Monte Carlo (10k))
+P-value:               0.8073 (Monte Carlo (10k))
 WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-Losing Streak       | 0         | 2              | 2               
-No Streak           | 11        | 19             | 52              
-Winning Streak      | 1         | 1              | 3               
+Losing Streak       | 2         | 0              | 1               
+No Streak           | 48        | 37             | 45              
+Winning Streak      | 14        | 10             | 16              
 
 --- TABELLA ATTESA (Teorica) ---
 Streak              | Even       | Favorable      | Unfavorable     
 --------------------------------------------------------------------
-Losing Streak       | 0.53       | 0.97           | 2.51            
-No Streak           | 10.81      | 19.82          | 51.36           
-Winning Streak      | 0.66       | 1.21           | 3.13            
+Losing Streak       | 1.11       | 0.82           | 1.08            
+No Streak           | 48.09      | 35.32          | 46.59           
+Winning Streak      | 14.80      | 10.87          | 14.34           
+
+
+############################################################
+# PLAYER: RP9GVG9
+############################################################
+Statistica Chi-Quadro: 8.1422
+Valore Critico (95%):  9.4877
+P-value:               0.0809 (Monte Carlo (10k))
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 46        | 89             | 43              
+No Streak           | 129       | 257            | 68              
+Winning Streak      | 11        | 26             | 6               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even        | Favorable      | Unfavorable     
+---------------------------------------------------------------------
+Losing Streak       | 49.05       | 98.10          | 30.85           
+No Streak           | 125.10      | 250.20         | 78.69           
+Winning Streak      | 11.85       | 23.70          | 7.45            
+
+
+############################################################
+# PLAYER: VCU8QQ98C
+############################################################
+Statistica Chi-Quadro: 2.4718
+Valore Critico (95%):  9.4877
+P-value:               0.6260 (Monte Carlo (10k))
+WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 2         | 1              | 19              
+No Streak           | 4         | 6              | 34              
+Winning Streak      | 1         | 0              | 4               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 2.17      | 2.17           | 17.66           
+No Streak           | 4.34      | 4.34           | 35.32           
+Winning Streak      | 0.49      | 0.49           | 4.01            
+
+
+############################################################
+# PLAYER: VR9C8YC
+############################################################
+Statistica Chi-Quadro: 2.2683
+Valore Critico (95%):  9.4877
+P-value:               0.7220 (Monte Carlo (10k))
+WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 1         | 2              | 1               
+No Streak           | 20        | 17             | 32              
+Winning Streak      | 2         | 3              | 7               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+Losing Streak       | 1.08       | 1.04           | 1.88            
+No Streak           | 18.67      | 17.86          | 32.47           
+Winning Streak      | 3.25       | 3.11           | 5.65            
+
+
+############################################################
+# PLAYER: Y0PR0GYV
+############################################################
+Statistica Chi-Quadro: 0.3876
+Valore Critico (95%):  9.4877
+P-value:               0.9835 (Asymptotic)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+Losing Streak       | 39        | 51             | 24              
+No Streak           | 116       | 162            | 71              
+Winning Streak      | 20        | 30             | 11              
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even        | Favorable      | Unfavorable     
+---------------------------------------------------------------------
+Losing Streak       | 38.07       | 52.87          | 23.06           
+No Streak           | 116.56      | 161.85         | 70.60           
+Winning Streak      | 20.37       | 28.29          | 12.34           
+
+
+############################################################
+# PLAYER: YGPVUYJVR
+############################################################
+Statistica Chi-Quadro: 1.7249
+Valore Critico (95%):  5.9915
+P-value:               0.4141 (Monte Carlo (10k))
+WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+Risultato:             Indipendenza (Nulla non rifiutata)
+
+--- TABELLA OSSERVATA (Conteggi Reali) ---
+Streak              | Even      | Favorable      | Unfavorable     
+-------------------------------------------------------------------
+No Streak           | 25        | 17             | 25              
+Winning Streak      | 3         | 3              | 1               
+
+--- TABELLA ATTESA (Teorica) ---
+Streak              | Even       | Favorable      | Unfavorable     
+--------------------------------------------------------------------
+No Streak           | 25.35      | 18.11          | 23.54           
+Winning Streak      | 2.65       | 1.89           | 2.46            
 
 
 ############################################################
 # PLAYER: YU889LRR0
 ############################################################
-Statistica Chi-Quadro: 2.1084
+Statistica Chi-Quadro: 3.2312
 Valore Critico (95%):  9.4877
-P-value:               0.7312 (Monte Carlo (10k))
-WARNING: Celle con frequenza attesa < 5. (Monte Carlo applicato per robustezza)
+P-value:               0.5199 (Asymptotic)
 Risultato:             Indipendenza (Nulla non rifiutata)
 
 --- TABELLA OSSERVATA (Conteggi Reali) ---
 Streak              | Even      | Favorable      | Unfavorable     
 -------------------------------------------------------------------
-Losing Streak       | 4         | 3              | 20              
-No Streak           | 28        | 10             | 138             
-Winning Streak      | 13        | 7              | 53              
+Losing Streak       | 19        | 6              | 22              
+No Streak           | 97        | 50             | 128             
+Winning Streak      | 40        | 15             | 35              
 
 --- TABELLA ATTESA (Teorica) ---
-Streak              | Even       | Favorable      | Unfavorable     
---------------------------------------------------------------------
-Losing Streak       | 4.40       | 1.96           | 20.64           
-No Streak           | 28.70      | 12.75          | 134.55          
-Winning Streak      | 11.90      | 5.29           | 55.81           
+Streak              | Even        | Favorable      | Unfavorable     
+---------------------------------------------------------------------
+Losing Streak       | 17.80       | 8.10           | 21.10           
+No Streak           | 104.13      | 47.39          | 123.48          
+Winning Streak      | 34.08       | 15.51          | 40.41           
 
 
 ============================================================
  RIEPILOGO GENERALE
 ============================================================
-Totale Giocatori Analizzati: 37
-Giocatori con Dipendenza Significativa: 2 (5.41%)
+Totale Giocatori Analizzati: 20
+Giocatori con Dipendenza Significativa: 2 (10.00%)

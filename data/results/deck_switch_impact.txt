@@ -4,16 +4,16 @@ Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->
          Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.
 ================================================================================
 
-Totale Transizioni Analizzate: 6700
-  - Senza cambio mazzo: 6249
-  - Con cambio mazzo:   451
+Totale Transizioni Analizzate: 5380
+  - Senza cambio mazzo: 4667
+  - Con cambio mazzo:   713
 --------------------------------------------------------------------------------
 PATTERN                   | NO SWITCH (Baseline) | SWITCH (Test)        | DELTA     
 --------------------------------------------------------------------------------
-Persistenza Matchup Negativo | 48.19               % | 37.04               % | -11.15    %
-Persistenza Matchup Positivo | 40.70               % | 34.97               % | -5.73     %
-Recupero (Bad -> Good)    | 22.78               % | 37.65               % | +14.87    %
-Punizione (Good -> Bad)   | 29.07               % | 32.17               % | +3.10     %
+Persistenza Matchup Negativo | 47.54               % | 43.21               % | -4.34     %
+Persistenza Matchup Positivo | 40.31               % | 43.36               % | +3.06     %
+Recupero (Bad -> Good)    | 21.92               % | 31.01               % | +9.09     %
+Punizione (Good -> Bad)   | 27.07               % | 29.20               % | +2.13     %
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,
@@ -29,10 +29,10 @@ Domanda: Dopo aver cambiato mazzo per sfuggire a un counter, quanto dura l'effet
 --------------------------------------------------------------------------------
 Step       | NO SWITCH (Avg MU)   | SWITCH (Avg MU)      | N. Switch 
 --------------------------------------------------------------------------------
-+1 Match  | 46.03               % | 49.91               % | 162       
-+2 Match  | 46.31               % | 48.39               % | 104       
-+3 Match  | 46.00               % | 49.48               % | 86        
-+4 Match  | 45.83               % | 51.54               % | 77        
++1 Match  | 46.18               % | 47.99               % | 287       
++2 Match  | 46.52               % | 47.96               % | 168       
++3 Match  | 46.89               % | 48.37               % | 127       
++4 Match  | 46.85               % | 45.87               % | 108       
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se SWITCH parte alto (es. >50%) e scende nei match successivi (+2, +3),
@@ -46,10 +46,10 @@ Domanda: Se cambio mazzo, il sistema mi punisce con livelli più alti (Level Dif
 --------------------------------------------------------------------------------
 Step       | NO SWITCH (Avg Lvl)  | SWITCH (Avg Lvl)     | N. Switch 
 --------------------------------------------------------------------------------
-+1 Match  | 0.07                 | -0.24                | 162       
-+2 Match  | 0.08                 | -0.03                | 104       
-+3 Match  | 0.10                 | -0.06                | 86        
-+4 Match  | 0.08                 | -0.00                | 77        
++1 Match  | 0.02                 | 0.01                 | 287       
++2 Match  | 0.02                 | 0.02                 | 168       
++3 Match  | 0.02                 | 0.02                 | 127       
++4 Match  | 0.02                 | 0.00                 | 108       
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Level Diff negativo = Avversario più forte (Svantaggio).

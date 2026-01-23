@@ -1,7 +1,7 @@
 ANALISI STREAK MATCHUP ESTREMI (NO-LVL) (>= 3 consecutivi in sessione)
 ================================================================================
-Totale Battaglie: 6737
-Totale Finestre (Opportunità): 3538
+Totale Battaglie: 5401
+Totale Finestre (Opportunità): 3545
 Soglie: High > 80.0%, Low < 30.0%
 --------------------------------------------------------------------------------
 DEFINIZIONI:
@@ -15,15 +15,15 @@ DEFINIZIONI:
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 0          | 0.0000     | 1.00x          
-Teorico (p^3)             | 0.00       | 0.0001     | 0.00           
-Global Shuffle            | 0.01       | 0.0004     | 0.00           
-Intra-Session Shuffle     | 0.05       | 0.0014     | 0.00           
+Teorico (p^3)             | 0.00       | 0.0000     | 0.00           
+Global Shuffle            | 0.00       | 0.0000     | 0.00           
+Intra-Session Shuffle     | 0.00       | 0.0000     | 0.00           
 
 --- MATCHUP SFAVOREVOLI (< 30.0%) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
-Osservato                 | 3          | 0.0848     | 1.00x          
-Teorico (p^3)             | 0.99       | 0.0280     | 3.02           
-Global Shuffle            | 4.62       | 0.1306     | 0.65           
-Intra-Session Shuffle     | 4.61       | 0.1303     | 0.65           
+Osservato                 | 0          | 0.0000     | 1.00x          
+Teorico (p^3)             | 0.44       | 0.0124     | 0.00           
+Global Shuffle            | 2.14       | 0.0604     | 0.00           
+Intra-Session Shuffle     | 2.60       | 0.0732     | 0.00           
 

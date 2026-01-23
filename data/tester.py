@@ -48,7 +48,7 @@ from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
 
-    mode_filter = 'Ladder'
+    mode_filter = 'Ranked'
 
     # Caricamento sessioni e profili tramite battlelog_v2
     # Questo assicura che le sessioni siano definite consistentemente
