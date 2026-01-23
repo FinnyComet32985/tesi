@@ -12,7 +12,7 @@ from test_extreme_matchup import get_extreme_matchup_stats
 from test_odds_and_quitrate_correlation import calculate_correlation_pity_ragequit
 from ragequit_and_odds import ragequit_and_odds_correlation
 from test_indipendenza import get_chi2_independence_stats
-from test_gatekeeping import get_gatekeeping_stats # Importazione nuovo test
+from test_gatekeeping import analyze_gatekeeping_all
 from reporter import generate_report
 from test_veloci import analyze_pity_odds_vs_total_matches, analyze_pity_odds_vs_current_trophies
 from test_session_trend import analyze_session_trends
@@ -41,13 +41,12 @@ from test import (
     analyze_extreme_level_streak,
     analyze_normalized_level_streak,
     analyze_pity_probability_lift,
+    analyze_paywall_impact
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
-    
-    tags = load_tags()
 
     mode_filter = 'Ladder'
 
@@ -72,11 +71,11 @@ def main():
     # calcolo chi quadro indipendenza (streak vs matchup)
     chi2_results = get_chi2_independence_stats(players_sessions)
 
-    # calcolo gatekeeping (danger zone vs hard counter)
-    gatekeeping_results = get_gatekeeping_stats(cursor, tags, danger_range=50)
+    analyze_gatekeeping_all(players_sessions, cursor, output_dir=results_dir, gate_range=50)
+
 
     # generazione report e salvataggio
-    generate_report(profiles, matchup_stats, correlation_results, chi2_results, gatekeeping_results)
+    generate_report(profiles, matchup_stats, correlation_results, chi2_results)
 
     ragequit_and_odds_correlation(profiles, matchup_stats) 
 
@@ -109,6 +108,8 @@ def main():
     analyze_extreme_level_streak(players_sessions, output_dir=results_dir)
     analyze_normalized_level_streak(players_sessions, output_dir=results_dir)
     analyze_pity_probability_lift(players_sessions, output_dir=results_dir)
+    analyze_paywall_impact(players_sessions, output_dir=results_dir)
+
 
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)

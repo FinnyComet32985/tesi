@@ -7,37 +7,37 @@ Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
 --- STOP TYPE: Short ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
-Bad Streak                | 93     | 40.99               %
-Control (No Streak)       | 540    | 52.97               %
+Bad Streak                | 94     | 40.89               %
+Control (No Streak)       | 553    | 52.80               %
 ------------------------------------------------------------
-Delta: -11.98%
+Delta: -11.91%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.99%)
+Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.89%)
            (Significativamente inferiore al 50% -> Sfavorevole)
 
 --- STOP TYPE: Long ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
-Bad Streak                | 117    | 42.34               %
-Control (No Streak)       | 825    | 52.15               %
+Bad Streak                | 120    | 42.14               %
+Control (No Streak)       | 846    | 52.01               %
 ------------------------------------------------------------
-Delta: -9.81%
+Delta: -9.88%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 42.34%)
+Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 42.14%)
            (Significativamente inferiore al 50% -> Sfavorevole)
 
 --- STOP TYPE: Quit ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 37     | 42.27               %
-Control (No Streak)       | 278    | 53.34               %
+Control (No Streak)       | 284    | 53.63               %
 ------------------------------------------------------------
-Delta: -11.06%
-Test Mann-Whitney U (Bad < Control): p-value = 0.0003
+Delta: -11.35%
+Test Mann-Whitney U (Bad < Control): p-value = 0.0002
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
 Test vs 50% (Coin Flip): p-value = 0.0098 (Avg: 42.27%)

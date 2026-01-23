@@ -242,6 +242,7 @@ def calculate_profile_from_sessions(sessions):
     
     # Dati generali
     all_matchups = []
+    all_matchups_no_lvl = []
     all_level_diffs = []
     
     # Pesi per il tipo di stop
@@ -268,6 +269,10 @@ def calculate_profile_from_sessions(sessions):
             matchup = battle['matchup']
             if matchup is not None:
                 all_matchups.append(matchup)
+            
+            matchup_no_lvl = battle.get('matchup_no_lvl')
+            if matchup_no_lvl is not None:
+                all_matchups_no_lvl.append(matchup_no_lvl)
             
             level_diff = battle.get('level_diff')
             if level_diff is not None:
@@ -354,6 +359,7 @@ def calculate_profile_from_sessions(sessions):
     ers = quit_impulsivity * math.exp(-avg_fsi)
     
     avg_matchup = statistics.mean(all_matchups) if all_matchups else 50.0
+    avg_matchup_no_lvl = statistics.mean(all_matchups_no_lvl) if all_matchups_no_lvl else 50.0
     avg_level_diff = statistics.mean(all_level_diffs) if all_level_diffs else 0.0
     avg_session_min = (total_duration / 60) / len(sessions) if sessions else 0
     matches_per_session = total_battles / len(sessions) if sessions else 0
@@ -380,6 +386,7 @@ def calculate_profile_from_sessions(sessions):
         'win_continuation_rate': round(win_continuation_rate * 100, 1),
         'loss_continuation_rate': round(loss_continuation_rate * 100, 1),
         'avg_matchup_pct': round(avg_matchup, 2),
+        'avg_matchup_no_lvl_pct': round(avg_matchup_no_lvl, 2),
         'avg_level_diff': round(avg_level_diff, 2),
         'is_reliable': is_reliable,
         'counter_streak_continuations': counter_streak_continuations

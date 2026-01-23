@@ -2674,7 +2674,97 @@ def analyze_pity_probability_lift(players_sessions, output_dir=None):
         f.write("="*80 + "\n")
 
 
+def analyze_paywall_impact(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'paywall_impact_results.txt')
 
+    print(f"\nGenerazione report Paywall Impact in: {output_file}")
+
+    # Bucket size per controllare la "Progressione Naturale"
+    # Usiamo un range sufficientemente ampio per avere dati, ma stretto per considerare i livelli costanti
+    BUCKET_SIZE = 400
+    
+    # Struttura: bucket -> { 'after_win': [], 'after_loss': [] }
+    buckets = {}
+
+    for p in players_sessions:
+        # Appiattiamo le sessioni per avere la sequenza temporale completa
+        all_battles = []
+        for s in p['sessions']:
+            all_battles.extend(s['battles'])
+            
+        for i in range(1, len(all_battles)):
+            prev = all_battles[i-1]
+            curr = all_battles[i]
+            
+            if curr['game_mode'] != 'Ladder': continue
+            
+            trophies = curr.get('trophies_before')
+            if not trophies: continue
+            
+            lvl_diff = curr.get('level_diff')
+            if lvl_diff is None: continue
+            
+            # Identifica il bucket di trofei
+            bucket_idx = (trophies // BUCKET_SIZE) * BUCKET_SIZE
+            bucket_label = f"{bucket_idx}-{bucket_idx + BUCKET_SIZE}"
+            
+            if bucket_label not in buckets:
+                buckets[bucket_label] = {'after_win': [], 'after_loss': []}
+            
+            # Classifica in base all'esito precedente
+            if prev['win']:
+                buckets[bucket_label]['after_win'].append(lvl_diff)
+            else:
+                buckets[bucket_label]['after_loss'].append(lvl_diff)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI PAYWALL: PROGRESSIONE NATURALE vs MANIPOLAZIONE ATTIVA\n")
+        f.write("Obiettivo: Rispondere alla critica 'È normale trovare livelli più alti salendo di trofei'.\n")
+        f.write("Metodo: Confronto il Level Diff DOPO UNA VITTORIA vs DOPO UNA SCONFITTA all'interno della STESSA fascia di trofei.\n")
+        f.write(f"Ipotesi Naturale: In un range ristretto ({BUCKET_SIZE} trofei), il livello medio degli avversari dovrebbe essere costante.\n")
+        f.write("Ipotesi Paywall: Se dopo una vittoria il livello avversario sale drasticamente rispetto a dopo una sconfitta (nello stesso bucket), è manipolazione.\n")
+        f.write("="*100 + "\n")
+        f.write(f"{'FASCIA TROFEI':<15} | {'N. MATCH':<10} | {'AVG L.DIFF (Tot)':<18} | {'Post-Win':<12} | {'Post-Loss':<12} | {'DELTA':<10} | {'P-VALUE':<10}\n")
+        f.write("-" * 100 + "\n")
+
+        sorted_keys = sorted(buckets.keys(), key=lambda x: int(x.split('-')[0]))
+
+        for key in sorted_keys:
+            data = buckets[key]
+            wins = data['after_win']
+            losses = data['after_loss']
+            
+            n_tot = len(wins) + len(losses)
+            if n_tot < 50 or len(wins) < 10 or len(losses) < 10: 
+                continue 
+            
+            avg_win = statistics.mean(wins)
+            avg_loss = statistics.mean(losses)
+            avg_tot = statistics.mean(wins + losses) # Media globale del bucket
+            delta = avg_win - avg_loss # Se negativo, Post-Win è peggio (avversario più forte)
+            
+            # Mann-Whitney U Test
+            # H1: Post-Win < Post-Loss (Livelli peggiori dopo vittoria)
+            try:
+                stat, p_val = mannwhitneyu(wins, losses, alternative='less')
+            except ValueError:
+                p_val = 1.0
+            
+            marker = ""
+            if p_val < 0.05 and delta < -0.1:
+                marker = "<-- RIGGED?"
+            
+            f.write(f"{key:<15} | {n_tot:<10} | {avg_tot:<18.2f} | {avg_win:<12.2f} | {avg_loss:<12.2f} | {delta:<10.2f} | {p_val:<10.4f} {marker}\n")
+
+        f.write("-" * 100 + "\n")
+        f.write("INTERPRETAZIONE:\n")
+        f.write("1. AVG L.DIFF (Tot): Se diventa sempre più negativo salendo di trofei, conferma il 'Paywall Statico' (Progressione Naturale).\n")
+        f.write("2. DELTA ~ 0: Conferma che il sistema NON manipola i livelli in base all'esito della partita precedente.\n")
+        f.write("3. RIGGED?: Solo se Delta è significativamente negativo e P-Value < 0.05 c'è sospetto di manipolazione attiva.\n")
+        f.write("="*100 + "\n")
 
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
@@ -2702,6 +2792,7 @@ def main():
     analyze_defeat_quality_impact(players_sessions)
     analyze_debt_credit_duration_and_levels(players_sessions)
     analyze_punishment_tradeoff(players_sessions)
+    analyze_paywall_impact(players_sessions)
 
 if __name__ == "__main__":
     main()

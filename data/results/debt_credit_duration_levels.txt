@@ -7,9 +7,9 @@ Soglie: Debito < 45.0%, Credito > 55.0%
 --- 1. ANALISI STANDARD (Matchup Reale: include livelli) ---
 TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
 --------------------------------------------------------------------------------
-Debt            | 1628       | 1.60         | 10         | -0.36          
-Normal          | 1175       | 1.20         | 6          | 0.03           
-Credit          | 1731       | 1.51         | 15         | 0.36           
+Debt            | 1659       | 1.60         | 10         | -0.36          
+Normal          | 1186       | 1.19         | 6          | 0.03           
+Credit          | 1759       | 1.51         | 15         | 0.36           
 
 Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 --------------------------------------------------------------------------------
@@ -18,13 +18,13 @@ Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 Domanda: Quando il sistema ti countera il MAZZO (Debt), ti dà anche livelli più alti?
 TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
 --------------------------------------------------------------------------------
-Debt            | 1675       | 1.50         | 9          | 0.09           
-Normal          | 1544       | 1.31         | 6          | 0.01           
-Credit          | 1520       | 1.38         | 8          | -0.09          
+Debt            | 1704       | 1.50         | 9          | 0.09           
+Normal          | 1571       | 1.31         | 6          | 0.01           
+Credit          | 1541       | 1.38         | 8          | -0.09          
 --------------------------------------------------------------------------------
 Confronto Livelli (Pure Debt vs Pure Credit):
-   Avg Level Diff in DEBT (Bad Deck):   +0.087
-   Avg Level Diff in CREDIT (Good Deck): -0.088
+   Avg Level Diff in DEBT (Bad Deck):   +0.086
+   Avg Level Diff in CREDIT (Good Deck): -0.089
    Test Mann-Whitney U (Debt < Credit): p-value = 1.0000
 
 RISULTATO: NON SIGNIFICATIVO.

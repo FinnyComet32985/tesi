@@ -1,17 +1,7 @@
 import os
 from datetime import datetime
-import math
 
-# Importazioni per la visualizzazione grafica
-try:
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    import pandas as pd
-    HAS_VISUAL_LIBS = True
-except ImportError:
-    HAS_VISUAL_LIBS = False
-
-def generate_report(profiles, matchup_stats, correlation_results=None, chi2_results=None, gatekeeping_results=None):
+def generate_report(profiles, matchup_stats, correlation_results=None, chi2_results=None):
     """Genera i report su file e console basandosi sui dati calcolati."""
     results_dir = os.path.join(os.path.dirname(__file__), 'results')
     os.makedirs(results_dir, exist_ok=True)
@@ -29,14 +19,6 @@ def generate_report(profiles, matchup_stats, correlation_results=None, chi2_resu
     # 4. Report Chi-Square Independence
     if chi2_results:
         _save_chi2_report(chi2_results, results_dir)
-
-    # 5. Report Gatekeeping (New)
-    if gatekeeping_results:
-        _save_gatekeeping_report(gatekeeping_results, results_dir)
-
-    # 5. Report Grafico (EOMM Analysis)
-    if HAS_VISUAL_LIBS:
-        _generate_visual_charts(profiles, matchup_stats, results_dir)
 
 def _save_classifier_report(profiles, results_dir):
     output_path = os.path.join(results_dir, 'classifier_results.txt')
@@ -164,43 +146,6 @@ def _save_chi2_report(chi2_results, results_dir):
             f.write(summary)
             print(f"\nI risultati del test Chi-Quadro sono stati salvati in: {output_path}")
 
-def _save_gatekeeping_report(results, results_dir):
-    output_path = os.path.join(results_dir, 'gatekeeping_results.txt')
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        f.write(f"Analisi Gatekeeping (Danger Zone vs Hard Counter) eseguita il: {datetime.now()}\n")
-        
-        significant_count = 0
-        total_count = len(results)
-
-        for tag, res in results.items():
-            is_sig = res['p_value'] < 0.05
-            if is_sig: 
-                significant_count += 1
-            
-            matrix = res['matrix']
-            a, b = matrix[0]
-            c, d = matrix[1]
-
-            header = f"\n{'#'*60}\n# PLAYER: {tag}\n{'#'*60}"
-            f.write(header + "\n")
-            
-            f.write(f"P-value: {res['p_value']:.4f}\n")
-            f.write(f"Odds Ratio: {res['odds_ratio']:.2f}\n")
-            f.write(f"Risultato: {'GATEKEEPING RILEVATO' if is_sig else 'Nessuna evidenza'}\n\n")
-            
-            f.write(f"{'Zone':<20} | {'Hard Counter':<15} | {'Normal Match':<15}\n")
-            f.write("-" * 56 + "\n")
-            f.write(f"{'Danger Zone':<20} | {a:<15} | {b:<15}\n")
-            f.write(f"{'Safe Zone':<20} | {c:<15} | {d:<15}\n")
-
-        if total_count > 0:
-            summary = f"\n\n{'='*60}\n RIEPILOGO GATEKEEPING\n{'='*60}\n"
-            summary += f"Totale Giocatori: {total_count}\n"
-            summary += f"Casi Significativi: {significant_count} ({(significant_count/total_count*100):.2f}%)\n"
-            f.write(summary)
-            print(f"\nI risultati del test Gatekeeping sono stati salvati in: {output_path}")
-
 def _format_dataframe_table(df, title):
     """Formatta un DataFrame pandas in una tabella testuale allineata."""
     lines = []
@@ -246,34 +191,6 @@ def _format_dataframe_table(df, title):
         
     return "\n".join(lines) + "\n"
 
-def _print_profile(profile, tag, file):
-    def log(msg):
-        print(msg)
-        file.write(msg + "\n")
-
-    labels = {
-        'total_matches': 'Totale Partite',
-        'num_sessions': 'Numero Sessioni',
-        'avg_session_min': 'Durata Media Sess. (min)',
-        'matches_per_session': 'Partite per Sessione',
-        'l_streak_count': 'Losing Streaks (>=3L)',
-        'w_streak_count': 'Winning Streaks (>=3W)',
-        'ragequit_rate': 'Ragequit Rate (%)',
-        'avg_matchup_pct': 'Matchup Medio (%)'
-    }
-
-    log("\n" + "="*45)
-    log(f" PLAYER: {tag}")
-    log("="*45)
-    log(f"{'METRICA':<30} | {'VALORE':<10}")
-    log("-" * 45)
-    
-    for key, label in labels.items():
-        val = profile.get(key, "N/A")
-        log(f"{label:<30} | {str(val):<10}")
-    
-    log("-" * 45)
-
 def _print_profile_advanced(profile, tag, file):
     """
     Stampa il profilo comportamentale arricchito con metriche EOMM-ready.
@@ -289,6 +206,8 @@ def _print_profile_advanced(profile, tag, file):
         'avg_session_min': 'Durata Media Sess. (min)',
         'matches_per_session': 'Partite per Sessione',
         'avg_matchup_pct': 'Matchup Medio (%)',
+        'avg_matchup_no_lvl_pct': 'Matchup No-Lvl (%)',
+        'avg_level_diff': 'Level Diff Medio',
         'avg_fsi': 'Indice Frustrazione (FSI)', # Nuova
         'quit_impulsivity': 'Impulsività Quit (Avg)', # Nuova
         'ers': 'ERS (Impulsività * exp(-FSI))', # Nuova
@@ -361,76 +280,3 @@ def _print_fisher_table(stats_data, label, condition_name, effect_name, file):
     
     log(f"IPOTESI: {status}")
     log("="*60)
-
-def _generate_visual_charts(profiles, matchup_stats, results_dir):
-    """Genera e salva un grafico scatter plot per l'analisi EOMM."""
-    data_list = []
-    
-    for tag, profile in profiles.items():
-        if tag not in matchup_stats:
-            continue
-            
-        pity_stats = matchup_stats[tag].get('pity', {})
-        punish_stats = matchup_stats[tag].get('punish', {})
-        
-        pity_odds = pity_stats.get('odds_ratio')
-        punish_odds = punish_stats.get('odds_ratio')
-        
-        # Filtra valori non validi (infiniti o NaN) per il grafico
-        if (pity_odds is None or math.isnan(pity_odds) or math.isinf(pity_odds) or
-            punish_odds is None or math.isnan(punish_odds) or math.isinf(punish_odds)):
-            continue
-            
-        data_list.append({
-            'tag': tag,
-            'fsi': profile.get('avg_fsi', 0),
-            'total_matches': profile.get('total_matches', 0),
-            'pity_odds': pity_odds,
-            'punish_odds': punish_odds
-        })
-
-    if not data_list:
-        print("\nDati insufficienti per generare il grafico EOMM.")
-        return
-
-    df = pd.DataFrame(data_list)
-    
-    plt.figure(figsize=(12, 8))
-    sns.set_style("whitegrid")
-    
-    # Scatter Plot
-    # X: FSI (Frustrazione)
-    # Y: Pity Odds (Aiuto)
-    # Dimensione: Numero partite (Affidabilità)
-    # Colore: Punish Odds (Intensità Counter)
-    scatter = plt.scatter(
-        df['fsi'], 
-        df['pity_odds'], 
-        s=df['total_matches'] * 0.5, 
-        c=df['punish_odds'], 
-        cmap='coolwarm', 
-        alpha=0.7, 
-        edgecolors="black",
-        linewidth=0.5
-    )
-    
-    plt.colorbar(scatter, label='Punish Odds (Intensità Counter)')
-    plt.xlabel('Indice di Frustrazione (FSI)')
-    plt.ylabel('Pity Odds (Probabilità Match Favorevole)')
-    plt.title('Distribuzione EOMM: Sensibilità vs Aiuto Algoritmico')
-    
-    # Linee guida per i segmenti (soglie identificate nel report testuale)
-    plt.axvline(x=0.85, color='green', linestyle='--', alpha=0.5, label='Soglia Resilienza (<1.0)')
-    plt.axvline(x=1.30, color='red', linestyle='--', alpha=0.5, label='Soglia Sensibilità (>1.8)')
-    plt.legend()
-
-    # Annotazioni per outlier interessanti
-    for i, row in df.iterrows():
-        if row['pity_odds'] > 2.5 or row['fsi'] > 1.8:
-            plt.annotate(row['tag'], (row['fsi'], row['pity_odds']), fontsize=8, alpha=0.8, xytext=(5, 5), textcoords='offset points')
-
-    output_path = os.path.join(results_dir, 'eomm_analysis_chart.png')
-    plt.savefig(output_path, dpi=300)
-    plt.close()
-    
-    print(f"\nGrafico analisi EOMM salvato in: {output_path}")

@@ -1,7 +1,7 @@
 def get_player_profiles(cursor, tags):
     """Recupera i profili comportamentali per una lista di giocatori."""
     query = """
-        SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate
+        SELECT battle_id, battle_type, game_mode, timestamp, win, level_diff, matchup_win_rate, matchup_no_lvl
         FROM battles
         WHERE player_tag = ?  AND game_mode not like '%Draft%' and battle_type not like 'riverRace%' AND game_mode != '2v2 League'
         ORDER BY timestamp ASC;
@@ -25,7 +25,9 @@ def get_player_profile(battles):
     # Indici colonne (basati sulla tua query SQL)
     TIMESTAMP_IDX = 3
     WIN_IDX = 4
+    LEVEL_DIFF_IDX = 5
     MATCHUP_IDX = 6
+    MATCHUP_NO_LVL_IDX = 7
     
     SESSION_THRESHOLD = 30 * 60 
     total_matches = len(battles)
@@ -71,6 +73,14 @@ def get_player_profile(battles):
     valid_matchups = [b[MATCHUP_IDX] for b in battles if b[MATCHUP_IDX] is not None]
     avg_matchup = (sum(valid_matchups) / len(valid_matchups) * 100) if valid_matchups else 50
 
+    # Calcolo Matchup No Lvl Medio
+    valid_matchups_no_lvl = [b[MATCHUP_NO_LVL_IDX] for b in battles if len(b) > MATCHUP_NO_LVL_IDX and b[MATCHUP_NO_LVL_IDX] is not None]
+    avg_matchup_no_lvl = (sum(valid_matchups_no_lvl) / len(valid_matchups_no_lvl) * 100) if valid_matchups_no_lvl else 50
+
+    # Calcolo Level Diff Medio
+    valid_level_diffs = [b[LEVEL_DIFF_IDX] for b in battles if b[LEVEL_DIFF_IDX] is not None]
+    avg_level_diff = sum(valid_level_diffs) / len(valid_level_diffs) if valid_level_diffs else 0
+
     # 3. Marcatore di Affidabilità (Filtro Rumore Statistico)
     # Identifica se il player ha abbastanza dati e sessioni lunghe per l'EOMM
     is_reliable = total_matches > 100 and avg_mps > 3
@@ -84,6 +94,8 @@ def get_player_profile(battles):
         'l_streak_count': l_streak_count,
         'w_streak_count': w_streak_count,
         'avg_matchup_pct': round(avg_matchup, 2),
+        'avg_matchup_no_lvl_pct': round(avg_matchup_no_lvl, 2),
+        'avg_level_diff': round(avg_level_diff, 2),
         'is_reliable': is_reliable
     }
 
