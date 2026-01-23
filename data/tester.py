@@ -41,14 +41,15 @@ from test import (
     analyze_extreme_level_streak,
     analyze_normalized_level_streak,
     analyze_pity_probability_lift,
-    analyze_paywall_impact
+    analyze_paywall_impact,
+    analyze_nolvl_streaks_vs_trophies
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
 
-    mode_filter = 'Ranked'
+    mode_filter = 'Ladder'
 
     # Caricamento sessioni e profili tramite battlelog_v2
     # Questo assicura che le sessioni siano definite consistentemente
@@ -109,6 +110,7 @@ def main():
     analyze_normalized_level_streak(players_sessions, output_dir=results_dir)
     analyze_pity_probability_lift(players_sessions, output_dir=results_dir)
     analyze_paywall_impact(players_sessions, output_dir=results_dir)
+    analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=results_dir)
 
 
     # --- TEST VELOCI ---

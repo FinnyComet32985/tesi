@@ -1,0 +1,27 @@
+ANALISI STREAK NO-LVL vs POSIZIONE TROFEI (MOVING AVERAGE)
+Obiettivo: Capire se le serie di matchup negativi/positivi dipendono dalla posizione in classifica.
+Metodo: Confronto con media mobile degli ultimi 200 match (Dynamic Baseline).
+================================================================================
+
+1. BAD STREAK (Matchup < 45%) vs HIGH TROPHIES (Sopra Media)
+Ipotesi Naturale: Più sali, più trovi counter (Concentrazione in alto).
+--------------------------------------------------------------------------------
+Totale Bad Streak: 602
+Baseline (Tempo speso sopra media): 88.71%
+Bad Streak avvenute sopra media:    93.19%
+LIFT: 1.05x
+P-value (Binomial): 0.000144
+RISULTATO: SIGNIFICATIVO. Le Bad Streak si concentrano quando sei in alto (Gatekeeping).
+Delta Medio Trofei (Bad Streak): +160.06
+
+2. GOOD STREAK (Matchup > 55%) vs LOW TROPHIES (Sotto Media)
+Ipotesi Recupero: Quando scendi troppo, il sistema ti aiuta a risalire (Concentrazione in basso).
+--------------------------------------------------------------------------------
+Totale Good Streak: 353
+Baseline (Tempo speso sotto media): 11.29%
+Good Streak avvenute sotto media:   13.31%
+LIFT: 1.18x
+P-value (Binomial): 0.132987
+RISULTATO: NON SIGNIFICATIVO. Le Good Streak sono casuali.
+Delta Medio Trofei (Good Streak): +197.96
+================================================================================

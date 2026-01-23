@@ -2766,6 +2766,273 @@ def analyze_paywall_impact(players_sessions, output_dir=None):
         f.write("3. RIGGED?: Solo se Delta è significativamente negativo e P-Value < 0.05 c'è sospetto di manipolazione attiva.\n")
         f.write("="*100 + "\n")
 
+def analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'nolvl_streaks_vs_trophies_results.txt')
+
+    print(f"\nGenerazione report Streak No-Lvl vs Trofei in: {output_file}")
+
+    STREAK_LEN = 3
+    BAD_THRESH = 45.0
+    GOOD_THRESH = 55.0
+    WINDOW_SIZE = 200  # Finestra mobile per la media
+    MIN_HISTORY = 10   # Minimo partite precedenti per calcolare la media
+    
+    # Accumulatori globali
+    total_battles_above = 0
+    total_battles_below = 0
+    total_battles_total = 0
+    
+    streaks_bad_above = 0
+    streaks_bad_total = 0
+    streaks_good_below = 0
+    streaks_good_total = 0
+    
+    # Per analisi distribuzione
+    streak_bad_deltas = [] # (Streak Avg Trophies - Player Avg Trophies)
+    streak_good_deltas = []
+
+    for p in players_sessions:
+        # 1. Preparazione Dati (Solo Ladder)
+        ladder_battles = []
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('matchup_no_lvl') is not None:
+                    ladder_battles.append(b)
+        
+        if len(ladder_battles) < MIN_HISTORY:
+            continue
+
+        # 2. Calcolo Baseline (Tempo speso sopra la media mobile)
+        for i in range(len(ladder_battles)):
+            # Definisci finestra storica (es. ultimi 200 match prima di i)
+            start_idx = max(0, i - WINDOW_SIZE)
+            history = ladder_battles[start_idx : i]
+            
+            if len(history) < MIN_HISTORY:
+                continue
+            
+            avg_trophies = statistics.mean([h['trophies_before'] for h in history])
+            curr_trophies = ladder_battles[i]['trophies_before']
+            
+            total_battles_total += 1
+            if curr_trophies > avg_trophies:
+                total_battles_above += 1
+            elif curr_trophies < avg_trophies:
+                total_battles_below += 1
+        
+        # 3. Identificazione Streak
+        if len(ladder_battles) >= STREAK_LEN:
+            for i in range(len(ladder_battles) - STREAK_LEN + 1):
+                # Finestra storica relativa all'inizio della streak
+                start_idx = max(0, i - WINDOW_SIZE)
+                history = ladder_battles[start_idx : i]
+                
+                if len(history) < MIN_HISTORY:
+                    continue
+                
+                avg_trophies_hist = statistics.mean([h['trophies_before'] for h in history])
+                
+                window = ladder_battles[i : i+STREAK_LEN]
+                
+                # Verifica se è una Bad Streak No-Lvl
+                if all(b['matchup_no_lvl'] < BAD_THRESH for b in window):
+                    streaks_bad_total += 1
+                    
+                    # Calcola trofei medi durante la streak
+                    avg_streak_trophies = statistics.mean([b['trophies_before'] for b in window])
+                    
+                    streak_bad_deltas.append(avg_streak_trophies - avg_trophies_hist)
+                    
+                    if avg_streak_trophies > avg_trophies_hist:
+                        streaks_bad_above += 1
+
+                # Verifica se è una Good Streak No-Lvl
+                if all(b['matchup_no_lvl'] > GOOD_THRESH for b in window):
+                    streaks_good_total += 1
+                    avg_streak_trophies = statistics.mean([b['trophies_before'] for b in window])
+                    streak_good_deltas.append(avg_streak_trophies - avg_trophies_hist)
+                    
+                    if avg_streak_trophies < avg_trophies_hist:
+                        streaks_good_below += 1
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI STREAK NO-LVL vs POSIZIONE TROFEI (MOVING AVERAGE)\n")
+        f.write("Obiettivo: Capire se le serie di matchup negativi/positivi dipendono dalla posizione in classifica.\n")
+        f.write(f"Metodo: Confronto con media mobile degli ultimi {WINDOW_SIZE} match (Dynamic Baseline).\n")
+        f.write("="*80 + "\n\n")
+        
+        if total_battles_total == 0:
+            f.write("Dati insufficienti.\n")
+            return
+
+        # --- BAD STREAK ANALYSIS ---
+        baseline_above_rate = total_battles_above / total_battles_total
+        streak_bad_above_rate = streaks_bad_above / streaks_bad_total if streaks_bad_total > 0 else 0
+        
+        f.write("1. BAD STREAK (Matchup < 45%) vs HIGH TROPHIES (Sopra Media)\n")
+        f.write("Ipotesi Naturale: Più sali, più trovi counter (Concentrazione in alto).\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"Totale Bad Streak: {streaks_bad_total}\n")
+        f.write(f"Baseline (Tempo speso sopra media): {baseline_above_rate*100:.2f}%\n")
+        f.write(f"Bad Streak avvenute sopra media:    {streak_bad_above_rate*100:.2f}%\n")
+        
+        lift_bad = streak_bad_above_rate / baseline_above_rate if baseline_above_rate > 0 else 0
+        f.write(f"LIFT: {lift_bad:.2f}x\n")
+        
+        res_bad = binomtest(k=streaks_bad_above, n=streaks_bad_total, p=baseline_above_rate, alternative='greater')
+        f.write(f"P-value (Binomial): {res_bad.pvalue:.6f}\n")
+        
+        if res_bad.pvalue < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. Le Bad Streak si concentrano quando sei in alto (Gatekeeping).\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. Le Bad Streak colpiscono ovunque (Forzatura 50%).\n")
+        
+        avg_delta_bad = statistics.mean(streak_bad_deltas) if streak_bad_deltas else 0
+        f.write(f"Delta Medio Trofei (Bad Streak): {avg_delta_bad:+.2f}\n\n")
+
+        # --- GOOD STREAK ANALYSIS ---
+        baseline_below_rate = total_battles_below / total_battles_total
+        streak_good_below_rate = streaks_good_below / streaks_good_total if streaks_good_total > 0 else 0
+        
+        f.write("2. GOOD STREAK (Matchup > 55%) vs LOW TROPHIES (Sotto Media)\n")
+        f.write("Ipotesi Recupero: Quando scendi troppo, il sistema ti aiuta a risalire (Concentrazione in basso).\n")
+        f.write("-" * 80 + "\n")
+        f.write(f"Totale Good Streak: {streaks_good_total}\n")
+        f.write(f"Baseline (Tempo speso sotto media): {baseline_below_rate*100:.2f}%\n")
+        f.write(f"Good Streak avvenute sotto media:   {streak_good_below_rate*100:.2f}%\n")
+        
+        lift_good = streak_good_below_rate / baseline_below_rate if baseline_below_rate > 0 else 0
+        f.write(f"LIFT: {lift_good:.2f}x\n")
+        
+        res_good = binomtest(k=streaks_good_below, n=streaks_good_total, p=baseline_below_rate, alternative='greater')
+        f.write(f"P-value (Binomial): {res_good.pvalue:.6f}\n")
+        
+        if res_good.pvalue < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. Le Good Streak si concentrano quando sei in basso (Rubber Banding / Aiutino).\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. Le Good Streak sono casuali.\n")
+            
+        avg_delta_good = statistics.mean(streak_good_deltas) if streak_good_deltas else 0
+        f.write(f"Delta Medio Trofei (Good Streak): {avg_delta_good:+.2f}\n")
+        
+        f.write("="*80 + "\n")
+
+def analyze_meta_ranges(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'meta_ranges_results.txt')
+
+    print(f"\nGenerazione report Meta Ranges in: {output_file}")
+
+    BUCKET_SIZE = 200
+    buckets = {} # { range_start: [matchups] }
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('matchup') is not None:
+                    t = b['trophies_before']
+                    b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+                    if b_idx not in buckets: buckets[b_idx] = []
+                    buckets[b_idx].append(b['matchup'])
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI META RANGES (DISTRIBUZIONE MATCHUP PER TROFEI)\n")
+        f.write("Obiettivo: Verificare se esistono 'fasce di trofei maledette' dove il matchup medio crolla (Meta Ranges).\n")
+        f.write(f"Bucket Size: {BUCKET_SIZE} trofei\n")
+        f.write("="*80 + "\n\n")
+        
+        sorted_keys = sorted(buckets.keys())
+        valid_buckets = []
+        
+        f.write(f"{'RANGE TROFEI':<20} | {'N. MATCH':<10} | {'AVG MATCHUP':<15} | {'STD DEV':<10}\n")
+        f.write("-" * 65 + "\n")
+        
+        for k in sorted_keys:
+            vals = buckets[k]
+            if len(vals) < 50: continue # Skip low sample
+            
+            avg = statistics.mean(vals)
+            std = statistics.stdev(vals)
+            f.write(f"{k}-{k+BUCKET_SIZE:<15} | {len(vals):<10} | {avg:<15.2f}% | {std:<10.2f}\n")
+            valid_buckets.append(vals)
+            
+        f.write("-" * 65 + "\n")
+        
+        if len(valid_buckets) > 1:
+            stat, p_val = kruskal(*valid_buckets)
+            f.write(f"Test Kruskal-Wallis (Differenza tra fasce): p-value = {p_val:.4f}\n")
+            if p_val < 0.05:
+                f.write("RISULTATO: SIGNIFICATIVO. Il matchup medio cambia in base alla fascia di trofei (Meta Ranges confermati).\n")
+                f.write("NOTA: Questo supporta l'ipotesi che alcune 'Bad Streak' siano dovute al meta locale.\n")
+            else:
+                f.write("RISULTATO: NON SIGNIFICATIVO. Il matchup medio è costante attraverso i trofei.\n")
+                f.write("NOTA: Questo indebolisce l'ipotesi dei Meta Ranges come causa principale.\n")
+        
+        f.write("="*80 + "\n")
+
+def analyze_climbing_impact(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'climbing_impact_results.txt')
+
+    print(f"\nGenerazione report Impatto Climbing in: {output_file}")
+    
+    correlations = []
+    
+    for p in players_sessions:
+        trophies = []
+        matchups = []
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('matchup') is not None:
+                    trophies.append(b['trophies_before'])
+                    matchups.append(b['matchup'])
+        
+        if len(trophies) > 20:
+            corr, _ = spearmanr(trophies, matchups)
+            if not np.isnan(corr):
+                correlations.append(corr)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI IMPATTO CLIMBING (TROFEI vs MATCHUP)\n")
+        f.write("Obiettivo: Verificare se salire di trofei porta naturalmente a matchup peggiori (Correlazione Negativa).\n")
+        f.write("="*80 + "\n\n")
+        
+        if not correlations:
+            f.write("Dati insufficienti.\n")
+            return
+            
+        avg_corr = statistics.mean(correlations)
+        pos_corr = len([c for c in correlations if c > 0.1])
+        neg_corr = len([c for c in correlations if c < -0.1])
+        neutral = len(correlations) - pos_corr - neg_corr
+        
+        f.write(f"Player Analizzati: {len(correlations)}\n")
+        f.write(f"Correlazione Media (Spearman): {avg_corr:.4f}\n")
+        f.write("-" * 60 + "\n")
+        f.write(f"Player con Correlazione Positiva (> 0.1): {pos_corr} (Salendo il matchup migliora)\n")
+        f.write(f"Player con Correlazione Negativa (< -0.1): {neg_corr} (Salendo il matchup peggiora)\n")
+        f.write(f"Player Neutri (-0.1 a 0.1):              {neutral}\n")
+        f.write("-" * 60 + "\n")
+        
+        f.write("INTERPRETAZIONE:\n")
+        if avg_corr < -0.1:
+            f.write("RISULTATO: TENDENZA NEGATIVA. Salire di trofei tende a peggiorare il matchup.\n")
+            f.write("           (Supporta l'ipotesi che la 'punizione' sia in parte naturale difficoltà).\n")
+        elif avg_corr > 0.1:
+            f.write("RISULTATO: TENDENZA POSITIVA. Salire di trofei tende a migliorare il matchup (?!).\n")
+        else:
+            f.write("RISULTATO: NESSUNA CORRELAZIONE EVIDENTE. Il matchup sembra indipendente dall'altezza in classifica.\n")
+            f.write("           (Smentisce l'ipotesi che vincere porti naturalmente a counter deck).\n")
+            
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -2793,6 +3060,8 @@ def main():
     analyze_debt_credit_duration_and_levels(players_sessions)
     analyze_punishment_tradeoff(players_sessions)
     analyze_paywall_impact(players_sessions)
+    analyze_meta_ranges(players_sessions)
+    analyze_climbing_impact(players_sessions)
 
 if __name__ == "__main__":
     main()

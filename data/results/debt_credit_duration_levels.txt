@@ -7,9 +7,9 @@ Soglie: Debito < 45.0%, Credito > 55.0%
 --- 1. ANALISI STANDARD (Matchup Reale: include livelli) ---
 TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
 --------------------------------------------------------------------------------
-Debt            | 1243       | 1.54         | 17         | -0.05          
-Normal          | 1254       | 1.31         | 8          | 0.02           
-Credit          | 1250       | 1.46         | 10         | 0.08           
+Debt            | 1663       | 1.61         | 13         | -0.36          
+Normal          | 1187       | 1.19         | 6          | 0.03           
+Credit          | 1762       | 1.51         | 15         | 0.36           
 
 Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 --------------------------------------------------------------------------------
@@ -18,14 +18,14 @@ Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 Domanda: Quando il sistema ti countera il MAZZO (Debt), ti dà anche livelli più alti?
 TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
 --------------------------------------------------------------------------------
-Debt            | 1185       | 1.64         | 10         | 0.02           
-Normal          | 1241       | 1.39         | 7          | 0.02           
-Credit          | 1198       | 1.44         | 9          | 0.01           
+Debt            | 1713       | 1.49         | 9          | 0.08           
+Normal          | 1578       | 1.31         | 6          | 0.01           
+Credit          | 1547       | 1.38         | 8          | -0.09          
 --------------------------------------------------------------------------------
 Confronto Livelli (Pure Debt vs Pure Credit):
-   Avg Level Diff in DEBT (Bad Deck):   +0.021
-   Avg Level Diff in CREDIT (Good Deck): +0.011
-   Test Mann-Whitney U (Debt < Credit): p-value = 0.1377
+   Avg Level Diff in DEBT (Bad Deck):   +0.085
+   Avg Level Diff in CREDIT (Good Deck): -0.089
+   Test Mann-Whitney U (Debt < Credit): p-value = 1.0000
 
 RISULTATO: NON SIGNIFICATIVO.
            Il livello degli avversari sembra indipendente dal fatto che tu abbia un mazzo favorevole o sfavorevole.
