@@ -6,11 +6,11 @@ Definizione Pity Match: Matchup > 60.0%
 --- EVENTO: Loss ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
-Con Pity        | 639      | 4.79                     
-Senza Pity      | 1435     | 4.64                     
+Con Pity        | 641      | 4.78                     
+Senza Pity      | 1438     | 4.64                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.4686
+P-value: 0.4898
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=2) ---
@@ -36,11 +36,11 @@ RISULTATO: SIGNIFICATIVO. Il Pity Match estende la sessione.
 --- EVENTO: Counter (Loss <40%) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
-Con Pity        | 186      | 4.72                     
-Senza Pity      | 675      | 4.64                     
+Con Pity        | 187      | 4.70                     
+Senza Pity      | 676      | 4.63                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.5696
+P-value: 0.5944
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=2) ---

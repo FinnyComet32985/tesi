@@ -7,8 +7,8 @@ Soglia ERS (Mediana): 0.852
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG PITY ODDS   | AVG MATCHES     | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 11    | 0.6439          | 313.7           | 0.554 - 0.845
-HIGH ERS             | 11    | 1.2035          | 176.1           | 0.852 - 2.332
+LOW ERS              | 11    | 0.6427          | 314.8           | 0.554 - 0.845
+HIGH ERS             | 11    | 1.2035          | 176.5           | 0.852 - 2.332
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)
@@ -19,7 +19,7 @@ RISULTATO: NON SIGNIFICATIVO. Non c'è evidenza statistica sufficiente per confe
 --------------------------------------------------------------------------------
 CONTROLLO VARIABILE CONFONDENTE (Numero Partite):
 Correlazione Pity vs Matches (r_yz):   0.2599 (p=0.2427)
-Correlazione ERS vs Matches (r_xz):    -0.0954 (p=0.6727)
-Correlazione Diretta (ERS vs Pity):    0.2622
-Correlazione Parziale (Netta):         0.2986
+Correlazione ERS vs Matches (r_xz):    -0.1147 (p=0.6114)
+Correlazione Diretta (ERS vs Pity):    0.2967
+Correlazione Parziale (Netta):         0.3404
 ================================================================================

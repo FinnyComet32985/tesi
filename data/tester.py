@@ -49,6 +49,12 @@ from test import (
     analyze_skill_vs_matchup_dominance
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
+from test_deck_analysis import (
+    analyze_deck_switch_hypothetical,
+    analyze_nolvl_markov,
+    analyze_nolvl_time_independence,
+    analyze_card_meta_vs_counter
+)
 
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
@@ -119,6 +125,10 @@ def main():
     analyze_climbing_impact(players_sessions, output_dir=results_dir)
     analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir)
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
+    analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
+    analyze_nolvl_markov(players_sessions, output_dir=results_dir)
+    analyze_nolvl_time_independence(players_sessions, output_dir=results_dir)
+    analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
 
 
     # --- TEST VELOCI ---

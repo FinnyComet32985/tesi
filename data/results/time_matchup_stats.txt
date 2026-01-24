@@ -6,7 +6,7 @@ Fascia Oraria        | N. Partite   | Media MU   | StdDev     | Varianza
 ---------------------------------------------------------------------------
 Notte (00-06)        | 1097         | 51.64      | 18.56      | 344.41    
 Mattina (06-12)      | 1180         | 50.02      | 17.13      | 293.41    
-Pomeriggio (12-18)   | 2174         | 50.82      | 17.84      | 318.23    
+Pomeriggio (12-18)   | 2191         | 50.81      | 17.86      | 318.97    
 Sera (18-24)         | 2372         | 48.87      | 17.85      | 318.48    
 ---------------------------------------------------------------------------
 
@@ -16,7 +16,7 @@ TEST STATISTICI:
    Risultato: DIFFERENZA SIGNIFICATIVA (Il matchup medio cambia?)
 
 2. Levene Test (Confronto Varianze):
-   P-value: 0.0996
+   P-value: 0.0933
    Risultato: NESSUNA DIFFERENZA (Variabilità costante)
 
 ================================================================================

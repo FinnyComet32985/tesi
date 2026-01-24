@@ -1,0 +1,19 @@
+ANALISI DECK SWITCH: IPOTETICO vs REALE
+Obiettivo: Verificare se il sistema cambia gli avversari quando cambi mazzo.
+Metodo: Calcoliamo come il TUO NUOVO mazzo avrebbe performato contro i TUOI VECCHI avversari (Ipotetico).
+        Confrontiamo questo valore con i matchup che hai effettivamente trovato dopo il cambio (Reale).
+================================================================================
+
+Campione: 583 cambi mazzo analizzati.
+--------------------------------------------------------------------------------
+1. Matchup PRE-SWITCH (Vecchio Deck vs Vecchi Opp): 50.27%
+2. Matchup IPOTETICO  (Nuovo Deck vs Vecchi Opp):   50.48%
+3. Matchup REALE      (Nuovo Deck vs Nuovi Opp):    50.96%
+--------------------------------------------------------------------------------
+Miglioramento Teorico (Se gli avversari restassero uguali): +0.21%
+Miglioramento Reale   (Con i nuovi avversari):              +0.68%
+GAP (Manipolazione?):                                       +0.47%
+
+INTERPRETAZIONE:
+RISULTATO: NEUTRO. Il cambio di avversari è coerente con il cambio di mazzo (o casuale).
+================================================================================

@@ -5,13 +5,13 @@ Ipotesi: I giocatori con sessioni più corte (meno match/sessione) ricevono matc
 Campione: 37 giocatori
 --------------------------------------------------------------------------------
 1. Correlazione: Match/Sessione vs. Matchup Medio
-   Coefficiente: -0.1949
-   P-value:      0.2477
+   Coefficiente: -0.1954
+   P-value:      0.2466
    RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione evidente.
 
 2. Correlazione: Match/Sessione vs. Delta Livello Medio
    (Delta Livello > 0 significa che il giocatore ha livelli più alti dell'avversario)
-   Coefficiente: -0.2448
-   P-value:      0.1443
+   Coefficiente: -0.2400
+   P-value:      0.1525
    RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione evidente.
 ================================================================================

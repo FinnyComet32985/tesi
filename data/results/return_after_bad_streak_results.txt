@@ -8,9 +8,9 @@ Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 95     | 40.74               %
-Control (No Streak)       | 560    | 52.88               %
+Control (No Streak)       | 561    | 52.92               %
 ------------------------------------------------------------
-Delta: -12.15%
+Delta: -12.19%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
@@ -20,23 +20,23 @@ Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.74%)
 --- STOP TYPE: Long ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
-Bad Streak                | 121    | 41.95               %
-Control (No Streak)       | 860    | 52.03               %
+Bad Streak                | 122    | 41.78               %
+Control (No Streak)       | 865    | 52.03               %
 ------------------------------------------------------------
-Delta: -10.08%
+Delta: -10.25%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 41.95%)
+Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 41.78%)
            (Significativamente inferiore al 50% -> Sfavorevole)
 
 --- STOP TYPE: Quit ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 37     | 42.27               %
-Control (No Streak)       | 292    | 53.68               %
+Control (No Streak)       | 293    | 53.62               %
 ------------------------------------------------------------
-Delta: -11.40%
+Delta: -11.35%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0002
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)

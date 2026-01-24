@@ -1,0 +1,196 @@
+ANALISI FREQUENZA CARTE: META vs COUNTER
+Obiettivo: Identificare carte che appaiono sproporzionatamente spesso quando il giocatore è counterato.
+Definizione Counter: Matchup No-Lvl < 40%.
+Lift = Frequenza in Counter / Frequenza Globale.
+================================================================================
+
+--- FASCIA TROFEI 3000-4000 (Battles: 91, Countered: 23) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Musketeer            | 14.3     % | 26.1     % | 1.83       | META KILLER (Popolare & Counter)
+Ice Spirit           | 14.3     % | 26.1     % | 1.83       | META KILLER (Popolare & Counter)
+Mega Knight          | 14.3     % | 26.1     % | 1.83       | META KILLER (Popolare & Counter)
+Archers              | 12.1     % | 21.7     % | 1.80       | META KILLER (Popolare & Counter)
+Hog Rider            | 18.7     % | 30.4     % | 1.63       | META KILLER (Popolare & Counter)
+Cannon               | 16.5     % | 26.1     % | 1.58       | META KILLER (Popolare & Counter)
+Skeletons            | 16.5     % | 26.1     % | 1.58       | META KILLER (Popolare & Counter)
+Knight               | 27.5     % | 43.5     % | 1.58       | META KILLER (Popolare & Counter)
+Fireball             | 19.8     % | 26.1     % | 1.32       | 
+Zap                  | 16.5     % | 21.7     % | 1.32       | 
+Dart Goblin          | 20.9     % | 26.1     % | 1.25       | 
+Goblin Gang          | 17.6     % | 21.7     % | 1.24       | 
+Bats                 | 11.0     % | 13.0     % | 1.19       | 
+Freeze               | 11.0     % | 13.0     % | 1.19       | 
+The Log              | 19.8     % | 21.7     % | 1.10       | 
+
+--- FASCIA TROFEI 4000-5000 (Battles: 325, Countered: 68) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Inferno Tower        | 4.3      % | 8.8      % | 2.05       | SNIPER (Rara ma letale)
+Graveyard            | 5.8      % | 11.8     % | 2.01       | SNIPER (Rara ma letale)
+Goblin Gang          | 10.5     % | 20.6     % | 1.97       | META KILLER (Popolare & Counter)
+Goblin Hut           | 5.2      % | 10.3     % | 1.97       | 
+Ice Spirit           | 7.7      % | 14.7     % | 1.91       | 
+Hunter               | 3.1      % | 5.9      % | 1.91       | 
+The Log              | 24.9     % | 47.1     % | 1.89       | META KILLER (Popolare & Counter)
+Barbarian Barrel     | 11.7     % | 20.6     % | 1.76       | META KILLER (Popolare & Counter)
+Magic Archer         | 4.3      % | 7.4      % | 1.71       | 
+Vines                | 8.0      % | 13.2     % | 1.65       | 
+Guards               | 3.7      % | 5.9      % | 1.59       | 
+Poison               | 9.5      % | 14.7     % | 1.54       | 
+Sparky               | 9.8      % | 14.7     % | 1.49       | 
+Skeleton Barrel      | 9.2      % | 13.2     % | 1.43       | 
+Bandit               | 6.2      % | 8.8      % | 1.43       | 
+
+--- FASCIA TROFEI 5000-6000 (Battles: 743, Countered: 244) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Bomb Tower           | 2.6      % | 5.3      % | 2.08       | SNIPER (Rara ma letale)
+Berserker            | 3.0      % | 6.1      % | 2.08       | SNIPER (Rara ma letale)
+Bowler               | 3.8      % | 7.4      % | 1.96       | 
+Ice Spirit           | 10.1     % | 19.3     % | 1.91       | META KILLER (Popolare & Counter)
+Goblin Hut           | 4.6      % | 8.2      % | 1.79       | 
+Golden Knight        | 4.8      % | 8.6      % | 1.78       | 
+Balloon              | 5.8      % | 10.2     % | 1.77       | 
+Skeletons            | 9.3      % | 16.4     % | 1.77       | 
+Ice Golem            | 3.8      % | 6.6      % | 1.74       | 
+Rascals              | 2.2      % | 3.7      % | 1.71       | 
+Freeze               | 5.1      % | 8.6      % | 1.68       | 
+Cannon               | 9.6      % | 16.0     % | 1.67       | 
+Ice Wizard           | 4.2      % | 7.0      % | 1.67       | 
+The Log              | 26.6     % | 43.9     % | 1.65       | META KILLER (Popolare & Counter)
+Executioner          | 4.0      % | 6.6      % | 1.62       | 
+
+--- FASCIA TROFEI 6000-7000 (Battles: 1149, Countered: 460) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Ice Golem            | 2.9      % | 5.9      % | 2.04       | SNIPER (Rara ma letale)
+Inferno Tower        | 3.9      % | 7.8      % | 2.00       | 
+Ice Spirit           | 8.2      % | 16.1     % | 1.97       | 
+Rocket               | 3.3      % | 6.3      % | 1.91       | 
+Fire Spirit          | 1.0      % | 1.7      % | 1.82       | 
+Mighty Miner         | 2.2      % | 3.9      % | 1.80       | 
+Royal Delivery       | 3.7      % | 6.5      % | 1.78       | 
+Knight               | 16.0     % | 28.3     % | 1.76       | META KILLER (Popolare & Counter)
+Goblin Gang          | 7.6      % | 13.3     % | 1.75       | 
+Freeze               | 5.6      % | 9.6      % | 1.72       | 
+Skeletons            | 9.1      % | 15.7     % | 1.71       | 
+Princess             | 9.4      % | 16.1     % | 1.71       | 
+Cannon               | 9.6      % | 16.1     % | 1.68       | 
+The Log              | 24.5     % | 40.7     % | 1.66       | META KILLER (Popolare & Counter)
+Electro Giant        | 2.5      % | 4.1      % | 1.64       | 
+
+--- FASCIA TROFEI 7000-8000 (Battles: 581, Countered: 129) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Graveyard            | 2.8      % | 9.3      % | 3.38       | SNIPER (Rara ma letale)
+Electro Giant        | 2.6      % | 7.0      % | 2.70       | SNIPER (Rara ma letale)
+Goblin Hut           | 2.9      % | 7.0      % | 2.38       | SNIPER (Rara ma letale)
+Ice Wizard           | 4.3      % | 10.1     % | 2.34       | SNIPER (Rara ma letale)
+Bowler               | 4.3      % | 9.3      % | 2.16       | SNIPER (Rara ma letale)
+Lightning            | 5.2      % | 10.9     % | 2.10       | SNIPER (Rara ma letale)
+Berserker            | 2.6      % | 5.4      % | 2.10       | SNIPER (Rara ma letale)
+Sparky               | 4.5      % | 9.3      % | 2.08       | SNIPER (Rara ma letale)
+Giant                | 3.1      % | 6.2      % | 2.00       | SNIPER (Rara ma letale)
+Poison               | 4.8      % | 9.3      % | 1.93       | 
+Elixir Collector     | 3.3      % | 6.2      % | 1.90       | 
+Golem                | 7.7      % | 14.0     % | 1.80       | 
+Furnace              | 3.1      % | 5.4      % | 1.75       | 
+Hunter               | 2.2      % | 3.9      % | 1.73       | 
+Barbarian Barrel     | 14.5     % | 24.8     % | 1.72       | META KILLER (Popolare & Counter)
+
+--- FASCIA TROFEI 8000-9000 (Battles: 245, Countered: 21) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Royal Delivery       | 4.5      % | 19.0     % | 4.24       | SNIPER (Rara ma letale)
+Skeletons            | 16.3     % | 42.9     % | 2.62       | META KILLER (Popolare & Counter)
+Royal Ghost          | 5.7      % | 14.3     % | 2.50       | SNIPER (Rara ma letale)
+Poison               | 4.1      % | 9.5      % | 2.33       | SNIPER (Rara ma letale)
+Lumberjack           | 6.9      % | 14.3     % | 2.06       | SNIPER (Rara ma letale)
+Tornado              | 4.9      % | 9.5      % | 1.94       | 
+Bomber               | 4.9      % | 9.5      % | 1.94       | 
+Balloon              | 7.3      % | 14.3     % | 1.94       | 
+Zap                  | 15.1     % | 28.6     % | 1.89       | META KILLER (Popolare & Counter)
+Barbarian Barrel     | 8.2      % | 14.3     % | 1.75       | 
+Inferno Dragon       | 8.6      % | 14.3     % | 1.67       | 
+Musketeer            | 14.7     % | 23.8     % | 1.62       | META KILLER (Popolare & Counter)
+Hog Rider            | 26.5     % | 38.1     % | 1.44       | 
+Mega Knight          | 26.5     % | 33.3     % | 1.26       | 
+Bats                 | 11.4     % | 14.3     % | 1.25       | 
+
+--- FASCIA TROFEI 9000-10000 (Battles: 707, Countered: 137) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Three Musketeers     | 1.4      % | 5.1      % | 3.61       | SNIPER (Rara ma letale)
+Zappies              | 2.1      % | 6.6      % | 3.10       | SNIPER (Rara ma letale)
+Archer Queen         | 1.8      % | 5.1      % | 2.78       | SNIPER (Rara ma letale)
+Royal Delivery       | 2.7      % | 7.3      % | 2.72       | SNIPER (Rara ma letale)
+Graveyard            | 2.7      % | 7.3      % | 2.72       | SNIPER (Rara ma letale)
+Earthquake           | 1.4      % | 3.6      % | 2.58       | SNIPER (Rara ma letale)
+X-Bow                | 1.7      % | 4.4      % | 2.58       | SNIPER (Rara ma letale)
+Royal Recruits       | 2.8      % | 7.3      % | 2.58       | SNIPER (Rara ma letale)
+Ice Golem            | 3.7      % | 8.8      % | 2.38       | SNIPER (Rara ma letale)
+Flying Machine       | 1.8      % | 4.4      % | 2.38       | SNIPER (Rara ma letale)
+Giant                | 3.0      % | 6.6      % | 2.21       | SNIPER (Rara ma letale)
+Heal Spirit          | 2.0      % | 4.4      % | 2.21       | SNIPER (Rara ma letale)
+Royal Ghost          | 5.1      % | 10.2     % | 2.01       | SNIPER (Rara ma letale)
+Royal Hogs           | 5.7      % | 10.9     % | 1.94       | 
+Goblin Hut           | 2.3      % | 4.4      % | 1.94       | 
+
+--- FASCIA TROFEI 10000-11000 (Battles: 1751, Countered: 267) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Earthquake           | 2.5      % | 6.4      % | 2.53       | SNIPER (Rara ma letale)
+Rascals              | 0.8      % | 1.9      % | 2.34       | SNIPER (Rara ma letale)
+Archer Queen         | 1.6      % | 3.4      % | 2.11       | SNIPER (Rara ma letale)
+Goblin Hut           | 1.6      % | 3.4      % | 2.11       | SNIPER (Rara ma letale)
+Fisherman            | 1.3      % | 2.6      % | 2.09       | SNIPER (Rara ma letale)
+Three Musketeers     | 1.3      % | 2.6      % | 2.00       | 
+Graveyard            | 4.0      % | 7.9      % | 1.97       | 
+Electro Spirit       | 3.9      % | 7.5      % | 1.93       | 
+Sparky               | 4.5      % | 8.6      % | 1.91       | 
+Royal Ghost          | 5.7      % | 10.5     % | 1.84       | 
+Mighty Miner         | 2.7      % | 4.9      % | 1.81       | 
+Heal Spirit          | 2.5      % | 4.5      % | 1.79       | 
+Tombstone            | 2.3      % | 4.1      % | 1.76       | 
+Poison               | 4.9      % | 8.6      % | 1.75       | 
+Barbarian Barrel     | 10.6     % | 18.0     % | 1.70       | META KILLER (Popolare & Counter)
+
+--- FASCIA TROFEI 11000-12000 (Battles: 1097, Countered: 248) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Rascals              | 1.2      % | 2.8      % | 2.38       | SNIPER (Rara ma letale)
+Royal Delivery       | 2.3      % | 4.8      % | 2.12       | SNIPER (Rara ma letale)
+Fire Spirit          | 1.9      % | 3.6      % | 1.90       | 
+Bomb Tower           | 1.7      % | 3.2      % | 1.86       | 
+Goblin Giant         | 1.8      % | 3.2      % | 1.77       | 
+Dark Prince          | 3.7      % | 6.5      % | 1.73       | 
+X-Bow                | 1.2      % | 2.0      % | 1.70       | 
+Minion Horde         | 3.5      % | 5.6      % | 1.63       | 
+Freeze               | 4.6      % | 7.3      % | 1.59       | 
+Suspicious Bush      | 2.6      % | 4.0      % | 1.58       | 
+Lightning            | 7.2      % | 11.3     % | 1.57       | 
+Prince               | 5.0      % | 7.7      % | 1.53       | 
+Graveyard            | 3.2      % | 4.8      % | 1.52       | 
+Sparky               | 4.1      % | 6.0      % | 1.47       | 
+Giant Skeleton       | 3.3      % | 4.8      % | 1.47       | 
+
+--- FASCIA TROFEI 12000-13000 (Battles: 73, Countered: 11) ---
+CARTA                | GLOBAL %   | COUNTER %  | LIFT       | STATUS
+--------------------------------------------------------------------------------
+Furnace              | 13.7     % | 27.3     % | 1.99       | META KILLER (Popolare & Counter)
+Knight               | 13.7     % | 27.3     % | 1.99       | META KILLER (Popolare & Counter)
+Goblin Gang          | 17.8     % | 27.3     % | 1.53       | META KILLER (Popolare & Counter)
+The Log              | 21.9     % | 27.3     % | 1.24       | 
+Dart Goblin          | 16.4     % | 18.2     % | 1.11       | 
+Tower Princess       | 86.3     % | 90.9     % | 1.05       | 
+Mega Knight          | 20.5     % | 18.2     % | 0.88       | 
+Zap                  | 20.5     % | 18.2     % | 0.88       | 
+Mini P.E.K.K.A       | 23.3     % | 18.2     % | 0.78       | 
+Skeletons            | 15.1     % | 9.1      % | 0.60       | SAFE (Appare meno nei counter)
+Inferno Dragon       | 15.1     % | 9.1      % | 0.60       | SAFE (Appare meno nei counter)
+Lightning            | 15.1     % | 9.1      % | 0.60       | SAFE (Appare meno nei counter)
+Fireball             | 17.8     % | 9.1      % | 0.51       | SAFE (Appare meno nei counter)
+Hog Rider            | 26.0     % | 9.1      % | 0.35       | SAFE (Appare meno nei counter)
+Valkyrie             | 32.9     % | 9.1      % | 0.28       | SAFE (Appare meno nei counter)
+================================================================================
