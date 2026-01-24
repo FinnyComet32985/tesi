@@ -3033,6 +3033,191 @@ def analyze_climbing_impact(players_sessions, output_dir=None):
             
         f.write("="*80 + "\n")
 
+def analyze_hook_by_trophy_range(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'hook_by_trophy_range_results.txt')
+
+    print(f"\nGenerazione report Hook Consistency (Session Trend per Fascia) in: {output_file}")
+
+    BUCKET_SIZE = 1000 # Fasce ampie per avere statistica solida
+    # { range_start: { 'sessions': 0, 'hook': {...}, 'rest': {...} } }
+    buckets = {}
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            if len(s['battles']) <= 3: continue
+            
+            # Determina fascia trofei dalla prima battaglia
+            first_b = s['battles'][0]
+            t = first_b.get('trophies_before')
+            if not t: continue
+            
+            b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+            if b_idx not in buckets:
+                buckets[b_idx] = {
+                    'sessions': 0,
+                    'hook': {'wins': 0, 'tot': 0, 'mu_sum': 0, 'mu_count': 0, 'lvl_sum': 0, 'lvl_count': 0},
+                    'rest': {'wins': 0, 'tot': 0, 'mu_sum': 0, 'mu_count': 0, 'lvl_sum': 0, 'lvl_count': 0}
+                }
+            
+            buckets[b_idx]['sessions'] += 1
+            
+            # Helper per processare le slice
+            def process_slice(slice_battles, key):
+                b_data = buckets[b_idx][key]
+                b_data['wins'] += sum(1 for b in slice_battles if b['win'])
+                b_data['tot'] += len(slice_battles)
+                
+                for b in slice_battles:
+                    if b.get('matchup') is not None:
+                        b_data['mu_sum'] += b['matchup']
+                        b_data['mu_count'] += 1
+                    if b.get('level_diff') is not None:
+                        b_data['lvl_sum'] += b['level_diff']
+                        b_data['lvl_count'] += 1
+
+            process_slice(s['battles'][:3], 'hook')
+            process_slice(s['battles'][3:], 'rest')
+            
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI CONSISTENZA HOOK PER FASCIA DI TROFEI (WIN RATE, MATCHUP, LIVELLI)\n")
+        f.write("Obiettivo: Distinguere tra Skill del Giocatore (Win Rate) e Aiuto del Sistema (Matchup/Livelli).\n")
+        f.write("Ipotesi: Se il Matchup/Livelli sono migliori all'inizio, è manipolazione (Hook). Se solo WR è migliore, è freschezza mentale.\n")
+        f.write("="*140 + "\n")
+        f.write(f"{'FASCIA':<12} | {'SESS':<5} | {'HOOK WR':<9} {'REST WR':<9} {'Δ WR':<7} | {'HOOK MU':<9} {'REST MU':<9} {'Δ MU':<7} | {'HOOK LVL':<9} {'REST LVL':<9} {'Δ LVL':<7}\n")
+        f.write("-" * 140 + "\n")
+
+        for k in sorted(buckets.keys()):
+            d = buckets[k]
+            if d['sessions'] < 20: continue # Filtra fasce con pochi dati
+            
+            # Win Rate
+            h_wr = (d['hook']['wins'] / d['hook']['tot'] * 100) if d['hook']['tot'] else 0
+            r_wr = (d['rest']['wins'] / d['rest']['tot'] * 100) if d['rest']['tot'] else 0
+            d_wr = r_wr - h_wr
+            
+            # Matchup
+            h_mu = (d['hook']['mu_sum'] / d['hook']['mu_count']) if d['hook']['mu_count'] else 0
+            r_mu = (d['rest']['mu_sum'] / d['rest']['mu_count']) if d['rest']['mu_count'] else 0
+            d_mu = r_mu - h_mu
+            
+            # Levels
+            h_lvl = (d['hook']['lvl_sum'] / d['hook']['lvl_count']) if d['hook']['lvl_count'] else 0
+            r_lvl = (d['rest']['lvl_sum'] / d['rest']['lvl_count']) if d['rest']['lvl_count'] else 0
+            d_lvl = r_lvl - h_lvl
+            
+            f.write(f"{k}-{k+BUCKET_SIZE:<12} | {d['sessions']:<5} | "
+                    f"{h_wr:<9.1f} {r_wr:<9.1f} {d_wr:<+7.1f} | "
+                    f"{h_mu:<9.1f} {r_mu:<9.1f} {d_mu:<+7.1f} | "
+                    f"{h_lvl:<+9.2f} {r_lvl:<+9.2f} {d_lvl:<+7.2f}\n")
+            
+        f.write("="*140 + "\n")
+
+def analyze_skill_vs_matchup_dominance(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'skill_vs_matchup_dominance.txt')
+
+    print(f"\nGenerazione report Skill vs Matchup Dominance in: {output_file}")
+
+    # Definizioni
+    BAD_MU = 45.0
+    GOOD_MU = 55.0
+    
+    # Matrice Risultati: [MatchupType][SkillDiff] -> {wins, total}
+    # MatchupType: 'Bad', 'Even', 'Good'
+    # SkillDiff (Net Elixir): 'Better' (Player leaked less), 'Worse' (Player leaked more), 'Equal'
+    matrix = {
+        'Bad':   {'Better': {'w':0, 't':0}, 'Worse': {'w':0, 't':0}, 'Equal': {'w':0, 't':0}},
+        'Even':  {'Better': {'w':0, 't':0}, 'Worse': {'w':0, 't':0}, 'Equal': {'w':0, 't':0}},
+        'Good':  {'Better': {'w':0, 't':0}, 'Worse': {'w':0, 't':0}, 'Equal': {'w':0, 't':0}}
+    }
+    
+    # Per Analisi Pressione: Raccogliamo quanto elisir leaka il player in base al matchup
+    pressure_stats = {'Bad': [], 'Good': [], 'Even': []}
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            for b in s['battles']:
+                mu = b.get('matchup')
+                p_leak = b.get('elixir_leaked_player')
+                o_leak = b.get('elixir_leaked_opponent')
+                win = b['win']
+                
+                if mu is None or p_leak is None or o_leak is None: continue
+                
+                # 1. Classifica Matchup
+                if mu < BAD_MU: mu_type = 'Bad'
+                elif mu > GOOD_MU: mu_type = 'Good'
+                else: mu_type = 'Even'
+                
+                # 2. Classifica Skill (Efficienza Elisir)
+                # Se io leako MENO dell'avversario, ho giocato "Meglio" (Better)
+                if p_leak < o_leak: skill_type = 'Better'
+                elif p_leak > o_leak: skill_type = 'Worse'
+                else: skill_type = 'Equal'
+                
+                # Aggiorna Matrice
+                matrix[mu_type][skill_type]['t'] += 1
+                if win: matrix[mu_type][skill_type]['w'] += 1
+                
+                # Aggiorna Pressione
+                pressure_stats[mu_type].append(p_leak)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI SKILL vs MATCHUP DOMINANCE\n")
+        f.write("Obiettivo: Capire se giocare meglio (Skill) è sufficiente a ribaltare un Matchup Sfavorevole.\n")
+        f.write("Metodo: Skill misurata come 'Efficienza Elisir' (Net Elixir Leaked).\n")
+        f.write("        'Better Skill' = Il giocatore ha sprecato MENO elisir dell'avversario.\n")
+        f.write("="*100 + "\n")
+        
+        f.write(f"{'MATCHUP':<10} | {'SKILL (vs Opp)':<15} | {'N. MATCH':<10} | {'WIN RATE':<10} | {'INTERPRETAZIONE'}\n")
+        f.write("-" * 100 + "\n")
+        
+        for mu_type in ['Bad', 'Even', 'Good']:
+            for skill_type in ['Better', 'Worse']: # Ignoriamo Equal per chiarezza
+                d = matrix[mu_type][skill_type]
+                if d['t'] < 10: continue
+                
+                wr = (d['w'] / d['t']) * 100
+                
+                interp = ""
+                if mu_type == 'Bad' and skill_type == 'Better':
+                    interp = "-> SKILL UPSET? (Riesci a vincere contro i pronostici?)"
+                elif mu_type == 'Good' and skill_type == 'Worse':
+                    interp = "-> DECK CARRY? (Vinci anche giocando male?)"
+                
+                f.write(f"{mu_type:<10} | {skill_type:<15} | {d['t']:<10} | {wr:<10.2f}% | {interp}\n")
+            f.write("-" * 100 + "\n")
+            
+        f.write("\n" + "="*100 + "\n")
+        f.write("ANALISI PRESSIONE PSICOLOGICA (Il Counter fa sbagliare?)\n")
+        f.write("Ipotesi: Se il giocatore spreca più elisir nei Bad Matchup, la sconfitta è parzialmente colpa della pressione.\n")
+        f.write("-" * 100 + "\n")
+        
+        avg_leak_bad = statistics.mean(pressure_stats['Bad']) if pressure_stats['Bad'] else 0
+        avg_leak_good = statistics.mean(pressure_stats['Good']) if pressure_stats['Good'] else 0
+        
+        f.write(f"Avg Elixir Leaked in BAD Matchup:  {avg_leak_bad:.4f}\n")
+        f.write(f"Avg Elixir Leaked in GOOD Matchup: {avg_leak_good:.4f}\n")
+        
+        delta = avg_leak_bad - avg_leak_good
+        f.write(f"Delta (Bad - Good): {delta:+.4f}\n")
+        
+        stat, p_val = mannwhitneyu(pressure_stats['Bad'], pressure_stats['Good'], alternative='greater')
+        f.write(f"Test Mann-Whitney U (Bad > Good): p-value = {p_val:.4f}\n")
+        
+        if p_val < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. I giocatori giocano PEGGIO (leakano di più) quando sono counterati.\n")
+            f.write("           (Conferma l'ipotesi della Pressione/Tilt indotto dal mazzo).\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. La qualità di gioco (leaks) è indipendente dal matchup.\n")
+        f.write("="*100 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -3062,6 +3247,8 @@ def main():
     analyze_paywall_impact(players_sessions)
     analyze_meta_ranges(players_sessions)
     analyze_climbing_impact(players_sessions)
+    analyze_hook_by_trophy_range(players_sessions)
+    analyze_skill_vs_matchup_dominance(players_sessions)
 
 if __name__ == "__main__":
     main()

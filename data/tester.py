@@ -42,7 +42,11 @@ from test import (
     analyze_normalized_level_streak,
     analyze_pity_probability_lift,
     analyze_paywall_impact,
-    analyze_nolvl_streaks_vs_trophies
+    analyze_nolvl_streaks_vs_trophies,
+    analyze_meta_ranges,
+    analyze_climbing_impact,
+    analyze_hook_by_trophy_range,
+    analyze_skill_vs_matchup_dominance
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 
@@ -111,6 +115,10 @@ def main():
     analyze_pity_probability_lift(players_sessions, output_dir=results_dir)
     analyze_paywall_impact(players_sessions, output_dir=results_dir)
     analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=results_dir)
+    analyze_meta_ranges(players_sessions, output_dir=results_dir)
+    analyze_climbing_impact(players_sessions, output_dir=results_dir)
+    analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir)
+    analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
 
 
     # --- TEST VELOCI ---

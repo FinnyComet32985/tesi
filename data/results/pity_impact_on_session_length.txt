@@ -6,51 +6,51 @@ Definizione Pity Match: Matchup > 60.0%
 --- EVENTO: Loss ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
-Con Pity        | 634      | 4.79                     
-Senza Pity      | 1423     | 4.66                     
+Con Pity        | 639      | 4.79                     
+Senza Pity      | 1435     | 4.64                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.5089
+P-value: 0.4686
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=2) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 217      | 5.28                     
-Senza Pity      | 433      | 4.91                     
+Senza Pity      | 438      | 4.87                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.1648
+P-value: 0.1342
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=3) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 68       | 5.72                     
-Senza Pity      | 164      | 4.71                     
+Senza Pity      | 165      | 4.69                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.0342
+P-value: 0.0317
 RISULTATO: SIGNIFICATIVO. Il Pity Match estende la sessione.
 
 --- EVENTO: Counter (Loss <40%) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
-Con Pity        | 185      | 4.69                     
-Senza Pity      | 668      | 4.67                     
+Con Pity        | 186      | 4.72                     
+Senza Pity      | 675      | 4.64                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.6555
+P-value: 0.5696
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=2) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 31       | 4.06                     
-Senza Pity      | 134      | 5.01                     
+Senza Pity      | 136      | 4.95                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.9243
+P-value: 0.9081
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=3) ---

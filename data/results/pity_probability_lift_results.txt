@@ -2,11 +2,11 @@ ANALISI PITY PROBABILITY LIFT (BASELINE vs STREAK)
 Obiettivo: Verificare se la probabilità di ricevere un Matchup > 60% aumenta dopo 3 sconfitte rispetto alla media globale.
 ================================================================================
 
-Baseline Pity Rate (Globale): 28.71% (1315/4581)
-Post-Streak Pity Rate (Dopo 3 Loss): 29.31% (68/232)
+Baseline Pity Rate (Globale): 28.59% (1319/4613)
+Post-Streak Pity Rate (Dopo 3 Loss): 29.18% (68/233)
 LIFT (Aumento Probabilità): 1.02x
 --------------------------------------------------------------------------------
 Test Binomiale (Streak Rate > Baseline Rate):
-P-value: 0.443870
+P-value: 0.445338
 RISULTATO: NON SIGNIFICATIVO. La frequenza di aiuti dopo le sconfitte è in linea con la media normale.
 ================================================================================

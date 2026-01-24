@@ -1,0 +1,15 @@
+ANALISI IMPATTO CLIMBING (TROFEI vs MATCHUP)
+Obiettivo: Verificare se salire di trofei porta naturalmente a matchup peggiori (Correlazione Negativa).
+================================================================================
+
+Player Analizzati: 37
+Correlazione Media (Spearman): -0.0834
+------------------------------------------------------------
+Player con Correlazione Positiva (> 0.1): 6 (Salendo il matchup migliora)
+Player con Correlazione Negativa (< -0.1): 17 (Salendo il matchup peggiora)
+Player Neutri (-0.1 a 0.1):              14
+------------------------------------------------------------
+INTERPRETAZIONE:
+RISULTATO: NESSUNA CORRELAZIONE EVIDENTE. Il matchup sembra indipendente dall'altezza in classifica.
+           (Smentisce l'ipotesi che vincere porti naturalmente a counter deck).
+================================================================================

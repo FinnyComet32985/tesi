@@ -3,13 +3,13 @@ Metodo: Normalizzazione per fascia trofei (Bucket 200). Z = (Diff - Mean) / Std.
 Obiettivo: Rilevare anomalie di matchmaking indipendenti dalla progressione naturale.
 ================================================================================
 Soglia Z-Score (Svantaggio Anomalo): < -2
-Totale Opportunità: 3559
+Totale Opportunità: 3586
 --------------------------------------------------------------------------------
 METODO                    | STREAK COUNT    | RATIO     
 --------------------------------------------------------------------------------
 Osservato                 | 7               | 1.00x
-Global Shuffle            | 2.10            | 3.34x
-Intra-Session Shuffle     | 6.17            | 1.14x
+Global Shuffle            | 2.05            | 3.42x
+Intra-Session Shuffle     | 6.22            | 1.12x
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Ratio Global > 1: Le partite 'sfortunate' sono raggruppate in sessioni specifiche (Bad Sessions).

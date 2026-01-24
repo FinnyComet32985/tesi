@@ -1,0 +1,28 @@
+ANALISI SKILL vs MATCHUP DOMINANCE
+Obiettivo: Capire se giocare meglio (Skill) è sufficiente a ribaltare un Matchup Sfavorevole.
+Metodo: Skill misurata come 'Efficienza Elisir' (Net Elixir Leaked).
+        'Better Skill' = Il giocatore ha sprecato MENO elisir dell'avversario.
+====================================================================================================
+MATCHUP    | SKILL (vs Opp)  | N. MATCH   | WIN RATE   | INTERPRETAZIONE
+----------------------------------------------------------------------------------------------------
+Bad        | Better          | 1502       | 45.81     % | -> SKILL UPSET? (Riesci a vincere contro i pronostici?)
+Bad        | Worse           | 1126       | 33.75     % | 
+----------------------------------------------------------------------------------------------------
+Even       | Better          | 799        | 56.95     % | 
+Even       | Worse           | 593        | 49.92     % | 
+----------------------------------------------------------------------------------------------------
+Good       | Better          | 1461       | 70.84     % | 
+Good       | Worse           | 1126       | 65.28     % | -> DECK CARRY? (Vinci anche giocando male?)
+----------------------------------------------------------------------------------------------------
+
+====================================================================================================
+ANALISI PRESSIONE PSICOLOGICA (Il Counter fa sbagliare?)
+Ipotesi: Se il giocatore spreca più elisir nei Bad Matchup, la sconfitta è parzialmente colpa della pressione.
+----------------------------------------------------------------------------------------------------
+Avg Elixir Leaked in BAD Matchup:  4.0610
+Avg Elixir Leaked in GOOD Matchup: 3.7134
+Delta (Bad - Good): +0.3476
+Test Mann-Whitney U (Bad > Good): p-value = 0.0300
+RISULTATO: SIGNIFICATIVO. I giocatori giocano PEGGIO (leakano di più) quando sono counterati.
+           (Conferma l'ipotesi della Pressione/Tilt indotto dal mazzo).
+====================================================================================================

@@ -1,4 +1,4 @@
-Analisi Classificatore eseguita il: 2026-01-23 21:32:29.515994
+Analisi Classificatore eseguita il: 2026-01-24 13:20:38.913193
 
 =============================================
  PLAYER: 20CCVVLUP0
@@ -55,20 +55,20 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 257       
-Numero Sessioni                | 72        
-Durata Media Sess. (min)       | 10.8      
-Partite per Sessione           | 3.57      
-Matchup Medio (%)              | 56.15     
-Matchup No-Lvl (%)             | 48.13     
-Level Diff Medio               | 0.19      
-Indice Frustrazione (FSI)      | 0.89      
-Impulsività Quit (Avg)         | 1.998     
-ERS (Impulsività * exp(-FSI))  | 0.82      
+Totale Partite                 | 259       
+Numero Sessioni                | 73        
+Durata Media Sess. (min)       | 10.7      
+Partite per Sessione           | 3.55      
+Matchup Medio (%)              | 56.34     
+Matchup No-Lvl (%)             | 48.18     
+Level Diff Medio               | 0.2       
+Indice Frustrazione (FSI)      | 0.927     
+Impulsività Quit (Avg)         | 2.058     
+ERS (Impulsività * exp(-FSI))  | 0.814     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 4         
-Win Continuation (%)           | 85.0      
-Loss Continuation (%)          | 54.5      
+Win Continuation (%)           | 84.5      
+Loss Continuation (%)          | 55.0      
 Counter Streak Cont.           | 4         
 Resilienza (Partite in Loss)   | 13        
 ---------------------------------------------
@@ -104,20 +104,20 @@ Resilienza (Partite in Loss)   | 3
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 175       
-Numero Sessioni                | 130       
-Durata Media Sess. (min)       | 3.28      
+Totale Partite                 | 182       
+Numero Sessioni                | 135       
+Durata Media Sess. (min)       | 3.3       
 Partite per Sessione           | 1.35      
-Matchup Medio (%)              | 49.95     
-Matchup No-Lvl (%)             | 46.93     
+Matchup Medio (%)              | 51.07     
+Matchup No-Lvl (%)             | 47.8      
 Level Diff Medio               | 0.07      
-Indice Frustrazione (FSI)      | 1.032     
-Impulsività Quit (Avg)         | 1.316     
-ERS (Impulsività * exp(-FSI))  | 0.469     
+Indice Frustrazione (FSI)      | 1.048     
+Impulsività Quit (Avg)         | 1.328     
+ERS (Impulsività * exp(-FSI))  | 0.466     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 1         
-Win Continuation (%)           | 29.9      
-Loss Continuation (%)          | 21.6      
+Win Continuation (%)           | 30.4      
+Loss Continuation (%)          | 21.1      
 Counter Streak Cont.           | 0         
 Resilienza (Partite in Loss)   | 0         
 ---------------------------------------------
@@ -128,20 +128,20 @@ Resilienza (Partite in Loss)   | 0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 72        
-Numero Sessioni                | 26        
+Totale Partite                 | 75        
+Numero Sessioni                | 27        
 Durata Media Sess. (min)       | 7.81      
-Partite per Sessione           | 2.77      
-Matchup Medio (%)              | 47.31     
-Matchup No-Lvl (%)             | 49.33     
-Level Diff Medio               | -0.28     
-Indice Frustrazione (FSI)      | 1.507     
-Impulsività Quit (Avg)         | 2.096     
-ERS (Impulsività * exp(-FSI))  | 0.465     
+Partite per Sessione           | 2.78      
+Matchup Medio (%)              | 47.19     
+Matchup No-Lvl (%)             | 49.1      
+Level Diff Medio               | -0.29     
+Indice Frustrazione (FSI)      | 1.499     
+Impulsività Quit (Avg)         | 2.061     
+ERS (Impulsività * exp(-FSI))  | 0.46      
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 2         
-Win Continuation (%)           | 95.0      
-Loss Continuation (%)          | 25.0      
+Win Continuation (%)           | 95.2      
+Loss Continuation (%)          | 24.2      
 Counter Streak Cont.           | 0         
 Resilienza (Partite in Loss)   | 1         
 ---------------------------------------------
@@ -177,22 +177,22 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 103       
-Numero Sessioni                | 30        
-Durata Media Sess. (min)       | 8.84      
-Partite per Sessione           | 3.43      
-Matchup Medio (%)              | 38.45     
-Matchup No-Lvl (%)             | 47.94     
-Level Diff Medio               | -0.25     
-Indice Frustrazione (FSI)      | 0.451     
-Impulsività Quit (Avg)         | 1.233     
-ERS (Impulsività * exp(-FSI))  | 0.785     
+Totale Partite                 | 109       
+Numero Sessioni                | 32        
+Durata Media Sess. (min)       | 8.62      
+Partite per Sessione           | 3.41      
+Matchup Medio (%)              | 38.06     
+Matchup No-Lvl (%)             | 48.64     
+Level Diff Medio               | -0.27     
+Indice Frustrazione (FSI)      | 0.448     
+Impulsività Quit (Avg)         | 1.186     
+ERS (Impulsività * exp(-FSI))  | 0.758     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 3         
-Win Continuation (%)           | 77.4      
-Loss Continuation (%)          | 61.0      
-Counter Streak Cont.           | 4         
-Resilienza (Partite in Loss)   | 6         
+Win Continuation (%)           | 78.1      
+Loss Continuation (%)          | 60.0      
+Counter Streak Cont.           | 5         
+Resilienza (Partite in Loss)   | 7         
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 ---------------------------------------------
@@ -226,20 +226,20 @@ Resilienza (Partite in Loss)   | 0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 208       
-Numero Sessioni                | 51        
-Durata Media Sess. (min)       | 11.06     
-Partite per Sessione           | 4.08      
-Matchup Medio (%)              | 51.15     
-Matchup No-Lvl (%)             | 42.49     
+Totale Partite                 | 210       
+Numero Sessioni                | 52        
+Durata Media Sess. (min)       | 10.91     
+Partite per Sessione           | 4.04      
+Matchup Medio (%)              | 50.98     
+Matchup No-Lvl (%)             | 42.5      
 Level Diff Medio               | 0.47      
-Indice Frustrazione (FSI)      | 0.558     
+Indice Frustrazione (FSI)      | 0.552     
 Impulsività Quit (Avg)         | 1.941     
-ERS (Impulsività * exp(-FSI))  | 1.111     
+ERS (Impulsività * exp(-FSI))  | 1.118     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 4         
-Win Continuation (%)           | 78.9      
-Loss Continuation (%)          | 71.3      
+Win Continuation (%)           | 78.3      
+Loss Continuation (%)          | 71.6      
 Counter Streak Cont.           | 4         
 Resilienza (Partite in Loss)   | 19        
 ---------------------------------------------
@@ -326,19 +326,19 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 67        
-Numero Sessioni                | 43        
-Durata Media Sess. (min)       | 2.61      
-Partite per Sessione           | 1.56      
-Matchup Medio (%)              | 50.14     
-Matchup No-Lvl (%)             | 47.63     
-Level Diff Medio               | 0.1       
+Totale Partite                 | 69        
+Numero Sessioni                | 45        
+Durata Media Sess. (min)       | 2.49      
+Partite per Sessione           | 1.53      
+Matchup Medio (%)              | 49.44     
+Matchup No-Lvl (%)             | 47.56     
+Level Diff Medio               | 0.09      
 Indice Frustrazione (FSI)      | 1.767     
 Impulsività Quit (Avg)         | 2.208     
 ERS (Impulsività * exp(-FSI))  | 0.377     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 1         
-Win Continuation (%)           | 45.2      
+Win Continuation (%)           | 43.2      
 Loss Continuation (%)          | 20.0      
 Counter Streak Cont.           | 0         
 Resilienza (Partite in Loss)   | 0         
@@ -350,20 +350,20 @@ Resilienza (Partite in Loss)   | 0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 167       
-Numero Sessioni                | 48        
-Durata Media Sess. (min)       | 10.31     
-Partite per Sessione           | 3.48      
-Matchup Medio (%)              | 43.81     
-Matchup No-Lvl (%)             | 57.1      
-Level Diff Medio               | -0.64     
-Indice Frustrazione (FSI)      | 0.628     
-Impulsività Quit (Avg)         | 1.256     
-ERS (Impulsività * exp(-FSI))  | 0.67      
+Totale Partite                 | 172       
+Numero Sessioni                | 50        
+Durata Media Sess. (min)       | 10.16     
+Partite per Sessione           | 3.44      
+Matchup Medio (%)              | 43.77     
+Matchup No-Lvl (%)             | 56.83     
+Level Diff Medio               | -0.63     
+Indice Frustrazione (FSI)      | 0.626     
+Impulsività Quit (Avg)         | 1.233     
+ERS (Impulsività * exp(-FSI))  | 0.659     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 2         
-Win Continuation (%)           | 85.4      
-Loss Continuation (%)          | 48.4      
+Win Continuation (%)           | 85.0      
+Loss Continuation (%)          | 47.7      
 Counter Streak Cont.           | 2         
 Resilienza (Partite in Loss)   | 3         
 ---------------------------------------------
@@ -375,20 +375,20 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 177       
-Numero Sessioni                | 41        
-Durata Media Sess. (min)       | 14.7      
-Partite per Sessione           | 4.32      
-Matchup Medio (%)              | 40.26     
-Matchup No-Lvl (%)             | 57.27     
+Totale Partite                 | 179       
+Numero Sessioni                | 42        
+Durata Media Sess. (min)       | 14.42     
+Partite per Sessione           | 4.26      
+Matchup Medio (%)              | 40.08     
+Matchup No-Lvl (%)             | 57.38     
 Level Diff Medio               | -0.71     
-Indice Frustrazione (FSI)      | 0.129     
-Impulsività Quit (Avg)         | 0.818     
-ERS (Impulsività * exp(-FSI))  | 0.719     
+Indice Frustrazione (FSI)      | 0.164     
+Impulsività Quit (Avg)         | 0.986     
+ERS (Impulsività * exp(-FSI))  | 0.836     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 5         
-Win Continuation (%)           | 70.5      
-Loss Continuation (%)          | 83.1      
+Win Continuation (%)           | 69.7      
+Loss Continuation (%)          | 83.3      
 Counter Streak Cont.           | 21        
 Resilienza (Partite in Loss)   | 33        
 ---------------------------------------------
@@ -449,20 +449,20 @@ Resilienza (Partite in Loss)   | 1
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 149       
-Numero Sessioni                | 66        
-Durata Media Sess. (min)       | 6.01      
-Partite per Sessione           | 2.26      
-Matchup Medio (%)              | 55.36     
-Matchup No-Lvl (%)             | 52.16     
+Totale Partite                 | 153       
+Numero Sessioni                | 70        
+Durata Media Sess. (min)       | 5.67      
+Partite per Sessione           | 2.19      
+Matchup Medio (%)              | 55.42     
+Matchup No-Lvl (%)             | 52.11     
 Level Diff Medio               | -0.01     
-Indice Frustrazione (FSI)      | 1.166     
-Impulsività Quit (Avg)         | 1.902     
-ERS (Impulsività * exp(-FSI))  | 0.592     
+Indice Frustrazione (FSI)      | 1.195     
+Impulsività Quit (Avg)         | 1.865     
+ERS (Impulsività * exp(-FSI))  | 0.564     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 3         
-Win Continuation (%)           | 74.3      
-Loss Continuation (%)          | 37.3      
+Win Continuation (%)           | 73.3      
+Loss Continuation (%)          | 35.9      
 Counter Streak Cont.           | 4         
 Resilienza (Partite in Loss)   | 6         
 ---------------------------------------------
@@ -497,22 +497,22 @@ Resilienza (Partite in Loss)   | 0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 58        
-Numero Sessioni                | 10        
-Durata Media Sess. (min)       | 19.13     
-Partite per Sessione           | 5.8       
-Matchup Medio (%)              | 50.21     
-Matchup No-Lvl (%)             | 59.41     
-Level Diff Medio               | -0.5      
-Indice Frustrazione (FSI)      | 0.146     
+Totale Partite                 | 70        
+Numero Sessioni                | 11        
+Durata Media Sess. (min)       | 21.2      
+Partite per Sessione           | 6.36      
+Matchup Medio (%)              | 49.2      
+Matchup No-Lvl (%)             | 58.38     
+Level Diff Medio               | -0.47     
+Indice Frustrazione (FSI)      | 0.124     
 Impulsività Quit (Avg)         | 1.361     
-ERS (Impulsività * exp(-FSI))  | 1.176     
+ERS (Impulsività * exp(-FSI))  | 1.202     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 5         
-Win Continuation (%)           | 76.7      
-Loss Continuation (%)          | 89.3      
+Win Continuation (%)           | 78.4      
+Loss Continuation (%)          | 90.9      
 Counter Streak Cont.           | 2         
-Resilienza (Partite in Loss)   | 10        
+Resilienza (Partite in Loss)   | 12        
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 ---------------------------------------------
@@ -572,22 +572,22 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 356       
-Numero Sessioni                | 184       
+Totale Partite                 | 361       
+Numero Sessioni                | 186       
 Durata Media Sess. (min)       | 5.62      
-Partite per Sessione           | 1.93      
-Matchup Medio (%)              | 57.45     
-Matchup No-Lvl (%)             | 53.93     
+Partite per Sessione           | 1.94      
+Matchup Medio (%)              | 57.37     
+Matchup No-Lvl (%)             | 53.81     
 Level Diff Medio               | 0.09      
-Indice Frustrazione (FSI)      | 0.813     
-Impulsività Quit (Avg)         | 1.469     
-ERS (Impulsività * exp(-FSI))  | 0.651     
+Indice Frustrazione (FSI)      | 0.799     
+Impulsività Quit (Avg)         | 1.461     
+ERS (Impulsività * exp(-FSI))  | 0.657     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 4         
-Win Continuation (%)           | 52.0      
-Loss Continuation (%)          | 44.6      
+Win Continuation (%)           | 52.2      
+Loss Continuation (%)          | 44.8      
 Counter Streak Cont.           | 1         
-Resilienza (Partite in Loss)   | 20        
+Resilienza (Partite in Loss)   | 21        
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 ---------------------------------------------
@@ -597,20 +597,20 @@ ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 65        
-Numero Sessioni                | 18        
-Durata Media Sess. (min)       | 11.37     
-Partite per Sessione           | 3.61      
-Matchup Medio (%)              | 62.5      
-Matchup No-Lvl (%)             | 54.87     
-Level Diff Medio               | 0.54      
-Indice Frustrazione (FSI)      | 0.603     
-Impulsività Quit (Avg)         | 1.81      
-ERS (Impulsività * exp(-FSI))  | 0.99      
+Totale Partite                 | 68        
+Numero Sessioni                | 19        
+Durata Media Sess. (min)       | 11.06     
+Partite per Sessione           | 3.58      
+Matchup Medio (%)              | 62.91     
+Matchup No-Lvl (%)             | 55.31     
+Level Diff Medio               | 0.52      
+Indice Frustrazione (FSI)      | 0.696     
+Impulsività Quit (Avg)         | 2.0       
+ERS (Impulsività * exp(-FSI))  | 0.997     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 2         
-Win Continuation (%)           | 77.3      
-Loss Continuation (%)          | 61.9      
+Win Continuation (%)           | 77.8      
+Loss Continuation (%)          | 60.9      
 Counter Streak Cont.           | 0         
 Resilienza (Partite in Loss)   | 3         
 ---------------------------------------------
@@ -746,20 +746,20 @@ Resilienza (Partite in Loss)   | 5
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 96        
-Numero Sessioni                | 21        
-Durata Media Sess. (min)       | 15.04     
-Partite per Sessione           | 4.57      
-Matchup Medio (%)              | 51.24     
-Matchup No-Lvl (%)             | 55.4      
-Level Diff Medio               | -0.01     
-Indice Frustrazione (FSI)      | 0.575     
+Totale Partite                 | 97        
+Numero Sessioni                | 22        
+Durata Media Sess. (min)       | 14.36     
+Partite per Sessione           | 4.41      
+Matchup Medio (%)              | 51.52     
+Matchup No-Lvl (%)             | 55.53     
+Level Diff Medio               | -0.0      
+Indice Frustrazione (FSI)      | 0.564     
 Impulsività Quit (Avg)         | 1.973     
-ERS (Impulsività * exp(-FSI))  | 1.11      
+ERS (Impulsività * exp(-FSI))  | 1.123     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 4         
 Win Continuation (%)           | 85.4      
-Loss Continuation (%)          | 70.8      
+Loss Continuation (%)          | 69.4      
 Counter Streak Cont.           | 4         
 Resilienza (Partite in Loss)   | 9         
 ---------------------------------------------
@@ -846,20 +846,20 @@ ANALISI: Player sensibile (High FSI). Target ideale per EOMM.
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 171       
-Numero Sessioni                | 74        
-Durata Media Sess. (min)       | 6.0       
-Partite per Sessione           | 2.31      
-Matchup Medio (%)              | 50.57     
-Matchup No-Lvl (%)             | 51.96     
+Totale Partite                 | 172       
+Numero Sessioni                | 75        
+Durata Media Sess. (min)       | 5.92      
+Partite per Sessione           | 2.29      
+Matchup Medio (%)              | 50.52     
+Matchup No-Lvl (%)             | 52.07     
 Level Diff Medio               | -0.16     
-Indice Frustrazione (FSI)      | 0.902     
-Impulsività Quit (Avg)         | 1.753     
-ERS (Impulsività * exp(-FSI))  | 0.711     
+Indice Frustrazione (FSI)      | 0.925     
+Impulsività Quit (Avg)         | 1.773     
+ERS (Impulsività * exp(-FSI))  | 0.703     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 3         
 Win Continuation (%)           | 63.1      
-Loss Continuation (%)          | 47.1      
+Loss Continuation (%)          | 46.4      
 Counter Streak Cont.           | 2         
 Resilienza (Partite in Loss)   | 5         
 ---------------------------------------------
@@ -895,22 +895,22 @@ Resilienza (Partite in Loss)   | 4
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 303       
-Numero Sessioni                | 50        
-Durata Media Sess. (min)       | 17.77     
-Partite per Sessione           | 6.06      
-Matchup Medio (%)              | 36.51     
-Matchup No-Lvl (%)             | 45.07     
-Level Diff Medio               | -0.29     
-Indice Frustrazione (FSI)      | 0.316     
-Impulsività Quit (Avg)         | 1.578     
-ERS (Impulsività * exp(-FSI))  | 1.151     
+Totale Partite                 | 314       
+Numero Sessioni                | 51        
+Durata Media Sess. (min)       | 18.16     
+Partite per Sessione           | 6.16      
+Matchup Medio (%)              | 36.33     
+Matchup No-Lvl (%)             | 45.06     
+Level Diff Medio               | -0.28     
+Indice Frustrazione (FSI)      | 0.305     
+Impulsività Quit (Avg)         | 1.525     
+ERS (Impulsività * exp(-FSI))  | 1.124     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 8         
-Win Continuation (%)           | 86.9      
+Win Continuation (%)           | 87.4      
 Loss Continuation (%)          | 79.3      
-Counter Streak Cont.           | 25        
-Resilienza (Partite in Loss)   | 33        
+Counter Streak Cont.           | 26        
+Resilienza (Partite in Loss)   | 34        
 ---------------------------------------------
 ANALISI: Player resiliente (Low FSI). Bassa probabilità di manipolazione.
 ---------------------------------------------
