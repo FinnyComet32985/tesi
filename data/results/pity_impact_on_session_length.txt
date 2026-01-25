@@ -7,20 +7,20 @@ Definizione Pity Match: Matchup > 60.0%
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 641      | 4.78                     
-Senza Pity      | 1438     | 4.64                     
+Senza Pity      | 1440     | 4.63                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.4898
+P-value: 0.4791
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=2) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 217      | 5.28                     
-Senza Pity      | 438      | 4.87                     
+Senza Pity      | 439      | 4.87                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.1342
+P-value: 0.1266
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=3) ---
@@ -37,20 +37,20 @@ RISULTATO: SIGNIFICATIVO. Il Pity Match estende la sessione.
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 187      | 4.70                     
-Senza Pity      | 676      | 4.63                     
+Senza Pity      | 678      | 4.63                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.5944
+P-value: 0.5810
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=2) ---
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 31       | 4.06                     
-Senza Pity      | 136      | 4.95                     
+Senza Pity      | 137      | 4.92                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.9081
+P-value: 0.8992
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=3) ---

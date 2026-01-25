@@ -3,7 +3,7 @@ Obiettivo: Verificare se salire di trofei porta naturalmente a matchup peggiori 
 ================================================================================
 
 Player Analizzati: 37
-Correlazione Media (Spearman): -0.0829
+Correlazione Media (Spearman): -0.0835
 ------------------------------------------------------------
 Player con Correlazione Positiva (> 0.1): 6 (Salendo il matchup migliora)
 Player con Correlazione Negativa (< -0.1): 17 (Salendo il matchup peggiora)

@@ -55,6 +55,10 @@ from test_deck_analysis import (
     analyze_nolvl_time_independence,
     analyze_card_meta_vs_counter
 )
+from test_targeting import (
+    analyze_all_snipers_targeting,
+    analyze_sniper_confounding
+)
 
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
@@ -94,8 +98,8 @@ def main():
     print("\nEsecuzione test aggiuntivi (Sessioni, Streak, Fattori Confondenti)...")
     analyze_std_correlation(players_sessions, output_dir=results_dir)
     analyze_session_pity(players_sessions, output_dir=results_dir)
-    analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=False) # Con livelli (Reale)
-    analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=True)  # Senza livelli (Puro)
+    #analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=False) # Con livelli (Reale)
+    #analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=True)  # Senza livelli (Puro)
     analyze_confounding_factors(players_sessions, output_dir=results_dir)
     analyze_time_matchup_stats(players_sessions, output_dir=results_dir)
     analyze_deck_switch_impact(players_sessions, output_dir=results_dir)
@@ -125,10 +129,12 @@ def main():
     analyze_climbing_impact(players_sessions, output_dir=results_dir)
     analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir)
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
-    analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
+    #analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
     analyze_nolvl_markov(players_sessions, output_dir=results_dir)
     analyze_nolvl_time_independence(players_sessions, output_dir=results_dir)
     analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
+    analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
+    analyze_sniper_confounding(players_sessions, output_dir=results_dir)
 
 
     # --- TEST VELOCI ---
