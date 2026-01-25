@@ -31,7 +31,7 @@ from test import (
     analyze_cannon_fodder,
     analyze_dangerous_sequences,
     analyze_short_session_bonus,
-    analyze_matchup_markov_chain,
+    analyze_markov_chains,
     analyze_return_after_bad_streak,
     analyze_debt_extinction,
     analyze_favorable_outcome_impact,
@@ -51,7 +51,6 @@ from test import (
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 from test_deck_analysis import (
     analyze_deck_switch_hypothetical,
-    analyze_nolvl_markov,
     analyze_nolvl_time_independence,
     analyze_card_meta_vs_counter,
     analyze_matchmaking_fairness,
@@ -115,7 +114,7 @@ def main():
     analyze_dangerous_sequences(players_sessions, output_dir=results_dir)
     analyze_matchup_no_lvl_stats(players_sessions, output_dir=results_dir)
     analyze_short_session_bonus(players_sessions, output_dir=results_dir)
-    analyze_matchup_markov_chain(players_sessions, output_dir=results_dir)
+    analyze_markov_chains(players_sessions, output_dir=results_dir)
     analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
     analyze_debt_extinction(players_sessions, output_dir=results_dir)
     analyze_favorable_outcome_impact(players_sessions, output_dir=results_dir)
@@ -132,7 +131,7 @@ def main():
     analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir, cursor=cursor)
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
     #analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
-    analyze_nolvl_markov(players_sessions, output_dir=results_dir)
+    
     analyze_nolvl_time_independence(players_sessions, output_dir=results_dir)
     analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
     analyze_matchmaking_fairness(players_sessions, output_dir=results_dir)

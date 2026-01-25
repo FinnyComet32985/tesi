@@ -4,16 +4,16 @@ Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->
          Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.
 ================================================================================
 
-Totale Transizioni Analizzate: 6914
-  - Senza cambio mazzo: 6453
+Totale Transizioni Analizzate: 6923
+  - Senza cambio mazzo: 6462
   - Con cambio mazzo:   461
 --------------------------------------------------------------------------------
 PATTERN                   | NO SWITCH (Baseline) | SWITCH (Test)        | DELTA     
 --------------------------------------------------------------------------------
-Persistenza Matchup Negativo | 48.00               % | 36.97               % | -11.03    %
-Persistenza Matchup Positivo | 40.92               % | 37.33               % | -3.59     %
-Recupero (Bad -> Good)    | 23.04               % | 37.58               % | +14.54    %
-Punizione (Good -> Bad)   | 29.13               % | 31.33               % | +2.21     %
+Persistenza Matchup Negativo | 47.98               % | 36.97               % | -11.01    %
+Persistenza Matchup Positivo | 40.89               % | 37.33               % | -3.56     %
+Recupero (Bad -> Good)    | 23.05               % | 37.58               % | +14.53    %
+Punizione (Good -> Bad)   | 29.22               % | 31.33               % | +2.12     %
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,
@@ -30,9 +30,9 @@ Domanda: Dopo aver cambiato mazzo per sfuggire a un counter, quanto dura l'effet
 Step       | NO SWITCH (Avg MU)   | SWITCH (Avg MU)      | N. Switch 
 --------------------------------------------------------------------------------
 +1 Match  | 46.08               % | 49.86               % | 165       
-+2 Match  | 46.36               % | 48.51               % | 107       
-+3 Match  | 46.02               % | 49.56               % | 89        
-+4 Match  | 45.90               % | 51.58               % | 80        
++2 Match  | 46.35               % | 48.51               % | 107       
++3 Match  | 46.01               % | 49.56               % | 89        
++4 Match  | 45.89               % | 51.58               % | 80        
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se SWITCH parte alto (es. >50%) e scende nei match successivi (+2, +3),

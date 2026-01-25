@@ -1578,105 +1578,127 @@ def analyze_short_session_bonus(players_sessions, output_dir=None):
         
         f.write("="*80 + "\n")
 
-def analyze_matchup_markov_chain(players_sessions, output_dir=None):
+def _compute_and_write_markov(data_sequences, states_labels, title, f):
+    n_states = len(states_labels)
+    transitions = [[0]*n_states for _ in range(n_states)]
+    total_transitions = 0
+    
+    for seq in data_sequences:
+        for i in range(len(seq) - 1):
+            curr_s = seq[i]
+            next_s = seq[i+1]
+            if curr_s is not None and next_s is not None:
+                transitions[curr_s][next_s] += 1
+                total_transitions += 1
+                
+    f.write(f"\n--- {title} ---\n")
+    f.write(f"Totale Transizioni: {total_transitions}\n")
+    
+    if total_transitions == 0:
+        f.write("Dati insufficienti.\n")
+        return
+
+    row_totals = [sum(transitions[i]) for i in range(n_states)]
+    col_totals = [sum(transitions[i][j] for i in range(n_states)) for j in range(n_states)]
+    grand_total = sum(row_totals)
+    
+    global_probs = [c / grand_total for c in col_totals]
+    
+    # Formatting
+    col_width = 25
+    header = f"{'STATO PRECEDENTE':<20} | " + " | ".join([f"NEXT: {s:<{col_width}}" for s in states_labels])
+    sep = "-" * len(header)
+    
+    f.write(sep + "\n")
+    f.write(header + "\n")
+    f.write(sep + "\n")
+    
+    for i, from_state in enumerate(states_labels):
+        row_str = f"{from_state:<20} | "
+        for j, to_state in enumerate(states_labels):
+            count = transitions[i][j]
+            total_from = row_totals[i] if row_totals[i] > 0 else 1
+            obs_prob = count / total_from
+            exp_prob = global_probs[j]
+            
+            diff = obs_prob - exp_prob
+            marker = "(!)" if abs(diff) > 0.05 else ""
+            
+            cell_str = f"{obs_prob*100:.1f}% (Exp {exp_prob*100:.1f}%) {marker}"
+            row_str += f"{cell_str:<{col_width+6}} | "
+        f.write(row_str + "\n")
+        
+    f.write(sep + "\n")
+    
+    try:
+        chi2, p, dof, ex = chi2_contingency(transitions)
+        f.write(f"Test Chi-Quadro: p-value = {p:.6f}\n")
+        if p < 0.05:
+            f.write("RISULTATO: DIPENDENZA SIGNIFICATIVA (Memoria presente).\n")
+        else:
+            f.write("RISULTATO: INDIPENDENZA (Processo senza memoria).\n")
+    except ValueError:
+        f.write("Errore calcolo Chi-Quadro.\n")
+    f.write("\n")
+
+def analyze_markov_chains(players_sessions, output_dir=None):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
     os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'matchup_markov_chain_results.txt')
+    output_file = os.path.join(output_dir, 'markov_chains_results.txt')
 
-    print(f"\nGenerazione report Catene di Markov (Transizioni Matchup) in: {output_file}")
-
-    # Definizioni Stati
-    # 0: Unfavorable (<45%), 1: Even (45-55%), 2: Favorable (>55%)
-    states = ['Unfavorable', 'Even', 'Favorable']
+    print(f"\nGenerazione report Catene di Markov (Matchup, No-Lvl, Levels) in: {output_file}")
     
-    # Matrice di Transizione (Conteggi): transitions[FROM][TO]
-    transitions = [[0]*3 for _ in range(3)]
+    seq_mu = []
+    seq_mnl = []
+    seq_lvl = []
     
-    total_transitions = 0
-
     for p in players_sessions:
         for session in p['sessions']:
             battles = session['battles']
-            if len(battles) < 2: 
-                continue
+            if len(battles) < 2: continue
             
-            # Convertiamo la sessione in una sequenza di stati
-            session_states = []
+            s_mu = []
+            s_mnl = []
+            s_lvl = []
+            
             for b in battles:
-                m = b['matchup']
-                if m is None:
-                    session_states.append(None)
-                    continue
+                # Matchup
+                m = b.get('matchup')
+                if m is None: s_mu.append(None)
+                elif m > 55.0: s_mu.append(2)
+                elif m < 45.0: s_mu.append(0)
+                else: s_mu.append(1)
                 
-                if m > 55.0: s = 2   # Favorable
-                elif m < 45.0: s = 0 # Unfavorable
-                else: s = 1          # Even
-                session_states.append(s)
+                # No Lvl
+                mnl = b.get('matchup_no_lvl')
+                if mnl is None: s_mnl.append(None)
+                elif mnl > 55.0: s_mnl.append(2)
+                elif mnl < 45.0: s_mnl.append(0)
+                else: s_mnl.append(1)
+                
+                # Level Diff
+                l = b.get('level_diff')
+                if l is None: s_lvl.append(None)
+                elif l > 0.5: s_lvl.append(2) # Advantage
+                elif l < -0.5: s_lvl.append(0) # Disadvantage
+                else: s_lvl.append(1)
             
-            # Contiamo le transizioni i -> i+1
-            for i in range(len(session_states) - 1):
-                curr_s = session_states[i]
-                next_s = session_states[i+1]
-                
-                if curr_s is not None and next_s is not None:
-                    transitions[curr_s][next_s] += 1
-                    total_transitions += 1
-
+            seq_mu.append(s_mu)
+            seq_mnl.append(s_mnl)
+            seq_lvl.append(s_lvl)
+            
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI CATENE DI MARKOV: TRANSIZIONI MATCHUP\n")
-        f.write("Obiettivo: Verificare se il matchup attuale influenza il prossimo (es. 'Bad' chiama 'Bad').\n")
-        f.write("Ipotesi Nera (Random): La probabilità del prossimo stato dipende solo dalla frequenza globale, non dallo stato precedente.\n")
-        f.write("="*80 + "\n\n")
+        f.write("ANALISI CATENE DI MARKOV MULTIPLE\n")
+        f.write("Obiettivo: Verificare la 'memoria' del sistema su diverse metriche.\n")
+        f.write("Ipotesi Nera: La probabilità dello stato successivo dipende solo dalla distribuzione globale (Indipendenza).\n")
+        f.write("="*120 + "\n")
         
-        f.write(f"Totale Transizioni Analizzate: {total_transitions}\n")
-        f.write("-" * 80 + "\n")
-
-        # Calcolo Totali per Riga (From) e Colonna (To)
-        row_totals = [sum(transitions[i]) for i in range(3)]
-        col_totals = [sum(transitions[i][j] for i in range(3)) for j in range(3)]
-        grand_total = sum(row_totals)
-
-        if grand_total == 0:
-            f.write("Dati insufficienti.\n")
-            return
-
-        # Probabilità Globali (Attese se il sistema fosse senza memoria)
-        global_probs = [c / grand_total for c in col_totals]
-
-        f.write(f"{'STATO PRECEDENTE':<20} | {'SUCCESSIVO: Unfavorable':<25} | {'SUCCESSIVO: Even':<20} | {'SUCCESSIVO: Favorable':<20}\n")
-        f.write("-" * 95 + "\n")
-
-        for i, from_state in enumerate(states):
-            row_str = f"{from_state:<20} | "
-            for j, to_state in enumerate(states):
-                count = transitions[i][j]
-                total_from = row_totals[i] if row_totals[i] > 0 else 1
-                
-                obs_prob = count / total_from
-                exp_prob = global_probs[j] # Se indipendente, dovrebbe essere uguale alla media globale
-                
-                diff = obs_prob - exp_prob
-                marker = ""
-                if abs(diff) > 0.05: marker = "(!)" # Evidenzia scostamenti > 5%
-                
-                cell_str = f"{obs_prob*100:.1f}% (Exp {exp_prob*100:.1f}%) {marker}"
-                row_str += f"{cell_str:<25} | "
-            f.write(row_str + "\n")
-
-        f.write("-" * 95 + "\n")
+        _compute_and_write_markov(seq_mu, ['Unfavorable', 'Even', 'Favorable'], "1. MATCHUP REALE (Include Livelli)", f)
+        _compute_and_write_markov(seq_mnl, ['Unfavorable', 'Even', 'Favorable'], "2. MATCHUP NO-LVL (Solo Deck)", f)
+        _compute_and_write_markov(seq_lvl, ['Disadvantage', 'Even', 'Advantage'], "3. LEVEL DIFFERENCE", f)
         
-        # Test Chi-Quadro sulla matrice di transizione
-        chi2, p, dof, ex = chi2_contingency(transitions)
-        f.write(f"Test Chi-Quadro (Indipendenza Transizioni):\n")
-        f.write(f"P-value: {p:.6f}\n")
-        
-        if p < 0.05:
-            f.write("RISULTATO: DIPENDENZA SIGNIFICATIVA. Il sistema ha 'memoria' (il matchup precedente influenza il successivo).\n")
-        else:
-            f.write("RISULTATO: INDIPENDENZA. Le transizioni sembrano casuali rispetto alla distribuzione globale.\n")
-        
-        f.write("="*80 + "\n")
+        f.write("="*120 + "\n")
 
 def analyze_return_after_bad_streak(players_sessions, output_dir=None):
     if output_dir is None:
@@ -3323,7 +3345,7 @@ def main():
     analyze_churn_probability_vs_pity(players_sessions, {}) # Placeholder per test locale
     analyze_cannon_fodder(players_sessions)
     analyze_dangerous_sequences(players_sessions)
-    analyze_matchup_markov_chain(players_sessions)
+    analyze_markov_chains(players_sessions)
     analyze_return_after_bad_streak(players_sessions)
     analyze_debt_extinction(players_sessions)
     analyze_favorable_outcome_impact(players_sessions)

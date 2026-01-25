@@ -4,61 +4,61 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 ================================================================================
 
 >>> ANALISI CARTA: GRAVEYARD
-    Hard Counters: Poison, Mother Witch...
+    Hard Counters: Mother Witch, Poison...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 862        | 21         | 2.44      %
+    VULNERABILI          | 865        | 21         | 2.43      %
     NON-VULNERABILI      | 1151       | 40         | 3.48      %
     RATIO (Vuln/Safe): 0.70x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: ELECTRO GIANT
-    Hard Counters: Inferno Tower, Mini P.E.K.K.A, Inferno Dragon, P.E.K.K.A...
+    Hard Counters: P.E.K.K.A, Inferno Tower, Mini P.E.K.K.A, Elite Barbarians...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 914        | 20         | 2.19      %
-    NON-VULNERABILI      | 1099       | 28         | 2.55      %
+    NON-VULNERABILI      | 1102       | 28         | 2.54      %
     RATIO (Vuln/Safe): 0.86x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: SPARKY
-    Hard Counters: Electro Dragon, Zappies, Electro Wizard, Lightning...
+    Hard Counters: Lightning, Electro Wizard, Electro Dragon, Rocket...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 740        | 34         | 4.59      %
+    VULNERABILI          | 743        | 34         | 4.58      %
     NON-VULNERABILI      | 1273       | 76         | 5.97      %
     RATIO (Vuln/Safe): 0.77x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: BALLOON
-    Hard Counters: Inferno Tower, Mega Minion, Hunter, Ram Rider...
+    Hard Counters: Hunter, Mega Minion, Ram Rider, Rocket...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 677        | 42         | 6.20      %
+    VULNERABILI          | 680        | 42         | 6.18      %
     NON-VULNERABILI      | 1336       | 85         | 6.36      %
-    RATIO (Vuln/Safe): 0.98x
+    RATIO (Vuln/Safe): 0.97x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: LAVA HOUND
-    Hard Counters: Inferno Tower, Inferno Dragon, Executioner...
+    Hard Counters: Inferno Tower, Executioner, Inferno Dragon...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 975        | 13         | 1.33      %
+    VULNERABILI          | 978        | 13         | 1.33      %
     NON-VULNERABILI      | 1038       | 8          | 0.77      %
-    RATIO (Vuln/Safe): 1.73x
+    RATIO (Vuln/Safe): 1.72x
     -> EVIDENZA DI TARGETING (!)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: GOLEM
-    Hard Counters: Inferno Tower, Mini P.E.K.K.A, Inferno Dragon, P.E.K.K.A...
+    Hard Counters: P.E.K.K.A, Inferno Tower, Mini P.E.K.K.A, Elite Barbarians...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 868        | 55         | 6.34      %
-    NON-VULNERABILI      | 1145       | 78         | 6.81      %
+    NON-VULNERABILI      | 1148       | 78         | 6.79      %
     RATIO (Vuln/Safe): 0.93x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
