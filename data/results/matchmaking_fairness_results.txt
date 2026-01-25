@@ -1,0 +1,74 @@
+ANALISI FAIRNESS MATCHMAKING (DIPENDENZA DECK AVVERSARIO DAL PROPRIO DECK)
+Obiettivo: Verificare se, a parità di condizioni (Orario e Trofei), il mazzo che usi influenza gli avversari che trovi.
+Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) per ogni bucket.
+Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.
+====================================================================================================
+
+Totale Battaglie Analizzate: 6932
+Bucket: 4000-5000 | Orario: 16:00-24:00 | Battles: 154
+Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
+P-value: 0.387548 -> Non significativo
+------------------------------------------------------------
+Bucket: 5000-6000 | Orario: 00:00-08:00 | Battles: 136
+Confronto tra 4 Archetipi Player vs 3 Archetipi Opponent
+P-value: 0.320847 -> Non significativo
+------------------------------------------------------------
+Bucket: 5000-6000 | Orario: 08:00-16:00 | Battles: 208
+Confronto tra 6 Archetipi Player vs 9 Archetipi Opponent
+P-value: 0.314412 -> Non significativo
+------------------------------------------------------------
+Bucket: 5000-6000 | Orario: 16:00-24:00 | Battles: 358
+Confronto tra 6 Archetipi Player vs 9 Archetipi Opponent
+P-value: 0.192548 -> Non significativo
+------------------------------------------------------------
+Bucket: 6000-7000 | Orario: 00:00-08:00 | Battles: 94
+Confronto tra 2 Archetipi Player vs 3 Archetipi Opponent
+P-value: 0.324652 -> Non significativo
+------------------------------------------------------------
+Bucket: 6000-7000 | Orario: 08:00-16:00 | Battles: 544
+Confronto tra 14 Archetipi Player vs 42 Archetipi Opponent
+P-value: 0.237433 -> Non significativo
+------------------------------------------------------------
+Bucket: 6000-7000 | Orario: 16:00-24:00 | Battles: 498
+Confronto tra 11 Archetipi Player vs 38 Archetipi Opponent
+P-value: 0.213791 -> Non significativo
+------------------------------------------------------------
+Bucket: 7000-8000 | Orario: 08:00-16:00 | Battles: 174
+Confronto tra 11 Archetipi Player vs 5 Archetipi Opponent
+P-value: 0.362912 -> Non significativo
+------------------------------------------------------------
+Bucket: 7000-8000 | Orario: 16:00-24:00 | Battles: 242
+Confronto tra 13 Archetipi Player vs 9 Archetipi Opponent
+P-value: 0.359426 -> Non significativo
+------------------------------------------------------------
+Bucket: 9000-10000 | Orario: 16:00-24:00 | Battles: 312
+Confronto tra 6 Archetipi Player vs 3 Archetipi Opponent
+P-value: 0.440493 -> Non significativo
+------------------------------------------------------------
+Bucket: 10000-11000 | Orario: 00:00-08:00 | Battles: 388
+Confronto tra 14 Archetipi Player vs 4 Archetipi Opponent
+P-value: 0.371681 -> Non significativo
+------------------------------------------------------------
+Bucket: 10000-11000 | Orario: 08:00-16:00 | Battles: 508
+Confronto tra 8 Archetipi Player vs 3 Archetipi Opponent
+P-value: 0.162417 -> Non significativo
+------------------------------------------------------------
+Bucket: 10000-11000 | Orario: 16:00-24:00 | Battles: 820
+Confronto tra 23 Archetipi Player vs 17 Archetipi Opponent
+P-value: 0.216650 -> Non significativo
+------------------------------------------------------------
+Bucket: 11000-12000 | Orario: 00:00-08:00 | Battles: 277
+Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
+P-value: 0.188876 -> Non significativo
+------------------------------------------------------------
+Bucket: 11000-12000 | Orario: 16:00-24:00 | Battles: 490
+Confronto tra 6 Archetipi Player vs 3 Archetipi Opponent
+P-value: 0.635349 -> Non significativo
+------------------------------------------------------------
+
+====================================================================================================
+Totale Bucket Testati: 15
+Bucket Saltati (Dati insufficienti): 4
+Bucket con Dipendenza Significativa: 0
+Percentuale Sospetta: 0.00%
+====================================================================================================

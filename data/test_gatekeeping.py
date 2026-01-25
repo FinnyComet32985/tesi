@@ -98,8 +98,8 @@ def save_gatekeeping_results(result, output_file):
             return
 
         f.write(f"Campione: Danger={counts['danger']}, Safe={counts['safe']}\n")
-        f.write(f"Media: Danger={stats['avg_danger']:.2f}, Safe={stats['avg_safe']:.2f}\n")
-        f.write(f"Delta: {stats['avg_danger'] - stats['avg_safe']:.2f}\n")
+        f.write(f"Media: Danger={stats['avg_danger']:.4f}, Safe={stats['avg_safe']:.4f}\n")
+        f.write(f"Delta: {stats['avg_danger'] - stats['avg_safe']:.4f}\n")
         f.write(f"P-value (Mann-Whitney U <): {stats['p_value']:.4f}\n")
         
         if stats['p_value'] < 0.05:

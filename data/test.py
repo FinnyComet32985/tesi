@@ -2934,14 +2934,14 @@ def analyze_meta_ranges(players_sessions, output_dir=None):
     for p in players_sessions:
         for s in p['sessions']:
             for b in s['battles']:
-                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('matchup') is not None:
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('matchup_no_lvl') is not None:
                     t = b['trophies_before']
                     b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
                     if b_idx not in buckets: buckets[b_idx] = []
-                    buckets[b_idx].append(b['matchup'])
+                    buckets[b_idx].append(b['matchup_no_lvl'])
 
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI META RANGES (DISTRIBUZIONE MATCHUP PER TROFEI)\n")
+        f.write("ANALISI META RANGES (DISTRIBUZIONE MATCHUP NO-LVL PER TROFEI)\n")
         f.write("Obiettivo: Verificare se esistono 'fasce di trofei maledette' dove il matchup medio crolla (Meta Ranges).\n")
         f.write(f"Bucket Size: {BUCKET_SIZE} trofei\n")
         f.write("="*80 + "\n\n")
@@ -2983,57 +2983,82 @@ def analyze_climbing_impact(players_sessions, output_dir=None):
 
     print(f"\nGenerazione report Impatto Climbing in: {output_file}")
     
-    correlations = []
+    correlations_mu = []
+    correlations_mu_nolvl = []
+    correlations_lvl = []
     
     for p in players_sessions:
-        trophies = []
-        matchups = []
+        # Matchup
+        t_mu, v_mu = [], [] # (trophies, matchup)
+        # Matchup No Lvl
+        t_mnl, v_mnl = [], []
+        # Level Diff
+        t_lvl, v_lvl = [], []
+
         for s in p['sessions']:
             for b in s['battles']:
-                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('matchup') is not None:
-                    trophies.append(b['trophies_before'])
-                    matchups.append(b['matchup'])
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before'):
+                    t = b['trophies_before']
+                    
+                    if b.get('matchup') is not None:
+                        t_mu.append(t)
+                        v_mu.append(b['matchup'])
+                    
+                    if b.get('matchup_no_lvl') is not None:
+                        t_mnl.append(t)
+                        v_mnl.append(b['matchup_no_lvl'])
+                        
+                    if b.get('level_diff') is not None:
+                        t_lvl.append(t)
+                        v_lvl.append(b['level_diff'])
         
-        if len(trophies) > 20:
-            corr, _ = spearmanr(trophies, matchups)
-            if not np.isnan(corr):
-                correlations.append(corr)
+        if len(t_mu) > 20:
+            c, p_val = spearmanr(t_mu, v_mu)
+            if not np.isnan(c): correlations_mu.append((c, p_val))
+            
+        if len(t_mnl) > 20:
+            c, p_val = spearmanr(t_mnl, v_mnl)
+            if not np.isnan(c): correlations_mu_nolvl.append((c, p_val))
+            
+        if len(t_lvl) > 20:
+            c, p_val = spearmanr(t_lvl, v_lvl)
+            if not np.isnan(c): correlations_lvl.append((c, p_val))
 
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI IMPATTO CLIMBING (TROFEI vs MATCHUP)\n")
-        f.write("Obiettivo: Verificare se salire di trofei porta naturalmente a matchup peggiori (Correlazione Negativa).\n")
+        f.write("ANALISI IMPATTO CLIMBING (TROFEI vs METRICHE)\n")
+        f.write("Obiettivo: Verificare se salire di trofei porta naturalmente a condizioni peggiori (Correlazione Negativa).\n")
         f.write("="*80 + "\n\n")
         
-        if not correlations:
-            f.write("Dati insufficienti.\n")
-            return
+        def write_section(title, data):
+            if not data:
+                f.write(f"--- {title} ---\nDati insufficienti.\n\n")
+                return
             
-        avg_corr = statistics.mean(correlations)
-        pos_corr = len([c for c in correlations if c > 0.1])
-        neg_corr = len([c for c in correlations if c < -0.1])
-        neutral = len(correlations) - pos_corr - neg_corr
-        
-        f.write(f"Player Analizzati: {len(correlations)}\n")
-        f.write(f"Correlazione Media (Spearman): {avg_corr:.4f}\n")
-        f.write("-" * 60 + "\n")
-        f.write(f"Player con Correlazione Positiva (> 0.1): {pos_corr} (Salendo il matchup migliora)\n")
-        f.write(f"Player con Correlazione Negativa (< -0.1): {neg_corr} (Salendo il matchup peggiora)\n")
-        f.write(f"Player Neutri (-0.1 a 0.1):              {neutral}\n")
-        f.write("-" * 60 + "\n")
+            corrs = [x[0] for x in data]
+            
+            avg_corr = statistics.mean(corrs)
+            
+            # Significant counts (p < 0.05)
+            sig_pos = len([x for x in data if x[0] > 0 and x[1] < 0.05])
+            sig_neg = len([x for x in data if x[0] < 0 and x[1] < 0.05])
+            
+            f.write(f"--- {title} ---\n")
+            f.write(f"Player Analizzati: {len(data)}\n")
+            f.write(f"Correlazione Media (Spearman): {avg_corr:.4f}\n")
+            f.write(f"Significativi Positivi (p<0.05): {sig_pos}\n")
+            f.write(f"Significativi Negativi (p<0.05): {sig_neg}\n")
+            f.write("-" * 40 + "\n")
+
+        write_section("1. MATCHUP (Reale)", correlations_mu)
+        write_section("2. MATCHUP NO-LVL (Deck)", correlations_mu_nolvl)
+        write_section("3. LEVEL DIFF", correlations_lvl)
         
         f.write("INTERPRETAZIONE:\n")
-        if avg_corr < -0.1:
-            f.write("RISULTATO: TENDENZA NEGATIVA. Salire di trofei tende a peggiorare il matchup.\n")
-            f.write("           (Supporta l'ipotesi che la 'punizione' sia in parte naturale difficoltà).\n")
-        elif avg_corr > 0.1:
-            f.write("RISULTATO: TENDENZA POSITIVA. Salire di trofei tende a migliorare il matchup (?!).\n")
-        else:
-            f.write("RISULTATO: NESSUNA CORRELAZIONE EVIDENTE. Il matchup sembra indipendente dall'altezza in classifica.\n")
-            f.write("           (Smentisce l'ipotesi che vincere porti naturalmente a counter deck).\n")
-            
+        f.write("1. Correlazione Negativa su Matchup: Salendo trovi counter.\n")
+        f.write("2. Correlazione Negativa su Level Diff: Salendo trovi avversari più forti (livelli più alti).\n")
         f.write("="*80 + "\n")
 
-def analyze_hook_by_trophy_range(players_sessions, output_dir=None):
+def analyze_hook_by_trophy_range(players_sessions, output_dir=None, cursor=None):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
     os.makedirs(output_dir, exist_ok=True)
@@ -3041,7 +3066,15 @@ def analyze_hook_by_trophy_range(players_sessions, output_dir=None):
 
     print(f"\nGenerazione report Hook Consistency (Session Trend per Fascia) in: {output_file}")
 
-    BUCKET_SIZE = 1000 # Fasce ampie per avere statistica solida
+    # Fetch arenas if cursor present
+    arenas = []
+    if cursor:
+        try:
+            cursor.execute("SELECT arena_id, trophy_limit FROM arenas ORDER BY trophy_limit ASC")
+            arenas = cursor.fetchall() # List of (id, limit)
+        except Exception as e:
+            print(f"Error fetching arenas: {e}")
+
     # { range_start: { 'sessions': 0, 'hook': {...}, 'rest': {...} } }
     buckets = {}
 
@@ -3054,9 +3087,31 @@ def analyze_hook_by_trophy_range(players_sessions, output_dir=None):
             t = first_b.get('trophies_before')
             if not t: continue
             
-            b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+            b_idx = 0
+            b_label = ""
+            
+            if arenas:
+                current_limit = 0
+                next_limit = "Inf"
+                for i, (aid, limit) in enumerate(arenas):
+                    if t >= limit:
+                        current_limit = limit
+                        if i + 1 < len(arenas):
+                            next_limit = arenas[i+1][1]
+                        else:
+                            next_limit = "Inf"
+                    else:
+                        break
+                b_idx = current_limit
+                b_label = f"{current_limit}-{next_limit}"
+            else:
+                # Fallback
+                b_idx = (t // 1000) * 1000
+                b_label = f"{b_idx}-{b_idx+1000}"
+
             if b_idx not in buckets:
                 buckets[b_idx] = {
+                    'label': b_label,
                     'sessions': 0,
                     'hook': {'wins': 0, 'tot': 0, 'mu_sum': 0, 'mu_count': 0, 'lvl_sum': 0, 'lvl_count': 0},
                     'rest': {'wins': 0, 'tot': 0, 'mu_sum': 0, 'mu_count': 0, 'lvl_sum': 0, 'lvl_count': 0}
@@ -3109,7 +3164,7 @@ def analyze_hook_by_trophy_range(players_sessions, output_dir=None):
             r_lvl = (d['rest']['lvl_sum'] / d['rest']['lvl_count']) if d['rest']['lvl_count'] else 0
             d_lvl = r_lvl - h_lvl
             
-            f.write(f"{k}-{k+BUCKET_SIZE:<12} | {d['sessions']:<5} | "
+            f.write(f"{d['label']:<12} | {d['sessions']:<5} | "
                     f"{h_wr:<9.1f} {r_wr:<9.1f} {d_wr:<+7.1f} | "
                     f"{h_mu:<9.1f} {r_mu:<9.1f} {d_mu:<+7.1f} | "
                     f"{h_lvl:<+9.2f} {r_lvl:<+9.2f} {d_lvl:<+7.2f}\n")

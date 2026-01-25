@@ -53,7 +53,9 @@ from test_deck_analysis import (
     analyze_deck_switch_hypothetical,
     analyze_nolvl_markov,
     analyze_nolvl_time_independence,
-    analyze_card_meta_vs_counter
+    analyze_card_meta_vs_counter,
+    analyze_matchmaking_fairness,
+    analyze_level_saturation
 )
 from test_targeting import (
     analyze_all_snipers_targeting,
@@ -127,12 +129,14 @@ def main():
     analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=results_dir)
     analyze_meta_ranges(players_sessions, output_dir=results_dir)
     analyze_climbing_impact(players_sessions, output_dir=results_dir)
-    analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir)
+    analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir, cursor=cursor)
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
     #analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
     analyze_nolvl_markov(players_sessions, output_dir=results_dir)
     analyze_nolvl_time_independence(players_sessions, output_dir=results_dir)
     analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
+    analyze_matchmaking_fairness(players_sessions, output_dir=results_dir)
+    analyze_level_saturation(players_sessions, output_dir=results_dir)
     analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
     analyze_sniper_confounding(players_sessions, output_dir=results_dir)
 

@@ -1,16 +1,16 @@
 ANALISI PROBABILITÀ CHURN vs PITY ODDS
 Obiettivo: Verificare se i giocatori con Pity Odds più alti hanno meno probabilità di abbandonare il gioco (Churn).
-Definizione Churn: Assenza > 7 giorni rispetto all'ultimo dato globale (2026-01-24 16:26:02).
+Definizione Churn: Assenza > 7 giorni rispetto all'ultimo dato globale (2026-01-25 14:56:12).
 ================================================================================
 
 GRUPPO               | N     | AVG PITY ODDS  
 --------------------------------------------------
-CHURNED (Inactive)   | 5     | 1.7787         
-ACTIVE               | 17    | 0.6714         
+CHURNED (Inactive)   | 6     | 1.5895         
+ACTIVE               | 16    | 0.6386         
 --------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (Active) > Pity Odds (Churned)
-P-value: 0.9348
+P-value: 0.9051
 
 RISULTATO: NON SIGNIFICATIVO. Non sembra esserci evidenza che i Pity Odds influenzino la probabilità di abbandono.
 ================================================================================

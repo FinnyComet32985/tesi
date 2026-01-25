@@ -7,18 +7,18 @@ Player: 20UV9C0CL     -     std_dev: 8.26
 Player: 2PVCYY2Y     -     std_dev: 6.85
 Player: 2Q0JU0RR     -     std_dev: 9.80
 Player: 2RU2VCY80     -     std_dev: 7.46
-Player: 8YGG82QR2     -     std_dev: 6.56
+Player: 8YGG82QR2     -     std_dev: 7.49
 Player: 9988CY9C     -     std_dev: 9.01
 Player: 9JJRVRJL     -     std_dev: 11.48
 Player: CCYRVRJCU     -     std_dev: 13.07
 Player: G0YP2GJV     -     std_dev: 4.82
-Player: J92L2CU0Q     -     std_dev: 7.48
+Player: J92L2CU0Q     -     std_dev: 7.42
 Player: JPLLR2V0V     -     std_dev: 6.47
-Player: JPYQPY8Y0     -     std_dev: 12.55
+Player: JPYQPY8Y0     -     std_dev: 12.42
 Player: JYRRRVVJJ     -     std_dev: 12.92
-Player: LJ9JU0CQU     -     std_dev: 14.12
+Player: LJ9JU0CQU     -     std_dev: 14.90
 Player: P2RVYJ2UY     -     std_dev: 12.15
-Player: P8YJL0Y0     -     std_dev: 7.60
+Player: P8YJL0Y0     -     std_dev: 8.58
 Player: P9QQ0CL2     -     std_dev: 3.87
 Player: POGYQQ8UC     -     std_dev: 8.73
 Player: PQVYL0VJJ     -     std_dev: 8.31
@@ -41,28 +41,28 @@ Player: YU889LRR0     -     std_dev: 5.68
 ============================================================
 Player: 20CCVVLUP0 | FSI: 0.11 | StdDev: 8.15 | Var: 66.50
 Player: 20GLGG298R | FSI: 0.59 | StdDev: 8.81 | Var: 77.55
-Player: 20JGRJGY2Q | FSI: 0.92 | StdDev: 9.80 | Var: 96.10
+Player: 20JGRJGY2Q | FSI: 0.91 | StdDev: 9.80 | Var: 96.10
 Player: 20QG9YJ    | FSI: 1.23 | StdDev: 5.95 | Var: 35.38
 Player: 20QU8VLGU8 | FSI: 1.05 | StdDev: 11.83 | Var: 140.03
 Player: 20UV9C0CL  | FSI: 1.50 | StdDev: 8.26 | Var: 68.28
 Player: 2PVCYY2Y   | FSI: 0.69 | StdDev: 6.85 | Var: 46.90
-Player: 2Q0JU0RR   | FSI: 0.45 | StdDev: 9.80 | Var: 96.02
+Player: 2Q0JU0RR   | FSI: 0.46 | StdDev: 9.80 | Var: 96.02
 Player: 2RU2VCY80  | FSI: 1.68 | StdDev: 7.46 | Var: 55.66
-Player: 8YGG82QR2  | FSI: 0.55 | StdDev: 6.56 | Var: 43.02
+Player: 8YGG82QR2  | FSI: 0.52 | StdDev: 7.49 | Var: 56.08
 Player: 9988CY9C   | FSI: 0.46 | StdDev: 9.01 | Var: 81.22
-Player: 9JJRVRJL   | FSI: 0.83 | StdDev: 11.48 | Var: 131.90
+Player: 9JJRVRJL   | FSI: 0.92 | StdDev: 11.48 | Var: 131.90
 Player: CCYRVRJCU  | FSI: 0.52 | StdDev: 13.07 | Var: 170.73
-Player: G0YP2GJV   | FSI: 1.70 | StdDev: 4.82 | Var: 23.20
-Player: J92L2CU0Q  | FSI: 0.63 | StdDev: 7.48 | Var: 55.88
+Player: G0YP2GJV   | FSI: 1.73 | StdDev: 4.82 | Var: 23.20
+Player: J92L2CU0Q  | FSI: 0.64 | StdDev: 7.42 | Var: 55.03
 Player: JPLLR2V0V  | FSI: 0.16 | StdDev: 6.47 | Var: 41.82
-Player: JPYQPY8Y0  | FSI: 0.71 | StdDev: 12.55 | Var: 157.56
+Player: JPYQPY8Y0  | FSI: 0.69 | StdDev: 12.42 | Var: 154.38
 Player: JYRRRVVJJ  | FSI: 1.34 | StdDev: 12.92 | Var: 166.88
-Player: LJ9JU0CQU  | FSI: 1.18 | StdDev: 14.12 | Var: 199.26
-Player: P2RVYJ2UY  | FSI: 1.24 | StdDev: 12.15 | Var: 147.58
-Player: P8YJL0Y0   | FSI: 0.12 | StdDev: 7.60 | Var: 57.81
+Player: LJ9JU0CQU  | FSI: 1.17 | StdDev: 14.90 | Var: 222.10
+Player: P2RVYJ2UY  | FSI: 1.21 | StdDev: 12.15 | Var: 147.58
+Player: P8YJL0Y0   | FSI: 0.12 | StdDev: 8.58 | Var: 73.63
 Player: P9QQ0CL2   | FSI: 0.22 | StdDev: 3.87 | Var: 14.96
 Player: POGYQQ8UC  | FSI: 0.36 | StdDev: 8.73 | Var: 76.19
-Player: PQVYL0VJJ  | FSI: 0.80 | StdDev: 8.31 | Var: 69.07
+Player: PQVYL0VJJ  | FSI: 0.82 | StdDev: 8.31 | Var: 69.07
 Player: PY8YG0LJR  | FSI: 0.70 | StdDev: 10.43 | Var: 108.68
 Player: QJU20YUL   | FSI: 0.43 | StdDev: 7.71 | Var: 59.42
 Player: R82CV2C    | FSI: 0.59 | StdDev: 7.13 | Var: 50.85
@@ -78,9 +78,9 @@ Player: YLCYCJ2YL  | FSI: 1.11 | StdDev: 11.47 | Var: 131.59
 Player: YU889LRR0  | FSI: 0.30 | StdDev: 5.68 | Var: 32.28
 
 ------------------------------------------------------------
-Gruppo Low FSI (<0.81)  [n=22]: Avg Varianza = 79.44
+Gruppo Low FSI (<0.81)  [n=21]: Avg Varianza = 81.12
 Gruppo High FSI (>1.20) [n=7]: Avg Varianza = 96.58
-RAPPORTO (High/Low): 1.22
+RAPPORTO (High/Low): 1.19
 ============================================================
 
 
@@ -88,7 +88,7 @@ RAPPORTO (High/Low): 1.22
  CORRELAZIONE SPEARMAN: FSI vs VARIANZA
 ============================================================
 Campione:     37 giocatori
-Coefficiente: 0.2440
-P-value:      0.1456
+Coefficiente: 0.2213
+P-value:      0.1880
 ============================================================
 

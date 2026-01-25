@@ -7,9 +7,9 @@ Soglie: Debito < 45.0%, Credito > 55.0%
 --- 1. ANALISI STANDARD (Matchup Reale: include livelli) ---
 TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
 --------------------------------------------------------------------------------
-Debt            | 1690       | 1.61         | 13         | -0.36          
-Normal          | 1200       | 1.19         | 6          | 0.03           
-Credit          | 1785       | 1.50         | 15         | 0.36           
+Debt            | 1717       | 1.61         | 13         | -0.36          
+Normal          | 1208       | 1.19         | 6          | 0.03           
+Credit          | 1804       | 1.50         | 15         | 0.36           
 
 Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 --------------------------------------------------------------------------------
@@ -18,13 +18,13 @@ Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 Domanda: Quando il sistema ti countera il MAZZO (Debt), ti dà anche livelli più alti?
 TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
 --------------------------------------------------------------------------------
-Debt            | 1734       | 1.49         | 9          | 0.08           
-Normal          | 1591       | 1.30         | 6          | 0.00           
-Credit          | 1577       | 1.38         | 8          | -0.09          
+Debt            | 1755       | 1.49         | 9          | 0.08           
+Normal          | 1609       | 1.30         | 6          | 0.00           
+Credit          | 1599       | 1.38         | 8          | -0.10          
 --------------------------------------------------------------------------------
 Confronto Livelli (Pure Debt vs Pure Credit):
    Avg Level Diff in DEBT (Bad Deck):   +0.083
-   Avg Level Diff in CREDIT (Good Deck): -0.092
+   Avg Level Diff in CREDIT (Good Deck): -0.096
    Test Mann-Whitney U (Debt < Credit): p-value = 1.0000
 
 RISULTATO: NON SIGNIFICATIVO.

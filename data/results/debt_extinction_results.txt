@@ -6,18 +6,18 @@ Definizione Unfavorable: Matchup < 45.0%
 
 ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
 -----------------------------------------------------------------
-Unfavorable + WIN (Debito?)    | 813    | 42.67               %
-Unfavorable + LOSS (Pagato?)   | 1104   | 45.74               %
+Unfavorable + WIN (Debito?)    | 824    | 42.50               %
+Unfavorable + LOSS (Pagato?)   | 1119   | 45.79               %
 -----------------------------------------------------------------
-Delta: -3.08%
-Test Mann-Whitney U (Win < Loss): p-value = 0.0001
+Delta: -3.29%
+Test Mann-Whitney U (Win < Loss): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. Vincere contro le probabilità porta a matchup futuri peggiori rispetto a perdere.
 
 ================================================================================
 CONTROLLI DI VALIDITÀ (Bias Check)
 Verifichiamo che le vittorie 'impossibili' non siano dovute a fattori esterni.
 --------------------------------------------------------------------------------
-1. Matchup Iniziale (Avg): Win=34.17% vs Loss=31.45%
+1. Matchup Iniziale (Avg): Win=34.00% vs Loss=31.36%
 2. Level Diff (Avg):       Win=-0.34 vs Loss=-0.38
 3. Elixir Advantage (Win): +2.52 (Positivo = Opponent ha sprecato elisir)
    (Se alto, la vittoria potrebbe essere dovuta a errori dell'avversario)
