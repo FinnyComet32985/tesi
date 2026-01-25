@@ -506,11 +506,15 @@ def load_battles(cursor, tag):
     battles = cursor.fetchall()
     return battles
 
-def load_trophies(cursor, tag):
-    cursor.execute("SELECT trophies FROM players WHERE player_tag = ?", (tag,))
-    row = cursor.fetchone()
-    current_trophies = row[0] if row else 0
-    return current_trophies
+def load_player_details(cursor, tag):
+    try:
+        cursor.execute("SELECT trophies, nationality FROM players WHERE player_tag = ?", (tag,))
+        row = cursor.fetchone()
+        if row:
+            return {'trophies': row[0], 'nationality': row[1]}
+    except Exception:
+        pass
+    return {'trophies': 0, 'nationality': None}
 
 
 def format_duration(seconds):
@@ -539,7 +543,9 @@ def get_players_sessions(mode_filter='all', exclude_unreliable=False):
 
     for tag in tags:
         battles = load_battles(cursor, tag)
-        current_trophies = load_trophies(cursor, tag)
+        player_details = load_player_details(cursor, tag)
+        current_trophies = player_details['trophies']
+        nationality = player_details['nationality']
 
         trophies_history = define_trophies_history(battles, current_trophies)
         sessions = define_sessions(battles, trophies_history, mode_filter=mode_filter)
@@ -552,7 +558,8 @@ def get_players_sessions(mode_filter='all', exclude_unreliable=False):
         players_sessions.append({
             'tag': tag,
             'sessions': sessions,
-            'profile': profile
+            'profile': profile,
+            'nationality': nationality
         })
     
     close_connection(connection)

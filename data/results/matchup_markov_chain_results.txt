@@ -3,12 +3,12 @@ Obiettivo: Verificare se il matchup attuale influenza il prossimo (es. 'Bad' chi
 Ipotesi Nera (Random): La probabilità del prossimo stato dipende solo dalla frequenza globale, non dallo stato precedente.
 ================================================================================
 
-Totale Transizioni Analizzate: 4878
+Totale Transizioni Analizzate: 4891
 --------------------------------------------------------------------------------
 STATO PRECEDENTE     | SUCCESSIVO: Unfavorable   | SUCCESSIVO: Even     | SUCCESSIVO: Favorable
 -----------------------------------------------------------------------------------------------
-Unfavorable          | 54.0% (Exp 41.1%) (!)     | 18.6% (Exp 20.7%)         | 27.4% (Exp 38.2%) (!)     | 
-Even                 | 36.8% (Exp 41.1%)         | 22.7% (Exp 20.7%)         | 40.5% (Exp 38.2%)         | 
+Unfavorable          | 54.0% (Exp 41.1%) (!)     | 18.5% (Exp 20.7%)         | 27.5% (Exp 38.2%) (!)     | 
+Even                 | 36.9% (Exp 41.1%)         | 22.7% (Exp 20.7%)         | 40.4% (Exp 38.2%)         | 
 Favorable            | 30.3% (Exp 41.1%) (!)     | 21.9% (Exp 20.7%)         | 47.8% (Exp 38.2%) (!)     | 
 -----------------------------------------------------------------------------------------------
 Test Chi-Quadro (Indipendenza Transizioni):

@@ -7,10 +7,10 @@ Definizione Pity Match: Matchup > 60.0%
 Gruppo          | N        | Avg Return Time (Ore)    
 -------------------------------------------------------
 Con Pity        | 644      | 12.53                    
-Senza Pity      | 1424     | 10.74                    
+Senza Pity      | 1427     | 10.73                    
 -------------------------------------------------------
 Test Mann-Whitney U (Pity < NoPity):
-P-value: 0.8387
+P-value: 0.8442
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=2) ---

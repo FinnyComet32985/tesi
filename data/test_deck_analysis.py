@@ -4,6 +4,7 @@ import sqlite3
 import sys
 from datetime import datetime
 from scipy.stats import chi2_contingency, kruskal, levene
+import pytz
 
 # Add parent directory to path to import api_client
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -36,6 +37,37 @@ def get_deck_archetypes_batch(cursor, deck_hashes):
     query = f"SELECT deck_hash, archetype_hash FROM decks WHERE deck_hash IN ({placeholders})"
     cursor.execute(query, list(deck_hashes))
     return {row[0]: row[1] for row in cursor.fetchall()}
+
+COUNTRY_TZ_MAP = {
+    'Italy': 'Europe/Rome', 'IT': 'Europe/Rome',
+    'United States': 'America/New_York', 'US': 'America/New_York',
+    'Germany': 'Europe/Berlin', 'DE': 'Europe/Berlin',
+    'France': 'Europe/Paris', 'FR': 'Europe/Paris',
+    'Spain': 'Europe/Madrid', 'ES': 'Europe/Madrid',
+    'United Kingdom': 'Europe/London', 'GB': 'Europe/London', 'UK': 'Europe/London',
+    'Russia': 'Europe/Moscow', 'RU': 'Europe/Moscow',
+    'Japan': 'Asia/Tokyo', 'JP': 'Asia/Tokyo',
+    'China': 'Asia/Shanghai', 'CN': 'Asia/Shanghai',
+    'Brazil': 'America/Sao_Paulo', 'BR': 'America/Sao_Paulo',
+    'Canada': 'America/Toronto', 'CA': 'America/Toronto',
+    'Mexico': 'America/Mexico_City', 'MX': 'America/Mexico_City',
+    'Korea, Republic of': 'Asia/Seoul', 'KR': 'Asia/Seoul',
+    'Netherlands': 'Europe/Amsterdam', 'NL': 'Europe/Amsterdam'
+}
+
+def get_local_hour(timestamp_str, nationality):
+    try:
+        # Timestamp string is in Italian local time (from battlelog_v2)
+        italy_tz = pytz.timezone('Europe/Rome')
+        naive_dt = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+        italy_dt = italy_tz.localize(naive_dt)
+        
+        target_tz_name = COUNTRY_TZ_MAP.get(nationality, 'Europe/Rome')
+        target_tz = pytz.timezone(target_tz_name)
+        player_dt = italy_dt.astimezone(target_tz)
+        return player_dt.hour
+    except Exception:
+        return datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').hour
 
 def analyze_deck_switch_hypothetical(players_sessions, output_dir=None):
     if output_dir is None:
@@ -278,11 +310,11 @@ def analyze_nolvl_time_independence(players_sessions, output_dir=None):
     samples = {k: [] for k in time_slots}
 
     for p in players_sessions:
+        nationality = p.get('nationality')
         for session in p['sessions']:
             for b in session['battles']:
                 if b.get('matchup_no_lvl') is not None:
-                    ts = datetime.strptime(b['timestamp'], '%Y-%m-%d %H:%M:%S')
-                    h = ts.hour
+                    h = get_local_hour(b['timestamp'], nationality)
                     slot = 0
                     if 6 <= h < 12: slot = 1
                     elif 12 <= h < 18: slot = 2
@@ -444,6 +476,7 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
     temp_battles = [] # (time_slot, trophy_bucket, p_deck_id, o_deck_id)
 
     for p in players_sessions:
+        nationality = p.get('nationality')
         for s in p['sessions']:
             for b in s['battles']:
                 if b['game_mode'] != 'Ladder': continue
@@ -452,10 +485,7 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 if not t: continue
                 
                 ts_str = b['timestamp']
-                try:
-                    dt = datetime.strptime(ts_str, '%Y-%m-%d %H:%M:%S')
-                except ValueError:
-                    continue
+                hour = get_local_hour(ts_str, nationality)
                 
                 # Identifiers (Archetype preferred)
                 p_deck = b.get('deck_id')
@@ -467,7 +497,7 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 all_deck_ids.add(o_deck)
                 
                 # Bucket Keys
-                time_slot = dt.hour // TIME_SLOT_HOURS
+                time_slot = hour // TIME_SLOT_HOURS
                 trophy_bucket = (t // TROPHY_BUCKET_SIZE) * TROPHY_BUCKET_SIZE
                 
                 temp_battles.append((time_slot, trophy_bucket, p_deck, o_deck))

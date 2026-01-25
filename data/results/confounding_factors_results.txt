@@ -7,11 +7,11 @@ Fascia Oraria             | Tot Finestre    | Streak Trovate  | Streak Rate %
 --------------------------------------------------------------------------------
 Notte (00-06)             | 600             | 36              | 6.00           %
 Mattina (06-12)           | 620             | 51              | 8.23           %
-Pomeriggio (12-18)        | 1130            | 87              | 7.70           %
+Pomeriggio (12-18)        | 1138            | 87              | 7.64           %
 Sera (18-24)              | 1272            | 108             | 8.49           %
 --------------------------------------------------------------------------------
 Test Chi-Quadro Indipendenza Oraria:
-P-value: 0.2928
+P-value: 0.2898
 Risultato: INDIPENDENTE (L'orario NON influisce)
 
 2. ANALISI DECK (Aggregata per Player)

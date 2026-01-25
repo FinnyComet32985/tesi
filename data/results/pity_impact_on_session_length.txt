@@ -7,10 +7,10 @@ Definizione Pity Match: Matchup > 60.0%
 Gruppo          | N        | Avg Remaining Matches    
 -------------------------------------------------------
 Con Pity        | 651      | 4.76                     
-Senza Pity      | 1453     | 4.63                     
+Senza Pity      | 1455     | 4.62                     
 -------------------------------------------------------
 Test Mann-Whitney U (Pity > NoPity):
-P-value: 0.4824
+P-value: 0.4811
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=2) ---

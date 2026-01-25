@@ -5,6 +5,7 @@ import statistics
 import os
 import numpy as np
 from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu, ttest_1samp, binomtest    
+import pytz
 
 # Import data loader from battlelog_v2
 from battlelog_v2 import get_players_sessions
@@ -362,6 +363,36 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None, use_no_lvl
         write_section(f"MATCHUP FAVOREVOLI (> {HIGH_THRESH}%)", obs_high_streaks, exp_high_theory, avg_global_high, avg_intra_high)
         write_section(f"MATCHUP SFAVOREVOLI (< {LOW_THRESH}%)", obs_low_streaks, exp_low_theory, avg_global_low, avg_intra_low)
 
+COUNTRY_TZ_MAP = {
+    'Italy': 'Europe/Rome', 'IT': 'Europe/Rome',
+    'United States': 'America/New_York', 'US': 'America/New_York',
+    'Germany': 'Europe/Berlin', 'DE': 'Europe/Berlin',
+    'France': 'Europe/Paris', 'FR': 'Europe/Paris',
+    'Spain': 'Europe/Madrid', 'ES': 'Europe/Madrid',
+    'United Kingdom': 'Europe/London', 'GB': 'Europe/London', 'UK': 'Europe/London',
+    'Russia': 'Europe/Moscow', 'RU': 'Europe/Moscow',
+    'Japan': 'Asia/Tokyo', 'JP': 'Asia/Tokyo',
+    'China': 'Asia/Shanghai', 'CN': 'Asia/Shanghai',
+    'Brazil': 'America/Sao_Paulo', 'BR': 'America/Sao_Paulo',
+    'Canada': 'America/Toronto', 'CA': 'America/Toronto',
+    'Mexico': 'America/Mexico_City', 'MX': 'America/Mexico_City',
+    'Korea, Republic of': 'Asia/Seoul', 'KR': 'Asia/Seoul',
+    'Netherlands': 'Europe/Amsterdam', 'NL': 'Europe/Amsterdam'
+}
+
+def get_local_hour(timestamp_str, nationality):
+    try:
+        # Timestamp string is in Italian local time (from battlelog_v2)
+        italy_tz = pytz.timezone('Europe/Rome')
+        naive_dt = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+        italy_dt = italy_tz.localize(naive_dt)
+        
+        target_tz_name = COUNTRY_TZ_MAP.get(nationality, 'Europe/Rome')
+        target_tz = pytz.timezone(target_tz_name)
+        player_dt = italy_dt.astimezone(target_tz)
+        return player_dt.hour
+    except Exception:
+        return datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').hour
 
 def analyze_confounding_factors(players_sessions, output_dir=None):
     if output_dir is None:
@@ -396,6 +427,7 @@ def analyze_confounding_factors(players_sessions, output_dir=None):
             # Per analisi Deck del singolo player
             # DeckID -> {'total': 0, 'streak': 0}
             player_deck_stats = {}
+            nationality = p.get('nationality')
 
             for session in p['sessions']:
                 battles = [b for b in session['battles'] if b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked']
@@ -409,8 +441,7 @@ def analyze_confounding_factors(players_sessions, output_dir=None):
 
                     # Dati finestra
                     first_b = window[0]
-                    ts = datetime.strptime(first_b['timestamp'], '%Y-%m-%d %H:%M:%S')
-                    hour = ts.hour
+                    hour = get_local_hour(first_b['timestamp'], nationality)
                     deck_id = first_b.get('deck_id')
 
                     # Determina Fascia Oraria
@@ -516,11 +547,11 @@ def analyze_time_matchup_stats(players_sessions, output_dir=None):
     samples = {k: [] for k in time_slots}
 
     for p in players_sessions:
+        nationality = p.get('nationality')
         for session in p['sessions']:
             for b in session['battles']:
                 if b['matchup'] is not None:
-                    ts = datetime.strptime(b['timestamp'], '%Y-%m-%d %H:%M:%S')
-                    h = ts.hour
+                    h = get_local_hour(b['timestamp'], nationality)
                     slot = 0
                     if 6 <= h < 12: slot = 1
                     elif 12 <= h < 18: slot = 2

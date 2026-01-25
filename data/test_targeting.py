@@ -3,6 +3,7 @@ import sqlite3
 import statistics
 from datetime import datetime
 from collections import defaultdict
+import pytz
 
 # Import helper from sibling module
 try:
@@ -51,6 +52,37 @@ SNIPER_DEFS = {
         'soft': {'Barbarians', 'Hunter', 'Lumberjack', 'Night Witch', 'Cannon', 'Tesla', 'Bomb Tower'}
     }
 }
+
+COUNTRY_TZ_MAP = {
+    'Italy': 'Europe/Rome', 'IT': 'Europe/Rome',
+    'United States': 'America/New_York', 'US': 'America/New_York',
+    'Germany': 'Europe/Berlin', 'DE': 'Europe/Berlin',
+    'France': 'Europe/Paris', 'FR': 'Europe/Paris',
+    'Spain': 'Europe/Madrid', 'ES': 'Europe/Madrid',
+    'United Kingdom': 'Europe/London', 'GB': 'Europe/London', 'UK': 'Europe/London',
+    'Russia': 'Europe/Moscow', 'RU': 'Europe/Moscow',
+    'Japan': 'Asia/Tokyo', 'JP': 'Asia/Tokyo',
+    'China': 'Asia/Shanghai', 'CN': 'Asia/Shanghai',
+    'Brazil': 'America/Sao_Paulo', 'BR': 'America/Sao_Paulo',
+    'Canada': 'America/Toronto', 'CA': 'America/Toronto',
+    'Mexico': 'America/Mexico_City', 'MX': 'America/Mexico_City',
+    'Korea, Republic of': 'Asia/Seoul', 'KR': 'Asia/Seoul',
+    'Netherlands': 'Europe/Amsterdam', 'NL': 'Europe/Amsterdam'
+}
+
+def get_local_hour(timestamp_str, nationality):
+    try:
+        # Timestamp string is in Italian local time (from battlelog_v2)
+        italy_tz = pytz.timezone('Europe/Rome')
+        naive_dt = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
+        italy_dt = italy_tz.localize(naive_dt)
+        
+        target_tz_name = COUNTRY_TZ_MAP.get(nationality, 'Europe/Rome')
+        target_tz = pytz.timezone(target_tz_name)
+        player_dt = italy_dt.astimezone(target_tz)
+        return player_dt.hour
+    except Exception:
+        return datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').hour
 
 def analyze_all_snipers_targeting(players_sessions, output_dir=None):
     if output_dir is None:
@@ -188,6 +220,7 @@ def analyze_sniper_confounding(players_sessions, output_dir=None):
     deck_ids = set()
     
     for p in players_sessions:
+        nationality = p.get('nationality')
         for s in p['sessions']:
             for b in s['battles']:
                 if b['game_mode'] == 'Ladder' and b.get('trophies_before'):
@@ -201,7 +234,8 @@ def analyze_sniper_confounding(players_sessions, output_dir=None):
                                 'deck_id': b['opponent_deck_id'],
                                 'is_counter': is_counter,
                                 'ts': b['timestamp'],
-                                'opp_tag': b['opponent']
+                                'opp_tag': b['opponent'],
+                                'nationality': nationality
                             })
                             deck_ids.add(b['opponent_deck_id'])
 
@@ -236,8 +270,7 @@ def analyze_sniper_confounding(players_sessions, output_dir=None):
         cards = [c['name'] for c in deck_cache[d_id]]
         
         # Parse timestamp
-        dt = datetime.strptime(b['ts'], '%Y-%m-%d %H:%M:%S')
-        hour = dt.hour
+        hour = get_local_hour(b['ts'], b['nationality'])
         bucket = (b['t'] // 250) * 250 # 7000, 7250, 7500, 7750
         
         for card in cards:
