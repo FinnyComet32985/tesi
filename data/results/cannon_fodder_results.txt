@@ -3,13 +3,13 @@ Ipotesi: Quando il giocatore è a 'Basso Rischio Quit' (Stress Basso), riceve ma
 Metodo: Calcolo dello Stress cumulativo partita per partita all'interno della sessione.
 ================================================================================
 
-Totale Partite Analizzate: 6953
-Partite in Low Stress (<=0.1): 4573
+Totale Partite Analizzate: 6957
+Partite in Low Stress (<=0.1): 4576
 Partite in High Stress (>=2.0): 1292
 --------------------------------------------------------------------------------
 STATO                | AVG MATCHUP    
 ----------------------------------------
-LOW STRESS (Safe)    | 50.29          %
+LOW STRESS (Safe)    | 50.30          %
 HIGH STRESS (Risk)   | 47.90          %
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):

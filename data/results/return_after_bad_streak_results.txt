@@ -8,9 +8,9 @@ Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 97     | 40.34               %
-Control (No Streak)       | 570    | 52.92               %
+Control (No Streak)       | 572    | 52.94               %
 ------------------------------------------------------------
-Delta: -12.59%
+Delta: -12.60%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
@@ -34,10 +34,10 @@ Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 41.75%)
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 39     | 41.43               %
-Control (No Streak)       | 300    | 53.24               %
+Control (No Streak)       | 301    | 53.24               %
 ------------------------------------------------------------
-Delta: -11.80%
-Test Mann-Whitney U (Bad < Control): p-value = 0.0002
+Delta: -11.81%
+Test Mann-Whitney U (Bad < Control): p-value = 0.0001
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
 Test vs 50% (Coin Flip): p-value = 0.0046 (Avg: 41.43%)

@@ -1578,6 +1578,52 @@ def analyze_short_session_bonus(players_sessions, output_dir=None):
         
         f.write("="*80 + "\n")
 
+def _compute_and_write_mixed_markov(data_pairs, from_states_labels, to_states_labels, title, f):
+    n_from = len(from_states_labels)
+    n_to = len(to_states_labels)
+    transitions = [[0]*n_to for _ in range(n_from)]
+    
+    for from_s, to_s in data_pairs:
+        if from_s is not None and to_s is not None:
+            transitions[from_s][to_s] += 1
+            
+    total_transitions = sum(sum(row) for row in transitions)
+    f.write(f"\n--- {title} ---\n")
+    f.write(f"Totale Transizioni: {total_transitions}\n")
+    
+    if total_transitions == 0:
+        f.write("Dati insufficienti.\n")
+        return
+
+    row_totals = [sum(transitions[i]) for i in range(n_from)]
+    col_totals = [sum(transitions[i][j] for i in range(n_from)) for j in range(n_to)]
+    grand_total = sum(row_totals)
+    
+    global_probs_to = [c / grand_total for c in col_totals]
+    
+    col_width = 25
+    header = f"{'STATO PRECEDENTE':<20} | " + " | ".join([f"NEXT: {s:<{col_width}}" for s in to_states_labels])
+    sep = "-" * len(header)
+    
+    f.write(sep + "\n")
+    f.write(header + "\n")
+    f.write(sep + "\n")
+    
+    for i, from_state in enumerate(from_states_labels):
+        row_str = f"{from_state:<20} | "
+        for j, to_state in enumerate(to_states_labels):
+            count = transitions[i][j]
+            total_from = row_totals[i] if row_totals[i] > 0 else 1
+            obs_prob = count / total_from
+            exp_prob = global_probs_to[j]
+            
+            marker = "(!)" if abs(obs_prob - exp_prob) > 0.05 else ""
+            cell_str = f"{obs_prob*100:.1f}% (Exp {exp_prob*100:.1f}%) {marker}"
+            row_str += f"{cell_str:<{col_width+6}} | "
+        f.write(row_str + "\n")
+    f.write(sep + "\n\n")
+
+
 def _compute_and_write_markov(data_sequences, states_labels, title, f):
     n_states = len(states_labels)
     transitions = [[0]*n_states for _ in range(n_states)]
@@ -1652,6 +1698,9 @@ def analyze_markov_chains(players_sessions, output_dir=None):
     seq_mu = []
     seq_mnl = []
     seq_lvl = []
+    outcome_to_mu_pairs = []
+    outcome_to_mnl_pairs = []
+    outcome_to_lvl_pairs = []
     
     for p in players_sessions:
         for session in p['sessions']:
@@ -1661,6 +1710,40 @@ def analyze_markov_chains(players_sessions, output_dir=None):
             s_mu = []
             s_mnl = []
             s_lvl = []
+
+            # Analisi per Outcome -> Next Matchup
+            for i in range(len(battles) - 1):
+                curr_b = battles[i]
+                next_b = battles[i+1]
+
+                from_state = curr_b.get('win') # 0 for Loss, 1 for Win
+
+                next_mu = next_b.get('matchup')
+                to_state = None
+                if next_mu is not None:
+                    if next_mu > 55.0: to_state = 2
+                    elif next_mu < 45.0: to_state = 0
+                    else: to_state = 1
+                
+                outcome_to_mu_pairs.append((from_state, to_state))
+
+                # Next Matchup No Lvl
+                next_mnl = next_b.get('matchup_no_lvl')
+                to_state_mnl = None
+                if next_mnl is not None:
+                    if next_mnl > 55.0: to_state_mnl = 2
+                    elif next_mnl < 45.0: to_state_mnl = 0
+                    else: to_state_mnl = 1
+                outcome_to_mnl_pairs.append((from_state, to_state_mnl))
+
+                # Next Level Diff
+                next_lvl = next_b.get('level_diff')
+                to_state_lvl = None
+                if next_lvl is not None:
+                    if next_lvl > 0.5: to_state_lvl = 2 # Advantage
+                    elif next_lvl < -0.5: to_state_lvl = 0 # Disadvantage
+                    else: to_state_lvl = 1
+                outcome_to_lvl_pairs.append((from_state, to_state_lvl))
             
             for b in battles:
                 # Matchup
@@ -1697,6 +1780,27 @@ def analyze_markov_chains(players_sessions, output_dir=None):
         _compute_and_write_markov(seq_mu, ['Unfavorable', 'Even', 'Favorable'], "1. MATCHUP REALE (Include Livelli)", f)
         _compute_and_write_markov(seq_mnl, ['Unfavorable', 'Even', 'Favorable'], "2. MATCHUP NO-LVL (Solo Deck)", f)
         _compute_and_write_markov(seq_lvl, ['Disadvantage', 'Even', 'Advantage'], "3. LEVEL DIFFERENCE", f)
+        _compute_and_write_mixed_markov(
+            outcome_to_mu_pairs,
+            from_states_labels=['Loss', 'Win'],
+            to_states_labels=['Unfavorable', 'Even', 'Favorable'],
+            title="4. OUTCOME PARTITA PRECEDENTE vs MATCHUP SUCCESSIVO",
+            f=f
+        )
+        _compute_and_write_mixed_markov(
+            outcome_to_mnl_pairs,
+            from_states_labels=['Loss', 'Win'],
+            to_states_labels=['Unfavorable', 'Even', 'Favorable'],
+            title="5. OUTCOME PARTITA PRECEDENTE vs MATCHUP NO-LVL SUCCESSIVO",
+            f=f
+        )
+        _compute_and_write_mixed_markov(
+            outcome_to_lvl_pairs,
+            from_states_labels=['Loss', 'Win'],
+            to_states_labels=['Disadvantage', 'Even', 'Advantage'],
+            title="6. OUTCOME PARTITA PRECEDENTE vs LEVEL DIFF SUCCESSIVO",
+            f=f
+        )
         
         f.write("="*120 + "\n")
 

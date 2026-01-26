@@ -3,7 +3,7 @@ Obiettivo: Verificare se le carte 'Sniper' (Alto Lift nei Counter) sono artefatt
 Fattori: 1. Orario (Notte?), 2. Sotto-fasce (Concentrazione?), 3. Player Specialist (Pochi avversari?).
 ================================================================================
 
-CARTA: GRAVEYARD (Lift: 3.41x, Global Freq: 2.8%, N=17)
+CARTA: GRAVEYARD (Lift: 3.43x, Global Freq: 2.8%, N=17)
 ------------------------------------------------------------
 1. ORARIO (00-07): 11.8% partite notturne.
 2. DISTRIBUZIONE SOTTO-FASCE:
@@ -14,16 +14,7 @@ CARTA: GRAVEYARD (Lift: 3.41x, Global Freq: 2.8%, N=17)
 3. AVVERSARI UNICI: 17 su 17 partite (100.0%)
    -> OK: Avversari vari.
 
-CARTA: DAGGER DUCHESS (Lift: 2.68x, Global Freq: 0.8%, N=5)
-------------------------------------------------------------
-1. ORARIO (00-07): 20.0% partite notturne.
-2. DISTRIBUZIONE SOTTO-FASCE:
-   7500-7750: 60.0% (3)
-   7750-8000: 40.0% (2)
-3. AVVERSARI UNICI: 5 su 5 partite (100.0%)
-   -> OK: Avversari vari.
-
-CARTA: ELECTRO GIANT (Lift: 2.68x, Global Freq: 2.5%, N=15)
+CARTA: ELECTRO GIANT (Lift: 2.69x, Global Freq: 2.5%, N=15)
 ------------------------------------------------------------
 1. ORARIO (00-07): 20.0% partite notturne.
 2. DISTRIBUZIONE SOTTO-FASCE:
@@ -32,7 +23,7 @@ CARTA: ELECTRO GIANT (Lift: 2.68x, Global Freq: 2.5%, N=15)
 3. AVVERSARI UNICI: 15 su 15 partite (100.0%)
    -> OK: Avversari vari.
 
-CARTA: GOBLIN HUT (Lift: 2.48x, Global Freq: 3.0%, N=18)
+CARTA: GOBLIN HUT (Lift: 2.49x, Global Freq: 3.0%, N=18)
 ------------------------------------------------------------
 1. ORARIO (00-07): 27.8% partite notturne.
 2. DISTRIBUZIONE SOTTO-FASCE:
@@ -43,7 +34,7 @@ CARTA: GOBLIN HUT (Lift: 2.48x, Global Freq: 3.0%, N=18)
 3. AVVERSARI UNICI: 18 su 18 partite (100.0%)
    -> OK: Avversari vari.
 
-CARTA: ICE WIZARD (Lift: 2.32x, Global Freq: 4.2%, N=25)
+CARTA: ICE WIZARD (Lift: 2.33x, Global Freq: 4.2%, N=25)
 ------------------------------------------------------------
 1. ORARIO (00-07): 20.0% partite notturne.
 2. DISTRIBUZIONE SOTTO-FASCE:
@@ -52,5 +43,16 @@ CARTA: ICE WIZARD (Lift: 2.32x, Global Freq: 4.2%, N=25)
    7500-7750: 40.0% (10)
    7750-8000: 4.0% (1)
 3. AVVERSARI UNICI: 25 su 25 partite (100.0%)
+   -> OK: Avversari vari.
+
+CARTA: BERSERKER (Lift: 2.24x, Global Freq: 2.7%, N=16)
+------------------------------------------------------------
+1. ORARIO (00-07): 31.2% partite notturne.
+2. DISTRIBUZIONE SOTTO-FASCE:
+   7000-7250: 18.8% (3)
+   7250-7500: 6.2% (1)
+   7500-7750: 56.2% (9)
+   7750-8000: 18.8% (3)
+3. AVVERSARI UNICI: 16 su 16 partite (100.0%)
    -> OK: Avversari vari.
 ================================================================================

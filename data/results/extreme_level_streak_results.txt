@@ -3,7 +3,7 @@ Obiettivo: Verificare se il sistema genera sequenze di partite con svantaggio di
 Metodo: Confronto con Teorico, Global Shuffle e Intra-Session Shuffle.
 Nota: Global Shuffle può essere distorto dalla progressione naturale (Climbing). Intra-Session è il più affidabile.
 ================================================================================
-Totale Battaglie: 6961
+Totale Battaglie: 6965
 Totale Finestre (Opportunità): 3638
 Soglie: Vantaggio > 0.5, Svantaggio < -0.5 (Delta Livello)
 --------------------------------------------------------------------------------
@@ -11,16 +11,16 @@ Soglie: Vantaggio > 0.5, Svantaggio < -0.5 (Delta Livello)
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 79         | 2.1715     | 1.00x          
-Teorico (p^3)             | 13.40      | 0.3683     | 5.90           
-Global Shuffle            | 59.03      | 1.6226     | 1.34           
-Intra-Session Shuffle     | 76.81      | 2.1112     | 1.03           
+Teorico (p^3)             | 13.38      | 0.3677     | 5.91           
+Global Shuffle            | 59.01      | 1.6221     | 1.34           
+Intra-Session Shuffle     | 76.76      | 2.1099     | 1.03           
 
 --- Svantaggio Livelli (< -0.5) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 174        | 4.7828     | 1.00x          
-Teorico (p^3)             | 13.85      | 0.3808     | 12.56          
-Global Shuffle            | 112.88     | 3.1029     | 1.54           
-Intra-Session Shuffle     | 162.91     | 4.4780     | 1.07           
+Teorico (p^3)             | 13.87      | 0.3812     | 12.55          
+Global Shuffle            | 112.90     | 3.1034     | 1.54           
+Intra-Session Shuffle     | 162.89     | 4.4775     | 1.07           
 
 ================================================================================

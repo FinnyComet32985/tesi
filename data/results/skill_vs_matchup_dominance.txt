@@ -6,23 +6,23 @@ Metodo: Skill misurata come 'Efficienza Elisir' (Net Elixir Leaked).
 MATCHUP    | SKILL (vs Opp)  | N. MATCH   | WIN RATE   | INTERPRETAZIONE
 ----------------------------------------------------------------------------------------------------
 Bad        | Better          | 1542       | 45.78     % | -> SKILL UPSET? (Riesci a vincere contro i pronostici?)
-Bad        | Worse           | 1149       | 33.77     % | 
+Bad        | Worse           | 1150       | 33.74     % | 
 ----------------------------------------------------------------------------------------------------
-Even       | Better          | 804        | 56.97     % | 
+Even       | Better          | 805        | 56.89     % | 
 Even       | Worse           | 603        | 49.92     % | 
 ----------------------------------------------------------------------------------------------------
-Good       | Better          | 1484       | 70.82     % | 
-Good       | Worse           | 1147       | 65.30     % | -> DECK CARRY? (Vinci anche giocando male?)
+Good       | Better          | 1485       | 70.84     % | 
+Good       | Worse           | 1148       | 65.33     % | -> DECK CARRY? (Vinci anche giocando male?)
 ----------------------------------------------------------------------------------------------------
 
 ====================================================================================================
 ANALISI PRESSIONE PSICOLOGICA (Il Counter fa sbagliare?)
 Ipotesi: Se il giocatore spreca più elisir nei Bad Matchup, la sconfitta è parzialmente colpa della pressione.
 ----------------------------------------------------------------------------------------------------
-Avg Elixir Leaked in BAD Matchup:  4.0473
-Avg Elixir Leaked in GOOD Matchup: 3.7156
-Delta (Bad - Good): +0.3317
-Test Mann-Whitney U (Bad > Good): p-value = 0.0394
+Avg Elixir Leaked in BAD Matchup:  4.0466
+Avg Elixir Leaked in GOOD Matchup: 3.7165
+Delta (Bad - Good): +0.3301
+Test Mann-Whitney U (Bad > Good): p-value = 0.0412
 RISULTATO: SIGNIFICATIVO. I giocatori giocano PEGGIO (leakano di più) quando sono counterati.
            (Conferma l'ipotesi della Pressione/Tilt indotto dal mazzo).
 ====================================================================================================

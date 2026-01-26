@@ -4,7 +4,7 @@ Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) p
 Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.
 ====================================================================================================
 
-Totale Battaglie Analizzate: 6961
+Totale Battaglie Analizzate: 6965
 Bucket: 4000-5000 | Orario: 16:00-24:00 | Battles: 154
 Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.387548 -> Non significativo
@@ -37,7 +37,7 @@ Bucket: 7000-8000 | Orario: 08:00-16:00 | Battles: 174
 Confronto tra 11 Archetipi Player vs 5 Archetipi Opponent
 P-value: 0.362912 -> Non significativo
 ------------------------------------------------------------
-Bucket: 7000-8000 | Orario: 16:00-24:00 | Battles: 242
+Bucket: 7000-8000 | Orario: 16:00-24:00 | Battles: 245
 Confronto tra 13 Archetipi Player vs 9 Archetipi Opponent
 P-value: 0.359426 -> Non significativo
 ------------------------------------------------------------
@@ -53,7 +53,7 @@ Bucket: 10000-11000 | Orario: 08:00-16:00 | Battles: 511
 Confronto tra 8 Archetipi Player vs 3 Archetipi Opponent
 P-value: 0.162417 -> Non significativo
 ------------------------------------------------------------
-Bucket: 10000-11000 | Orario: 16:00-24:00 | Battles: 832
+Bucket: 10000-11000 | Orario: 16:00-24:00 | Battles: 833
 Confronto tra 23 Archetipi Player vs 17 Archetipi Opponent
 P-value: 0.216650 -> Non significativo
 ------------------------------------------------------------

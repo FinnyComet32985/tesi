@@ -7,57 +7,57 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
     Hard Counters: Mother Witch, Poison...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 865        | 21         | 2.43      %
+    VULNERABILI          | 868        | 21         | 2.42      %
     NON-VULNERABILI      | 1151       | 40         | 3.48      %
     RATIO (Vuln/Safe): 0.70x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: ELECTRO GIANT
-    Hard Counters: P.E.K.K.A, Inferno Tower, Mini P.E.K.K.A, Elite Barbarians...
+    Hard Counters: Inferno Tower, Inferno Dragon, Mini P.E.K.K.A, P.E.K.K.A...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 914        | 20         | 2.19      %
+    VULNERABILI          | 917        | 20         | 2.18      %
     NON-VULNERABILI      | 1102       | 28         | 2.54      %
     RATIO (Vuln/Safe): 0.86x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: SPARKY
-    Hard Counters: Lightning, Electro Wizard, Electro Dragon, Rocket...
+    Hard Counters: Lightning, Zappies, Rocket, Electro Wizard...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 743        | 34         | 4.58      %
+    VULNERABILI          | 746        | 34         | 4.56      %
     NON-VULNERABILI      | 1273       | 76         | 5.97      %
-    RATIO (Vuln/Safe): 0.77x
+    RATIO (Vuln/Safe): 0.76x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: BALLOON
-    Hard Counters: Hunter, Mega Minion, Ram Rider, Rocket...
+    Hard Counters: Inferno Tower, Hunter, Mega Minion, Ram Rider...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 680        | 42         | 6.18      %
+    VULNERABILI          | 683        | 42         | 6.15      %
     NON-VULNERABILI      | 1336       | 85         | 6.36      %
     RATIO (Vuln/Safe): 0.97x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: LAVA HOUND
-    Hard Counters: Inferno Tower, Executioner, Inferno Dragon...
+    Hard Counters: Inferno Tower, Inferno Dragon, Executioner...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 978        | 13         | 1.33      %
+    VULNERABILI          | 981        | 13         | 1.33      %
     NON-VULNERABILI      | 1038       | 8          | 0.77      %
     RATIO (Vuln/Safe): 1.72x
     -> EVIDENZA DI TARGETING (!)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: GOLEM
-    Hard Counters: P.E.K.K.A, Inferno Tower, Mini P.E.K.K.A, Elite Barbarians...
+    Hard Counters: Inferno Tower, Inferno Dragon, Mini P.E.K.K.A, P.E.K.K.A...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 868        | 55         | 6.34      %
+    VULNERABILI          | 871        | 55         | 6.31      %
     NON-VULNERABILI      | 1148       | 78         | 6.79      %
     RATIO (Vuln/Safe): 0.93x
     -> NESSUN TARGETING (Paradosso)
