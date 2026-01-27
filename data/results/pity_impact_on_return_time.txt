@@ -6,51 +6,51 @@ Definizione Pity Match: Matchup > 60.0%
 --- EVENTO: Loss ---
 Gruppo          | N        | Avg Return Time (Ore)    
 -------------------------------------------------------
-Con Pity        | 657      | 13.26                    
-Senza Pity      | 1477     | 12.06                    
+Con Pity        | 672      | 14.07                    
+Senza Pity      | 1509     | 12.57                    
 -------------------------------------------------------
 Test Mann-Whitney U (Pity < NoPity):
-P-value: 0.8143
+P-value: 0.8842
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=2) ---
 Gruppo          | N        | Avg Return Time (Ore)    
 -------------------------------------------------------
-Con Pity        | 224      | 15.03                    
-Senza Pity      | 447      | 12.97                    
+Con Pity        | 229      | 15.00                    
+Senza Pity      | 458      | 14.02                    
 -------------------------------------------------------
 Test Mann-Whitney U (Pity < NoPity):
-P-value: 0.5797
+P-value: 0.6719
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Loss Streak (>=3) ---
 Gruppo          | N        | Avg Return Time (Ore)    
 -------------------------------------------------------
-Con Pity        | 69       | 14.62                    
-Senza Pity      | 167      | 12.37                    
+Con Pity        | 70       | 14.76                    
+Senza Pity      | 172      | 13.84                    
 -------------------------------------------------------
 Test Mann-Whitney U (Pity < NoPity):
-P-value: 0.7863
+P-value: 0.8237
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter (Loss <40%) ---
 Gruppo          | N        | Avg Return Time (Ore)    
 -------------------------------------------------------
-Con Pity        | 192      | 10.73                    
-Senza Pity      | 695      | 11.90                    
+Con Pity        | 199      | 13.25                    
+Senza Pity      | 713      | 12.21                    
 -------------------------------------------------------
 Test Mann-Whitney U (Pity < NoPity):
-P-value: 0.4762
+P-value: 0.5215
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=2) ---
 Gruppo          | N        | Avg Return Time (Ore)    
 -------------------------------------------------------
-Con Pity        | 34       | 13.63                    
-Senza Pity      | 139      | 14.22                    
+Con Pity        | 35       | 13.27                    
+Senza Pity      | 142      | 13.94                    
 -------------------------------------------------------
 Test Mann-Whitney U (Pity < NoPity):
-P-value: 0.8341
+P-value: 0.8304
 RISULTATO: NON SIGNIFICATIVO.
 
 --- EVENTO: Counter Streak (>=3) ---

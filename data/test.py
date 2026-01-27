@@ -5,10 +5,12 @@ import statistics
 import os
 import numpy as np
 from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu, ttest_1samp, binomtest    
-import pytz
 
 # Import data loader from battlelog_v2
 from battlelog_v2 import get_players_sessions
+from test_time_analysis import get_local_hour
+
+
 
 
 def calculate_variance_ratio(data, f=None):
@@ -363,259 +365,185 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None, use_no_lvl
         write_section(f"MATCHUP FAVOREVOLI (> {HIGH_THRESH}%)", obs_high_streaks, exp_high_theory, avg_global_high, avg_intra_high)
         write_section(f"MATCHUP SFAVOREVOLI (< {LOW_THRESH}%)", obs_low_streaks, exp_low_theory, avg_global_low, avg_intra_low)
 
-COUNTRY_TZ_MAP = {
-    'Italy': 'Europe/Rome', 'IT': 'Europe/Rome',
-    'United States': 'America/New_York', 'US': 'America/New_York',
-    'Germany': 'Europe/Berlin', 'DE': 'Europe/Berlin',
-    'France': 'Europe/Paris', 'FR': 'Europe/Paris',
-    'Spain': 'Europe/Madrid', 'ES': 'Europe/Madrid',
-    'United Kingdom': 'Europe/London', 'GB': 'Europe/London', 'UK': 'Europe/London',
-    'Russia': 'Europe/Moscow', 'RU': 'Europe/Moscow',
-    'Japan': 'Asia/Tokyo', 'JP': 'Asia/Tokyo',
-    'China': 'Asia/Shanghai', 'CN': 'Asia/Shanghai',
-    'Brazil': 'America/Sao_Paulo', 'BR': 'America/Sao_Paulo',
-    'Canada': 'America/Toronto', 'CA': 'America/Toronto',
-    'Mexico': 'America/Mexico_City', 'MX': 'America/Mexico_City',
-    'Korea, Republic of': 'Asia/Seoul', 'KR': 'Asia/Seoul',
-    'Netherlands': 'Europe/Amsterdam', 'NL': 'Europe/Amsterdam'
-}
-
-def get_local_hour(timestamp_str, nationality):
-    try:
-        # Timestamp string is in Italian local time (from battlelog_v2)
-        italy_tz = pytz.timezone('Europe/Rome')
-        naive_dt = datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S')
-        italy_dt = italy_tz.localize(naive_dt)
-        
-        target_tz_name = COUNTRY_TZ_MAP.get(nationality, 'Europe/Rome')
-        target_tz = pytz.timezone(target_tz_name)
-        player_dt = italy_dt.astimezone(target_tz)
-        return player_dt.hour
-    except Exception:
-        return datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').hour
-
 def analyze_confounding_factors(players_sessions, output_dir=None):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
     os.makedirs(output_dir, exist_ok=True)
     output_file = os.path.join(output_dir, 'confounding_factors_results.txt')
 
-    print(f"\nGenerazione report fattori confondenti (Orario/Deck) in: {output_file}")
+    print(f"\nGenerazione report fattori confondenti (Orario/Trofei/Deck) in: {output_file}")
 
-    # Soglie
-    HIGH_THRESH = 80.0
-    LOW_THRESH = 40.0
-    STREAK_LEN = 3
-
-    # --- 1. ANALISI ORARIA (Globale) ---
-    # Fasce: 0=Notte(0-6), 1=Mattina(6-12), 2=Pom(12-18), 3=Sera(18-24)
-    time_slots = {0: "Notte (00-06)", 1: "Mattina (06-12)", 2: "Pomeriggio (12-18)", 3: "Sera (18-24)"}
+    # Configurazione Metriche
+    metrics_config = [
+        {'name': 'Matchup (Reale)', 'key': 'matchup', 'high': 80.0, 'low': 40.0},
+        {'name': 'Matchup (No-Lvl)', 'key': 'matchup_no_lvl', 'high': 80.0, 'low': 40.0},
+        {'name': 'Level Diff', 'key': 'level_diff', 'high': 0.5, 'low': -0.5}
+    ]
     
-    # [Slot] -> {'total_windows': 0, 'streak_windows': 0}
-    time_stats = {k: {'total': 0, 'streak': 0} for k in time_slots}
-
-    # --- 2. ANALISI DECK (Per Player) ---
-    deck_independence_count = 0
-    deck_total_tested = 0
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI FATTORI CONFONDENTI: ORARIO E DECK\n")
-        f.write("Obiettivo: Dimostrare che le streak sono indipendenti da orario e mazzo usato.\n")
-        f.write("="*80 + "\n\n")
-
-        for p in players_sessions:
-            # Per analisi Deck del singolo player
-            # DeckID -> {'total': 0, 'streak': 0}
-            player_deck_stats = {}
-            nationality = p.get('nationality')
-
-            for session in p['sessions']:
-                battles = [b for b in session['battles'] if b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked']
-                if len(battles) < STREAK_LEN: continue
-
-                for i in range(len(battles) - STREAK_LEN + 1):
-                    window = battles[i : i+STREAK_LEN]
-                    matchups = [b['matchup'] for b in window if b['matchup'] is not None]
-                    
-                    if len(matchups) < STREAK_LEN: continue
-
-                    # Dati finestra
-                    first_b = window[0]
-                    hour = get_local_hour(first_b['timestamp'], nationality)
-                    deck_id = first_b.get('deck_id')
-
-                    # Determina Fascia Oraria
-                    slot = 0
-                    if 6 <= hour < 12: slot = 1
-                    elif 12 <= hour < 18: slot = 2
-                    elif 18 <= hour < 24: slot = 3
-                    
-                    # Determina se è Streak (High o Low)
-                    is_streak = all(m > HIGH_THRESH for m in matchups) or all(m < LOW_THRESH for m in matchups)
-
-                    # Aggiorna Time Stats (Globale)
-                    time_stats[slot]['total'] += 1
-                    if is_streak:
-                        time_stats[slot]['streak'] += 1
-
-                    # Aggiorna Deck Stats (Player)
-                    if deck_id:
-                        if deck_id not in player_deck_stats:
-                            player_deck_stats[deck_id] = {'total': 0, 'streak': 0}
-                        player_deck_stats[deck_id]['total'] += 1
-                        if is_streak:
-                            player_deck_stats[deck_id]['streak'] += 1
-
-            # Test Chi-Quadro Deck per il player corrente
-            # Consideriamo solo i top 3 mazzi per avere dati significativi
-            sorted_decks = sorted(player_deck_stats.items(), key=lambda x: x[1]['total'], reverse=True)[:3]
-            if len(sorted_decks) >= 2:
-                # Costruiamo tabella contingenza: [[Streak_D1, NoStreak_D1], [Streak_D2, NoStreak_D2], ...]
-                obs = []
-                valid_decks = 0
-                for d_id, stats in sorted_decks:
-                    if stats['total'] > 10: # Minimo 10 finestre per validità
-                        obs.append([stats['streak'], stats['total'] - stats['streak']])
-                        valid_decks += 1
-                
-                if valid_decks >= 2:
-                    deck_total_tested += 1
-                    try:
-                        chi2, p, dof, ex = chi2_contingency(obs)
-                        if p > 0.05:
-                            deck_independence_count += 1
-                    except ValueError:
-                        # Se fallisce (es. 0 streak totali), assumiamo indipendenza
-                        deck_independence_count += 1
-
-        # --- SCRITTURA RISULTATI TIME ---
-        f.write("1. ANALISI ORARIA (Globale)\n")
-        f.write(f"{'Fascia Oraria':<25} | {'Tot Finestre':<15} | {'Streak Trovate':<15} | {'Streak Rate %':<15}\n")
-        f.write("-" * 80 + "\n")
-        
-        time_obs = []
-        for slot in sorted(time_stats.keys()):
-            s = time_stats[slot]
-            rate = (s['streak'] / s['total'] * 100) if s['total'] > 0 else 0
-            f.write(f"{time_slots[slot]:<25} | {s['total']:<15} | {s['streak']:<15} | {rate:<15.2f}%\n")
-            if s['total'] > 0:
-                time_obs.append([s['streak'], s['total'] - s['streak']])
-        
-        p_time = 1.0
-        res_time = "Dati insufficienti"
-
-        if len(time_obs) >= 2:
-            # Verifica che ci siano sia streak che non-streak nel totale per evitare expected=0
-            total_streaks = sum(row[0] for row in time_obs)
-            total_non_streaks = sum(row[1] for row in time_obs)
-            
-            if total_streaks > 0 and total_non_streaks > 0:
-                try:
-                    chi2_time, p_time, _, _ = chi2_contingency(time_obs)
-                    res_time = "INDIPENDENTE (L'orario NON influisce)" if p_time > 0.05 else "DIPENDENTE (L'orario influisce)"
-                except ValueError:
-                    res_time = "Errore calcolo (Freq attesa 0)"
-            else:
-                res_time = "INDIPENDENTE (Dati costanti/0 eventi)"
-        
-        f.write("-" * 80 + "\n")
-        f.write(f"Test Chi-Quadro Indipendenza Oraria:\n")
-        f.write(f"P-value: {p_time:.4f}\n")
-        f.write(f"Risultato: {res_time}\n\n")
-
-        # --- SCRITTURA RISULTATI DECK ---
-        f.write("2. ANALISI DECK (Aggregata per Player)\n")
-        f.write("Verifica se la probabilità di streak cambia cambiando mazzo (tra i mazzi più usati).\n")
-        f.write("-" * 80 + "\n")
-        f.write(f"Player analizzati (con almeno 2 mazzi usati >10 volte): {deck_total_tested}\n")
-        f.write(f"Player con streak INDIPENDENTI dal mazzo (p > 0.05):    {deck_independence_count}\n")
-        perc = (deck_independence_count / deck_total_tested * 100) if deck_total_tested > 0 else 0
-        f.write(f"Percentuale Indipendenza: {perc:.2f}%\n")
-        f.write("="*80 + "\n")
-
-
-def analyze_time_matchup_stats(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'time_matchup_stats.txt')
-
-    print(f"\nGenerazione report statistiche temporali in: {output_file}")
-
+    STREAK_LEN = 3
+    TROPHY_BUCKET = 1000
     time_slots = {0: "Notte (00-06)", 1: "Mattina (06-12)", 2: "Pomeriggio (12-18)", 3: "Sera (18-24)"}
-    # Slot -> list of matchups
-    samples = {k: [] for k in time_slots}
-
-    for p in players_sessions:
-        nationality = p.get('nationality')
-        for session in p['sessions']:
-            for b in session['battles']:
-                if b['matchup'] is not None:
-                    h = get_local_hour(b['timestamp'], nationality)
-                    slot = 0
-                    if 6 <= h < 12: slot = 1
-                    elif 12 <= h < 18: slot = 2
-                    elif 18 <= h < 24: slot = 3
-                    
-                    samples[slot].append(b['matchup'])
 
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI STATISTICA MATCHUP PER FASCIA ORARIA\n")
-        f.write("Obiettivo: Verificare se Media e Varianza del matchup cambiano durante il giorno.\n")
+        f.write("ANALISI FATTORI CONFONDENTI: ORARIO, TROFEI, DECK\n")
+        f.write("Obiettivo: Verificare se la probabilità di STREAK (serie di matchup estremi) dipende da fattori esterni.\n")
+        f.write("Ipotesi Nulla: Le streak sono distribuite uniformemente rispetto a orario, trofei e mazzo.\n")
         f.write("="*80 + "\n\n")
-        
-        f.write(f"{'Fascia Oraria':<20} | {'N. Partite':<12} | {'Media MU':<10} | {'StdDev':<10} | {'Varianza':<10}\n")
-        f.write("-" * 75 + "\n")
 
-        valid_samples = [] # List of arrays for statistical tests
-        
-        for slot in sorted(time_slots.keys()):
-            data = samples[slot]
-            if not data:
-                f.write(f"{time_slots[slot]:<20} | {'0':<12} | {'-':<10} | {'-':<10} | {'-':<10}\n")
-                continue
+        for metric in metrics_config:
+            m_name = metric['name']
+            m_key = metric['key']
+            high_thresh = metric['high']
+            low_thresh = metric['low']
             
-            avg = statistics.mean(data)
-            stdev = statistics.stdev(data) if len(data) > 1 else 0
-            var = stdev ** 2
-            
-            f.write(f"{time_slots[slot]:<20} | {len(data):<12} | {avg:<10.2f} | {stdev:<10.2f} | {var:<10.2f}\n")
-            
-            valid_samples.append(data)
+            f.write(f"{'='*80}\n")
+            f.write(f"METRICA: {m_name}\n")
+            f.write(f"Soglie Streak ({STREAK_LEN} match): High > {high_thresh}, Low < {low_thresh}\n")
+            f.write(f"{'='*80}\n\n")
 
-        f.write("-" * 75 + "\n\n")
-        f.write("TEST STATISTICI:\n")
-        
-        if len(valid_samples) < 2:
-            f.write("Dati insufficienti per i test (servono almeno 2 fasce orarie con dati).\n")
-        else:
-            # 1. Kruskal-Wallis (Non-parametric ANOVA) for Location/Mean
-            try:
-                stat_k, p_k = kruskal(*valid_samples)
-                f.write("1. Kruskal-Wallis (Confronto Medie/Distribuzione):\n")
-                f.write(f"   P-value: {p_k:.4f}\n")
-                res_k = "DIFFERENZA SIGNIFICATIVA (Il matchup medio cambia?)" if p_k < 0.05 else "NESSUNA DIFFERENZA (Matchup medio costante)"
-                f.write(f"   Risultato: {res_k}\n\n")
-            except Exception as e:
-                f.write(f"   Errore Kruskal-Wallis: {e}\n\n")
+            # Reset Stats per metrica
+            time_stats = {k: {'total': 0, 'streak': 0} for k in time_slots}
+            trophy_stats = {} # bucket -> {'total': 0, 'streak': 0}
+            
+            deck_independence_count = 0
+            deck_total_tested = 0
 
-            # 2. Levene Test for Variance
-            try:
-                stat_l, p_l = levene(*valid_samples)
-                f.write("2. Levene Test (Confronto Varianze):\n")
-                f.write(f"   P-value: {p_l:.4f}\n")
-                res_l = "DIFFERENZA SIGNIFICATIVA (La variabilità del matchup cambia?)" if p_l < 0.05 else "NESSUNA DIFFERENZA (Variabilità costante)"
-                f.write(f"   Risultato: {res_l}\n\n")
+            for p in players_sessions:
+                nationality = p.get('nationality')
+                # Per analisi Deck del singolo player
+                # DeckID -> {'total': 0, 'streak': 0}
+                player_deck_stats = {}
+
+                for session in p['sessions']:
+                    battles = [b for b in session['battles'] if b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked']
+                    if len(battles) < STREAK_LEN: continue
+
+                    for i in range(len(battles) - STREAK_LEN + 1):
+                        window = battles[i : i+STREAK_LEN]
+                        values = [b.get(m_key) for b in window]
+                        
+                        # Skip windows with missing values
+                        if any(v is None for v in values): continue
+
+                        # Dati finestra
+                        first_b = window[0]
+                        
+                        # --- TIME ---
+                        slot = None
+                        if 'timestamp' in first_b:
+                            h = get_local_hour(first_b['timestamp'], nationality)
+                            if 6 <= h < 12: slot = 1
+                            elif 12 <= h < 18: slot = 2
+                            elif 18 <= h < 24: slot = 3
+                            else: slot = 0
+
+                        # --- TROPHIES ---
+                        t = first_b.get('trophies_before')
+                        bucket = (t // TROPHY_BUCKET) * TROPHY_BUCKET if t else None
+
+                        # --- DECK ---
+                        deck_id = first_b.get('deck_id')
+
+                        # Determina se è Streak (High o Low)
+                        is_streak = all(v > high_thresh for v in values) or all(v < low_thresh for v in values)
+
+                        # Update Time
+                        if slot is not None:
+                            time_stats[slot]['total'] += 1
+                            if is_streak: time_stats[slot]['streak'] += 1
+                        
+                        # Update Trophies
+                        if bucket is not None:
+                            if bucket not in trophy_stats: trophy_stats[bucket] = {'total': 0, 'streak': 0}
+                            trophy_stats[bucket]['total'] += 1
+                            if is_streak: trophy_stats[bucket]['streak'] += 1
+
+                        # Aggiorna Deck Stats (Player)
+                        if deck_id:
+                            if deck_id not in player_deck_stats:
+                                player_deck_stats[deck_id] = {'total': 0, 'streak': 0}
+                            player_deck_stats[deck_id]['total'] += 1
+                            if is_streak:
+                                player_deck_stats[deck_id]['streak'] += 1
+
+                # Test Chi-Quadro Deck per il player corrente
+                # Consideriamo solo i top 3 mazzi per avere dati significativi
+                sorted_decks = sorted(player_deck_stats.items(), key=lambda x: x[1]['total'], reverse=True)[:3]
+                if len(sorted_decks) >= 2:
+                    # Costruiamo tabella contingenza: [[Streak_D1, NoStreak_D1], [Streak_D2, NoStreak_D2], ...]
+                    obs = []
+                    valid_decks = 0
+                    for d_id, stats in sorted_decks:
+                        if stats['total'] > 10: # Minimo 10 finestre per validità
+                            obs.append([stats['streak'], stats['total'] - stats['streak']])
+                            valid_decks += 1
+                    
+                    if valid_decks >= 2:
+                        deck_total_tested += 1
+                        try:
+                            chi2, p, dof, ex = chi2_contingency(obs)
+                            if p > 0.05:
+                                deck_independence_count += 1
+                        except ValueError:
+                            # Se fallisce (es. 0 streak totali), assumiamo indipendenza
+                            deck_independence_count += 1
+
+            # --- REPORTING PER METRICA ---
+
+            # 1. TIME
+            f.write("1. ANALISI ORARIA (Globale)\n")
+            f.write(f"{'Fascia Oraria':<25} | {'Tot Finestre':<15} | {'Streak':<10} | {'Rate %':<10}\n")
+            f.write("-" * 70 + "\n")
+            
+            time_obs = []
+            for slot in sorted(time_slots.keys()):
+                s = time_stats[slot]
+                rate = (s['streak'] / s['total'] * 100) if s['total'] > 0 else 0
+                f.write(f"{time_slots[slot]:<25} | {s['total']:<15} | {s['streak']:<10} | {rate:<10.2f}%\n")
+                if s['total'] > 0:
+                    time_obs.append([s['streak'], s['total'] - s['streak']])
+            
+            if len(time_obs) >= 2:
+                try:
+                    chi2, p, _, _ = chi2_contingency(time_obs)
+                    res = "DIPENDENTE (L'orario influisce)" if p < 0.05 else "INDIPENDENTE (L'orario NON influisce)"
+                    f.write(f"\nTest Chi-Quadro: p-value = {p:.4f} -> {res}\n")
+                except:
+                    f.write("\nTest Chi-Quadro: Errore (Dati insufficienti)\n")
+            f.write("\n")
+
+            # 2. TROPHIES
+            f.write("2. ANALISI TROFEI (Globale)\n")
+            f.write(f"{'Fascia Trofei':<25} | {'Tot Finestre':<15} | {'Streak':<10} | {'Rate %':<10}\n")
+            f.write("-" * 70 + "\n")
+            
+            trophy_obs = []
+            for bucket in sorted(trophy_stats.keys()):
+                s = trophy_stats[bucket]
+                if s['total'] < 50: continue # Skip low sample buckets
+                rate = (s['streak'] / s['total'] * 100) if s['total'] > 0 else 0
+                label = f"{bucket}-{bucket+TROPHY_BUCKET}"
+                f.write(f"{label:<25} | {s['total']:<15} | {s['streak']:<10} | {rate:<10.2f}%\n")
+                trophy_obs.append([s['streak'], s['total'] - s['streak']])
                 
-                if p_l < 0.05:
-                    f.write("   NOTA: Una varianza diversa suggerisce che in certe fasce orarie\n")
-                    f.write("   il matchmaking è più 'lasco' o la popolazione di player è diversa,\n")
-                    f.write("   creando più matchup estremi (streak) anche se la media è simile.\n")
-            except Exception as e:
-                f.write(f"   Errore Levene Test: {e}\n\n")
-        
-        f.write("="*80 + "\n")
+            if len(trophy_obs) >= 2:
+                try:
+                    chi2, p, _, _ = chi2_contingency(trophy_obs)
+                    res = "DIPENDENTE (I trofei influiscono)" if p < 0.05 else "INDIPENDENTE (I trofei NON influiscono)"
+                    f.write(f"\nTest Chi-Quadro: p-value = {p:.4f} -> {res}\n")
+                except:
+                    f.write("\nTest Chi-Quadro: Errore (Dati insufficienti)\n")
+            f.write("\n")
 
+            # 3. DECK
+            f.write("3. ANALISI DECK (Aggregata per Player)\n")
+            f.write("Verifica se la probabilità di streak cambia cambiando mazzo (tra i mazzi più usati).\n")
+            f.write("-" * 80 + "\n")
+            f.write(f"Player analizzati (con almeno 2 mazzi usati >10 volte): {deck_total_tested}\n")
+            f.write(f"Player con streak INDIPENDENTI dal mazzo (p > 0.05):    {deck_independence_count}\n")
+            perc = (deck_independence_count / deck_total_tested * 100) if deck_total_tested > 0 else 0
+            f.write(f"Percentuale Indipendenza: {perc:.2f}%\n")
+            f.write("="*80 + "\n\n")
 
 def analyze_deck_switch_impact(players_sessions, output_dir=None):
     if output_dir is None:
@@ -3441,7 +3369,6 @@ def main():
     analyze_session_pity(players_sessions)
     analyze_extreme_matchup_streak(players_sessions)
     analyze_confounding_factors(players_sessions)
-    analyze_time_matchup_stats(players_sessions)
     analyze_deck_switch_impact(players_sessions)
     analyze_return_matchups_vs_ers(players_sessions)
     analyze_pity_impact_on_session_length(players_sessions)

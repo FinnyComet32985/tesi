@@ -3,10 +3,10 @@ Obiettivo 1: Capire quanto i livelli influenzano il matchup reale.
 ================================================================================
 
 1. IMPATTO DEI LIVELLI
-   Media Matchup REALE:   50.00%
-   Media Matchup NO-LVL:  49.24%
-   Delta Medio (Real-No): +0.76% (Positivo = Vantaggio Livelli)
-   Correlazione (Real vs NoLvl): 0.4358 (p=0.0000)
+   Media Matchup REALE:   49.95%
+   Media Matchup NO-LVL:  49.28%
+   Delta Medio (Real-No): +0.68% (Positivo = Vantaggio Livelli)
+   Correlazione (Real vs NoLvl): 0.4381 (p=0.0000)
    (Alta correlazione = I livelli contano poco; Bassa = I livelli stravolgono il matchup)
 
    Test Wilcoxon (Differenza Significativa): p-value = 0.0000

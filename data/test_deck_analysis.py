@@ -468,12 +468,12 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
     MIN_BATTLES_PER_BUCKET = 20 # Abbassato da 30
     MIN_BATTLES_PER_DECK = 3    # Abbassato da 5
 
-    # Data Structure: buckets[(time_slot, trophy_bucket)] = list of (player_deck, opp_deck)
+    # Data Structure: buckets[(time_slot, trophy_bucket, region)] = list of (player_deck, opp_deck)
     buckets = {}
     
     # Set per raccogliere tutti i deck ID da risolvere
     all_deck_ids = set()
-    temp_battles = [] # (time_slot, trophy_bucket, p_deck_id, o_deck_id)
+    temp_battles = [] # (time_slot, trophy_bucket, region, p_deck_id, o_deck_id)
 
     for p in players_sessions:
         nationality = p.get('nationality')
@@ -500,7 +500,7 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 time_slot = hour // TIME_SLOT_HOURS
                 trophy_bucket = (t // TROPHY_BUCKET_SIZE) * TROPHY_BUCKET_SIZE
                 
-                temp_battles.append((time_slot, trophy_bucket, p_deck, o_deck))
+                temp_battles.append((time_slot, trophy_bucket, nationality, p_deck, o_deck))
 
     # Risoluzione Archetipi in Batch
     print(f"Risoluzione archetipi per {len(all_deck_ids)} mazzi...")
@@ -515,17 +515,17 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
     conn.close()
 
     # Popolamento Buckets con Archetipi
-    for time_slot, trophy_bucket, p_id, o_id in temp_battles:
+    for time_slot, trophy_bucket, region, p_id, o_id in temp_battles:
         p_arch = deck_to_archetype.get(p_id, p_id) # Fallback su ID se manca archetipo
         o_arch = deck_to_archetype.get(o_id, o_id)
         
-        key = (time_slot, trophy_bucket)
+        key = (time_slot, trophy_bucket, region)
         if key not in buckets: buckets[key] = []
         buckets[key].append((p_arch, o_arch))
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("ANALISI FAIRNESS MATCHMAKING (DIPENDENZA DECK AVVERSARIO DAL PROPRIO DECK)\n")
-        f.write("Obiettivo: Verificare se, a parità di condizioni (Orario e Trofei), il mazzo che usi influenza gli avversari che trovi.\n")
+        f.write("Obiettivo: Verificare se, a parità di condizioni (Orario, Trofei e Regione), il mazzo che usi influenza gli avversari che trovi.\n")
         f.write("Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) per ogni bucket.\n")
         f.write("Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.\n")
         f.write("="*100 + "\n\n")
@@ -535,7 +535,7 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
         total_tested_buckets = 0
         skipped_buckets = 0
         
-        sorted_keys = sorted(buckets.keys(), key=lambda x: (x[1], x[0])) # Sort by Trophies then Time
+        sorted_keys = sorted(buckets.keys(), key=lambda x: (x[1], x[0], x[2] or "")) # Sort by Trophies then Time then Region
         
         for key in sorted_keys:
             battles = buckets[key]
@@ -543,9 +543,10 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 skipped_buckets += 1
                 continue
             
-            time_slot, trophy_bucket = key
+            time_slot, trophy_bucket, region = key
             time_label = f"{time_slot*TIME_SLOT_HOURS:02d}:00-{(time_slot+1)*TIME_SLOT_HOURS:02d}:00"
             range_label = f"{trophy_bucket}-{trophy_bucket+TROPHY_BUCKET_SIZE}"
+            region_label = region if region else "Unknown"
             
             # Count frequencies
             p_counts = {}
@@ -591,7 +592,7 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 
                 sig_str = "SIGNIFICATIVO (Rigged?)" if is_sig else "Non significativo"
                 
-                f.write(f"Bucket: {range_label} | Orario: {time_label} | Battles: {len(relevant_battles)}\n")
+                f.write(f"Bucket: {range_label} | Orario: {time_label} | Regione: {region_label} | Battles: {len(relevant_battles)}\n")
                 f.write(f"Confronto tra {len(valid_p_decks)} Archetipi Player vs {len(top_o_decks)} Archetipi Opponent\n")
                 f.write(f"P-value: {p:.6f} -> {sig_str}\n")
                 f.write("-" * 60 + "\n")

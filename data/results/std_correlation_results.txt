@@ -1,96 +1,98 @@
 Player: 20CCVVLUP0     -     std_dev: 8.15
 Player: 20GLGG298R     -     std_dev: 8.81
-Player: 20JGRJGY2Q     -     std_dev: 10.08
+Player: 20JGRJGY2Q     -     std_dev: 9.95
 Player: 20QG9YJ     -     std_dev: 5.95
-Player: 20QU8VLGU8     -     std_dev: 11.83
-Player: 20UV9C0CL     -     std_dev: 8.18
+Player: 20QU8VLGU8     -     std_dev: 11.46
+Player: 20UV9C0CL     -     std_dev: 7.68
 Player: 2PVCYY2Y     -     std_dev: 6.53
-Player: 2Q0JU0RR     -     std_dev: 10.11
-Player: 2RU2VCY80     -     std_dev: 7.35
+Player: 2Q0JU0RR     -     std_dev: 9.89
+Player: 2RU2VCY80     -     std_dev: 7.36
 Player: 8YGG82QR2     -     std_dev: 7.49
 Player: 9988CY9C     -     std_dev: 8.87
 Player: 9JJRVRJL     -     std_dev: 12.20
 Player: CCYRVRJCU     -     std_dev: 13.07
 Player: G0YP2GJV     -     std_dev: 4.82
-Player: J92L2CU0Q     -     std_dev: 7.42
-Player: JPLLR2V0V     -     std_dev: 6.68
-Player: JPYQPY8Y0     -     std_dev: 12.27
+Player: J92L2CU0Q     -     std_dev: 7.32
+Player: JPLLR2V0V     -     std_dev: 6.58
+Player: JPYQPY8Y0     -     std_dev: 12.21
 Player: JYRRRVVJJ     -     std_dev: 12.92
 Player: LJ9JU0CQU     -     std_dev: 14.90
-Player: P2RVYJ2UY     -     std_dev: 14.36
-Player: P8YJL0Y0     -     std_dev: 8.37
+Player: LPY29QCLV     -     std_dev: 9.45
+Player: P2RVYJ2UY     -     std_dev: 13.11
+Player: P8YJL0Y0     -     std_dev: 8.24
 Player: P9QQ0CL2     -     std_dev: 4.41
-Player: POGYQQ8UC     -     std_dev: 8.73
-Player: PQVYL0VJJ     -     std_dev: 8.31
+Player: POGYQQ8UC     -     std_dev: 8.78
+Player: PQVYL0VJJ     -     std_dev: 8.23
 Player: PY8YG0LJR     -     std_dev: 10.08
 Player: QJU20YUL     -     std_dev: 7.71
 Player: R82CV2C     -     std_dev: 7.13
-Player: RP9GVG9     -     std_dev: 5.76
+Player: RP9GVG9     -     std_dev: 6.36
 Player: RQ9JQPL90     -     std_dev: 6.46
 Player: UQJCY9JYJ     -     std_dev: 6.02
 Player: V9VPPPQL9     -     std_dev: 11.37
 Player: VCU8QQ98C     -     std_dev: 13.20
 Player: VGPLGPPQL     -     std_dev: 9.63
 Player: VQPU0R89G     -     std_dev: 13.38
-Player: VYURQLR00     -     std_dev: 9.59
+Player: VYURQLR00     -     std_dev: 9.37
 Player: Y9VQJVU08     -     std_dev: 7.08
 Player: YLCYCJ2YL     -     std_dev: 11.47
-Player: YU889LRR0     -     std_dev: 5.64
+Player: YU889LRR0     -     std_dev: 5.87
 
 ============================================================
  ANALISI VARIANZA SESSIONI vs FSI
 ============================================================
 Player: 20CCVVLUP0 | FSI: 0.11 | StdDev: 8.15 | Var: 66.50
 Player: 20GLGG298R | FSI: 0.59 | StdDev: 8.81 | Var: 77.55
-Player: 20JGRJGY2Q | FSI: 0.92 | StdDev: 10.08 | Var: 101.59
+Player: 20JGRJGY2Q | FSI: 0.95 | StdDev: 9.95 | Var: 99.06
 Player: 20QG9YJ    | FSI: 1.23 | StdDev: 5.95 | Var: 35.38
-Player: 20QU8VLGU8 | FSI: 1.08 | StdDev: 11.83 | Var: 140.03
-Player: 20UV9C0CL  | FSI: 1.60 | StdDev: 8.18 | Var: 66.95
+Player: 20QU8VLGU8 | FSI: 1.07 | StdDev: 11.46 | Var: 131.33
+Player: 20UV9C0CL  | FSI: 1.54 | StdDev: 7.68 | Var: 59.03
 Player: 2PVCYY2Y   | FSI: 0.67 | StdDev: 6.53 | Var: 42.66
-Player: 2Q0JU0RR   | FSI: 0.50 | StdDev: 10.11 | Var: 102.27
-Player: 2RU2VCY80  | FSI: 1.66 | StdDev: 7.35 | Var: 54.08
-Player: 8YGG82QR2  | FSI: 0.52 | StdDev: 7.49 | Var: 56.08
+Player: 2Q0JU0RR   | FSI: 0.51 | StdDev: 9.89 | Var: 97.80
+Player: 2RU2VCY80  | FSI: 1.56 | StdDev: 7.36 | Var: 54.23
+Player: 8YGG82QR2  | FSI: 0.51 | StdDev: 7.49 | Var: 56.08
 Player: 9988CY9C   | FSI: 0.44 | StdDev: 8.87 | Var: 78.61
 Player: 9JJRVRJL   | FSI: 0.87 | StdDev: 12.20 | Var: 148.93
 Player: CCYRVRJCU  | FSI: 0.52 | StdDev: 13.07 | Var: 170.73
-Player: G0YP2GJV   | FSI: 1.74 | StdDev: 4.82 | Var: 23.20
-Player: J92L2CU0Q  | FSI: 0.66 | StdDev: 7.42 | Var: 55.13
-Player: JPLLR2V0V  | FSI: 0.15 | StdDev: 6.68 | Var: 44.58
-Player: JPYQPY8Y0  | FSI: 0.71 | StdDev: 12.27 | Var: 150.56
+Player: G0YP2GJV   | FSI: 1.76 | StdDev: 4.82 | Var: 23.20
+Player: J92L2CU0Q  | FSI: 0.71 | StdDev: 7.32 | Var: 53.53
+Player: JPLLR2V0V  | FSI: 0.14 | StdDev: 6.58 | Var: 43.29
+Player: JPYQPY8Y0  | FSI: 0.70 | StdDev: 12.21 | Var: 148.96
 Player: JYRRRVVJJ  | FSI: 1.34 | StdDev: 12.92 | Var: 166.88
 Player: LJ9JU0CQU  | FSI: 1.17 | StdDev: 14.90 | Var: 222.10
-Player: P2RVYJ2UY  | FSI: 1.17 | StdDev: 14.36 | Var: 206.29
-Player: P8YJL0Y0   | FSI: 0.12 | StdDev: 8.37 | Var: 70.12
-Player: P9QQ0CL2   | FSI: 0.23 | StdDev: 4.41 | Var: 19.46
-Player: POGYQQ8UC  | FSI: 0.36 | StdDev: 8.73 | Var: 76.19
-Player: PQVYL0VJJ  | FSI: 0.83 | StdDev: 8.31 | Var: 69.07
+Player: LPY29QCLV  | FSI: 1.07 | StdDev: 9.45 | Var: 89.29
+Player: P2RVYJ2UY  | FSI: 1.15 | StdDev: 13.11 | Var: 171.85
+Player: P8YJL0Y0   | FSI: 0.11 | StdDev: 8.24 | Var: 67.96
+Player: P9QQ0CL2   | FSI: 0.25 | StdDev: 4.41 | Var: 19.46
+Player: POGYQQ8UC  | FSI: 0.36 | StdDev: 8.78 | Var: 77.09
+Player: PQVYL0VJJ  | FSI: 0.82 | StdDev: 8.23 | Var: 67.71
 Player: PY8YG0LJR  | FSI: 0.72 | StdDev: 10.08 | Var: 101.61
 Player: QJU20YUL   | FSI: 0.43 | StdDev: 7.71 | Var: 59.42
 Player: R82CV2C    | FSI: 0.59 | StdDev: 7.13 | Var: 50.85
-Player: RP9GVG9    | FSI: 0.11 | StdDev: 5.76 | Var: 33.16
+Player: RP9GVG9    | FSI: 0.12 | StdDev: 6.36 | Var: 40.44
 Player: RQ9JQPL90  | FSI: 0.91 | StdDev: 6.46 | Var: 41.77
 Player: UQJCY9JYJ  | FSI: 1.02 | StdDev: 6.02 | Var: 36.28
-Player: V9VPPPQL9  | FSI: 0.65 | StdDev: 11.37 | Var: 129.29
-Player: VCU8QQ98C  | FSI: 0.14 | StdDev: 13.20 | Var: 174.11
+Player: V9VPPPQL9  | FSI: 0.73 | StdDev: 11.37 | Var: 129.29
+Player: VCU8QQ98C  | FSI: 0.17 | StdDev: 13.20 | Var: 174.11
 Player: VGPLGPPQL  | FSI: 0.57 | StdDev: 9.63 | Var: 92.83
-Player: VQPU0R89G  | FSI: 2.50 | StdDev: 13.38 | Var: 179.06
-Player: VYURQLR00  | FSI: 0.85 | StdDev: 9.59 | Var: 91.92
+Player: VQPU0R89G  | FSI: 2.32 | StdDev: 13.38 | Var: 179.06
+Player: VYURQLR00  | FSI: 0.71 | StdDev: 9.37 | Var: 87.76
 Player: Y9VQJVU08  | FSI: 0.92 | StdDev: 7.08 | Var: 50.17
 Player: YLCYCJ2YL  | FSI: 1.11 | StdDev: 11.47 | Var: 131.59
-Player: YU889LRR0  | FSI: 0.31 | StdDev: 5.64 | Var: 31.83
+Player: YU889LRR0  | FSI: 0.31 | StdDev: 5.87 | Var: 34.43
 
 ------------------------------------------------------------
-Gruppo Low FSI (<0.81)  [n=21]: Avg Varianza = 80.17
-Gruppo High FSI (>1.20) [n=6]: Avg Varianza = 87.59
-RAPPORTO (High/Low): 1.09
+Gruppo Low FSI (<0.81)  [n=22]: Avg Varianza = 80.50
+Gruppo High FSI (>1.20) [n=6]: Avg Varianza = 86.30
+RAPPORTO (High/Low): 1.07
 ============================================================
 
 
 ============================================================
  CORRELAZIONE SPEARMAN: FSI vs VARIANZA
 ============================================================
-Campione:     38 giocatori
-Coefficiente: 0.2117
-P-value:      0.2019
+Campione:     39 giocatori
+Coefficiente: 0.2065
+P-value:      0.2072
 ============================================================
 

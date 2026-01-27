@@ -21,7 +21,6 @@ from test import (
     analyze_session_pity,
     analyze_extreme_matchup_streak,
     analyze_confounding_factors,
-    analyze_time_matchup_stats,
     analyze_deck_switch_impact,
     analyze_ers_pity_hypothesis,
     analyze_return_matchups_vs_ers,
@@ -63,6 +62,11 @@ from test_targeting import (
 
 from analyze_micro_meta import analyze_micro_meta_150
 from arena_gatekeeping import analyze_arena_gatekeeping
+
+
+
+
+
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
 
@@ -104,7 +108,6 @@ def main():
     #analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=False) # Con livelli (Reale)
     #analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=True)  # Senza livelli (Puro)
     analyze_confounding_factors(players_sessions, output_dir=results_dir)
-    analyze_time_matchup_stats(players_sessions, output_dir=results_dir)
     analyze_deck_switch_impact(players_sessions, output_dir=results_dir)
     analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=results_dir)
     analyze_return_matchups_vs_ers(players_sessions, output_dir=results_dir)

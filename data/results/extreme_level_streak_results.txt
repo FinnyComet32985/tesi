@@ -3,24 +3,24 @@ Obiettivo: Verificare se il sistema genera sequenze di partite con svantaggio di
 Metodo: Confronto con Teorico, Global Shuffle e Intra-Session Shuffle.
 Nota: Global Shuffle può essere distorto dalla progressione naturale (Climbing). Intra-Session è il più affidabile.
 ================================================================================
-Totale Battaglie: 7185
-Totale Finestre (Opportunità): 3730
+Totale Battaglie: 7378
+Totale Finestre (Opportunità): 3827
 Soglie: Vantaggio > 0.5, Svantaggio < -0.5 (Delta Livello)
 --------------------------------------------------------------------------------
 --- Vantaggio Livelli (> 0.5) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
-Osservato                 | 79         | 2.1180     | 1.00x          
-Teorico (p^3)             | 13.02      | 0.3491     | 6.07           
-Global Shuffle            | 58.31      | 1.5634     | 1.35           
-Intra-Session Shuffle     | 76.84      | 2.0602     | 1.03           
+Osservato                 | 80         | 2.0904     | 1.00x          
+Teorico (p^3)             | 12.93      | 0.3378     | 6.19           
+Global Shuffle            | 58.30      | 1.5233     | 1.37           
+Intra-Session Shuffle     | 77.06      | 2.0136     | 1.04           
 
 --- Svantaggio Livelli (< -0.5) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
-Osservato                 | 177        | 4.7453     | 1.00x          
-Teorico (p^3)             | 14.63      | 0.3921     | 12.10          
-Global Shuffle            | 118.32     | 3.1722     | 1.50           
-Intra-Session Shuffle     | 168.18     | 4.5089     | 1.05           
+Osservato                 | 182        | 4.7557     | 1.00x          
+Teorico (p^3)             | 15.50      | 0.4050     | 11.74          
+Global Shuffle            | 123.31     | 3.2220     | 1.48           
+Intra-Session Shuffle     | 172.40     | 4.5050     | 1.06           
 
 ================================================================================
