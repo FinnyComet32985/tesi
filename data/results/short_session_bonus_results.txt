@@ -2,16 +2,16 @@ ANALISI CORRELAZIONE: BONUS PER SESSIONI BREVI
 Ipotesi: I giocatori con sessioni più corte (meno match/sessione) ricevono matchup mediamente migliori?
 ================================================================================
 
-Campione: 37 giocatori
+Campione: 38 giocatori
 --------------------------------------------------------------------------------
 1. Correlazione: Match/Sessione vs. Matchup Medio
-   Coefficiente: -0.1946
-   P-value:      0.2483
+   Coefficiente: -0.1962
+   P-value:      0.2378
    RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione evidente.
 
 2. Correlazione: Match/Sessione vs. Delta Livello Medio
    (Delta Livello > 0 significa che il giocatore ha livelli più alti dell'avversario)
-   Coefficiente: -0.2322
-   P-value:      0.1667
+   Coefficiente: -0.2351
+   P-value:      0.1553
    RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione evidente.
 ================================================================================

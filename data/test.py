@@ -1233,7 +1233,7 @@ def analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_di
         
         player_last_ts[tag] = ts
 
-    # Soglia Churn: 7 giorni (in secondi)
+    # Soglia Churn: 3 giorni (in secondi)
     CHURN_THRESHOLD = 3 * 24 * 60 * 60
     
     churned_pity = []
@@ -1259,7 +1259,7 @@ def analyze_churn_probability_vs_pity(players_sessions, matchup_stats, output_di
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("ANALISI PROBABILITÀ CHURN vs PITY ODDS\n")
         f.write("Obiettivo: Verificare se i giocatori con Pity Odds più alti hanno meno probabilità di abbandonare il gioco (Churn).\n")
-        f.write(f"Definizione Churn: Assenza > 7 giorni rispetto all'ultimo dato globale ({datetime.fromtimestamp(max_ts)}).\n")
+        f.write(f"Definizione Churn: Assenza > 3 giorni rispetto all'ultimo dato globale ({datetime.fromtimestamp(max_ts)}).\n")
         f.write("="*80 + "\n\n")
         
         if len(churned_pity) < 5 or len(active_pity) < 5:

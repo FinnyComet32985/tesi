@@ -4,22 +4,22 @@ Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) p
 Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.
 ====================================================================================================
 
-Totale Battaglie Analizzate: 6965
+Totale Battaglie Analizzate: 7185
 Bucket: 4000-5000 | Orario: 16:00-24:00 | Battles: 154
 Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.387548 -> Non significativo
 ------------------------------------------------------------
-Bucket: 5000-6000 | Orario: 00:00-08:00 | Battles: 136
+Bucket: 5000-6000 | Orario: 00:00-08:00 | Battles: 145
 Confronto tra 4 Archetipi Player vs 3 Archetipi Opponent
 P-value: 0.320847 -> Non significativo
 ------------------------------------------------------------
-Bucket: 5000-6000 | Orario: 08:00-16:00 | Battles: 208
-Confronto tra 6 Archetipi Player vs 9 Archetipi Opponent
-P-value: 0.314412 -> Non significativo
+Bucket: 5000-6000 | Orario: 08:00-16:00 | Battles: 248
+Confronto tra 7 Archetipi Player vs 10 Archetipi Opponent
+P-value: 0.266552 -> Non significativo
 ------------------------------------------------------------
-Bucket: 5000-6000 | Orario: 16:00-24:00 | Battles: 363
-Confronto tra 6 Archetipi Player vs 9 Archetipi Opponent
-P-value: 0.192548 -> Non significativo
+Bucket: 5000-6000 | Orario: 16:00-24:00 | Battles: 398
+Confronto tra 7 Archetipi Player vs 10 Archetipi Opponent
+P-value: 0.118786 -> Non significativo
 ------------------------------------------------------------
 Bucket: 6000-7000 | Orario: 00:00-08:00 | Battles: 94
 Confronto tra 2 Archetipi Player vs 3 Archetipi Opponent
@@ -29,39 +29,39 @@ Bucket: 6000-7000 | Orario: 08:00-16:00 | Battles: 544
 Confronto tra 14 Archetipi Player vs 42 Archetipi Opponent
 P-value: 0.237433 -> Non significativo
 ------------------------------------------------------------
-Bucket: 6000-7000 | Orario: 16:00-24:00 | Battles: 501
+Bucket: 6000-7000 | Orario: 16:00-24:00 | Battles: 503
 Confronto tra 11 Archetipi Player vs 38 Archetipi Opponent
 P-value: 0.213791 -> Non significativo
 ------------------------------------------------------------
-Bucket: 7000-8000 | Orario: 08:00-16:00 | Battles: 174
+Bucket: 7000-8000 | Orario: 08:00-16:00 | Battles: 177
 Confronto tra 11 Archetipi Player vs 5 Archetipi Opponent
 P-value: 0.362912 -> Non significativo
 ------------------------------------------------------------
-Bucket: 7000-8000 | Orario: 16:00-24:00 | Battles: 245
-Confronto tra 13 Archetipi Player vs 9 Archetipi Opponent
-P-value: 0.359426 -> Non significativo
+Bucket: 7000-8000 | Orario: 16:00-24:00 | Battles: 266
+Confronto tra 15 Archetipi Player vs 11 Archetipi Opponent
+P-value: 0.342421 -> Non significativo
 ------------------------------------------------------------
 Bucket: 9000-10000 | Orario: 16:00-24:00 | Battles: 312
 Confronto tra 6 Archetipi Player vs 3 Archetipi Opponent
 P-value: 0.440493 -> Non significativo
 ------------------------------------------------------------
-Bucket: 10000-11000 | Orario: 00:00-08:00 | Battles: 388
+Bucket: 10000-11000 | Orario: 00:00-08:00 | Battles: 400
 Confronto tra 14 Archetipi Player vs 4 Archetipi Opponent
 P-value: 0.371681 -> Non significativo
 ------------------------------------------------------------
-Bucket: 10000-11000 | Orario: 08:00-16:00 | Battles: 511
-Confronto tra 8 Archetipi Player vs 3 Archetipi Opponent
-P-value: 0.162417 -> Non significativo
+Bucket: 10000-11000 | Orario: 08:00-16:00 | Battles: 522
+Confronto tra 10 Archetipi Player vs 4 Archetipi Opponent
+P-value: 0.231160 -> Non significativo
 ------------------------------------------------------------
-Bucket: 10000-11000 | Orario: 16:00-24:00 | Battles: 833
+Bucket: 10000-11000 | Orario: 16:00-24:00 | Battles: 867
 Confronto tra 23 Archetipi Player vs 17 Archetipi Opponent
-P-value: 0.216650 -> Non significativo
+P-value: 0.231896 -> Non significativo
 ------------------------------------------------------------
-Bucket: 11000-12000 | Orario: 00:00-08:00 | Battles: 277
+Bucket: 11000-12000 | Orario: 00:00-08:00 | Battles: 292
 Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.188876 -> Non significativo
 ------------------------------------------------------------
-Bucket: 11000-12000 | Orario: 16:00-24:00 | Battles: 495
+Bucket: 11000-12000 | Orario: 16:00-24:00 | Battles: 493
 Confronto tra 6 Archetipi Player vs 3 Archetipi Opponent
 P-value: 0.509073 -> Non significativo
 ------------------------------------------------------------

@@ -1,26 +1,14 @@
 ANALISI MATCHUP INDIPENDENTE DAI LIVELLI (NO-LVL)
 Obiettivo 1: Capire quanto i livelli influenzano il matchup reale.
-Obiettivo 2: Verificare se le 'Bad Streak' esistono anche ad armi pari (Countering di Mazzo).
 ================================================================================
 
 1. IMPATTO DEI LIVELLI
-   Media Matchup REALE:   50.07%
-   Media Matchup NO-LVL:  49.20%
-   Delta Medio (Real-No): +0.87% (Positivo = Vantaggio Livelli)
-   Correlazione (Real vs NoLvl): 0.4311 (p=0.0000)
+   Media Matchup REALE:   50.00%
+   Media Matchup NO-LVL:  49.24%
+   Delta Medio (Real-No): +0.76% (Positivo = Vantaggio Livelli)
+   Correlazione (Real vs NoLvl): 0.4358 (p=0.0000)
    (Alta correlazione = I livelli contano poco; Bassa = I livelli stravolgono il matchup)
 
    Test Wilcoxon (Differenza Significativa): p-value = 0.0000
    RISULTATO: SIGNIFICATIVO
---------------------------------------------------------------------------------
-2. ANALISI STREAK 'PURE' (Countering di Mazzo)
-   Definizione: 3 partite consecutive con Matchup No-Lvl < 40.0%
-   Totale Finestre: 3637
-   Streak Osservate: 140
-   Probabilità Base Bad Matchup (<40.0%): 23.81%
-   Streak Attese (Teorico p^3): 49.07
-   RATIO (Osservato / Atteso): 2.85x
-
-   CONCLUSIONE: Le streak negative persistono anche senza livelli.
-   Indizio forte di DECK COUNTERING (l'algoritmo sceglie mazzi counter).
 ================================================================================

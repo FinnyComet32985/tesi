@@ -1,0 +1,89 @@
+ANALISI MICRO-META (BUCKET 150 TROFEI)
+Obiettivo: Identificare anomalie locali (Micro-Metas) e Gatekeeping.
+================================================================================
+
+1. CARTE DOMINANTI & TASSO DI TRANSIZIONE
+Dominant: Frequenza > Media Globale + 2*StdDev.
+Transition: 1 - Jaccard Index (Top 15 Cards) rispetto al bucket precedente.
+----------------------------------------------------------------------------------------------------
+BUCKET          | N. DECKS | TRANSITION | DOMINANT CARDS (Anomalie)
+----------------------------------------------------------------------------------------------------
+4650-4800       | 86       | 0.00       | Sparky (+2.4σ), Mini P.E.K.K.A (+2.9σ), Prince (+2.1σ), Vines (+2.6σ), Goblin Barrel (+2.7σ)
+4800-4950       | 100      | 0.33       | Sparky (+2.4σ), Electro Wizard (+2.0σ), Goblin Hut (+2.9σ), Poison (+2.6σ), X-Bow (+2.7σ)
+4950-5100       | 95       | 0.50       | Minions (+2.1σ), P.E.K.K.A (+2.6σ), Poison (+2.1σ), Goblin Machine (+2.4σ), Hunter (+2.6σ)
+5100-5250       | 162      | 0.42       | Goblin Curse (+2.3σ), Goblin Hut (+2.4σ)
+5250-5400       | 94       | 0.33       | Mini P.E.K.K.A (+2.1σ), Witch (+2.2σ), Prince (+2.6σ), Mirror (+2.0σ)
+5400-5550       | 118      | 0.42       | Electro Wizard (+2.3σ), Tombstone (+3.0σ), Freeze (+2.1σ), Goblin Curse (+2.1σ)
+5550-5700       | 151      | 0.33       | Skeleton Army (+2.1σ), Golem (+2.1σ), Night Witch (+2.1σ)
+5700-5850       | 99       | 0.24       | Goblin Curse (+2.3σ), Goblin Giant (+2.4σ), Sparky (+2.2σ), Skeleton King (+2.7σ), Goblins (+3.6σ)
+5850-6000       | 139      | 0.42       | 
+6000-6150       | 89       | 0.24       | Royal Ghost (+2.1σ), Bandit (+2.4σ), Dark Prince (+3.2σ), Heal Spirit (+2.0σ), Zappies (+2.3σ)
+6150-6300       | 172      | 0.42       | Battle Ram (+2.2σ), Heal Spirit (+2.5σ), Mother Witch (+2.4σ), Rage (+2.5σ), Zappies (+2.7σ)
+6300-6450       | 231      | 0.42       | Barbarian Barrel (+2.1σ), Skeleton King (+2.1σ)
+6450-6600       | 339      | 0.33       | 
+6600-6750       | 174      | 0.33       | 
+6750-6900       | 64       | 0.50       | Ice Wizard (+3.1σ), Baby Dragon (+2.1σ), Golden Knight (+2.0σ), Inferno Dragon (+3.1σ), Mighty Miner (+3.4σ)
+6900-7050       | 122      | 0.42       | Berserker (+2.1σ)
+7050-7200       | 68       | 0.42       | Barbarians (+2.6σ), Bats (+2.1σ), Golem (+2.0σ), Night Witch (+3.2σ), Mega Minion (+2.4σ)
+7200-7350       | 70       | 0.50       | Bandit (+2.0σ), Barbarians (+3.0σ), Archers (+2.6σ), Cannon (+2.2σ), Royal Delivery (+3.7σ)
+7500-7650       | 202      | 0.42       | Wall Breakers (+2.0σ), Electro Dragon (+3.4σ), Golem (+2.1σ), Battle Healer (+2.5σ), Night Witch (+2.5σ)
+7650-7800       | 172      | 0.50       | Golden Knight (+2.2σ), Minion Horde (+2.2σ), Void (+2.1σ)
+8550-8700       | 100      | 0.33       | 
+8850-9000       | 66       | 0.24       | 
+9150-9300       | 68       | 0.24       | Dart Goblin (+2.2σ), Tesla (+3.1σ), Knight (+2.3σ), Goblin Gang (+2.6σ), Ram Rider (+2.2σ)
+9300-9450       | 76       | 0.33       | Zap (+2.2σ), Prince (+2.2σ), Giant Snowball (+2.0σ)
+9450-9600       | 134      | 0.42       | Elite Barbarians (+2.4σ), Giant Snowball (+2.2σ), Balloon (+2.6σ), Freeze (+2.7σ), Barbarians (+2.0σ)
+9600-9750       | 147      | 0.24       | Miner (+2.4σ)
+9750-9900       | 194      | 0.00       | 
+9900-10050      | 135      | 0.24       | Rocket (+3.5σ), The Log (+2.2σ), Fireball (+2.4σ), Cannon (+2.4σ)
+10050-10200     | 301      | 0.24       | 
+10200-10350     | 237      | 0.12       | Dart Goblin (+3.3σ)
+10350-10500     | 256      | 0.12       | Royal Giant (+3.2σ), Royal Chef (+2.8σ), Earthquake (+2.4σ), Battle Healer (+2.4σ), Rune Giant (+2.7σ)
+10500-10650     | 470      | 0.12       | 
+10650-10800     | 288      | 0.00       | 
+10800-10950     | 187      | 0.24       | Miner (+2.5σ)
+10950-11100     | 186      | 0.24       | 
+11100-11250     | 268      | 0.24       | Mortar (+2.1σ)
+11250-11400     | 248      | 0.24       | Executioner (+2.1σ), Cannoneer (+2.2σ)
+11400-11550     | 108      | 0.24       | Electro Spirit (+2.2σ), Royal Chef (+2.3σ), Mortar (+2.2σ), Bomb Tower (+2.5σ)
+11550-11700     | 163      | 0.24       | Guards (+2.3σ), Zap (+2.0σ), Fisherman (+2.2σ), Royal Recruits (+3.0σ), Balloon (+2.1σ)
+11700-11850     | 124      | 0.33       | Furnace (+2.5σ), Flying Machine (+3.4σ), Lumberjack (+2.2σ), Hunter (+2.1σ), Dagger Duchess (+2.3σ)
+11850-12000     | 78       | 0.24       | Knight (+2.3σ), Tornado (+2.6σ), Guards (+2.1σ), Electro Spirit (+3.2σ), X-Bow (+3.9σ)
+12000-12150     | 78       | 0.42       | Elixir Collector (+2.8σ), Elixir Golem (+2.3σ), Mirror (+2.8σ), Valkyrie (+2.4σ), Hunter (+2.7σ)
+
+================================================================================
+2. COEFFICIENTE DI OSTILITÀ (Hostility Coefficient)
+Misura quanto il meta locale è peggiore per il giocatore rispetto alla sua media globale.
+Hostility = Global_Avg_MU - Local_Avg_MU (Positivo = Ostile).
+--------------------------------------------------------------------------------
+BUCKET          | AVG HOSTILITY   | STATUS
+--------------------------------------------------------------------------------
+4950-5100       | +0.07           | NEUTRAL
+5100-5250       | -0.54           | NEUTRAL
+5250-5400       | -0.55           | NEUTRAL
+5400-5550       | -4.12           | FRIENDLY (Boost?)
+9600-9750       | +0.78           | NEUTRAL
+9750-9900       | -0.14           | NEUTRAL
+9900-10050      | +2.96           | HOSTILE (Gatekeeping?)
+10050-10200     | +0.28           | NEUTRAL
+10200-10350     | +0.56           | NEUTRAL
+10350-10500     | -1.77           | NEUTRAL
+10500-10650     | -0.73           | NEUTRAL
+10650-10800     | -0.52           | NEUTRAL
+10800-10950     | -1.79           | NEUTRAL
+10950-11100     | +0.53           | NEUTRAL
+11100-11250     | +0.24           | NEUTRAL
+11250-11400     | -2.54           | FRIENDLY (Boost?)
+11400-11550     | -0.49           | NEUTRAL
+11550-11700     | +1.76           | NEUTRAL
+
+================================================================================
+3. ANALISI POSIZIONE STREAK (Gatekeeping ai Confini)
+Dove iniziano le serie di sconfitte (>=3) all'interno del bucket?
+--------------------------------------------------------------------------------
+Totale Streak Analizzate: 342
+Early Bucket (0-30):   75 (Densità: 2.50)
+Mid Bucket   (30-120): 206 (Densità: 2.29)
+Late Bucket  (120-150): 61 (Densità: 2.03)
+RISULTATO: DISTRIBUZIONE UNIFORME.
+================================================================================

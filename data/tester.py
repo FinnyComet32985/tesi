@@ -61,6 +61,8 @@ from test_targeting import (
     analyze_sniper_confounding
 )
 
+from analyze_micro_meta import analyze_micro_meta_150
+from arena_gatekeeping import analyze_arena_gatekeeping
 def main():
     connection, cursor, load_tags = open_connection("db/clash.db")
 
@@ -139,7 +141,8 @@ def main():
     analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
     analyze_sniper_confounding(players_sessions, output_dir=results_dir)
 
-
+    analyze_micro_meta_150(players_sessions, output_dir=results_dir)
+    analyze_arena_gatekeeping(players_sessions, output_dir=results_dir)
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats)
     if mode_filter == 'Ladder':
