@@ -4,25 +4,25 @@ Ipotesi: I valori (Matchup/Livelli) sono peggiori nella Danger Zone.
 ============================================================
 
 --- ANALISI: MATCHUP ---
-Campione: Danger=437, Safe=6446
-Media: Danger=48.3569, Safe=50.1019
-Delta: -1.7450
-P-value (Mann-Whitney U <): 0.0143
-RISULTATO: SIGNIFICATIVO. Valori peggiori vicino alla soglia (Gatekeeping).
+Campione: Danger=446, Safe=6449
+Media: Danger=49.0741, Safe=50.0460
+Delta: -0.9718
+P-value (Mann-Whitney U <): 0.0757
+RISULTATO: NON SIGNIFICATIVO.
 ----------------------------------------
 
 --- ANALISI: LEVELS ---
-Campione: Danger=438, Safe=6451
-Media: Danger=-0.0730, Safe=-0.0073
-Delta: -0.0657
-P-value (Mann-Whitney U <): 0.0174
+Campione: Danger=447, Safe=6454
+Media: Danger=-0.0725, Safe=-0.0073
+Delta: -0.0652
+P-value (Mann-Whitney U <): 0.0097
 RISULTATO: SIGNIFICATIVO. Valori peggiori vicino alla soglia (Gatekeeping).
 ----------------------------------------
 
 --- ANALISI: NOLVL ---
-Campione: Danger=438, Safe=6450
-Media: Danger=49.5688, Safe=49.2042
-Delta: 0.3646
-P-value (Mann-Whitney U <): 0.4909
+Campione: Danger=447, Safe=6453
+Media: Danger=49.7272, Safe=49.1893
+Delta: 0.5379
+P-value (Mann-Whitney U <): 0.5872
 RISULTATO: NON SIGNIFICATIVO.
 ----------------------------------------

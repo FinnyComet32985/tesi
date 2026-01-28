@@ -6,22 +6,22 @@ Metodo: Confronto con media mobile degli ultimi 200 match (Dynamic Baseline).
 1. BAD STREAK (Matchup < 45%) vs HIGH TROPHIES (Sopra Media)
 Ipotesi Naturale: Più sali, più trovi counter (Concentrazione in alto).
 --------------------------------------------------------------------------------
-Totale Bad Streak: 651
-Baseline (Tempo speso sopra media): 88.34%
-Bad Streak avvenute sopra media:    92.93%
+Totale Bad Streak: 652
+Baseline (Tempo speso sopra media): 88.36%
+Bad Streak avvenute sopra media:    92.94%
 LIFT: 1.05x
-P-value (Binomial): 0.000066
+P-value (Binomial): 0.000067
 RISULTATO: SIGNIFICATIVO. Le Bad Streak si concentrano quando sei in alto (Gatekeeping).
-Delta Medio Trofei (Bad Streak): +165.30
+Delta Medio Trofei (Bad Streak): +165.24
 
 2. GOOD STREAK (Matchup > 55%) vs LOW TROPHIES (Sotto Media)
 Ipotesi Recupero: Quando scendi troppo, il sistema ti aiuta a risalire (Concentrazione in basso).
 --------------------------------------------------------------------------------
 Totale Good Streak: 407
-Baseline (Tempo speso sotto media): 11.66%
+Baseline (Tempo speso sotto media): 11.64%
 Good Streak avvenute sotto media:   13.02%
 LIFT: 1.12x
-P-value (Binomial): 0.216522
+P-value (Binomial): 0.212174
 RISULTATO: NON SIGNIFICATIVO. Le Good Streak sono casuali.
 Delta Medio Trofei (Good Streak): +203.15
 ================================================================================

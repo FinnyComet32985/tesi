@@ -4,16 +4,16 @@ Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->
          Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.
 ================================================================================
 
-Totale Transizioni Analizzate: 7338
-  - Senza cambio mazzo: 6832
+Totale Transizioni Analizzate: 7352
+  - Senza cambio mazzo: 6846
   - Con cambio mazzo:   506
 --------------------------------------------------------------------------------
 PATTERN                   | NO SWITCH (Baseline) | SWITCH (Test)        | DELTA     
 --------------------------------------------------------------------------------
-Persistenza Matchup Negativo | 47.77               % | 37.63               % | -10.14    %
-Persistenza Matchup Positivo | 41.14               % | 37.87               % | -3.27     %
-Recupero (Bad -> Good)    | 23.25               % | 36.56               % | +13.31    %
-Punizione (Good -> Bad)   | 29.00               % | 32.54               % | +3.55     %
+Persistenza Matchup Negativo | 47.78               % | 37.63               % | -10.14    %
+Persistenza Matchup Positivo | 41.11               % | 37.87               % | -3.24     %
+Recupero (Bad -> Good)    | 23.21               % | 36.56               % | +13.35    %
+Punizione (Good -> Bad)   | 29.03               % | 32.54               % | +3.51     %
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
 1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,
@@ -31,7 +31,7 @@ Step       | NO SWITCH (Avg MU)   | SWITCH (Avg MU)      | N. Switch
 --------------------------------------------------------------------------------
 +1 Match  | 46.13               % | 49.96               % | 186       
 +2 Match  | 46.38               % | 48.42               % | 122       
-+3 Match  | 46.07               % | 48.39               % | 103       
++3 Match  | 46.08               % | 48.39               % | 103       
 +4 Match  | 45.98               % | 51.57               % | 89        
 --------------------------------------------------------------------------------
 INTERPRETAZIONE:
