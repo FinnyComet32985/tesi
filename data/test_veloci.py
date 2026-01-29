@@ -1,7 +1,14 @@
+import os
 from scipy.stats import spearmanr
 import math
 
-def analyze_pity_odds_vs_total_matches(profiles, matchup_stats):
+def analyze_pity_odds_vs_total_matches(profiles, matchup_stats, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'quick_tests_results.txt')
+    print(f"\nGenerazione report Test Veloci in: {output_file}")
+
     # --- TEST VELOCE TEMPORANEO: Pity Odds vs Total Matches ---
     tmp_matches = []
     tmp_odds = []
@@ -13,12 +20,22 @@ def analyze_pity_odds_vs_total_matches(profiles, matchup_stats):
             if o is not None and not math.isnan(o) and not math.isinf(o):
                 tmp_matches.append(m)
                 tmp_odds.append(o)
-                
-    if len(tmp_matches) > 2:
-        corr_tmp, p_tmp = spearmanr(tmp_matches, tmp_odds)
-        print(f"\n[TEST VELOCE] Correlazione Pity Odds vs N. Partite: {corr_tmp:.4f} (p-value: {p_tmp:.4f})")
 
-def analyze_pity_odds_vs_current_trophies(profiles, matchup_stats, cursor):
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("TEST VELOCI DI CORRELAZIONE\n")
+        f.write("="*80 + "\n\n")
+        if len(tmp_matches) > 2:
+            corr_tmp, p_tmp = spearmanr(tmp_matches, tmp_odds)
+            f.write("1. PITY ODDS vs TOTAL MATCHES\n")
+            f.write(f"   Correlazione: {corr_tmp:.4f}\n")
+            f.write(f"   P-value:      {p_tmp:.4f}\n")
+            f.write("-" * 40 + "\n\n")
+
+def analyze_pity_odds_vs_current_trophies(profiles, matchup_stats, cursor, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    output_file = os.path.join(output_dir, 'quick_tests_results.txt')
+
     # --- TEST VELOCE TEMPORANEO: Pity Odds vs Current Trophies ---
     tmp_trophies = []
     tmp_odds_t = []
@@ -35,7 +52,11 @@ def analyze_pity_odds_vs_current_trophies(profiles, matchup_stats, cursor):
             if o is not None and not math.isnan(o) and not math.isinf(o):
                 tmp_trophies.append(trophies)
                 tmp_odds_t.append(o)
-                
-    if len(tmp_trophies) > 2:
-        corr_t, p_t = spearmanr(tmp_trophies, tmp_odds_t)
-        print(f"\n[TEST VELOCE] Correlazione Pity Odds vs Trofei Attuali: {corr_t:.4f} (p-value: {p_t:.4f})")
+
+    with open(output_file, "a", encoding="utf-8") as f:
+        if len(tmp_trophies) > 2:
+            corr_t, p_t = spearmanr(tmp_trophies, tmp_odds_t)
+            f.write("2. PITY ODDS vs CURRENT TROPHIES\n")
+            f.write(f"   Correlazione: {corr_t:.4f}\n")
+            f.write(f"   P-value:      {p_t:.4f}\n")
+            f.write("-" * 40 + "\n\n")

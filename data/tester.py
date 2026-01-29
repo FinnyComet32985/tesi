@@ -1,8 +1,6 @@
 import sys
 import os
 
-# from classifier import get_player_profiles # Removed, using battlelog_v2
-
 sys.path.append(os.path.join(os.path.dirname(__file__), '../utils'))
 
 from battlelog_v2 import get_players_sessions
@@ -136,7 +134,7 @@ def main():
     analyze_climbing_impact(players_sessions, output_dir=results_dir)
     analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir, cursor=cursor)
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
-    #analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
+    analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
     
 
     analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
@@ -148,9 +146,9 @@ def main():
     analyze_micro_meta_150(players_sessions, output_dir=results_dir)
     analyze_arena_gatekeeping(players_sessions, output_dir=results_dir)
     # --- TEST VELOCI ---
-    analyze_pity_odds_vs_total_matches(profiles, matchup_stats)
+    analyze_pity_odds_vs_total_matches(profiles, matchup_stats, output_dir=results_dir)
     if mode_filter == 'Ladder':
-        analyze_pity_odds_vs_current_trophies(profiles, matchup_stats, cursor)
+        analyze_pity_odds_vs_current_trophies(profiles, matchup_stats, cursor, output_dir=results_dir)
 
     print("Processo di report completato.")
 

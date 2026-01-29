@@ -12,15 +12,15 @@ Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 80         | 2.0860     | 1.00x          
 Teorico (p^3)             | 12.98      | 0.3385     | 6.16           
-Global Shuffle            | 57.86      | 1.5086     | 1.38           
-Intra-Session Shuffle     | 76.98      | 2.0073     | 1.04           
+Global Shuffle            | 57.91      | 1.5100     | 1.38           
+Intra-Session Shuffle     | 76.95      | 2.0066     | 1.04           
 
 --- Svantaggio Livelli (< -0.5) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 182        | 4.7458     | 1.00x          
 Teorico (p^3)             | 15.48      | 0.4035     | 11.76          
-Global Shuffle            | 123.15     | 3.2111     | 1.48           
-Intra-Session Shuffle     | 172.39     | 4.4952     | 1.06           
+Global Shuffle            | 123.02     | 3.2078     | 1.48           
+Intra-Session Shuffle     | 172.39     | 4.4951     | 1.06           
 
 ================================================================================

@@ -16,14 +16,14 @@ Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 0          | 0.0000     | 1.00x          
 Teorico (p^3)             | 0.00       | 0.0001     | 0.00           
-Global Shuffle            | 0.02       | 0.0005     | 0.00           
-Intra-Session Shuffle     | 0.05       | 0.0012     | 0.00           
+Global Shuffle            | 0.02       | 0.0006     | 0.00           
+Intra-Session Shuffle     | 0.04       | 0.0011     | 0.00           
 
 --- MATCHUP SFAVOREVOLI (< 30.0%) ---
 Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 3          | 0.0782     | 1.00x          
 Teorico (p^3)             | 1.09       | 0.0284     | 2.75           
-Global Shuffle            | 4.85       | 0.1265     | 0.62           
-Intra-Session Shuffle     | 4.73       | 0.1234     | 0.63           
+Global Shuffle            | 4.83       | 0.1260     | 0.62           
+Intra-Session Shuffle     | 4.72       | 0.1231     | 0.64           
 

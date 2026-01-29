@@ -82,7 +82,7 @@ def analyze_deck_switch_hypothetical(players_sessions, output_dir=None):
 
     # Configurazione
     WINDOW = 3
-    MAX_SWITCHES_TO_TEST = 500 # Limite per evitare troppe chiamate API
+    MAX_SWITCHES_TO_TEST = 1000 # Limite per evitare troppe chiamate API
     switches_tested = 0
 
     results = []

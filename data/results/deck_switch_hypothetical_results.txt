@@ -4,15 +4,15 @@ Metodo: Calcoliamo come il TUO NUOVO mazzo avrebbe performato contro i TUOI VECC
         Confrontiamo questo valore con i matchup che hai effettivamente trovato dopo il cambio (Reale).
 ================================================================================
 
-Campione: 500 cambi mazzo analizzati.
+Campione: 646 cambi mazzo analizzati.
 --------------------------------------------------------------------------------
-1. Matchup PRE-SWITCH (Vecchio Deck vs Vecchi Opp): 50.40%
-2. Matchup IPOTETICO  (Nuovo Deck vs Vecchi Opp):   50.52%
-3. Matchup REALE      (Nuovo Deck vs Nuovi Opp):    51.00%
+1. Matchup PRE-SWITCH (Vecchio Deck vs Vecchi Opp): 50.34%
+2. Matchup IPOTETICO  (Nuovo Deck vs Vecchi Opp):   50.67%
+3. Matchup REALE      (Nuovo Deck vs Nuovi Opp):    50.93%
 --------------------------------------------------------------------------------
-Miglioramento Teorico (Se gli avversari restassero uguali): +0.12%
-Miglioramento Reale   (Con i nuovi avversari):              +0.60%
-GAP (Manipolazione?):                                       +0.48%
+Miglioramento Teorico (Se gli avversari restassero uguali): +0.33%
+Miglioramento Reale   (Con i nuovi avversari):              +0.59%
+GAP (Manipolazione?):                                       +0.25%
 
 INTERPRETAZIONE:
 RISULTATO: NEUTRO. Il cambio di avversari è coerente con il cambio di mazzo (o casuale).
@@ -22,9 +22,9 @@ RISULTATO: NEUTRO. Il cambio di avversari è coerente con il cambio di mazzo (o 
 FOCUS: SWITCH 'INTELLIGENTI' (Dove il nuovo mazzo è teoricamente migliore)
 Obiettivo: Se cambio per un mazzo migliore (Hypo > Prev), il sistema mi premia o mi punisce?
 --------------------------------------------------------------------------------
-Campione Subset: 250 cambi.
-1. Matchup PRE-SWITCH: 47.56%
-2. Matchup IPOTETICO:  55.06%
-3. Matchup REALE:      52.46%
-GAP (Reale - Ipotetico): -2.60%
+Campione Subset: 328 cambi.
+1. Matchup PRE-SWITCH: 48.40%
+2. Matchup IPOTETICO:  55.26%
+3. Matchup REALE:      51.89%
+GAP (Reale - Ipotetico): -3.37%
 ================================================================================
