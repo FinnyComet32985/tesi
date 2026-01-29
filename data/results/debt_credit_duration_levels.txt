@@ -1,32 +1,17 @@
-ANALISI DURATA DEBITO/CREDITO E CORRELAZIONE LIVELLI (PAY-TO-WIN CHECK)
-Obiettivo 1: Capire quanto durano i periodi di punizione (Debito) e gratificazione (Credito).
-Obiettivo 2: Verificare se durante il Debito il giocatore affronta avversari di livello più alto (incentivo shop).
+ANALISI DURATA DEBITO/CREDITO E COMPONENTI (LIVELLI vs DECK)
+Obiettivo: Capire se le fasi di Debito (Matchup < 45%) sono causate dai Livelli o dal Deck (Counter).
 Soglie: Debito < 45.0%, Credito > 55.0%
 ================================================================================
 
---- 1. ANALISI STANDARD (Matchup Reale: include livelli) ---
-TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
---------------------------------------------------------------------------------
-Debt            | 1850       | 1.60         | 13         | -0.37          
-Normal          | 1288       | 1.19         | 6          | 0.02           
-Credit          | 1932       | 1.49         | 15         | 0.35           
-
-Nota: Una correlazione qui è attesa se il Matchup include i livelli.
---------------------------------------------------------------------------------
-
---- 2. ANALISI PURA (Matchup No-Lvl: Solo Deck) ---
-Domanda: Quando il sistema ti countera il MAZZO (Debt), ti dà anche livelli più alti?
-TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF 
---------------------------------------------------------------------------------
-Debt            | 1873       | 1.49         | 9          | 0.07           
-Normal          | 1715       | 1.30         | 6          | -0.00          
-Credit          | 1714       | 1.39         | 8          | -0.10          
---------------------------------------------------------------------------------
-Confronto Livelli (Pure Debt vs Pure Credit):
-   Avg Level Diff in DEBT (Bad Deck):   +0.074
-   Avg Level Diff in CREDIT (Good Deck): -0.105
-   Test Mann-Whitney U (Debt < Credit): p-value = 1.0000
-
-RISULTATO: NON SIGNIFICATIVO.
-           Il livello degli avversari sembra indipendente dal fatto che tu abbia un mazzo favorevole o sfavorevole.
-================================================================================
+TIPO FASE       | N. STREAK  | AVG DURATA   | AVG LEVEL DIFF  | AVG NO-LVL MU  
+----------------------------------------------------------------------------------------------------
+Debt            | 1850       | 1.60         | -0.37           | 43.58          %
+Normal          | 1288       | 1.19         | 0.02            | 48.88          %
+Credit          | 1932       | 1.49         | 0.35            | 55.35          %
+----------------------------------------------------------------------------------------------------
+CONFRONTO DEBITO vs CREDITO:
+1. Livelli (Debt < Credit?): p-value = 0.0000
+   -> SIGNIFICATIVO. In Debito i livelli sono peggiori.
+2. Deck (Debt < Credit?):    p-value = 0.0000
+   -> SIGNIFICATIVO. In Debito il mazzo è peggiore (Counter).
+====================================================================================================

@@ -24,6 +24,6 @@ Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
 ----------------------------------------------------------------------
 Osservato                 | 3          | 0.0782     | 1.00x          
 Teorico (p^3)             | 1.09       | 0.0284     | 2.75           
-Global Shuffle            | 4.87       | 0.1270     | 0.62           
-Intra-Session Shuffle     | 4.69       | 0.1223     | 0.64           
+Global Shuffle            | 4.81       | 0.1256     | 0.62           
+Intra-Session Shuffle     | 4.72       | 0.1231     | 0.64           
 

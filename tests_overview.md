@@ -377,7 +377,7 @@ Esistono vere e proprie **fasce meta difficili**, che possono spiegare molte bad
 Molte percezioni di “matchmaking contro di me” derivano da **micro-meta locali**, non da manipolazione attiva. Queste anomalie spiegano perché un mazzo che funziona a 5000 trofei smette di funzionare a 5150.
 
 **ESECUZIONE**
-`micro_meta_150_results.txt`
+`micro_meta_results.txt`
 
 1. ## MATCHUP E STREAK DIPENDONO DAL MAZZO
 

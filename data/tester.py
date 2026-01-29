@@ -58,9 +58,10 @@ from test_targeting import (
     analyze_sniper_confounding
 )
 
-from analyze_micro_meta import analyze_micro_meta_150
+from analyze_micro_meta import analyze_micro_meta
 from arena_gatekeeping import analyze_arena_gatekeeping
 
+from climbing_regression_analysis import analyze_climbing_regression
 
 
 
@@ -131,10 +132,11 @@ def main():
     analyze_paywall_impact(players_sessions, output_dir=results_dir)
     analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=results_dir)
     analyze_meta_ranges(players_sessions, output_dir=results_dir)
+    analyze_climbing_regression(players_sessions, output_dir=results_dir)
     analyze_climbing_impact(players_sessions, output_dir=results_dir)
     analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir, cursor=cursor)
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
-    analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
+    #analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
     
 
     analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
@@ -143,7 +145,7 @@ def main():
     analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
     analyze_sniper_confounding(players_sessions, output_dir=results_dir)
 
-    analyze_micro_meta_150(players_sessions, output_dir=results_dir)
+    analyze_micro_meta(players_sessions, output_dir=results_dir)
     analyze_arena_gatekeeping(players_sessions, output_dir=results_dir)
     # --- TEST VELOCI ---
     analyze_pity_odds_vs_total_matches(profiles, matchup_stats, output_dir=results_dir)

@@ -3,19 +3,17 @@ from collections import defaultdict, Counter
 import os
 import statistics
 
-def analyze_micro_meta_150(players_sessions, output_dir=None):
+def analyze_micro_meta(players_sessions, output_dir=None, bucket_size=150):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
     os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'micro_meta_150_results.txt')
+    output_file = os.path.join(output_dir, 'micro_meta_results.txt')
     
     print(f"\nGenerazione report Micro-Meta (150 Trofei) in: {output_file}")
     
     db_path = os.path.join(os.path.dirname(__file__), '../db/clash.db')
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    
-    BUCKET_SIZE = 150
     
     # Data Structures
     # bucket_id -> list of opponent_deck_ids
@@ -46,7 +44,7 @@ def analyze_micro_meta_150(players_sessions, output_dir=None):
             t = b.get('trophies_before')
             if not t: continue
             
-            bucket_id = t // BUCKET_SIZE
+            bucket_id = t // bucket_size
             
             # Collect Deck Data
             o_deck = b.get('opponent_deck_id')
@@ -123,7 +121,7 @@ def analyze_micro_meta_150(players_sessions, output_dir=None):
         }
 
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI MICRO-META (BUCKET 150 TROFEI)\n")
+        f.write(f"ANALISI MICRO-META (BUCKET {bucket_size} TROFEI)\n")
         f.write("Obiettivo: Identificare anomalie locali (Micro-Metas) e Gatekeeping.\n")
         f.write("="*80 + "\n\n")
         
@@ -164,7 +162,7 @@ def analyze_micro_meta_150(players_sessions, output_dir=None):
             prev_top_cards = top_cards
             
             dom_str = ", ".join(dominant[:5]) # Show top 5 dominant
-            label = f"{bid*BUCKET_SIZE}-{(bid+1)*BUCKET_SIZE}"
+            label = f"{bid*bucket_size}-{(bid+1)*bucket_size}"
             
             f.write(f"{label:<15} | {len(bucket_decks[bid]):<8} | {transition_rate:<10.2f} | {dom_str}\n")
 
@@ -201,7 +199,7 @@ def analyze_micro_meta_150(players_sessions, output_dir=None):
             if avg_h > 2.0: status = "HOSTILE (Gatekeeping?)"
             elif avg_h < -2.0: status = "FRIENDLY (Boost?)"
             
-            label = f"{bid*BUCKET_SIZE}-{(bid+1)*BUCKET_SIZE}"
+            label = f"{bid*bucket_size}-{(bid+1)*bucket_size}"
             f.write(f"{label:<15} | {avg_h:<+15.2f} | {status}\n")
 
         # 3. STREAK BOUNDARY ANALYSIS
@@ -210,7 +208,7 @@ def analyze_micro_meta_150(players_sessions, output_dir=None):
         f.write("Dove iniziano le serie di sconfitte (>=3) all'interno del bucket?\n")
         f.write("-" * 80 + "\n")
         
-        offsets = [t % BUCKET_SIZE for t in streak_starts]
+        offsets = [t % bucket_size for t in streak_starts]
         if not offsets:
             f.write("Nessuna streak trovata.\n")
         else:
