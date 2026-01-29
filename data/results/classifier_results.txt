@@ -1,4 +1,4 @@
-Analisi Classificatore eseguita il: 2026-01-27 20:41:54.757828
+Analisi Classificatore eseguita il: 2026-01-29 11:49:25.937761
 
 =============================================
  PLAYER: 20CCVVLUP0
@@ -226,20 +226,20 @@ Resilienza (Partite in Loss)   | 0
 =============================================
 METRICA                        | VALORE    
 ---------------------------------------------
-Totale Partite                 | 232       
+Totale Partite                 | 233       
 Numero Sessioni                | 58        
-Durata Media Sess. (min)       | 10.89     
-Partite per Sessione           | 4.0       
-Matchup Medio (%)              | 51.26     
-Matchup No-Lvl (%)             | 42.42     
+Durata Media Sess. (min)       | 10.94     
+Partite per Sessione           | 4.02      
+Matchup Medio (%)              | 51.33     
+Matchup No-Lvl (%)             | 42.51     
 Level Diff Medio               | 0.46      
-Indice Frustrazione (FSI)      | 0.5       
+Indice Frustrazione (FSI)      | 0.495     
 Impulsività Quit (Avg)         | 1.844     
-ERS (Impulsività * exp(-FSI))  | 1.119     
+ERS (Impulsività * exp(-FSI))  | 1.124     
 Affidabilità Campione          | ALTA      
 Max Loss Streak (Toll.)        | 4         
 Win Continuation (%)           | 77.6      
-Loss Continuation (%)          | 72.0      
+Loss Continuation (%)          | 72.2      
 Counter Streak Cont.           | 4         
 Resilienza (Partite in Loss)   | 22        
 ---------------------------------------------

@@ -10,7 +10,7 @@ Totale Bad Streak: 652
 Baseline (Tempo speso sopra media): 88.36%
 Bad Streak avvenute sopra media:    92.94%
 LIFT: 1.05x
-P-value (Binomial): 0.000067
+P-value (Binomial): 0.000068
 RISULTATO: SIGNIFICATIVO. Le Bad Streak si concentrano quando sei in alto (Gatekeeping).
 Delta Medio Trofei (Bad Streak): +165.24
 
@@ -21,7 +21,7 @@ Totale Good Streak: 407
 Baseline (Tempo speso sotto media): 11.64%
 Good Streak avvenute sotto media:   13.02%
 LIFT: 1.12x
-P-value (Binomial): 0.212174
+P-value (Binomial): 0.211866
 RISULTATO: NON SIGNIFICATIVO. Le Good Streak sono casuali.
 Delta Medio Trofei (Good Streak): +203.15
 ================================================================================

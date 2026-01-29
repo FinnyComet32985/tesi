@@ -3358,6 +3358,102 @@ def analyze_skill_vs_matchup_dominance(players_sessions, output_dir=None):
             f.write("RISULTATO: NON SIGNIFICATIVO. La qualità di gioco (leaks) è indipendente dal matchup.\n")
         f.write("="*100 + "\n")
 
+def analyze_time_stats(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'time_stats_results.txt')
+
+    print(f"\nGenerazione report Time Stats (Matchup, No-Lvl, Levels) in: {output_file}")
+
+    time_slots = {0: "Notte (00-06)", 1: "Mattina (06-12)", 2: "Pomeriggio (12-18)", 3: "Sera (18-24)"}
+    
+    # Metrics to analyze
+    metrics = {
+        'matchup': {'label': 'Matchup Reale', 'data': {k: [] for k in time_slots}},
+        'matchup_no_lvl': {'label': 'Matchup No-Lvl', 'data': {k: [] for k in time_slots}},
+        'level_diff': {'label': 'Level Diff', 'data': {k: [] for k in time_slots}}
+    }
+
+    for p in players_sessions:
+        nationality = p.get('nationality')
+        for session in p['sessions']:
+            for b in session['battles']:
+                ts = b.get('timestamp')
+                if not ts: continue
+                
+                # Get time slot
+                h = get_local_hour(ts, nationality)
+                slot = 0
+                if 6 <= h < 12: slot = 1
+                elif 12 <= h < 18: slot = 2
+                elif 18 <= h < 24: slot = 3
+                
+                # Collect data
+                if b.get('matchup') is not None:
+                    metrics['matchup']['data'][slot].append(b['matchup'])
+                
+                if b.get('matchup_no_lvl') is not None:
+                    metrics['matchup_no_lvl']['data'][slot].append(b['matchup_no_lvl'])
+                    
+                if b.get('level_diff') is not None:
+                    metrics['level_diff']['data'][slot].append(b['level_diff'])
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI STATISTICA PER FASCIA ORARIA (MATCHUP, NO-LVL, LIVELLI)\n")
+        f.write("Obiettivo: Verificare se Media e Varianza cambiano durante il giorno per diverse metriche.\n")
+        f.write("="*100 + "\n\n")
+        
+        for key, info in metrics.items():
+            label = info['label']
+            samples = info['data']
+            
+            f.write(f"--- {label} ---\n")
+            f.write(f"{'Fascia Oraria':<20} | {'N':<10} | {'Mean':<10} | {'StdDev':<10} | {'Variance':<10}\n")
+            f.write("-" * 75 + "\n")
+            
+            valid_samples = []
+            
+            for slot in sorted(time_slots.keys()):
+                data = samples[slot]
+                if not data:
+                    f.write(f"{time_slots[slot]:<20} | {'0':<10} | {'-':<10} | {'-':<10} | {'-':<10}\n")
+                    continue
+                
+                avg = statistics.mean(data)
+                std = statistics.stdev(data) if len(data) > 1 else 0
+                var = std ** 2
+                
+                f.write(f"{time_slots[slot]:<20} | {len(data):<10} | {avg:<10.2f} | {std:<10.2f} | {var:<10.2f}\n")
+                valid_samples.append(data)
+            
+            f.write("-" * 75 + "\n")
+            
+            if len(valid_samples) > 1:
+                try:
+                    stat_k, p_k = kruskal(*valid_samples)
+                    f.write(f"Kruskal-Wallis (Medie): p={p_k:.4f}\n")
+                    if p_k < 0.05:
+                        f.write("-> DIFFERENZA SIGNIFICATIVA nelle medie.\n")
+                    else:
+                        f.write("-> NESSUNA differenza significativa nelle medie.\n")
+                except Exception as e:
+                    f.write(f"Kruskal-Wallis Error: {e}\n")
+
+                try:
+                    stat_l, p_l = levene(*valid_samples)
+                    f.write(f"Levene Test (Varianze): p={p_l:.4f}\n")
+                    if p_l < 0.05:
+                        f.write("-> DIFFERENZA SIGNIFICATIVA nelle varianze.\n")
+                    else:
+                        f.write("-> NESSUNA differenza significativa nelle varianze.\n")
+                except Exception as e:
+                    f.write(f"Levene Test Error: {e}\n")
+            else:
+                f.write("Dati insufficienti per i test statistici.\n")
+            
+            f.write("\n" + "="*100 + "\n\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -3388,6 +3484,7 @@ def main():
     analyze_climbing_impact(players_sessions)
     analyze_hook_by_trophy_range(players_sessions)
     analyze_skill_vs_matchup_dominance(players_sessions)
+    analyze_time_stats(players_sessions)
 
 if __name__ == "__main__":
     main()

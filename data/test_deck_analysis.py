@@ -298,52 +298,6 @@ def analyze_nolvl_markov(players_sessions, output_dir=None):
         f.write(f"Test Chi-Quadro: p-value = {p:.6f}\n")
         f.write("="*80 + "\n")
 
-def analyze_nolvl_time_independence(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'matchup_nolvl_time_results.txt')
-
-    print(f"\nGenerazione report Time Independence No-Lvl in: {output_file}")
-
-    time_slots = {0: "Notte (00-06)", 1: "Mattina (06-12)", 2: "Pomeriggio (12-18)", 3: "Sera (18-24)"}
-    samples = {k: [] for k in time_slots}
-
-    for p in players_sessions:
-        nationality = p.get('nationality')
-        for session in p['sessions']:
-            for b in session['battles']:
-                if b.get('matchup_no_lvl') is not None:
-                    h = get_local_hour(b['timestamp'], nationality)
-                    slot = 0
-                    if 6 <= h < 12: slot = 1
-                    elif 12 <= h < 18: slot = 2
-                    elif 18 <= h < 24: slot = 3
-                    samples[slot].append(b['matchup_no_lvl'])
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI INDIPENDENZA ORARIA: MATCHUP NO-LVL\n")
-        f.write("="*80 + "\n")
-        f.write(f"{'Fascia':<20} | {'N':<10} | {'Mean':<10} | {'StdDev':<10}\n")
-        f.write("-" * 60 + "\n")
-        
-        valid_samples = []
-        for slot in sorted(time_slots.keys()):
-            data = samples[slot]
-            if not data: continue
-            avg = statistics.mean(data)
-            std = statistics.stdev(data) if len(data) > 1 else 0
-            f.write(f"{time_slots[slot]:<20} | {len(data):<10} | {avg:<10.2f} | {std:<10.2f}\n")
-            valid_samples.append(data)
-        
-        f.write("-" * 60 + "\n")
-        if len(valid_samples) > 1:
-            stat_k, p_k = kruskal(*valid_samples)
-            stat_l, p_l = levene(*valid_samples)
-            f.write(f"Kruskal-Wallis (Medie): p={p_k:.4f}\n")
-            f.write(f"Levene Test (Varianze): p={p_l:.4f}\n")
-        f.write("="*80 + "\n")
-
 def analyze_card_meta_vs_counter(players_sessions, output_dir=None):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')

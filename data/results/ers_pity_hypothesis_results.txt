@@ -8,7 +8,7 @@ Soglia ERS (Mediana): 0.886
 GRUPPO               | N     | AVG PITY ODDS   | AVG MATCHES     | RANGE ERS           
 --------------------------------------------------------------------------------
 LOW ERS              | 12    | 0.5301          | 295.8           | 0.554 - 0.852
-HIGH ERS             | 12    | 1.8670          | 196.2           | 0.886 - 1.815
+HIGH ERS             | 12    | 1.8608          | 196.3           | 0.886 - 1.815
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Pity Odds (High ERS) > Pity Odds (Low ERS)

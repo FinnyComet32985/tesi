@@ -21,6 +21,7 @@ from test import (
     analyze_session_pity,
     analyze_extreme_matchup_streak,
     analyze_confounding_factors,
+    analyze_time_stats,
     analyze_deck_switch_impact,
     analyze_ers_pity_hypothesis,
     analyze_return_matchups_vs_ers,
@@ -50,7 +51,6 @@ from test import (
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 from test_deck_analysis import (
     analyze_deck_switch_hypothetical,
-    analyze_nolvl_time_independence,
     analyze_card_meta_vs_counter,
     analyze_matchmaking_fairness,
     analyze_level_saturation
@@ -108,6 +108,7 @@ def main():
     analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=False) # Con livelli (Reale)
     analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=True)  # Senza livelli (Puro)
     analyze_confounding_factors(players_sessions, output_dir=results_dir)
+    analyze_time_stats(players_sessions, output_dir=results_dir)
     analyze_deck_switch_impact(players_sessions, output_dir=results_dir)
     analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=results_dir)
     analyze_return_matchups_vs_ers(players_sessions, output_dir=results_dir)
@@ -137,7 +138,7 @@ def main():
     analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
     #analyze_deck_switch_hypothetical(players_sessions, output_dir=results_dir)
     
-    analyze_nolvl_time_independence(players_sessions, output_dir=results_dir)
+
     analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
     analyze_matchmaking_fairness(players_sessions, output_dir=results_dir)
     analyze_level_saturation(players_sessions, output_dir=results_dir)

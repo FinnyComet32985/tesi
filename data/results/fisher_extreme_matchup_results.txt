@@ -1,4 +1,4 @@
-Analisi Extreme Matchup eseguita il: 2026-01-27 20:41:54.792630
+Analisi Extreme Matchup eseguita il: 2026-01-29 11:49:25.979415
 
 ########################################
 # PLAYER: 20CCVVLUP0
@@ -280,10 +280,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup > 80%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Losing Streak (>=3L) | 2               | 3              
-Situazione Normale        | 23              | 62             
+Situazione Normale        | 24              | 62             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 1.80
-Significatività (p-value): 0.426933
+Rapporto di probabilità (Odds Ratio): 1.72
+Significatività (p-value): 0.443861
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 
@@ -293,10 +293,10 @@ IPOTESI: NON CONFERMATA (Casualità)
 CONDIZIONE                | Matchup < 40%   | Altro/Normale  
 ------------------------------------------------------------
 Dopo Win Streak (>=3W)    | 3               | 6              
-Situazione Normale        | 15              | 66             
+Situazione Normale        | 15              | 67             
 ------------------------------------------------------------
-Rapporto di probabilità (Odds Ratio): 2.20
-Significatività (p-value): 0.255307
+Rapporto di probabilità (Odds Ratio): 2.23
+Significatività (p-value): 0.249356
 IPOTESI: NON CONFERMATA (Casualità)
 ============================================================
 

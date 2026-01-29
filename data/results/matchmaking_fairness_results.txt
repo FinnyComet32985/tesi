@@ -4,7 +4,7 @@ Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) p
 Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.
 ====================================================================================================
 
-Totale Battaglie Analizzate: 7392
+Totale Battaglie Analizzate: 7393
 Bucket: 4000-5000 | Orario: 16:00-24:00 | Regione: South America | Battles: 122
 Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.387548 -> Non significativo

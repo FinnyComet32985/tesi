@@ -7,7 +7,7 @@ Player: 20UV9C0CL     -     std_dev: 7.68
 Player: 2PVCYY2Y     -     std_dev: 6.53
 Player: 2Q0JU0RR     -     std_dev: 9.89
 Player: 2RU2VCY80     -     std_dev: 7.36
-Player: 8YGG82QR2     -     std_dev: 7.51
+Player: 8YGG82QR2     -     std_dev: 7.43
 Player: 9988CY9C     -     std_dev: 8.87
 Player: 9JJRVRJL     -     std_dev: 12.20
 Player: CCYRVRJCU     -     std_dev: 13.07
@@ -50,7 +50,7 @@ Player: 20UV9C0CL  | FSI: 1.54 | StdDev: 7.68 | Var: 59.03
 Player: 2PVCYY2Y   | FSI: 0.67 | StdDev: 6.53 | Var: 42.66
 Player: 2Q0JU0RR   | FSI: 0.51 | StdDev: 9.89 | Var: 97.80
 Player: 2RU2VCY80  | FSI: 1.59 | StdDev: 7.36 | Var: 54.23
-Player: 8YGG82QR2  | FSI: 0.50 | StdDev: 7.51 | Var: 56.45
+Player: 8YGG82QR2  | FSI: 0.49 | StdDev: 7.43 | Var: 55.23
 Player: 9988CY9C   | FSI: 0.44 | StdDev: 8.87 | Var: 78.61
 Player: 9JJRVRJL   | FSI: 0.87 | StdDev: 12.20 | Var: 148.93
 Player: CCYRVRJCU  | FSI: 0.52 | StdDev: 13.07 | Var: 170.73
@@ -82,7 +82,7 @@ Player: YLCYCJ2YL  | FSI: 1.11 | StdDev: 11.47 | Var: 131.59
 Player: YU889LRR0  | FSI: 0.31 | StdDev: 5.87 | Var: 34.43
 
 ------------------------------------------------------------
-Gruppo Low FSI (<0.81)  [n=22]: Avg Varianza = 80.34
+Gruppo Low FSI (<0.81)  [n=22]: Avg Varianza = 80.29
 Gruppo High FSI (>1.20) [n=6]: Avg Varianza = 86.30
 RAPPORTO (High/Low): 1.07
 ============================================================

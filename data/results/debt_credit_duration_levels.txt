@@ -9,7 +9,7 @@ TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF
 --------------------------------------------------------------------------------
 Debt            | 1850       | 1.60         | 13         | -0.37          
 Normal          | 1288       | 1.19         | 6          | 0.02           
-Credit          | 1931       | 1.49         | 15         | 0.35           
+Credit          | 1932       | 1.49         | 15         | 0.35           
 
 Nota: Una correlazione qui è attesa se il Matchup include i livelli.
 --------------------------------------------------------------------------------
@@ -20,7 +20,7 @@ TIPO FASE       | N. STREAK  | AVG DURATA   | MAX DURATA | AVG LEVEL DIFF
 --------------------------------------------------------------------------------
 Debt            | 1873       | 1.49         | 9          | 0.07           
 Normal          | 1715       | 1.30         | 6          | -0.00          
-Credit          | 1713       | 1.39         | 8          | -0.10          
+Credit          | 1714       | 1.39         | 8          | -0.10          
 --------------------------------------------------------------------------------
 Confronto Livelli (Pure Debt vs Pure Credit):
    Avg Level Diff in DEBT (Bad Deck):   +0.074

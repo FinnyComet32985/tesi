@@ -44,7 +44,7 @@ BUCKET          | N. DECKS | TRANSITION | DOMINANT CARDS (Anomalie)
 10800-10950     | 190      | 0.24       | Miner (+2.4σ)
 10950-11100     | 201      | 0.24       | Elixir Collector (+2.1σ)
 11100-11250     | 269      | 0.24       | Mortar (+2.0σ)
-11250-11400     | 258      | 0.24       | Cannoneer (+2.0σ)
+11250-11400     | 259      | 0.24       | Cannoneer (+2.0σ)
 11400-11550     | 108      | 0.12       | Ram Rider (+2.1σ), Electro Spirit (+2.3σ), Royal Chef (+2.2σ), Mortar (+2.1σ), Bomb Tower (+2.5σ)
 11550-11700     | 168      | 0.24       | Guards (+2.1σ), Fisherman (+2.3σ), Royal Recruits (+2.9σ), Balloon (+2.0σ), Giant (+3.0σ)
 11700-11850     | 125      | 0.33       | Rocket (+2.0σ), Furnace (+2.5σ), Flying Machine (+3.3σ), Lumberjack (+2.2σ), Hunter (+2.1σ)
@@ -68,13 +68,13 @@ BUCKET          | AVG HOSTILITY   | STATUS
 10050-10200     | +0.31           | NEUTRAL
 10200-10350     | +0.36           | NEUTRAL
 10350-10500     | -1.85           | NEUTRAL
-10500-10650     | -0.99           | NEUTRAL
-10650-10800     | -0.19           | NEUTRAL
-10800-10950     | -0.81           | NEUTRAL
-10950-11100     | +0.64           | NEUTRAL
-11100-11250     | +0.22           | NEUTRAL
-11250-11400     | -0.21           | NEUTRAL
-11400-11550     | -0.50           | NEUTRAL
+10500-10650     | -0.98           | NEUTRAL
+10650-10800     | -0.18           | NEUTRAL
+10800-10950     | -0.80           | NEUTRAL
+10950-11100     | +0.65           | NEUTRAL
+11100-11250     | +0.23           | NEUTRAL
+11250-11400     | -0.25           | NEUTRAL
+11400-11550     | -0.49           | NEUTRAL
 11550-11700     | +1.39           | NEUTRAL
 11700-11850     | +1.59           | NEUTRAL
 
