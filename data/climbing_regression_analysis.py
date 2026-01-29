@@ -30,18 +30,18 @@ def analyze_climbing_regression(players_sessions, output_dir=None):
                         buckets[bucket_id].append((t, ld))
                         all_points.append((t, ld))
 
+    # Valore di riferimento dal test Debt Extinction (Delta Win - Loss)
+    OBSERVED_DELTA_WIN_LOSS = -0.08
+
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("ANALISI REGRESSIONE EFFETTO CLIMBING (Natural Level Decay)\n")
-        f.write("Obiettivo: Verificare se il peggioramento del Level Diff osservato dopo una vittoria (test 'Paywall Impact')\n")
+        f.write("Obiettivo: Verificare se il peggioramento del Level Diff (-0.08) osservato nel test 'Debt Extinction' (Delta Win-Loss)\n")
         f.write("           è spiegabile con la naturale progressione dei trofei (incontrare avversari più forti).\n")
         f.write("Metodo: Regressione lineare Level_Diff vs Trophies per calcolare il trend naturale.\n")
-        f.write("        Slope = Variazione media di Level Diff per 1 Trofeo guadagnato.\n")
-        f.write("        Delta 30 = Variazione attesa per una vittoria (+30 trofei).\n")
-        f.write("        Delta 60 = Variazione attesa tra lo stato post-vittoria (+30) e post-sconfitta (-30).\n")
-        f.write("                   Questo valore è il confronto diretto con il 'DELTA' del test 'Paywall Impact'.\n")
-        f.write("="*120 + "\n")
-        f.write(f"{'RANGE TROFEI':<15} | {'N. BATTLES':<10} | {'SLOPE (x1000)':<15} | {'DELTA 30 (Win)':<15} | {'DELTA 60 (W-L Gap)':<20} | {'NOTE'}\n")
-        f.write("-" * 120 + "\n")
+        f.write("        Confrontiamo il 'Natural Delta 60' (gap trofei tra Win e Loss) con l'Observed Delta (-0.08).\n")
+        f.write("="*130 + "\n")
+        f.write(f"{'RANGE TROFEI':<15} | {'N. BATTLES':<10} | {'SLOPE (x1000)':<15} | {'NATURAL DELTA 60':<20} | {'OBSERVED DELTA':<15} | {'EXPLAINED %':<15}\n")
+        f.write("-" * 130 + "\n")
         
         sorted_keys = sorted(buckets.keys())
         
@@ -61,11 +61,14 @@ def analyze_climbing_regression(players_sessions, output_dir=None):
             denominator = (n * sum_xx - sum_x * sum_x)
             slope = (n * sum_xy - sum_x * sum_y) / denominator if denominator != 0 else 0
             
-            delta_60 = slope * 60
-            note = "In linea con Paywall Test" if -0.12 <= delta_60 <= -0.04 else ""
+            # Gap di 60 trofei (Win +30 vs Loss -30)
+            natural_delta_60 = slope * 60
+            
+            # Percentuale spiegata
+            explained_pct = (natural_delta_60 / OBSERVED_DELTA_WIN_LOSS) * 100 if OBSERVED_DELTA_WIN_LOSS != 0 else 0
             
             label = f"{bid}-{bid+bucket_size}"
-            f.write(f"{label:<15} | {n:<10} | {slope*1000:<15.4f} | {slope * 30:<15.4f} | {delta_60:<20.4f} | {note}\n")
+            f.write(f"{label:<15} | {n:<10} | {slope*1000:<15.4f} | {natural_delta_60:<20.4f} | {OBSERVED_DELTA_WIN_LOSS:<15} | {explained_pct:<15.1f}%\n")
             
         f.write("-" * 120 + "\n")
         
@@ -77,13 +80,16 @@ def analyze_climbing_regression(players_sessions, output_dir=None):
             sum_xx = sum(x*x for x in xs)
             denominator = (n * sum_xx - sum_x * sum_x)
             slope = (n * sum_xy - sum_x * sum_y) / denominator if denominator != 0 else 0
-            delta_60 = slope * 60
-            note = "In linea con Paywall Test" if -0.12 <= delta_60 <= -0.04 else ""
-            f.write(f"{'GLOBAL':<15} | {n:<10} | {slope*1000:<15.4f} | {slope * 30:<15.4f} | {delta_60:<20.4f} | {note}\n")
+            
+            natural_delta_60 = slope * 60
+            explained_pct = (natural_delta_60 / OBSERVED_DELTA_WIN_LOSS) * 100 if OBSERVED_DELTA_WIN_LOSS != 0 else 0
+            
+            f.write(f"{'GLOBAL':<15} | {n:<10} | {slope*1000:<15.4f} | {natural_delta_60:<20.4f} | {OBSERVED_DELTA_WIN_LOSS:<15} | {explained_pct:<15.1f}%\n")
             
         f.write("="*120 + "\n")
         f.write("INTERPRETAZIONE:\n")
-        f.write("1. La colonna 'DELTA 60 (W-L Gap)' stima la differenza 'naturale' di Level Diff tra una vittoria e una sconfitta, dovuta solo alla scalata.\n")
-        f.write("2. Confronta questo valore con il 'DELTA' nel file 'paywall_impact_results.txt' per la stessa fascia di trofei.\n")
-        f.write("3. Se i valori sono simili (es. DELTA 60 è -0.07 e il Delta del paywall test era -0.08), allora l'effetto è spiegato dal CLIMBING.\n")
-        f.write("4. Se 'DELTA 60' è molto più piccolo del Delta del paywall test (es. -0.01 vs -0.08), allora c'è una componente PUNITIVA non spiegata dalla scalata.\n")
+        f.write("1. NATURAL DELTA 60: Variazione di livello attesa per un gap di 60 trofei (differenza tra aver vinto +30 e aver perso -30).\n")
+        f.write("2. OBSERVED DELTA: Il valore -0.08 misurato nel test 'Debt Extinction' (differenza reale tra post-win e post-loss).\n")
+        f.write("3. EXPLAINED %: Quanta parte del fenomeno è spiegata dal climbing naturale.\n")
+        f.write("   - Se vicino a 100%: Il debito è un'illusione statistica dovuta alla scalata.\n")
+        f.write("   - Se vicino a 0% (o negativo): Il debito è REALE e non dovuto alla scalata. Il sistema ti punisce attivamente.\n")

@@ -1,27 +1,25 @@
 ANALISI REGRESSIONE EFFETTO CLIMBING (Natural Level Decay)
-Obiettivo: Verificare se il peggioramento del Level Diff osservato dopo una vittoria (test 'Paywall Impact')
+Obiettivo: Verificare se il peggioramento del Level Diff (-0.08) osservato nel test 'Debt Extinction' (Delta Win-Loss)
            è spiegabile con la naturale progressione dei trofei (incontrare avversari più forti).
 Metodo: Regressione lineare Level_Diff vs Trophies per calcolare il trend naturale.
-        Slope = Variazione media di Level Diff per 1 Trofeo guadagnato.
-        Delta 30 = Variazione attesa per una vittoria (+30 trofei).
-        Delta 60 = Variazione attesa tra lo stato post-vittoria (+30) e post-sconfitta (-30).
-                   Questo valore è il confronto diretto con il 'DELTA' del test 'Paywall Impact'.
-========================================================================================================================
-RANGE TROFEI    | N. BATTLES | SLOPE (x1000)   | DELTA 30 (Win)  | DELTA 60 (W-L Gap)   | NOTE
+        Confrontiamo il 'Natural Delta 60' (gap trofei tra Win e Loss) con l'Observed Delta (-0.08).
+==================================================================================================================================
+RANGE TROFEI    | N. BATTLES | SLOPE (x1000)   | NATURAL DELTA 60     | OBSERVED DELTA  | EXPLAINED %    
+----------------------------------------------------------------------------------------------------------------------------------
+4000-5000       | 325        | -0.0615         | -0.0037              | -0.08           | 4.6            %
+5000-6000       | 871        | 0.0111          | 0.0007               | -0.08           | -0.8           %
+6000-7000       | 1162       | -0.3309         | -0.0199              | -0.08           | 24.8           %
+7000-8000       | 651        | -0.0878         | -0.0053              | -0.08           | 6.6            %
+8000-9000       | 281        | 0.3436          | 0.0206               | -0.08           | -25.8          %
+9000-10000      | 724        | 0.2189          | 0.0131               | -0.08           | -16.4          %
+10000-11000     | 1941       | -0.0502         | -0.0030              | -0.08           | 3.8            %
+11000-12000     | 1170       | 0.0087          | 0.0005               | -0.08           | -0.6           %
 ------------------------------------------------------------------------------------------------------------------------
-4000-5000       | 325        | -0.0615         | -0.0018         | -0.0037              | 
-5000-6000       | 871        | 0.0111          | 0.0003          | 0.0007               | 
-6000-7000       | 1162       | -0.3309         | -0.0099         | -0.0199              | 
-7000-8000       | 651        | -0.0878         | -0.0026         | -0.0053              | 
-8000-9000       | 281        | 0.3436          | 0.0103          | 0.0206               | 
-9000-10000      | 724        | 0.2189          | 0.0066          | 0.0131               | 
-10000-11000     | 1941       | -0.0502         | -0.0015         | -0.0030              | 
-11000-12000     | 1170       | 0.0087          | 0.0003          | 0.0005               | 
-------------------------------------------------------------------------------------------------------------------------
-GLOBAL          | 7393       | -0.0291         | -0.0009         | -0.0017              | 
+GLOBAL          | 7393       | -0.0291         | -0.0017              | -0.08           | 2.2            %
 ========================================================================================================================
 INTERPRETAZIONE:
-1. La colonna 'DELTA 60 (W-L Gap)' stima la differenza 'naturale' di Level Diff tra una vittoria e una sconfitta, dovuta solo alla scalata.
-2. Confronta questo valore con il 'DELTA' nel file 'paywall_impact_results.txt' per la stessa fascia di trofei.
-3. Se i valori sono simili (es. DELTA 60 è -0.07 e il Delta del paywall test era -0.08), allora l'effetto è spiegato dal CLIMBING.
-4. Se 'DELTA 60' è molto più piccolo del Delta del paywall test (es. -0.01 vs -0.08), allora c'è una componente PUNITIVA non spiegata dalla scalata.
+1. NATURAL DELTA 60: Variazione di livello attesa per un gap di 60 trofei (differenza tra aver vinto +30 e aver perso -30).
+2. OBSERVED DELTA: Il valore -0.08 misurato nel test 'Debt Extinction' (differenza reale tra post-win e post-loss).
+3. EXPLAINED %: Quanta parte del fenomeno è spiegata dal climbing naturale.
+   - Se vicino a 100%: Il debito è un'illusione statistica dovuta alla scalata.
+   - Se vicino a 0% (o negativo): Il debito è REALE e non dovuto alla scalata. Il sistema ti punisce attivamente.
