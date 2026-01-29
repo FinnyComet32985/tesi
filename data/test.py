@@ -2862,7 +2862,7 @@ def analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=None):
     STREAK_LEN = 3
     BAD_THRESH = 45.0
     GOOD_THRESH = 55.0
-    WINDOW_SIZE = 200  # Finestra mobile per la media
+    WINDOW_SIZE = 50  # Finestra mobile per la media
     MIN_HISTORY = 10   # Minimo partite precedenti per calcolare la media
     
     # Accumulatori globali

@@ -1,6 +1,6 @@
 # Analisi EOMM
 
-1. Test $\chi^2$ indipendenza
+1. ## Test $\chi^2$ indipendenza
 
 IPOTESI: il matchup della partita successiva dipende dalle streak
 
@@ -9,19 +9,25 @@ TEST: il test utilizzato è il $\chi^2$ che analizza il matchup della partita su
 RISULTATO 
 ci sono **alcuni casi isolati** con dipendenza significativa, ma non abbastanza consistenti tra i player da suggerire un effetto sistematico ❌
 
-1. EXACT FISCER SU MATCHUP ESTREMI
+**ESECUZIONE**
+`chi_square_independence_results.txt`
 
-IPOTESI dopo una streak di vittorie/sconfitte la probabilità di trovare un martchup estremamente negativo/positivo cambia, significativamente?
+1. ## EXACT FISCER SU MATCHUP ESTREMI
+
+IPOTESI dopo una streak di vittorie/sconfitte la probabilità di trovare un matchup estremamente negativo/positivo cambia, significativamente?
 
 TEST il test controlla la distribuzione dei matchup estremi e normali, comparandolo con la loro distribuzione dopo le streak
 
 RISULTATO nessun risultato significativo ma varianza tra gli odds molto amplia ❌
 
-1. CATENE DI MARKOV
+**ESECUZIONE**
+`fisher_extreme_matchup_results.txt`
+
+1. ## CATENE DI MARKOV
 
 IPOTESI il matchup della partita successiva è indipendente dal matchup della partita precedente
 
-TEST modella una catena di MARKOV per vedere se il marchup precedente influenza quello successivo
+TEST modella una catena di MARKOV per vedere se il matchup precedente influenza quello successivo
 
 RISULTATO  tutti i test eseguiti (matchup, levels, marchup no LVL) hanno risultare significativo ma nessuno sull'outcome della partita precedente
 
@@ -30,7 +36,10 @@ Le deviazioni rispetto all’indipendenza indicano che **la distribuzione dei ma
 
 POSSIBILI SPIEGAZIONI: META, TROFEI, POOL PLAYER ONLINE X FASCIA ORARIA
 
-1. COSTRUZIONE FSI, IMPULSIVITÀ, ERS
+**ESECUZIONE**
+`markov_chains_results.txt`
+
+1. ## COSTRUZIONE FSI, IMPULSIVITÀ, ERS
 
 IPOTESI      //
 
@@ -44,7 +53,10 @@ RISULTATO nessuna correlazione significativa
 > correlazione tra pity odds e Trofei
 > 
 
-1. RITORNO DOPO UNA BAD STREAK
+**ESECUZIONE**
+`correlation_results.txt`
+
+1. ## RITORNO DOPO UNA BAD STREAK
 
 IPOTESI in un sistema EOMM like se un giocatore quitta dopo una streak di matchup sfavorevoli al ritorno dovrebbe avere un matchup favorevole
 
@@ -52,7 +64,10 @@ TEST se l'ultima sessione del player è finita con % matchup sfavorevoli, la pri
 
 RISULTATO indipendentemente dal tempo passato il matchup al ritorno è peggiore di quando il player finisce la sessione non in una streak di matchup sfavorevoli ❌
 
-1. SESSION PITY
+**ESECUZIONE**
+`return_after_bad_streak_results.txt`
+
+1. ## SESSION PITY
 
 IPOTESI in un matchmaking EOMM like se una sessione ha avuto un matchup medio sfavorevole quella successiva dovrebbe averne uno favorevole
 
@@ -60,7 +75,10 @@ TEST verificare se la sessione successiva ad una con un matchup mediamente sfavo
 
 RISULTATO nessuno dei test ha raggiunto la significatività ❌
 
-1. ANALISI SEQUENZE KILLER
+**ESECUZIONE**
+`session_pity_test_results.txt`
+
+1. ## ANALISI SEQUENZE KILLER
 
 IPOTESI in un sistema di matchmaking basato sulla retention le sequenze che fanno quittare maggiormente i player dovrebbero apparire messo di quando ci aspetteremo
 
@@ -69,17 +87,25 @@ TEST cercare una correlazione spearman tra il rateo di apparizione di queste fre
 RISULTATO la correlazione generale non è significativa ❌. Tuttavia, si nota un'anomalia nella sequenza **C-C-C** (3 Counter di fila), che appare con una frequenza doppia rispetto all'atteso (**Ratio 2.05x**).
 > Questo fenomeno supporta l'ipotesi delle "Meta Windows": i counter non sono distribuiti uniformemente, ma arrivano a "ondate", rendendo più probabile incontrarne 3 di fila una volta entrati in una fascia ostile.
 
-1. ANALISI EFFICIENZA POTENZIALE SISTEMA
+**ESECUZIONE**
+`dangerous_sequences_results.txt`
+
+1. ## ANALISI EFFICIENZA POTENZIALE SISTEMA
 
 IPOTESI la concessione dei pity match dovrebbe aumentare il coinvolgimento dei player
 
 TEST sono stati testati gli eventi (lose, lose streak ≥ 2, lose streak ≥ 3, counter, counter streak ≥ 2 e counter streak ≥3) per vedere se quando ricevano un pity match hanno un allungamento della sessione, un ritorno medio più rapido o un minore rischio di quit > 3 giorni
 
-RISULTATO nessun test ha raggiunto la significatività, ad eccezione del test  losing streak ≥3 e avg remaining matches. questo mostra che dopo una serie di lose ≥ 3, i player che ricevano un pity tendono a giocare una portata in più
+RISULTATO nessun test ha raggiunto la significatività, ad eccezione del test losing streak ≥3 e avg remaining matches. questo mostra che dopo una serie di lose ≥ 3, i player che ricevano un pity tendono a giocare una portata in più
+
+**ESECUZIONE**
+`pity_impact_on_session_length.txt`
+`pity_impact_on_return_time.txt`
+
 
 # Analisi lamentele player
 
-1. ANALISI COUNTER DI FILA
+1. ## ANALISI COUNTER DI FILA
 
 IPOTESI un sistema di matchmaking basato unicamente sui Trofei produrrebbe delle streak di matchup no lvl svantaggiosi/vantaggiosi più alta di un sistema deck-aware ma più bassa di matchup compresi di livelli
 
@@ -114,7 +140,13 @@ RISULTATI
 > > le streak si trovano in sessioni con caratteristiche particolari?
 > > 
 
-1. DECK SWITCH
+**ESECUZIONE**
+`extreme_matchup_streak_results.txt`
+`extreme_level_streak_results.txt`
+`extreme_matchup_streak_no_lvl_results.txt`
+
+
+1. ## DECK SWITCH
 
 IPOTESI avendo un determinato pool di mazzi che ci countera, cambiando mazzo il pool di avversari dovrebbe rimanere uguale
 
@@ -141,7 +173,11 @@ IMPLICAZIONE
 1. al contrario delle dichiarazioni i livelli sono in qualche modo presi in considerazione
 2. anche se una volta cambiato il giocatore ottiene un vantaggio, questo è inferiore a quello ipotizzato. dopo il cambio deck il giocatore potrebbe essere messo in un pool di giocatori diversi?
 
-1. GATEKEEPING
+**ESECUZIONE**
+`deck_switch_impact.txt`
+`deck_switch_hypothetical_results.txt`
+
+1. ## GATEKEEPING
 
 IPOTESI in un matchmaking non aware del deck o dei livelli i matchup che troviamo vicino alle nuove arene dovrebbero essere in linea con quelli precedenti
 
@@ -156,7 +192,10 @@ RISULTATO non sembrano esserci peggioramenti significativi (ad eccezione dei liv
 
 (inizialmente solo i matchup no lvl)
 
-1. GATEKEEPING AVANZATO
+**ESECUZIONE**
+`gatekeeping_results.txt`
+
+1. ## GATEKEEPING AVANZATO
 
 **IPOTESI**
 
@@ -180,15 +219,21 @@ RISULTATO
 - Fenomeno "Relax Post-Gate" a 5500, 6500, 7000, 10000
 - Delta Pre-Stable vs Post-Stable varia significativamente per soglia
 
-1. COUNTER STREAK MANIPOLATION
+**ESECUZIONE**
+`arena_gatekeeping_results.txt`
+
+1. ## COUNTER STREAK MANIPOLATION
 
 IDEA in un sistema di matchmaking puramente basato sui trofei le streak dei matchup no lvl si dovrebbero distribuire in modo casuale
 
-TEST capire se le bad streak di marchup no lvl si concentrano proprio quando ti trovi più in alto di trofei rispetto alla media delle tue ultime 200 portale
+TEST capire se le bad streak di marchup no lvl si concentrano proprio quando ti trovi più in alto di trofei rispetto alla media delle tue ultime 50 partite
 
-RISULTATO il Tempo che il giocatore passa Sopra alla media e dell' 88%. la probabilità di incappare in una serie di matchup negatavi è del 5% più grande quando sei sopra la media (circa +160 trofei)
+RISULTATO entrambi i test non raggiungono la significatività
 
-1. SESSION TREND
+**ESECUZIONE**
+`nolvl_streaks_vs_trophies_results.txt`
+
+1. ## SESSION TREND
 
 IPOTESI in un sistema puramente basato sulla skill ci dovrebbe essere un maggiore winrate nelle prime partite della sessione (maggiore concentrazione) ma non a causa di matchup favorevoli
 
@@ -196,45 +241,52 @@ TEST il winrate è maggiore? i matchup sono migliori? player con sessioni più c
 
 RISULTATI sia il winrate che i matchup e i lvl sono migliori ma sessioni più corte non portano a matchup migliori, inoltre i matchup non diventano sempre peggio più è lunga la sessione
 
-1. CONSISTENZA HOOK x TROFEI
+**ESECUZIONE**
+`session_trend_results.txt`
+
+1. ## CONSISTENZA HOOK x TROFEI
 
 IPOTESI l'hook è presente indipendentemente dai Trofei
 
-TEST verificare se l' hook non dipende dai trofei
+TEST verificare se l'hook non dipende dai trofei
 
-RISULTATI si, l' hook è quasi sempre presente ma varia abbastanza
+RISULTATI si, l'hook è quasi sempre presente ma varia abbastanza
 
-1. DEBT/ CREDIT
+**ESECUZIONE**
+`hook_by_trophy_range_results.txt`
+
+1. ## DEBT / CREDIT
 
 IPOTESI in un gioco che non ha memoria dei matchup precedenti vincere o perdere un matchup estremo non dovrebbe influenzare il matchup successivo
 
 TEST verificare se un matchup sfavorevole seguito da una vittoria porta ad un matchup ancora sfavorevole, confrontandolo con una sconfitta
 
-RISULTATO vincere una partita sfavorevole porta ad un matchup ancora sfavorevole, perderla porla il matchup verso l'equità.
-
-perdere una partita favorevole porta ad un matchup ancora favorevole, vincerla porta il matchup verso l'equità
-
-in entrambi i casi la vittoria o la sconfitta sono dovuto all'elisir leaked dell'avversario (x la vittoria) o
-
+RISULTATO 
+vincere una partita sfavorevole porta ad un matchup ancora sfavorevole, perderla porla il matchup verso l'equità.
+perdere una partita favorevole porta ad un matchup ancora favorevole, vincerla porta il matchup verso l'equità in entrambi i casi la vittoria o la sconfitta sono dovuto all'elisir leaked dell'avversario (x la vittoria) o
 del player (x la sconfitta)
 
 POSSIBILI SPIEGAZIONI
 
-il player è già a limite con i livelli, per cui trova il matchup sfavorevole. vincendo avrò avversari con livelli ancora maggiori e quindi un matchup peggiore
+il player è già a limite con i livelli, per cui trova il matchup sfavorevole. vincendo avrà avversari con livelli ancora maggiori e quindi un matchup peggiore
 
 cambiano così tanto i livelli in 30 trofei? NO, LVL SATURATION e PAYWALL IMPACT 
 
 cambio di meta? NO, META RANGE + MICRO META
 
-1. DEBT / CREDIT ESTINOTION
+**ESECUZIONE**
+`debt_extinction_results.txt`
+
+1. ## DEBT / CREDIT ESTINTION
 
 IPOTESI perdere la partita sfavorevole combattendola o perdendo malamente non dovrebbe portare a differenze
 
 TEST confrontare il matchup successivo a quello sfavorevole e capire se una sconfitta netta riporla più velocemente ad un matchup equo rispetto a una sconfitta combattuta
 
-RISULTATO no, non sembra che perdere malamente la partita sfavorita porti a matchup più equo
+RISULTATO no, non sembra che perdere malamente la partita sfavorita porti a matchup più equo rispetto a una sconfitta combattuta. anzi il contrario, sembra meglio una close loss
 
-rispetto a una sconfitta combattuta. anzi il contrario, sembra meglio una close loss
+**ESECUZIONE**
+`defeat_quality_impact_results.txt`
 
 1. IL PLAYER INCONTRA PIÙ COUNTER
 
@@ -245,9 +297,13 @@ TEST
 - player che giocano nello stesso range di trofei, nella stessa fascia oraria e nella stessa nazione incontrano player con deck diversi?
 - un player incontra più spesso counter rispetto a quando li incontrano gli averi player?
 
-RISULTATO no, i player incontrano gli stessi deck e no, non incentrano i counter più spesso di chi non li soffre
+RISULTATO 
+no, i player incontrano gli stessi deck e no, non incontrano i counter più spesso di chi non li soffre
 
-1. QUANTO CONTANO I LVL E LA SKILL
+**ESECUZIONE**
+`matchmaking_fairness_results.txt`
+
+1. ## QUANTO CONTANO I LVL E LA SKILL
 
 IPOTESI 
 
@@ -269,15 +325,21 @@ RISULTATO
     - winrate 70% con > skill
     - winrate 64% con < skill
 
-1. MATCHUP E STREAK DIPENDONO DALL’ORARIO
+**ESECUZIONE**
+`skill_vs_matchup_dominance.txt`
 
-il matchup medio dipende dall’orario (probabilmente per il minor numero di player
+1. ## MATCHUP E STREAK DIPENDONO DALL’ORARIO
 
+il matchup medio dipende dall’orario (probabilmente per il minor numero di player online) 
 il numero di streak dipende dall’orario ma le variazioni sono molto piccole
 
-1. MATCHUP E STREAK DIPENDONO DAI TROFEI
+1. ## MATCHUP E STREAK DIPENDONO DAI TROFEI
 
 si, sia il matchup medio che il numero di streak dipendono dai trofei 
+
+**ESECUZIONE**
+`confounding_factors_results.txt`
+`time_stats_results.txt`
 
 1. META RANGES (FASCE META LOCALI)
 
@@ -291,7 +353,10 @@ TEST Distribuzione del matchup no-lvl per bucket da 200 trofei, Test Kruskal-Wal
 
 Esistono vere e proprie **fasce meta difficili**, che possono spiegare molte bad streak senza bisogno di EOMM.
 
-1. MICRO-META E TRANSIZIONI LOCALI
+**ESECUZIONE**
+`meta_ranges_results.txt`
+
+1. ## MICRO-META E TRANSIZIONI LOCALI
 
 **IPOTESI** Il meta non cambia solo su larga scala, ma anche localmente tra sotto-fasce.
 
@@ -311,9 +376,15 @@ Esistono vere e proprie **fasce meta difficili**, che possono spiegare molte bad
 
 Molte percezioni di “matchmaking contro di me” derivano da **micro-meta locali**, non da manipolazione attiva. Queste anomalie spiegano perché un mazzo che funziona a 5000 trofei smette di funzionare a 5150.
 
-1. MATCHUP E STREAK DIPENDONO DAL MAZZO
+**ESECUZIONE**
+`micro_meta_150_results.txt`
+
+1. ## MATCHUP E STREAK DIPENDONO DAL MAZZO
 
 no, non dipendono dal mazzo
+
+**ESECUZIONE**
+`confounding_factors_results.txt`
 
 1. IMPATTO CLIMBING
 
@@ -326,7 +397,10 @@ RISULTATO si, salendo trovi generalmente condizioni peggiori ma non a tal punto 
 > confermato dal paywall impact
 > 
 
-1. PAYWALL IMPACT (Progressione Naturale vs Manipolazione)
+**ESECUZIONE**
+`climbing_impact_results.txt`
+
+1. ## PAYWALL IMPACT (Progressione Naturale vs Manipolazione)
 
 **IPOTESI**
 
@@ -346,7 +420,10 @@ Solo rare anomalie non sistematiche
 
 I livelli seguono una **progressione strutturale (paywall statico)**, non una manipolazione dinamica post-partita.
 
-1.  LVL SATURATION
+**ESECUZIONE**
+`paywall_impact_results.txt`
+
+1.  ## LVL SATURATION
 
 IPOTESI a Trofei alti i giocatori tendono ad essere maxati, per cui la varianza si abbassa
 
@@ -359,16 +436,19 @@ inoltre  la varianza è generalmente bassa
 > non spiega il debito
 > 
 
-la %  di 0 diff inoltre è generalmente alta 
+la % di 0 diff inoltre è generalmente alta 
 
 > ma non a tal punto da spiegare completamente la mancanza di Double Whammy
 > 
+
+**ESECUZIONE**
+`level_saturation_results.txt`
 
 1. PUNISHMENT TRADE-OFF (NO DOUBLE WHAMMY)
 
 **IPOTESI**
 
-Il sistema evita di punire contemporaneamente con matchup sfavorevole *e* livelli sfavorevoli.
+Il sistema evita di punire contemporaneamente con matchup sfavorevole e livelli sfavorevoli.
 
 **TEST**
 
@@ -383,6 +463,9 @@ Il sistema evita di punire contemporaneamente con matchup sfavorevole *e* livell
 **CONCLUSIONE**
 
 Il sistema tende a distribuire lo svantaggio su un solo asse → comportamento più compatibile con matchmaking bilanciato che con EOMM punitivo
+
+**ESECUZIONE**
+`punishment_tradeoff_results.txt`
 
 # conclusione
 

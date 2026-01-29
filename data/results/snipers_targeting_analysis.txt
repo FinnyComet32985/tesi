@@ -4,7 +4,7 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 ================================================================================
 
 >>> ANALISI CARTA: GRAVEYARD
-    Hard Counters: Mother Witch, Poison...
+    Hard Counters: Poison, Mother Witch...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 934        | 25         | 2.68      %
@@ -14,7 +14,7 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: ELECTRO GIANT
-    Hard Counters: Elite Barbarians, Inferno Tower, Inferno Dragon, Mini P.E.K.K.A...
+    Hard Counters: Inferno Tower, Mini P.E.K.K.A, Elite Barbarians, Inferno Dragon...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 981        | 22         | 2.24      %
@@ -24,7 +24,7 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: SPARKY
-    Hard Counters: Lightning, Electro Dragon, Zappies, Rocket...
+    Hard Counters: Rocket, Lightning, Electro Wizard, Zappies...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 817        | 40         | 4.90      %
@@ -34,7 +34,7 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: BALLOON
-    Hard Counters: Inferno Tower, Mega Minion, Ram Rider, Hunter...
+    Hard Counters: Mega Minion, Rocket, Ram Rider, Hunter...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 737        | 46         | 6.24      %
@@ -44,7 +44,7 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: LAVA HOUND
-    Hard Counters: Inferno Tower, Inferno Dragon, Executioner...
+    Hard Counters: Inferno Tower, Executioner, Inferno Dragon...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 1045       | 14         | 1.34      %
@@ -54,7 +54,7 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: GOLEM
-    Hard Counters: Elite Barbarians, Inferno Tower, Inferno Dragon, Mini P.E.K.K.A...
+    Hard Counters: Inferno Tower, Mini P.E.K.K.A, Elite Barbarians, Inferno Dragon...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
     VULNERABILI          | 935        | 61         | 6.52      %
