@@ -31,10 +31,7 @@ from test import (
     analyze_short_session_bonus,
     analyze_markov_chains,
     analyze_return_after_bad_streak,
-    analyze_debt_extinction,
-    analyze_favorable_outcome_impact,
     analyze_defeat_quality_impact,
-    analyze_debt_credit_duration_and_levels,
     analyze_punishment_tradeoff,
     analyze_extreme_level_streak,
     analyze_normalized_level_streak,
@@ -44,7 +41,8 @@ from test import (
     analyze_meta_ranges,
     analyze_climbing_impact,
     analyze_hook_by_trophy_range,
-    analyze_skill_vs_matchup_dominance
+    analyze_skill_vs_matchup_dominance,
+    analyze_debt_credit_combined
 )
 from test_matchup_no_lvl import analyze_matchup_no_lvl_stats
 from test_deck_analysis import (
@@ -121,10 +119,8 @@ def main():
     analyze_short_session_bonus(players_sessions, output_dir=results_dir)
     analyze_markov_chains(players_sessions, output_dir=results_dir)
     analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
-    analyze_debt_extinction(players_sessions, output_dir=results_dir)
-    analyze_favorable_outcome_impact(players_sessions, output_dir=results_dir)
     analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
-    analyze_debt_credit_duration_and_levels(players_sessions, output_dir=results_dir)
+    analyze_debt_credit_combined(players_sessions, output_dir=results_dir)
     analyze_punishment_tradeoff(players_sessions, output_dir=results_dir)
     analyze_extreme_level_streak(players_sessions, output_dir=results_dir)
     analyze_normalized_level_streak(players_sessions, output_dir=results_dir)

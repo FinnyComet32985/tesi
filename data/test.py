@@ -3462,6 +3462,253 @@ def analyze_time_stats(players_sessions, output_dir=None):
             
             f.write("\n" + "="*100 + "\n\n")
 
+def analyze_debt_credit_combined(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'debt_credit_combined_results.txt')
+
+    print(f"\nGenerazione report combinato Debito/Credito in: {output_file}")
+
+    # --- LOGICA DEBT EXTINCTION ---
+    UNFAVORABLE_THRESH = 45.0
+    next_mu_win = []
+    next_mu_loss = []
+    next_lvl_win = []
+    next_lvl_loss = []
+    next_mnl_win = []
+    next_mnl_loss = []
+    ctrl_curr_mu_win = []
+    ctrl_curr_mu_loss = []
+    ctrl_lvl_win = []
+    ctrl_lvl_loss = []
+    ctrl_elixir_diff_win = []
+
+    # --- LOGICA FAVORABLE OUTCOME ---
+    FAVORABLE_THRESH = 55.0
+    fav_next_mu_win = []
+    fav_next_mu_loss = []
+    fav_next_lvl_win = []
+    fav_next_lvl_loss = []
+    fav_next_mnl_win = []
+    fav_next_mnl_loss = []
+    fav_ctrl_curr_mu_win = []
+    fav_ctrl_curr_mu_loss = []
+    fav_ctrl_lvl_win = []
+    fav_ctrl_lvl_loss = []
+    fav_ctrl_elixir_diff_loss = []
+
+    # --- LOGICA DURATION & LEVELS ---
+    BAD_THRESH_DUR = 45.0
+    GOOD_THRESH_DUR = 55.0
+    stats_dur = {
+        'Debt': {'lengths': [], 'levels': [], 'matchups_no_lvl': []},
+        'Credit': {'lengths': [], 'levels': [], 'matchups_no_lvl': []},
+        'Normal': {'lengths': [], 'levels': [], 'matchups_no_lvl': []}
+    }
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            
+            # Per Duration & Levels
+            current_type = None
+            current_len = 0
+            
+            for i in range(len(battles)):
+                b = battles[i]
+                
+                # --- Duration Logic ---
+                mu = b.get('matchup')
+                mu_pure = b.get('matchup_no_lvl')
+                lvl = b.get('level_diff')
+                
+                if mu is not None and lvl is not None:
+                    if mu < BAD_THRESH_DUR: new_type = 'Debt'
+                    elif mu > GOOD_THRESH_DUR: new_type = 'Credit'
+                    else: new_type = 'Normal'
+                    
+                    if new_type != current_type:
+                        if current_type is not None:
+                            stats_dur[current_type]['lengths'].append(current_len)
+                        current_type = new_type
+                        current_len = 1
+                    else:
+                        current_len += 1
+                    
+                    stats_dur[new_type]['levels'].append(lvl)
+                    if mu_pure is not None:
+                        stats_dur[new_type]['matchups_no_lvl'].append(mu_pure)
+
+                # --- Debt Extinction & Favorable Outcome Logic (requires next match) ---
+                if i < len(battles) - 1:
+                    curr = battles[i]
+                    next_b = battles[i+1]
+                    
+                    if curr.get('matchup') is None or next_b.get('matchup') is None:
+                        continue
+
+                    # Debt Extinction (Unfavorable)
+                    if curr['matchup'] < UNFAVORABLE_THRESH:
+                        if next_b.get('level_diff') is not None and next_b.get('matchup_no_lvl') is not None:
+                            if curr['win'] == 1:
+                                next_mu_win.append(next_b['matchup'])
+                                next_lvl_win.append(next_b['level_diff'])
+                                next_mnl_win.append(next_b['matchup_no_lvl'])
+                                ctrl_curr_mu_win.append(curr['matchup'])
+                                if curr.get('level_diff') is not None: ctrl_lvl_win.append(curr['level_diff'])
+                                if curr.get('elixir_leaked_player') is not None and curr.get('elixir_leaked_opponent') is not None:
+                                    ctrl_elixir_diff_win.append(curr['elixir_leaked_opponent'] - curr['elixir_leaked_player'])
+                            else:
+                                next_mu_loss.append(next_b['matchup'])
+                                next_lvl_loss.append(next_b['level_diff'])
+                                next_mnl_loss.append(next_b['matchup_no_lvl'])
+                                ctrl_curr_mu_loss.append(curr['matchup'])
+                                if curr.get('level_diff') is not None: ctrl_lvl_loss.append(curr['level_diff'])
+
+                    # Favorable Outcome
+                    if curr['matchup'] > FAVORABLE_THRESH:
+                        if next_b.get('level_diff') is not None and next_b.get('matchup_no_lvl') is not None:
+                            if curr['win'] == 1:
+                                fav_next_mu_win.append(next_b['matchup'])
+                                fav_next_lvl_win.append(next_b['level_diff'])
+                                fav_next_mnl_win.append(next_b['matchup_no_lvl'])
+                                fav_ctrl_curr_mu_win.append(curr['matchup'])
+                                if curr.get('level_diff') is not None: fav_ctrl_lvl_win.append(curr['level_diff'])
+                            else:
+                                fav_next_mu_loss.append(next_b['matchup'])
+                                fav_next_lvl_loss.append(next_b['level_diff'])
+                                fav_next_mnl_loss.append(next_b['matchup_no_lvl'])
+                                fav_ctrl_curr_mu_loss.append(curr['matchup'])
+                                if curr.get('level_diff') is not None: fav_ctrl_lvl_loss.append(curr['level_diff'])
+                                if curr.get('elixir_leaked_player') is not None and curr.get('elixir_leaked_opponent') is not None:
+                                    fav_ctrl_elixir_diff_loss.append(curr['elixir_leaked_opponent'] - curr['elixir_leaked_player'])
+
+            # End of session for Duration
+            if current_type is not None:
+                stats_dur[current_type]['lengths'].append(current_len)
+
+    # --- WRITING REPORT ---
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI COMBINATA DEBITO/CREDITO\n")
+        f.write("Include: Debt Extinction, Favorable Outcome Impact, Debt/Credit Duration & Levels.\n")
+        f.write("="*100 + "\n\n")
+
+        # 1. DEBT EXTINCTION
+        f.write("PARTE 1: ESTINZIONE DEBITO (MMR DEBT)\n")
+        f.write("Ipotesi: Vincere un matchup sfavorevole NON estingue il debito. Perdere lo estingue.\n")
+        f.write(f"Definizione Unfavorable: Matchup < {UNFAVORABLE_THRESH}%\n")
+        f.write("-" * 80 + "\n")
+        
+        if len(next_mu_win) < 10 or len(next_mu_loss) < 10:
+            f.write("Dati insufficienti per Debt Extinction.\n")
+        else:
+            avg_next_win = statistics.mean(next_mu_win)
+            avg_next_loss = statistics.mean(next_mu_loss)
+            stat, p_val = mannwhitneyu(next_mu_win, next_mu_loss, alternative='less')
+            
+            f.write(f"{'ESITO MATCH PRECEDENTE':<30} | {'N':<6} | {'NEXT MATCHUP (Avg)':<20}\n")
+            f.write(f"{'Unfavorable + WIN (Debito?)':<30} | {len(next_mu_win):<6} | {avg_next_win:<20.2f}%\n")
+            f.write(f"{'Unfavorable + LOSS (Pagato?)':<30} | {len(next_mu_loss):<6} | {avg_next_loss:<20.2f}%\n")
+            f.write(f"Delta: {avg_next_win - avg_next_loss:+.2f}%\n")
+            f.write(f"Test Mann-Whitney U (Win < Loss): p-value = {p_val:.4f}\n")
+            
+            # Components
+            f.write("\nCOMPONENTI DEL MATCHUP SUCCESSIVO:\n")
+            if len(next_lvl_win) > 10 and len(next_lvl_loss) > 10:
+                avg_lvl_win = statistics.mean(next_lvl_win)
+                avg_lvl_loss = statistics.mean(next_lvl_loss)
+                stat_lvl, p_val_lvl = mannwhitneyu(next_lvl_win, next_lvl_loss, alternative='less')
+                f.write(f"1. Level Diff: Win={avg_lvl_win:+.2f} vs Loss={avg_lvl_loss:+.2f} (Delta: {avg_lvl_win - avg_lvl_loss:+.2f}, p={p_val_lvl:.4f})\n")
+            
+            if len(next_mnl_win) > 10 and len(next_mnl_loss) > 10:
+                avg_mnl_win = statistics.mean(next_mnl_win)
+                avg_mnl_loss = statistics.mean(next_mnl_loss)
+                stat_mnl, p_val_mnl = mannwhitneyu(next_mnl_win, next_mnl_loss, alternative='less')
+                f.write(f"2. Matchup No-Lvl: Win={avg_mnl_win:.2f}% vs Loss={avg_mnl_loss:.2f}% (Delta: {avg_mnl_win - avg_mnl_loss:+.2f}%, p={p_val_mnl:.4f})\n")
+            
+            # Validity
+            f.write("\nCONTROLLI DI VALIDITÀ:\n")
+            f.write(f"Matchup Iniziale (Avg): Win={statistics.mean(ctrl_curr_mu_win):.2f}% vs Loss={statistics.mean(ctrl_curr_mu_loss):.2f}%\n")
+            if ctrl_elixir_diff_win:
+                f.write(f"Elixir Advantage (Win): {statistics.mean(ctrl_elixir_diff_win):+.2f}\n")
+
+        f.write("\n" + "="*100 + "\n\n")
+
+        # 2. FAVORABLE OUTCOME
+        f.write("PARTE 2: IMPATTO ESITO SU MATCHUP FAVOREVOLE\n")
+        f.write("Domanda: Come reagisce il sistema quando vinci o perdi una partita che 'dovevi' vincere?\n")
+        f.write(f"Definizione Favorable: Matchup > {FAVORABLE_THRESH}%\n")
+        f.write("-" * 80 + "\n")
+        
+        if len(fav_next_mu_win) < 10 or len(fav_next_mu_loss) < 10:
+            f.write("Dati insufficienti per Favorable Outcome.\n")
+        else:
+            avg_fav_win = statistics.mean(fav_next_mu_win)
+            avg_fav_loss = statistics.mean(fav_next_mu_loss)
+            stat_fav, p_val_fav = mannwhitneyu(fav_next_mu_win, fav_next_mu_loss)
+            
+            f.write(f"{'ESITO MATCH PRECEDENTE':<30} | {'N':<6} | {'NEXT MATCHUP (Avg)':<20}\n")
+            f.write(f"{'Favorable + WIN (Atteso)':<30} | {len(fav_next_mu_win):<6} | {avg_fav_win:<20.2f}%\n")
+            f.write(f"{'Favorable + LOSS (Inatteso)':<30} | {len(fav_next_mu_loss):<6} | {avg_fav_loss:<20.2f}%\n")
+            f.write(f"Delta: {avg_fav_win - avg_fav_loss:+.2f}%\n")
+            f.write(f"Test Mann-Whitney U (Diff Significativa): p-value = {p_val_fav:.4f}\n")
+            
+            # Components
+            f.write("\nCOMPONENTI DEL MATCHUP SUCCESSIVO:\n")
+            if len(fav_next_lvl_win) > 10 and len(fav_next_lvl_loss) > 10:
+                avg_fav_lvl_win = statistics.mean(fav_next_lvl_win)
+                avg_fav_lvl_loss = statistics.mean(fav_next_lvl_loss)
+                stat_fav_lvl, p_val_fav_lvl = mannwhitneyu(fav_next_lvl_win, fav_next_lvl_loss)
+                f.write(f"1. Level Diff: Win={avg_fav_lvl_win:+.2f} vs Loss={avg_fav_lvl_loss:+.2f} (Delta: {avg_fav_lvl_win - avg_fav_lvl_loss:+.2f}, p={p_val_fav_lvl:.4f})\n")
+            
+            if len(fav_next_mnl_win) > 10 and len(fav_next_mnl_loss) > 10:
+                avg_fav_mnl_win = statistics.mean(fav_next_mnl_win)
+                avg_fav_mnl_loss = statistics.mean(fav_next_mnl_loss)
+                stat_fav_mnl, p_val_fav_mnl = mannwhitneyu(fav_next_mnl_win, fav_next_mnl_loss)
+                f.write(f"2. Matchup No-Lvl: Win={avg_fav_mnl_win:.2f}% vs Loss={avg_fav_mnl_loss:.2f}% (Delta: {avg_fav_mnl_win - avg_fav_mnl_loss:+.2f}%, p={p_val_fav_mnl:.4f})\n")
+
+            if fav_ctrl_elixir_diff_loss:
+                f.write(f"Elixir Advantage (Loss): {statistics.mean(fav_ctrl_elixir_diff_loss):+.2f}\n")
+
+        f.write("\n" + "="*100 + "\n\n")
+
+        # 3. DURATION & LEVELS
+        f.write("PARTE 3: DURATA DEBITO/CREDITO E LIVELLI\n")
+        f.write("Obiettivo: Capire se le fasi di Debito sono causate dai Livelli o dal Deck.\n")
+        f.write("-" * 80 + "\n")
+        
+        f.write(f"{'TIPO FASE':<15} | {'N. STREAK':<10} | {'AVG DURATA':<12} | {'AVG LEVEL DIFF':<15} | {'AVG NO-LVL MU':<15}\n")
+        f.write("-" * 80 + "\n")
+        
+        for phase in ['Debt', 'Normal', 'Credit']:
+            lens = stats_dur[phase]['lengths']
+            levs = stats_dur[phase]['levels']
+            mus_pure = stats_dur[phase]['matchups_no_lvl']
+            
+            if not lens: continue
+            
+            avg_len = statistics.mean(lens)
+            avg_lvl = statistics.mean(levs) if levs else 0.0
+            avg_mu_pure = statistics.mean(mus_pure) if mus_pure else 0.0
+            
+            f.write(f"{phase:<15} | {len(lens):<10} | {avg_len:<12.2f} | {avg_lvl:<15.2f} | {avg_mu_pure:<15.2f}%\n")
+            
+        # Tests
+        debt_lvls = stats_dur['Debt']['levels']
+        credit_lvls = stats_dur['Credit']['levels']
+        debt_mus = stats_dur['Debt']['matchups_no_lvl']
+        credit_mus = stats_dur['Credit']['matchups_no_lvl']
+        
+        if len(debt_lvls) > 10 and len(credit_lvls) > 10:
+            stat_l, p_val_l = mannwhitneyu(debt_lvls, credit_lvls, alternative='less')
+            stat_m, p_val_m = mannwhitneyu(debt_mus, credit_mus, alternative='less')
+            
+            f.write("\nCONFRONTO DEBITO vs CREDITO:\n")
+            f.write(f"1. Livelli (Debt < Credit?): p-value = {p_val_l:.4f}\n")
+            f.write(f"2. Deck (Debt < Credit?):    p-value = {p_val_m:.4f}\n")
+            
+        f.write("="*100 + "\n")
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 

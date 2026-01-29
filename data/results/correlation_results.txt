@@ -1,4 +1,4 @@
-Analisi Correlazione eseguita il: 2026-01-29 20:29:35.323890
+Analisi Correlazione eseguita il: 2026-01-29 21:44:04.307023
 
 ============================================================
  ANALISI CORRELAZIONE SPEARMAN (PITY ODDS)
@@ -10,7 +10,7 @@ Analisi Correlazione eseguita il: 2026-01-29 20:29:35.323890
 2. PITY ODDS vs ERS (Impulsività * exp(-FSI))
    Correlazione: 0.3374
    P-value:      0.0990
-   P-value (Shuffle 10k): 0.1043
+   P-value (Shuffle 10k): 0.1002
    -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)
 Campione: 25 giocatori
 ============================================================
@@ -56,7 +56,7 @@ YU889LRR0            | 0.00            | 0.31            | 1.08
 2. PUNISH ODDS vs ERS (Impulsività * exp(-FSI))
    Correlazione: 0.0275
    P-value:      0.8736
-   P-value (Shuffle 10k): 0.8787
+   P-value (Shuffle 10k): 0.8717
    -> RISULTATO NON ROBUSTO (Potrebbe essere frutto del caso)
 Campione: 36 giocatori
 ============================================================

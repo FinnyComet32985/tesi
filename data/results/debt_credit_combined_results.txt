@@ -1,0 +1,54 @@
+ANALISI COMBINATA DEBITO/CREDITO
+Include: Debt Extinction, Favorable Outcome Impact, Debt/Credit Duration & Levels.
+====================================================================================================
+
+PARTE 1: ESTINZIONE DEBITO (MMR DEBT)
+Ipotesi: Vincere un matchup sfavorevole NON estingue il debito. Perdere lo estingue.
+Definizione Unfavorable: Matchup < 45.0%
+--------------------------------------------------------------------------------
+ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
+Unfavorable + WIN (Debito?)    | 885    | 42.65               %
+Unfavorable + LOSS (Pagato?)   | 1186   | 45.84               %
+Delta: -3.18%
+Test Mann-Whitney U (Win < Loss): p-value = 0.0000
+
+COMPONENTI DEL MATCHUP SUCCESSIVO:
+1. Level Diff: Win=-0.22 vs Loss=-0.14 (Delta: -0.08, p=0.0008)
+2. Matchup No-Lvl: Win=47.89% vs Loss=48.64% (Delta: -0.75%, p=0.1228)
+
+CONTROLLI DI VALIDITÀ:
+Matchup Iniziale (Avg): Win=33.94% vs Loss=31.37%
+Elixir Advantage (Win): +2.44
+
+====================================================================================================
+
+PARTE 2: IMPATTO ESITO SU MATCHUP FAVOREVOLE
+Domanda: Come reagisce il sistema quando vinci o perdi una partita che 'dovevi' vincere?
+Definizione Favorable: Matchup > 55.0%
+--------------------------------------------------------------------------------
+ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
+Favorable + WIN (Atteso)       | 1454   | 53.13               %
+Favorable + LOSS (Inatteso)    | 565    | 56.56               %
+Delta: -3.43%
+Test Mann-Whitney U (Diff Significativa): p-value = 0.0001
+
+COMPONENTI DEL MATCHUP SUCCESSIVO:
+1. Level Diff: Win=+0.11 vs Loss=+0.16 (Delta: -0.05, p=0.0822)
+2. Matchup No-Lvl: Win=49.49% vs Loss=50.61% (Delta: -1.12%, p=0.0998)
+Elixir Advantage (Loss): -0.42
+
+====================================================================================================
+
+PARTE 3: DURATA DEBITO/CREDITO E LIVELLI
+Obiettivo: Capire se le fasi di Debito sono causate dai Livelli o dal Deck.
+--------------------------------------------------------------------------------
+TIPO FASE       | N. STREAK  | AVG DURATA   | AVG LEVEL DIFF  | AVG NO-LVL MU  
+--------------------------------------------------------------------------------
+Debt            | 1850       | 1.60         | -0.37           | 43.58          %
+Normal          | 1288       | 1.19         | 0.02            | 48.88          %
+Credit          | 1932       | 1.49         | 0.35            | 55.35          %
+
+CONFRONTO DEBITO vs CREDITO:
+1. Livelli (Debt < Credit?): p-value = 0.0000
+2. Deck (Debt < Credit?):    p-value = 0.0000
+====================================================================================================
