@@ -2,12 +2,12 @@
 
 1. ## Test $\chi^2$ indipendenza
 
-IPOTESI: il matchup della partita successiva dipende dalle streak
+IPOTESI: il matchup della partita successiva dipende dalle streak precedenti
 
-TEST: il test utilizzato è il $\chi^2$ che analizza il matchup della partita successiva (EVEN, FAV, UNFAV) per cercare una qualche tipo di dipendenza con la situazione precedente in termini di streak (NO STREAK, WINNING, LOSING)
+TEST: il test $\chi^2$ analizza il matchup della partita successiva (EVEN, FAV, UNFAV) per cercare una qualche tipo di dipendenza con la situazione precedente in termini di streak (NO STREAK, WINNING, LOSING)
 
 RISULTATO 
-ci sono **alcuni casi isolati** con dipendenza significativa, ma non abbastanza consistenti tra i player da suggerire un effetto sistematico ❌
+Presenti **alcuni casi isolati** ma non consistenti tra i player → nessun effetto sistematico ❌
 
 **ESECUZIONE**
 `chi_square_independence_results.txt`
@@ -29,12 +29,14 @@ IPOTESI il matchup della partita successiva è indipendente dal matchup della pa
 
 TEST modella una catena di MARKOV per vedere se il matchup precedente influenza quello successivo
 
-RISULTATO  tutti i test eseguiti (matchup, levels, marchup no LVL) hanno risultare significativo ma nessuno sull'outcome della partita precedente
+RISULTATO  
+Dipendenza significativa tra matchup consecutivi (matchup, livelli, no-lvl)
+❗ Nessuna dipendenza dall’outcome (win/loss)
 
 IMPLICAZIONE 
 Le deviazioni rispetto all’indipendenza indicano che **la distribuzione dei matchup non è completamente memoryless**
 
-POSSIBILI SPIEGAZIONI: META, TROFEI, POOL PLAYER ONLINE X FASCIA ORARIA
+POSSIBILI SPIEGAZIONI: META, TROFEI, POOL PLAYER ATTIVI
 
 **ESECUZIONE**
 `markov_chains_results.txt`
@@ -52,9 +54,16 @@ RISULTATO nessuna correlazione significativa
 > 
 > correlazione tra pity odds e Trofei
 > 
+> L’aumento dei pity odds ai trofei alti non indica aiuto artificiale, ma:
+> * Varianza livelli ↓
+> * Skill media ↑
+> * Dipendenza dal matchup deck ↑
+> ➡️ Più polarizzazione naturale → più matchup estremi
+> Compatibile con ambiente competitivo più “skill-tight”, non con EOMM.
 
 **ESECUZIONE**
 `correlation_results.txt`
+`quick_tests_results.txt`
 
 1. ## RITORNO DOPO UNA BAD STREAK
 
@@ -62,7 +71,9 @@ IPOTESI in un sistema EOMM like se un giocatore quitta dopo una streak di matchu
 
 TEST se l'ultima sessione del player è finita con % matchup sfavorevoli, la prima partita della nuova sessione sarà ancora sfavorevole?
 
-RISULTATO indipendentemente dal tempo passato il matchup al ritorno è peggiore di quando il player finisce la sessione non in una streak di matchup sfavorevoli ❌
+RISULTATO 
+il matchup al ritorno è peggiore quando il player finisce la sessione in una streak di matchup sfavorevoli 
+indipendentemente dal tempo passato ❌
 
 **ESECUZIONE**
 `return_after_bad_streak_results.txt`
@@ -71,20 +82,22 @@ RISULTATO indipendentemente dal tempo passato il matchup al ritorno è peggiore 
 
 IPOTESI in un matchmaking EOMM like se una sessione ha avuto un matchup medio sfavorevole quella successiva dovrebbe averne uno favorevole
 
-TEST verificare se la sessione successiva ad una con un matchup mediamente sfavorevole diventa favorevole
+TEST verificare se ad una sessione con matchup mediamente sfavorevole ne sussegue una con un matchup mediamente favorevole
 
-RISULTATO nessuno dei test ha raggiunto la significatività ❌
+RISULTATO Sessioni negative non sono seguite da sessioni favorevoli ❌ 
 
 **ESECUZIONE**
 `session_pity_test_results.txt`
 
 1. ## ANALISI SEQUENZE KILLER
 
-IPOTESI in un sistema di matchmaking basato sulla retention le sequenze che fanno quittare maggiormente i player dovrebbero apparire messo di quando ci aspetteremo
+IPOTESI in un sistema di matchmaking basato sulla retention le sequenze che fanno quittare maggiormente i player dovrebbero apparire meno spesso di quando ci aspetteremo
 
 TEST cercare una correlazione spearman tra il rateo di apparizione di queste frequenze ( OSSERVATE / IPOTIZZATE) e la % quit rate (in che % dopo aver incontrato tale sequenza il player quitta)
 
-RISULTATO la correlazione generale non è significativa ❌. Tuttavia, si nota un'anomalia nella sequenza **C-C-C** (3 Counter di fila), che appare con una frequenza doppia rispetto all'atteso (**Ratio 2.05x**).
+RISULTATO 
+la correlazione generale non è significativa ❌. 
+Tuttavia, si nota un'anomalia nella sequenza **C-C-C** (3 Counter di fila), che appare con una frequenza doppia rispetto all'atteso (**Ratio 2.05x**).
 > Questo fenomeno supporta l'ipotesi delle "Meta Windows": i counter non sono distribuiti uniformemente, ma arrivano a "ondate", rendendo più probabile incontrarne 3 di fila una volta entrati in una fascia ostile.
 
 **ESECUZIONE**
@@ -94,34 +107,55 @@ RISULTATO la correlazione generale non è significativa ❌. Tuttavia, si nota u
 
 IPOTESI la concessione dei pity match dovrebbe aumentare il coinvolgimento dei player
 
-TEST sono stati testati gli eventi (lose, lose streak ≥ 2, lose streak ≥ 3, counter, counter streak ≥ 2 e counter streak ≥3) per vedere se quando ricevano un pity match hanno un allungamento della sessione, un ritorno medio più rapido o un minore rischio di quit > 3 giorni
+TEST sono stati testati gli eventi (lose, lose streak ≥ 2, lose streak ≥ 3, counter, counter streak ≥ 2 e counter streak ≥3) per vedere se le sessioni che contengono uno di questi eventi susseguiti da un pity match sono più lunghe, favoriscono un ritorno medio più rapido o un minore rischio di quit > 3 giorni
 
-RISULTATO nessun test ha raggiunto la significatività, ad eccezione del test losing streak ≥3 e avg remaining matches. questo mostra che dopo una serie di lose ≥ 3, i player che ricevano un pity tendono a giocare una portata in più
+RISULTATO nessun test ha raggiunto la significatività, ad eccezione del test losing streak ≥3 e avg remaining matches. 
+dopo una serie di lose ≥ 3, i player che ricevono un pity tendono a giocare una partata in più
 
 **ESECUZIONE**
 `pity_impact_on_session_length.txt`
 `pity_impact_on_return_time.txt`
-
+`churn_probability_vs_pity_results.txt`
 
 # Analisi lamentele player
 
-1. ## ANALISI COUNTER DI FILA
+1. ## ANALISI COUNTER STREAK
 
-IPOTESI un sistema di matchmaking basato unicamente sui Trofei produrrebbe delle streak di matchup no lvl svantaggiosi/vantaggiosi più alta di un sistema deck-aware ma più bassa di matchup compresi di livelli
+IPOTESI 
+Se il matchmaking fosse basato unicamente sui Trofei, senza considerare direttamente mazzo o livelli carte, allora dovremmo osservare un comportamento intermedio tra:
+* un sistema totalmente casuale (indipendenza statistica)
+* un sistema fortemente deck-aware
 
-TEST abbiamo calcolato la probabilità di incontrare una streak, confrontandolo con un sistema indipendente, uno shuffle globale e uno intra-session
+In particolare:
+| Tipo di streak |	Atteso in sistema solo-Trofei |
+| --- | --- |
+| Matchup (con livelli) | Più frequenti del modello teorico indipendente |
+| Level Diff | Più frequenti del teorico |
+| Matchup No-Lvl (solo deck) | Presenti ma meno eclatanti rispetto ai matchup completi |
+
+TEST
+Per ciascuna metrica abbiamo confrontato la frequenza osservata di streak (≥ 3 consecutivi) con tre modelli di riferimento:
+* Modello Teorico Indipendente
+  Eventi mescolati in modo completamente casuale.
+
+* Global Shuffle
+  Stessi valori globali ma ordine completamente rimescolato.
+
+* Intra-Session Shuffle
+  Mescolamento solo all’interno delle singole sessioni di gioco.
+
 
 RISULTATI
 
 > MATCHUP
 > 
-> 1.  MATCHUP STREAK >> TEORICO (INDIPENDENZA)
+> 1.  MATCHUP STREAK >> TEORICO
 > 2.  //  > GLOBAL SHUFFLE
 > 3. // $\approx$ INTRA SESSION SHUFFLE
 > 
 > (le streak si raggruppano in determinate sessioni)
 > 
-> LEVELS
+> LEVEL DIFF
 > 
 > 1. LVL STREAK >> TEORICO (IND)
 > 2. NORM LVL STR >> GLOBAL SHUFFLE
@@ -138,7 +172,7 @@ RISULTATI
 > (l'ordine dei matchup puri è più casuale rispetto ad un ordine random puro)
 > 
 > > le streak si trovano in sessioni con caratteristiche particolari?
-> > 
+
 
 **ESECUZIONE**
 `extreme_matchup_streak_results.txt`
@@ -148,7 +182,7 @@ RISULTATI
 
 1. ## DECK SWITCH
 
-IPOTESI avendo un determinato pool di mazzi che ci countera, cambiando mazzo il pool di avversari dovrebbe rimanere uguale
+IPOTESI avendo un determinato pool di mazzi online (generalmente counter), cambiando mazzo il pool di avversari dovrebbe rimanere uguale
 
 TEST
 
@@ -159,19 +193,21 @@ se si le nuove partite migliorano ugualmente?
 RISULTATO analizzando tutti i deck switch sembra che la probabilità di permanenza in un matchup negativo si abbassi notevolmente, riportando il giocatore su matchup più neutrali.
 
 ⚠️ **Anomalia Livelli Post-Switch (Il "Costo di Cambio")**
-Subito dopo il cambio mazzo (Match +1), il Level Diff crolla drasticamente a **-0.24** (svantaggio netto) contro una baseline di **+0.07**. L'effetto svanisce gradualmente nei match successivi (+2, +3).
+Subito dopo il cambio mazzo (Match +1), il Level Diff crolla drasticamente a **-0.24** (svantaggio netto) contro una baseline di **+0.07**. L'effetto svanisce gradualmente nei match successivi (+2, +3), pur rimanendo negativo.
 
 > **PERCHÉ È SOSPETTO?**
 > Supercell dichiara che il matchmaking considera **solo Trofei e Livello Torre del Re**, ignorando i livelli delle carte. Questo pattern contraddice le aspettative in due modi:
 > 1. **Ipotesi "Innocente" (Livelli Bassi)**: Se il nuovo deck ha livelli più bassi del main, è normale partire con una diff negativa. Tuttavia, **senza un sistema che bilancia attivamente le carte**, non si spiega perché lo svantaggio sparisca progressivamente tornando verso lo zero nei match successivi.
 > 2. **Ipotesi "Manipolazione"**: Il picco negativo immediato potrebbe essere una penalità intenzionale ("cooldown" allo switch) inserita dal sistema, che poi normalizza il matchup.
 
-⚠️ Calcolando i matchup che il giocatore avrebbe avuto ipoteticamente con il nuovo mazzo sui player precedenti e confrontandolo con quelli che ha dopo rimane generalmente neutrale. se però prendiamo solo i cambi in cui i matchup ipotetici sono maggiori di quelli reali precedenti vediamo come i matchup successivi ritornano più equi. Tuttavia c’è una differenza del -2,6% con quelli ipotetici
+⚠️ Calcolando i matchup che il giocatore avrebbe avuto ipoteticamente con il nuovo mazzo sui player precedenti e confrontandolo con quelli che ha dopo rimane generalmente neutrale. 
+se però prendiamo solo i cambi in cui i matchup ipotetici sono maggiori di quelli reali precedenti vediamo come i matchup successivi ritornano più equi. Tuttavia c’è una differenza del -2,6% con quelli ipotetici
 
 IMPLICAZIONE
 
 1. al contrario delle dichiarazioni i livelli sono in qualche modo presi in considerazione
-2. anche se una volta cambiato il giocatore ottiene un vantaggio, questo è inferiore a quello ipotizzato. dopo il cambio deck il giocatore potrebbe essere messo in un pool di giocatori diversi?
+2. anche se una volta cambiato il giocatore ottiene un vantaggio, questo è inferiore a quello ipotizzato. 
+dopo il cambio deck il giocatore potrebbe essere messo in un pool di giocatori diversi?
 
 **ESECUZIONE**
 `deck_switch_impact.txt`
@@ -214,9 +250,9 @@ Metrica: Hostility = Global Avg Matchup − Local Avg Matchup
 
 RISULTATO
 
-- Presenza di Meta Shock in diverse soglie (4200, 5000, 6000, 7000, 9000)
-- Pattern di Gatekeeping evidenti a 6000, 7000, 10000, 11000
-- Fenomeno "Relax Post-Gate" a 5500, 6500, 7000, 10000
+- Presenza di Meta Shock in diverse soglie (4200, 5000, 6000, 7000, 9000) (post early >> post stable)
+- Pattern di Gatekeeping evidenti (6000, 7000, 10000, 11000) (pre-early con grande hostility > 1)
+- Fenomeno "Relax Post-Gate" a 5500, 6500, 7000, 10000 (pre stable > post stable)
 - Delta Pre-Stable vs Post-Stable varia significativamente per soglia
 
 **ESECUZIONE**
@@ -226,7 +262,7 @@ RISULTATO
 
 IDEA in un sistema di matchmaking puramente basato sui trofei le streak dei matchup no lvl si dovrebbero distribuire in modo casuale
 
-TEST capire se le bad streak di marchup no lvl si concentrano proprio quando ti trovi più in alto di trofei rispetto alla media delle tue ultime 50 partite
+TEST capire se le bad streak di matchup no lvl si concentrano proprio quando ti trovi più in alto di trofei rispetto alla media delle tue ultime 50 partite
 
 RISULTATO entrambi i test non raggiungono la significatività
 
@@ -239,7 +275,7 @@ IPOTESI in un sistema puramente basato sulla skill ci dovrebbe essere un maggior
 
 TEST il winrate è maggiore? i matchup sono migliori? player con sessioni più corre hanno matchup migliori?
 
-RISULTATI sia il winrate che i matchup e i lvl sono migliori ma sessioni più corte non portano a matchup migliori, inoltre i matchup non diventano sempre peggio più è lunga la sessione
+RISULTATI sia il winrate che il matchup e i lvl sono migliori ma sessioni più corte non portano a matchup migliori, inoltre i matchup non diventano sempre peggio più è lunga la sessione
 
 **ESECUZIONE**
 `session_trend_results.txt`
@@ -254,6 +290,24 @@ RISULTATI si, l'hook è quasi sempre presente ma varia abbastanza
 
 **ESECUZIONE**
 `hook_by_trophy_range_results.txt`
+
+1. ## IL PLAYER INCONTRA PIÙ COUNTER
+
+IPOTESI in un sistema deck aware un player dovrebbe incontrare più deck counter rispetto agli avversari
+
+TEST 
+
+- player che giocano nello stesso range di trofei, nella stessa fascia oraria e nella stessa nazione incontrano player con deck diversi?
+- un player incontra più spesso counter rispetto a quando li incontrano gli averi player?
+
+RISULTATO 
+no, i player incontrano gli stessi deck e no, non incontrano i counter più spesso di chi non li soffre
+
+**ESECUZIONE**
+`matchmaking_fairness_results.txt`
+
+
+
 
 1. ## DEBT / CREDIT
 
@@ -288,20 +342,7 @@ RISULTATO no, non sembra che perdere malamente la partita sfavorita porti a matc
 **ESECUZIONE**
 `defeat_quality_impact_results.txt`
 
-1. IL PLAYER INCONTRA PIÙ COUNTER
-
-IPOTESI in un sistema deck aware un player dovrebbe incontrare più deck counter rispetto agli avversari
-
-TEST 
-
-- player che giocano nello stesso range di trofei, nella stessa fascia oraria e nella stessa nazione incontrano player con deck diversi?
-- un player incontra più spesso counter rispetto a quando li incontrano gli averi player?
-
-RISULTATO 
-no, i player incontrano gli stessi deck e no, non incontrano i counter più spesso di chi non li soffre
-
-**ESECUZIONE**
-`matchmaking_fairness_results.txt`
+# Analisi livelli, skill e componenti del matchup
 
 1. ## QUANTO CONTANO I LVL E LA SKILL
 
@@ -311,14 +352,12 @@ IPOTESI
 - in un gioco equo la skill dovrebbe consentire al player di vincere nonostante i deficit di livelli o al matchup no LVL
 
 TEST 
-
 - testare la relazione tra LVL e matchup
 - capire se la skill riveste un ruolo pesante nel winrate
 
 RISULTATO 
-
 - si, i livelli contano abbastanza nella determinazione del matchup composto
-- avere una gestione dell'elisir migliore rispetto al tuo avversario ti porta generalmente vincere di più pur restando in svantaggio
+- avere una gestione dell'elisir migliore rispetto al tuo avversario ti porta generalmente a vincere di più, pur restando in svantaggio
     - winrate 46% con > skill
     - winrate 33 % con < skill
 - avere un matchup migliore tende a dare un vantaggio notevole, anche giocando male
