@@ -5,23 +5,23 @@ Metodo: Skill misurata come 'Efficienza Elisir' (Net Elixir Leaked).
 ====================================================================================================
 MATCHUP    | SKILL (vs Opp)  | N. MATCH   | WIN RATE   | INTERPRETAZIONE
 ----------------------------------------------------------------------------------------------------
-Bad        | Better          | 1637       | 46.06     % | -> SKILL UPSET? (Riesci a vincere contro i pronostici?)
-Bad        | Worse           | 1239       | 33.41     % | 
+Bad        | Better          | 1734       | 46.37     % | -> SKILL UPSET? (Riesci a vincere contro i pronostici?)
+Bad        | Worse           | 1296       | 33.72     % | 
 ----------------------------------------------------------------------------------------------------
-Even       | Better          | 845        | 56.09     % | 
-Even       | Worse           | 647        | 49.61     % | 
+Even       | Better          | 896        | 56.47     % | 
+Even       | Worse           | 674        | 49.70     % | 
 ----------------------------------------------------------------------------------------------------
-Good       | Better          | 1551       | 70.66     % | 
-Good       | Worse           | 1235       | 64.53     % | -> DECK CARRY? (Vinci anche giocando male?)
+Good       | Better          | 1617       | 70.62     % | 
+Good       | Worse           | 1295       | 64.71     % | -> DECK CARRY? (Vinci anche giocando male?)
 ----------------------------------------------------------------------------------------------------
 
 ====================================================================================================
 ANALISI PRESSIONE PSICOLOGICA (Il Counter fa sbagliare?)
 Ipotesi: Se il giocatore spreca più elisir nei Bad Matchup, la sconfitta è parzialmente colpa della pressione.
 ----------------------------------------------------------------------------------------------------
-Avg Elixir Leaked in BAD Matchup:  4.1074
-Avg Elixir Leaked in GOOD Matchup: 3.7884
-Delta (Bad - Good): +0.3190
-Test Mann-Whitney U (Bad > Good): p-value = 0.0607
+Avg Elixir Leaked in BAD Matchup:  4.0999
+Avg Elixir Leaked in GOOD Matchup: 3.7999
+Delta (Bad - Good): +0.2999
+Test Mann-Whitney U (Bad > Good): p-value = 0.1052
 RISULTATO: NON SIGNIFICATIVO. La qualità di gioco (leaks) è indipendente dal matchup.
 ====================================================================================================

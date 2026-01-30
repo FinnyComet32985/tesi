@@ -5,42 +5,42 @@ Obiettivo: Verificare se Media e Varianza cambiano durante il giorno per diverse
 --- Matchup Reale ---
 Fascia Oraria        | N          | Mean       | StdDev     | Variance  
 ---------------------------------------------------------------------------
-Notte (00-06)        | 1186       | 51.16      | 18.80      | 353.53    
-Mattina (06-12)      | 1263       | 50.01      | 17.04      | 290.44    
-Pomeriggio (12-18)   | 2407       | 50.49      | 18.01      | 324.40    
-Sera (18-24)         | 2529       | 48.83      | 17.95      | 322.09    
+Notte (00-06)        | 1256       | 51.16      | 18.68      | 348.98    
+Mattina (06-12)      | 1347       | 49.63      | 17.30      | 299.33    
+Pomeriggio (12-18)   | 2548       | 50.43      | 17.97      | 323.03    
+Sera (18-24)         | 2604       | 48.84      | 17.96      | 322.41    
 ---------------------------------------------------------------------------
 Kruskal-Wallis (Medie): p=0.0001
 -> DIFFERENZA SIGNIFICATIVA nelle medie.
-Levene Test (Varianze): p=0.0074
--> DIFFERENZA SIGNIFICATIVA nelle varianze.
+Levene Test (Varianze): p=0.0733
+-> NESSUNA differenza significativa nelle varianze.
 
 ====================================================================================================
 
 --- Matchup No-Lvl ---
 Fascia Oraria        | N          | Mean       | StdDev     | Variance  
 ---------------------------------------------------------------------------
-Notte (00-06)        | 1186       | 50.98      | 12.28      | 150.88    
-Mattina (06-12)      | 1266       | 48.72      | 12.93      | 167.16    
-Pomeriggio (12-18)   | 2408       | 49.26      | 12.85      | 165.00    
-Sera (18-24)         | 2532       | 48.78      | 12.67      | 160.53    
+Notte (00-06)        | 1256       | 51.11      | 12.31      | 151.45    
+Mattina (06-12)      | 1350       | 48.73      | 13.10      | 171.68    
+Pomeriggio (12-18)   | 2549       | 49.32      | 12.94      | 167.39    
+Sera (18-24)         | 2607       | 48.79      | 12.67      | 160.44    
 ---------------------------------------------------------------------------
 Kruskal-Wallis (Medie): p=0.0000
 -> DIFFERENZA SIGNIFICATIVA nelle medie.
-Levene Test (Varianze): p=0.0621
--> NESSUNA differenza significativa nelle varianze.
+Levene Test (Varianze): p=0.0185
+-> DIFFERENZA SIGNIFICATIVA nelle varianze.
 
 ====================================================================================================
 
 --- Level Diff ---
 Fascia Oraria        | N          | Mean       | StdDev     | Variance  
 ---------------------------------------------------------------------------
-Notte (00-06)        | 1186       | -0.04      | 0.66       | 0.43      
-Mattina (06-12)      | 1266       | 0.03       | 0.52       | 0.28      
-Pomeriggio (12-18)   | 2408       | 0.03       | 0.62       | 0.38      
-Sera (18-24)         | 2533       | -0.04      | 0.60       | 0.36      
+Notte (00-06)        | 1256       | -0.04      | 0.65       | 0.43      
+Mattina (06-12)      | 1350       | 0.02       | 0.53       | 0.28      
+Pomeriggio (12-18)   | 2549       | 0.02       | 0.61       | 0.37      
+Sera (18-24)         | 2608       | -0.04      | 0.60       | 0.36      
 ---------------------------------------------------------------------------
-Kruskal-Wallis (Medie): p=0.0001
+Kruskal-Wallis (Medie): p=0.0004
 -> DIFFERENZA SIGNIFICATIVA nelle medie.
 Levene Test (Varianze): p=0.0000
 -> DIFFERENZA SIGNIFICATIVA nelle varianze.

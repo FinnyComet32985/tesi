@@ -55,6 +55,8 @@ from test_targeting import (
     analyze_all_snipers_targeting,
     analyze_sniper_confounding
 )
+from test_punish_outcome import analyze_punish_outcome_worsening
+from test_return_breakdown import analyze_return_breakdown
 
 from analyze_micro_meta import analyze_micro_meta
 from arena_gatekeeping import analyze_arena_gatekeeping
@@ -121,6 +123,8 @@ def main():
     analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
     analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
     analyze_debt_credit_combined(players_sessions, output_dir=results_dir)
+    analyze_punish_outcome_worsening(players_sessions, output_dir=results_dir)
+    analyze_return_breakdown(players_sessions, output_dir=results_dir)
     analyze_punishment_tradeoff(players_sessions, output_dir=results_dir)
     analyze_extreme_level_streak(players_sessions, output_dir=results_dir)
     analyze_normalized_level_streak(players_sessions, output_dir=results_dir)

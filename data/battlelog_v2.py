@@ -567,7 +567,7 @@ def get_players_sessions(mode_filter='all', exclude_unreliable=False):
 
 def main():
     # Example usage: mode_filter can be 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
-    players_sessions = get_players_sessions(mode_filter='Ladder')
+    players_sessions = get_players_sessions(mode_filter='all')
     
     output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
     os.makedirs(output_dir, exist_ok=True)

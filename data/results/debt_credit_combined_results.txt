@@ -7,18 +7,18 @@ Ipotesi: Vincere un matchup sfavorevole NON estingue il debito. Perdere lo estin
 Definizione Unfavorable: Matchup < 45.0%
 --------------------------------------------------------------------------------
 ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
-Unfavorable + WIN (Debito?)    | 885    | 42.65               %
-Unfavorable + LOSS (Pagato?)   | 1186   | 45.84               %
-Delta: -3.18%
+Unfavorable + WIN (Debito?)    | 940    | 42.70               %
+Unfavorable + LOSS (Pagato?)   | 1235   | 45.89               %
+Delta: -3.19%
 Test Mann-Whitney U (Win < Loss): p-value = 0.0000
 
 COMPONENTI DEL MATCHUP SUCCESSIVO:
-1. Level Diff: Win=-0.22 vs Loss=-0.14 (Delta: -0.08, p=0.0008)
-2. Matchup No-Lvl: Win=47.89% vs Loss=48.64% (Delta: -0.75%, p=0.1228)
+1. Level Diff: Win=-0.22 vs Loss=-0.14 (Delta: -0.08, p=0.0004)
+2. Matchup No-Lvl: Win=48.02% vs Loss=48.65% (Delta: -0.63%, p=0.1677)
 
 CONTROLLI DI VALIDITÀ:
-Matchup Iniziale (Avg): Win=33.94% vs Loss=31.37%
-Elixir Advantage (Win): +2.44
+Matchup Iniziale (Avg): Win=33.90% vs Loss=31.29%
+Elixir Advantage (Win): +2.42
 
 ====================================================================================================
 
@@ -27,15 +27,15 @@ Domanda: Come reagisce il sistema quando vinci o perdi una partita che 'dovevi' 
 Definizione Favorable: Matchup > 55.0%
 --------------------------------------------------------------------------------
 ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
-Favorable + WIN (Atteso)       | 1454   | 53.13               %
-Favorable + LOSS (Inatteso)    | 565    | 56.56               %
-Delta: -3.43%
+Favorable + WIN (Atteso)       | 1513   | 53.05               %
+Favorable + LOSS (Inatteso)    | 589    | 56.20               %
+Delta: -3.16%
 Test Mann-Whitney U (Diff Significativa): p-value = 0.0001
 
 COMPONENTI DEL MATCHUP SUCCESSIVO:
-1. Level Diff: Win=+0.11 vs Loss=+0.16 (Delta: -0.05, p=0.0822)
-2. Matchup No-Lvl: Win=49.49% vs Loss=50.61% (Delta: -1.12%, p=0.0998)
-Elixir Advantage (Loss): -0.42
+1. Level Diff: Win=+0.11 vs Loss=+0.15 (Delta: -0.04, p=0.1503)
+2. Matchup No-Lvl: Win=49.53% vs Loss=50.53% (Delta: -1.01%, p=0.1188)
+Elixir Advantage (Loss): -0.44
 
 ====================================================================================================
 
@@ -44,9 +44,9 @@ Obiettivo: Capire se le fasi di Debito sono causate dai Livelli o dal Deck.
 --------------------------------------------------------------------------------
 TIPO FASE       | N. STREAK  | AVG DURATA   | AVG LEVEL DIFF  | AVG NO-LVL MU  
 --------------------------------------------------------------------------------
-Debt            | 1850       | 1.60         | -0.37           | 43.58          %
-Normal          | 1288       | 1.19         | 0.02            | 48.88          %
-Credit          | 1932       | 1.49         | 0.35            | 55.35          %
+Debt            | 1959       | 1.60         | -0.37           | 43.45          %
+Normal          | 1359       | 1.19         | 0.02            | 48.94          %
+Credit          | 2031       | 1.48         | 0.35            | 55.62          %
 
 CONFRONTO DEBITO vs CREDITO:
 1. Livelli (Debt < Credit?): p-value = 0.0000

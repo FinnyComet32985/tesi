@@ -4,14 +4,14 @@ Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) p
 Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.
 ====================================================================================================
 
-Totale Battaglie Analizzate: 7393
+Totale Battaglie Analizzate: 7763
 Bucket: 4000-5000 | Orario: 16:00-24:00 | Regione: South America | Battles: 122
 Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.387548 -> Non significativo
 ------------------------------------------------------------
-Bucket: 5000-6000 | Orario: 08:00-16:00 | Regione: Turkey | Battles: 199
-Confronto tra 4 Archetipi Player vs 6 Archetipi Opponent
-P-value: 0.238139 -> Non significativo
+Bucket: 5000-6000 | Orario: 08:00-16:00 | Regione: Turkey | Battles: 208
+Confronto tra 4 Archetipi Player vs 9 Archetipi Opponent
+P-value: 0.265662 -> Non significativo
 ------------------------------------------------------------
 Bucket: 5000-6000 | Orario: 16:00-24:00 | Regione: Turkey | Battles: 209
 Confronto tra 3 Archetipi Player vs 6 Archetipi Opponent
@@ -29,19 +29,23 @@ Bucket: 6000-7000 | Orario: 16:00-24:00 | Regione: Turkey | Battles: 458
 Confronto tra 10 Archetipi Player vs 37 Archetipi Opponent
 P-value: 0.320530 -> Non significativo
 ------------------------------------------------------------
-Bucket: 7000-8000 | Orario: 08:00-16:00 | Regione: South America | Battles: 75
-Confronto tra 6 Archetipi Player vs 2 Archetipi Opponent
-P-value: 0.420986 -> Non significativo
+Bucket: 7000-8000 | Orario: 08:00-16:00 | Regione: South America | Battles: 84
+Confronto tra 6 Archetipi Player vs 3 Archetipi Opponent
+P-value: 0.416470 -> Non significativo
 ------------------------------------------------------------
-Bucket: 7000-8000 | Orario: 16:00-24:00 | Regione: South America | Battles: 115
-Confronto tra 5 Archetipi Player vs 4 Archetipi Opponent
-P-value: 0.497084 -> Non significativo
+Bucket: 7000-8000 | Orario: 16:00-24:00 | Regione: Germany | Battles: 84
+Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
+P-value: 0.367879 -> Non significativo
 ------------------------------------------------------------
-Bucket: 10000-11000 | Orario: 00:00-08:00 | Regione: Colombia | Battles: 162
+Bucket: 7000-8000 | Orario: 16:00-24:00 | Regione: South America | Battles: 126
+Confronto tra 6 Archetipi Player vs 5 Archetipi Opponent
+P-value: 0.500264 -> Non significativo
+------------------------------------------------------------
+Bucket: 10000-11000 | Orario: 00:00-08:00 | Regione: Colombia | Battles: 168
 Confronto tra 10 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.439475 -> Non significativo
 ------------------------------------------------------------
-Bucket: 10000-11000 | Orario: 16:00-24:00 | Regione: Colombia | Battles: 343
+Bucket: 10000-11000 | Orario: 16:00-24:00 | Regione: Colombia | Battles: 344
 Confronto tra 8 Archetipi Player vs 4 Archetipi Opponent
 P-value: 0.256300 -> Non significativo
 ------------------------------------------------------------
@@ -49,18 +53,18 @@ Bucket: 11000-12000 | Orario: 00:00-08:00 | Regione: Poland | Battles: 181
 Confronto tra 3 Archetipi Player vs 2 Archetipi Opponent
 P-value: 0.188876 -> Non significativo
 ------------------------------------------------------------
-Bucket: 11000-12000 | Orario: 08:00-16:00 | Regione: Poland | Battles: 201
+Bucket: 11000-12000 | Orario: 08:00-16:00 | Regione: Poland | Battles: 207
 Confronto tra 4 Archetipi Player vs 2 Archetipi Opponent
-P-value: 0.343030 -> Non significativo
+P-value: 0.268293 -> Non significativo
 ------------------------------------------------------------
-Bucket: 11000-12000 | Orario: 16:00-24:00 | Regione: Poland | Battles: 146
+Bucket: 11000-12000 | Orario: 16:00-24:00 | Regione: Poland | Battles: 147
 Confronto tra 2 Archetipi Player vs 2 Archetipi Opponent
 P-value: 1.000000 -> Non significativo
 ------------------------------------------------------------
 
 ====================================================================================================
-Totale Bucket Testati: 13
-Bucket Saltati (Dati insufficienti): 39
+Totale Bucket Testati: 14
+Bucket Saltati (Dati insufficienti): 40
 Bucket con Dipendenza Significativa: 1
-Percentuale Sospetta: 7.69%
+Percentuale Sospetta: 7.14%
 ====================================================================================================

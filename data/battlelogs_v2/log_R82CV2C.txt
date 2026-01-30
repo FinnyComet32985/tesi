@@ -1,6 +1,21 @@
 
 --- SESSIONE 1 ---
-[2025-12-15 18:04:34] Ladder vs 2JVUGQY2Y | LOSE -> 0-2 | 11320 -> 11289 (-31) | MU: 20.6% (NoLvl: 47.5%) - ΔLvl: -0.75
+[2022-06-29 15:02:06] 2v2 Battle vs GQCJ88PJL | WIN -> 1-0 | MU: null - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (1265 giorni, 4 ore, 2 minuti)]
+
+--- SESSIONE 2 ---
+[2025-12-15 18:04:34] Ladder vs 2JVUGQY2Y | LOSE -> 0-2 | 11349 -> 11318 (-31) | MU: 20.6% (NoLvl: 47.5%) - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -14,8 +29,8 @@
 
 [STOP: Quit (2 giorni, 23 ore, 31 minuti)]
 
---- SESSIONE 2 ---
-[2025-12-18 17:35:56] Ladder vs 8URY9GRU | LOSE -> 0-3 | 11289 -> 11260 (-29) | MU: 25.2% (NoLvl: 55.7%) - ΔLvl: -0.62
+--- SESSIONE 3 ---
+[2025-12-18 17:35:56] Ladder vs 8URY9GRU | LOSE -> 0-3 | 11318 -> 11289 (-29) | MU: 25.2% (NoLvl: 55.7%) - ΔLvl: -0.62
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -27,13 +42,20 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Quit (1 giorni, 4 ore, 44 minuti)]
+[STOP: Quit (1 giorni, 3 ore, 55 minuti)]
 
---- SESSIONE 3 ---
-[2025-12-19 22:20:39] Ladder vs 202LY0LVGL | WIN -> 1-0 | 11260 -> 11290 (+30) | MU: 40.1% (NoLvl: 49.2%) - ΔLvl: -0.25
-[2025-12-19 22:25:20] Ladder vs VG8GGY99R | WIN -> 2-0 | 11290 -> 11320 (+30) | MU: 80.6% (NoLvl: 48.4%) - ΔLvl: 1.0
-[2025-12-19 22:28:35] Ladder vs U0JR9R2P0 | WIN -> 2-0 | 11320 -> 11347 (+27) | MU: 73.2% (NoLvl: 70.4%) - ΔLvl: 0.0
-[2025-12-19 22:33:26] Ladder vs CUUJ2PVQG | LOSE -> 0-3 | 11347 -> 11318 (-29) | MU: 27.3% (NoLvl: 42.9%) - ΔLvl: -0.12
+--- SESSIONE 4 ---
+[2025-12-19 21:31:46] 1v1 Battle vs 2Y808LPRY | LOSE -> 0-1 | MU: 38.7% (NoLvl: 41.7%) - ΔLvl: 0.0
+[2025-12-19 21:37:43] 1v1 Battle vs 2Y808LPRY | LOSE -> 0-1 | MU: 39.3% (NoLvl: 32.8%) - ΔLvl: 0.0
+[2025-12-19 21:43:20] 1v1 Battle vs 2Y808LPRY | LOSE -> 0-1 | MU: 49.8% (NoLvl: 52.1%) - ΔLvl: 0.0
+[2025-12-19 21:57:50] 1v1 Battle vs C0QRJJURR | WIN -> 1-0 | MU: 32.1% (NoLvl: 38.9%) - ΔLvl: 0.0
+[2025-12-19 22:03:14] 1v1 Battle vs C0QRJJURR | WIN -> 1-0 | MU: 58.5% (NoLvl: 55.5%) - ΔLvl: 0.0
+[2025-12-19 22:06:30] 1v1 Battle vs C0QRJJURR | WIN -> 3-0 | MU: 53.5% (NoLvl: 52.7%) - ΔLvl: 0.0
+[2025-12-19 22:16:59] 1v1 Battle vs C0QRJJURR | WIN -> 1-0 | MU: 66.7% (NoLvl: 66.8%) - ΔLvl: 0.0
+[2025-12-19 22:20:39] Ladder vs 202LY0LVGL | WIN -> 1-0 | 11289 -> 11319 (+30) | MU: 40.1% (NoLvl: 49.2%) - ΔLvl: -0.25
+[2025-12-19 22:25:20] Ladder vs VG8GGY99R | WIN -> 2-0 | 11319 -> 11349 (+30) | MU: 80.6% (NoLvl: 48.4%) - ΔLvl: 1.0
+[2025-12-19 22:28:35] Ladder vs U0JR9R2P0 | WIN -> 2-0 | 11349 -> 11376 (+27) | MU: 73.2% (NoLvl: 70.4%) - ΔLvl: 0.0
+[2025-12-19 22:33:26] Ladder vs CUUJ2PVQG | LOSE -> 0-3 | 11376 -> 11347 (-29) | MU: 27.3% (NoLvl: 42.9%) - ΔLvl: -0.12
 
    [METRICHE SESSIONE]
    Battaglie: 4
@@ -47,16 +69,16 @@
 
 [STOP: Short (47 minuti)]
 
---- SESSIONE 4 ---
-[2025-12-19 23:20:36] Ladder vs 90L9Q8JP | LOSE -> 0-1 | 11318 -> 11291 (-27) | MU: 16.0% (NoLvl: 41.7%) - ΔLvl: -0.75
-[2025-12-19 23:23:55] Ladder vs 8GYG8UYYQ | WIN -> 1-0 | 11291 -> 11321 (+30) | MU: 19.8% (NoLvl: 44.7%) - ΔLvl: -0.62
-[2025-12-19 23:27:20] Ladder vs P88YYPR9R | WIN -> 1-0 | 11321 -> 11350 (+29) | MU: 49.6% (NoLvl: 44.1%) - ΔLvl: -0.12
-[2025-12-19 23:30:46] Ladder vs 20L0UVPY2V | WIN -> 2-1 | 11350 -> 11380 (+30) | MU: 61.2% (NoLvl: 64.3%) - ΔLvl: -0.12
-[2025-12-19 23:33:56] Ladder vs 2UV9QQUGJ | LOSE -> 0-1 | 11380 -> 11352 (-28) | MU: 25.0% (NoLvl: 43.8%) - ΔLvl: -0.62
-[2025-12-19 23:37:23] Ladder vs 22JCRUU0Y | LOSE -> 0-1 | 11352 -> 11324 (-28) | MU: 33.6% (NoLvl: 51.8%) - ΔLvl: -0.5
-[2025-12-19 23:41:46] Ladder vs 9220R9CQ | WIN -> 1-0 | 11324 -> 11355 (+31) | MU: 37.3% (NoLvl: 49.0%) - ΔLvl: -0.5
-[2025-12-19 23:46:29] Ladder vs 82QYCVJVL | LOSE -> 0-1 | 11355 -> 11329 (-26) | MU: null (NoLvl: 64.4%) - ΔLvl: -0.5
-[2025-12-19 23:49:38] Ladder vs VLG8RJULG | WIN -> 2-0 | 11329 -> 11359 (+30) | MU: 65.4% (NoLvl: 60.5%) - ΔLvl: 0.25
+--- SESSIONE 5 ---
+[2025-12-19 23:20:36] Ladder vs 90L9Q8JP | LOSE -> 0-1 | 11347 -> 11320 (-27) | MU: 16.0% (NoLvl: 41.7%) - ΔLvl: -0.75
+[2025-12-19 23:23:55] Ladder vs 8GYG8UYYQ | WIN -> 1-0 | 11320 -> 11350 (+30) | MU: 19.8% (NoLvl: 44.7%) - ΔLvl: -0.62
+[2025-12-19 23:27:20] Ladder vs P88YYPR9R | WIN -> 1-0 | 11350 -> 11379 (+29) | MU: 49.6% (NoLvl: 44.1%) - ΔLvl: -0.12
+[2025-12-19 23:30:46] Ladder vs 20L0UVPY2V | WIN -> 2-1 | 11379 -> 11409 (+30) | MU: 61.2% (NoLvl: 64.3%) - ΔLvl: -0.12
+[2025-12-19 23:33:56] Ladder vs 2UV9QQUGJ | LOSE -> 0-1 | 11409 -> 11381 (-28) | MU: 25.0% (NoLvl: 43.8%) - ΔLvl: -0.62
+[2025-12-19 23:37:23] Ladder vs 22JCRUU0Y | LOSE -> 0-1 | 11381 -> 11353 (-28) | MU: 33.6% (NoLvl: 51.8%) - ΔLvl: -0.5
+[2025-12-19 23:41:46] Ladder vs 9220R9CQ | WIN -> 1-0 | 11353 -> 11384 (+31) | MU: 37.3% (NoLvl: 49.0%) - ΔLvl: -0.5
+[2025-12-19 23:46:29] Ladder vs 82QYCVJVL | LOSE -> 0-1 | 11384 -> 11358 (-26) | MU: null (NoLvl: 64.4%) - ΔLvl: -0.5
+[2025-12-19 23:49:38] Ladder vs VLG8RJULG | WIN -> 2-0 | 11358 -> 11388 (+30) | MU: 65.4% (NoLvl: 60.5%) - ΔLvl: 0.25
 
    [METRICHE SESSIONE]
    Battaglie: 8
@@ -68,12 +90,32 @@
    Win % (Negative MU <40%): 40.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Quit (23 ore, 56 minuti)]
+[STOP: Long (5 ore, 45 minuti)]
 
---- SESSIONE 5 ---
-[2025-12-20 23:46:21] Ladder vs VLQR2PJ2 | LOSE -> 0-1 | 11359 -> 11330 (-29) | MU: 30.8% (NoLvl: 49.2%) - ΔLvl: -0.5
-[2025-12-20 23:50:54] Ladder vs VG8UQLRQR | WIN -> 1-0 | 11330 -> 11360 (+30) | MU: 65.8% (NoLvl: 42.7%) - ΔLvl: 0.5
-[2025-12-20 23:54:08] Ladder vs 9J2JRY8LJ | LOSE -> 0-1 | 11360 -> 11328 (-32) | MU: 39.8% (NoLvl: 36.1%) - ΔLvl: -0.12
+--- SESSIONE 6 ---
+[2025-12-20 05:35:33] 1v1 Battle vs CV2V99YV8 | WIN -> 1-0 | MU: 54.3% (NoLvl: 57.7%) - ΔLvl: 0.0
+[2025-12-20 05:39:01] 1v1 Battle vs CV2V99YV8 | LOSE -> 0-1 | MU: 37.8% (NoLvl: 50.0%) - ΔLvl: 0.0
+[2025-12-20 05:42:27] 1v1 Battle vs CV2V99YV8 | WIN -> 1-0 | MU: 55.9% (NoLvl: 55.7%) - ΔLvl: 0.0
+[2025-12-20 05:49:10] 1v1 Battle vs 2YP8GCCP | LOSE -> 0-1 | MU: 38.6% (NoLvl: 38.4%) - ΔLvl: 0.0
+[2025-12-20 05:54:18] 1v1 Battle vs 2YP8GCCP | LOSE -> 0-1 | MU: 31.3% (NoLvl: 31.1%) - ΔLvl: 0.0
+[2025-12-20 05:58:26] 1v1 Battle vs 2YP8GCCP | WIN -> 1-0 | MU: 30.6% (NoLvl: 29.5%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (17 ore, 47 minuti)]
+
+--- SESSIONE 7 ---
+[2025-12-20 23:46:21] Ladder vs VLQR2PJ2 | LOSE -> 0-1 | 11388 -> 11359 (-29) | MU: 30.8% (NoLvl: 49.2%) - ΔLvl: -0.5
+[2025-12-20 23:50:54] Ladder vs VG8UQLRQR | WIN -> 1-0 | 11359 -> 11389 (+30) | MU: 65.8% (NoLvl: 42.7%) - ΔLvl: 0.5
+[2025-12-20 23:54:08] Ladder vs 9J2JRY8LJ | LOSE -> 0-1 | 11389 -> 11357 (-32) | MU: 39.8% (NoLvl: 36.1%) - ΔLvl: -0.12
 
    [METRICHE SESSIONE]
    Battaglie: 3
@@ -87,8 +129,8 @@
 
 [STOP: Quit (3 giorni, 16 ore, 48 minuti)]
 
---- SESSIONE 6 ---
-[2025-12-24 16:43:00] Ladder vs 892C8CPJQ | LOSE -> 1-2 | 11328 -> 11298 (-30) | MU: 35.5% (NoLvl: 51.0%) - ΔLvl: -0.75
+--- SESSIONE 8 ---
+[2025-12-24 16:43:00] Ladder vs 892C8CPJQ | LOSE -> 1-2 | 11357 -> 11327 (-30) | MU: 35.5% (NoLvl: 51.0%) - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -102,15 +144,15 @@
 
 [STOP: Quit (5 giorni, 6 ore, 44 minuti)]
 
---- SESSIONE 7 ---
-[2025-12-29 23:27:16] Ladder vs QL8UGVRGJ | LOSE -> 0-1 | 11298 -> 11272 (-26) | MU: 48.4% (NoLvl: 56.8%) - ΔLvl: -0.38
-[2025-12-29 23:32:33] Ladder vs RRGG9RY2J | WIN -> 1-0 | 11272 -> 11300 (+28) | MU: 36.8% (NoLvl: 49.2%) - ΔLvl: -0.62
-[2025-12-29 23:36:05] Ladder vs PVVC9J0YC | WIN -> 1-0 | 11300 -> 11330 (+30) | MU: 31.8% (NoLvl: 46.0%) - ΔLvl: -0.38
-[2025-12-29 23:40:32] Ladder vs UJCJQVUUU | LOSE -> 0-1 | 11330 -> 11298 (-32) | MU: 28.5% (NoLvl: 46.6%) - ΔLvl: -0.5
-[2025-12-29 23:48:32] Ladder vs 9LGQQ9G | WIN -> 1-0 | 11298 -> 11324 (+26) | MU: 23.3% (NoLvl: 50.6%) - ΔLvl: -0.75
-[2025-12-29 23:53:17] Ladder vs 2LV2RCQ9R | WIN -> 1-0 | 11324 -> 11350 (+26) | MU: 36.9% (NoLvl: 52.2%) - ΔLvl: -0.5
-[2025-12-29 23:57:09] Ladder vs 2LYPRL0QR | LOSE -> 0-1 | 11350 -> 11322 (-28) | MU: 31.7% (NoLvl: 62.5%) - ΔLvl: -0.75
-[2025-12-30 00:02:16] Ladder vs Y9P0URRJ9 | LOSE -> 0-1 | 11322 -> 11289 (-33) | MU: 19.9% (NoLvl: 41.6%) - ΔLvl: -0.75
+--- SESSIONE 9 ---
+[2025-12-29 23:27:16] Ladder vs QL8UGVRGJ | LOSE -> 0-1 | 11327 -> 11301 (-26) | MU: 48.4% (NoLvl: 56.8%) - ΔLvl: -0.38
+[2025-12-29 23:32:33] Ladder vs RRGG9RY2J | WIN -> 1-0 | 11301 -> 11329 (+28) | MU: 36.8% (NoLvl: 49.2%) - ΔLvl: -0.62
+[2025-12-29 23:36:05] Ladder vs PVVC9J0YC | WIN -> 1-0 | 11329 -> 11359 (+30) | MU: 31.8% (NoLvl: 46.0%) - ΔLvl: -0.38
+[2025-12-29 23:40:32] Ladder vs UJCJQVUUU | LOSE -> 0-1 | 11359 -> 11327 (-32) | MU: 28.5% (NoLvl: 46.6%) - ΔLvl: -0.5
+[2025-12-29 23:48:32] Ladder vs 9LGQQ9G | WIN -> 1-0 | 11327 -> 11353 (+26) | MU: 23.3% (NoLvl: 50.6%) - ΔLvl: -0.75
+[2025-12-29 23:53:17] Ladder vs 2LV2RCQ9R | WIN -> 1-0 | 11353 -> 11379 (+26) | MU: 36.9% (NoLvl: 52.2%) - ΔLvl: -0.5
+[2025-12-29 23:57:09] Ladder vs 2LYPRL0QR | LOSE -> 0-1 | 11379 -> 11351 (-28) | MU: 31.7% (NoLvl: 62.5%) - ΔLvl: -0.75
+[2025-12-30 00:02:16] Ladder vs Y9P0URRJ9 | LOSE -> 0-1 | 11351 -> 11318 (-33) | MU: 19.9% (NoLvl: 41.6%) - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
    Battaglie: 8
@@ -124,9 +166,9 @@
 
 [STOP: Short (40 minuti)]
 
---- SESSIONE 8 ---
-[2025-12-30 00:42:53] Ladder vs PLYVULP8 | LOSE -> 0-3 | 11289 -> 11263 (-26) | MU: 17.7% (NoLvl: 51.5%) - ΔLvl: -0.75
-[2025-12-30 00:55:01] Ladder vs 92Q0LLPQ | LOSE -> 0-1 | 11263 -> 11230 (-33) | MU: 35.2% (NoLvl: 45.0%) - ΔLvl: -0.5
+--- SESSIONE 10 ---
+[2025-12-30 00:42:53] Ladder vs PLYVULP8 | LOSE -> 0-3 | 11318 -> 11292 (-26) | MU: 17.7% (NoLvl: 51.5%) - ΔLvl: -0.75
+[2025-12-30 00:55:01] Ladder vs 92Q0LLPQ | LOSE -> 0-1 | 11292 -> 11259 (-33) | MU: 35.2% (NoLvl: 45.0%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 2
@@ -140,11 +182,11 @@
 
 [STOP: Long (4 ore, 35 minuti)]
 
---- SESSIONE 9 ---
-[2025-12-30 05:30:40] Ladder vs 200G0YYG2L | WIN -> 3-0 | 11230 -> 11260 (+30) | MU: 64.6% (NoLvl: 54.8%) - ΔLvl: 0.62
-[2025-12-30 05:33:49] Ladder vs YYLCY8QLP | WIN -> 1-0 | 11260 -> 11288 (+28) | MU: 31.9% (NoLvl: 50.1%) - ΔLvl: -0.75
-[2025-12-30 05:37:21] Ladder vs 202PQ02Y00 | WIN -> 1-0 | 11288 -> 11320 (+32) | MU: 55.5% (NoLvl: 42.8%) - ΔLvl: 0.12
-[2025-12-30 05:39:37] Ladder vs 2UPRQGGL | LOSE -> 0-3 | 11320 -> 11289 (-31) | MU: 29.0% (NoLvl: 55.8%) - ΔLvl: -0.38
+--- SESSIONE 11 ---
+[2025-12-30 05:30:40] Ladder vs 200G0YYG2L | WIN -> 3-0 | 11259 -> 11289 (+30) | MU: 64.6% (NoLvl: 54.8%) - ΔLvl: 0.62
+[2025-12-30 05:33:49] Ladder vs YYLCY8QLP | WIN -> 1-0 | 11289 -> 11317 (+28) | MU: 31.9% (NoLvl: 50.1%) - ΔLvl: -0.75
+[2025-12-30 05:37:21] Ladder vs 202PQ02Y00 | WIN -> 1-0 | 11317 -> 11349 (+32) | MU: 55.5% (NoLvl: 42.8%) - ΔLvl: 0.12
+[2025-12-30 05:39:37] Ladder vs 2UPRQGGL | LOSE -> 0-3 | 11349 -> 11318 (-31) | MU: 29.0% (NoLvl: 55.8%) - ΔLvl: -0.38
 
    [METRICHE SESSIONE]
    Battaglie: 4
@@ -158,10 +200,10 @@
 
 [STOP: Long (8 ore, 7 minuti)]
 
---- SESSIONE 10 ---
-[2025-12-30 13:47:09] Ladder vs PYCGYR9Q | LOSE -> 1-2 | 11289 -> 11259 (-30) | MU: 28.5% (NoLvl: 34.6%) - ΔLvl: -0.25
-[2025-12-30 13:50:54] Ladder vs V8VJR09YR | LOSE -> 0-1 | 11259 -> 11228 (-31) | MU: 42.3% (NoLvl: 58.4%) - ΔLvl: -0.25
-[2025-12-30 13:54:33] Ladder vs URJ22QRP2 | LOSE -> 0-1 | 11228 -> 11199 (-29) | MU: 37.9% (NoLvl: 51.5%) - ΔLvl: -0.5
+--- SESSIONE 12 ---
+[2025-12-30 13:47:09] Ladder vs PYCGYR9Q | LOSE -> 1-2 | 11318 -> 11288 (-30) | MU: 28.5% (NoLvl: 34.6%) - ΔLvl: -0.25
+[2025-12-30 13:50:54] Ladder vs V8VJR09YR | LOSE -> 0-1 | 11288 -> 11257 (-31) | MU: 42.3% (NoLvl: 58.4%) - ΔLvl: -0.25
+[2025-12-30 13:54:33] Ladder vs URJ22QRP2 | LOSE -> 0-1 | 11257 -> 11228 (-29) | MU: 37.9% (NoLvl: 51.5%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 3
@@ -175,14 +217,14 @@
 
 [STOP: Short (49 minuti)]
 
---- SESSIONE 11 ---
-[2025-12-30 14:43:45] Ladder vs 20L9RVLGPQ | WIN -> 2-0 | 11199 -> 11229 (+30) | MU: 37.4% (NoLvl: 40.3%) - ΔLvl: 0.0
-[2025-12-30 14:47:21] Ladder vs QPUYGLG | WIN -> 1-0 | 11229 -> 11262 (+33) | MU: 40.1% (NoLvl: 55.4%) - ΔLvl: -0.62
-[2025-12-30 14:52:10] Ladder vs 2PGYQQG8V | WIN -> 1-0 | 11262 -> 11295 (+33) | MU: 53.1% (NoLvl: 49.7%) - ΔLvl: -0.38
-[2025-12-30 14:57:22] Ladder vs PVJQG9C9 | WIN -> 1-0 | 11295 -> 11324 (+29) | MU: 30.7% (NoLvl: 44.0%) - ΔLvl: -0.75
-[2025-12-30 15:04:35] Ladder vs VP0L8Y8UQ | LOSE -> 0-1 | 11324 -> 11295 (-29) | MU: 38.5% (NoLvl: 47.5%) - ΔLvl: 0.0
-[2025-12-30 15:07:45] Ladder vs UQLQ2CLQ8 | WIN -> 1-0 | 11295 -> 11324 (+29) | MU: 41.1% (NoLvl: 59.0%) - ΔLvl: -0.62
-[2025-12-30 15:11:07] Ladder vs P9GPPGV29 | LOSE -> 0-3 | 11324 -> 11292 (-32) | MU: 44.1% (NoLvl: 46.8%) - ΔLvl: -0.38
+--- SESSIONE 13 ---
+[2025-12-30 14:43:45] Ladder vs 20L9RVLGPQ | WIN -> 2-0 | 11228 -> 11258 (+30) | MU: 37.4% (NoLvl: 40.3%) - ΔLvl: 0.0
+[2025-12-30 14:47:21] Ladder vs QPUYGLG | WIN -> 1-0 | 11258 -> 11291 (+33) | MU: 40.1% (NoLvl: 55.4%) - ΔLvl: -0.62
+[2025-12-30 14:52:10] Ladder vs 2PGYQQG8V | WIN -> 1-0 | 11291 -> 11324 (+33) | MU: 53.1% (NoLvl: 49.7%) - ΔLvl: -0.38
+[2025-12-30 14:57:22] Ladder vs PVJQG9C9 | WIN -> 1-0 | 11324 -> 11353 (+29) | MU: 30.7% (NoLvl: 44.0%) - ΔLvl: -0.75
+[2025-12-30 15:04:35] Ladder vs VP0L8Y8UQ | LOSE -> 0-1 | 11353 -> 11324 (-29) | MU: 38.5% (NoLvl: 47.5%) - ΔLvl: 0.0
+[2025-12-30 15:07:45] Ladder vs UQLQ2CLQ8 | WIN -> 1-0 | 11324 -> 11353 (+29) | MU: 41.1% (NoLvl: 59.0%) - ΔLvl: -0.62
+[2025-12-30 15:11:07] Ladder vs P9GPPGV29 | LOSE -> 0-3 | 11353 -> 11321 (-32) | MU: 44.1% (NoLvl: 46.8%) - ΔLvl: -0.38
 
    [METRICHE SESSIONE]
    Battaglie: 7
@@ -196,32 +238,35 @@
 
 [STOP: Long (2 ore, 38 minuti)]
 
---- SESSIONE 12 ---
-[2025-12-30 17:49:45] Ladder vs GJJP0LJ28 | LOSE -> 1-2 | 11292 -> 11262 (-30) | MU: 40.8% (NoLvl: 62.6%) - ΔLvl: 0.25
-[2025-12-30 17:53:14] Ladder vs 8YLQ8L0JJ | WIN -> 1-0 | 11262 -> 11295 (+33) | MU: 28.4% (NoLvl: 47.1%) - ΔLvl: -0.62
-[2025-12-30 18:08:18] Ladder vs YJLLPQCCV | LOSE -> 1-2 | 11295 -> 11265 (-30) | MU: 19.8% (NoLvl: 37.0%) - ΔLvl: -0.75
+--- SESSIONE 14 ---
+[2025-12-30 17:49:45] Ladder vs GJJP0LJ28 | LOSE -> 1-2 | 11321 -> 11291 (-30) | MU: 40.8% (NoLvl: 62.6%) - ΔLvl: 0.25
+[2025-12-30 17:53:14] Ladder vs 8YLQ8L0JJ | WIN -> 1-0 | 11291 -> 11324 (+33) | MU: 28.4% (NoLvl: 47.1%) - ΔLvl: -0.62
+[2025-12-30 17:56:14] Infinite Elixir vs 9V9P00JUU | WIN -> 3-0 | MU: 50.4% (NoLvl: 48.2%) - ΔLvl: 0.62
+[2025-12-30 17:58:46] Infinite Elixir vs LC2RLPCUV | LOSE -> 0-3 | MU: 39.3% (NoLvl: 44.6%) - ΔLvl: -0.62
+[2025-12-30 18:02:33] Infinite Elixir vs 98LRUGCP | LOSE -> 0-3 | MU: 15.8% (NoLvl: 45.6%) - ΔLvl: -1.38
+[2025-12-30 18:08:18] Ladder vs YJLLPQCCV | LOSE -> 1-2 | 11324 -> 11294 (-30) | MU: 19.8% (NoLvl: 37.0%) - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
    Battaglie: 3
    Win Rate: 33.3%
    Avg Matchup: 29.7% (StdDev: 10.6%)
    Avg Matchup NoLvl: 48.9% (StdDev: 12.9%)
-   Avg Level Diff: -0.37
+   Avg Level Diff: -0.83
    Extreme Matchups: 2
    Win % (Negative MU <40%): 50.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Short (47 minuti)]
 
---- SESSIONE 13 ---
-[2025-12-30 18:56:03] Ladder vs CRGRVLUL0 | WIN -> 1-0 | 11265 -> 11293 (+28) | MU: 37.0% (NoLvl: 61.2%) - ΔLvl: -0.75
-[2025-12-30 18:59:37] Ladder vs 20LULYYQL | LOSE -> 1-2 | 11293 -> 11266 (-27) | MU: 16.8% (NoLvl: 45.4%) - ΔLvl: -0.62
-[2025-12-30 19:02:52] Ladder vs CR2P9PG | WIN -> 1-0 | 11266 -> 11297 (+31) | MU: 52.9% (NoLvl: 48.4%) - ΔLvl: 0.38
-[2025-12-30 19:06:35] Ladder vs 2YRRYVLG | WIN -> 1-0 | 11297 -> 11326 (+29) | MU: 32.8% (NoLvl: 54.7%) - ΔLvl: -0.75
-[2025-12-30 19:11:49] Ladder vs YCPCG9RL | WIN -> 1-0 | 11326 -> 11355 (+29) | MU: 34.8% (NoLvl: 48.7%) - ΔLvl: -0.5
-[2025-12-30 19:17:37] Ladder vs J0L0JRQ | WIN -> 1-0 | 11355 -> 11385 (+30) | MU: 24.3% (NoLvl: 46.6%) - ΔLvl: -0.75
-[2025-12-30 19:24:14] Ladder vs 9PR0PJJVP | LOSE -> 1-3 | 11385 -> 11358 (-27) | MU: 28.6% (NoLvl: 46.7%) - ΔLvl: -0.5
-[2025-12-30 19:27:59] Ladder vs 9JY8UJVPC | WIN -> 1-0 | 11358 -> 11387 (+29) | MU: 38.2% (NoLvl: 44.1%) - ΔLvl: -0.38
+--- SESSIONE 15 ---
+[2025-12-30 18:56:03] Ladder vs CRGRVLUL0 | WIN -> 1-0 | 11294 -> 11322 (+28) | MU: 37.0% (NoLvl: 61.2%) - ΔLvl: -0.75
+[2025-12-30 18:59:37] Ladder vs 20LULYYQL | LOSE -> 1-2 | 11322 -> 11295 (-27) | MU: 16.8% (NoLvl: 45.4%) - ΔLvl: -0.62
+[2025-12-30 19:02:52] Ladder vs CR2P9PG | WIN -> 1-0 | 11295 -> 11326 (+31) | MU: 52.9% (NoLvl: 48.4%) - ΔLvl: 0.38
+[2025-12-30 19:06:35] Ladder vs 2YRRYVLG | WIN -> 1-0 | 11326 -> 11355 (+29) | MU: 32.8% (NoLvl: 54.7%) - ΔLvl: -0.75
+[2025-12-30 19:11:49] Ladder vs YCPCG9RL | WIN -> 1-0 | 11355 -> 11384 (+29) | MU: 34.8% (NoLvl: 48.7%) - ΔLvl: -0.5
+[2025-12-30 19:17:37] Ladder vs J0L0JRQ | WIN -> 1-0 | 11384 -> 11414 (+30) | MU: 24.3% (NoLvl: 46.6%) - ΔLvl: -0.75
+[2025-12-30 19:24:14] Ladder vs 9PR0PJJVP | LOSE -> 1-3 | 11414 -> 11387 (-27) | MU: 28.6% (NoLvl: 46.7%) - ΔLvl: -0.5
+[2025-12-30 19:27:59] Ladder vs 9JY8UJVPC | WIN -> 1-0 | 11387 -> 11416 (+29) | MU: 38.2% (NoLvl: 44.1%) - ΔLvl: -0.38
 
    [METRICHE SESSIONE]
    Battaglie: 8
@@ -235,11 +280,11 @@
 
 [STOP: Quit (20 ore, 2 minuti)]
 
---- SESSIONE 14 ---
-[2025-12-31 15:30:06] Ladder vs YYY9YP2Y | LOSE -> 0-1 | 11387 -> 11355 (-32) | MU: 52.6% (NoLvl: 68.2%) - ΔLvl: -0.75
-[2025-12-31 15:33:15] Ladder vs 90PJ9U98C | WIN -> 1-0 | 11355 -> 11384 (+29) | MU: 41.8% (NoLvl: 48.3%) - ΔLvl: -0.25
-[2025-12-31 15:36:54] Ladder vs QC8V08PY0 | LOSE -> 0-1 | 11384 -> 11353 (-31) | MU: 12.1% (NoLvl: 35.8%) - ΔLvl: -0.75
-[2025-12-31 15:39:27] Ladder vs PULU2RQL | LOSE -> 0-3 | 11353 -> 11320 (-33) | MU: 39.8% (NoLvl: 48.4%) - ΔLvl: -0.38
+--- SESSIONE 16 ---
+[2025-12-31 15:30:06] Ladder vs YYY9YP2Y | LOSE -> 0-1 | 11416 -> 11384 (-32) | MU: 52.6% (NoLvl: 68.2%) - ΔLvl: -0.75
+[2025-12-31 15:33:15] Ladder vs 90PJ9U98C | WIN -> 1-0 | 11384 -> 11413 (+29) | MU: 41.8% (NoLvl: 48.3%) - ΔLvl: -0.25
+[2025-12-31 15:36:54] Ladder vs QC8V08PY0 | LOSE -> 0-1 | 11413 -> 11382 (-31) | MU: 12.1% (NoLvl: 35.8%) - ΔLvl: -0.75
+[2025-12-31 15:39:27] Ladder vs PULU2RQL | LOSE -> 0-3 | 11382 -> 11349 (-33) | MU: 39.8% (NoLvl: 48.4%) - ΔLvl: -0.38
 
    [METRICHE SESSIONE]
    Battaglie: 4
@@ -253,8 +298,8 @@
 
 [STOP: Long (2 ore, 3 minuti)]
 
---- SESSIONE 15 ---
-[2025-12-31 17:43:02] Ladder vs 2YUC2VVCV | WIN -> 1-0 | 11320 -> 11353 (+33) | MU: 49.2% (NoLvl: 66.8%) - ΔLvl: -0.62
+--- SESSIONE 17 ---
+[2025-12-31 17:43:02] Ladder vs 2YUC2VVCV | WIN -> 1-0 | 11349 -> 11382 (+33) | MU: 49.2% (NoLvl: 66.8%) - ΔLvl: -0.62
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -268,8 +313,8 @@
 
 [STOP: Quit (1 giorni, 25 minuti)]
 
---- SESSIONE 16 ---
-[2026-01-01 18:08:46] Ladder vs 2PJGY2C | WIN -> 1-0 | 11353 -> 11384 (+31) | MU: 44.0% (NoLvl: 52.7%) - ΔLvl: -0.25
+--- SESSIONE 18 ---
+[2026-01-01 18:08:46] Ladder vs 2PJGY2C | WIN -> 1-0 | 11382 -> 11413 (+31) | MU: 44.0% (NoLvl: 52.7%) - ΔLvl: -0.25
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -283,77 +328,235 @@
 
 [STOP: Long (2 ore, 17 minuti)]
 
---- SESSIONE 17 ---
-[2026-01-01 20:26:28] Ladder vs 2Q8QJC9P0 | WIN -> 1-0 | 11384 -> 11415 (+31) | MU: 31.4% (NoLvl: 55.7%) - ΔLvl: -0.5
-[2026-01-01 20:31:56] Ladder vs 8LY89QJC | LOSE -> 0-1 | 11415 -> 11387 (-28) | MU: 22.7% (NoLvl: 45.3%) - ΔLvl: -0.12
-[2026-01-01 20:35:08] Ladder vs YYPVUU90 | WIN -> 2-1 | 11387 -> 11416 (+29) | MU: 28.4% (NoLvl: 46.9%) - ΔLvl: -0.38
-[2026-01-01 20:38:19] Ladder vs 2YGJ0VC2J | LOSE -> 0-1 | 11416 -> 11383 (-33) | MU: 33.7% (NoLvl: 53.8%) - ΔLvl: -0.62
-[2026-01-01 20:42:47] Ladder vs GV8LVJLP8 | WIN -> 1-0 | 11383 -> 11413 (+30) | MU: 35.1% (NoLvl: 51.0%) - ΔLvl: -0.25
-[2026-01-01 20:48:37] Ladder vs 902CRGY2Q | LOSE -> 0-1 | 11413 -> 11383 (-30) | MU: 35.3% (NoLvl: 46.4%) - ΔLvl: -0.25
-[2026-01-01 20:53:33] Ladder vs 2PVL2JQP | WIN -> 1-0 | 11383 -> 11412 (+29) | MU: 49.0% (NoLvl: 58.4%) - ΔLvl: 0.0
+--- SESSIONE 19 ---
+[2026-01-01 20:26:28] Ladder vs 2Q8QJC9P0 | WIN -> 1-0 | 11413 -> 11444 (+31) | MU: 31.4% (NoLvl: 55.7%) - ΔLvl: -0.5
+[2026-01-01 20:31:56] Ladder vs 8LY89QJC | LOSE -> 0-1 | 11444 -> 11416 (-28) | MU: 22.7% (NoLvl: 45.3%) - ΔLvl: -0.12
+[2026-01-01 20:35:08] Ladder vs YYPVUU90 | WIN -> 2-1 | 11416 -> 11445 (+29) | MU: 28.4% (NoLvl: 46.9%) - ΔLvl: -0.38
+[2026-01-01 20:38:19] Ladder vs 2YGJ0VC2J | LOSE -> 0-1 | 11445 -> 11412 (-33) | MU: 33.7% (NoLvl: 53.8%) - ΔLvl: -0.62
+[2026-01-01 20:42:47] Ladder vs GV8LVJLP8 | WIN -> 1-0 | 11412 -> 11442 (+30) | MU: 35.1% (NoLvl: 51.0%) - ΔLvl: -0.25
+[2026-01-01 20:48:37] Ladder vs 902CRGY2Q | LOSE -> 0-1 | 11442 -> 11412 (-30) | MU: 35.3% (NoLvl: 46.4%) - ΔLvl: -0.25
+[2026-01-01 20:53:33] Ladder vs 2PVL2JQP | WIN -> 1-0 | 11412 -> 11441 (+29) | MU: 49.0% (NoLvl: 58.4%) - ΔLvl: 0.0
+[2026-01-01 20:57:13] Infinite Elixir vs 8RJPGUPRQ | WIN -> 3-1 | MU: 15.9% (NoLvl: 48.6%) - ΔLvl: -0.75
+[2026-01-01 21:16:23] Ladder vs 8L8CU08C2 | WIN -> 1-0 | 11441 -> 11470 (+29) | MU: 26.9% (NoLvl: 42.8%) - ΔLvl: -0.38
+[2026-01-01 21:20:43] Ladder vs CU0QPCJ8R | WIN -> 1-0 | 11470 -> 11497 (+27) | MU: 31.1% (NoLvl: 49.6%) - ΔLvl: -0.5
+[2026-01-01 21:24:41] Ladder vs 9Y9QUJQ | WIN -> 1-0 | 11497 -> 11525 (+28) | MU: 41.3% (NoLvl: 55.2%) - ΔLvl: -0.62
+[2026-01-01 21:29:15] Ladder vs QJ92VU0 | WIN -> 1-0 | 11525 -> 11553 (+28) | MU: 25.2% (NoLvl: 41.5%) - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
-   Battaglie: 7
-   Win Rate: 57.1%
-   Avg Matchup: 33.7% (StdDev: 8.1%)
-   Avg Matchup NoLvl: 51.1% (StdDev: 5.1%)
-   Avg Level Diff: -0.30
-   Extreme Matchups: 6
-   Win % (Negative MU <40%): 50.0%
-   Lose % (Positive MU >80%): 0.0%
-
-[STOP: Short (22 minuti)]
-
---- SESSIONE 18 ---
-[2026-01-01 21:16:23] Ladder vs 8L8CU08C2 | WIN -> 1-0 | 11412 -> 11441 (+29) | MU: 26.9% (NoLvl: 42.8%) - ΔLvl: -0.38
-[2026-01-01 21:20:43] Ladder vs CU0QPCJ8R | WIN -> 1-0 | 11441 -> 11468 (+27) | MU: 31.1% (NoLvl: 49.6%) - ΔLvl: -0.5
-[2026-01-01 21:24:41] Ladder vs 9Y9QUJQ | WIN -> 1-0 | 11468 -> 11496 (+28) | MU: 41.3% (NoLvl: 55.2%) - ΔLvl: -0.62
-[2026-01-01 21:29:15] Ladder vs QJ92VU0 | WIN -> 1-0 | 11496 -> 11524 (+28) | MU: 25.2% (NoLvl: 41.5%) - ΔLvl: -0.75
-
-   [METRICHE SESSIONE]
-   Battaglie: 4
-   Win Rate: 100.0%
-   Avg Matchup: 31.1% (StdDev: 7.2%)
-   Avg Matchup NoLvl: 47.3% (StdDev: 6.4%)
-   Avg Level Diff: -0.56
-   Extreme Matchups: 3
-   Win % (Negative MU <40%): 100.0%
+   Battaglie: 11
+   Win Rate: 72.7%
+   Avg Matchup: 32.7% (StdDev: 7.5%)
+   Avg Matchup NoLvl: 49.7% (StdDev: 5.6%)
+   Avg Level Diff: -0.47
+   Extreme Matchups: 9
+   Win % (Negative MU <40%): 66.7%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Short (23 minuti)]
 
---- SESSIONE 19 ---
-[2026-01-01 21:52:23] Ladder vs J08CUUQY9 | WIN -> 1-0 | 11524 -> 11554 (+30) | MU: 26.7% (NoLvl: 46.1%) - ΔLvl: -0.62
+--- SESSIONE 20 ---
+[2026-01-01 21:52:23] Ladder vs J08CUUQY9 | WIN -> 1-0 | 11553 -> 11583 (+30) | MU: 26.7% (NoLvl: 46.1%) - ΔLvl: -0.62
+[2026-01-01 21:56:19] Ranked vs 8J8JUGQ2P | WIN -> 1-0 | MU: 47.1% (NoLvl: 51.2%) - ΔLvl: 0.25
+[2026-01-01 21:59:57] Ranked vs GUYL9JRLC | WIN -> 1-0 | MU: 58.2% (NoLvl: 47.4%) - ΔLvl: 0.0
+[2026-01-01 22:03:16] Infinite Elixir vs 89PPYG088 | LOSE -> 0-3 | MU: 4.6% (NoLvl: 68.6%) - ΔLvl: -2.12
 
    [METRICHE SESSIONE]
-   Battaglie: 1
+   Battaglie: 3
    Win Rate: 100.0%
-   Avg Matchup: 26.7% (StdDev: 0.0%)
-   Avg Matchup NoLvl: 46.1% (StdDev: 0.0%)
-   Avg Level Diff: -0.62
+   Avg Matchup: 44.0% (StdDev: 16.0%)
+   Avg Matchup NoLvl: 48.2% (StdDev: 2.7%)
+   Avg Level Diff: -0.83
    Extreme Matchups: 1
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Quit (1 giorni, 19 ore, 11 minuti)]
+[STOP: Short (1 ore, 38 minuti)]
 
---- SESSIONE 20 ---
-[2026-01-03 17:03:51] Ladder vs 8JJ2JVJ98 | WIN -> 1-0 | 11554 -> 11581 (+27) | MU: 22.6% (NoLvl: 44.4%) - ΔLvl: -0.75
+--- SESSIONE 21 ---
+[2026-01-01 23:41:22] Ranked vs 90Q22J0L8 | WIN -> 1-0 | MU: 49.2% (NoLvl: 45.7%) - ΔLvl: 0.12
 
    [METRICHE SESSIONE]
    Battaglie: 1
    Win Rate: 100.0%
-   Avg Matchup: 22.6% (StdDev: 0.0%)
-   Avg Matchup NoLvl: 44.4% (StdDev: 0.0%)
-   Avg Level Diff: -0.75
+   Avg Matchup: 49.2% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 45.7% (StdDev: 0.0%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (23 minuti)]
+
+--- SESSIONE 22 ---
+[2026-01-02 00:04:23] Ranked vs PLL8PCQYC | WIN -> 3-0 | MU: 51.5% (NoLvl: 42.8%) - ΔLvl: 0.25
+[2026-01-02 00:07:34] Ranked vs 298V9YY2Y | WIN -> 1-0 | MU: 64.7% (NoLvl: 51.3%) - ΔLvl: 0.25
+[2026-01-02 00:11:15] Ranked vs 9G2PC0R8 | WIN -> 1-0 | MU: 63.2% (NoLvl: 58.3%) - ΔLvl: 0.0
+[2026-01-02 00:17:20] Ranked vs GUUQU9YY | WIN -> 1-0 | MU: 45.7% (NoLvl: 40.7%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 100.0%
+   Avg Matchup: 56.3% (StdDev: 9.2%)
+   Avg Matchup NoLvl: 48.3% (StdDev: 8.1%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (4 ore, 18 minuti)]
+
+--- SESSIONE 23 ---
+[2026-01-02 04:35:22] Ranked vs GJCCRU2VR | LOSE -> 0-1 | MU: 35.8% (NoLvl: 48.7%) - ΔLvl: 0.0
+[2026-01-02 04:38:31] Ranked vs 9R08RVV2 | WIN -> 2-0 | MU: 52.8% (NoLvl: 51.7%) - ΔLvl: 0.0
+[2026-01-02 04:41:41] Ranked vs 2PRGL9J0 | WIN -> 1-0 | MU: 48.7% (NoLvl: 44.2%) - ΔLvl: 0.0
+[2026-01-02 04:46:47] Ranked vs 2RVG2CYR | WIN -> 1-0 | MU: 63.8% (NoLvl: 49.8%) - ΔLvl: 0.25
+[2026-01-02 04:50:42] Ranked vs UCJCLVCQU | LOSE -> 0-1 | MU: 59.0% (NoLvl: 43.4%) - ΔLvl: 0.38
+[2026-01-02 04:53:51] Ranked vs PVJPUPQUR | LOSE -> 0-1 | MU: 56.2% (NoLvl: 68.4%) - ΔLvl: 0.0
+[2026-01-02 05:08:56] Ranked vs 9LG22LR0P | WIN -> 1-0 | MU: 47.4% (NoLvl: 45.7%) - ΔLvl: 0.0
+[2026-01-02 05:12:45] Ranked vs PCCYGLCPR | WIN -> 1-0 | MU: 72.1% (NoLvl: 64.7%) - ΔLvl: 0.0
+[2026-01-02 05:16:15] Ranked vs RRU2RGP0 | LOSE -> 0-1 | MU: 41.8% (NoLvl: 45.3%) - ΔLvl: 0.0
+[2026-01-02 05:19:24] Ranked vs Q2ULRCPVJ | LOSE -> 0-1 | MU: 42.7% (NoLvl: 39.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 10
+   Win Rate: 50.0%
+   Avg Matchup: 52.0% (StdDev: 11.0%)
+   Avg Matchup NoLvl: 50.2% (StdDev: 9.3%)
+   Avg Level Diff: 0.06
    Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (11 ore, 12 minuti)]
+
+--- SESSIONE 24 ---
+[2026-01-02 16:32:09] Ranked vs 2P9YC98CP | LOSE -> 0-1 | MU: 36.1% (NoLvl: 40.3%) - ΔLvl: 0.0
+[2026-01-02 16:36:49] Ranked vs 22LQYUCC2 | WIN -> 1-0 | MU: 27.4% (NoLvl: 41.5%) - ΔLvl: 0.0
+[2026-01-02 16:41:31] Ranked vs GQ82U290 | LOSE -> 0-1 | MU: 48.8% (NoLvl: 49.0%) - ΔLvl: 0.12
+[2026-01-02 16:45:14] Ranked vs 88CGRY8P | LOSE -> 1-2 | MU: 53.2% (NoLvl: 56.9%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 25.0%
+   Avg Matchup: 41.4% (StdDev: 11.8%)
+   Avg Matchup NoLvl: 46.9% (StdDev: 7.6%)
+   Avg Level Diff: 0.03
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 50.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 20 minuti)]
+
+--- SESSIONE 25 ---
+[2026-01-02 18:06:05] Ranked vs P00R9L2 | WIN -> 1-0 | MU: 55.1% (NoLvl: 52.6%) - ΔLvl: 0.0
+[2026-01-02 18:11:05] Ranked vs YYGLU8U20 | WIN -> 1-0 | MU: 50.5% (NoLvl: 40.7%) - ΔLvl: 0.25
+[2026-01-02 18:16:38] Ranked vs 2R99J90RG | WIN -> 1-0 | MU: 56.9% (NoLvl: 60.2%) - ΔLvl: 0.0
+[2026-01-02 18:19:44] Ranked vs 2LRPP08JC | LOSE -> 1-3 | MU: 49.6% (NoLvl: 47.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 75.0%
+   Avg Matchup: 53.0% (StdDev: 3.5%)
+   Avg Matchup NoLvl: 50.3% (StdDev: 8.2%)
+   Avg Level Diff: 0.06
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 8 minuti)]
+
+--- SESSIONE 26 ---
+[2026-01-02 20:28:07] Ranked vs C222998RP | WIN -> 2-1 | MU: 51.0% (NoLvl: 52.3%) - ΔLvl: 0.0
+[2026-01-02 20:32:01] Ranked vs 9VUQPRJ2R | LOSE -> 0-1 | MU: 58.9% (NoLvl: 60.1%) - ΔLvl: 0.0
+[2026-01-02 20:37:15] Ranked vs 80UP9GUQV | LOSE -> 0-1 | MU: 41.9% (NoLvl: 46.2%) - ΔLvl: 0.25
+[2026-01-02 20:40:25] Ranked vs YUCJ9QVGJ | WIN -> 1-0 | MU: 53.8% (NoLvl: 54.3%) - ΔLvl: 0.25
+[2026-01-02 20:44:54] Ranked vs 28QLVPRR8 | WIN -> 1-0 | MU: 55.0% (NoLvl: 49.8%) - ΔLvl: 0.25
+[2026-01-02 20:49:11] Ranked vs 8VYQPYPLR | WIN -> 1-0 | MU: 49.4% (NoLvl: 48.7%) - ΔLvl: 0.25
+[2026-01-02 20:53:52] Ranked vs 2UQJVQUC8 | WIN -> 1-0 | MU: 52.5% (NoLvl: 51.4%) - ΔLvl: 0.12
+[2026-01-02 20:55:58] Infinite Elixir vs 2YQCQUYLV | LOSE -> 0-3 | MU: 52.5% (NoLvl: 62.5%) - ΔLvl: -0.62
+
+   [METRICHE SESSIONE]
+   Battaglie: 7
+   Win Rate: 71.4%
+   Avg Matchup: 51.8% (StdDev: 5.3%)
+   Avg Matchup NoLvl: 51.8% (StdDev: 4.5%)
+   Avg Level Diff: 0.07
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (21 minuti)]
+
+--- SESSIONE 27 ---
+[2026-01-02 21:17:48] Ranked vs LL2J8882L | WIN -> 1-0 | MU: 40.4% (NoLvl: 43.1%) - ΔLvl: 0.0
+[2026-01-02 21:19:04] Ranked vs 20GPQQJPLR | WIN -> 3-0 | MU: 48.9% (NoLvl: 54.1%) - ΔLvl: 0.12
+[2026-01-02 21:22:23] Ranked vs L0829R8JP | WIN -> 1-0 | MU: 75.1% (NoLvl: 67.5%) - ΔLvl: 0.25
+[2026-01-02 21:27:20] Ranked vs 2LLC8JCPL | LOSE -> 0-1 | MU: 40.2% (NoLvl: 38.9%) - ΔLvl: 0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 75.0%
+   Avg Matchup: 51.1% (StdDev: 16.5%)
+   Avg Matchup NoLvl: 50.9% (StdDev: 12.8%)
+   Avg Level Diff: 0.19
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (5 ore, 52 minuti)]
+
+--- SESSIONE 28 ---
+[2026-01-03 03:20:10] Ranked vs GQRVUJRPJ | WIN -> 1-0 | MU: 63.0% (NoLvl: 52.1%) - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 63.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 52.1% (StdDev: 0.0%)
+   Avg Level Diff: 0.25
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (27 minuti)]
+
+--- SESSIONE 29 ---
+[2026-01-03 03:47:10] Ranked vs 9UR9LJRL | WIN -> 1-0 | MU: 29.7% (NoLvl: 35.3%) - ΔLvl: 0.0
+[2026-01-03 03:52:37] Ranked vs 88RVCLYU8 | LOSE -> 0-1 | MU: 46.6% (NoLvl: 52.6%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 50.0%
+   Avg Matchup: 38.1% (StdDev: 12.0%)
+   Avg Matchup NoLvl: 43.9% (StdDev: 12.2%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (12 ore, 39 minuti)]
+
+--- SESSIONE 30 ---
+[2026-01-03 16:32:09] Ranked vs 2220PY0QJ | WIN -> 1-0 | MU: 48.1% (NoLvl: 44.0%) - ΔLvl: 0.0
+[2026-01-03 16:35:59] Ranked vs P9C0QR9UJ | WIN -> 1-0 | MU: 38.4% (NoLvl: 47.6%) - ΔLvl: 0.0
+[2026-01-03 16:41:29] Ranked vs VJ9G092 | WIN -> 1-0 | MU: 31.4% (NoLvl: 51.3%) - ΔLvl: 0.0
+[2026-01-03 16:47:05] Ranked vs Y0Y8PJVVQ | WIN -> 1-0 | MU: 36.0% (NoLvl: 40.0%) - ΔLvl: 0.0
+[2026-01-03 17:03:51] Ladder vs 8JJ2JVJ98 | WIN -> 1-0 | 11583 -> 11610 (+27) | MU: 22.6% (NoLvl: 44.4%) - ΔLvl: -0.75
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 100.0%
+   Avg Matchup: 35.3% (StdDev: 9.4%)
+   Avg Matchup NoLvl: 45.5% (StdDev: 4.2%)
+   Avg Level Diff: -0.15
+   Extreme Matchups: 4
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Short (1 ore, 11 minuti)]
 
---- SESSIONE 21 ---
-[2026-01-03 18:15:11] Ladder vs 9CLQ0G2LU | LOSE -> 0-1 | 11581 -> 11549 (-32) | MU: 31.7% (NoLvl: 53.9%) - ΔLvl: -0.5
+--- SESSIONE 31 ---
+[2026-01-03 18:15:11] Ladder vs 9CLQ0G2LU | LOSE -> 0-1 | 11610 -> 11578 (-32) | MU: 31.7% (NoLvl: 53.9%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -367,8 +570,8 @@
 
 [STOP: Long (3 ore, 16 minuti)]
 
---- SESSIONE 22 ---
-[2026-01-03 21:32:02] Ladder vs Q2GP2P | WIN -> 1-0 | 11549 -> 11579 (+30) | MU: 43.4% (NoLvl: 72.4%) - ΔLvl: -0.75
+--- SESSIONE 32 ---
+[2026-01-03 21:32:02] Ladder vs Q2GP2P | WIN -> 1-0 | 11578 -> 11608 (+30) | MU: 43.4% (NoLvl: 72.4%) - ΔLvl: -0.75
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -382,8 +585,8 @@
 
 [STOP: Long (7 ore, 30 minuti)]
 
---- SESSIONE 23 ---
-[2026-01-04 05:02:34] Ladder vs 9RVRRPLQ9 | LOSE -> 0-1 | 11579 -> 11553 (-26) | MU: 30.0% (NoLvl: 43.2%) - ΔLvl: -0.38
+--- SESSIONE 33 ---
+[2026-01-04 05:02:34] Ladder vs 9RVRRPLQ9 | LOSE -> 0-1 | 11608 -> 11582 (-26) | MU: 30.0% (NoLvl: 43.2%) - ΔLvl: -0.38
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -397,42 +600,112 @@
 
 [STOP: Long (15 ore, 19 minuti)]
 
---- SESSIONE 24 ---
-[2026-01-04 20:22:31] Ladder vs 9QR9PJU29 | WIN -> 1-0 | 11553 -> 11581 (+28) | MU: 35.5% (NoLvl: 48.6%) - ΔLvl: -0.38
-[2026-01-04 20:25:54] Ladder vs 202RVCJJRL | WIN -> 1-0 | 11581 -> 11611 (+30) | MU: 33.2% (NoLvl: 40.1%) - ΔLvl: -0.25
-[2026-01-04 20:29:04] Ladder vs 2YGJVYRJG | WIN -> 1-0 | 11611 -> 11639 (+28) | MU: 48.5% (NoLvl: 69.6%) - ΔLvl: -0.75
-[2026-01-04 20:33:54] Ladder vs 80VC2RJ0P | WIN -> 3-1 | 11639 -> 11665 (+26) | MU: 47.3% (NoLvl: 43.2%) - ΔLvl: 0.12
+--- SESSIONE 34 ---
+[2026-01-04 20:22:31] Ladder vs 9QR9PJU29 | WIN -> 1-0 | 11582 -> 11610 (+28) | MU: 35.5% (NoLvl: 48.6%) - ΔLvl: -0.38
+[2026-01-04 20:25:54] Ladder vs 202RVCJJRL | WIN -> 1-0 | 11610 -> 11640 (+30) | MU: 33.2% (NoLvl: 40.1%) - ΔLvl: -0.25
+[2026-01-04 20:29:04] Ladder vs 2YGJVYRJG | WIN -> 1-0 | 11640 -> 11668 (+28) | MU: 48.5% (NoLvl: 69.6%) - ΔLvl: -0.75
+[2026-01-04 20:33:54] Ladder vs 80VC2RJ0P | WIN -> 3-1 | 11668 -> 11694 (+26) | MU: 47.3% (NoLvl: 43.2%) - ΔLvl: 0.12
+[2026-01-04 20:38:35] Ranked vs 8GLQRY2Y | WIN -> 1-0 | MU: 34.6% (NoLvl: 40.3%) - ΔLvl: 0.0
+[2026-01-04 20:42:28] Ranked vs P8CJCVRV | WIN -> 1-0 | MU: 49.1% (NoLvl: 52.1%) - ΔLvl: 0.0
+[2026-01-04 20:47:15] Ranked vs PQLYR8Y | LOSE -> 0-3 | MU: 51.0% (NoLvl: 56.8%) - ΔLvl: 0.0
+[2026-01-04 20:51:02] Ranked vs RJPV9GRU | WIN -> 1-0 | MU: 33.1% (NoLvl: 34.6%) - ΔLvl: 0.0
+[2026-01-04 20:56:18] Ranked vs CCP9QJ2RV | LOSE -> 0-1 | MU: 40.5% (NoLvl: 49.5%) - ΔLvl: 0.0
+[2026-01-04 21:00:05] Ranked vs VU0J92UYJ | WIN -> 2-1 | MU: 36.0% (NoLvl: 40.0%) - ΔLvl: 0.0
+[2026-01-04 21:03:57] Ranked vs L20PY9GJR | LOSE -> 0-1 | MU: 31.5% (NoLvl: 40.4%) - ΔLvl: 0.0
+[2026-01-04 21:07:08] Ranked vs V0RL0U8GR | WIN -> 1-0 | MU: 49.7% (NoLvl: 49.4%) - ΔLvl: 0.38
+[2026-01-04 21:11:19] Ranked vs 80YPCUYPJ | WIN -> 1-0 | MU: 54.7% (NoLvl: 56.6%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 4
-   Win Rate: 100.0%
-   Avg Matchup: 41.1% (StdDev: 7.9%)
-   Avg Matchup NoLvl: 50.4% (StdDev: 13.3%)
-   Avg Level Diff: -0.32
-   Extreme Matchups: 2
-   Win % (Negative MU <40%): 100.0%
+   Battaglie: 13
+   Win Rate: 76.9%
+   Avg Matchup: 41.9% (StdDev: 8.3%)
+   Avg Matchup NoLvl: 47.8% (StdDev: 9.5%)
+   Avg Level Diff: -0.07
+   Extreme Matchups: 6
+   Win % (Negative MU <40%): 83.3%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Long (10 ore, 36 minuti)]
+[STOP: Long (3 ore, 26 minuti)]
 
---- SESSIONE 25 ---
-[2026-01-05 07:10:46] Ladder vs 8PGV9VVYG | WIN -> 1-0 | 11665 -> 11697 (+32) | MU: 32.4% (NoLvl: 49.2%) - ΔLvl: -0.5
+--- SESSIONE 35 ---
+[2026-01-05 00:37:55] Ranked vs 8Q8QJY88 | WIN -> 1-0 | MU: 72.9% (NoLvl: 33.0%) - ΔLvl: 1.12
 
    [METRICHE SESSIONE]
    Battaglie: 1
    Win Rate: 100.0%
-   Avg Matchup: 32.4% (StdDev: 0.0%)
-   Avg Matchup NoLvl: 49.2% (StdDev: 0.0%)
-   Avg Level Diff: -0.50
-   Extreme Matchups: 1
+   Avg Matchup: 72.9% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 33.0% (StdDev: 0.0%)
+   Avg Level Diff: 1.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 43 minuti)]
+
+--- SESSIONE 36 ---
+[2026-01-05 03:21:43] Ranked vs 2V8JGPLG2 | LOSE -> 0-1 | MU: 59.4% (NoLvl: 52.4%) - ΔLvl: 0.0
+[2026-01-05 03:22:41] Ranked vs JQU9C2U | WIN -> 3-0 | MU: 44.5% (NoLvl: 44.3%) - ΔLvl: 0.0
+[2026-01-05 03:25:53] Ranked vs 8VPC2J9Q | WIN -> 2-0 | MU: 77.9% (NoLvl: 62.0%) - ΔLvl: 0.5
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 66.7%
+   Avg Matchup: 60.6% (StdDev: 16.7%)
+   Avg Matchup NoLvl: 52.9% (StdDev: 8.8%)
+   Avg Level Diff: 0.17
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (21 minuti)]
+
+--- SESSIONE 37 ---
+[2026-01-05 03:47:48] Ranked vs 2QQ2QPVV0 | WIN -> 1-0 | MU: 57.3% (NoLvl: 48.6%) - ΔLvl: 0.0
+[2026-01-05 03:52:35] Ranked vs 908PYCCG | WIN -> 1-0 | MU: 40.9% (NoLvl: 49.4%) - ΔLvl: 0.0
+[2026-01-05 03:58:13] Ranked vs 9LY0QL | WIN -> 1-0 | MU: 48.7% (NoLvl: 60.4%) - ΔLvl: 0.0
+[2026-01-05 04:01:29] Ranked vs U9UJPVR2 | WIN -> 1-0 | MU: 37.1% (NoLvl: 40.0%) - ΔLvl: 0.0
+[2026-01-05 04:04:44] Ranked vs PJP2YLRVY | WIN -> 2-1 | MU: 72.2% (NoLvl: 67.0%) - ΔLvl: 0.0
+[2026-01-05 04:09:42] Ranked vs 2YPUYRVQG | LOSE -> 0-1 | MU: 35.8% (NoLvl: 39.8%) - ΔLvl: 0.0
+[2026-01-05 04:12:52] Ranked vs 8LGQUCVLV | WIN -> 1-0 | MU: 51.5% (NoLvl: 52.1%) - ΔLvl: 0.12
+[2026-01-05 04:17:16] Ranked vs Y9JG8YVRQ | WIN -> 1-0 | MU: 32.1% (NoLvl: 31.9%) - ΔLvl: 0.0
+[2026-01-05 04:20:32] Ranked vs R0J2PLP | LOSE -> 0-1 | MU: 27.5% (NoLvl: 39.5%) - ΔLvl: 0.0
+[2026-01-05 04:22:17] Ranked vs UURR22RPV | LOSE -> 0-3 | MU: 48.2% (NoLvl: 53.1%) - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 10
+   Win Rate: 70.0%
+   Avg Matchup: 45.1% (StdDev: 13.3%)
+   Avg Matchup NoLvl: 48.2% (StdDev: 10.7%)
+   Avg Level Diff: 0.04
+   Extreme Matchups: 4
+   Win % (Negative MU <40%): 50.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 22 minuti)]
+
+--- SESSIONE 38 ---
+[2026-01-05 06:44:33] Ranked vs 9CRJ2LCV2 | WIN -> 1-0 | MU: 37.2% (NoLvl: 35.2%) - ΔLvl: 0.0
+[2026-01-05 06:49:49] Ranked vs VGQ9VUGPY | WIN -> 1-0 | MU: 33.1% (NoLvl: 47.2%) - ΔLvl: 0.0
+[2026-01-05 06:54:41] Ranked vs 8CLRGJRUG | WIN -> 1-0 | MU: 38.1% (NoLvl: 54.9%) - ΔLvl: 0.0
+[2026-01-05 06:58:33] Ranked vs U0LVVJ28 | WIN -> 1-0 | MU: 44.4% (NoLvl: 51.0%) - ΔLvl: 0.25
+[2026-01-05 07:03:22] Infinite Elixir vs 209V2CLQU | LOSE -> 0-3 | MU: 44.3% (NoLvl: 42.1%) - ΔLvl: -0.5
+[2026-01-05 07:10:46] Ladder vs 8PGV9VVYG | WIN -> 1-0 | 11694 -> 11726 (+32) | MU: 32.4% (NoLvl: 49.2%) - ΔLvl: -0.5
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 100.0%
+   Avg Matchup: 37.0% (StdDev: 4.8%)
+   Avg Matchup NoLvl: 47.5% (StdDev: 7.4%)
+   Avg Level Diff: -0.15
+   Extreme Matchups: 4
    Win % (Negative MU <40%): 100.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Short (1 ore, 57 minuti)]
 
---- SESSIONE 26 ---
-[2026-01-05 09:07:59] Ladder vs 22VCVQRY | LOSE -> 0-1 | 11697 -> 11669 (-28) | MU: null (NoLvl: 39.1%) - ΔLvl: -0.25
-[2026-01-05 09:20:54] Ladder vs 2YGR929JJ | LOSE -> 0-1 | 11669 -> 11642 (-27) | MU: 57.6% (NoLvl: 50.1%) - ΔLvl: 0.12
+--- SESSIONE 39 ---
+[2026-01-05 09:07:59] Ladder vs 22VCVQRY | LOSE -> 0-1 | 11726 -> 11698 (-28) | MU: null (NoLvl: 39.1%) - ΔLvl: -0.25
+[2026-01-05 09:20:54] Ladder vs 2YGR929JJ | LOSE -> 0-1 | 11698 -> 11671 (-27) | MU: 57.6% (NoLvl: 50.1%) - ΔLvl: 0.12
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -444,27 +717,113 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Quit (1 giorni, 10 ore, 44 minuti)]
+[STOP: Long (7 ore, 28 minuti)]
 
---- SESSIONE 27 ---
-[2026-01-06 20:05:33] Ladder vs RPPY2V99 | LOSE -> 0-1 | 11642 -> 11611 (-31) | MU: 41.8% (NoLvl: 47.1%) - ΔLvl: -0.25
+--- SESSIONE 40 ---
+[2026-01-05 16:49:06] Ranked vs R90YPP | WIN -> 1-0 | MU: 54.1% (NoLvl: 33.5%) - ΔLvl: 0.25
 
    [METRICHE SESSIONE]
    Battaglie: 1
-   Win Rate: 0.0%
-   Avg Matchup: 41.8% (StdDev: 0.0%)
-   Avg Matchup NoLvl: 47.1% (StdDev: 0.0%)
-   Avg Level Diff: -0.25
+   Win Rate: 100.0%
+   Avg Matchup: 54.1% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 33.5% (StdDev: 0.0%)
+   Avg Level Diff: 0.25
    Extreme Matchups: 0
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Short (47 minuti)]
+
+--- SESSIONE 41 ---
+[2026-01-05 17:36:16] Ranked vs 88UQG0Y | WIN -> 1-0 | MU: 55.6% (NoLvl: 52.1%) - ΔLvl: 0.0
+[2026-01-05 17:40:10] Ranked vs 99VR8G0C0 | LOSE -> 0-1 | MU: 32.4% (NoLvl: 37.7%) - ΔLvl: 0.0
+[2026-01-05 18:00:06] Ranked vs 29QL0UPJ | LOSE -> 0-1 | MU: 57.1% (NoLvl: 41.7%) - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 33.3%
+   Avg Matchup: 48.4% (StdDev: 13.8%)
+   Avg Matchup NoLvl: 43.8% (StdDev: 7.4%)
+   Avg Level Diff: 0.08
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 20 minuti)]
+
+--- SESSIONE 42 ---
+[2026-01-05 20:20:53] Ranked vs 8UP0PGRC | WIN -> 1-0 | MU: 51.5% (NoLvl: 61.6%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 51.5% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 61.6% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (9 ore, 33 minuti)]
+
+--- SESSIONE 43 ---
+[2026-01-06 05:54:30] Ranked vs 8P2CQGY88 | WIN -> 1-0 | MU: 52.0% (NoLvl: 52.3%) - ΔLvl: 0.0
+[2026-01-06 05:58:03] Ranked vs J2RUQY282 | WIN -> 1-0 | MU: 67.3% (NoLvl: 67.3%) - ΔLvl: 0.0
+[2026-01-06 06:01:33] Ranked vs CC8Q82CCP | WIN -> 3-0 | MU: 68.9% (NoLvl: 62.3%) - ΔLvl: 0.0
+[2026-01-06 06:06:50] Ranked vs 928VL2U2 | LOSE -> 0-1 | MU: 48.0% (NoLvl: 49.4%) - ΔLvl: 0.0
+[2026-01-06 06:10:54] Ranked vs PJ0Q0YYJ | WIN -> 1-0 | MU: 70.8% (NoLvl: 50.2%) - ΔLvl: 0.0
+[2026-01-06 06:15:56] Ranked vs 20P9VV2GY | WIN -> 1-0 | MU: 37.6% (NoLvl: 41.8%) - ΔLvl: 0.0
+[2026-01-06 06:18:55] Ranked vs 2CLUYG2Q | LOSE -> 0-3 | MU: 52.5% (NoLvl: 44.3%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 7
+   Win Rate: 71.4%
+   Avg Matchup: 56.7% (StdDev: 12.5%)
+   Avg Matchup NoLvl: 52.5% (StdDev: 9.3%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (12 ore, 8 minuti)]
+
+--- SESSIONE 44 ---
+[2026-01-06 18:27:37] Ranked vs RQGC2GLJ | LOSE -> 0-1 | MU: 40.1% (NoLvl: 38.4%) - ΔLvl: 0.12
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 40.1% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 38.4% (StdDev: 0.0%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 24 minuti)]
+
+--- SESSIONE 45 ---
+[2026-01-06 19:51:49] Ranked vs GPLPQVU9 | LOSE -> 0-1 | MU: 55.7% (NoLvl: 60.3%) - ΔLvl: 0.0
+[2026-01-06 19:56:12] Ranked vs 99RGRYG0V | WIN -> 1-0 | MU: 38.7% (NoLvl: 38.5%) - ΔLvl: 0.0
+[2026-01-06 20:00:24] Ranked vs 82228LCRC | WIN -> 1-0 | MU: 45.0% (NoLvl: 52.3%) - ΔLvl: 0.0
+[2026-01-06 20:05:33] Ladder vs RPPY2V99 | LOSE -> 0-1 | 11671 -> 11640 (-31) | MU: 41.8% (NoLvl: 47.1%) - ΔLvl: -0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 50.0%
+   Avg Matchup: 45.3% (StdDev: 7.4%)
+   Avg Matchup NoLvl: 49.6% (StdDev: 9.2%)
+   Avg Level Diff: -0.06
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
 [STOP: Short (40 minuti)]
 
---- SESSIONE 28 ---
-[2026-01-06 20:46:04] Ladder vs JQ0UC20CQ | WIN -> 1-0 | 11611 -> 11639 (+28) | MU: 63.8% (NoLvl: 52.1%) - ΔLvl: 0.12
-[2026-01-06 20:50:23] Ladder vs 928QUR9GR | WIN -> 1-0 | 11639 -> 11667 (+28) | MU: 56.2% (NoLvl: 54.7%) - ΔLvl: -0.25
-[2026-01-06 20:54:25] Ladder vs Q9JCJ8PYR | LOSE -> 0-1 | 11667 -> 11637 (-30) | MU: 43.9% (NoLvl: 54.6%) - ΔLvl: 0.12
+--- SESSIONE 46 ---
+[2026-01-06 20:46:04] Ladder vs JQ0UC20CQ | WIN -> 1-0 | 11640 -> 11668 (+28) | MU: 63.8% (NoLvl: 52.1%) - ΔLvl: 0.12
+[2026-01-06 20:50:23] Ladder vs 928QUR9GR | WIN -> 1-0 | 11668 -> 11696 (+28) | MU: 56.2% (NoLvl: 54.7%) - ΔLvl: -0.25
+[2026-01-06 20:54:25] Ladder vs Q9JCJ8PYR | LOSE -> 0-1 | 11696 -> 11666 (-30) | MU: 43.9% (NoLvl: 54.6%) - ΔLvl: 0.12
 
    [METRICHE SESSIONE]
    Battaglie: 3
@@ -478,9 +837,9 @@
 
 [STOP: Long (9 ore, 23 minuti)]
 
---- SESSIONE 29 ---
-[2026-01-07 06:18:09] Ladder vs J98P2U28P | WIN -> 1-0 | 11637 -> 11668 (+31) | MU: 50.5% (NoLvl: 47.7%) - ΔLvl: -0.5
-[2026-01-07 06:21:12] Ladder vs 8GC20UUJQ | LOSE -> 0-3 | 11668 -> 11640 (-28) | MU: 33.6% (NoLvl: 41.2%) - ΔLvl: -0.5
+--- SESSIONE 47 ---
+[2026-01-07 06:18:09] Ladder vs J98P2U28P | WIN -> 1-0 | 11666 -> 11697 (+31) | MU: 50.5% (NoLvl: 47.7%) - ΔLvl: -0.5
+[2026-01-07 06:21:12] Ladder vs 8GC20UUJQ | LOSE -> 0-3 | 11697 -> 11669 (-28) | MU: 33.6% (NoLvl: 41.2%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 2
@@ -494,12 +853,12 @@
 
 [STOP: Short (45 minuti)]
 
---- SESSIONE 30 ---
-[2026-01-07 07:07:11] Ladder vs 99JRG8PYJ | WIN -> 1-0 | 11640 -> 11666 (+26) | MU: 30.8% (NoLvl: 40.0%) - ΔLvl: -0.5
-[2026-01-07 07:10:20] Ladder vs 2UVJRQG | LOSE -> 0-1 | 11666 -> 11640 (-26) | MU: 54.3% (NoLvl: 63.4%) - ΔLvl: -0.5
-[2026-01-07 07:14:06] Ladder vs 2YRLLJ98R | WIN -> 1-0 | 11640 -> 11670 (+30) | MU: 42.0% (NoLvl: 52.1%) - ΔLvl: -0.5
-[2026-01-07 07:18:52] Ladder vs PQ20G2P98 | LOSE -> 1-2 | 11670 -> 11642 (-28) | MU: 48.5% (NoLvl: 57.4%) - ΔLvl: -0.5
-[2026-01-07 07:24:09] Ladder vs CVVLJQQ02 | LOSE -> 0-1 | 11642 -> 11615 (-27) | MU: 34.7% (NoLvl: 55.9%) - ΔLvl: -0.5
+--- SESSIONE 48 ---
+[2026-01-07 07:07:11] Ladder vs 99JRG8PYJ | WIN -> 1-0 | 11669 -> 11695 (+26) | MU: 30.8% (NoLvl: 40.0%) - ΔLvl: -0.5
+[2026-01-07 07:10:20] Ladder vs 2UVJRQG | LOSE -> 0-1 | 11695 -> 11669 (-26) | MU: 54.3% (NoLvl: 63.4%) - ΔLvl: -0.5
+[2026-01-07 07:14:06] Ladder vs 2YRLLJ98R | WIN -> 1-0 | 11669 -> 11699 (+30) | MU: 42.0% (NoLvl: 52.1%) - ΔLvl: -0.5
+[2026-01-07 07:18:52] Ladder vs PQ20G2P98 | LOSE -> 1-2 | 11699 -> 11671 (-28) | MU: 48.5% (NoLvl: 57.4%) - ΔLvl: -0.5
+[2026-01-07 07:24:09] Ladder vs CVVLJQQ02 | LOSE -> 0-1 | 11671 -> 11644 (-27) | MU: 34.7% (NoLvl: 55.9%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 5
@@ -513,9 +872,9 @@
 
 [STOP: Long (9 ore, 25 minuti)]
 
---- SESSIONE 31 ---
-[2026-01-07 16:49:25] Ladder vs VYJVR2Q0C | WIN -> 1-0 | 11615 -> 11643 (+28) | MU: 35.9% (NoLvl: 60.6%) - ΔLvl: -0.5
-[2026-01-07 16:53:31] Ladder vs 2QJGG8P8 | LOSE -> 0-1 | 11643 -> 11613 (-30) | MU: 37.4% (NoLvl: 42.3%) - ΔLvl: -0.12
+--- SESSIONE 49 ---
+[2026-01-07 16:49:25] Ladder vs VYJVR2Q0C | WIN -> 1-0 | 11644 -> 11672 (+28) | MU: 35.9% (NoLvl: 60.6%) - ΔLvl: -0.5
+[2026-01-07 16:53:31] Ladder vs 2QJGG8P8 | LOSE -> 0-1 | 11672 -> 11642 (-30) | MU: 37.4% (NoLvl: 42.3%) - ΔLvl: -0.12
 
    [METRICHE SESSIONE]
    Battaglie: 2
@@ -529,11 +888,11 @@
 
 [STOP: Short (1 ore, 23 minuti)]
 
---- SESSIONE 32 ---
-[2026-01-07 18:16:38] Ladder vs 8C9G22UJ | WIN -> 1-0 | 11613 -> 11643 (+30) | MU: 38.6% (NoLvl: 70.5%) - ΔLvl: -0.5
-[2026-01-07 18:20:57] Ladder vs QJPYRY22 | LOSE -> 0-1 | 11643 -> 11612 (-31) | MU: 60.4% (NoLvl: 52.1%) - ΔLvl: 0.12
-[2026-01-07 18:24:44] Ladder vs Q2YUQ802Y | WIN -> 1-0 | 11612 -> 11642 (+30) | MU: 50.3% (NoLvl: 47.6%) - ΔLvl: -0.12
-[2026-01-07 18:29:59] Ladder vs GG20PUJPL | LOSE -> 0-1 | 11642 -> 11616 (-26) | MU: 33.6% (NoLvl: 47.1%) - ΔLvl: -0.5
+--- SESSIONE 50 ---
+[2026-01-07 18:16:38] Ladder vs 8C9G22UJ | WIN -> 1-0 | 11642 -> 11672 (+30) | MU: 38.6% (NoLvl: 70.5%) - ΔLvl: -0.5
+[2026-01-07 18:20:57] Ladder vs QJPYRY22 | LOSE -> 0-1 | 11672 -> 11641 (-31) | MU: 60.4% (NoLvl: 52.1%) - ΔLvl: 0.12
+[2026-01-07 18:24:44] Ladder vs Q2YUQ802Y | WIN -> 1-0 | 11641 -> 11671 (+30) | MU: 50.3% (NoLvl: 47.6%) - ΔLvl: -0.12
+[2026-01-07 18:29:59] Ladder vs GG20PUJPL | LOSE -> 0-1 | 11671 -> 11645 (-26) | MU: 33.6% (NoLvl: 47.1%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 4
@@ -547,16 +906,16 @@
 
 [STOP: Long (11 ore, 34 minuti)]
 
---- SESSIONE 33 ---
-[2026-01-08 06:04:54] Ladder vs LV9PQU90L | WIN -> 1-0 | 11616 -> 11643 (+27) | MU: 60.1% (NoLvl: 53.5%) - ΔLvl: 0.0
-[2026-01-08 06:08:34] Ladder vs VL9CPC0CP | WIN -> 2-1 | 11643 -> 11671 (+28) | MU: 60.9% (NoLvl: 65.6%) - ΔLvl: -0.12
-[2026-01-08 06:11:45] Ladder vs VCGR20VVU | WIN -> 1-0 | 11671 -> 11701 (+30) | MU: 70.5% (NoLvl: 54.1%) - ΔLvl: 0.62
-[2026-01-08 06:16:16] Ladder vs 2JLP9LUQV | WIN -> 1-0 | 11701 -> 11730 (+29) | MU: 45.0% (NoLvl: 45.7%) - ΔLvl: -0.5
-[2026-01-08 06:20:29] Ladder vs PPV8CPJR | WIN -> 2-0 | 11730 -> 11760 (+30) | MU: 46.2% (NoLvl: 63.1%) - ΔLvl: -0.5
-[2026-01-08 06:23:58] Ladder vs P9UPJJPYU | LOSE -> 0-1 | 11760 -> 11730 (-30) | MU: 42.9% (NoLvl: 45.5%) - ΔLvl: 0.0
-[2026-01-08 06:29:00] Ladder vs V2JL8VUP0 | WIN -> 1-0 | 11730 -> 11759 (+29) | MU: 45.6% (NoLvl: 49.1%) - ΔLvl: 0.0
-[2026-01-08 06:34:03] Ladder vs QC0V8CVLP | LOSE -> 0-1 | 11759 -> 11729 (-30) | MU: 62.7% (NoLvl: 35.0%) - ΔLvl: 0.5
-[2026-01-08 06:36:51] Ladder vs J929CLCQ2 | WIN -> 3-0 | 11729 -> 11757 (+28) | MU: 42.9% (NoLvl: 45.4%) - ΔLvl: 0.12
+--- SESSIONE 51 ---
+[2026-01-08 06:04:54] Ladder vs LV9PQU90L | WIN -> 1-0 | 11645 -> 11672 (+27) | MU: 60.1% (NoLvl: 53.5%) - ΔLvl: 0.0
+[2026-01-08 06:08:34] Ladder vs VL9CPC0CP | WIN -> 2-1 | 11672 -> 11700 (+28) | MU: 60.9% (NoLvl: 65.6%) - ΔLvl: -0.12
+[2026-01-08 06:11:45] Ladder vs VCGR20VVU | WIN -> 1-0 | 11700 -> 11730 (+30) | MU: 70.5% (NoLvl: 54.1%) - ΔLvl: 0.62
+[2026-01-08 06:16:16] Ladder vs 2JLP9LUQV | WIN -> 1-0 | 11730 -> 11759 (+29) | MU: 45.0% (NoLvl: 45.7%) - ΔLvl: -0.5
+[2026-01-08 06:20:29] Ladder vs PPV8CPJR | WIN -> 2-0 | 11759 -> 11789 (+30) | MU: 46.2% (NoLvl: 63.1%) - ΔLvl: -0.5
+[2026-01-08 06:23:58] Ladder vs P9UPJJPYU | LOSE -> 0-1 | 11789 -> 11759 (-30) | MU: 42.9% (NoLvl: 45.5%) - ΔLvl: 0.0
+[2026-01-08 06:29:00] Ladder vs V2JL8VUP0 | WIN -> 1-0 | 11759 -> 11788 (+29) | MU: 45.6% (NoLvl: 49.1%) - ΔLvl: 0.0
+[2026-01-08 06:34:03] Ladder vs QC0V8CVLP | LOSE -> 0-1 | 11788 -> 11758 (-30) | MU: 62.7% (NoLvl: 35.0%) - ΔLvl: 0.5
+[2026-01-08 06:36:51] Ladder vs J929CLCQ2 | WIN -> 3-0 | 11758 -> 11786 (+28) | MU: 42.9% (NoLvl: 45.4%) - ΔLvl: 0.12
 
    [METRICHE SESSIONE]
    Battaglie: 9
@@ -570,8 +929,8 @@
 
 [STOP: Long (2 ore, 39 minuti)]
 
---- SESSIONE 34 ---
-[2026-01-08 09:16:36] Ladder vs 2L8UY09 | LOSE -> 0-3 | 11757 -> 11729 (-28) | MU: 53.7% (NoLvl: 55.1%) - ΔLvl: 0.0
+--- SESSIONE 52 ---
+[2026-01-08 09:16:36] Ladder vs 2L8UY09 | LOSE -> 0-3 | 11786 -> 11758 (-28) | MU: 53.7% (NoLvl: 55.1%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -585,8 +944,8 @@
 
 [STOP: Long (10 ore, 18 minuti)]
 
---- SESSIONE 35 ---
-[2026-01-08 19:35:25] Ladder vs 8YR0QQUV9 | LOSE -> 0-1 | 11729 -> 11700 (-29) | MU: 57.0% (NoLvl: 63.9%) - ΔLvl: -0.5
+--- SESSIONE 53 ---
+[2026-01-08 19:35:25] Ladder vs 8YR0QQUV9 | LOSE -> 0-1 | 11758 -> 11729 (-29) | MU: 57.0% (NoLvl: 63.9%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -598,48 +957,290 @@
    Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Long (11 ore, 13 minuti)]
+[STOP: Long (5 ore, 39 minuti)]
 
---- SESSIONE 36 ---
-[2026-01-09 06:48:51] Ladder vs 999PVC0CP | WIN -> 1-0 | 11700 -> 11726 (+26) | MU: 52.7% (NoLvl: 60.6%) - ΔLvl: -0.5
-[2026-01-09 06:53:42] Ladder vs CLJ8R090P | LOSE -> 0-1 | 11726 -> 11696 (-30) | MU: 31.9% (NoLvl: 41.9%) - ΔLvl: 0.12
-[2026-01-09 06:57:22] Ladder vs 2VLC88Y8P | WIN -> 1-0 | 11696 -> 11725 (+29) | MU: 39.2% (NoLvl: 44.8%) - ΔLvl: -0.5
-[2026-01-09 07:01:03] Ladder vs 2PPYJR9LU | WIN -> 1-0 | 11725 -> 11756 (+31) | MU: 53.3% (NoLvl: 64.2%) - ΔLvl: -0.5
-[2026-01-09 07:05:49] Ladder vs UQ8RCLRJ | WIN -> 1-0 | 11756 -> 11786 (+30) | MU: 46.0% (NoLvl: 43.0%) - ΔLvl: -0.12
-[2026-01-09 07:10:52] Ladder vs PUYPCYV8U | WIN -> 1-0 | 11786 -> 11815 (+29) | MU: 34.7% (NoLvl: 52.8%) - ΔLvl: -0.12
+--- SESSIONE 54 ---
+[2026-01-09 01:14:39] 1v1 Battle vs C0QRJJURR | LOSE -> 0-1 | MU: 51.3% (NoLvl: 69.4%) - ΔLvl: 0.0
+[2026-01-09 01:19:34] 1v1 Battle vs C0QRJJURR | WIN -> 2-1 | MU: 54.6% (NoLvl: 61.4%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 6
-   Win Rate: 83.3%
-   Avg Matchup: 43.0% (StdDev: 9.1%)
-   Avg Matchup NoLvl: 51.2% (StdDev: 9.5%)
-   Avg Level Diff: -0.27
-   Extreme Matchups: 3
-   Win % (Negative MU <40%): 66.7%
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
-[STOP: Quit (3 giorni, 12 ore, 42 minuti)]
+[STOP: Long (5 ore, 29 minuti)]
 
---- SESSIONE 37 ---
-[2026-01-12 19:53:14] Ladder vs YQC90RGVL | WIN -> 1-0 | 11815 -> 11848 (+33) | MU: 28.8% (NoLvl: 37.4%) - ΔLvl: -0.5
-[2026-01-12 19:57:47] Ladder vs 2RRUGQYRR | WIN -> 1-0 | 11848 -> 11877 (+29) | MU: 49.5% (NoLvl: 46.3%) - ΔLvl: 0.12
-[2026-01-12 20:02:24] Ladder vs 828GLQ9G9 | LOSE -> 1-2 | 11877 -> 11847 (-30) | MU: 46.1% (NoLvl: 48.8%) - ΔLvl: -0.5
-[2026-01-12 20:06:26] Ladder vs UVP9RQC | LOSE -> 1-2 | 11847 -> 11814 (-33) | MU: 39.4% (NoLvl: 34.2%) - ΔLvl: -0.12
+--- SESSIONE 55 ---
+[2026-01-09 06:48:51] Ladder vs 999PVC0CP | WIN -> 1-0 | 11729 -> 11755 (+26) | MU: 52.7% (NoLvl: 60.6%) - ΔLvl: -0.5
+[2026-01-09 06:53:42] Ladder vs CLJ8R090P | LOSE -> 0-1 | 11755 -> 11725 (-30) | MU: 31.9% (NoLvl: 41.9%) - ΔLvl: 0.12
+[2026-01-09 06:57:22] Ladder vs 2VLC88Y8P | WIN -> 1-0 | 11725 -> 11754 (+29) | MU: 39.2% (NoLvl: 44.8%) - ΔLvl: -0.5
+[2026-01-09 07:01:03] Ladder vs 2PPYJR9LU | WIN -> 1-0 | 11754 -> 11785 (+31) | MU: 53.3% (NoLvl: 64.2%) - ΔLvl: -0.5
+[2026-01-09 07:05:49] Ladder vs UQ8RCLRJ | WIN -> 1-0 | 11785 -> 11815 (+30) | MU: 46.0% (NoLvl: 43.0%) - ΔLvl: -0.12
+[2026-01-09 07:10:52] Ladder vs PUYPCYV8U | WIN -> 1-0 | 11815 -> 11844 (+29) | MU: 34.7% (NoLvl: 52.8%) - ΔLvl: -0.12
+[2026-01-09 07:15:21] Ranked vs 20UC2C9PG | WIN -> 1-0 | MU: 67.2% (NoLvl: 47.1%) - ΔLvl: 0.38
+[2026-01-09 07:18:46] Ranked vs R8YPC8U82 | WIN -> 1-0 | MU: 60.2% (NoLvl: 52.1%) - ΔLvl: 0.0
+[2026-01-09 07:21:56] Ranked vs JYP0CJL88 | WIN -> 2-0 | MU: 48.9% (NoLvl: 53.9%) - ΔLvl: 0.0
+[2026-01-09 07:27:21] Ranked vs 2QY00RRC | LOSE -> 0-3 | MU: 28.7% (NoLvl: 43.5%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 4
-   Win Rate: 50.0%
-   Avg Matchup: 40.9% (StdDev: 9.1%)
-   Avg Matchup NoLvl: 41.6% (StdDev: 7.0%)
-   Avg Level Diff: -0.25
+   Battaglie: 10
+   Win Rate: 80.0%
+   Avg Matchup: 46.3% (StdDev: 12.6%)
+   Avg Matchup NoLvl: 50.4% (StdDev: 7.7%)
+   Avg Level Diff: -0.12
+   Extreme Matchups: 4
+   Win % (Negative MU <40%): 50.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (9 ore, 52 minuti)]
+
+--- SESSIONE 56 ---
+[2026-01-09 17:20:12] Ranked vs VP82L0RJ0 | LOSE -> 0-1 | MU: 45.5% (NoLvl: 45.3%) - ΔLvl: 0.5
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 45.5% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 45.3% (StdDev: 0.0%)
+   Avg Level Diff: 0.50
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (20 minuti)]
+
+--- SESSIONE 57 ---
+[2026-01-09 17:40:13] Ranked vs 2RVQQPLG | LOSE -> 0-1 | MU: 37.7% (NoLvl: 42.4%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 37.7% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 42.4% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (14 ore, 35 minuti)]
+
+--- SESSIONE 58 ---
+[2026-01-10 08:15:28] Ranked vs LJVVPY0JY | WIN -> 1-0 | MU: 60.2% (NoLvl: 50.0%) - ΔLvl: 0.62
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 60.2% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 50.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.62
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (22 minuti)]
+
+--- SESSIONE 59 ---
+[2026-01-10 08:37:33] Ranked vs CGL8PRU | LOSE -> 0-3 | MU: 42.7% (NoLvl: 41.0%) - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 42.7% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 41.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.25
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (10 ore, 29 minuti)]
+
+--- SESSIONE 60 ---
+[2026-01-10 19:06:49] Ranked vs 2LU2LJJ0 | LOSE -> 0-1 | MU: 42.9% (NoLvl: 39.9%) - ΔLvl: 0.12
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 42.9% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 39.9% (StdDev: 0.0%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (26 minuti)]
+
+--- SESSIONE 61 ---
+[2026-01-10 19:33:03] Ranked vs V2V22LJRL | WIN -> 1-0 | MU: 43.5% (NoLvl: 48.6%) - ΔLvl: 0.12
+[2026-01-10 19:36:12] Ranked vs 9808CV8 | WIN -> 1-0 | MU: 57.9% (NoLvl: 51.2%) - ΔLvl: 0.0
+[2026-01-10 19:40:54] Ranked vs YYLR080V | WIN -> 1-0 | MU: 56.2% (NoLvl: 42.9%) - ΔLvl: 0.0
+[2026-01-10 19:46:06] Ranked vs VJLY00U | LOSE -> 0-1 | MU: 34.4% (NoLvl: 38.3%) - ΔLvl: 0.0
+[2026-01-10 19:50:43] Ranked vs 2Q29PYCRR | LOSE -> 1-2 | MU: 54.9% (NoLvl: 72.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 60.0%
+   Avg Matchup: 49.4% (StdDev: 10.1%)
+   Avg Matchup NoLvl: 50.6% (StdDev: 13.0%)
+   Avg Level Diff: 0.02
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (13 ore, 23 minuti)]
+
+--- SESSIONE 62 ---
+[2026-01-11 09:14:42] Ranked vs UG2RV0CUL | WIN -> 1-0 | MU: 49.9% (NoLvl: 45.7%) - ΔLvl: 0.12
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 49.9% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 45.7% (StdDev: 0.0%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (40 minuti)]
+
+--- SESSIONE 63 ---
+[2026-01-11 09:55:09] Ranked vs RYRC8CJ00 | WIN -> 1-0 | MU: 45.0% (NoLvl: 50.0%) - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 45.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 50.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.25
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (7 ore, 22 minuti)]
+
+--- SESSIONE 64 ---
+[2026-01-11 17:17:29] Ranked vs 2LJY8R0U0 | WIN -> 1-0 | MU: 49.0% (NoLvl: 44.0%) - ΔLvl: 0.0
+[2026-01-11 17:20:52] Ranked vs U2QLQ0C | WIN -> 1-0 | MU: 47.9% (NoLvl: 43.8%) - ΔLvl: 0.25
+[2026-01-11 17:22:21] Ranked vs 9LCP89QU | LOSE -> 0-3 | MU: 52.2% (NoLvl: 61.0%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 66.7%
+   Avg Matchup: 49.7% (StdDev: 2.3%)
+   Avg Matchup NoLvl: 49.6% (StdDev: 9.9%)
+   Avg Level Diff: 0.08
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (11 ore, 13 minuti)]
+
+--- SESSIONE 65 ---
+[2026-01-12 04:36:03] Ranked vs 2L9PUUYUC | WIN -> 1-0 | MU: 72.8% (NoLvl: 55.4%) - ΔLvl: 0.0
+[2026-01-12 04:41:19] Ranked vs 8J2RU2VQ | WIN -> 1-0 | MU: 43.4% (NoLvl: 52.9%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 100.0%
+   Avg Matchup: 58.1% (StdDev: 20.8%)
+   Avg Matchup NoLvl: 54.2% (StdDev: 1.8%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (39 minuti)]
+
+--- SESSIONE 66 ---
+[2026-01-12 05:20:58] Ranked vs 8V9JUCGQL | LOSE -> 0-1 | MU: 51.4% (NoLvl: 48.6%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 51.4% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 48.6% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (53 minuti)]
+
+--- SESSIONE 67 ---
+[2026-01-12 06:14:51] Ranked vs 9QRRYL8P | WIN -> 2-0 | MU: 63.6% (NoLvl: 75.8%) - ΔLvl: 0.0
+[2026-01-12 06:19:04] Ranked vs YR02RJLLC | WIN -> 1-0 | MU: 49.1% (NoLvl: 53.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 100.0%
+   Avg Matchup: 56.4% (StdDev: 10.3%)
+   Avg Matchup NoLvl: 64.8% (StdDev: 15.5%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 14 minuti)]
+
+--- SESSIONE 68 ---
+[2026-01-12 07:33:19] Ranked vs 8UCG29LCQ | WIN -> 1-0 | MU: 53.0% (NoLvl: 48.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 53.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 48.1% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (31 minuti)]
+
+--- SESSIONE 69 ---
+[2026-01-12 08:04:24] Ranked vs P29LYVCRP | WIN -> 1-0 | MU: 49.9% (NoLvl: 54.5%) - ΔLvl: 0.0
+[2026-01-12 08:08:24] Ranked vs UQL0C9V9V | WIN -> 1-0 | MU: 56.0% (NoLvl: 44.9%) - ΔLvl: 0.62
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 100.0%
+   Avg Matchup: 53.0% (StdDev: 4.3%)
+   Avg Matchup NoLvl: 49.7% (StdDev: 6.8%)
+   Avg Level Diff: 0.31
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (11 ore, 30 minuti)]
+
+--- SESSIONE 70 ---
+[2026-01-12 19:38:58] Ranked vs QPRC2U8P | WIN -> 1-0 | MU: 42.8% (NoLvl: 51.4%) - ΔLvl: 0.0
+[2026-01-12 19:42:37] Ranked vs PVJ8YPLCQ | WIN -> 1-0 | MU: 40.5% (NoLvl: 36.0%) - ΔLvl: 0.0
+[2026-01-12 19:49:07] Ranked vs 8Q0ULY2 | WIN -> 1-0 | MU: 46.2% (NoLvl: 40.8%) - ΔLvl: 0.0
+[2026-01-12 19:53:14] Ladder vs YQC90RGVL | WIN -> 1-0 | 11844 -> 11877 (+33) | MU: 28.8% (NoLvl: 37.4%) - ΔLvl: -0.5
+[2026-01-12 19:57:47] Ladder vs 2RRUGQYRR | WIN -> 1-0 | 11877 -> 11906 (+29) | MU: 49.5% (NoLvl: 46.3%) - ΔLvl: 0.12
+[2026-01-12 20:02:24] Ladder vs 828GLQ9G9 | LOSE -> 1-2 | 11906 -> 11876 (-30) | MU: 46.1% (NoLvl: 48.8%) - ΔLvl: -0.5
+[2026-01-12 20:06:26] Ladder vs UVP9RQC | LOSE -> 1-2 | 11876 -> 11843 (-33) | MU: 39.4% (NoLvl: 34.2%) - ΔLvl: -0.12
+
+   [METRICHE SESSIONE]
+   Battaglie: 7
+   Win Rate: 71.4%
+   Avg Matchup: 41.9% (StdDev: 6.8%)
+   Avg Matchup NoLvl: 42.1% (StdDev: 6.7%)
+   Avg Level Diff: -0.14
    Extreme Matchups: 2
    Win % (Negative MU <40%): 50.0%
    Lose % (Positive MU >80%): 0.0%
 
 [STOP: Long (7 ore, 41 minuti)]
 
---- SESSIONE 38 ---
-[2026-01-13 03:47:53] Ladder vs PVQVJ80R9 | LOSE -> 0-3 | 11814 -> 11786 (-28) | MU: 41.1% (NoLvl: 43.9%) - ΔLvl: -0.25
+--- SESSIONE 71 ---
+[2026-01-13 03:47:53] Ladder vs PVQVJ80R9 | LOSE -> 0-3 | 11843 -> 11815 (-28) | MU: 41.1% (NoLvl: 43.9%) - ΔLvl: -0.25
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -653,16 +1254,16 @@
 
 [STOP: Long (2 ore, 37 minuti)]
 
---- SESSIONE 39 ---
-[2026-01-13 06:25:40] Ladder vs 8PYVUY8UY | WIN -> 1-0 | 11786 -> 11814 (+28) | MU: 36.4% (NoLvl: 59.8%) - ΔLvl: -0.5
-[2026-01-13 06:28:49] Ladder vs U8V2YJYUY | LOSE -> 0-1 | 11814 -> 11782 (-32) | MU: 32.8% (NoLvl: 48.2%) - ΔLvl: -0.5
-[2026-01-13 06:32:01] Ladder vs RRQVYJQU9 | WIN -> 1-0 | 11782 -> 11810 (+28) | MU: 47.4% (NoLvl: 47.0%) - ΔLvl: -0.12
-[2026-01-13 06:36:51] Ladder vs 22988UUY0 | WIN -> 1-0 | 11810 -> 11839 (+29) | MU: 31.7% (NoLvl: 42.3%) - ΔLvl: -0.38
-[2026-01-13 06:40:37] Ladder vs 9JLC0PC | LOSE -> 0-1 | 11839 -> 11810 (-29) | MU: 45.4% (NoLvl: 45.7%) - ΔLvl: 0.12
-[2026-01-13 06:45:24] Ladder vs 2800UQ90R | WIN -> 1-0 | 11810 -> 11839 (+29) | MU: 59.8% (NoLvl: 51.4%) - ΔLvl: 0.25
-[2026-01-13 06:50:49] Ladder vs V0QRLCPC | WIN -> 1-0 | 11839 -> 11868 (+29) | MU: 52.6% (NoLvl: 52.1%) - ΔLvl: -0.12
-[2026-01-13 06:55:15] Ladder vs P0GJ2JR9R | LOSE -> 0-1 | 11868 -> 11835 (-33) | MU: 63.8% (NoLvl: 51.8%) - ΔLvl: 0.38
-[2026-01-13 06:58:53] Ladder vs 2YVC2PPUV | LOSE -> 0-1 | 11835 -> 11808 (-27) | MU: 33.4% (NoLvl: 57.0%) - ΔLvl: -0.5
+--- SESSIONE 72 ---
+[2026-01-13 06:25:40] Ladder vs 8PYVUY8UY | WIN -> 1-0 | 11815 -> 11843 (+28) | MU: 36.4% (NoLvl: 59.8%) - ΔLvl: -0.5
+[2026-01-13 06:28:49] Ladder vs U8V2YJYUY | LOSE -> 0-1 | 11843 -> 11811 (-32) | MU: 32.8% (NoLvl: 48.2%) - ΔLvl: -0.5
+[2026-01-13 06:32:01] Ladder vs RRQVYJQU9 | WIN -> 1-0 | 11811 -> 11839 (+28) | MU: 47.4% (NoLvl: 47.0%) - ΔLvl: -0.12
+[2026-01-13 06:36:51] Ladder vs 22988UUY0 | WIN -> 1-0 | 11839 -> 11868 (+29) | MU: 31.7% (NoLvl: 42.3%) - ΔLvl: -0.38
+[2026-01-13 06:40:37] Ladder vs 9JLC0PC | LOSE -> 0-1 | 11868 -> 11839 (-29) | MU: 45.4% (NoLvl: 45.7%) - ΔLvl: 0.12
+[2026-01-13 06:45:24] Ladder vs 2800UQ90R | WIN -> 1-0 | 11839 -> 11868 (+29) | MU: 59.8% (NoLvl: 51.4%) - ΔLvl: 0.25
+[2026-01-13 06:50:49] Ladder vs V0QRLCPC | WIN -> 1-0 | 11868 -> 11897 (+29) | MU: 52.6% (NoLvl: 52.1%) - ΔLvl: -0.12
+[2026-01-13 06:55:15] Ladder vs P0GJ2JR9R | LOSE -> 0-1 | 11897 -> 11864 (-33) | MU: 63.8% (NoLvl: 51.8%) - ΔLvl: 0.38
+[2026-01-13 06:58:53] Ladder vs 2YVC2PPUV | LOSE -> 0-1 | 11864 -> 11837 (-27) | MU: 33.4% (NoLvl: 57.0%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 9
@@ -676,9 +1277,9 @@
 
 [STOP: Short (48 minuti)]
 
---- SESSIONE 40 ---
-[2026-01-13 07:47:45] Ladder vs PU88V8GR8 | WIN -> 1-0 | 11808 -> 11841 (+33) | MU: 33.7% (NoLvl: 52.8%) - ΔLvl: -0.38
-[2026-01-13 07:49:49] Ladder vs QJPRRPPU2 | LOSE -> 0-3 | 11841 -> 11813 (-28) | MU: 42.5% (NoLvl: 46.3%) - ΔLvl: -0.38
+--- SESSIONE 73 ---
+[2026-01-13 07:47:45] Ladder vs PU88V8GR8 | WIN -> 1-0 | 11837 -> 11870 (+33) | MU: 33.7% (NoLvl: 52.8%) - ΔLvl: -0.38
+[2026-01-13 07:49:49] Ladder vs QJPRRPPU2 | LOSE -> 0-3 | 11870 -> 11842 (-28) | MU: 42.5% (NoLvl: 46.3%) - ΔLvl: -0.38
 
    [METRICHE SESSIONE]
    Battaglie: 2
@@ -692,8 +1293,8 @@
 
 [STOP: Long (11 ore, 21 minuti)]
 
---- SESSIONE 41 ---
-[2026-01-13 19:11:18] Ladder vs CVVGVCCL | LOSE -> 0-1 | 11813 -> 11781 (-32) | MU: 40.8% (NoLvl: 43.8%) - ΔLvl: 0.0
+--- SESSIONE 74 ---
+[2026-01-13 19:11:18] Ladder vs CVVGVCCL | LOSE -> 0-1 | 11842 -> 11810 (-32) | MU: 40.8% (NoLvl: 43.8%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 1
@@ -707,15 +1308,15 @@
 
 [STOP: Long (10 ore, 46 minuti)]
 
---- SESSIONE 42 ---
-[2026-01-14 05:57:36] Ladder vs LPJ02VJG | WIN -> 1-0 | 11781 -> 11807 (+26) | MU: 31.7% (NoLvl: 40.6%) - ΔLvl: -0.38
-[2026-01-14 06:01:11] Ladder vs RRYVJLLL | LOSE -> 0-1 | 11807 -> 11778 (-29) | MU: 26.2% (NoLvl: 48.1%) - ΔLvl: -0.38
-[2026-01-14 06:04:20] Ladder vs U99PLJCGG | WIN -> 1-0 | 11778 -> 11809 (+31) | MU: 44.9% (NoLvl: 62.3%) - ΔLvl: -0.38
-[2026-01-14 06:07:32] Ladder vs UYRJQVPUQ | WIN -> 2-1 | 11809 -> 11837 (+28) | MU: 49.8% (NoLvl: 63.8%) - ΔLvl: -0.38
-[2026-01-14 06:13:33] Ladder vs 9CCYV80C | LOSE -> 0-1 | 11837 -> 11806 (-31) | MU: 40.5% (NoLvl: 56.1%) - ΔLvl: -0.5
-[2026-01-14 06:16:59] Ladder vs 28VGVVQLU | WIN -> 1-0 | 11806 -> 11837 (+31) | MU: 31.0% (NoLvl: 49.8%) - ΔLvl: -0.5
-[2026-01-14 06:22:14] Ladder vs 82V9QJV89 | LOSE -> 0-1 | 11837 -> 11808 (-29) | MU: 41.6% (NoLvl: 61.3%) - ΔLvl: -0.5
-[2026-01-14 06:27:29] Ladder vs 8LGPCCQVL | WIN -> 1-0 | 11808 -> 11835 (+27) | MU: 40.3% (NoLvl: 56.1%) - ΔLvl: -0.5
+--- SESSIONE 75 ---
+[2026-01-14 05:57:36] Ladder vs LPJ02VJG | WIN -> 1-0 | 11810 -> 11836 (+26) | MU: 31.7% (NoLvl: 40.6%) - ΔLvl: -0.38
+[2026-01-14 06:01:11] Ladder vs RRYVJLLL | LOSE -> 0-1 | 11836 -> 11807 (-29) | MU: 26.2% (NoLvl: 48.1%) - ΔLvl: -0.38
+[2026-01-14 06:04:20] Ladder vs U99PLJCGG | WIN -> 1-0 | 11807 -> 11838 (+31) | MU: 44.9% (NoLvl: 62.3%) - ΔLvl: -0.38
+[2026-01-14 06:07:32] Ladder vs UYRJQVPUQ | WIN -> 2-1 | 11838 -> 11866 (+28) | MU: 49.8% (NoLvl: 63.8%) - ΔLvl: -0.38
+[2026-01-14 06:13:33] Ladder vs 9CCYV80C | LOSE -> 0-1 | 11866 -> 11835 (-31) | MU: 40.5% (NoLvl: 56.1%) - ΔLvl: -0.5
+[2026-01-14 06:16:59] Ladder vs 28VGVVQLU | WIN -> 1-0 | 11835 -> 11866 (+31) | MU: 31.0% (NoLvl: 49.8%) - ΔLvl: -0.5
+[2026-01-14 06:22:14] Ladder vs 82V9QJV89 | LOSE -> 0-1 | 11866 -> 11837 (-29) | MU: 41.6% (NoLvl: 61.3%) - ΔLvl: -0.5
+[2026-01-14 06:27:29] Ladder vs 8LGPCCQVL | WIN -> 1-0 | 11837 -> 11864 (+27) | MU: 40.3% (NoLvl: 56.1%) - ΔLvl: -0.5
 
    [METRICHE SESSIONE]
    Battaglie: 8
@@ -729,14 +1330,14 @@
 
 [STOP: Long (12 ore, 12 minuti)]
 
---- SESSIONE 43 ---
-[2026-01-14 18:39:58] Ladder vs PJ2GPRGG | WIN -> 2-1 | 11835 -> 11865 (+30) | MU: 43.6% (NoLvl: 51.2%) - ΔLvl: -0.38
-[2026-01-14 18:44:45] Ladder vs 9892VUY | WIN -> 2-1 | 11865 -> 11896 (+31) | MU: 40.9% (NoLvl: 46.7%) - ΔLvl: 0.25
-[2026-01-14 18:48:55] Ladder vs LVV90RLC | LOSE -> 0-1 | 11896 -> 11866 (-30) | MU: 40.1% (NoLvl: 52.7%) - ΔLvl: -0.5
-[2026-01-14 18:52:05] Ladder vs LLL2QYUG8 | LOSE -> 0-1 | 11866 -> 11837 (-29) | MU: 47.6% (NoLvl: 51.1%) - ΔLvl: 0.0
-[2026-01-14 19:03:08] Ladder vs Q99LR2CP | WIN -> 3-0 | 11837 -> 11868 (+31) | MU: 48.8% (NoLvl: 59.3%) - ΔLvl: 0.12
-[2026-01-14 19:07:29] Ladder vs 29G20GY2L | LOSE -> 1-2 | 11868 -> 11837 (-31) | MU: 61.2% (NoLvl: 63.9%) - ΔLvl: -0.5
-[2026-01-14 19:09:19] Ladder vs VQVPR9YLC | WIN -> 3-0 | 11837 -> 11866 (+29) | MU: 41.2% (NoLvl: 47.9%) - ΔLvl: 0.0
+--- SESSIONE 76 ---
+[2026-01-14 18:39:58] Ladder vs PJ2GPRGG | WIN -> 2-1 | 11864 -> 11894 (+30) | MU: 43.6% (NoLvl: 51.2%) - ΔLvl: -0.38
+[2026-01-14 18:44:45] Ladder vs 9892VUY | WIN -> 2-1 | 11894 -> 11925 (+31) | MU: 40.9% (NoLvl: 46.7%) - ΔLvl: 0.25
+[2026-01-14 18:48:55] Ladder vs LVV90RLC | LOSE -> 0-1 | 11925 -> 11895 (-30) | MU: 40.1% (NoLvl: 52.7%) - ΔLvl: -0.5
+[2026-01-14 18:52:05] Ladder vs LLL2QYUG8 | LOSE -> 0-1 | 11895 -> 11866 (-29) | MU: 47.6% (NoLvl: 51.1%) - ΔLvl: 0.0
+[2026-01-14 19:03:08] Ladder vs Q99LR2CP | WIN -> 3-0 | 11866 -> 11897 (+31) | MU: 48.8% (NoLvl: 59.3%) - ΔLvl: 0.12
+[2026-01-14 19:07:29] Ladder vs 29G20GY2L | LOSE -> 1-2 | 11897 -> 11866 (-31) | MU: 61.2% (NoLvl: 63.9%) - ΔLvl: -0.5
+[2026-01-14 19:09:19] Ladder vs VQVPR9YLC | WIN -> 3-0 | 11866 -> 11895 (+29) | MU: 41.2% (NoLvl: 47.9%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
    Battaglie: 7
@@ -750,36 +1351,739 @@
 
 [STOP: Short (1 ore, 35 minuti)]
 
---- SESSIONE 44 ---
-[2026-01-14 20:45:07] Ladder vs PJYRUGGPG | WIN -> 1-0 | 11866 -> 11893 (+27) | MU: 39.5% (NoLvl: 58.2%) - ΔLvl: -0.38
-[2026-01-14 20:48:44] Ladder vs 22L8LY0QR | WIN -> 1-0 | 11893 -> 11921 (+28) | MU: 60.4% (NoLvl: 68.9%) - ΔLvl: -0.25
-[2026-01-14 20:53:17] Ladder vs 2RPYCPRY | WIN -> 2-1 | 11921 -> 11950 (+29) | MU: 30.2% (NoLvl: 46.7%) - ΔLvl: -0.38
-[2026-01-14 20:58:59] Ladder vs J9LQ8QUJY | LOSE -> 0-1 | 11950 -> 11917 (-33) | MU: 29.3% (NoLvl: 48.6%) - ΔLvl: -0.5
-[2026-01-14 21:02:29] Ladder vs 22PGQ2U9Q | LOSE -> 0-1 | 11917 -> 11887 (-30) | MU: 37.6% (NoLvl: 56.2%) - ΔLvl: -0.5
-[2026-01-14 21:06:51] Ladder vs R0V9RVYRR | WIN -> 1-0 | 11887 -> 11915 (+28) | MU: 46.2% (NoLvl: 47.7%) - ΔLvl: -0.38
-[2026-01-14 21:12:05] Ladder vs RP8Q0UY09 | WIN -> 1-0 | 11915 -> 11944 (+29) | MU: 34.7% (NoLvl: 49.7%) - ΔLvl: -0.38
-[2026-01-14 21:15:32] Ladder vs VRCGU8UJR | WIN -> 1-0 | 11944 -> 11973 (+29) | MU: 48.8% (NoLvl: 53.9%) - ΔLvl: -0.25
-[2026-01-14 21:19:37] Ladder vs YGPYC9JPV | WIN -> 1-0 | 11973 -> 12000 (+27) | MU: 62.1% (NoLvl: 37.2%) - ΔLvl: 0.38
+--- SESSIONE 77 ---
+[2026-01-14 20:45:07] Ladder vs PJYRUGGPG | WIN -> 1-0 | 11895 -> 11922 (+27) | MU: 39.5% (NoLvl: 58.2%) - ΔLvl: -0.38
+[2026-01-14 20:48:44] Ladder vs 22L8LY0QR | WIN -> 1-0 | 11922 -> 11950 (+28) | MU: 60.4% (NoLvl: 68.9%) - ΔLvl: -0.25
+[2026-01-14 20:53:17] Ladder vs 2RPYCPRY | WIN -> 2-1 | 11950 -> 11979 (+29) | MU: 30.2% (NoLvl: 46.7%) - ΔLvl: -0.38
+[2026-01-14 20:58:59] Ladder vs J9LQ8QUJY | LOSE -> 0-1 | 11979 -> 11946 (-33) | MU: 29.3% (NoLvl: 48.6%) - ΔLvl: -0.5
+[2026-01-14 21:02:29] Ladder vs 22PGQ2U9Q | LOSE -> 0-1 | 11946 -> 11916 (-30) | MU: 37.6% (NoLvl: 56.2%) - ΔLvl: -0.5
+[2026-01-14 21:06:51] Ladder vs R0V9RVYRR | WIN -> 1-0 | 11916 -> 11944 (+28) | MU: 46.2% (NoLvl: 47.7%) - ΔLvl: -0.38
+[2026-01-14 21:12:05] Ladder vs RP8Q0UY09 | WIN -> 1-0 | 11944 -> 11973 (+29) | MU: 34.7% (NoLvl: 49.7%) - ΔLvl: -0.38
+[2026-01-14 21:15:32] Ladder vs VRCGU8UJR | WIN -> 1-0 | 11973 -> 12002 (+29) | MU: 48.8% (NoLvl: 53.9%) - ΔLvl: -0.25
+[2026-01-14 21:19:37] Ladder vs YGPYC9JPV | WIN -> 1-0 | 12002 -> 12029 (+27) | MU: 62.1% (NoLvl: 37.2%) - ΔLvl: 0.38
+[2026-01-14 21:24:51] Ranked vs PGUQ92PU | WIN -> 1-0 | MU: 35.3% (NoLvl: 32.7%) - ΔLvl: 0.0
+[2026-01-14 21:28:05] Ranked vs PY2U0JPCU | WIN -> 1-0 | MU: 35.1% (NoLvl: 30.6%) - ΔLvl: 0.0
 
    [METRICHE SESSIONE]
-   Battaglie: 9
-   Win Rate: 77.8%
-   Avg Matchup: 43.2% (StdDev: 12.1%)
-   Avg Matchup NoLvl: 51.9% (StdDev: 8.9%)
-   Avg Level Diff: -0.29
+   Battaglie: 11
+   Win Rate: 81.8%
+   Avg Matchup: 41.7% (StdDev: 11.3%)
+   Avg Matchup NoLvl: 48.2% (StdDev: 11.4%)
+   Avg Level Diff: -0.24
+   Extreme Matchups: 7
+   Win % (Negative MU <40%): 71.4%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (3 ore, 47 minuti)]
+
+--- SESSIONE 78 ---
+[2026-01-15 01:15:09] Ranked vs J2Q0C0CV8 | WIN -> 1-0 | MU: 46.5% (NoLvl: 54.7%) - ΔLvl: 0.25
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 46.5% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 54.7% (StdDev: 0.0%)
+   Avg Level Diff: 0.25
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (7 ore, 20 minuti)]
+
+--- SESSIONE 79 ---
+[2026-01-15 08:35:46] Ranked vs 8YQQ88Y0 | LOSE -> 0-1 | MU: 42.7% (NoLvl: 34.4%) - ΔLvl: 0.0
+[2026-01-15 08:38:56] Ranked vs 28U8QJGCR | WIN -> 1-0 | MU: 45.4% (NoLvl: 29.3%) - ΔLvl: 0.0
+[2026-01-15 08:43:46] Ranked vs 80P2U2CY0 | WIN -> 1-0 | MU: 36.0% (NoLvl: 34.2%) - ΔLvl: 0.0
+[2026-01-15 08:47:56] Ranked vs GQVQ28P2 | LOSE -> 0-1 | MU: 25.0% (NoLvl: 39.8%) - ΔLvl: 0.0
+[2026-01-15 08:51:07] Ranked vs RVCGL8LLV | LOSE -> 0-1 | MU: 29.7% (NoLvl: 44.0%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 40.0%
+   Avg Matchup: 35.8% (StdDev: 8.6%)
+   Avg Matchup NoLvl: 36.3% (StdDev: 5.7%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 3
+   Win % (Negative MU <40%): 33.3%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (8 ore, 41 minuti)]
+
+--- SESSIONE 80 ---
+[2026-01-15 17:32:10] Ranked vs 2RR29VYJ | WIN -> 1-0 | MU: 50.9% (NoLvl: 57.1%) - ΔLvl: 0.0
+[2026-01-15 17:35:32] Ranked vs GYVCU22JP | WIN -> 1-0 | MU: 55.6% (NoLvl: 52.1%) - ΔLvl: 0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 100.0%
+   Avg Matchup: 53.2% (StdDev: 3.3%)
+   Avg Matchup NoLvl: 54.6% (StdDev: 3.5%)
+   Avg Level Diff: 0.19
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (27 minuti)]
+
+--- SESSIONE 81 ---
+[2026-01-15 18:03:15] Ranked vs QGGYR2PL9 | WIN -> 1-0 | MU: 27.0% (NoLvl: 33.9%) - ΔLvl: 0.12
+[2026-01-15 18:07:52] Ranked vs 90GVYPRUL | LOSE -> 0-1 | MU: 36.9% (NoLvl: 42.5%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 50.0%
+   Avg Matchup: 31.9% (StdDev: 7.0%)
+   Avg Matchup NoLvl: 38.2% (StdDev: 6.0%)
+   Avg Level Diff: 0.06
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 50.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (13 ore, 6 minuti)]
+
+--- SESSIONE 82 ---
+[2026-01-16 07:14:26] Ranked vs LQ9CRQVC0 | WIN -> 1-0 | MU: 50.8% (NoLvl: 37.2%) - ΔLvl: 0.0
+[2026-01-16 07:17:57] Ranked vs 9VU9YPVVU | LOSE -> 0-1 | MU: 51.7% (NoLvl: 46.8%) - ΔLvl: 0.12
+[2026-01-16 07:21:10] Ranked vs 280V90PGY | WIN -> 1-0 | MU: 45.3% (NoLvl: 40.8%) - ΔLvl: 0.25
+[2026-01-16 07:25:51] Ranked vs GUY02VPQ9 | LOSE -> 0-1 | MU: 34.8% (NoLvl: 36.7%) - ΔLvl: 0.0
+[2026-01-16 07:29:45] Ranked vs 22PJ2G8C8 | WIN -> 1-0 | MU: 56.8% (NoLvl: 40.0%) - ΔLvl: 0.0
+[2026-01-16 07:32:55] Ranked vs 82RLYYJJ9 | LOSE -> 0-1 | MU: 37.9% (NoLvl: 36.0%) - ΔLvl: 0.0
+[2026-01-16 07:38:04] Ranked vs 8G08JCCYJ | WIN -> 1-0 | MU: 63.1% (NoLvl: 53.2%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 7
+   Win Rate: 57.1%
+   Avg Matchup: 48.7% (StdDev: 10.1%)
+   Avg Matchup NoLvl: 41.5% (StdDev: 6.3%)
+   Avg Level Diff: 0.05
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (11 ore, 10 minuti)]
+
+--- SESSIONE 83 ---
+[2026-01-16 18:48:38] Ranked vs U8J9C9R9 | LOSE -> 0-1 | MU: 55.0% (NoLvl: 45.0%) - ΔLvl: 0.0
+[2026-01-16 18:52:26] Ranked vs RCRJV9QQ0 | WIN -> 1-0 | MU: 55.1% (NoLvl: 47.0%) - ΔLvl: 0.0
+[2026-01-16 18:57:40] Ranked vs LL0YCGG8J | WIN -> 1-0 | MU: 55.8% (NoLvl: 52.1%) - ΔLvl: 0.0
+[2026-01-16 19:01:38] Ranked vs LVVRUVVGJ | WIN -> 1-0 | MU: 34.8% (NoLvl: 30.1%) - ΔLvl: 0.0
+[2026-01-16 19:05:45] Ranked vs 8CU8VYGL | WIN -> 1-0 | MU: 59.9% (NoLvl: 57.7%) - ΔLvl: 0.0
+[2026-01-16 19:10:03] Ranked vs YQY99P0R | LOSE -> 0-1 | MU: 49.8% (NoLvl: 36.0%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 6
+   Win Rate: 66.7%
+   Avg Matchup: 51.7% (StdDev: 8.9%)
+   Avg Matchup NoLvl: 44.7% (StdDev: 10.2%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (58 minuti)]
+
+--- SESSIONE 84 ---
+[2026-01-16 20:08:26] Ranked vs JL992PG | WIN -> 1-0 | MU: 48.6% (NoLvl: 42.4%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 48.6% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 42.4% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (11 ore, 16 minuti)]
+
+--- SESSIONE 85 ---
+[2026-01-17 07:24:40] Ranked vs QPPJJVPQY | WIN -> 1-0 | MU: 57.8% (NoLvl: 58.4%) - ΔLvl: 0.0
+[2026-01-17 07:28:16] Ranked vs U2CCQRU8 | WIN -> 1-0 | MU: 64.2% (NoLvl: 61.3%) - ΔLvl: 0.12
+[2026-01-17 07:43:55] Ranked vs 99LGV00L8 | LOSE -> 0-1 | MU: 51.0% (NoLvl: 52.1%) - ΔLvl: 0.0
+[2026-01-17 07:47:40] Ranked vs GVLV200Y | WIN -> 1-0 | MU: 64.6% (NoLvl: 61.3%) - ΔLvl: 0.12
+[2026-01-17 08:01:07] Ranked vs UVJY989Y | WIN -> 1-0 | MU: 46.4% (NoLvl: 50.2%) - ΔLvl: 0.0
+[2026-01-17 08:17:45] Ranked vs 88Y9PP0C | LOSE -> 0-1 | MU: 33.5% (NoLvl: 35.4%) - ΔLvl: 0.0
+[2026-01-17 08:23:46] Ranked vs Y9VVJRRY | LOSE -> 0-1 | MU: 38.9% (NoLvl: 37.2%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 7
+   Win Rate: 57.1%
+   Avg Matchup: 50.9% (StdDev: 12.1%)
+   Avg Matchup NoLvl: 50.8% (StdDev: 10.8%)
+   Avg Level Diff: 0.03
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 27 minuti)]
+
+--- SESSIONE 86 ---
+[2026-01-17 09:51:29] Ranked vs 89GCJ2U0 | LOSE -> 0-3 | MU: 46.2% (NoLvl: 48.3%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 46.2% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 48.3% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (8 ore, 42 minuti)]
+
+--- SESSIONE 87 ---
+[2026-01-17 18:34:05] Ranked vs 99220JYGQ | WIN -> 1-0 | MU: 57.6% (NoLvl: 55.9%) - ΔLvl: 0.12
+[2026-01-17 18:43:55] Ranked vs Y2JYJJ29J | LOSE -> 0-1 | MU: 49.8% (NoLvl: 49.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 50.0%
+   Avg Matchup: 53.7% (StdDev: 5.5%)
+   Avg Matchup NoLvl: 52.9% (StdDev: 4.3%)
+   Avg Level Diff: 0.06
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 19 minuti)]
+
+--- SESSIONE 88 ---
+[2026-01-17 20:02:55] Mega Draft Challenge vs CJ2YPJR2R | WIN -> 1-0 | MU: 50.6% (NoLvl: 50.6%) - ΔLvl: 0.0
+[2026-01-17 20:08:48] Mega Draft Challenge vs PVRY9R2JG | WIN -> 1-0 | MU: 54.6% (NoLvl: 54.6%) - ΔLvl: 0.0
+[2026-01-17 20:16:44] Mega Draft Challenge vs P9PPGQJ0P | LOSE -> 0-1 | MU: 41.7% (NoLvl: 41.7%) - ΔLvl: 0.0
+[2026-01-17 20:21:15] Mega Draft Challenge vs GQV9L0QP | LOSE -> 0-3 | MU: 31.0% (NoLvl: 31.0%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (13 ore, 2 minuti)]
+
+--- SESSIONE 89 ---
+[2026-01-18 09:23:51] Mega Draft Challenge vs 29Q9CC | WIN -> 3-0 | MU: 56.5% (NoLvl: 56.5%) - ΔLvl: 0.0
+[2026-01-18 09:30:23] Mega Draft Challenge vs 8GGRPYUPP | WIN -> 1-0 | MU: 40.4% (NoLvl: 40.4%) - ΔLvl: 0.0
+[2026-01-18 09:36:24] Mega Draft Challenge vs 90L20LU9 | LOSE -> 0-1 | MU: 39.3% (NoLvl: 39.3%) - ΔLvl: 0.0
+[2026-01-18 09:41:43] Mega Draft Challenge vs 2290CCYGR | WIN -> 1-0 | MU: 48.0% (NoLvl: 48.0%) - ΔLvl: 0.0
+[2026-01-18 09:46:54] Mega Draft Challenge vs LRRYGLU | WIN -> 3-1 | MU: 50.4% (NoLvl: 50.4%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (7 ore, 36 minuti)]
+
+--- SESSIONE 90 ---
+[2026-01-18 17:23:05] Mega Draft Challenge vs 2YUPU8RC | LOSE -> 1-2 | MU: 46.6% (NoLvl: 46.6%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (56 minuti)]
+
+--- SESSIONE 91 ---
+[2026-01-18 18:19:15] Mega Draft Challenge vs 2YL8J9QV | WIN -> 1-0 | MU: 34.1% (NoLvl: 34.1%) - ΔLvl: 0.0
+[2026-01-18 18:26:41] Mega Draft Challenge vs PUG80JJGV | WIN -> 1-0 | MU: 23.9% (NoLvl: 23.9%) - ΔLvl: 0.0
+[2026-01-18 18:32:55] Mega Draft Challenge vs Y988V88U | LOSE -> 0-1 | MU: 56.6% (NoLvl: 56.6%) - ΔLvl: 0.0
+[2026-01-18 18:38:15] Mega Draft Challenge vs G0L89R | WIN -> 1-0 | MU: 48.2% (NoLvl: 48.2%) - ΔLvl: 0.0
+[2026-01-18 18:42:43] Mega Draft Challenge vs YJPCVQ | WIN -> 3-0 | MU: 68.2% (NoLvl: 68.2%) - ΔLvl: 0.0
+[2026-01-18 18:48:31] Mega Draft Challenge vs V0J8CQGL | LOSE -> 1-2 | MU: 56.4% (NoLvl: 56.4%) - ΔLvl: 0.0
+[2026-01-18 18:53:46] Mega Draft Challenge vs UG9P288V8 | LOSE -> 0-2 | MU: 49.8% (NoLvl: 49.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (7 ore, 38 minuti)]
+
+--- SESSIONE 92 ---
+[2026-01-19 02:32:26] Mega Draft Challenge vs 8PGYY9JUP | WIN -> 1-0 | MU: 61.8% (NoLvl: 61.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (22 ore, 43 minuti)]
+
+--- SESSIONE 93 ---
+[2026-01-20 01:15:37] Mega Draft Challenge vs R2Y92VGP9 | WIN -> 1-0 | MU: 61.8% (NoLvl: 61.8%) - ΔLvl: 0.0
+[2026-01-20 01:22:04] Mega Draft Challenge vs QQGL90Q | WIN -> 1-0 | MU: 49.5% (NoLvl: 49.5%) - ΔLvl: 0.0
+[2026-01-20 01:28:31] Mega Draft Challenge vs CJC9CUVQP | LOSE -> 0-1 | MU: 32.2% (NoLvl: 32.2%) - ΔLvl: 0.0
+[2026-01-20 01:36:17] Mega Draft Challenge vs JJQUJCP92 | LOSE -> 0-1 | MU: 29.7% (NoLvl: 29.7%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (22 ore, 45 minuti)]
+
+--- SESSIONE 94 ---
+[2026-01-21 00:21:46] Mega Draft Challenge vs 2QJ0CP8Q | LOSE -> 0-1 | MU: 61.3% (NoLvl: 61.3%) - ΔLvl: 0.0
+[2026-01-21 00:27:27] Mega Draft Challenge vs RQ0Y8LURG | LOSE -> 0-1 | MU: 22.7% (NoLvl: 22.7%) - ΔLvl: 0.0
+[2026-01-21 00:33:55] Mega Draft Challenge vs U9UJJ9JYC | WIN -> 3-1 | MU: 43.7% (NoLvl: 43.7%) - ΔLvl: 0.0
+[2026-01-21 00:39:15] Mega Draft Challenge vs 9RQPVQ99 | LOSE -> 0-1 | MU: 62.6% (NoLvl: 62.6%) - ΔLvl: 0.0
+[2026-01-21 00:46:01] Mega Draft Challenge vs 2UV8V8C | WIN -> 2-1 | MU: 58.1% (NoLvl: 58.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 0
+   Win Rate: 0.0%
+   Avg Matchup: 0.0% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 0.0% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (4 ore, 41 minuti)]
+
+--- SESSIONE 95 ---
+[2026-01-21 05:27:08] Ranked vs 2L8YP9PUY | WIN -> 1-0 | MU: 66.1% (NoLvl: 66.1%) - ΔLvl: 0.0
+[2026-01-21 05:29:56] Ranked vs GYYU8QL0R | LOSE -> 1-3 | MU: 55.0% (NoLvl: 55.0%) - ΔLvl: 0.0
+[2026-01-21 05:33:05] Ranked vs 9LPJQJ9J | WIN -> 1-0 | MU: 54.2% (NoLvl: 54.2%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 66.7%
+   Avg Matchup: 58.4% (StdDev: 6.6%)
+   Avg Matchup NoLvl: 58.4% (StdDev: 6.6%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (21 ore, 47 minuti)]
+
+--- SESSIONE 96 ---
+[2026-01-22 03:20:54] Ranked vs 2CJR8VL2P | WIN -> 1-0 | MU: 53.7% (NoLvl: 53.7%) - ΔLvl: 0.0
+[2026-01-22 03:25:35] Ranked vs UU8VCLU0P | WIN -> 1-0 | MU: 55.4% (NoLvl: 55.4%) - ΔLvl: 0.0
+[2026-01-22 03:28:44] Ranked vs PU9Q20P8L | LOSE -> 0-1 | MU: 47.6% (NoLvl: 47.6%) - ΔLvl: 0.0
+[2026-01-22 03:32:51] Ranked vs J09LVV9CG | WIN -> 1-0 | MU: 41.0% (NoLvl: 41.0%) - ΔLvl: 0.0
+[2026-01-22 03:35:30] Ranked vs 29UV0VCR9 | WIN -> 3-0 | MU: 64.8% (NoLvl: 60.0%) - ΔLvl: 0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 80.0%
+   Avg Matchup: 52.5% (StdDev: 8.9%)
+   Avg Matchup NoLvl: 51.5% (StdDev: 7.4%)
+   Avg Level Diff: 0.08
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 52 minuti)]
+
+--- SESSIONE 97 ---
+[2026-01-22 05:28:18] Ranked vs V99L0LU8R | LOSE -> 0-1 | MU: 49.0% (NoLvl: 49.0%) - ΔLvl: 0.0
+[2026-01-22 05:33:31] Ranked vs 2GVLC9L9Y | WIN -> 1-0 | MU: 47.8% (NoLvl: 47.8%) - ΔLvl: 0.0
+[2026-01-22 05:37:56] Ranked vs 8Q8G2RRL | WIN -> 1-0 | MU: 49.1% (NoLvl: 49.1%) - ΔLvl: 0.0
+[2026-01-22 05:42:31] Ranked vs 2LGGV8UY | LOSE -> 1-3 | MU: 56.8% (NoLvl: 56.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 50.0%
+   Avg Matchup: 50.7% (StdDev: 4.1%)
+   Avg Matchup NoLvl: 50.7% (StdDev: 4.1%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (17 ore, 51 minuti)]
+
+--- SESSIONE 98 ---
+[2026-01-22 23:33:58] Ranked vs 2GPUV9QY2 | WIN -> 1-0 | MU: 39.0% (NoLvl: 39.0%) - ΔLvl: 0.0
+[2026-01-22 23:38:05] Ranked vs V29LGC2V | WIN -> 1-0 | MU: 60.3% (NoLvl: 59.0%) - ΔLvl: 0.12
+[2026-01-22 23:43:23] Ranked vs C0R2R89JJ | WIN -> 1-0 | MU: 32.4% (NoLvl: 32.4%) - ΔLvl: 0.0
+[2026-01-22 23:47:03] Ranked vs 2L00C8Y9J | LOSE -> 0-1 | MU: 36.8% (NoLvl: 36.8%) - ΔLvl: 0.0
+[2026-01-22 23:50:41] Ranked vs QQQPJ9Y | LOSE -> 0-1 | MU: 37.9% (NoLvl: 37.9%) - ΔLvl: 0.0
+[2026-01-22 23:54:10] Ranked vs JQ9QY0C00 | LOSE -> 0-1 | MU: 29.0% (NoLvl: 29.0%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 6
+   Win Rate: 50.0%
+   Avg Matchup: 39.2% (StdDev: 11.0%)
+   Avg Matchup NoLvl: 39.0% (StdDev: 10.5%)
+   Avg Level Diff: 0.02
    Extreme Matchups: 5
-   Win % (Negative MU <40%): 60.0%
+   Win % (Negative MU <40%): 40.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (21 minuti)]
+
+--- SESSIONE 99 ---
+[2026-01-23 00:15:57] Ranked vs 2QYR92UYV | LOSE -> 1-2 | MU: 36.5% (NoLvl: 36.5%) - ΔLvl: 0.0
+[2026-01-23 00:19:45] Ranked vs 2PGR8LUU8 | WIN -> 1-0 | MU: 53.4% (NoLvl: 53.4%) - ΔLvl: 0.0
+[2026-01-23 00:23:19] Ranked vs YQCPLRG | LOSE -> 0-1 | MU: 36.1% (NoLvl: 36.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 33.3%
+   Avg Matchup: 42.0% (StdDev: 9.9%)
+   Avg Matchup NoLvl: 42.0% (StdDev: 9.9%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 2
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (1 giorni, 39 minuti)]
+
+--- SESSIONE 100 ---
+[2026-01-24 01:02:52] Ranked vs VPQVLV0LG | WIN -> 1-0 | MU: 44.1% (NoLvl: 44.1%) - ΔLvl: 0.0
+[2026-01-24 01:07:48] Ranked vs P8CJRQ9V8 | WIN -> 1-0 | MU: 35.7% (NoLvl: 35.7%) - ΔLvl: 0.0
+[2026-01-24 01:12:04] Ranked vs 8QR8R9Y8L | WIN -> 2-1 | MU: 47.5% (NoLvl: 47.5%) - ΔLvl: 0.0
+[2026-01-24 01:15:51] Ranked vs RR8VLL29Q | WIN -> 2-1 | MU: 48.8% (NoLvl: 48.8%) - ΔLvl: 0.0
+[2026-01-24 01:21:46] Ranked vs PYYY9JPRU | LOSE -> 0-1 | MU: 34.2% (NoLvl: 34.2%) - ΔLvl: 0.0
+[2026-01-24 01:27:02] Ranked vs 98GVGVJV | WIN -> 1-0 | MU: 40.4% (NoLvl: 40.4%) - ΔLvl: 0.0
+[2026-01-24 01:31:43] Ranked vs PYRPR8QJY | WIN -> 1-0 | MU: 57.2% (NoLvl: 57.2%) - ΔLvl: 0.0
+[2026-01-24 01:35:03] Ranked vs PRGQ2800Q | LOSE -> 0-1 | MU: 30.8% (NoLvl: 30.8%) - ΔLvl: 0.0
+[2026-01-24 01:40:55] Ranked vs J0C0PLQG9 | WIN -> 1-0 | MU: 59.8% (NoLvl: 59.8%) - ΔLvl: 0.0
+[2026-01-24 01:55:25] Ranked vs L9P0L9YL | WIN -> 1-0 | MU: 43.6% (NoLvl: 36.4%) - ΔLvl: 0.25
+[2026-01-24 02:04:02] Ranked vs 20YV22PU8 | WIN -> 2-1 | MU: 54.7% (NoLvl: 40.4%) - ΔLvl: 0.38
+[2026-01-24 02:17:14] Ranked vs CRULCR | WIN -> 1-0 | MU: 40.0% (NoLvl: 40.0%) - ΔLvl: 0.0
+[2026-01-24 02:24:02] Ranked vs 9PV2Y998 | LOSE -> 0-1 | MU: 37.3% (NoLvl: 37.3%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 13
+   Win Rate: 76.9%
+   Avg Matchup: 44.2% (StdDev: 9.1%)
+   Avg Matchup NoLvl: 42.5% (StdDev: 8.7%)
+   Avg Level Diff: 0.05
+   Extreme Matchups: 5
+   Win % (Negative MU <40%): 40.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (1 giorni, 14 ore, 24 minuti)]
+
+--- SESSIONE 101 ---
+[2026-01-25 16:48:07] Ranked vs P8QYLCR | LOSE -> 0-3 | MU: 51.9% (NoLvl: 50.1%) - ΔLvl: 0.12
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 51.9% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 50.1% (StdDev: 0.0%)
+   Avg Level Diff: 0.12
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (9 ore, 56 minuti)]
+
+--- SESSIONE 102 ---
+[2026-01-26 02:44:20] Ranked vs R9U2VJL0 | WIN -> 1-0 | MU: 56.8% (NoLvl: 56.8%) - ΔLvl: 0.0
+[2026-01-26 02:47:33] Ranked vs UCYVCLUG | LOSE -> 0-1 | MU: 45.3% (NoLvl: 45.3%) - ΔLvl: 0.0
+[2026-01-26 02:51:54] Ranked vs GRJVVYLUR | LOSE -> 0-1 | MU: 47.1% (NoLvl: 47.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 33.3%
+   Avg Matchup: 49.7% (StdDev: 6.2%)
+   Avg Matchup NoLvl: 49.7% (StdDev: 6.2%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 12 minuti)]
+
+--- SESSIONE 103 ---
+[2026-01-26 05:03:56] Ranked vs 8PPPRQC8 | WIN -> 1-0 | MU: 42.3% (NoLvl: 42.3%) - ΔLvl: 0.0
+[2026-01-26 05:07:06] Ranked vs YVRC9R2LR | LOSE -> 0-1 | MU: 41.6% (NoLvl: 41.6%) - ΔLvl: 0.0
+[2026-01-26 05:10:05] Ranked vs 8J8YRQUP | LOSE -> 0-3 | MU: 33.8% (NoLvl: 33.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 33.3%
+   Avg Matchup: 39.2% (StdDev: 4.7%)
+   Avg Matchup NoLvl: 39.2% (StdDev: 4.7%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (1 giorni, 18 ore, 39 minuti)]
+
+--- SESSIONE 104 ---
+[2026-01-27 23:50:00] Ranked vs 2VRP22QVQ | WIN -> 1-0 | MU: 53.5% (NoLvl: 47.0%) - ΔLvl: 0.0
+[2026-01-27 23:54:41] Ranked vs J8VYCC28J | WIN -> 2-1 | MU: 55.4% (NoLvl: 48.1%) - ΔLvl: 0.25
+[2026-01-27 23:58:37] Ranked vs GY88RGQ9 | WIN -> 1-0 | MU: 44.6% (NoLvl: 44.6%) - ΔLvl: 0.0
+[2026-01-28 00:02:44] Ranked vs L8QCQ2U | WIN -> 1-0 | MU: 62.8% (NoLvl: 62.8%) - ΔLvl: 0.0
+[2026-01-28 00:06:12] Ranked vs U9GVRQ82R | LOSE -> 0-1 | MU: 44.0% (NoLvl: 44.0%) - ΔLvl: 0.0
+[2026-01-28 00:09:21] Ranked vs LVGV90G | WIN -> 1-0 | MU: 74.4% (NoLvl: 72.2%) - ΔLvl: 0.12
+[2026-01-28 00:12:36] Ranked vs 9LVQ9JU80 | WIN -> 1-0 | MU: 53.1% (NoLvl: 53.1%) - ΔLvl: 0.0
+[2026-01-28 00:17:16] Ranked vs RG0PQQQVY | WIN -> 3-1 | MU: 53.8% (NoLvl: 53.8%) - ΔLvl: 0.0
+[2026-01-28 00:21:19] Ranked vs L29C8Q8CP | WIN -> 1-0 | MU: 47.7% (NoLvl: 43.0%) - ΔLvl: 0.25
+[2026-01-28 00:24:28] Ranked vs CU0Q9YLU2 | WIN -> 1-0 | MU: 29.5% (NoLvl: 29.5%) - ΔLvl: 0.0
+[2026-01-28 00:27:38] Ranked vs YQL2QPC | LOSE -> 0-1 | MU: 39.7% (NoLvl: 39.7%) - ΔLvl: 0.0
+[2026-01-28 00:32:54] Ranked vs LQUQG0 | LOSE -> 0-1 | MU: 61.9% (NoLvl: 60.6%) - ΔLvl: 0.12
+[2026-01-28 00:36:12] Ranked vs PP8C8G2Y | WIN -> 1-0 | MU: 38.7% (NoLvl: 38.7%) - ΔLvl: 0.0
+[2026-01-28 00:40:59] Ranked vs 8J8JJR9Q | WIN -> 1-0 | MU: 47.2% (NoLvl: 47.2%) - ΔLvl: 0.0
+[2026-01-28 00:47:05] Ranked vs 8J22VQ098 | WIN -> 1-0 | MU: 52.8% (NoLvl: 48.4%) - ΔLvl: 0.25
+[2026-01-28 00:51:02] Ranked vs C89V8CUV2 | WIN -> 1-0 | MU: 57.7% (NoLvl: 57.7%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 16
+   Win Rate: 81.2%
+   Avg Matchup: 51.0% (StdDev: 10.8%)
+   Avg Matchup NoLvl: 49.4% (StdDev: 10.4%)
+   Avg Level Diff: 0.06
+   Extreme Matchups: 3
+   Win % (Negative MU <40%): 66.7%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (4 ore, 31 minuti)]
+
+--- SESSIONE 105 ---
+[2026-01-28 05:22:26] Ranked vs QVU0QV8Y2 | WIN -> 1-0 | MU: 33.5% (NoLvl: 33.5%) - ΔLvl: 0.0
+[2026-01-28 05:25:44] Ranked vs 2VV0Q09RR | WIN -> 1-0 | MU: 66.1% (NoLvl: 65.2%) - ΔLvl: 0.12
+[2026-01-28 05:30:16] Ranked vs 89CULP8GC | WIN -> 1-0 | MU: 44.8% (NoLvl: 44.8%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 100.0%
+   Avg Matchup: 48.1% (StdDev: 16.6%)
+   Avg Matchup NoLvl: 47.8% (StdDev: 16.1%)
+   Avg Level Diff: 0.04
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (24 minuti)]
+
+--- SESSIONE 106 ---
+[2026-01-28 05:54:39] Ranked vs 2LUVL988 | WIN -> 1-0 | MU: 54.4% (NoLvl: 54.4%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 100.0%
+   Avg Matchup: 54.4% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 54.4% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (9 ore, 25 minuti)]
+
+--- SESSIONE 107 ---
+[2026-01-28 15:20:24] Ranked vs 29JLLRJYY | LOSE -> 0-1 | MU: 57.4% (NoLvl: 57.4%) - ΔLvl: 0.0
+[2026-01-28 15:24:49] Ranked vs 9290RUQYJ | WIN -> 1-0 | MU: 31.3% (NoLvl: 31.3%) - ΔLvl: 0.0
+[2026-01-28 15:28:16] Ranked vs 82UL0GULP | WIN -> 2-0 | MU: 52.8% (NoLvl: 52.8%) - ΔLvl: 0.0
+[2026-01-28 15:33:45] Ranked vs 202PQ02Y00 | LOSE -> 0-1 | MU: 33.1% (NoLvl: 31.1%) - ΔLvl: 0.25
+[2026-01-28 15:37:45] Ranked vs 2PR990Q2 | LOSE -> 0-1 | MU: 34.1% (NoLvl: 34.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 5
+   Win Rate: 40.0%
+   Avg Matchup: 41.7% (StdDev: 12.4%)
+   Avg Matchup NoLvl: 41.4% (StdDev: 12.7%)
+   Avg Level Diff: 0.05
+   Extreme Matchups: 3
+   Win % (Negative MU <40%): 33.3%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 52 minuti)]
+
+--- SESSIONE 108 ---
+[2026-01-28 18:30:00] Ranked vs GU8JVYP | LOSE -> 0-1 | MU: 48.7% (NoLvl: 48.7%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 48.7% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 48.7% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 14 minuti)]
+
+--- SESSIONE 109 ---
+[2026-01-28 19:44:37] Ranked vs CQLRVRV2R | LOSE -> 1-2 | MU: 36.5% (NoLvl: 36.5%) - ΔLvl: 0.0
+[2026-01-28 19:51:31] Ranked vs PG8UVG0GR | LOSE -> 0-1 | MU: 43.1% (NoLvl: 43.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 0.0%
+   Avg Matchup: 39.8% (StdDev: 4.6%)
+   Avg Matchup NoLvl: 39.8% (StdDev: 4.6%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (30 minuti)]
+
+--- SESSIONE 110 ---
+[2026-01-28 20:22:29] Ranked vs 9202PPYG | WIN -> 1-0 | MU: 24.8% (NoLvl: 24.8%) - ΔLvl: 0.0
+[2026-01-28 20:27:45] Ranked vs 29LVQUGJG | WIN -> 1-0 | MU: 46.5% (NoLvl: 46.5%) - ΔLvl: 0.0
+[2026-01-28 20:31:15] Ranked vs 2P2QGGG2 | WIN -> 1-0 | MU: 43.0% (NoLvl: 43.0%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 100.0%
+   Avg Matchup: 38.1% (StdDev: 11.6%)
+   Avg Matchup NoLvl: 38.1% (StdDev: 11.6%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 100.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (43 minuti)]
+
+--- SESSIONE 111 ---
+[2026-01-28 21:14:41] Ranked vs 2JV2GLQL | WIN -> 1-0 | MU: 40.3% (NoLvl: 40.3%) - ΔLvl: 0.0
+[2026-01-28 21:18:51] Ranked vs RCLR9QC9 | LOSE -> 0-1 | MU: 38.7% (NoLvl: 38.7%) - ΔLvl: 0.0
+[2026-01-28 21:22:30] Ranked vs UJ20890J | LOSE -> 0-1 | MU: 43.1% (NoLvl: 43.1%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 3
+   Win Rate: 33.3%
+   Avg Matchup: 40.7% (StdDev: 2.2%)
+   Avg Matchup NoLvl: 40.7% (StdDev: 2.2%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Short (1 ore, 15 minuti)]
+
+--- SESSIONE 112 ---
+[2026-01-28 22:37:37] Ranked vs JRVGR9J | LOSE -> 1-2 | MU: 33.2% (NoLvl: 33.2%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 33.2% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 33.2% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 17 minuti)]
+
+--- SESSIONE 113 ---
+[2026-01-29 00:55:16] Ranked vs 8LU89J2PG | LOSE -> 0-1 | MU: 36.5% (NoLvl: 36.5%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 36.5% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 36.5% (StdDev: 0.0%)
+   Avg Level Diff: 0.00
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Quit (20 ore, 3 minuti)]
+
+--- SESSIONE 114 ---
+[2026-01-29 20:58:34] Ladder vs R8QRYGRRL | WIN -> 2-0 | 12029 -> 12029 (+0) | MU: 57.8% (NoLvl: 61.2%) - ΔLvl: -0.12
+[2026-01-29 21:05:28] Ladder vs 80GRQRRR | LOSE -> 0-1 | 12029 -> 12029 (+0) | MU: 71.8% (NoLvl: 66.6%) - ΔLvl: 0.25
+[2026-01-29 21:08:38] Ladder vs GURPL9Q0 | LOSE -> 0-1 | 12029 -> 12029 (+0) | MU: 51.5% (NoLvl: 58.3%) - ΔLvl: -0.38
+[2026-01-29 21:12:10] Ladder vs 2QV9C0R8J | LOSE -> 0-1 | 12029 -> 12029 (+0) | MU: 38.4% (NoLvl: 58.5%) - ΔLvl: -0.5
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 25.0%
+   Avg Matchup: 54.9% (StdDev: 13.9%)
+   Avg Matchup NoLvl: 61.1% (StdDev: 3.9%)
+   Avg Level Diff: -0.19
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (2 ore, 8 minuti)]
+
+--- SESSIONE 115 ---
+[2026-01-29 23:20:12] Ladder vs 99L9R9CP | LOSE -> 1-2 | 12029 -> 12029 (+0) | MU: 69.5% (NoLvl: 69.6%) - ΔLvl: 0.38
+[2026-01-29 23:25:06] Ladder vs LQYLG808Q | WIN -> 1-0 | 12029 -> 12029 (+0) | MU: 52.6% (NoLvl: 41.3%) - ΔLvl: 0.38
+[2026-01-29 23:29:39] Ladder vs 8L9UU80G | WIN -> 1-0 | 12029 -> 12000 (-29) | MU: 40.1% (NoLvl: 59.5%) - ΔLvl: -0.5
+[2026-01-29 23:35:40] Ladder vs RU2RRQUYY | LOSE -> 0-1 | 12000 -> 12000 (+0) | MU: 51.9% (NoLvl: 44.3%) - ΔLvl: 0.25
+[2026-01-29 23:49:40] 1v1 Battle vs GVJ0RQL8 | LOSE -> 0-1 | MU: 63.2% (NoLvl: 63.2%) - ΔLvl: 0.0
+[2026-01-29 23:53:16] 1v1 Battle vs GVJ0RQL8 | WIN -> 3-0 | MU: 52.2% (NoLvl: 52.2%) - ΔLvl: 0.0
+[2026-01-29 23:59:12] 1v1 Battle vs GVJ0RQL8 | WIN -> 1-0 | MU: 38.5% (NoLvl: 38.5%) - ΔLvl: 0.0
+[2026-01-30 00:06:16] 1v1 Battle vs GVJ0RQL8 | WIN -> 1-0 | MU: 60.6% (NoLvl: 60.6%) - ΔLvl: 0.0
+[2026-01-30 00:11:14] 1v1 Battle vs GVJ0RQL8 | LOSE -> 0-1 | MU: 58.3% (NoLvl: 58.3%) - ΔLvl: 0.0
+[2026-01-30 00:15:12] 1v1 Battle vs GVJ0RQL8 | WIN -> 1-0 | MU: 88.8% (NoLvl: 88.8%) - ΔLvl: 0.0
+[2026-01-30 00:19:08] 1v1 Battle vs GVJ0RQL8 | WIN -> 1-0 | MU: 43.3% (NoLvl: 43.3%) - ΔLvl: 0.0
+[2026-01-30 00:23:10] 1v1 Battle vs GVJ0RQL8 | WIN -> 1-0 | MU: 54.5% (NoLvl: 54.5%) - ΔLvl: 0.0
+
+   [METRICHE SESSIONE]
+   Battaglie: 4
+   Win Rate: 50.0%
+   Avg Matchup: 53.5% (StdDev: 12.1%)
+   Avg Matchup NoLvl: 53.7% (StdDev: 13.3%)
+   Avg Level Diff: 0.13
+   Extreme Matchups: 0
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
+[STOP: Long (4 ore, 25 minuti)]
+
+--- SESSIONE 116 ---
+[2026-01-30 04:48:49] Ladder vs 980GV8U8 | LOSE -> 0-1 | 12000 -> 12000 (+0) | MU: 16.1% (NoLvl: 26.1%) - ΔLvl: -0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 1
+   Win Rate: 0.0%
+   Avg Matchup: 16.1% (StdDev: 0.0%)
+   Avg Matchup NoLvl: 26.1% (StdDev: 0.0%)
+   Avg Level Diff: -0.38
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
    Lose % (Positive MU >80%): 0.0%
 
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 3.55
-   Avg Win Rate: 48.4%
-   Avg Matchup: 39.7% (Avg StdDev: 6.7%)
-   Avg Matchup NoLvl: 50.8% (Avg StdDev: 5.1%)
-   Avg Level Diff: -0.36
-   Avg Extreme Matchups: 1.82
-   Avg Win % (Negative MU): 32.5%
+   Avg Battaglie/Sessione: 3.40
+   Avg Win Rate: 49.0%
+   Avg Matchup: 41.3% (Avg StdDev: 6.0%)
+   Avg Matchup NoLvl: 44.2% (Avg StdDev: 4.9%)
+   Avg Level Diff: -0.08
+   Avg Extreme Matchups: 1.23
+   Avg Win % (Negative MU): 19.7%
    Avg Lose % (Positive MU): 0.0%
 ========================================

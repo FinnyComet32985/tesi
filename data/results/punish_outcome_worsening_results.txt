@@ -1,0 +1,31 @@
+ANALISI PEGGIORAMENTO POST-PUNISH (WIN vs LOSS)
+Domanda: Se vinco un match sfavorevole (<45%), il successivo è ANCORA PEGGIORE rispetto a quello appena giocato?
+Metrica: Delta = Matchup Successivo - Matchup Corrente.
+         Delta < 0: Il matchup è peggiorato (Accanimento).
+         Delta > 0: Il matchup è migliorato (Sollievo).
+================================================================================
+
+ESITO PUNISH MATCH        | N      | AVG DELTA MU    | % PEGGIORAMENTO     
+---------------------------------------------------------------------------
+WIN (Vittoria Eroica)     | 941    | +8.79           | 32.52               %
+LOSS (Sconfitta Attesa)   | 1235   | +14.60          | 20.97               %
+---------------------------------------------------------------------------
+Test Mann-Whitney U (Delta Win < Delta Loss): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. Vincere un punish match porta a una variazione di matchup peggiore rispetto a perderlo.
+           In media, il matchup migliora meno rispetto a quando si perde.
+
+================================================================================
+ANALISI PEGGIORAMENTO LIVELLI (WIN vs LOSS)
+Metrica: Delta Level = Level Diff Successivo - Level Diff Corrente.
+         Delta < 0: I livelli sono peggiorati (Avversario più forte).
+--------------------------------------------------------------------------------
+ESITO                     | N      | AVG DELTA LVL  
+-------------------------------------------------------
+WIN                       | 941    | +0.1162        
+LOSS                      | 1235   | +0.2483        
+-------------------------------------------------------
+Test Mann-Whitney U (Delta Win < Delta Loss): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. Vincere porta a un peggioramento dei livelli maggiore rispetto a perdere.
+           (Conferma che la 'punizione' passa anche attraverso i livelli).
+
+================================================================================

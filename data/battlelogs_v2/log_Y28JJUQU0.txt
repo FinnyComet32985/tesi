@@ -155,15 +155,31 @@
    Win % (Negative MU <40%): 50.0%
    Lose % (Positive MU >80%): 0.0%
 
+[STOP: Short (1 ore, 2 minuti)]
+
+--- SESSIONE 10 ---
+[2026-01-05 17:07:05] Ranked vs Y2PVVRJP8 | LOSE -> 0-1 | MU: 36.5% (NoLvl: 41.2%) - ΔLvl: 0.0
+[2026-01-05 17:18:39] Ranked vs 9V92V9V28 | LOSE -> 0-1 | MU: 40.6% (NoLvl: 49.4%) - ΔLvl: 0.38
+
+   [METRICHE SESSIONE]
+   Battaglie: 2
+   Win Rate: 0.0%
+   Avg Matchup: 38.6% (StdDev: 2.9%)
+   Avg Matchup NoLvl: 45.3% (StdDev: 5.8%)
+   Avg Level Diff: 0.19
+   Extreme Matchups: 1
+   Win % (Negative MU <40%): 0.0%
+   Lose % (Positive MU >80%): 0.0%
+
 ========================================
  MEDIA GLOBALE METRICHE (Su tutte le sessioni)
 ========================================
-   Avg Battaglie/Sessione: 3.56
-   Avg Win Rate: 22.8%
-   Avg Matchup: 45.8% (Avg StdDev: 3.0%)
-   Avg Matchup NoLvl: 59.9% (Avg StdDev: 2.9%)
-   Avg Level Diff: -0.20
-   Avg Extreme Matchups: 1.78
-   Avg Win % (Negative MU): 12.2%
+   Avg Battaglie/Sessione: 3.40
+   Avg Win Rate: 20.5%
+   Avg Matchup: 45.1% (Avg StdDev: 3.0%)
+   Avg Matchup NoLvl: 58.5% (Avg StdDev: 3.1%)
+   Avg Level Diff: -0.16
+   Avg Extreme Matchups: 1.70
+   Avg Win % (Negative MU): 11.0%
    Avg Lose % (Positive MU): 0.0%
 ========================================
