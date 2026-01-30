@@ -307,47 +307,13 @@ no, i player incontrano gli stessi deck e no, non incontrano i counter più spes
 `matchmaking_fairness_results.txt`
 
 
-
-
-1. ## DEBT / CREDIT
-
-IPOTESI in un gioco che non ha memoria dei matchup precedenti vincere o perdere un matchup estremo non dovrebbe influenzare il matchup successivo
-
-TEST verificare se un matchup sfavorevole seguito da una vittoria porta ad un matchup ancora sfavorevole, confrontandolo con una sconfitta
-
-RISULTATO 
-vincere una partita sfavorevole porta ad un matchup ancora sfavorevole, perderla porla il matchup verso l'equità.
-perdere una partita favorevole porta ad un matchup ancora favorevole, vincerla porta il matchup verso l'equità in entrambi i casi la vittoria o la sconfitta sono dovuto all'elisir leaked dell'avversario (x la vittoria) o
-del player (x la sconfitta)
-
-POSSIBILI SPIEGAZIONI
-
-il player è già a limite con i livelli, per cui trova il matchup sfavorevole. vincendo avrà avversari con livelli ancora maggiori e quindi un matchup peggiore
-
-cambiano così tanto i livelli in 30 trofei? NO, LVL SATURATION e PAYWALL IMPACT 
-
-cambio di meta? NO, META RANGE + MICRO META
-
-**ESECUZIONE**
-`debt_extinction_results.txt`
-
-1. ## DEBT / CREDIT ESTINTION
-
-IPOTESI perdere la partita sfavorevole combattendola o perdendo malamente non dovrebbe portare a differenze
-
-TEST confrontare il matchup successivo a quello sfavorevole e capire se una sconfitta netta riporla più velocemente ad un matchup equo rispetto a una sconfitta combattuta
-
-RISULTATO no, non sembra che perdere malamente la partita sfavorita porti a matchup più equo rispetto a una sconfitta combattuta. anzi il contrario, sembra meglio una close loss
-
-**ESECUZIONE**
-`defeat_quality_impact_results.txt`
-
 # Analisi livelli, skill e componenti del matchup
 
 1. ## QUANTO CONTANO I LVL E LA SKILL
 
 IPOTESI 
 
+- quanto influenzano i lvl il matchup?
 - quanto influenzano i lvl il marchup?
 - in un gioco equo la skill dovrebbe consentire al player di vincere nonostante i deficit di livelli o al matchup no LVL
 
@@ -439,25 +405,22 @@ RISULTATO si, salendo trovi generalmente condizioni peggiori ma non a tal punto 
 **ESECUZIONE**
 `climbing_impact_results.txt`
 
-1. ## PAYWALL IMPACT (Progressione Naturale vs Manipolazione)
+1. ## PAYWALL IMPACT (Paywall Statico vs Dinamico)
+
+**DOMANDA**
+Il "muro" di livelli che impedisce di salire è una caratteristica strutturale del gioco (più sali, più trovi gente forte) o una punizione attiva che scatta dopo una vittoria?
 
 **IPOTESI**
-
-Se il sistema manipola i livelli in base alle vittorie, il level diff dovrebbe peggiorare dopo win e migliorare dopo loss nella stessa fascia trofei.
+Se il sistema manipolasse attivamente le partite, dopo una vittoria dovrebbe assegnare un avversario con livelli significativamente più alti rispetto a dopo una sconfitta, *anche rimanendo nella stessa fascia di trofei*.
 
 **TEST**
-
-Confronto Level Diff post-win vs post-loss nello stesso bucket
+Questo test è cruciale per isolare la manipolazione dalla progressione naturale. Abbiamo confrontato il `Level Diff` medio dopo una vittoria e dopo una sconfitta, ma solo all'interno di **fasce di trofei ristrette (bucket)**. In questo modo, l'effetto del "climbing" viene neutralizzato.
 
 **RISULTATO**
-
-Delta ≈ 0 in quasi tutte le fasce
-
-Solo rare anomalie non sistematiche
+La differenza media di livelli tra post-vittoria e post-sconfitta è **praticamente zero** in tutte le fasce di trofei analizzate.
 
 **CONCLUSIONE**
-
-I livelli seguono una **progressione strutturale (paywall statico)**, non una manipolazione dinamica post-partita.
+L'ipotesi del Paywall Dinamico è **smentita**. Il sistema non "punisce" una vittoria con un avversario di livello superiore. La difficoltà aumenta solo perché, vincendo, si sale di trofei e si accede a una fascia dove i livelli medi sono strutturalmente più alti. Il "muro" è una conseguenza della progressione (statico), non una reazione comportamentale del matchmaking (dinamico).
 
 **ESECUZIONE**
 `paywall_impact_results.txt`
@@ -468,14 +431,12 @@ IPOTESI a Trofei alti i giocatori tendono ad essere maxati, per cui la varianza 
 
 TEST verificare se la varianza tende ad abbassarsi, specialmente nelle ultime arene
 
-RISULTATO non sembra esserci una relazione forte, ad eccezione delle ultime arene, come ipotizzato
+RISULTATO 
+Non sembra esserci una relazione forte, ad eccezione delle ultime arene, come ipotizzato.
 
-inoltre  la varianza è generalmente bassa
+La varianza è generalmente bassa
 
-> non spiega il debito
-> 
-
-la % di 0 diff inoltre è generalmente alta 
+La % di 0 diff inoltre è generalmente alta 
 
 > ma non a tal punto da spiegare completamente la mancanza di Double Whammy
 > 
@@ -483,7 +444,7 @@ la % di 0 diff inoltre è generalmente alta
 **ESECUZIONE**
 `level_saturation_results.txt`
 
-1. PUNISHMENT TRADE-OFF (NO DOUBLE WHAMMY)
+1. ## PUNISHMENT TRADE-OFF (NO DOUBLE WHAMMY)
 
 **IPOTESI**
 
@@ -506,82 +467,266 @@ Il sistema tende a distribuire lo svantaggio su un solo asse → comportamento p
 **ESECUZIONE**
 `punishment_tradeoff_results.txt`
 
-# conclusione
+# fattori nascosti
 
-L’insieme dei test condotti sul matchmaking di Clash Royale non mostra evidenze compatibili con un sistema di tipo **EOMM (Engagement Optimized Matchmaking)**, ovvero un algoritmo progettato per manipolare attivamente l’esito delle partite al fine di controllare l’esperienza emotiva del giocatore (alternando vittorie e sconfitte in modo pilotato).
+1. ## DEBT / CREDIT
 
-I risultati ottenuti indicano invece che i pattern osservati — streak, matchup estremi e variazioni nella difficoltà percepita — possono essere spiegati in modo coerente attraverso **fattori strutturali del sistema competitivo**, senza dover ricorrere a ipotesi di manipolazione dinamica.
+**IPOTESI**
+In un sistema senza memoria, l'esito di una partita (vittoria o sconfitta) in condizioni sfavorevoli non dovrebbe influenzare la difficoltà della partita successiva.
 
-### **1. Assenza di segnali di compensazione attiva (debito/credito)**
+**TEST**
+Confronta la difficoltà del match successivo (Matchup, Level Diff, Matchup No-Lvl) dopo aver **vinto** un matchup sfavorevole (<45%) rispetto a dopo averlo **perso**.
 
-Se il sistema fosse EOMM, ci si aspetterebbe un chiaro effetto di **compensazione**:
+**RISULTATO**
+- **Vincere** una partita sfavorevole porta a un **matchup successivo peggiore** rispetto a perderla.
+- L'analisi delle componenti rivela che questo peggioramento è quasi interamente dovuto a un **peggioramento del Level Diff** (avversari con livelli più alti).
+- Il matchup puro (No-Lvl, basato solo sui mazzi) non cambia in modo significativo.
 
-- dopo una serie di sconfitte → aumento significativo di matchup favorevoli
-- dopo una serie di vittorie → aumento di matchup sfavorevoli
+**POSSIBILI SPIEGAZIONI E ANALISI DI ESCLUSIONE**
 
-I test sul “debito e credito” non mostrano questo comportamento.
+1. #### CAMBIO META RAPIDO
+    Dai test precedenti sappiamo che:
+    * META RANGES → alcune fasce di 200 trofei hanno matchup medi molto diversi (Kruskal-Wallis) significativo
+    * MICRO META → anche in bucket da 150 trofei compaiono carte dominanti anomale (>2σ)
+    
+    L’indice di transizione mostra che il meta può cambiare anche bruscamente tra bucket adiacenti
+    
+    Quindi era assolutamente plausibile che:
+    > Dopo una vittoria o sconfitta, lo spostamento di trofei potesse far entrare il player in un micro-meta diverso, spiegando il cambio di difficoltà.
 
-Si osserva piuttosto una **regressione verso la media**, cioè un ritorno graduale alla distribuzione normale dei matchup, senza picchi anomali che indichino un intervento dell’algoritmo per “restituire” una vittoria o imporre una sconfitta.
+    Perché non spiega il risultato Debt/Credit
+    Nel test Debt/Credit:
+    * Le partite confrontate sono consecutive
+    * Delta trofei medio ≈ 30
+    * Questo spostamento è molto inferiore ai bucket dove osserviamo veri cambi meta (150–200 trofei)
 
-Questo è compatibile con un sistema **statistico e non manipolativo**.
+    Inoltre:
+    * Il cambiamento osservato è forte nel Level Diff
+    * Ma debole o non significativo nel Matchup No-Lvl
 
-### **2. Aumento dei pity odds ai trofei alti: effetto strutturale, non artificiale**
+    Se fosse un cambio meta:
 
-La correlazione positiva tra pity odds e trofei, inizialmente controintuitiva, trova una spiegazione nella **struttura della ladder alta**:
+    | Variabile | Dovrebbe cambiare | Osservato |
+    | :-- | :-- | :-- |
+    | Matchup No-Lvl |	✔️ SÌ	| ❌ Debole |
+    | Level Diff | ❌ Non necessariamente | ✔️ Forte |
 
-- varianza dei livelli molto bassa
-- skill dei giocatori simile
-- meta stabile ma polarizzato (forti relazioni di counter tra archetipi)
+    *Il pattern osservato è incoerente con un semplice cambio meta*
 
-In questo contesto, il risultato delle partite dipende molto più dal **matchup tra deck** che da errori o differenze di livello. Questo amplifica la probabilità di:
 
-- matchup estremamente favorevoli
-- matchup estremamente sfavorevoli
-- streak naturali di vittorie o sconfitte
+2. #### FATTORI TEMPORALI (ORARIO / POOL ATTIVI)
+    Dai test sui fattori confondenti sappiamo che:
+    * Il matchup medio varia con l’orario
+    * Anche il Level Diff medio cambia a seconda della fascia oraria
+    * Questo è coerente con pool di giocatori diversi (casual vs hardcore)
+    
+    Quindi era plausibile che:
+    > Dopo una partita, il cambio orario o di pool potesse spiegare il cambiamento nel matchup.
 
-Si tratta quindi di un effetto **emergente dalla competitività del meta**, non di un intervento del sistema per creare difficoltà artificiali.
+    Perché non spiega il risultato
+    Nel Debt/Credit:
+    * Le partite analizzate sono intra-sessione
+    * Delta time < 20 minuti
+    
+    In 20 minuti:
+    * Il pool attivo non cambia in modo drastico
+    * I test sugli orari mostrano differenze tra fasce orarie ampie, non su finestre così brevi
+
+    Inoltre:
+    * I fattori temporali influenzano matchup e livelli in modo simile
+    * Nel Debt/Credit vediamo un effetto molto più forte sui livelli
+    
+    *L’effetto temporale è troppo lento e troppo simmetrico per spiegare il pattern osservato*
+
+3. #### CLIMBING IMPACT (EFFETTO SALITA TROFEI)
+    Dai test:
+    * Il matchup medio peggiora salendo di trofei
+    * Il Level Diff tende a diventare più negativo
+    * Il Paywall Impact mostra che la progressione livelli crea svantaggi crescenti
+    
+    Quindi era logico pensare:
+    > Dopo una vittoria, salendo di trofei, il sistema trovi avversari con livelli più alti.
+
+    Perché non basta a spiegare il fenomeno
+    Abbiamo confrontato:
+    * Delta Level Diff osservato post-match
+    * Delta atteso dalla regressione Level Diff vs Trofei
+
+    Risultato:
+    * Il climbing spiega una frazione minima dell’effetto osservato (≈ 2–3%)
+    
+    Inoltre:
+    * La varianza livelli è bassa
+    * La % di 0 diff è alta
+    * Salire di 30 trofei non sposta abbastanza la distribuzione
+
+    *Il climbing contribuisce, ma non può generare variazioni così brusche tra due partite consecutive*
+
+4. #### LVL SATURATION (POOL PIÙ MAXATI)
+    Ai trofei alti:
+    * I giocatori tendono a essere più maxati
+    * La distribuzione livelli è più compressa
+    * Questo può cambiare la probabilità di incontrare svantaggi
+
+    Perché non basta
+    La saturazione:
+    * È un fenomeno graduale
+    * Non cambia drasticamente tra due partite consecutive
+    * Non spiega perché il cambio avvenga subito dopo uno specifico esito
+
+
+**IMPLICAZIONE FINALE**
+
+Poiché le spiegazioni strutturali e statistiche vengono escluse dai test, l'ipotesi più plausibile è l'esistenza di un **meccanismo di matchmaking nascosto** che tiene traccia delle vittorie "contro pronostico" e le "punisce" nella partita successiva aumentando la difficoltà tramite i livelli delle carte avversarie (un "debito" di MMR/rating).
+
+**ESECUZIONE**
+`debt_credit_combined_results.txt`
+
+2. ### QUALITÀ DELLA SCONFITTA (DEFEAT QUALITY)
+
+**IPOTESI**
+Il modo in cui si perde influenza la reazione del sistema. Una sconfitta netta e frustrante (0-3) dovrebbe attivare un meccanismo di "pity" (compassione) più forte rispetto a una sconfitta combattuta.
+
+**TEST**
+Confronta il matchup della partita successiva dopo una sconfitta "Crushing" (0-3) rispetto a una "Close" (differenza di 1 corona).
+
+**RISULTATO**
+L'ipotesi è **smentita**. Una sconfitta 0-3 porta a un **matchup successivo peggiore** (48.07%) rispetto a una sconfitta combattuta (50.66%).
+Il Delta è -2.60%.
+
+**IMPLICAZIONE**
+Non esiste un meccanismo di "Pity" basato sulla gravità della sconfitta. Farsi "asfaltare" non garantisce aiuti; al contrario, il sistema sembra ignorare la frustrazione derivante dal punteggio, o addirittura penalizzare ulteriormente (forse interpretando il 0-3 come gap di skill non colmato).
+
+**ESECUZIONE**
+`defeat_quality_impact_results.txt`
+
 
 ---
 
-### **3. Percezione della “losing queue” e assenza di evidenze statistiche**
 
-L’idea di una “losing queue” — una coda separata per i giocatori in losing streak — è diffusa nella community, ma:
 
-- non esistono conferme ufficiali da parte di Supercell
-- nei dati analizzati non emerge alcuna struttura compatibile con code distinte o con un algoritmo che modifica sistematicamente la difficoltà in base alle sconfitte recenti
+## CONCLUSIONI GENERALI
 
-Se una losing queue fosse attiva, si osserverebbero:
+L’insieme dei test condotti permette di distinguere in modo piuttosto netto tra:
 
-- forti dipendenze tra risultato precedente e difficoltà del matchup successivo
-- distribuzioni dei matchup diverse dopo win streak e loss streak
+percezioni soggettive dei giocatori
 
-Questi segnali non compaiono in modo statisticamente significativo.
+fenomeni strutturali del meta e della progressione
 
----
+possibili dinamiche nascoste del sistema di matchmaking
 
-### **4. Il sistema è “rigged”?**
+L’analisi non supporta l’idea di un sistema EOMM classico orientato alla retention emotiva nel breve periodo, ma evidenzia comunque che il matchmaking osservato è più complesso e meno “memoryless” di quanto dichiarato ufficialmente.
 
-Alla luce dei risultati, il matchmaking **non appare “rigged” nel senso di manipolare gli esiti per far perdere o vincere intenzionalmente un giocatore**.
+❌ Assenza di prove a favore di un EOMM “classico”
 
-Tuttavia, è corretto affermare che:
+I test tipici per individuare un sistema orientato alla retention (streak break, pity post-quit, compensazioni tra sessioni, riduzione delle sequenze frustranti, aumento engagement dopo pity) mostrano risultati coerenti:
 
-✔ Il sistema **decide contro chi si gioca**
+Nessuna compensazione sistematica dopo losing streak
 
-✔ Ma lo fa principalmente sulla base di **trofei, disponibilità di giocatori e vincoli di matchmaking**, non sull’obiettivo di controllare l’esito emotivo delle partite
+Nessun miglioramento al ritorno dopo una sessione negativa
 
-Le sensazioni di partite “impossibili” o “regalate” derivano in larga parte da:
+Nessuna riduzione delle sequenze che causano più quit
 
-- polarizzazione del meta
-- natura ciclica dei counter tra archetipi
-- riduzione della varianza ai trofei alti
-- normale varianza statistica delle sequenze di eventi
+Nessun effetto consistente dei pity sull’allungamento delle sessioni o sul ritorno
 
----
+👉 Non emerge un sistema che “aggiusta” le partite per trattenere attivamente il giocatore nel breve periodo.
 
-## **Conclusione finale**
+Il comportamento osservato è molto più vicino a un sistema strutturale e statistico che a un controllo dinamico dell’esperienza emotiva.
 
-I pattern osservati nel matchmaking di Clash Royale sono compatibili con un sistema **competitivo basato su abbinamento per trofei e meta**, in cui le streak e i matchup estremi emergono come conseguenza della struttura del gioco e della distribuzione degli archetipi, non come risultato di una manipolazione dinamica dell’esperienza del giocatore.
+⚙️ Molti fenomeni percepiti come “rigging” sono spiegabili senza EOMM
 
-In base alle evidenze raccolte, **non si può affermare che il sistema utilizzi un EOMM o una “losing queue” per pilotare vittorie e sconfitte**. Le fluttuazioni nella difficoltà percepita sono spiegabili attraverso dinamiche statistiche e strutturali tipiche degli ambienti competitivi ad alta ottimizzazione.
+Diversi risultati mostrano che molte lamentele dei player hanno basi reali, ma cause strutturali:
 
----
+🔹 Meta Ranges e Micro-Meta
+
+Il meta cambia in modo significativo tra fasce di trofei anche vicine.
+Questo crea:
+
+zone naturalmente più ostili a certi mazzi
+
+ondate di counter
+
+streak di matchup negativi senza alcuna manipolazione
+
+🔹 Climbing Impact
+
+Salendo di trofei:
+
+aumentano skill media e livelli medi
+
+aumenta la dipendenza dal matchup
+
+peggiorano le condizioni medie
+
+Questo genera la sensazione di “il gioco mi blocca”, ma è una conseguenza della progressione, non una punizione dinamica.
+
+🔹 Punishment Trade-Off (No Double Whammy)
+
+Il sistema tende a non combinare contemporaneamente matchup e livelli sfavorevoli.
+Questo comportamento è più compatibile con un matchmaking bilanciato che con un sistema punitivo.
+
+⚠️ Il sistema NON è completamente memoryless
+
+I test sulle catene di Markov e sulle streak mostrano che:
+
+I matchup consecutivi non sono completamente indipendenti
+
+Le streak si concentrano in specifiche sessioni
+
+Esistono “finestre meta” dove certe condizioni persistono
+
+Questo indica che il matchmaking reale:
+
+non è puro random
+
+non è solo funzione dei trofei istantanei
+
+risente della struttura del pool di giocatori attivi e della segmentazione del meta
+
+👉 È un sistema strutturato e segmentato, ma non necessariamente orientato alla manipolazione emotiva.
+
+🔍 L’anomalia principale: Debt / Credit
+
+Il test Debt/Credit è l’unico che mostra un pattern coerente, significativo e difficile da spiegare solo con fattori noti:
+
+Vincere un matchup sfavorevole → partita successiva con livelli peggiori
+
+Perdere un matchup sfavorevole → partita successiva più neutra
+
+Effetto concentrato sui livelli, non sui matchup puri
+
+Magnitudine non spiegabile da:
+
+climbing naturale
+
+meta shift
+
+orario
+
+varianza livelli
+
+regressione verso la media (spiega la direzione, non l’ampiezza)
+
+Questo non prova un EOMM, ma suggerisce che il sistema:
+
+non sia basato unicamente su trofei e livello del Re, come dichiarato.
+
+La spiegazione più prudente è l’esistenza di una variabile di rating o segmentazione nascosta che influenza indirettamente la distribuzione dei livelli degli avversari.
+
+🎯 Conclusione Finale
+
+Dai dati emerge che:
+
+✔ Il matchmaking non mostra comportamenti tipici di un EOMM orientato alla retention emotiva
+✔ Molte percezioni di “gioco contro il giocatore” derivano da meta locali, progressione strutturale e segmentazione del pool
+✔ Il sistema appare progettato per mantenere una certa equità strutturale (no double whammy)
+
+MA
+
+⚠️ Non è compatibile con un modello puramente basato su trofei e livello torre, poiché:
+
+esiste memoria statistica tra match consecutivi
+
+esistono variazioni nei livelli avversari non spiegabili dal solo climbing
+
+il fenomeno Debt/Credit indica una struttura di rating o pooling non osservabile direttamente
