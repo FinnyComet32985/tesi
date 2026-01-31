@@ -205,6 +205,7 @@ def _print_profile_advanced(profile, tag, file):
         'num_sessions': 'Numero Sessioni',
         'avg_session_min': 'Durata Media Sess. (min)',
         'matches_per_session': 'Partite per Sessione',
+        'winrate': 'Winrate (%)',
         'avg_matchup_pct': 'Matchup Medio (%)',
         'avg_matchup_no_lvl_pct': 'Matchup No-Lvl (%)',
         'avg_level_diff': 'Level Diff Medio',

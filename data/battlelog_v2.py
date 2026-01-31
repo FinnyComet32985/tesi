@@ -375,6 +375,8 @@ def calculate_profile_from_sessions(sessions):
     # Affidabilità statistica
     is_reliable = total_battles > 50 # and matches_per_session > 2
 
+    winrate = total_wins / total_battles if total_battles > 0 else 0.0
+
     return {
         'total_matches': total_battles,
         'num_sessions': len(sessions),
@@ -387,6 +389,7 @@ def calculate_profile_from_sessions(sessions):
         'max_loss_streak_tolerated': max_loss_streak_tolerated,
         'win_continuation_rate': round(win_continuation_rate * 100, 1),
         'loss_continuation_rate': round(loss_continuation_rate * 100, 1),
+        'winrate': round(winrate * 100, 1),
         'avg_matchup_pct': round(avg_matchup, 2),
         'avg_matchup_no_lvl_pct': round(avg_matchup_no_lvl, 2),
         'avg_level_diff': round(avg_level_diff, 2),
