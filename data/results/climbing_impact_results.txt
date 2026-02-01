@@ -4,21 +4,21 @@ Obiettivo: Verificare se salire di trofei porta naturalmente a condizioni peggio
 
 --- 1. MATCHUP (Reale) ---
 Player Analizzati: 39
-Correlazione Media (Spearman): -0.0732
+Correlazione Media (Spearman): -0.0762
 Significativi Positivi (p<0.05): 5
-Significativi Negativi (p<0.05): 12
+Significativi Negativi (p<0.05): 11
 ----------------------------------------
 --- 2. MATCHUP NO-LVL (Deck) ---
 Player Analizzati: 39
-Correlazione Media (Spearman): -0.0388
-Significativi Positivi (p<0.05): 2
+Correlazione Media (Spearman): -0.0405
+Significativi Positivi (p<0.05): 3
 Significativi Negativi (p<0.05): 5
 ----------------------------------------
 --- 3. LEVEL DIFF ---
 Player Analizzati: 39
-Correlazione Media (Spearman): -0.0291
+Correlazione Media (Spearman): -0.0324
 Significativi Positivi (p<0.05): 6
-Significativi Negativi (p<0.05): 12
+Significativi Negativi (p<0.05): 13
 ----------------------------------------
 INTERPRETAZIONE:
 1. Correlazione Negativa su Matchup: Salendo trovi counter.

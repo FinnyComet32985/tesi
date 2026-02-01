@@ -1,0 +1,14 @@
+ANALISI MATCH SWAP (PSEUDO A/B TESTING) - LADDER
+Obiettivo: Verificare se gli avversari di una sessione 'Positiva' sono più facili per un mazzo che era in una sessione 'Negativa'.
+Metodo: Per ogni match in sessione Negativa, si trova un match 'gemello' in una sessione Positiva (stessi trofei, ora, regione, wr, livelli).
+        Si calcola il matchup ipotetico del mazzo 'sfortunato' contro l'avversario 'fortunato'.
+================================================================================
+
+Campione: 221 coppie di match.
+Matchup Medio REALE (in Sessione Negativa):      40.46%
+Matchup Medio IPOTETICO (vs Opponent Fortunato): 57.22%
+Delta (Ipotetico - Reale):                       +16.75%
+P-value (T-Test Paired): 0.0000
+RISULTATO: SIGNIFICATIVO. Gli avversari delle sessioni positive sono più facili.
+-> EVIDENZA DI TARGETING: Il pool di avversari non è uniforme, ma dipende dallo stato (Neg/Pos) del giocatore.
+================================================================================

@@ -8,50 +8,52 @@ Transition: 1 - Jaccard Index (Top 15 Cards) rispetto al bucket precedente.
 ----------------------------------------------------------------------------------------------------
 BUCKET          | N. DECKS | TRANSITION | DOMINANT CARDS (Anomalie)
 ----------------------------------------------------------------------------------------------------
-4650-4800       | 86       | 0.00       | Sparky (+2.5σ), Mini P.E.K.K.A (+3.1σ), Prince (+2.3σ), Vines (+2.7σ), Witch (+2.1σ)
-4800-4950       | 100      | 0.33       | Sparky (+2.5σ), Goblin Hut (+2.9σ), Graveyard (+2.0σ), Poison (+2.8σ), X-Bow (+3.1σ)
-4950-5100       | 95       | 0.50       | Minions (+2.3σ), P.E.K.K.A (+2.5σ), Poison (+2.3σ), Goblin Machine (+2.1σ), Hunter (+2.7σ)
-5100-5250       | 173      | 0.50       | Graveyard (+2.4σ), Goblin Curse (+2.1σ), Goblin Hut (+2.7σ), Lava Hound (+2.0σ)
-5250-5400       | 117      | 0.12       | Prince (+2.2σ)
-5400-5550       | 140      | 0.12       | Mini P.E.K.K.A (+2.1σ), Tombstone (+2.7σ)
-5550-5700       | 152      | 0.33       | 
-5700-5850       | 103      | 0.24       | Goblin Curse (+2.2σ), Goblin Giant (+2.4σ), Sparky (+2.1σ), Skeleton King (+2.9σ), Goblins (+2.8σ)
-5850-6000       | 151      | 0.42       | Bomb Tower (+2.5σ), Zappies (+2.1σ)
-6000-6150       | 104      | 0.24       | Royal Ghost (+2.2σ), Bandit (+3.1σ), Dark Prince (+2.9σ), Executioner (+2.1σ), Goblin Cage (+2.4σ)
-6150-6300       | 172      | 0.42       | Battle Ram (+2.2σ), Heal Spirit (+2.5σ), Mother Witch (+2.5σ), Rage (+2.5σ), Zappies (+2.9σ)
-6300-6450       | 231      | 0.42       | 
+4650-4800       | 86       | 0.00       | Sparky (+2.6σ), Mini P.E.K.K.A (+3.1σ), Prince (+2.2σ), Vines (+2.5σ), Witch (+2.0σ)
+4800-4950       | 100      | 0.33       | Royal Ghost (+2.1σ), Sparky (+2.6σ), Goblin Hut (+2.9σ), Poison (+2.9σ), X-Bow (+3.3σ)
+4950-5100       | 95       | 0.50       | Minions (+2.2σ), P.E.K.K.A (+2.5σ), Poison (+2.4σ), Goblin Machine (+2.2σ), Hunter (+2.8σ)
+5100-5250       | 173      | 0.50       | Graveyard (+2.2σ), Goblin Curse (+2.1σ), Goblin Hut (+2.8σ)
+5250-5400       | 117      | 0.12       | Prince (+2.1σ)
+5400-5550       | 142      | 0.12       | Mini P.E.K.K.A (+2.1σ), Tombstone (+2.4σ)
+5550-5700       | 157      | 0.24       | Skeleton Army (+2.1σ)
+5700-5850       | 103      | 0.24       | Goblin Curse (+2.3σ), Goblin Giant (+2.5σ), Sparky (+2.2σ), Skeleton King (+3.0σ), Goblins (+2.8σ)
+5850-6000       | 151      | 0.42       | Bomb Tower (+2.8σ), Zappies (+2.2σ)
+6000-6150       | 118      | 0.12       | Bandit (+2.5σ), Dark Prince (+2.4σ)
+6150-6300       | 172      | 0.33       | Battle Ram (+2.2σ), Heal Spirit (+2.6σ), Mother Witch (+2.5σ), Rage (+2.6σ), Zappies (+3.1σ)
+6300-6450       | 231      | 0.42       | Skeleton King (+2.0σ)
 6450-6600       | 339      | 0.33       | 
 6600-6750       | 174      | 0.33       | 
-6750-6900       | 64       | 0.50       | Ice Wizard (+3.3σ), Baby Dragon (+2.1σ), Inferno Dragon (+3.2σ), Mighty Miner (+3.9σ), Rascals (+3.9σ)
-6900-7050       | 123      | 0.42       | Berserker (+2.1σ), Royal Hogs (+2.0σ)
-7050-7200       | 73       | 0.42       | Barbarians (+2.7σ), Baby Dragon (+2.7σ), Bats (+2.5σ), Golem (+2.1σ), Night Witch (+2.7σ)
-7200-7350       | 91       | 0.50       | Archers (+2.5σ), Cannon (+2.2σ), Bomber (+2.3σ), Royal Delivery (+3.0σ), Archer Queen (+3.6σ)
-7500-7650       | 193      | 0.42       | Wall Breakers (+2.1σ), Electro Dragon (+3.9σ), Tornado (+2.5σ), Golem (+2.5σ), Battle Healer (+2.5σ)
-7650-7800       | 208      | 0.50       | Void (+2.1σ)
-7800-7950       | 65       | 0.42       | Electro Wizard (+2.4σ), Guards (+2.3σ), Goblin Machine (+2.5σ), Barbarians (+3.2σ)
+6750-6900       | 64       | 0.50       | Ice Wizard (+3.4σ), Baby Dragon (+2.1σ), Inferno Dragon (+3.3σ), Mighty Miner (+3.7σ), Rascals (+3.3σ)
+6900-7050       | 123      | 0.42       | Royal Hogs (+2.1σ)
+7050-7200       | 73       | 0.42       | Barbarians (+2.6σ), Electro Dragon (+2.1σ), Baby Dragon (+2.8σ), Bats (+2.5σ), Golem (+2.2σ)
+7200-7350       | 91       | 0.50       | Archers (+2.6σ), Cannon (+2.3σ), Bomber (+2.2σ), Royal Delivery (+3.1σ), Archer Queen (+3.7σ)
+7350-7500       | 57       | 0.57       | Arrows (+2.3σ), Ram Rider (+2.5σ), Valkyrie (+2.2σ), Executioner (+3.4σ), Guards (+2.0σ)
+7500-7650       | 199      | 0.57       | Electro Dragon (+3.9σ), Tornado (+2.3σ), Golem (+2.4σ), Battle Healer (+2.4σ), Night Witch (+2.8σ)
+7650-7800       | 208      | 0.50       | 
+7800-7950       | 71       | 0.42       | Electro Wizard (+2.4σ), Goblin Barrel (+2.1σ), The Log (+2.0σ), Goblin Machine (+2.2σ), Barbarians (+3.2σ)
 8400-8550       | 91       | 0.33       | Guards (+2.0σ)
-8550-8700       | 68       | 0.33       | Cannon (+2.1σ), Wizard (+2.9σ), Boss Bandit (+2.6σ), Goblins (+3.9σ), Archer Queen (+2.4σ)
-8850-9000       | 66       | 0.24       | Clone (+2.1σ), Goblin Gang (+2.1σ)
-9150-9300       | 98       | 0.24       | Dart Goblin (+2.2σ), Tesla (+2.7σ), Cannon (+2.5σ), Ice Golem (+2.1σ), Executioner (+2.4σ)
-9300-9450       | 79       | 0.12       | Zap (+2.5σ), Prince (+2.3σ), Firecracker (+2.0σ), Giant Snowball (+2.0σ)
-9450-9600       | 134      | 0.33       | Elite Barbarians (+2.5σ), Giant Snowball (+2.4σ), Balloon (+2.8σ), Freeze (+2.5σ), Elixir Collector (+2.0σ)
+8550-8700       | 68       | 0.33       | Cannon (+2.2σ), Wizard (+2.7σ), Boss Bandit (+2.5σ), Goblins (+4.0σ), Archer Queen (+2.5σ)
+8850-9000       | 66       | 0.24       | Goblin Gang (+2.1σ)
+9150-9300       | 104      | 0.24       | Dart Goblin (+2.4σ), Tesla (+2.6σ), Cannon (+2.2σ), Knight (+2.1σ), Executioner (+2.1σ)
+9300-9450       | 84       | 0.12       | Zap (+2.0σ), Minion Horde (+2.1σ), Giant Skeleton (+2.3σ)
+9450-9600       | 134      | 0.33       | Elite Barbarians (+2.5σ), Giant Snowball (+2.7σ), Balloon (+2.6σ), Freeze (+2.5σ), Elixir Golem (+2.5σ)
 9600-9750       | 155      | 0.24       | Miner (+2.6σ)
-9750-9900       | 189      | 0.12       | Bomber (+2.1σ), Little Prince (+2.1σ)
-9900-10050      | 132      | 0.12       | Rocket (+3.6σ), The Log (+2.3σ), Fireball (+2.3σ), Cannon (+2.0σ)
-10050-10200     | 289      | 0.24       | 
-10200-10350     | 247      | 0.12       | Dart Goblin (+2.9σ)
-10350-10500     | 299      | 0.12       | Royal Giant (+2.1σ), Royal Chef (+2.7σ), Rune Giant (+2.5σ), Goblin Drill (+2.2σ)
-10500-10650     | 460      | 0.12       | Goblinstein (+2.3σ)
-10650-10800     | 346      | 0.12       | 
-10800-10950     | 275      | 0.12       | 
-10950-11100     | 216      | 0.12       | 
-11100-11250     | 188      | 0.12       | Cannoneer (+2.3σ), Earthquake (+2.5σ), Elixir Collector (+2.7σ)
-11250-11400     | 352      | 0.24       | 
-11400-11550     | 126      | 0.12       | Ram Rider (+2.1σ), Suspicious Bush (+2.7σ), Bomb Tower (+2.6σ)
-11550-11700     | 167      | 0.24       | Musketeer (+2.2σ), Fisherman (+2.5σ), Dagger Duchess (+2.1σ), Royal Recruits (+3.0σ), Giant (+2.9σ)
-11700-11850     | 114      | 0.42       | Inferno Tower (+2.2σ), Skeleton Barrel (+2.7σ), Furnace (+3.0σ), Royal Chef (+2.2σ), Flying Machine (+3.7σ)
-11850-12000     | 99       | 0.33       | Tornado (+2.5σ), Fireball (+2.3σ), X-Bow (+3.1σ), Night Witch (+2.2σ), Suspicious Bush (+2.0σ)
-12000-12150     | 144      | 0.24       | Electro Spirit (+2.6σ), Furnace (+2.6σ), Fire Spirit (+3.1σ), Mirror (+2.5σ), Hunter (+2.6σ)
+9750-9900       | 189      | 0.12       | Bomber (+2.1σ), Little Prince (+2.4σ)
+9900-10050      | 140      | 0.12       | Rocket (+3.3σ), Fireball (+2.2σ)
+10050-10200     | 301      | 0.12       | 
+10200-10350     | 252      | 0.12       | Dart Goblin (+2.8σ)
+10350-10500     | 299      | 0.12       | Royal Giant (+2.1σ), Royal Chef (+2.7σ), Rune Giant (+2.3σ), Goblin Drill (+2.2σ)
+10500-10650     | 471      | 0.00       | Goblinstein (+2.2σ)
+10650-10800     | 354      | 0.12       | Flying Machine (+2.0σ)
+10800-10950     | 275      | 0.24       | 
+10950-11100     | 207      | 0.33       | Elixir Collector (+2.4σ), Electro Giant (+2.0σ)
+11100-11250     | 180      | 0.33       | Cannoneer (+2.7σ), Giant (+2.8σ), Earthquake (+2.6σ)
+11250-11400     | 330      | 0.12       | 
+11400-11550     | 156      | 0.24       | Musketeer (+2.5σ), Balloon (+2.5σ), Wall Breakers (+2.1σ), Royal Chef (+2.0σ), Skeleton Barrel (+2.2σ)
+11550-11700     | 169      | 0.24       | Fisherman (+2.1σ), Spirit Empress (+2.7σ)
+11700-11850     | 113      | 0.42       | Ice Spirit (+2.2σ), Skeleton Barrel (+2.1σ), Furnace (+2.7σ), Flying Machine (+3.8σ), Giant Skeleton (+2.2σ)
+11850-12000     | 95       | 0.33       | Dagger Duchess (+3.2σ), Bats (+2.4σ), Tornado (+2.3σ), Rocket (+2.2σ), Spirit Empress (+2.1σ)
+12000-12150     | 132      | 0.24       | Rascals (+3.2σ), Electro Spirit (+3.4σ), Fire Spirit (+3.3σ), Mirror (+2.0σ), Ice Golem (+2.3σ)
+12150-12300     | 76       | 0.24       | Electro Spirit (+2.3σ), Furnace (+2.8σ), Lightning (+2.4σ), Valkyrie (+2.9σ), Zap (+2.1σ)
 
 ================================================================================
 2. COEFFICIENTE DI OSTILITÀ (Hostility Coefficient)
@@ -60,34 +62,35 @@ Hostility = Global_Avg_MU - Local_Avg_MU (Positivo = Ostile).
 --------------------------------------------------------------------------------
 BUCKET          | AVG HOSTILITY   | STATUS
 --------------------------------------------------------------------------------
-4950-5100       | -0.22           | NEUTRAL
-5100-5250       | -0.79           | NEUTRAL
-5250-5400       | -0.26           | NEUTRAL
-5400-5550       | -1.83           | NEUTRAL
-5550-5700       | +0.25           | NEUTRAL
-9600-9750       | +0.63           | NEUTRAL
-9750-9900       | -0.15           | NEUTRAL
-9900-10050      | +2.91           | HOSTILE (Gatekeeping?)
-10050-10200     | -0.09           | NEUTRAL
-10200-10350     | -0.43           | NEUTRAL
-10350-10500     | -2.04           | FRIENDLY (Boost?)
-10500-10650     | -1.07           | NEUTRAL
-10650-10800     | -0.13           | NEUTRAL
-10800-10950     | +0.68           | NEUTRAL
-10950-11100     | -0.08           | NEUTRAL
-11100-11250     | +0.91           | NEUTRAL
-11250-11400     | -0.00           | NEUTRAL
-11400-11550     | +0.28           | NEUTRAL
-11550-11700     | +0.90           | NEUTRAL
-11700-11850     | +2.52           | HOSTILE (Gatekeeping?)
+4950-5100       | -0.36           | NEUTRAL
+5100-5250       | -0.93           | NEUTRAL
+5250-5400       | -0.40           | NEUTRAL
+5400-5550       | -1.99           | NEUTRAL
+5550-5700       | +1.95           | NEUTRAL
+7500-7650       | -0.29           | NEUTRAL
+9600-9750       | +0.54           | NEUTRAL
+9750-9900       | -0.25           | NEUTRAL
+9900-10050      | +2.94           | HOSTILE (Gatekeeping?)
+10050-10200     | -0.02           | NEUTRAL
+10200-10350     | -0.39           | NEUTRAL
+10350-10500     | -2.00           | FRIENDLY (Boost?)
+10500-10650     | -1.03           | NEUTRAL
+10650-10800     | -0.11           | NEUTRAL
+10800-10950     | +1.27           | NEUTRAL
+10950-11100     | -0.53           | NEUTRAL
+11100-11250     | -0.87           | NEUTRAL
+11250-11400     | +0.53           | NEUTRAL
+11400-11550     | +0.19           | NEUTRAL
+11550-11700     | +1.35           | NEUTRAL
+11700-11850     | +2.36           | HOSTILE (Gatekeeping?)
 
 ================================================================================
 3. ANALISI POSIZIONE STREAK (Gatekeeping ai Confini)
 Dove iniziano le serie di sconfitte (>=3) all'interno del bucket?
 --------------------------------------------------------------------------------
-Totale Streak Analizzate: 373
-Early Bucket (0-30):   82 (Densità: 2.73)
-Mid Bucket   (30-120): 227 (Densità: 2.52)
+Totale Streak Analizzate: 383
+Early Bucket (0-30):   85 (Densità: 2.83)
+Mid Bucket   (30-120): 234 (Densità: 2.60)
 Late Bucket  (120-150): 64 (Densità: 2.13)
 RISULTATO: DISTRIBUZIONE UNIFORME.
 ================================================================================

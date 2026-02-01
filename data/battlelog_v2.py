@@ -514,7 +514,7 @@ def load_player_details(cursor, tag):
         cursor.execute("SELECT trophies, nationality FROM players WHERE player_tag = ?", (tag,))
         row = cursor.fetchone()
         if row:
-            return {'trophies': row[0], 'nationality': row[1]}
+            return {'trophies': row[0] if row[0] is not None else 0, 'nationality': row[1]}
     except Exception:
         pass
     return {'trophies': 0, 'nationality': None}

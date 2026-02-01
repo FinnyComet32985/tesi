@@ -1,0 +1,28 @@
+ANALISI SESSION SWAP CONDIZIONALE (LADDER)
+Obiettivo: Confrontare sessioni con esiti specifici (Neg/Pos) tra giocatori con mazzi DIVERSI.
+Definizioni: Neg < 45.0%, Pos > 55.0%.
+Vincoli: Stessa Regione, Stessa Settimana, Stesso Slot Orario (4h), Stessa Fascia Trofei (500).
+Diff Deck: Shared Cards <= 2 AND No Shared Win Conditions.
+====================================================================================================
+
+--- Negative vs Negative (Diff Deck) ---
+Dati insufficienti.
+
+--- Positive vs Positive (Diff Deck) ---
+Campione: 9 coppie.
+Matchup Reale (Player A):      59.65%
+Matchup Ipotetico (A vs Opp B): 55.97%
+Delta (Reale - Ipotetico):      +3.67%
+P-value (Paired T-Test): 0.1022
+RISULTATO: NON SIGNIFICATIVO. Gli avversari sembrano intercambiabili.
+
+--- Negative vs Positive (Diff Deck) ---
+Campione: 6 coppie.
+Matchup Reale (Player A):      43.68%
+Matchup Ipotetico (A vs Opp B): 48.74%
+Delta (Reale - Ipotetico):      -5.06%
+P-value (Paired T-Test): 0.0183
+RISULTATO: SIGNIFICATIVO.
+-> RIGGED. A è stato punito con counter specifici, mentre B aveva avversari facili.
+
+====================================================================================================

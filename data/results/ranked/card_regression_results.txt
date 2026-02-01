@@ -1,0 +1,35 @@
+REGRESSIONE LINEARE (Linear Probability Model)
+Formula: Has_Card ~ Archetype + Recent_Winrate + Trophies + Hour + Region
+Obiettivo: Vedere se l'Archetype è un predittore significativo della carta avversaria, al netto di altri fattori.
+====================================================================================================
+
+--- TARGET: Tower Princess ---
+R-squared: 0.0031
+Coefficienti Significativi (p < 0.05) per Archetipi:
+  Nessun archetipo influenza significativamente questa carta.
+
+----------------------------------------------------------------------------------------------------
+--- TARGET: The Log ---
+R-squared: 0.0257
+Coefficienti Significativi (p < 0.05) per Archetipi:
+  C(archetype)[T.a479e13a53677f47a3dbd92695c48e0af6f8a6c8f2cbf0715a2edd7434134f8f] | Coeff: -0.1018 | p=0.0445
+
+----------------------------------------------------------------------------------------------------
+--- TARGET: Skeletons ---
+R-squared: 0.0071
+Coefficienti Significativi (p < 0.05) per Archetipi:
+  Nessun archetipo influenza significativamente questa carta.
+
+----------------------------------------------------------------------------------------------------
+--- TARGET: Arrows ---
+R-squared: 0.0092
+Coefficienti Significativi (p < 0.05) per Archetipi:
+  Nessun archetipo influenza significativamente questa carta.
+
+----------------------------------------------------------------------------------------------------
+--- TARGET: Fireball ---
+R-squared: 0.0024
+Coefficienti Significativi (p < 0.05) per Archetipi:
+  Nessun archetipo influenza significativamente questa carta.
+
+----------------------------------------------------------------------------------------------------

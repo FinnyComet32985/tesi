@@ -5,6 +5,7 @@ import statistics
 import os
 import numpy as np
 from scipy.stats import spearmanr, fisher_exact, chi2_contingency, kruskal, levene, mannwhitneyu, ttest_1samp, binomtest    
+from collections import defaultdict
 
 # Import data loader from battlelog_v2
 from battlelog_v2 import get_players_sessions
@@ -364,371 +365,6 @@ def analyze_extreme_matchup_streak(players_sessions, output_dir=None, use_no_lvl
 
         write_section(f"MATCHUP FAVOREVOLI (> {HIGH_THRESH}%)", obs_high_streaks, exp_high_theory, avg_global_high, avg_intra_high)
         write_section(f"MATCHUP SFAVOREVOLI (< {LOW_THRESH}%)", obs_low_streaks, exp_low_theory, avg_global_low, avg_intra_low)
-
-def analyze_confounding_factors(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'confounding_factors_results.txt')
-
-    print(f"\nGenerazione report fattori confondenti (Orario/Trofei/Deck) in: {output_file}")
-
-    # Configurazione Metriche
-    metrics_config = [
-        {'name': 'Matchup (Reale)', 'key': 'matchup', 'high': 80.0, 'low': 40.0},
-        {'name': 'Matchup (No-Lvl)', 'key': 'matchup_no_lvl', 'high': 80.0, 'low': 40.0},
-        {'name': 'Level Diff', 'key': 'level_diff', 'high': 0.5, 'low': -0.5}
-    ]
-    
-    STREAK_LEN = 3
-    TROPHY_BUCKET = 1000
-    time_slots = {0: "Notte (00-06)", 1: "Mattina (06-12)", 2: "Pomeriggio (12-18)", 3: "Sera (18-24)"}
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI FATTORI CONFONDENTI: ORARIO, TROFEI, DECK\n")
-        f.write("Obiettivo: Verificare se la probabilità di STREAK (serie di matchup estremi) dipende da fattori esterni.\n")
-        f.write("Ipotesi Nulla: Le streak sono distribuite uniformemente rispetto a orario, trofei e mazzo.\n")
-        f.write("="*80 + "\n\n")
-
-        for metric in metrics_config:
-            m_name = metric['name']
-            m_key = metric['key']
-            high_thresh = metric['high']
-            low_thresh = metric['low']
-            
-            f.write(f"{'='*80}\n")
-            f.write(f"METRICA: {m_name}\n")
-            f.write(f"Soglie Streak ({STREAK_LEN} match): High > {high_thresh}, Low < {low_thresh}\n")
-            f.write(f"{'='*80}\n\n")
-
-            # Reset Stats per metrica
-            time_stats = {k: {'total': 0, 'streak': 0} for k in time_slots}
-            trophy_stats = {} # bucket -> {'total': 0, 'streak': 0}
-            
-            deck_independence_count = 0
-            deck_total_tested = 0
-
-            for p in players_sessions:
-                nationality = p.get('nationality')
-                # Per analisi Deck del singolo player
-                # DeckID -> {'total': 0, 'streak': 0}
-                player_deck_stats = {}
-
-                for session in p['sessions']:
-                    battles = [b for b in session['battles'] if b['game_mode'] == 'Ladder' or b['game_mode'] == 'Ranked']
-                    if len(battles) < STREAK_LEN: continue
-
-                    for i in range(len(battles) - STREAK_LEN + 1):
-                        window = battles[i : i+STREAK_LEN]
-                        values = [b.get(m_key) for b in window]
-                        
-                        # Skip windows with missing values
-                        if any(v is None for v in values): continue
-
-                        # Dati finestra
-                        first_b = window[0]
-                        
-                        # --- TIME ---
-                        slot = None
-                        if 'timestamp' in first_b:
-                            h = get_local_hour(first_b['timestamp'], nationality)
-                            if 6 <= h < 12: slot = 1
-                            elif 12 <= h < 18: slot = 2
-                            elif 18 <= h < 24: slot = 3
-                            else: slot = 0
-
-                        # --- TROPHIES ---
-                        t = first_b.get('trophies_before')
-                        bucket = (t // TROPHY_BUCKET) * TROPHY_BUCKET if t else None
-
-                        # --- DECK ---
-                        deck_id = first_b.get('deck_id')
-
-                        # Determina se è Streak (High o Low)
-                        is_streak = all(v > high_thresh for v in values) or all(v < low_thresh for v in values)
-
-                        # Update Time
-                        if slot is not None:
-                            time_stats[slot]['total'] += 1
-                            if is_streak: time_stats[slot]['streak'] += 1
-                        
-                        # Update Trophies
-                        if bucket is not None:
-                            if bucket not in trophy_stats: trophy_stats[bucket] = {'total': 0, 'streak': 0}
-                            trophy_stats[bucket]['total'] += 1
-                            if is_streak: trophy_stats[bucket]['streak'] += 1
-
-                        # Aggiorna Deck Stats (Player)
-                        if deck_id:
-                            if deck_id not in player_deck_stats:
-                                player_deck_stats[deck_id] = {'total': 0, 'streak': 0}
-                            player_deck_stats[deck_id]['total'] += 1
-                            if is_streak:
-                                player_deck_stats[deck_id]['streak'] += 1
-
-                # Test Chi-Quadro Deck per il player corrente
-                # Consideriamo solo i top 3 mazzi per avere dati significativi
-                sorted_decks = sorted(player_deck_stats.items(), key=lambda x: x[1]['total'], reverse=True)[:3]
-                if len(sorted_decks) >= 2:
-                    # Costruiamo tabella contingenza: [[Streak_D1, NoStreak_D1], [Streak_D2, NoStreak_D2], ...]
-                    obs = []
-                    valid_decks = 0
-                    for d_id, stats in sorted_decks:
-                        if stats['total'] > 10: # Minimo 10 finestre per validità
-                            obs.append([stats['streak'], stats['total'] - stats['streak']])
-                            valid_decks += 1
-                    
-                    if valid_decks >= 2:
-                        deck_total_tested += 1
-                        try:
-                            chi2, p, dof, ex = chi2_contingency(obs)
-                            if p > 0.05:
-                                deck_independence_count += 1
-                        except ValueError:
-                            # Se fallisce (es. 0 streak totali), assumiamo indipendenza
-                            deck_independence_count += 1
-
-            # --- REPORTING PER METRICA ---
-
-            # 1. TIME
-            f.write("1. ANALISI ORARIA (Globale)\n")
-            f.write(f"{'Fascia Oraria':<25} | {'Tot Finestre':<15} | {'Streak':<10} | {'Rate %':<10}\n")
-            f.write("-" * 70 + "\n")
-            
-            time_obs = []
-            for slot in sorted(time_slots.keys()):
-                s = time_stats[slot]
-                rate = (s['streak'] / s['total'] * 100) if s['total'] > 0 else 0
-                f.write(f"{time_slots[slot]:<25} | {s['total']:<15} | {s['streak']:<10} | {rate:<10.2f}%\n")
-                if s['total'] > 0:
-                    time_obs.append([s['streak'], s['total'] - s['streak']])
-            
-            if len(time_obs) >= 2:
-                try:
-                    chi2, p, _, _ = chi2_contingency(time_obs)
-                    res = "DIPENDENTE (L'orario influisce)" if p < 0.05 else "INDIPENDENTE (L'orario NON influisce)"
-                    f.write(f"\nTest Chi-Quadro: p-value = {p:.4f} -> {res}\n")
-                except:
-                    f.write("\nTest Chi-Quadro: Errore (Dati insufficienti)\n")
-            f.write("\n")
-
-            # 2. TROPHIES
-            f.write("2. ANALISI TROFEI (Globale)\n")
-            f.write(f"{'Fascia Trofei':<25} | {'Tot Finestre':<15} | {'Streak':<10} | {'Rate %':<10}\n")
-            f.write("-" * 70 + "\n")
-            
-            trophy_obs = []
-            for bucket in sorted(trophy_stats.keys()):
-                s = trophy_stats[bucket]
-                if s['total'] < 50: continue # Skip low sample buckets
-                rate = (s['streak'] / s['total'] * 100) if s['total'] > 0 else 0
-                label = f"{bucket}-{bucket+TROPHY_BUCKET}"
-                f.write(f"{label:<25} | {s['total']:<15} | {s['streak']:<10} | {rate:<10.2f}%\n")
-                trophy_obs.append([s['streak'], s['total'] - s['streak']])
-                
-            if len(trophy_obs) >= 2:
-                try:
-                    chi2, p, _, _ = chi2_contingency(trophy_obs)
-                    res = "DIPENDENTE (I trofei influiscono)" if p < 0.05 else "INDIPENDENTE (I trofei NON influiscono)"
-                    f.write(f"\nTest Chi-Quadro: p-value = {p:.4f} -> {res}\n")
-                except:
-                    f.write("\nTest Chi-Quadro: Errore (Dati insufficienti)\n")
-            f.write("\n")
-
-            # 3. DECK
-            f.write("3. ANALISI DECK (Aggregata per Player)\n")
-            f.write("Verifica se la probabilità di streak cambia cambiando mazzo (tra i mazzi più usati).\n")
-            f.write("-" * 80 + "\n")
-            f.write(f"Player analizzati (con almeno 2 mazzi usati >10 volte): {deck_total_tested}\n")
-            f.write(f"Player con streak INDIPENDENTI dal mazzo (p > 0.05):    {deck_independence_count}\n")
-            perc = (deck_independence_count / deck_total_tested * 100) if deck_total_tested > 0 else 0
-            f.write(f"Percentuale Indipendenza: {perc:.2f}%\n")
-            f.write("="*80 + "\n\n")
-
-def analyze_deck_switch_impact(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'deck_switch_impact.txt')
-
-    print(f"\nGenerazione report impatto cambio deck in: {output_file}")
-
-    # Soglie per definire le "Zone" di Matchup
-    BAD_THRESH = 45.0
-    GOOD_THRESH = 55.0
-    
-    # Accumulatori per Transizioni: [Is_Switch][From_Zone][To_Zone]
-    # Is_Switch: True (Cambio Archetipo), False (Stesso Archetipo)
-    # Zones: 'Bad', 'Mid', 'Good'
-    transitions = {
-        True: {'Bad': {'Bad': 0, 'Mid': 0, 'Good': 0}, 'Mid': {'Bad': 0, 'Mid': 0, 'Good': 0}, 'Good': {'Bad': 0, 'Mid': 0, 'Good': 0}},
-        False: {'Bad': {'Bad': 0, 'Mid': 0, 'Good': 0}, 'Mid': {'Bad': 0, 'Mid': 0, 'Good': 0}, 'Good': {'Bad': 0, 'Mid': 0, 'Good': 0}}
-    }
-    
-    total_switches = 0
-    total_noswitches = 0
-
-    # Traiettorie Post-Evento (per vedere se il sistema si riadatta)
-    LOOKAHEAD = 4
-    trajectories = {
-        True: {k: [] for k in range(1, LOOKAHEAD + 1)},
-        False: {k: [] for k in range(1, LOOKAHEAD + 1)}
-    }
-    trajectories_lvl = {
-        True: {k: [] for k in range(1, LOOKAHEAD + 1)},
-        False: {k: [] for k in range(1, LOOKAHEAD + 1)}
-    }
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI IMPATTO CAMBIO DECK (ARCHETIPO) SUL PATTERN MATCHUP (NO-LVL)\n")
-        f.write("Obiettivo: Verificare se il cambio di mazzo interrompe il pattern di matchup (es. serie negativa) o se esso persiste.\n")
-        f.write("Ipotesi: Se il sistema è 'rigged' contro il giocatore, la serie negativa (Bad->Bad) dovrebbe continuare anche cambiando mazzo.\n")
-        f.write("         Se il sistema è equo/basato sul mazzo, cambiare mazzo dovrebbe 'resettare' o variare il matchup.\n")
-        f.write("="*80 + "\n\n")
-        
-        for p in players_sessions:
-            # Appiattiamo le sessioni per analizzare la sequenza temporale
-            all_battles = []
-            for s in p['sessions']:
-                all_battles.extend(s['battles'])
-            
-            for i in range(len(all_battles) - 1):
-                b_curr = all_battles[i]
-                b_next = all_battles[i+1]
-                
-                mu_curr = b_curr.get('matchup_no_lvl')
-                mu_next = b_next.get('matchup_no_lvl')
-                
-                if mu_curr is None or mu_next is None: continue
-                
-                # Determina Zone
-                if mu_curr < BAD_THRESH: zone_curr = 'Bad'
-                elif mu_curr > GOOD_THRESH: zone_curr = 'Good'
-                else: zone_curr = 'Mid'
-                
-                if mu_next < BAD_THRESH: zone_next = 'Bad'
-                elif mu_next > GOOD_THRESH: zone_next = 'Good'
-                else: zone_next = 'Mid'
-                
-                # Determina Switch (Usa Archetipo se disponibile, fallback su deck_id)
-                id_curr = b_curr.get('archetype_id') or b_curr.get('deck_id')
-                id_next = b_next.get('archetype_id') or b_next.get('deck_id')
-                
-                # Se manca l'ID, saltiamo
-                if not id_curr or not id_next: continue
-
-                is_switch = (id_curr != id_next)
-                
-                transitions[is_switch][zone_curr][zone_next] += 1
-                
-                if is_switch: total_switches += 1
-                else: total_noswitches += 1
-                
-                # --- Analisi Traiettoria (Solo se partiamo da Bad Matchup) ---
-                if zone_curr == 'Bad':
-                    target_deck_id = id_next # Il mazzo usato al passo i+1
-                    
-                    for k in range(1, LOOKAHEAD + 1):
-                        idx_future = i + k
-                        if idx_future >= len(all_battles): break
-                        
-                        b_future = all_battles[idx_future]
-                        mu_future = b_future.get('matchup_no_lvl')
-                        lvl_future = b_future.get('level_diff')
-                        id_future = b_future.get('archetype_id') or b_future.get('deck_id')
-                        
-                        if mu_future is None or id_future is None: break
-                        if id_future != target_deck_id: break # Deck cambiato di nuovo
-                        
-                        trajectories[is_switch][k].append(mu_future)
-                        if lvl_future is not None:
-                            trajectories_lvl[is_switch][k].append(lvl_future)
-
-        # Calcolo Percentuali di Persistenza
-        def calc_persistence(data, from_z, to_z):
-            total_from = sum(data[from_z].values())
-            if total_from == 0: return 0.0
-            return (data[from_z][to_z] / total_from) * 100
-
-        # --- Report ---
-        f.write(f"Totale Transizioni Analizzate: {total_switches + total_noswitches}\n")
-        f.write(f"  - Senza cambio mazzo: {total_noswitches}\n")
-        f.write(f"  - Con cambio mazzo:   {total_switches}\n")
-        f.write("-" * 80 + "\n")
-        
-        f.write(f"{'PATTERN':<25} | {'NO SWITCH (Baseline)':<20} | {'SWITCH (Test)':<20} | {'DELTA':<10}\n")
-        f.write("-" * 80 + "\n")
-
-        patterns = [
-            ('Bad', 'Bad', 'Persistenza Matchup Negativo'),
-            ('Good', 'Good', 'Persistenza Matchup Positivo'),
-            ('Bad', 'Good', 'Recupero (Bad -> Good)'),
-            ('Good', 'Bad', 'Punizione (Good -> Bad)')
-        ]
-
-        for from_z, to_z, label in patterns:
-            p_noswitch = calc_persistence(transitions[False], from_z, to_z)
-            p_switch = calc_persistence(transitions[True], from_z, to_z)
-            delta = p_switch - p_noswitch
-            
-            f.write(f"{label:<25} | {p_noswitch:<20.2f}% | {p_switch:<20.2f}% | {delta:<+10.2f}%\n")
-
-        f.write("-" * 80 + "\n")
-        f.write("INTERPRETAZIONE:\n")
-        f.write("1. Se 'Persistenza Matchup Negativo' con SWITCH è simile o superiore a NO SWITCH,\n")
-        f.write("   significa che cambiare mazzo NON aiuta a uscire dalla serie negativa (il sistema forza il matchup).\n")
-        f.write("2. Se 'Persistenza Matchup Negativo' crolla con SWITCH,\n")
-        f.write("   significa che il cambio mazzo ha effetto reale e il matchmaking risponde al nuovo mazzo.\n")
-        f.write("="*80 + "\n")
-        
-        f.write("\n" + "="*80 + "\n")
-        f.write("ANALISI ADATTAMENTO SISTEMA (TRAIETTORIA POST-SWITCH)\n")
-        f.write("Domanda: Dopo aver cambiato mazzo per sfuggire a un counter, quanto dura l'effetto benefico?\n")
-        f.write("         Il sistema si 'riadatta' (matchup peggiora) dopo qualche partita?\n")
-        f.write("-" * 80 + "\n")
-        f.write(f"{'Step':<10} | {'NO SWITCH (Avg MU)':<20} | {'SWITCH (Avg MU)':<20} | {'N. Switch':<10}\n")
-        f.write("-" * 80 + "\n")
-        
-        for k in range(1, LOOKAHEAD + 1):
-            vals_no = trajectories[False][k]
-            vals_sw = trajectories[True][k]
-            
-            avg_no = statistics.mean(vals_no) if vals_no else 0
-            avg_sw = statistics.mean(vals_sw) if vals_sw else 0
-            count_sw = len(vals_sw)
-            
-            f.write(f"+{k} Match  | {avg_no:<20.2f}% | {avg_sw:<20.2f}% | {count_sw:<10}\n")
-            
-        f.write("-" * 80 + "\n")
-        f.write("INTERPRETAZIONE:\n")
-        f.write("1. Se SWITCH parte alto (es. >50%) e scende nei match successivi (+2, +3),\n")
-        f.write("   potrebbe indicare che il sistema sta ricalibrando il matchmaking sul nuovo mazzo.\n")
-        f.write("2. Se SWITCH rimane costantemente alto rispetto a NO SWITCH, il cambio è efficace a lungo termine.\n")
-        f.write("="*80 + "\n")
-        
-        f.write("\n" + "="*80 + "\n")
-        f.write("ANALISI ADATTAMENTO LIVELLI (TRAIETTORIA POST-SWITCH)\n")
-        f.write("Domanda: Se cambio mazzo, il sistema mi punisce con livelli più alti (Level Diff più negativo)?\n")
-        f.write("-" * 80 + "\n")
-        f.write(f"{'Step':<10} | {'NO SWITCH (Avg Lvl)':<20} | {'SWITCH (Avg Lvl)':<20} | {'N. Switch':<10}\n")
-        f.write("-" * 80 + "\n")
-        
-        for k in range(1, LOOKAHEAD + 1):
-            vals_no = trajectories_lvl[False][k]
-            vals_sw = trajectories_lvl[True][k]
-            
-            avg_no = statistics.mean(vals_no) if vals_no else 0
-            avg_sw = statistics.mean(vals_sw) if vals_sw else 0
-            count_sw = len(vals_sw)
-            
-            f.write(f"+{k} Match  | {avg_no:<20.2f} | {avg_sw:<20.2f} | {count_sw:<10}\n")
-            
-        f.write("-" * 80 + "\n")
-        f.write("INTERPRETAZIONE:\n")
-        f.write("1. Level Diff negativo = Avversario più forte (Svantaggio).\n")
-        f.write("2. Se SWITCH ha valori più negativi di NO SWITCH, il sistema compensa il cambio mazzo con livelli più alti.\n")
-        f.write("="*80 + "\n")
-
 
 def analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=None):
     if output_dir is None:
@@ -3366,102 +3002,6 @@ def analyze_skill_vs_matchup_dominance(players_sessions, output_dir=None):
             f.write("RISULTATO: NON SIGNIFICATIVO. La qualità di gioco (leaks) è indipendente dal matchup.\n")
         f.write("="*100 + "\n")
 
-def analyze_time_stats(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'time_stats_results.txt')
-
-    print(f"\nGenerazione report Time Stats (Matchup, No-Lvl, Levels) in: {output_file}")
-
-    time_slots = {0: "Notte (00-06)", 1: "Mattina (06-12)", 2: "Pomeriggio (12-18)", 3: "Sera (18-24)"}
-    
-    # Metrics to analyze
-    metrics = {
-        'matchup': {'label': 'Matchup Reale', 'data': {k: [] for k in time_slots}},
-        'matchup_no_lvl': {'label': 'Matchup No-Lvl', 'data': {k: [] for k in time_slots}},
-        'level_diff': {'label': 'Level Diff', 'data': {k: [] for k in time_slots}}
-    }
-
-    for p in players_sessions:
-        nationality = p.get('nationality')
-        for session in p['sessions']:
-            for b in session['battles']:
-                ts = b.get('timestamp')
-                if not ts: continue
-                
-                # Get time slot
-                h = get_local_hour(ts, nationality)
-                slot = 0
-                if 6 <= h < 12: slot = 1
-                elif 12 <= h < 18: slot = 2
-                elif 18 <= h < 24: slot = 3
-                
-                # Collect data
-                if b.get('matchup') is not None:
-                    metrics['matchup']['data'][slot].append(b['matchup'])
-                
-                if b.get('matchup_no_lvl') is not None:
-                    metrics['matchup_no_lvl']['data'][slot].append(b['matchup_no_lvl'])
-                    
-                if b.get('level_diff') is not None:
-                    metrics['level_diff']['data'][slot].append(b['level_diff'])
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI STATISTICA PER FASCIA ORARIA (MATCHUP, NO-LVL, LIVELLI)\n")
-        f.write("Obiettivo: Verificare se Media e Varianza cambiano durante il giorno per diverse metriche.\n")
-        f.write("="*100 + "\n\n")
-        
-        for key, info in metrics.items():
-            label = info['label']
-            samples = info['data']
-            
-            f.write(f"--- {label} ---\n")
-            f.write(f"{'Fascia Oraria':<20} | {'N':<10} | {'Mean':<10} | {'StdDev':<10} | {'Variance':<10}\n")
-            f.write("-" * 75 + "\n")
-            
-            valid_samples = []
-            
-            for slot in sorted(time_slots.keys()):
-                data = samples[slot]
-                if not data:
-                    f.write(f"{time_slots[slot]:<20} | {'0':<10} | {'-':<10} | {'-':<10} | {'-':<10}\n")
-                    continue
-                
-                avg = statistics.mean(data)
-                std = statistics.stdev(data) if len(data) > 1 else 0
-                var = std ** 2
-                
-                f.write(f"{time_slots[slot]:<20} | {len(data):<10} | {avg:<10.2f} | {std:<10.2f} | {var:<10.2f}\n")
-                valid_samples.append(data)
-            
-            f.write("-" * 75 + "\n")
-            
-            if len(valid_samples) > 1:
-                try:
-                    stat_k, p_k = kruskal(*valid_samples)
-                    f.write(f"Kruskal-Wallis (Medie): p={p_k:.4f}\n")
-                    if p_k < 0.05:
-                        f.write("-> DIFFERENZA SIGNIFICATIVA nelle medie.\n")
-                    else:
-                        f.write("-> NESSUNA differenza significativa nelle medie.\n")
-                except Exception as e:
-                    f.write(f"Kruskal-Wallis Error: {e}\n")
-
-                try:
-                    stat_l, p_l = levene(*valid_samples)
-                    f.write(f"Levene Test (Varianze): p={p_l:.4f}\n")
-                    if p_l < 0.05:
-                        f.write("-> DIFFERENZA SIGNIFICATIVA nelle varianze.\n")
-                    else:
-                        f.write("-> NESSUNA differenza significativa nelle varianze.\n")
-                except Exception as e:
-                    f.write(f"Levene Test Error: {e}\n")
-            else:
-                f.write("Dati insufficienti per i test statistici.\n")
-            
-            f.write("\n" + "="*100 + "\n\n")
-
 def analyze_debt_credit_combined(players_sessions, output_dir=None):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
@@ -3709,6 +3249,183 @@ def analyze_debt_credit_combined(players_sessions, output_dir=None):
             f.write(f"2. Deck (Debt < Credit?):    p-value = {p_val_m:.4f}\n")
             
         f.write("="*100 + "\n")
+
+def analyze_debt_initial_progression(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'debt_initial_progression_results.txt')
+
+    print(f"\nGenerazione report Progressione Iniziale Debito in: {output_file}")
+    
+    DEBT_THRESH = 45.0
+    
+    progression_data = []
+    
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            for i in range(len(battles) - 1):
+                b1 = battles[i]
+                b2 = battles[i+1]
+                
+                # Check if b1 is start of debt (Matchup < 45%)
+                if b1['matchup'] is None or b1['matchup'] >= DEBT_THRESH:
+                    continue
+                
+                # Check previous to ensure b1 is start
+                if i > 0:
+                    b_prev = battles[i-1]
+                    if b_prev['matchup'] is not None and b_prev['matchup'] < DEBT_THRESH:
+                        continue # Not start of debt
+                
+                # Check consistency (Player Deck must be same)
+                # deck_id corresponds to deck_hash (includes levels), so this ensures P levels are constant.
+                d1 = b1.get('deck_id')
+                d2 = b2.get('deck_id')
+                if d1 is None or d1 != d2:
+                    continue
+                
+                if b1.get('level_diff') is not None and b2.get('level_diff') is not None:
+                    progression_data.append((b1['level_diff'], b2['level_diff']))
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI PROGRESSIONE INIZIALE DEBITO (1° vs 2° Match)\n")
+        f.write("Obiettivo: Capire se i livelli avversari cambiano drasticamente tra il primo match in debito e il secondo.\n")
+        f.write("Condizione: Player Deck invariato. Debito = Matchup < 45%.\n")
+        f.write("Nota: Level Diff = Player - Opponent. Se Level Diff scende, Opponent sale.\n")
+        f.write("="*80 + "\n")
+        
+        if len(progression_data) < 20:
+            f.write("Dati insufficienti.\n")
+            return
+            
+        diffs_1 = [x[0] for x in progression_data]
+        diffs_2 = [x[1] for x in progression_data]
+        
+        avg_1 = statistics.mean(diffs_1)
+        avg_2 = statistics.mean(diffs_2)
+        
+        f.write(f"Campione: {len(progression_data)} coppie di match.\n")
+        f.write(f"1° Match (Start Debt) - Avg Level Diff: {avg_1:+.3f}\n")
+        f.write(f"2° Match (Next)       - Avg Level Diff: {avg_2:+.3f}\n")
+        
+        delta_opp = avg_1 - avg_2
+        f.write(f"Variazione Livello Avversario (2° - 1°): {delta_opp:+.3f}\n")
+        
+        if delta_opp > 0:
+            f.write("-> I livelli avversari AUMENTANO nel secondo match (Opponent più forte).\n")
+        else:
+            f.write("-> I livelli avversari DIMINUISCONO o restano stabili.\n")
+            
+        try:
+            from scipy.stats import wilcoxon
+            w_stat, w_p = wilcoxon(diffs_1, diffs_2)
+            f.write(f"Test Wilcoxon (Paired): p-value = {w_p:.4f}\n")
+            if w_p < 0.05:
+                f.write("RISULTATO: SIGNIFICATIVO. C'è un cambiamento sistematico nei livelli.\n")
+            else:
+                f.write("RISULTATO: NON SIGNIFICATIVO.\n")
+        except Exception as e:
+            f.write(f"Test fallito: {e}\n")
+            
+        f.write("="*80 + "\n")
+
+def analyze_residual_level_diff_debt(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'residual_level_diff_debt_results.txt')
+
+    print(f"\nGenerazione report Residual Level Diff (Expected vs Observed) in: {output_file}")
+
+    # 1. Build Baseline Curve (Expected Level Diff per Trophy Range)
+    BUCKET_SIZE = 200
+    trophy_buckets = defaultdict(list)
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('level_diff') is not None:
+                    t = b['trophies_before']
+                    b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+                    trophy_buckets[b_idx].append(b['level_diff'])
+
+    expected_curve = {}
+    for b_idx, diffs in trophy_buckets.items():
+        if len(diffs) >= 50: # Minimum sample size
+            expected_curve[b_idx] = statistics.mean(diffs)
+
+    # 2. Analyze Debt Sequences
+    DEBT_THRESH = 45.0
+    
+    residuals_win = []
+    residuals_loss = []
+    
+    for p in players_sessions:
+        for s in p['sessions']:
+            battles = s['battles']
+            for i in range(len(battles) - 1):
+                curr = battles[i]
+                next_b = battles[i+1]
+                
+                # Condition: Current match is Debt
+                if curr['matchup'] is None or curr['matchup'] >= DEBT_THRESH:
+                    continue
+                
+                # Next match data
+                if next_b['game_mode'] != 'Ladder' or not next_b.get('trophies_before') or next_b.get('level_diff') is None:
+                    continue
+                
+                t_next = next_b['trophies_before']
+                b_idx_next = (t_next // BUCKET_SIZE) * BUCKET_SIZE
+                
+                if b_idx_next not in expected_curve:
+                    continue
+                
+                expected = expected_curve[b_idx_next]
+                observed = next_b['level_diff']
+                residual = observed - expected
+                
+                if curr['win'] == 1:
+                    residuals_win.append(residual)
+                else:
+                    residuals_loss.append(residual)
+
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI RESIDUI LEVEL DIFF (EXPECTED VS OBSERVED) IN DEBITO\n")
+        f.write("Obiettivo: Isolare l'effetto 'Climbing' calcolando lo scostamento (Residuo) dalla media livelli della fascia trofei.\n")
+        f.write("Metodo: Residuo = Level Diff Osservato - Level Diff Atteso (per fascia trofei).\n")
+        f.write("Ipotesi: Se vinco in debito, il residuo dovrebbe essere negativo (livelli peggiori della media di fascia).\n")
+        f.write("="*80 + "\n\n")
+        
+        if len(residuals_win) < 10 or len(residuals_loss) < 10:
+            f.write("Dati insufficienti.\n")
+            return
+            
+        avg_res_win = statistics.mean(residuals_win)
+        avg_res_loss = statistics.mean(residuals_loss)
+        
+        f.write(f"{'ESITO MATCH DEBITO':<25} | {'N':<6} | {'AVG RESIDUO':<15}\n")
+        f.write("-" * 60 + "\n")
+        f.write(f"{'WIN (Vittoria Eroica)':<25} | {len(residuals_win):<6} | {avg_res_win:<15.4f}\n")
+        f.write(f"{'LOSS (Sconfitta Attesa)':<25} | {len(residuals_loss):<6} | {avg_res_loss:<15.4f}\n")
+        
+        delta = avg_res_win - avg_res_loss
+        f.write("-" * 60 + "\n")
+        f.write(f"Delta (Win - Loss): {delta:+.4f}\n")
+        
+        stat, p_val = mannwhitneyu(residuals_win, residuals_loss, alternative='less')
+        f.write(f"Test Mann-Whitney U (Win < Loss): p-value = {p_val:.4f}\n")
+        
+        if p_val < 0.05:
+            f.write("RISULTATO: SIGNIFICATIVO. Anche normalizzando per i trofei, chi vince in debito riceve livelli peggiori della media.\n")
+            f.write("           (Conferma che non è solo effetto climbing, ma punizione attiva).\n")
+        else:
+            f.write("RISULTATO: NON SIGNIFICATIVO. La differenza è spiegata dalla fascia di trofei.\n")
+            
+        f.write("="*80 + "\n")
+
 def main():
     # Filter options: 'all', 'Ladder', 'Ranked', 'Ladder_Ranked'
     mode_filter = 'all' 
@@ -3719,8 +3436,6 @@ def main():
     analyze_std_correlation(players_sessions)
     analyze_session_pity(players_sessions)
     analyze_extreme_matchup_streak(players_sessions)
-    analyze_confounding_factors(players_sessions)
-    analyze_deck_switch_impact(players_sessions)
     analyze_return_matchups_vs_ers(players_sessions)
     analyze_pity_impact_on_session_length(players_sessions)
     analyze_pity_impact_on_return_time(players_sessions)
@@ -3739,7 +3454,8 @@ def main():
     analyze_climbing_impact(players_sessions)
     analyze_hook_by_trophy_range(players_sessions)
     analyze_skill_vs_matchup_dominance(players_sessions)
-    analyze_time_stats(players_sessions)
+    analyze_debt_initial_progression(players_sessions)
+    analyze_residual_level_diff_debt(players_sessions)
 
 if __name__ == "__main__":
     main()

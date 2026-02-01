@@ -1,20 +1,20 @@
 ANALISI CAUSE PERSISTENZA BAD STREAK AL RITORNO
 Domanda: Perché la streak negativa continua anche dopo una pausa?
-Campione: 125 ritorni dopo Bad Streak (>=3 match < 45%).
+Campione: 127 ritorni dopo Bad Streak (>=3 match < 45%).
 ================================================================================
 
 1. IPOTESI TROPHY INFLATION ('Sei troppo in alto')
-   Excess Trofei Medio al Ritorno: +19.78
-   Correlazione (Excess vs Return MU): 0.1322 (p=0.1417)
+   Excess Trofei Medio al Ritorno: +18.89
+   Correlazione (Excess vs Return MU): 0.1480 (p=0.0969)
    -> NON CONFERMATO: L'eccesso di trofei non spiega il matchup negativo.
 
 2. IPOTESI LIVELLI vs DECK (Chi causa il dolore?)
-   Matchup Reale Medio:   39.03%
-   Matchup No-Lvl Medio:  49.33%
+   Matchup Reale Medio:   38.79%
+   Matchup No-Lvl Medio:  49.14%
    Level Diff Medio:      -0.40
 
 3. IPOTESI FASCIA ORARIA ('Tornare in un momento migliore aiuta?')
-   Ritorni in Orario Migliore (>+2% atteso): 43
-   Test Mann-Whitney (Better > Worse): p=0.5375
+   Ritorni in Orario Migliore (>+2% atteso): 42
+   Test Mann-Whitney (Better > Worse): p=0.5390
    -> RISULTATO: NO. La streak negativa persiste indipendentemente dall'orario.
 ================================================================================

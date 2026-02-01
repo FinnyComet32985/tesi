@@ -1,0 +1,13 @@
+ANALISI PROGRESSIONE INIZIALE DEBITO (1° vs 2° Match)
+Obiettivo: Capire se i livelli avversari cambiano drasticamente tra il primo match in debito e il secondo.
+Condizione: Player Deck invariato. Debito = Matchup < 45%.
+Nota: Level Diff = Player - Opponent. Se Level Diff scende, Opponent sale.
+================================================================================
+Campione: 1255 coppie di match.
+1° Match (Start Debt) - Avg Level Diff: -0.324
+2° Match (Next)       - Avg Level Diff: -0.126
+Variazione Livello Avversario (2° - 1°): -0.199
+-> I livelli avversari DIMINUISCONO o restano stabili.
+Test Wilcoxon (Paired): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. C'è un cambiamento sistematico nei livelli.
+================================================================================

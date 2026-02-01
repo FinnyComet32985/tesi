@@ -1,0 +1,16 @@
+ANALISI RESIDUI LEVEL DIFF (EXPECTED VS OBSERVED) IN DEBITO
+Obiettivo: Isolare l'effetto 'Climbing' calcolando lo scostamento (Residuo) dalla media livelli della fascia trofei.
+Metodo: Residuo = Level Diff Osservato - Level Diff Atteso (per fascia trofei).
+Ipotesi: Se vinco in debito, il residuo dovrebbe essere negativo (livelli peggiori della media di fascia).
+================================================================================
+
+ESITO MATCH DEBITO        | N      | AVG RESIDUO    
+------------------------------------------------------------
+WIN (Vittoria Eroica)     | 944    | -0.2140        
+LOSS (Sconfitta Attesa)   | 1252   | -0.1191        
+------------------------------------------------------------
+Delta (Win - Loss): -0.0949
+Test Mann-Whitney U (Win < Loss): p-value = 0.0000
+RISULTATO: SIGNIFICATIVO. Anche normalizzando per i trofei, chi vince in debito riceve livelli peggiori della media.
+           (Conferma che non è solo effetto climbing, ma punizione attiva).
+================================================================================

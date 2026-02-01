@@ -1,0 +1,134 @@
+ANALISI VARIABILI CONFONDENTI: LIVELLI AVVERSARI E MATCHUP
+Obiettivo: Isolare la dipendenza di Livelli Avversari e Matchup da Trofei, Orario e Mazzo.
+Nota: Analizziamo i LIVELLI CARTE (Avg) perché riflettono la forza reale del mazzo.
+      Il matchmaking usa il Livello Torre, che correla con le carte ma non è identico.
+====================================================================================================
+
+1. DIPENDENZA DAI TROFEI E MATCHMAKING (Correlazione Globale)
+--------------------------------------------------------------------------------
+Opponent Avg Level vs Trophies:     Corr=0.9617, p=0.0000
+Player Avg Level vs Trophies:       Corr=0.9699, p=0.0000
+Player Level vs Opponent Level:     Corr=0.9425, p=0.0000
+-> MATCHMAKING EQUILIBRATO: I livelli carte player/opponent sono fortemente legati.
+   (Probabilmente mediato dal Livello Torre, usato dal matchmaking).
+Matchup No-Lvl vs Trophies:         Corr=0.0714, p=0.0000
+
+2. ANALISI CONTROLLATA PER FASCIA TROFEI (Bucket 500)
+Verifica dipendenza da ORARIO e MAZZO PLAYER a parità di trofei.
+----------------------------------------------------------------------------------------------------
+BUCKET       | VAR        | FACTOR     | P-VALUE    | RESULT
+----------------------------------------------------------------------------------------------------
+2000-2500    | Opp Lvl    | Time       | 0.4900     | NO
+2000-2500    | Matchup    | Time       | 0.0145     | SIGNIFICATIVO
+2000-2500    | Opp Lvl    | Deck       | 0.2170     | NO
+2000-2500    | Mu No-lvl  | Deck       | 0.2457     | NO
+2000-2500    | Player Lvl | Deck       | 0.0012     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+3500-4000    | Opp Lvl    | Time       | 0.8973     | NO
+3500-4000    | Matchup    | Time       | 0.0451     | SIGNIFICATIVO
+3500-4000    | Opp Lvl    | Deck       | 0.3995     | NO
+3500-4000    | Mu No-lvl  | Deck       | 0.4951     | NO
+3500-4000    | Player Lvl | Deck       | 0.0697     | NO
+----------------------------------------------------------------------------------------------------
+4000-4500    | Opp Lvl    | Time       | 0.3387     | NO
+4000-4500    | Matchup    | Time       | 0.2694     | NO
+4000-4500    | Opp Lvl    | Deck       | 0.2892     | NO
+4000-4500    | Mu No-lvl  | Deck       | 0.0444     | SIGNIFICATIVO
+4000-4500    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+4500-5000    | Opp Lvl    | Time       | 0.7944     | NO
+4500-5000    | Matchup    | Time       | 0.6245     | NO
+4500-5000    | Opp Lvl    | Deck       | 0.6096     | NO
+4500-5000    | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+4500-5000    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+5000-5500    | Opp Lvl    | Time       | 0.4429     | NO
+5000-5500    | Matchup    | Time       | 0.3373     | NO
+5000-5500    | Opp Lvl    | Deck       | 0.0006     | SIGNIFICATIVO
+5000-5500    | Mu No-lvl  | Deck       | 0.0001     | SIGNIFICATIVO
+5000-5500    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+5500-6000    | Opp Lvl    | Time       | 0.3037     | NO
+5500-6000    | Matchup    | Time       | 0.0007     | SIGNIFICATIVO
+5500-6000    | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+5500-6000    | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+5500-6000    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+6000-6500    | Opp Lvl    | Time       | 0.0249     | SIGNIFICATIVO
+6000-6500    | Matchup    | Time       | 0.8042     | NO
+6000-6500    | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+6000-6500    | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+6000-6500    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+6500-7000    | Opp Lvl    | Time       | 0.5366     | NO
+6500-7000    | Matchup    | Time       | 0.0591     | NO
+6500-7000    | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+6500-7000    | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+6500-7000    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+7000-7500    | Opp Lvl    | Time       | 0.0112     | SIGNIFICATIVO
+7000-7500    | Matchup    | Time       | 0.0295     | SIGNIFICATIVO
+7000-7500    | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+7000-7500    | Mu No-lvl  | Deck       | 0.0330     | SIGNIFICATIVO
+7000-7500    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+7500-8000    | Opp Lvl    | Time       | 0.0686     | NO
+7500-8000    | Matchup    | Time       | 0.0584     | NO
+7500-8000    | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+7500-8000    | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+7500-8000    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+8000-8500    | Opp Lvl    | Time       | 0.7031     | NO
+8000-8500    | Matchup    | Time       | 0.6724     | NO
+8000-8500    | Opp Lvl    | Deck       | 0.0493     | SIGNIFICATIVO
+8000-8500    | Mu No-lvl  | Deck       | 0.0792     | NO
+8000-8500    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+8500-9000    | Opp Lvl    | Time       | 0.0143     | SIGNIFICATIVO
+8500-9000    | Matchup    | Time       | 0.0100     | SIGNIFICATIVO
+8500-9000    | Opp Lvl    | Deck       | 0.0001     | SIGNIFICATIVO
+8500-9000    | Mu No-lvl  | Deck       | 0.0200     | SIGNIFICATIVO
+8500-9000    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+9000-9500    | Opp Lvl    | Time       | 0.8518     | NO
+9000-9500    | Matchup    | Time       | 0.0100     | SIGNIFICATIVO
+9000-9500    | Opp Lvl    | Deck       | 0.8904     | NO
+9000-9500    | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+9000-9500    | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+9500-10000   | Opp Lvl    | Time       | 0.5839     | NO
+9500-10000   | Matchup    | Time       | 0.0452     | SIGNIFICATIVO
+9500-10000   | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+9500-10000   | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+9500-10000   | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+10000-10500  | Opp Lvl    | Time       | 0.0386     | SIGNIFICATIVO
+10000-10500  | Matchup    | Time       | 0.5310     | NO
+10000-10500  | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+10000-10500  | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+10000-10500  | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+10500-11000  | Opp Lvl    | Time       | 0.0005     | SIGNIFICATIVO
+10500-11000  | Matchup    | Time       | 0.3404     | NO
+10500-11000  | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+10500-11000  | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+10500-11000  | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+11000-11500  | Opp Lvl    | Time       | 0.1540     | NO
+11000-11500  | Matchup    | Time       | 0.0000     | SIGNIFICATIVO
+11000-11500  | Opp Lvl    | Deck       | 0.0000     | SIGNIFICATIVO
+11000-11500  | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+11000-11500  | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+11500-12000  | Opp Lvl    | Time       | 0.8905     | NO
+11500-12000  | Matchup    | Time       | 0.0162     | SIGNIFICATIVO
+11500-12000  | Opp Lvl    | Deck       | 0.0164     | SIGNIFICATIVO
+11500-12000  | Mu No-lvl  | Deck       | 0.0000     | SIGNIFICATIVO
+11500-12000  | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------
+12000-12500  | Opp Lvl    | Time       | 0.5990     | NO
+12000-12500  | Matchup    | Time       | 0.6619     | NO
+12000-12500  | Opp Lvl    | Deck       | 0.0709     | NO
+12000-12500  | Mu No-lvl  | Deck       | 0.0137     | SIGNIFICATIVO
+12000-12500  | Player Lvl | Deck       | 0.0000     | SIGNIFICATIVO
+----------------------------------------------------------------------------------------------------

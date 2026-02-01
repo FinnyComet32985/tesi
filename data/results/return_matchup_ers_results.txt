@@ -3,15 +3,15 @@ Ipotesi: I giocatori con alto ERS ricevono matchup migliori quando ritornano a g
 ================================================================================
 
 Totale Giocatori: 39
-Soglia ERS (Mediana): 0.799
+Soglia ERS (Mediana): 0.804
 --------------------------------------------------------------------------------
 GRUPPO               | N     | AVG RETURN MU   | RANGE ERS           
 --------------------------------------------------------------------------------
-LOW ERS              | 19    | 49.97          % | 0.344 - 0.792
-HIGH ERS             | 20    | 53.63          % | 0.799 - 1.830
+LOW ERS              | 19    | 49.91          % | 0.344 - 0.797
+HIGH ERS             | 20    | 53.61          % | 0.804 - 1.830
 --------------------------------------------------------------------------------
 TEST STATISTICO (Mann-Whitney U):
 Ipotesi Alternativa: Return Matchup (High ERS) > Return Matchup (Low ERS)
-P-value: 0.1218
+P-value: 0.1056
 Risultato: Non significativo
 ================================================================================

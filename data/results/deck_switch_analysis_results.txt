@@ -1,0 +1,76 @@
+ANALISI 1: IMPATTO CAMBIO DECK SUL PATTERN MATCHUP (NO-LVL)
+================================================================================
+Totale Transizioni: 8052 (Switch: 555, No-Switch: 7497)
+--------------------------------------------------------------------------------
+PATTERN                   | NO SWITCH       | SWITCH          | DELTA     
+--------------------------------------------------------------------------------
+Persistenza Negativa      | 46.88          % | 39.90          % | -6.98     %
+Persistenza Positiva      | 41.10          % | 38.80          % | -2.30     %
+Recupero                  | 24.24          % | 35.58          % | +11.33    %
+Punizione                 | 29.31          % | 32.24          % | +2.93     %
+
+--- Traiettoria Post-Switch (Partendo da Matchup 'Bad') ---
+Step       | NO SWITCH (Avg MU)   | SWITCH (Avg MU)      | NO SWITCH (Avg Lvl)  | SWITCH (Avg Lvl)    
+-----------------------------------------------------------------------------------------------
++1 Match  | 46.45               % | 49.30               % | +0.06                | -0.24               
++2 Match  | 46.66               % | 48.33               % | +0.07                | -0.04               
++3 Match  | 46.40               % | 47.96               % | +0.08                | -0.07               
++4 Match  | 46.30               % | 51.14               % | +0.06                | -0.02               
+
+
+================================================================================
+ANALISI 3: ADATTAMENTO LIVELLI AVVERSARI AL CAMBIO MAZZO
+Ipotesi: Il sistema adatta i livelli avversari a quelli del nuovo mazzo del giocatore?
+--------------------------------------------------------------------------------
+Switch 'LEVEL_DOWN':
+  - N. Match Post analizzati: 532
+  - Avg Level Diff PRE  (Vecchio Deck): -0.072
+  - Avg Level Diff POST (Nuovo Deck):   -0.378
+  - Avg Level Diff POST (No 1st Match): -0.300
+  - DELTA (Adattamento):                -0.306
+  - Trend Post-Switch:
+    +1: -0.491 (n=218)
+    +2: -0.365 (n=131)
+    +3: -0.255 (n=102)
+    +4: -0.250 (n=81)
+
+Switch 'LEVEL_UP':
+  - N. Match Post analizzati: 697
+  - Avg Level Diff PRE  (Vecchio Deck): -0.374
+  - Avg Level Diff POST (Nuovo Deck):   -0.015
+  - Avg Level Diff POST (No 1st Match): +0.013
+  - DELTA (Adattamento):                +0.359
+  - Trend Post-Switch:
+    +1: -0.069 (n=237)
+    +2: +0.071 (n=180)
+    +3: -0.048 (n=150)
+    +4: +0.004 (n=130)
+
+Switch 'NO_CHANGE':
+  - N. Match Post analizzati: 281
+  - Avg Level Diff PRE  (Vecchio Deck): -0.122
+  - Avg Level Diff POST (Nuovo Deck):   -0.095
+  - Avg Level Diff POST (No 1st Match): -0.080
+  - DELTA (Adattamento):                +0.027
+  - Trend Post-Switch:
+    +1: -0.122 (n=100)
+    +2: -0.094 (n=70)
+    +3: -0.111 (n=62)
+    +4: -0.020 (n=49)
+
+
+INTERPRETAZIONE:
+Se dopo uno switch 'level_down' (il giocatore usa un mazzo più debole), l'Avg Level Diff è positivo,
+significa che il sistema assegna avversari con livelli più bassi (adattamento).
+Se è negativo, il sistema continua ad assegnare avversari forti (nessun adattamento o punizione).
+
+================================================================================
+ANALISI 4: CORRELAZIONE WINRATE MAZZO vs LIVELLI AVVERSARI
+Ipotesi: I mazzi con Win Rate più alto (meta) affrontano avversari con livelli più alti (Level Diff più negativo)?
+--------------------------------------------------------------------------------
+Campione: 38 archetipi
+Correlazione Spearman: 0.1656
+P-value: 0.3205
+RISULTATO: NON SIGNIFICATIVO. Nessuna correlazione trovata.
+
+================================================================================

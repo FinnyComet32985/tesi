@@ -5,6 +5,7 @@ import sys
 from datetime import datetime
 from scipy.stats import chi2_contingency, kruskal, levene
 import pytz
+from collections import defaultdict
 
 # Add parent directory to path to import api_client
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -69,234 +70,6 @@ def get_local_hour(timestamp_str, nationality):
     except Exception:
         return datetime.strptime(timestamp_str, '%Y-%m-%d %H:%M:%S').hour
 
-def analyze_deck_switch_hypothetical(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'deck_switch_hypothetical_results.txt')
-
-    print(f"\nGenerazione report Deck Switch Hypothetical in: {output_file}")
-
-    conn = sqlite3.connect(DB_PATH)
-    cursor = conn.cursor()
-
-    # Configurazione
-    WINDOW = 3
-    MAX_SWITCHES_TO_TEST = 1000 # Limite per evitare troppe chiamate API
-    switches_tested = 0
-
-    results = []
-
-    try:
-        for p in players_sessions:
-            if switches_tested >= MAX_SWITCHES_TO_TEST: break
-
-            # Appiattiamo le sessioni
-            battles = []
-            for s in p['sessions']:
-                battles.extend([b for b in s['battles'] if b['game_mode'] in ['Ladder', 'Ranked']])
-            
-            for i in range(WINDOW, len(battles) - WINDOW):
-                if switches_tested >= MAX_SWITCHES_TO_TEST: break
-
-                prev_window = battles[i-WINDOW : i]
-                next_window = battles[i : i+WINDOW]
-                
-                curr_deck = battles[i]['deck_id']
-                prev_deck = battles[i-1]['deck_id']
-                
-                # Rileva cambio mazzo
-                if not curr_deck or not prev_deck or curr_deck == prev_deck:
-                    continue
-                
-                # Verifica dati necessari
-                if any(not b['opponent_deck_id'] for b in prev_window): continue
-                
-                # Recupera carte dal DB
-                needed_decks = {curr_deck}
-                for b in prev_window: needed_decks.add(b['opponent_deck_id'])
-                
-                deck_cards_map = get_deck_cards_batch(cursor, needed_decks)
-                
-                if curr_deck not in deck_cards_map: continue
-                
-                # Calcola Matchup Ipotetico: Nuovo Mazzo vs Vecchi Avversari
-                hypothetical_mus = []
-                new_deck_cards = deck_cards_map[curr_deck]
-                
-                for b in prev_window:
-                    opp_deck_id = b['opponent_deck_id']
-                    if opp_deck_id in deck_cards_map:
-                        opp_cards = deck_cards_map[opp_deck_id]
-                        # Chiamata API (o cache interna se esistesse)
-                        # Nota: fetch_matchup fa una richiesta HTTP.
-                        mu_data = fetch_matchup(new_deck_cards, opp_cards, force_equal_levels=True)
-                        if mu_data and 'winRate' in mu_data:
-                            hypothetical_mus.append(mu_data['winRate'] * 100)
-                
-                if not hypothetical_mus: continue
-                
-                # Dati Reali
-                actual_prev_mus = [b['matchup_no_lvl'] for b in prev_window if b.get('matchup_no_lvl') is not None]
-                actual_next_mus = [b['matchup_no_lvl'] for b in next_window if b.get('matchup_no_lvl') is not None]
-                
-                if not actual_prev_mus or not actual_next_mus: continue
-                
-                avg_hypo = statistics.mean(hypothetical_mus)
-                avg_prev = statistics.mean(actual_prev_mus)
-                avg_next = statistics.mean(actual_next_mus)
-                
-                results.append({
-                    'tag': p['tag'],
-                    'avg_prev': avg_prev,
-                    'avg_hypo': avg_hypo,
-                    'avg_next': avg_next
-                })
-                
-                switches_tested += 1
-                print(f"Switch analizzati: {switches_tested} /{MAX_SWITCHES_TO_TEST}", end='\r')
-
-    finally:
-        conn.close()
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI DECK SWITCH: IPOTETICO vs REALE\n")
-        f.write("Obiettivo: Verificare se il sistema cambia gli avversari quando cambi mazzo.\n")
-        f.write("Metodo: Calcoliamo come il TUO NUOVO mazzo avrebbe performato contro i TUOI VECCHI avversari (Ipotetico).\n")
-        f.write("        Confrontiamo questo valore con i matchup che hai effettivamente trovato dopo il cambio (Reale).\n")
-        f.write("="*80 + "\n\n")
-        
-        if not results:
-            f.write("Nessun dato analizzato (o limite API raggiunto/nessun cambio deck trovato).\n")
-            return
-            
-        avg_prev_all = statistics.mean([r['avg_prev'] for r in results])
-        avg_hypo_all = statistics.mean([r['avg_hypo'] for r in results])
-        avg_next_all = statistics.mean([r['avg_next'] for r in results])
-        
-        f.write(f"Campione: {len(results)} cambi mazzo analizzati.\n")
-        f.write("-" * 80 + "\n")
-        f.write(f"1. Matchup PRE-SWITCH (Vecchio Deck vs Vecchi Opp): {avg_prev_all:.2f}%\n")
-        f.write(f"2. Matchup IPOTETICO  (Nuovo Deck vs Vecchi Opp):   {avg_hypo_all:.2f}%\n")
-        f.write(f"3. Matchup REALE      (Nuovo Deck vs Nuovi Opp):    {avg_next_all:.2f}%\n")
-        f.write("-" * 80 + "\n")
-        
-        delta_hypo = avg_hypo_all - avg_prev_all
-        delta_real = avg_next_all - avg_prev_all
-        gap = avg_next_all - avg_hypo_all
-        
-        f.write(f"Miglioramento Teorico (Se gli avversari restassero uguali): {delta_hypo:+.2f}%\n")
-        f.write(f"Miglioramento Reale   (Con i nuovi avversari):              {delta_real:+.2f}%\n")
-        f.write(f"GAP (Manipolazione?):                                       {gap:+.2f}%\n")
-        
-        f.write("\nINTERPRETAZIONE:\n")
-        if gap < -5.0:
-            f.write("RISULTATO: SOSPETTO. Il nuovo mazzo avrebbe dovuto performare molto meglio contro i vecchi avversari,\n")
-            f.write("           ma il sistema ti ha assegnato nuovi avversari che lo counterano (Gap Negativo ampio).\n")
-        elif gap > 5.0:
-            f.write("RISULTATO: FAVOREVOLE. Il sistema ti ha assegnato avversari ancora più facili del previsto.\n")
-        else:
-            f.write("RISULTATO: NEUTRO. Il cambio di avversari è coerente con il cambio di mazzo (o casuale).\n")
-        f.write("="*80 + "\n")
-        
-        # New section: Subset where Hypo > Prev (Improvement Expected)
-        subset = [r for r in results if r['avg_hypo'] > r['avg_prev']]
-        
-        f.write("\n" + "="*80 + "\n")
-        f.write("FOCUS: SWITCH 'INTELLIGENTI' (Dove il nuovo mazzo è teoricamente migliore)\n")
-        f.write("Obiettivo: Se cambio per un mazzo migliore (Hypo > Prev), il sistema mi premia o mi punisce?\n")
-        f.write("-" * 80 + "\n")
-        
-        if subset:
-            avg_prev_sub = statistics.mean([r['avg_prev'] for r in subset])
-            avg_hypo_sub = statistics.mean([r['avg_hypo'] for r in subset])
-            avg_next_sub = statistics.mean([r['avg_next'] for r in subset])
-            
-            f.write(f"Campione Subset: {len(subset)} cambi.\n")
-            f.write(f"1. Matchup PRE-SWITCH: {avg_prev_sub:.2f}%\n")
-            f.write(f"2. Matchup IPOTETICO:  {avg_hypo_sub:.2f}%\n")
-            f.write(f"3. Matchup REALE:      {avg_next_sub:.2f}%\n")
-            
-            gap_sub = avg_next_sub - avg_hypo_sub
-            f.write(f"GAP (Reale - Ipotetico): {gap_sub:+.2f}%\n")
-        else:
-            f.write("Nessun caso trovato.\n")
-        f.write("="*80 + "\n")
-
-
-def analyze_nolvl_markov(players_sessions, output_dir=None):
-    if output_dir is None:
-        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
-    os.makedirs(output_dir, exist_ok=True)
-    output_file = os.path.join(output_dir, 'matchup_nolvl_markov_results.txt')
-
-    print(f"\nGenerazione report Markov No-Lvl in: {output_file}")
-
-    states = ['Unfavorable', 'Even', 'Favorable']
-    transitions = [[0]*3 for _ in range(3)]
-    total_transitions = 0
-
-    for p in players_sessions:
-        for session in p['sessions']:
-            battles = session['battles']
-            if len(battles) < 2: continue
-            
-            session_states = []
-            for b in battles:
-                m = b.get('matchup_no_lvl')
-                if m is None:
-                    session_states.append(None)
-                    continue
-                
-                if m > 55.0: s = 2
-                elif m < 45.0: s = 0
-                else: s = 1
-                session_states.append(s)
-            
-            for i in range(len(session_states) - 1):
-                curr_s = session_states[i]
-                next_s = session_states[i+1]
-                if curr_s is not None and next_s is not None:
-                    transitions[curr_s][next_s] += 1
-                    total_transitions += 1
-
-    with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI CATENE DI MARKOV: MATCHUP NO-LVL\n")
-        f.write("Obiettivo: Verificare la memoria del sistema sui matchup 'puri' (senza livelli).\n")
-        f.write("="*80 + "\n")
-        
-        row_totals = [sum(transitions[i]) for i in range(3)]
-        col_totals = [sum(transitions[i][j] for i in range(3)) for j in range(3)]
-        grand_total = sum(row_totals)
-        
-        if grand_total == 0:
-            f.write("Dati insufficienti.\n")
-            return
-
-        global_probs = [c / grand_total for c in col_totals]
-
-        f.write(f"{'STATO PRECEDENTE':<20} | {'SUCCESSIVO: Unfavorable':<25} | {'SUCCESSIVO: Even':<20} | {'SUCCESSIVO: Favorable':<20}\n")
-        f.write("-" * 95 + "\n")
-
-        for i, from_state in enumerate(states):
-            row_str = f"{from_state:<20} | "
-            for j, to_state in enumerate(states):
-                count = transitions[i][j]
-                total_from = row_totals[i] if row_totals[i] > 0 else 1
-                obs_prob = count / total_from
-                exp_prob = global_probs[j]
-                
-                diff = obs_prob - exp_prob
-                marker = "(!)" if abs(diff) > 0.05 else ""
-                
-                cell_str = f"{obs_prob*100:.1f}% (Exp {exp_prob*100:.1f}%) {marker}"
-                row_str += f"{cell_str:<25} | "
-            f.write(row_str + "\n")
-
-        f.write("-" * 95 + "\n")
-        chi2, p, dof, ex = chi2_contingency(transitions)
-        f.write(f"Test Chi-Quadro: p-value = {p:.6f}\n")
-        f.write("="*80 + "\n")
 
 def analyze_card_meta_vs_counter(players_sessions, output_dir=None):
     if output_dir is None:
@@ -405,6 +178,11 @@ def analyze_card_meta_vs_counter(players_sessions, output_dir=None):
         
         f.write("="*80 + "\n")
 
+def _calculate_avg_level(deck_cards):
+    if not deck_cards: return 0
+    levels = [c['level'] for c in deck_cards if c.get('level') is not None]
+    return statistics.mean(levels) if levels else 0
+
 def analyze_matchmaking_fairness(players_sessions, output_dir=None):
     if output_dir is None:
         output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
@@ -417,20 +195,21 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
     cursor = conn.cursor()
 
     # Configuration
-    TIME_SLOT_HOURS = 8         # Allargato da 4
-    TROPHY_BUCKET_SIZE = 1000   # Allargato da 500
-    MIN_BATTLES_PER_BUCKET = 20 # Abbassato da 30
-    MIN_BATTLES_PER_DECK = 3    # Abbassato da 5
+    TIME_SLOT_HOURS = 8         
+    TROPHY_BUCKET_SIZE = 1500   
+    MIN_BATTLES_PER_BUCKET = 20 
+    MIN_BATTLES_PER_DECK = 3    
 
-    # Data Structure: buckets[(time_slot, trophy_bucket, region)] = list of (player_deck, opp_deck)
+    # Data Structure: buckets[(time_slot, trophy_bucket)] = list of (player_tag, player_deck, opp_deck)
     buckets = {}
     
     # Set per raccogliere tutti i deck ID da risolvere
     all_deck_ids = set()
-    temp_battles = [] # (time_slot, trophy_bucket, region, p_deck_id, o_deck_id)
+    temp_battles = [] # (time_slot, trophy_bucket, player_tag, p_deck_id, o_deck_id)
 
     for p in players_sessions:
         nationality = p.get('nationality')
+        player_tag = p['tag']
         for s in p['sessions']:
             for b in s['battles']:
                 if b['game_mode'] != 'Ladder': continue
@@ -454,7 +233,8 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 time_slot = hour // TIME_SLOT_HOURS
                 trophy_bucket = (t // TROPHY_BUCKET_SIZE) * TROPHY_BUCKET_SIZE
                 
-                temp_battles.append((time_slot, trophy_bucket, nationality, p_deck, o_deck))
+                # Rimosso region, aggiunto player_tag per tracciamento
+                temp_battles.append((time_slot, trophy_bucket, player_tag, p_deck, o_deck))
 
     # Risoluzione Archetipi in Batch
     print(f"Risoluzione archetipi per {len(all_deck_ids)} mazzi...")
@@ -469,64 +249,77 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
     conn.close()
 
     # Popolamento Buckets con Archetipi
-    for time_slot, trophy_bucket, region, p_id, o_id in temp_battles:
+    for time_slot, trophy_bucket, p_tag, p_id, o_id in temp_battles:
         p_arch = deck_to_archetype.get(p_id, p_id) # Fallback su ID se manca archetipo
         o_arch = deck_to_archetype.get(o_id, o_id)
         
-        key = (time_slot, trophy_bucket, region)
+        key = (time_slot, trophy_bucket)
         if key not in buckets: buckets[key] = []
-        buckets[key].append((p_arch, o_arch))
+        buckets[key].append((p_tag, p_arch, o_arch))
 
     with open(output_file, "w", encoding="utf-8") as f:
         f.write("ANALISI FAIRNESS MATCHMAKING (DIPENDENZA DECK AVVERSARIO DAL PROPRIO DECK)\n")
-        f.write("Obiettivo: Verificare se, a parità di condizioni (Orario, Trofei e Regione), il mazzo che usi influenza gli avversari che trovi.\n")
-        f.write("Metodo: Test Chi-Quadro su tabella di contingenza (PlayerDeck vs OpponentDeck) per ogni bucket.\n")
-        f.write("Ipotesi Nulla (Fair): La distribuzione degli avversari è indipendente dal tuo mazzo.\n")
+        f.write("Obiettivo: Verificare se, a parità di condizioni (Orario e Trofei), il mazzo che usi influenza il MAZZO (Archetipo) che trovi contro.\n")
+        f.write("Nota: Analisi aggregata su TUTTI i player nel bucket (Inter-Player Comparison) per superare il limite dei One-Trick Ponies.\n")
+        f.write("Metodo: Test Chi-Quadro su tabella di contingenza (Player Archetype vs Opponent Archetype).\n")
+        f.write("Ipotesi Nulla (Fair): La distribuzione degli archetipi avversari è indipendente dal tuo mazzo.\n")
         f.write("="*100 + "\n\n")
-        
+
         f.write(f"Totale Battaglie Analizzate: {len(temp_battles)}\n")
         significant_buckets = 0
         total_tested_buckets = 0
         skipped_buckets = 0
+        skipped_one_trick = 0
         
-        sorted_keys = sorted(buckets.keys(), key=lambda x: (x[1], x[0], x[2] or "")) # Sort by Trophies then Time then Region
+        sorted_keys = sorted(buckets.keys(), key=lambda x: (x[1], x[0])) # Sort by Trophies then Time
         
         for key in sorted_keys:
             battles = buckets[key]
-            if len(battles) < MIN_BATTLES_PER_BUCKET: 
-                skipped_buckets += 1
-                continue
             
-            time_slot, trophy_bucket, region = key
+            time_slot, trophy_bucket = key
             time_label = f"{time_slot*TIME_SLOT_HOURS:02d}:00-{(time_slot+1)*TIME_SLOT_HOURS:02d}:00"
             range_label = f"{trophy_bucket}-{trophy_bucket+TROPHY_BUCKET_SIZE}"
-            region_label = region if region else "Unknown"
             
-            # Count frequencies
+            # Conta giocatori unici nel bucket
+            unique_players = set(b[0] for b in battles)
+            bucket_desc = f"{range_label} | {time_label} | Players: {len(unique_players)}"
+
+            if len(battles) < MIN_BATTLES_PER_BUCKET: 
+                skipped_buckets += 1
+                f.write(f"SKIP {bucket_desc}: {len(battles)} battles < {MIN_BATTLES_PER_BUCKET} (Min richiesto)\n")
+                continue
+            
+            # 1. Identifica i Top Archetipi del Giocatore in questo bucket
             p_counts = {}
-            for p_d, o_d in battles:
+            for tag, p_d, o_d in battles:
                 p_counts[p_d] = p_counts.get(p_d, 0) + 1
             
-            # Filter top player decks
             top_p_decks = [d for d, c in p_counts.items() if c >= MIN_BATTLES_PER_DECK]
-            if len(top_p_decks) < 2: continue # Need at least 2 decks to compare
+            if len(top_p_decks) < 2: 
+                skipped_one_trick += 1
+                f.write(f"SKIP {bucket_desc}: Solo {len(top_p_decks)} deck usati >= {MIN_BATTLES_PER_DECK} volte. (Richiesti >= 2 deck per confronto). Counts: {p_counts}\n")
+                continue # Servono almeno 2 mazzi diversi per confrontare
             
-            # Build Contingency Table
-            relevant_battles = [b for b in battles if b[0] in top_p_decks]
+            # Filtra le battaglie rilevanti (dove il giocatore usava uno dei top deck)
+            relevant_battles = [b for b in battles if b[1] in top_p_decks]
             
+            # 2. Identifica i Top Archetipi Avversari in questo bucket
             o_counts = {}
-            for p_d, o_d in relevant_battles:
+            for tag, p_d, o_d in relevant_battles:
                 o_counts[o_d] = o_counts.get(o_d, 0) + 1
             
-            top_o_decks = [d for d, c in o_counts.items() if c >= 3]
+            top_o_decks = [d for d, c in o_counts.items() if c >= 3] # Almeno 3 apparizioni per essere rilevante
             if len(top_o_decks) < 2: continue
             
+            # 3. Costruisci Tabella di Contingenza (Player Arch vs Opponent Arch)
             matrix = []
             valid_p_decks = []
             
             for p_d in top_p_decks:
                 row = []
-                opps_for_p = [b[1] for b in relevant_battles if b[0] == p_d]
+                # Prendi tutti gli avversari incontrati da questo archetipo
+                opps_for_p = [b[2] for b in relevant_battles if b[1] == p_d]
+                
                 for o_d in top_o_decks:
                     count = opps_for_p.count(o_d)
                     row.append(count)
@@ -537,26 +330,27 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
             
             if len(matrix) < 2: continue
             
+            total_tested_buckets += 1
+            
             try:
                 chi2, p, dof, ex = chi2_contingency(matrix)
-                total_tested_buckets += 1
                 
-                is_sig = p < 0.05
-                if is_sig: significant_buckets += 1
+                if p < 0.05:
+                    significant_buckets += 1
                 
-                sig_str = "SIGNIFICATIVO (Rigged?)" if is_sig else "Non significativo"
-                
-                f.write(f"Bucket: {range_label} | Orario: {time_label} | Regione: {region_label} | Battles: {len(relevant_battles)}\n")
-                f.write(f"Confronto tra {len(valid_p_decks)} Archetipi Player vs {len(top_o_decks)} Archetipi Opponent\n")
-                f.write(f"P-value: {p:.6f} -> {sig_str}\n")
-                f.write("-" * 60 + "\n")
-                
+                sig_label = "SIGNIFICATIVO (Distribuzione avversari diversa)" if p < 0.05 else "NON SIGNIFICATIVO"
+                f.write(f"Bucket: {range_label} | Orario: {time_label} | Players: {len(unique_players)} | Battles: {len(relevant_battles)}\n")
+                f.write(f"Matrice: {len(valid_p_decks)} Archetipi Player (Righe) x {len(top_o_decks)} Archetipi Opponent (Colonne)\n")
+                f.write(f"P-value: {p:.6f} -> {sig_label}\n")
+                f.write("-" * 80 + "\n")
+            
             except Exception as e:
                 f.write(f"Bucket: {range_label} | Error: {e}\n")
 
         f.write("\n" + "="*100 + "\n")
         f.write(f"Totale Bucket Testati: {total_tested_buckets}\n")
-        f.write(f"Bucket Saltati (Dati insufficienti): {skipped_buckets}\n")
+        f.write(f"Bucket Saltati (Poche Battaglie): {skipped_buckets}\n")
+        f.write(f"Bucket Saltati (One-Trick/Pochi Deck): {skipped_one_trick}\n")
         f.write(f"Bucket con Dipendenza Significativa: {significant_buckets}\n")
         if total_tested_buckets > 0:
             f.write(f"Percentuale Sospetta: {(significant_buckets/total_tested_buckets)*100:.2f}%\n")
@@ -602,4 +396,81 @@ def analyze_level_saturation(players_sessions, output_dir=None):
             
             f.write(f"{k}-{k+BUCKET_SIZE:<15} | {len(vals):<8} | {mean:<10.3f} | {var:<10.3f} | {zero_perc:<15.1f}%\n")
             
+        f.write("="*80 + "\n")
+
+def analyze_arena_progression_curve(players_sessions, output_dir=None):
+    if output_dir is None:
+        output_dir = os.path.join(os.path.dirname(__file__), 'battlelogs_v2')
+    os.makedirs(output_dir, exist_ok=True)
+    output_file = os.path.join(output_dir, 'arena_progression_curve.txt')
+
+    print(f"\nGenerazione report Arena Progression Curve in: {output_file}")
+    
+    conn = sqlite3.connect(DB_PATH)
+    cursor = conn.cursor()
+    
+    # Collect opponent deck IDs and trophies
+    battles_data = [] # (trophies, opponent_deck_id)
+    deck_ids = set()
+    
+    for p in players_sessions:
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] == 'Ladder' and b.get('trophies_before') and b.get('opponent_deck_id'):
+                    battles_data.append((b['trophies_before'], b['opponent_deck_id']))
+                    deck_ids.add(b['opponent_deck_id'])
+    
+    # Fetch cards
+    print(f"Recupero carte per {len(deck_ids)} mazzi avversari...")
+    deck_cards_map = {}
+    all_ids = list(deck_ids)
+    CHUNK = 900
+    for i in range(0, len(all_ids), CHUNK):
+        batch = get_deck_cards_batch(cursor, all_ids[i:i+CHUNK])
+        deck_cards_map.update(batch)
+    
+    conn.close()
+    
+    # Calculate avg levels
+    bucket_stats = defaultdict(list)
+    BUCKET_SIZE = 100
+    
+    for t, d_id in battles_data:
+        cards = deck_cards_map.get(d_id)
+        if cards:
+            avg_lvl = _calculate_avg_level(cards)
+            if avg_lvl > 0:
+                b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+                bucket_stats[b_idx].append(avg_lvl)
+    
+    with open(output_file, "w", encoding="utf-8") as f:
+        f.write("ANALISI CURVA PROGRESSIONE ARENA (LIVELLI AVVERSARI)\n")
+        f.write("Obiettivo: Verificare se la crescita dei livelli avversari è lineare o esponenziale (Gatekeeping).\n")
+        f.write("Metodo: Media Livello Carte Avversario per fascia di 100 trofei.\n")
+        f.write("="*80 + "\n")
+        f.write(f"{'RANGE':<15} | {'N':<6} | {'AVG OPP LEVEL':<15} | {'DELTA':<10}\n")
+        f.write("-" * 80 + "\n")
+        
+        sorted_keys = sorted(bucket_stats.keys())
+        prev_avg = None
+        deltas = []
+        
+        for k in sorted_keys:
+            vals = bucket_stats[k]
+            if len(vals) < 10: continue
+            
+            avg = statistics.mean(vals)
+            delta_str = ""
+            if prev_avg is not None:
+                delta = avg - prev_avg
+                deltas.append(delta)
+                delta_str = f"{delta:+.3f}"
+            
+            f.write(f"{k}-{k+BUCKET_SIZE:<15} | {len(vals):<6} | {avg:<15.3f} | {delta_str:<10}\n")
+            prev_avg = avg
+            
+        f.write("-" * 80 + "\n")
+        if deltas:
+            avg_increase = statistics.mean(deltas)
+            f.write(f"Aumento Medio Livelli per fascia ({BUCKET_SIZE} trofei): {avg_increase:+.4f}\n")
         f.write("="*80 + "\n")

@@ -4,7 +4,7 @@ Soglie: Bad Matchup (No-Lvl) < 45.0%, Bad Levels < -0.5
 ================================================================================
 
 1. CORRELAZIONE (Matchup No-Lvl vs Level Diff)
-   Coefficiente Spearman: -0.1191
+   Coefficiente Spearman: -0.1208
    P-value:               0.0000
 
    Interpretazione:
@@ -13,13 +13,13 @@ Soglie: Bad Matchup (No-Lvl) < 45.0%, Bad Levels < -0.5
    - Vicino a 0: Indipendenza.
 --------------------------------------------------------------------------------
 2. ANALISI DOUBLE WHAMMY (Doppia Punizione)
-   Totale Battaglie: 7762
-   Bad Matchup Count: 2927 (37.71%)
-   Bad Levels Count:  1229 (15.83%)
+   Totale Battaglie: 7912
+   Bad Matchup Count: 2981 (37.68%)
+   Bad Levels Count:  1261 (15.94%)
 
-   Double Whammy ATTESI (Ipotesi Indipendenza):   463.45
-   Double Whammy OSSERVATI:                       338
-   RATIO (Obs/Exp):                               0.73x
+   Double Whammy ATTESI (Ipotesi Indipendenza):   475.11
+   Double Whammy OSSERVATI:                       350
+   RATIO (Obs/Exp):                               0.74x
 
    Conclusione:
    RATIO < 1: Il sistema EVITA la doppia punizione. (Conferma l'ipotesi 'o l'uno o l'altro').

@@ -1,0 +1,21 @@
+ANALISI PENALITÀ VELOCITÀ DI SCALATA (MOMENTUM)
+Obiettivo: Verificare se salire velocemente (High Momentum) porta a matchup o livelli peggiori.
+Metodo: Calcolo Net Wins negli ultimi 5 match (Range -5 a +5).
+====================================================================================================
+NET WINS   | N      | NEXT MU (No-Lvl)     | NEXT LEVEL DIFF     
+----------------------------------------------------------------------------------------------------
+-5         | 48     | 49.45                | -0.041              
+-3         | 201    | 50.03                | -0.070              
+-1         | 493    | 48.65                | 0.007               
+1          | 608    | 49.17                | -0.041              
+3          | 363    | 50.07                | -0.078              
+5          | 96     | 50.76                | -0.142              
+----------------------------------------------------------------------------------------------------
+Correlazione Momentum vs Matchup No-Lvl: 0.0334 (p=0.1558)
+
+INTERPRETAZIONE:
+- Correlazione NEGATIVA significativa: Chi sale veloce viene frenato (Matchup peggiori).
+- Correlazione POSITIVA significativa: Chi sale veloce viene aiutato (Snowball).
+
+Mann-Whitney U (Hot Streak < Tilt?): p=0.7904
+====================================================================================================

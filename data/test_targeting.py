@@ -97,7 +97,7 @@ def analyze_all_snipers_targeting(players_sessions, output_dir=None):
 
     # Configurazione
     MIN_TROPHIES = 6000
-    MAX_TROPHIES = 9000
+    MAX_TROPHIES = 12000
 
     # Raccolta Deck IDs
     relevant_battles = []

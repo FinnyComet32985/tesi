@@ -1,0 +1,13 @@
+ANALISI SESSION SWAP (RANKED) - A/B TESTING RETROATTIVO
+Obiettivo: Verificare se gli avversari incontrati sono specifici per il mazzo del giocatore.
+Metodo: Prendiamo il Deck A e calcoliamo come avrebbe performato contro gli avversari del Player B
+        (che giocava nella stessa regione, orario e fascia trofei).
+================================================================================
+
+Campione: 200 sessioni scambiate.
+Matchup Medio REALE (Deck A vs Opp A):      49.76%
+Matchup Medio IPOTETICO (Deck A vs Opp B):  50.31%
+Delta (Reale - Ipotetico):                  -0.55%
+P-value (T-Test Paired): 0.3715
+RISULTATO: NON SIGNIFICATIVO. Gli avversari sembrano pescati dallo stesso pool casuale.
+================================================================================

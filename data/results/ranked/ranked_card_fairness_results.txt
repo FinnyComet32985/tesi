@@ -1,0 +1,296 @@
+ANALISI FAIRNESS RANKED (PATH OF LEGENDS): CARTE AVVERSARIE
+Obiettivo: Verificare se l'uso di certi archetipi attira specifiche carte avversarie in Ranked.
+Controllo: Orario (Slot 6h) e Regione (Nazionalità) per garantire pool avversari simili.
+====================================================================================================
+
+BUCKET: Brazil | 00:00-06:00 | Battles: 87
+Confronto tra 2 archetipi. Carte sospette: 2
+  > Minions              (p=0.0072, Delta=25.0%)
+    - Max Freq: 27.3% vs 4d43b27d... (n=6/22)
+    - Min Freq: 2.3% vs 11f1364a... (n=1/44)
+  > Hog Rider            (p=0.0128, Delta=31.8%)
+    - Max Freq: 36.4% vs 11f1364a... (n=16/44)
+    - Min Freq: 4.5% vs 4d43b27d... (n=1/22)
+--------------------------------------------------------------------------------
+BUCKET: Brazil | 12:00-18:00 | Battles: 139
+Confronto tra 4 archetipi. Carte sospette: 6
+  > Guards               (p=0.0012, Delta=27.3%)
+    - Max Freq: 27.3% vs d16f77cd... (n=3/11)
+    - Min Freq: 0.0% vs 11f1364a... (n=0/23)
+  > Zappies              (p=0.0165, Delta=26.7%)
+    - Max Freq: 26.7% vs 4d43b27d... (n=4/15)
+    - Min Freq: 0.0% vs 11f1364a... (n=0/23)
+  > Fireball             (p=0.0202, Delta=32.0%)
+    - Max Freq: 36.4% vs d16f77cd... (n=4/11)
+    - Min Freq: 4.3% vs 11f1364a... (n=1/23)
+  > Valkyrie             (p=0.0329, Delta=27.7%)
+    - Max Freq: 36.4% vs d16f77cd... (n=4/11)
+    - Min Freq: 8.7% vs 11f1364a... (n=2/23)
+  > Princess             (p=0.0357, Delta=17.4%)
+    - Max Freq: 17.4% vs 11f1364a... (n=4/23)
+    - Min Freq: 0.0% vs 4d43b27d... (n=0/15)
+--------------------------------------------------------------------------------
+BUCKET: Colombia | 00:00-06:00 | Battles: 261
+Confronto tra 5 archetipi. Carte sospette: 3
+  > Barbarian Barrel     (p=0.0086, Delta=22.7%)
+    - Max Freq: 22.7% vs 461cc275... (n=5/22)
+    - Min Freq: 0.0% vs 98ac66f8... (n=0/20)
+  > Archers              (p=0.0326, Delta=17.4%)
+    - Max Freq: 17.4% vs f4e25ff9... (n=8/46)
+    - Min Freq: 0.0% vs 2a890dd2... (n=0/14)
+  > Hog Rider            (p=0.0424, Delta=27.0%)
+    - Max Freq: 37.0% vs f4e25ff9... (n=17/46)
+    - Min Freq: 10.0% vs 98ac66f8... (n=2/20)
+--------------------------------------------------------------------------------
+BUCKET: Colombia | 06:00-12:00 | Battles: 87
+Confronto tra 3 archetipi. Carte sospette: 11
+  > Valkyrie             (p=0.0027, Delta=35.7%)
+    - Max Freq: 42.9% vs 3a855bb8... (n=9/21)
+    - Min Freq: 7.1% vs f4e25ff9... (n=1/14)
+  > Tesla                (p=0.0094, Delta=28.6%)
+    - Max Freq: 33.3% vs 3a855bb8... (n=7/21)
+    - Min Freq: 4.8% vs d42401bb... (n=2/42)
+  > Vines                (p=0.0096, Delta=28.6%)
+    - Max Freq: 28.6% vs d42401bb... (n=12/42)
+    - Min Freq: 0.0% vs 3a855bb8... (n=0/21)
+  > Musketeer            (p=0.0146, Delta=33.3%)
+    - Max Freq: 42.9% vs f4e25ff9... (n=6/14)
+    - Min Freq: 9.5% vs d42401bb... (n=4/42)
+  > Fireball             (p=0.0204, Delta=31.0%)
+    - Max Freq: 47.6% vs 3a855bb8... (n=10/21)
+    - Min Freq: 16.7% vs d42401bb... (n=7/42)
+--------------------------------------------------------------------------------
+BUCKET: Colombia | 12:00-18:00 | Battles: 160
+Confronto tra 4 archetipi. Carte sospette: 2
+  > Firecracker          (p=0.0125, Delta=36.2%)
+    - Max Freq: 41.2% vs f4e25ff9... (n=7/17)
+    - Min Freq: 5.0% vs 37f18341... (n=1/20)
+  > Arrows               (p=0.0327, Delta=35.8%)
+    - Max Freq: 45.8% vs d42401bb... (n=11/24)
+    - Min Freq: 10.0% vs 37f18341... (n=2/20)
+--------------------------------------------------------------------------------
+BUCKET: Colombia | 18:00-24:00 | Battles: 278
+Confronto tra 4 archetipi. Carte sospette: 7
+  > Barbarian Barrel     (p=0.0031, Delta=24.3%)
+    - Max Freq: 24.3% vs d42401bb... (n=18/74)
+    - Min Freq: 0.0% vs 37f18341... (n=0/11)
+  > Firecracker          (p=0.0088, Delta=28.2%)
+    - Max Freq: 35.0% vs 98ac66f8... (n=7/20)
+    - Min Freq: 6.8% vs d42401bb... (n=5/74)
+  > Rocket               (p=0.0184, Delta=12.9%)
+    - Max Freq: 12.9% vs f4e25ff9... (n=11/85)
+    - Min Freq: 0.0% vs 98ac66f8... (n=0/20)
+  > Goblin Barrel        (p=0.0216, Delta=26.9%)
+    - Max Freq: 35.0% vs 98ac66f8... (n=7/20)
+    - Min Freq: 8.1% vs d42401bb... (n=6/74)
+  > The Log              (p=0.0264, Delta=22.4%)
+    - Max Freq: 49.4% vs f4e25ff9... (n=42/85)
+    - Min Freq: 27.0% vs d42401bb... (n=20/74)
+--------------------------------------------------------------------------------
+BUCKET: Italy | 00:00-06:00 | Battles: 181
+Confronto tra 5 archetipi. Carte sospette: 3
+  > Firecracker          (p=0.0139, Delta=20.0%)
+    - Max Freq: 20.0% vs dd6ea44b... (n=2/10)
+    - Min Freq: 0.0% vs 4bc0329a... (n=0/43)
+  > Vines                (p=0.0420, Delta=28.6%)
+    - Max Freq: 28.6% vs d7852be5... (n=4/14)
+    - Min Freq: 0.0% vs dd6ea44b... (n=0/10)
+  > Tower Princess       (p=0.0488, Delta=20.0%)
+    - Max Freq: 100.0% vs d7852be5... (n=14/14)
+    - Min Freq: 80.0% vs dd6ea44b... (n=8/10)
+--------------------------------------------------------------------------------
+BUCKET: Italy | 06:00-12:00 | Battles: 377
+Confronto tra 8 archetipi. Carte sospette: 3
+  > Mega Knight          (p=0.0002, Delta=26.7%)
+    - Max Freq: 26.7% vs 4bc0329a... (n=4/15)
+    - Min Freq: 0.0% vs f1425a4e... (n=0/27)
+  > Hog Rider            (p=0.0026, Delta=33.3%)
+    - Max Freq: 33.3% vs 4bc0329a... (n=5/15)
+    - Min Freq: 0.0% vs e4ef907e... (n=0/17)
+  > Mega Minion          (p=0.0365, Delta=23.1%)
+    - Max Freq: 23.1% vs 62c22b57... (n=3/13)
+    - Min Freq: 0.0% vs 4bc0329a... (n=0/15)
+--------------------------------------------------------------------------------
+BUCKET: Italy | 12:00-18:00 | Battles: 884
+Confronto tra 13 archetipi. Carte sospette: 9
+  > Berserker            (p=0.0001, Delta=41.7%)
+    - Max Freq: 41.7% vs 4f8face5... (n=5/12)
+    - Min Freq: 0.0% vs 28455ead... (n=0/13)
+  > Giant                (p=0.0031, Delta=30.0%)
+    - Max Freq: 30.0% vs 8b1b975b... (n=3/10)
+    - Min Freq: 0.0% vs 40fb1f92... (n=0/11)
+  > Goblin Gang          (p=0.0136, Delta=27.3%)
+    - Max Freq: 27.3% vs 40fb1f92... (n=3/11)
+    - Min Freq: 0.0% vs 28455ead... (n=0/13)
+  > Graveyard            (p=0.0153, Delta=33.3%)
+    - Max Freq: 33.3% vs 4f8face5... (n=4/12)
+    - Min Freq: 0.0% vs 28455ead... (n=0/13)
+  > Ice Spirit           (p=0.0184, Delta=45.5%)
+    - Max Freq: 45.5% vs 40fb1f92... (n=5/11)
+    - Min Freq: 0.0% vs 4f8face5... (n=0/12)
+--------------------------------------------------------------------------------
+BUCKET: Italy | 18:00-24:00 | Battles: 769
+Confronto tra 21 archetipi. Carte sospette: 4
+  > Tesla                (p=0.0001, Delta=27.3%)
+    - Max Freq: 27.3% vs 03aa1e3d... (n=3/11)
+    - Min Freq: 0.0% vs 24dfb531... (n=0/16)
+  > Firecracker          (p=0.0004, Delta=30.0%)
+    - Max Freq: 30.0% vs 01db1959... (n=3/10)
+    - Min Freq: 0.0% vs 03aa1e3d... (n=0/11)
+  > Rocket               (p=0.0117, Delta=20.0%)
+    - Max Freq: 20.0% vs 01db1959... (n=2/10)
+    - Min Freq: 0.0% vs fd57ca91... (n=0/10)
+  > Mortar               (p=0.0274, Delta=22.2%)
+    - Max Freq: 22.2% vs 4a0777eb... (n=4/18)
+    - Min Freq: 0.0% vs 5695ad75... (n=0/12)
+--------------------------------------------------------------------------------
+BUCKET: Oman | 00:00-06:00 | Battles: 107
+Confronto tra 3 archetipi. Carte sospette: 2
+  > Prince               (p=0.0215, Delta=21.2%)
+    - Max Freq: 25.0% vs a612556d... (n=3/12)
+    - Min Freq: 3.8% vs fab1c0f5... (n=3/80)
+  > Archer Queen         (p=0.0235, Delta=17.5%)
+    - Max Freq: 20.0% vs 6b1cfe04... (n=3/15)
+    - Min Freq: 2.5% vs fab1c0f5... (n=2/80)
+--------------------------------------------------------------------------------
+BUCKET: Oman | 06:00-12:00 | Battles: 130
+Confronto tra 4 archetipi. Carte sospette: 3
+  > Wizard               (p=0.0128, Delta=21.1%)
+    - Max Freq: 21.1% vs e0bb53a9... (n=4/19)
+    - Min Freq: 0.0% vs 6b1cfe04... (n=0/19)
+  > Rage                 (p=0.0326, Delta=15.8%)
+    - Max Freq: 15.8% vs a612556d... (n=3/19)
+    - Min Freq: 0.0% vs e0bb53a9... (n=0/19)
+  > Princess             (p=0.0369, Delta=15.8%)
+    - Max Freq: 15.8% vs 6b1cfe04... (n=3/19)
+    - Min Freq: 0.0% vs a612556d... (n=0/19)
+--------------------------------------------------------------------------------
+BUCKET: Oman | 12:00-18:00 | Battles: 211
+Confronto tra 4 archetipi. Carte sospette: 3
+  > Arrows               (p=0.0268, Delta=42.1%)
+    - Max Freq: 53.8% vs a612556d... (n=7/13)
+    - Min Freq: 11.8% vs 9b720b46... (n=2/17)
+  > Mega Knight          (p=0.0336, Delta=19.1%)
+    - Max Freq: 19.1% vs fab1c0f5... (n=22/115)
+    - Min Freq: 0.0% vs 9b720b46... (n=0/17)
+  > Vines                (p=0.0419, Delta=15.4%)
+    - Max Freq: 24.1% vs 6b1cfe04... (n=13/54)
+    - Min Freq: 8.7% vs fab1c0f5... (n=10/115)
+--------------------------------------------------------------------------------
+BUCKET: Oman | 18:00-24:00 | Battles: 106
+Confronto tra 2 archetipi. Carte sospette: 1
+  > Royal Hogs           (p=0.0381, Delta=22.5%)
+    - Max Freq: 27.3% vs 6b1cfe04... (n=3/11)
+    - Min Freq: 4.8% vs fab1c0f5... (n=4/84)
+--------------------------------------------------------------------------------
+BUCKET: Poland | 00:00-06:00 | Battles: 78
+Confronto tra 2 archetipi. Carte sospette: 2
+  > Mini P.E.K.K.A       (p=0.0122, Delta=36.6%)
+    - Max Freq: 43.8% vs ad2d9ae5... (n=7/16)
+    - Min Freq: 7.1% vs 547d6ae6... (n=2/28)
+  > Arrows               (p=0.0165, Delta=41.1%)
+    - Max Freq: 62.5% vs ad2d9ae5... (n=10/16)
+    - Min Freq: 21.4% vs 547d6ae6... (n=6/28)
+--------------------------------------------------------------------------------
+BUCKET: Poland | 06:00-12:00 | Battles: 223
+Confronto tra 4 archetipi. Carte sospette: 5
+  > Cannon               (p=0.0226, Delta=27.8%)
+    - Max Freq: 27.8% vs 547d6ae6... (n=10/36)
+    - Min Freq: 0.0% vs 82097c65... (n=0/12)
+  > Lumberjack           (p=0.0369, Delta=22.2%)
+    - Max Freq: 25.0% vs 82097c65... (n=3/12)
+    - Min Freq: 2.8% vs 547d6ae6... (n=1/36)
+  > Skeleton Army        (p=0.0397, Delta=23.8%)
+    - Max Freq: 23.8% vs ad2d9ae5... (n=10/42)
+    - Min Freq: 0.0% vs 82097c65... (n=0/12)
+  > Goblin Barrel        (p=0.0401, Delta=23.8%)
+    - Max Freq: 23.8% vs ad2d9ae5... (n=10/42)
+    - Min Freq: 0.0% vs 82097c65... (n=0/12)
+  > Ice Wizard           (p=0.0435, Delta=13.6%)
+    - Max Freq: 13.6% vs a479e13a... (n=8/59)
+    - Min Freq: 0.0% vs 547d6ae6... (n=0/36)
+--------------------------------------------------------------------------------
+BUCKET: Poland | 12:00-18:00 | Battles: 661
+Confronto tra 8 archetipi. Carte sospette: 9
+  > Inferno Tower        (p=0.0044, Delta=20.0%)
+    - Max Freq: 20.0% vs 01d0e6a4... (n=3/15)
+    - Min Freq: 0.0% vs c9002363... (n=0/10)
+  > Barbarian Barrel     (p=0.0048, Delta=19.5%)
+    - Max Freq: 32.8% vs a479e13a... (n=80/244)
+    - Min Freq: 13.3% vs 89af14ac... (n=4/30)
+  > Mega Knight          (p=0.0049, Delta=25.1%)
+    - Max Freq: 33.3% vs 01d0e6a4... (n=5/15)
+    - Min Freq: 8.2% vs a479e13a... (n=20/244)
+  > Firecracker          (p=0.0072, Delta=21.7%)
+    - Max Freq: 26.7% vs 01d0e6a4... (n=4/15)
+    - Min Freq: 4.9% vs a479e13a... (n=12/244)
+  > Hog Rider            (p=0.0116, Delta=30.0%)
+    - Max Freq: 30.0% vs c9002363... (n=3/10)
+    - Min Freq: 0.0% vs a0ea76b4... (n=0/12)
+--------------------------------------------------------------------------------
+BUCKET: Poland | 18:00-24:00 | Battles: 463
+Confronto tra 7 archetipi. Carte sospette: 8
+  > Ice Golem            (p=0.0034, Delta=30.0%)
+    - Max Freq: 30.0% vs d433aea2... (n=3/10)
+    - Min Freq: 0.0% vs a0ea76b4... (n=0/17)
+  > Goblin Gang          (p=0.0151, Delta=30.8%)
+    - Max Freq: 30.8% vs 89af14ac... (n=8/26)
+    - Min Freq: 0.0% vs d433aea2... (n=0/10)
+  > Wizard               (p=0.0188, Delta=30.0%)
+    - Max Freq: 30.0% vs d433aea2... (n=3/10)
+    - Min Freq: 0.0% vs 89af14ac... (n=0/26)
+  > Cannon               (p=0.0196, Delta=44.1%)
+    - Max Freq: 50.0% vs d433aea2... (n=5/10)
+    - Min Freq: 5.9% vs a0ea76b4... (n=1/17)
+  > Electro Wizard       (p=0.0233, Delta=35.3%)
+    - Max Freq: 35.3% vs a0ea76b4... (n=6/17)
+    - Min Freq: 0.0% vs d433aea2... (n=0/10)
+--------------------------------------------------------------------------------
+BUCKET: South Korea | 00:00-06:00 | Battles: 75
+Confronto tra 3 archetipi. Carte sospette: 2
+  > Tesla                (p=0.0105, Delta=35.8%)
+    - Max Freq: 41.7% vs 70c226e6... (n=5/12)
+    - Min Freq: 5.9% vs 6c24c05a... (n=1/17)
+  > Hog Rider            (p=0.0120, Delta=39.4%)
+    - Max Freq: 47.1% vs 6c24c05a... (n=8/17)
+    - Min Freq: 7.7% vs 44a01719... (n=2/26)
+--------------------------------------------------------------------------------
+BUCKET: South Korea | 18:00-24:00 | Battles: 73
+Confronto tra 2 archetipi. Carte sospette: 2
+  > Rocket               (p=0.0496, Delta=21.1%)
+    - Max Freq: 21.1% vs 8545cec1... (n=4/19)
+    - Min Freq: 0.0% vs 44a01719... (n=0/27)
+  > Bats                 (p=0.0496, Delta=21.1%)
+    - Max Freq: 21.1% vs 8545cec1... (n=4/19)
+    - Min Freq: 0.0% vs 44a01719... (n=0/27)
+--------------------------------------------------------------------------------
+BUCKET: Turkey | 06:00-12:00 | Battles: 345
+Confronto tra 14 archetipi. Carte sospette: 3
+  > Witch                (p=0.0318, Delta=56.2%)
+    - Max Freq: 56.2% vs a13ff8ce... (n=9/16)
+    - Min Freq: 0.0% vs e33fcdea... (n=0/16)
+  > Tower Princess       (p=0.0419, Delta=41.7%)
+    - Max Freq: 100.0% vs e33fcdea... (n=16/16)
+    - Min Freq: 58.3% vs e616f64c... (n=7/12)
+  > Wall Breakers        (p=0.0438, Delta=25.0%)
+    - Max Freq: 25.0% vs e33fcdea... (n=4/16)
+    - Min Freq: 0.0% vs e76c1b0c... (n=0/16)
+--------------------------------------------------------------------------------
+BUCKET: Turkey | 18:00-24:00 | Battles: 265
+Confronto tra 10 archetipi. Carte sospette: 3
+  > Tesla                (p=0.0231, Delta=41.2%)
+    - Max Freq: 41.2% vs 2b79a5f0... (n=7/17)
+    - Min Freq: 0.0% vs ef0eb076... (n=0/10)
+  > Goblin Gang          (p=0.0262, Delta=40.0%)
+    - Max Freq: 40.0% vs 77809195... (n=4/10)
+    - Min Freq: 0.0% vs 7168df48... (n=0/10)
+  > Arrows               (p=0.0434, Delta=46.7%)
+    - Max Freq: 46.7% vs b0b95e4e... (n=7/15)
+    - Min Freq: 0.0% vs 2b79a5f0... (n=0/17)
+--------------------------------------------------------------------------------
+
+====================================================================================================
+Totale Bucket: 44
+Bucket Saltati (Dati insufficienti): 19
+Bucket con Anomalie Significative: 22
+====================================================================================================
