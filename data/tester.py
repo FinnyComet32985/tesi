@@ -67,6 +67,7 @@ from climbing_regression_analysis import analyze_climbing_regression
 from test_climbing_speed import analyze_climbing_speed_penalty
 from test_card_regression import analyze_card_regression
 from test_session_swap import analyze_session_swap, analyze_session_swap_conditional
+from test_level_volatility import analyze_level_volatility
 
 
 
@@ -88,8 +89,8 @@ def main():
     # # Ricostruiamo il dizionario profiles per compatibilità con reporter.py
     # profiles = {p['tag']: p['profile'] for p in players_sessions if p['profile']}
 
-    # # raccolta statistiche matchup
-    # matchup_stats = get_extreme_matchup_stats(players_sessions)
+    # raccolta statistiche matchup
+    matchup_stats = get_extreme_matchup_stats(players_sessions)
 
     # # calcolo correlazione tra odds ratio e ragequit
     # correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
@@ -145,6 +146,7 @@ def main():
     # analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
     analyze_debt_initial_progression(players_sessions, output_dir=results_dir)
     analyze_residual_level_diff_debt(players_sessions, output_dir=results_dir)
+    analyze_level_volatility(players_sessions, output_dir=results_dir)
     
 
     # analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)

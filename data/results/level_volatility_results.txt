@@ -1,0 +1,30 @@
+ANALISI VOLATILITÀ LIVELLI POST-DEBT (WIN vs LOSE)
+Obiettivo: Verificare se il livello dell'avversario cambia coerentemente con i trofei dopo una vittoria 'Heroic' o una sconfitta in Debt.
+Condizione Debt: Matchup < 45%.
+Condizione Controllo: Il mazzo del giocatore deve rimanere invariato tra i due match.
+================================================================================
+
+BASELINE GLOBALE:
+Aumento medio livello avversario per 100 trofei: 0.0838
+Variazione attesa per swing di ~60 trofei (+30 vs -30): 0.0503 livelli
+--------------------------------------------------------------------------------
+
+TEST 1: LIVELLI ASSOLUTI (Raw Opponent Level)
+Dopo Heroic Win (N=931): 13.5275
+Dopo Debt Lose  (N=1144): 13.2991
+Delta Rilevato: +0.2284
+Delta Atteso (~60 trofei): +0.0503
+Differenza dal modello naturale: +0.1781
+Significatività statistica (T-test): p=0.00990
+>> ANOMALIA: La variazione di livello è ECCESSIVA rispetto alla sola differenza di trofei.
+
+--------------------------------------------------------------------------------
+
+TEST 2: ANALISI RESIDUI (Opp Level - Avg Level @ Trophies)
+Questo test rimuove l'effetto 'trofei' per vedere se il matchmaking 'punisce' o 'aiuta' relativamente alla fascia.
+Residuo Medio dopo Heroic Win: +0.0387
+Residuo Medio dopo Debt Lose:  -0.0087
+Delta Residui: +0.0474
+Significatività (T-test): p=0.00829
+>> RISULTATO: Dopo una vittoria, affronti avversari RELATIVAMENTE più forti rispetto alla media della fascia (Punizione/Challenge).
+================================================================================
