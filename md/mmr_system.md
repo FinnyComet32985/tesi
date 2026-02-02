@@ -57,3 +57,27 @@ Il fenomeno del "Debito" che abbiamo osservato è quindi la correzione dell'MMR.
 5.  A quei trofei, MMR più alto significa quasi sempre **Livelli più alti**.
 
 In sintesi: **Il sistema non ti punisce perché hai vinto, ti promuove in una fascia di MMR dove gli unici abitanti sono giocatori con carte più forti delle tue.**
+
+## 5. L'Illusione dei Counter (Stesso principio dei Livelli)
+
+Lo stesso meccanismo spiega perché spesso si ha la sensazione di incontrare dei **Counter** quando si sale.
+
+Se il tuo MMR è alto, il sistema ti abbina ad altri giocatori con MMR alto nella tua fascia. Chi sono questi giocatori?
+1.  Giocatori con carte maxate (Gatekeepers).
+2.  Giocatori che usano **Mazzi Meta** o **Mazzi molto forti** (es. Log Bait, Hog Cycle, Mega Knight).
+
+Se tu stai usando un mazzo "fatto in casa" (Homebrew) e vinci, il tuo MMR sale. Verrai abbinato a giocatori che usano mazzi ottimizzati (Meta). Questi mazzi sono strutturalmente superiori al tuo e ti sembreranno dei **Counter specifici**.
+
+**Realtà:** Non sei stato abbinato contro un counter specifico per te. Sei stato abbinato contro un "Mazzo Vincente". E i mazzi vincenti tendono a counterare i mazzi amatoriali.
+
+## 6. Il Fenomeno "Grax" (3 Pro e 1 Nabbo)
+
+Un commento ricorrente (spesso citato sotto i video di youtuber come Grax) descrive questa esperienza: *"Trovo 3-4 player fortissimi di fila e poi uno che sembra aver scaricato il gioco ieri"*.
+
+Questo è l'effetto della **Correzione Elastica dell'MMR** e dei meccanismi di **Retention**:
+
+1.  **I "Player Fortissimi" (High MMR):** Sei arrivato al tuo picco di MMR. Il sistema ti abbina contro Gatekeepers o giocatori molto skillati. Perdi 3 o 4 partite di fila.
+2.  **Il Crollo dell'MMR:** Con ogni sconfitta, il tuo MMR nascosto scende drasticamente (spesso più velocemente dei trofei visibili).
+3.  **Il "Nabbo" (Low MMR / Pity Match):**
+    *   Dopo la serie di sconfitte, il tuo MMR è crollato a un livello dove risiedono i giocatori realmente scarsi o casual.
+    *   Inoltre, dopo una Losing Streak (es. 3 sconfitte), molti sistemi attivano un **"Pity Match"** (Partita di Pietà), abbinandoti intenzionalmente a un avversario con un Win Rate terribile (o un Bot sotto i 4000 trofei) per farti vincere, rilasciare dopamina ed evitare che tu chiuda il gioco per frustrazione.
