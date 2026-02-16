@@ -1,46 +1,60 @@
-ANALISI RETURN MATCHUP DOPO BAD STREAK
-Domanda: Se un giocatore chiude la sessione dopo una serie di matchup sfavorevoli,
-         al ritorno viene 'punito' ancora (memoria) o il sistema si resetta (coin flip)?
+ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK
+Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,
+         al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?
 Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
+Definizione Good Streak: Ultimi 2 match con Matchup > 55.0%
+Definizione Control: Nessuna streak attiva (Matchup misti o neutri)
 ================================================================================
 
 --- STOP TYPE: Short (20 min <= T < 2 ore) ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 112    | 40.62               %
-Control (No Streak)       | 664    | 52.36               %
+Good Streak               | 96     | 58.37               %
+Control (Mixed/Neutral)   | 568    | 51.35               %
 ------------------------------------------------------------
-Delta: -11.74%
-Test Mann-Whitney U (Bad < Control): p-value = 0.0000
-RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
-           (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.62%)
-           (Significativamente inferiore al 50% -> Sfavorevole)
+1. Bad Streak vs Control:
+   Delta: -10.73%
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   -> SIGNIFICATIVO. Punizione persistente.
+
+2. Good Streak vs Control:
+   Delta: +7.02%
+   Test Mann-Whitney U (Good > Control): p-value = 0.0001
+   -> SIGNIFICATIVO. Aiuto persistente (Momentum).
 
 --- STOP TYPE: Long (2 ore <= T < 20 ore) ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 151    | 41.77               %
-Control (No Streak)       | 1026   | 51.95               %
+Good Streak               | 132    | 58.65               %
+Control (Mixed/Neutral)   | 894    | 50.96               %
 ------------------------------------------------------------
-Delta: -10.17%
-Test Mann-Whitney U (Bad < Control): p-value = 0.0000
-RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
-           (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 41.77%)
-           (Significativamente inferiore al 50% -> Sfavorevole)
+1. Bad Streak vs Control:
+   Delta: -9.18%
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   -> SIGNIFICATIVO. Punizione persistente.
+
+2. Good Streak vs Control:
+   Delta: +7.69%
+   Test Mann-Whitney U (Good > Control): p-value = 0.0000
+   -> SIGNIFICATIVO. Aiuto persistente (Momentum).
 
 --- STOP TYPE: Quit (T >= 20 ore) ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
 Bad Streak                | 53     | 42.71               %
-Control (No Streak)       | 385    | 53.00               %
+Good Streak               | 62     | 61.42               %
+Control (Mixed/Neutral)   | 323    | 51.39               %
 ------------------------------------------------------------
-Delta: -10.29%
-Test Mann-Whitney U (Bad < Control): p-value = 0.0001
-RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
-           (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0057 (Avg: 42.71%)
-           (Significativamente inferiore al 50% -> Sfavorevole)
+1. Bad Streak vs Control:
+   Delta: -8.68%
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0012
+   -> SIGNIFICATIVO. Punizione persistente.
+
+2. Good Streak vs Control:
+   Delta: +10.03%
+   Test Mann-Whitney U (Good > Control): p-value = 0.0000
+   -> SIGNIFICATIVO. Aiuto persistente (Momentum).
 
 ================================================================================

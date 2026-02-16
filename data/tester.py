@@ -87,22 +87,22 @@ def main():
 
     # # raccolta dei dati utili per la classificazione del player
     # # Ricostruiamo il dizionario profiles per compatibilità con reporter.py
-    profiles = {p['tag']: p['profile'] for p in players_sessions if p['profile']}
+    #profiles = {p['tag']: p['profile'] for p in players_sessions if p['profile']}
 
     # raccolta statistiche matchup
-    matchup_stats = get_extreme_matchup_stats(players_sessions)
+    #matchup_stats = get_extreme_matchup_stats(players_sessions)
 
     # # calcolo correlazione tra odds ratio e ragequit
-    correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
+    #correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
 
     # # calcolo chi quadro indipendenza (streak vs matchup)
-    chi2_results = get_chi2_independence_stats(players_sessions)
+    #chi2_results = get_chi2_independence_stats(players_sessions)
 
     # analyze_gatekeeping_all(players_sessions, cursor, output_dir=results_dir, gate_range=50)
 
 
     # # generazione report e salvataggio
-    generate_report(profiles, matchup_stats, correlation_results, chi2_results)
+    #generate_report(profiles, matchup_stats, correlation_results, chi2_results)
 
     # ragequit_and_odds_correlation(profiles, matchup_stats) 
 
@@ -126,7 +126,7 @@ def main():
     # analyze_matchup_no_lvl_stats(players_sessions, output_dir=results_dir)
     # analyze_short_session_bonus(players_sessions, output_dir=results_dir)
     # analyze_markov_chains(players_sessions, output_dir=results_dir)
-    #analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
+    analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
     # analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
     # analyze_debt_credit_combined(players_sessions, output_dir=results_dir)
     # analyze_punish_outcome_worsening(players_sessions, output_dir=results_dir)
