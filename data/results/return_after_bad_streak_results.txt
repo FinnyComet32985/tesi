@@ -1,60 +1,73 @@
-ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK
+ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK (DETTAGLIO COMPONENTI)
 Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,
          al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?
+         Analisi componenti: Matchup Reale vs No-Lvl (Deck) vs Level Diff.
 Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
 Definizione Good Streak: Ultimi 2 match con Matchup > 55.0%
 Definizione Control: Nessuna streak attiva (Matchup misti o neutri)
 ================================================================================
 
 --- STOP TYPE: Short (20 min <= T < 2 ore) ---
-Condizione Precedente     | N      | Avg Return Matchup  
-------------------------------------------------------------
-Bad Streak                | 112    | 40.62               %
-Good Streak               | 96     | 58.37               %
-Control (Mixed/Neutral)   | 568    | 51.35               %
-------------------------------------------------------------
+Condizione      | N     | Matchup    | No-Lvl (Deck)   | Level Diff
+----------------------------------------------------------------------
+Bad Streak      | 112   | 40.62     % | 46.33          % | -0.20     
+Good Streak     | 96    | 58.37     % | 52.08          % | 0.19      
+Control         | 568   | 51.35     % | 49.11          % | 0.05      
+----------------------------------------------------------------------
 1. Bad Streak vs Control:
-   Delta: -10.73%
-   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   Delta MU: -10.73% (p=0.0000)
+   Delta No-Lvl: -2.78%
+   Delta Level:  -0.25
    -> SIGNIFICATIVO. Punizione persistente.
+      (Dovuto anche al DECK/META)
 
 2. Good Streak vs Control:
-   Delta: +7.02%
-   Test Mann-Whitney U (Good > Control): p-value = 0.0001
+   Delta MU: +7.02% (p=0.0001)
+   Delta No-Lvl: +2.97%
+   Delta Level:  +0.14
    -> SIGNIFICATIVO. Aiuto persistente (Momentum).
+      (Dovuto anche al DECK/META)
 
 --- STOP TYPE: Long (2 ore <= T < 20 ore) ---
-Condizione Precedente     | N      | Avg Return Matchup  
-------------------------------------------------------------
-Bad Streak                | 151    | 41.77               %
-Good Streak               | 132    | 58.65               %
-Control (Mixed/Neutral)   | 894    | 50.96               %
-------------------------------------------------------------
+Condizione      | N     | Matchup    | No-Lvl (Deck)   | Level Diff
+----------------------------------------------------------------------
+Bad Streak      | 151   | 41.77     % | 49.65          % | -0.32     
+Good Streak     | 132   | 58.65     % | 51.26          % | 0.21      
+Control         | 894   | 50.96     % | 49.49          % | 0.03      
+----------------------------------------------------------------------
 1. Bad Streak vs Control:
-   Delta: -9.18%
-   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   Delta MU: -9.18% (p=0.0000)
+   Delta No-Lvl: +0.17%
+   Delta Level:  -0.36
    -> SIGNIFICATIVO. Punizione persistente.
+      (Dovuto principalmente ai LIVELLI)
 
 2. Good Streak vs Control:
-   Delta: +7.69%
-   Test Mann-Whitney U (Good > Control): p-value = 0.0000
+   Delta MU: +7.69% (p=0.0000)
+   Delta No-Lvl: +1.77%
+   Delta Level:  +0.18
    -> SIGNIFICATIVO. Aiuto persistente (Momentum).
+      (Dovuto principalmente ai LIVELLI)
 
 --- STOP TYPE: Quit (T >= 20 ore) ---
-Condizione Precedente     | N      | Avg Return Matchup  
-------------------------------------------------------------
-Bad Streak                | 53     | 42.71               %
-Good Streak               | 62     | 61.42               %
-Control (Mixed/Neutral)   | 323    | 51.39               %
-------------------------------------------------------------
+Condizione      | N     | Matchup    | No-Lvl (Deck)   | Level Diff
+----------------------------------------------------------------------
+Bad Streak      | 53    | 42.71     % | 52.77          % | -0.46     
+Good Streak     | 62    | 61.42     % | 49.45          % | 0.35      
+Control         | 323   | 51.39     % | 51.23          % | -0.00     
+----------------------------------------------------------------------
 1. Bad Streak vs Control:
-   Delta: -8.68%
-   Test Mann-Whitney U (Bad < Control): p-value = 0.0012
+   Delta MU: -8.68% (p=0.0012)
+   Delta No-Lvl: +1.54%
+   Delta Level:  -0.46
    -> SIGNIFICATIVO. Punizione persistente.
+      (Dovuto principalmente ai LIVELLI)
 
 2. Good Streak vs Control:
-   Delta: +10.03%
-   Test Mann-Whitney U (Good > Control): p-value = 0.0000
+   Delta MU: +10.03% (p=0.0000)
+   Delta No-Lvl: -1.78%
+   Delta Level:  +0.36
    -> SIGNIFICATIVO. Aiuto persistente (Momentum).
+      (Dovuto principalmente ai LIVELLI)
 
 ================================================================================

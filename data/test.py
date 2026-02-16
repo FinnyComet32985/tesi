@@ -1376,12 +1376,31 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
 
     print(f"\nGenerazione report Return Matchup dopo Bad Streak in: {output_file}")
 
+    # --- 1. Build Baseline Curve (Expected Level Diff per Trophy Range) ---
+    # Serve per normalizzare l'effetto "Climbing" (più sali, più è difficile)
+    BUCKET_SIZE = 200
+    trophy_buckets = defaultdict(list)
+
+    for p in players_sessions:
+        for s in p['sessions']:
+            for b in s['battles']:
+                # Usiamo Ladder/Ranked per costruire la baseline
+                if b['game_mode'] in ['Ladder', 'Ranked'] and b.get('trophies_before') and b.get('level_diff') is not None:
+                    t = b['trophies_before']
+                    b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+                    trophy_buckets[b_idx].append(b['level_diff'])
+
+    expected_curve = {}
+    for b_idx, diffs in trophy_buckets.items():
+        if len(diffs) >= 20: 
+            expected_curve[b_idx] = statistics.mean(diffs)
+    # ----------------------------------------------------------------------
+
     # Config
     BAD_THRESH = 45.0
     GOOD_THRESH = 55.0
     STREAK_LEN = 2 
     
-    # Storage: stop_type -> {'bad_streak': [], 'control': [], 'good_streak': []}
     # Storage: stop_type -> {'bad_streak': [records], 'control': [records], 'good_streak': [records]}
     data = {
         'Short': {'bad_streak': [], 'control': [], 'good_streak': []},
@@ -1406,21 +1425,28 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             
             if not next_sess['battles']: continue
             first_b = next_sess['battles'][0]
-            if first_b['matchup'] is None: continue
-            return_mu = first_b['matchup']
             
             mu = first_b.get('matchup')
             mnl = first_b.get('matchup_no_lvl')
             lvl = first_b.get('level_diff')
+            trophies = first_b.get('trophies_before')
             
             if mu is None: continue
             
             record = {'mu': mu, 'mnl': mnl, 'lvl': lvl}
+            # Calcolo Residuo (Level Diff Osservato - Atteso per quei trofei)
+            residual = None
+            if trophies is not None and lvl is not None:
+                b_idx = (trophies // BUCKET_SIZE) * BUCKET_SIZE
+                if b_idx in expected_curve:
+                    expected = expected_curve[b_idx]
+                    residual = lvl - expected
+
+            record = {'mu': mu, 'mnl': mnl, 'lvl': lvl, 'res': residual}
             
             battles = curr_sess['battles']
             # Check last N matches
             if len(battles) < STREAK_LEN:
-                data[stop_type]['control'].append(return_mu)
                 data[stop_type]['control'].append(record)
                 continue
                 
@@ -1432,30 +1458,28 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             is_good_streak = all(b['matchup'] > GOOD_THRESH for b in last_n)
             
             if is_bad_streak:
-                data[stop_type]['bad_streak'].append(return_mu)
                 data[stop_type]['bad_streak'].append(record)
             elif is_good_streak:
-                data[stop_type]['good_streak'].append(return_mu)
                 data[stop_type]['good_streak'].append(record)
             else:
-                data[stop_type]['control'].append(return_mu)
                 data[stop_type]['control'].append(record)
 
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write("ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK\n")
         f.write("ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK (DETTAGLIO COMPONENTI)\n")
+        f.write("ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK (DETTAGLIO COMPONENTI & RESIDUI)\n")
         f.write("Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,\n")
         f.write("         al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?\n")
         f.write("         Analisi componenti: Matchup Reale vs No-Lvl (Deck) vs Level Diff.\n")
+        f.write("         Analisi componenti: Matchup Reale vs No-Lvl (Deck) vs Level Diff vs RESIDUO.\n")
+        f.write("         RESIDUO = Level Diff Osservato - Level Diff Atteso per la fascia trofei.\n")
+        f.write("         (Serve a isolare l'effetto 'Climbing' dall'effetto 'MMR/Punizione').\n")
         f.write(f"Definizione Bad Streak: Ultimi {STREAK_LEN} match con Matchup < {BAD_THRESH}%\n")
         f.write(f"Definizione Good Streak: Ultimi {STREAK_LEN} match con Matchup > {GOOD_THRESH}%\n")
         f.write("Definizione Control: Nessuna streak attiva (Matchup misti o neutri)\n")
         f.write("="*80 + "\n\n")
+        f.write("="*100 + "\n\n")
         
         for stop_type in ['Short', 'Long', 'Quit']:
-            bad_vals = data[stop_type]['bad_streak']
-            good_vals = data[stop_type]['good_streak']
-            ctrl_vals = data[stop_type]['control']
             bad_recs = data[stop_type]['bad_streak']
             good_recs = data[stop_type]['good_streak']
             ctrl_recs = data[stop_type]['control']
@@ -1476,89 +1500,102 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             good_lvl = get_vals(good_recs, 'lvl')
             ctrl_lvl = get_vals(ctrl_recs, 'lvl')
             
+            bad_res = get_vals(bad_recs, 'res')
+            good_res = get_vals(good_recs, 'res')
+            ctrl_res = get_vals(ctrl_recs, 'res')
+            
             f.write(f"--- STOP TYPE: {stop_type} ({STOP_DESCRIPTION[stop_type]}) ---\n")
-            if len(ctrl_vals) < 5:
             if len(ctrl_mu) < 5:
                 f.write("Dati insufficienti per Control.\n\n")
                 continue
                 
-            avg_bad = statistics.mean(bad_vals) if bad_vals else 0
-            avg_good = statistics.mean(good_vals) if good_vals else 0
-            avg_ctrl = statistics.mean(ctrl_vals)
             # Averages
             avg_bad_mu = statistics.mean(bad_mu) if bad_mu else 0
             avg_good_mu = statistics.mean(good_mu) if good_mu else 0
             avg_ctrl_mu = statistics.mean(ctrl_mu)
             
-            f.write(f"{'Condizione Precedente':<25} | {'N':<6} | {'Avg Return Matchup':<20}\n")
-            f.write("-" * 60 + "\n")
-            f.write(f"{'Bad Streak':<25} | {len(bad_vals):<6} | {avg_bad:<20.2f}%\n")
-            f.write(f"{'Good Streak':<25} | {len(good_vals):<6} | {avg_good:<20.2f}%\n")
-            f.write(f"{'Control (Mixed/Neutral)':<25} | {len(ctrl_vals):<6} | {avg_ctrl:<20.2f}%\n")
             avg_bad_mnl = statistics.mean(bad_mnl) if bad_mnl else 0
             avg_good_mnl = statistics.mean(good_mnl) if good_mnl else 0
             avg_ctrl_mnl = statistics.mean(ctrl_mnl)
             
-            f.write("-" * 60 + "\n")
             avg_bad_lvl = statistics.mean(bad_lvl) if bad_lvl else 0
             avg_good_lvl = statistics.mean(good_lvl) if good_lvl else 0
             avg_ctrl_lvl = statistics.mean(ctrl_lvl)
             
-            # Test Bad vs Control
-            if len(bad_vals) >= 5:
-                stat, p_val = mannwhitneyu(bad_vals, ctrl_vals, alternative='less')
             f.write(f"{'Condizione':<15} | {'N':<5} | {'Matchup':<10} | {'No-Lvl (Deck)':<15} | {'Level Diff':<10}\n")
             f.write("-" * 70 + "\n")
             f.write(f"{'Bad Streak':<15} | {len(bad_mu):<5} | {avg_bad_mu:<10.2f}% | {avg_bad_mnl:<15.2f}% | {avg_bad_lvl:<10.2f}\n")
             f.write(f"{'Good Streak':<15} | {len(good_mu):<5} | {avg_good_mu:<10.2f}% | {avg_good_mnl:<15.2f}% | {avg_good_lvl:<10.2f}\n")
             f.write(f"{'Control':<15} | {len(ctrl_mu):<5} | {avg_ctrl_mu:<10.2f}% | {avg_ctrl_mnl:<15.2f}% | {avg_ctrl_lvl:<10.2f}\n")
             f.write("-" * 70 + "\n")
+            avg_bad_res = statistics.mean(bad_res) if bad_res else 0
+            avg_good_res = statistics.mean(good_res) if good_res else 0
+            avg_ctrl_res = statistics.mean(ctrl_res)
             
             # Test Bad vs Control (MU)
             if len(bad_mu) >= 5:
                 stat, p_val = mannwhitneyu(bad_mu, ctrl_mu, alternative='less')
                 f.write(f"1. Bad Streak vs Control:\n")
-                f.write(f"   Delta: {avg_bad - avg_ctrl:+.2f}%\n")
-                f.write(f"   Test Mann-Whitney U (Bad < Control): p-value = {p_val:.4f}\n")
                 f.write(f"   Delta MU: {avg_bad_mu - avg_ctrl_mu:+.2f}% (p={p_val:.4f})\n")
                 f.write(f"   Delta No-Lvl: {avg_bad_mnl - avg_ctrl_mnl:+.2f}%\n")
                 f.write(f"   Delta Level:  {avg_bad_lvl - avg_ctrl_lvl:+.2f}\n")
+            f.write(f"{'Condizione':<15} | {'N':<5} | {'Matchup':<10} | {'No-Lvl':<10} | {'Lvl Diff':<10} | {'RESIDUO (Netto)':<15}\n")
+            f.write("-" * 90 + "\n")
+            f.write(f"{'Bad Streak':<15} | {len(bad_mu):<5} | {avg_bad_mu:<10.2f}% | {avg_bad_mnl:<10.2f}% | {avg_bad_lvl:<10.2f} | {avg_bad_res:<15.4f}\n")
+            f.write(f"{'Good Streak':<15} | {len(good_mu):<5} | {avg_good_mu:<10.2f}% | {avg_good_mnl:<10.2f}% | {avg_good_lvl:<10.2f} | {avg_good_res:<15.4f}\n")
+            f.write(f"{'Control':<15} | {len(ctrl_mu):<5} | {avg_ctrl_mu:<10.2f}% | {avg_ctrl_mnl:<10.2f}% | {avg_ctrl_lvl:<10.2f} | {avg_ctrl_res:<15.4f}\n")
+            f.write("-" * 90 + "\n")
+            
+            # Test Bad vs Control (Residuo)
+            if len(bad_res) >= 5 and len(ctrl_res) >= 5:
+                stat, p_val = mannwhitneyu(bad_res, ctrl_res, alternative='less')
+                f.write(f"1. Bad Streak vs Control (RESIDUO):\n")
+                f.write(f"   Delta Residuo: {avg_bad_res - avg_ctrl_res:+.4f}\n")
+                f.write(f"   Test Mann-Whitney U (Bad < Control): p-value = {p_val:.4f}\n")
                 if p_val < 0.05:
                     f.write("   -> SIGNIFICATIVO. Punizione persistente.\n")
                     if abs(avg_bad_mnl - avg_ctrl_mnl) > 2.0:
                         f.write("      (Dovuto anche al DECK/META)\n")
                     else:
                         f.write("      (Dovuto principalmente ai LIVELLI)\n")
+                    f.write("   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.\n")
+                    f.write("      (Non è solo colpa della fascia trofei, ma di un MMR nascosto).\n")
                 else:
                     f.write("   -> NON SIGNIFICATIVO.\n")
+                    f.write("   -> NON SIGNIFICATIVO. La differenza è spiegata dalla fascia trofei.\n")
             else:
                 f.write("1. Bad Streak vs Control: Dati insufficienti.\n")
+                f.write("1. Bad Streak vs Control: Dati insufficienti per Residuo.\n")
 
-            # Test Good vs Control
-            if len(good_vals) >= 5:
-                stat_g, p_val_g = mannwhitneyu(good_vals, ctrl_vals, alternative='greater')
             # Test Good vs Control (MU)
             if len(good_mu) >= 5:
                 stat_g, p_val_g = mannwhitneyu(good_mu, ctrl_mu, alternative='greater')
                 f.write(f"\n2. Good Streak vs Control:\n")
-                f.write(f"   Delta: {avg_good - avg_ctrl:+.2f}%\n")
-                f.write(f"   Test Mann-Whitney U (Good > Control): p-value = {p_val_g:.4f}\n")
                 f.write(f"   Delta MU: {avg_good_mu - avg_ctrl_mu:+.2f}% (p={p_val_g:.4f})\n")
                 f.write(f"   Delta No-Lvl: {avg_good_mnl - avg_ctrl_mnl:+.2f}%\n")
                 f.write(f"   Delta Level:  {avg_good_lvl - avg_ctrl_lvl:+.2f}\n")
+            # Test Good vs Control (Residuo)
+            if len(good_res) >= 5 and len(ctrl_res) >= 5:
+                stat_g, p_val_g = mannwhitneyu(good_res, ctrl_res, alternative='greater')
+                f.write(f"\n2. Good Streak vs Control (RESIDUO):\n")
+                f.write(f"   Delta Residuo: {avg_good_res - avg_ctrl_res:+.4f}\n")
+                f.write(f"   Test Mann-Whitney U (Good > Control): p-value = {p_val_g:.4f}\n")
                 if p_val_g < 0.05:
                     f.write("   -> SIGNIFICATIVO. Aiuto persistente (Momentum).\n")
                     if abs(avg_good_mnl - avg_ctrl_mnl) > 2.0:
                         f.write("      (Dovuto anche al DECK/META)\n")
                     else:
                         f.write("      (Dovuto principalmente ai LIVELLI)\n")
+                    f.write("   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.\n")
                 else:
                     f.write("   -> NON SIGNIFICATIVO.\n")
             else:
                 f.write("\n2. Good Streak vs Control: Dati insufficienti.\n")
+                f.write("\n2. Good Streak vs Control: Dati insufficienti per Residuo.\n")
 
             f.write("\n")
         f.write("="*80 + "\n")
+        f.write("="*100 + "\n")
 
 def analyze_debt_extinction(players_sessions, output_dir=None):
     if output_dir is None:
