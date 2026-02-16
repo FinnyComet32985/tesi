@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 from scipy.stats import chi2_contingency, chi2
 
-def get_streak_category(streak_count: int, threshold: int = 2) -> str:
+def get_streak_category(streak_count: int, threshold: int = 3) -> str:
     """Categorizza una streak numerica."""
     if streak_count >= threshold:
         return 'Winning Streak'

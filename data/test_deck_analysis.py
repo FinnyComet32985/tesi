@@ -262,7 +262,9 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
         f.write("Obiettivo: Verificare se, a parità di condizioni (Orario e Trofei), il mazzo che usi influenza il MAZZO (Archetipo) che trovi contro.\n")
         f.write("Nota: Analisi aggregata su TUTTI i player nel bucket (Inter-Player Comparison) per superare il limite dei One-Trick Ponies.\n")
         f.write("Metodo: Test Chi-Quadro su tabella di contingenza (Player Archetype vs Opponent Archetype).\n")
-        f.write("Ipotesi Nulla (Fair): La distribuzione degli archetipi avversari è indipendente dal tuo mazzo.\n")
+        f.write("Ipotesi Nulla (H0 - Fair): La distribuzione degli avversari è INDIPENDENTE dal tuo mazzo.\n")
+        f.write("Ipotesi Alternativa (H1 - Rigged): La distribuzione degli avversari DIPENDE dal tuo mazzo.\n")
+        f.write("Interpretazione: P-value < 0.05 => Rifiuto H0 (Sospetto Rigging). P-value >= 0.05 => Mantengo H0 (Fair).\n")
         f.write("="*100 + "\n\n")
 
         f.write(f"Totale Battaglie Analizzate: {len(temp_battles)}\n")
@@ -338,9 +340,9 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
                 if p < 0.05:
                     significant_buckets += 1
                 
-                sig_label = "SIGNIFICATIVO (Distribuzione avversari diversa)" if p < 0.05 else "NON SIGNIFICATIVO"
+                sig_label = "SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)" if p < 0.05 else "NON SIGNIFICATIVO -> FAIR (Indipendenza)"
                 f.write(f"Bucket: {range_label} | Orario: {time_label} | Players: {len(unique_players)} | Battles: {len(relevant_battles)}\n")
-                f.write(f"Matrice: {len(valid_p_decks)} Archetipi Player (Righe) x {len(top_o_decks)} Archetipi Opponent (Colonne)\n")
+                f.write(f"Matrice: [Righe = {len(valid_p_decks)} (Tuoi Archetipi)] x [Colonne = {len(top_o_decks)} (Archetipi Avversari)]\n")
                 f.write(f"P-value: {p:.6f} -> {sig_label}\n")
                 f.write("-" * 80 + "\n")
             
@@ -349,8 +351,6 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
 
         f.write("\n" + "="*100 + "\n")
         f.write(f"Totale Bucket Testati: {total_tested_buckets}\n")
-        f.write(f"Bucket Saltati (Poche Battaglie): {skipped_buckets}\n")
-        f.write(f"Bucket Saltati (One-Trick/Pochi Deck): {skipped_one_trick}\n")
         f.write(f"Bucket con Dipendenza Significativa: {significant_buckets}\n")
         if total_tested_buckets > 0:
             f.write(f"Percentuale Sospetta: {(significant_buckets/total_tested_buckets)*100:.2f}%\n")

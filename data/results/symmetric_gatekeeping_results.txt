@@ -1,0 +1,20 @@
+ANALISI GATEKEEPING SIMMETRICA (DANGER VS CONTROL) - RESIDUI NORMALIZZATI
+Confronto: Danger Zone [-50, 0] vs Control Zone [-100, -50]
+Obiettivo: Verificare se il livello avversario è anomalo rispetto alla media della fascia di trofei.
+Metodo: Residuo = Livello Osservato - Media Livello Fascia (100 trofei)
+============================================================
+
+Campione Danger Zone:  564
+Campione Control Zone: 719
+
+Media Residuo (Danger):  +0.0172
+Media Residuo (Control): -0.0135
+Delta Osservato:            +0.0307
+P-value (Danger > Control): 0.02629
+
+--- VERIFICA PROGRESSIONE NATURALE ---
+Crescita Naturale Attesa (+50 trofei): +0.0485
+Crescita Reale Osservata:              +0.0307
+Eccesso (Gatekeeping Effect):          -0.0178
+
+CONCLUSIONE: L'aumento è significativo ma in linea con la progressione naturale.

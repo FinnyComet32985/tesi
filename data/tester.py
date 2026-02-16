@@ -87,22 +87,22 @@ def main():
 
     # # raccolta dei dati utili per la classificazione del player
     # # Ricostruiamo il dizionario profiles per compatibilità con reporter.py
-    # profiles = {p['tag']: p['profile'] for p in players_sessions if p['profile']}
+    profiles = {p['tag']: p['profile'] for p in players_sessions if p['profile']}
 
     # raccolta statistiche matchup
     matchup_stats = get_extreme_matchup_stats(players_sessions)
 
     # # calcolo correlazione tra odds ratio e ragequit
-    # correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
+    correlation_results = calculate_correlation_pity_ragequit(profiles, matchup_stats)
 
     # # calcolo chi quadro indipendenza (streak vs matchup)
-    # chi2_results = get_chi2_independence_stats(players_sessions)
+    chi2_results = get_chi2_independence_stats(players_sessions)
 
     # analyze_gatekeeping_all(players_sessions, cursor, output_dir=results_dir, gate_range=50)
 
 
     # # generazione report e salvataggio
-    # generate_report(profiles, matchup_stats, correlation_results, chi2_results)
+    generate_report(profiles, matchup_stats, correlation_results, chi2_results)
 
     # ragequit_and_odds_correlation(profiles, matchup_stats) 
 
@@ -112,9 +112,9 @@ def main():
     # analyze_session_pity(players_sessions, output_dir=results_dir)
     # analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=False) # Con livelli (Reale)
     # analyze_extreme_matchup_streak(players_sessions, output_dir=results_dir, use_no_lvl=True)  # Senza livelli (Puro)
-    analyze_confounding_variables(players_sessions, cursor, output_dir=results_dir)
+    #analyze_confounding_variables(players_sessions, cursor, output_dir=results_dir)
     # analyze_time_stats(players_sessions, output_dir=results_dir)
-    analyze_deck_switch_combined(players_sessions, cursor, output_dir=results_dir)
+    #analyze_deck_switch_combined(players_sessions, cursor, output_dir=results_dir)
     # analyze_ers_pity_hypothesis(profiles, matchup_stats, output_dir=results_dir)
     # analyze_return_matchups_vs_ers(players_sessions, output_dir=results_dir)
     # analyze_pity_impact_on_session_length(players_sessions, output_dir=results_dir)
@@ -126,7 +126,7 @@ def main():
     # analyze_matchup_no_lvl_stats(players_sessions, output_dir=results_dir)
     # analyze_short_session_bonus(players_sessions, output_dir=results_dir)
     # analyze_markov_chains(players_sessions, output_dir=results_dir)
-    # analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
+    #analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
     # analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
     # analyze_debt_credit_combined(players_sessions, output_dir=results_dir)
     # analyze_punish_outcome_worsening(players_sessions, output_dir=results_dir)
@@ -139,18 +139,18 @@ def main():
     # analyze_nolvl_streaks_vs_trophies(players_sessions, output_dir=results_dir)
     # analyze_meta_ranges(players_sessions, output_dir=results_dir)
     # analyze_climbing_regression(players_sessions, output_dir=results_dir)
-    analyze_arena_progression_curve(players_sessions, output_dir=results_dir)
+    #analyze_arena_progression_curve(players_sessions, output_dir=results_dir)
     # analyze_climbing_speed_penalty(players_sessions, output_dir=results_dir)
     # analyze_climbing_impact(players_sessions, output_dir=results_dir)
     # analyze_hook_by_trophy_range(players_sessions, output_dir=results_dir, cursor=cursor)
     # analyze_skill_vs_matchup_dominance(players_sessions, output_dir=results_dir)
-    analyze_debt_initial_progression(players_sessions, output_dir=results_dir)
-    analyze_residual_level_diff_debt(players_sessions, output_dir=results_dir)
-    analyze_level_volatility(players_sessions, output_dir=results_dir)
+    # analyze_debt_initial_progression(players_sessions, output_dir=results_dir)
+    # analyze_residual_level_diff_debt(players_sessions, output_dir=results_dir)
+    # analyze_level_volatility(players_sessions, output_dir=results_dir)
     
 
     # analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
-    analyze_matchmaking_fairness(players_sessions, output_dir=results_dir)
+    #analyze_matchmaking_fairness(players_sessions, output_dir=results_dir)
     # analyze_level_saturation(players_sessions, output_dir=results_dir)
     # analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
     # analyze_sniper_confounding(players_sessions, output_dir=results_dir)

@@ -1378,15 +1378,26 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
 
     # Config
     BAD_THRESH = 45.0
+    GOOD_THRESH = 55.0
     STREAK_LEN = 2 
     
     # Storage: stop_type -> {'bad_streak': [], 'control': []}
+    # Storage: stop_type -> {'bad_streak': [], 'control': [], 'good_streak': []}
     data = {
         'Short': {'bad_streak': [], 'control': []},
         'Long': {'bad_streak': [], 'control': []},
         'Quit': {'bad_streak': [], 'control': []}
+        'Short': {'bad_streak': [], 'control': [], 'good_streak': []},
+        'Long': {'bad_streak': [], 'control': [], 'good_streak': []},
+        'Quit': {'bad_streak': [], 'control': [], 'good_streak': []}
     }
     
+    STOP_DESCRIPTION = {
+        'Short': '20 min <= T < 2 ore',
+        'Long': '2 ore <= T < 20 ore',
+        'Quit': 'T >= 20 ore'
+    }
+
     for p in players_sessions:
         sessions = p['sessions']
         for i in range(len(sessions) - 1):
@@ -1412,9 +1423,12 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
                 continue
                 
             is_bad_streak = all(b['matchup'] < BAD_THRESH for b in last_n)
+            is_good_streak = all(b['matchup'] > GOOD_THRESH for b in last_n)
             
             if is_bad_streak:
                 data[stop_type]['bad_streak'].append(return_mu)
+            elif is_good_streak:
+                data[stop_type]['good_streak'].append(return_mu)
             else:
                 data[stop_type]['control'].append(return_mu)
 
@@ -1422,25 +1436,37 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
         f.write("ANALISI RETURN MATCHUP DOPO BAD STREAK\n")
         f.write("Domanda: Se un giocatore chiude la sessione dopo una serie di matchup sfavorevoli,\n")
         f.write("         al ritorno viene 'punito' ancora (memoria) o il sistema si resetta (coin flip)?\n")
+        f.write("ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK\n")
+        f.write("Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,\n")
+        f.write("         al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?\n")
         f.write(f"Definizione Bad Streak: Ultimi {STREAK_LEN} match con Matchup < {BAD_THRESH}%\n")
+        f.write(f"Definizione Good Streak: Ultimi {STREAK_LEN} match con Matchup > {GOOD_THRESH}%\n")
+        f.write("Definizione Control: Nessuna streak attiva (Matchup misti o neutri)\n")
         f.write("="*80 + "\n\n")
         
         for stop_type in ['Short', 'Long', 'Quit']:
             bad_vals = data[stop_type]['bad_streak']
+            good_vals = data[stop_type]['good_streak']
             ctrl_vals = data[stop_type]['control']
             
-            f.write(f"--- STOP TYPE: {stop_type} ---\n")
+            f.write(f"--- STOP TYPE: {stop_type} ({STOP_DESCRIPTION[stop_type]}) ---\n")
             if len(bad_vals) < 5 or len(ctrl_vals) < 5:
                 f.write("Dati insufficienti.\n\n")
+            if len(ctrl_vals) < 5:
+                f.write("Dati insufficienti per Control.\n\n")
                 continue
                 
             avg_bad = statistics.mean(bad_vals)
+            avg_bad = statistics.mean(bad_vals) if bad_vals else 0
+            avg_good = statistics.mean(good_vals) if good_vals else 0
             avg_ctrl = statistics.mean(ctrl_vals)
             
             f.write(f"{'Condizione Precedente':<25} | {'N':<6} | {'Avg Return Matchup':<20}\n")
             f.write("-" * 60 + "\n")
             f.write(f"{'Bad Streak':<25} | {len(bad_vals):<6} | {avg_bad:<20.2f}%\n")
             f.write(f"{'Control (No Streak)':<25} | {len(ctrl_vals):<6} | {avg_ctrl:<20.2f}%\n")
+            f.write(f"{'Good Streak':<25} | {len(good_vals):<6} | {avg_good:<20.2f}%\n")
+            f.write(f"{'Control (Mixed/Neutral)':<25} | {len(ctrl_vals):<6} | {avg_ctrl:<20.2f}%\n")
             
             # Test Mann-Whitney U
             # H1: Bad Streak Return < Control Return (Punishment Continues)
@@ -1453,6 +1479,16 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             if p_val < 0.05:
                 f.write("RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.\n")
                 f.write("           (Il matchup al ritorno è peggiore rispetto alla norma)\n")
+            # Test Bad vs Control
+            if len(bad_vals) >= 5:
+                stat, p_val = mannwhitneyu(bad_vals, ctrl_vals, alternative='less')
+                f.write(f"1. Bad Streak vs Control:\n")
+                f.write(f"   Delta: {avg_bad - avg_ctrl:+.2f}%\n")
+                f.write(f"   Test Mann-Whitney U (Bad < Control): p-value = {p_val:.4f}\n")
+                if p_val < 0.05:
+                    f.write("   -> SIGNIFICATIVO. Punizione persistente.\n")
+                else:
+                    f.write("   -> NON SIGNIFICATIVO.\n")
             else:
                 f.write("RISULTATO: NON SIGNIFICATIVO. Il sistema sembra resettarsi (o non c'è memoria).\n")
             
@@ -1464,8 +1500,21 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
                  f.write("           (Significativamente inferiore al 50% -> Sfavorevole)\n")
             elif p_50 < 0.05 and avg_bad > 50:
                  f.write("           (Significativamente superiore al 50% -> Favorevole/Pity)\n")
+                f.write("1. Bad Streak vs Control: Dati insufficienti.\n")
+
+            # Test Good vs Control
+            if len(good_vals) >= 5:
+                stat_g, p_val_g = mannwhitneyu(good_vals, ctrl_vals, alternative='greater')
+                f.write(f"\n2. Good Streak vs Control:\n")
+                f.write(f"   Delta: {avg_good - avg_ctrl:+.2f}%\n")
+                f.write(f"   Test Mann-Whitney U (Good > Control): p-value = {p_val_g:.4f}\n")
+                if p_val_g < 0.05:
+                    f.write("   -> SIGNIFICATIVO. Aiuto persistente (Momentum).\n")
+                else:
+                    f.write("   -> NON SIGNIFICATIVO.\n")
             else:
                  f.write("           (Compatibile con 50% -> Coin Flip)\n")
+                f.write("\n2. Good Streak vs Control: Dati insufficienti.\n")
 
             f.write("\n")
         f.write("="*80 + "\n")

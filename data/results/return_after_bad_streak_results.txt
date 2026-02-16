@@ -4,43 +4,43 @@ Domanda: Se un giocatore chiude la sessione dopo una serie di matchup sfavorevol
 Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
 ================================================================================
 
---- STOP TYPE: Short ---
+--- STOP TYPE: Short (20 min <= T < 2 ore) ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
-Bad Streak                | 110    | 40.20               %
-Control (No Streak)       | 647    | 52.30               %
+Bad Streak                | 112    | 40.62               %
+Control (No Streak)       | 664    | 52.36               %
 ------------------------------------------------------------
-Delta: -12.10%
+Delta: -11.74%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.20%)
+Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 40.62%)
            (Significativamente inferiore al 50% -> Sfavorevole)
 
---- STOP TYPE: Long ---
+--- STOP TYPE: Long (2 ore <= T < 20 ore) ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
-Bad Streak                | 148    | 41.73               %
-Control (No Streak)       | 1008   | 51.95               %
+Bad Streak                | 151    | 41.77               %
+Control (No Streak)       | 1026   | 51.95               %
 ------------------------------------------------------------
-Delta: -10.22%
+Delta: -10.17%
 Test Mann-Whitney U (Bad < Control): p-value = 0.0000
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 41.73%)
+Test vs 50% (Coin Flip): p-value = 0.0000 (Avg: 41.77%)
            (Significativamente inferiore al 50% -> Sfavorevole)
 
---- STOP TYPE: Quit ---
+--- STOP TYPE: Quit (T >= 20 ore) ---
 Condizione Precedente     | N      | Avg Return Matchup  
 ------------------------------------------------------------
-Bad Streak                | 50     | 43.45               %
-Control (No Streak)       | 371    | 52.80               %
+Bad Streak                | 53     | 42.71               %
+Control (No Streak)       | 385    | 53.00               %
 ------------------------------------------------------------
-Delta: -9.35%
-Test Mann-Whitney U (Bad < Control): p-value = 0.0005
+Delta: -10.29%
+Test Mann-Whitney U (Bad < Control): p-value = 0.0001
 RISULTATO: SIGNIFICATIVO. La punizione sembra continuare anche dopo la pausa.
            (Il matchup al ritorno è peggiore rispetto alla norma)
-Test vs 50% (Coin Flip): p-value = 0.0137 (Avg: 43.45%)
+Test vs 50% (Coin Flip): p-value = 0.0057 (Avg: 42.71%)
            (Significativamente inferiore al 50% -> Sfavorevole)
 
 ================================================================================
