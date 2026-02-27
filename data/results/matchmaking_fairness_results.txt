@@ -8,66 +8,54 @@ Interpretazione: P-value < 0.05 => Rifiuto H0 (Sospetto Rigging). P-value >= 0.0
 ====================================================================================================
 
 Totale Battaglie Analizzate: 8093
-Bucket: 4500-6000 | Orario: 00:00-08:00 | Players: 6 | Battles: 195
-Matrice: [Righe = 5 (Tuoi Archetipi)] x [Colonne = 4 (Archetipi Avversari)]
-P-value: 0.631797 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
---------------------------------------------------------------------------------
 Bucket: 4500-6000 | Orario: 08:00-16:00 | Players: 6 | Battles: 311
 Matrice: [Righe = 10 (Tuoi Archetipi)] x [Colonne = 15 (Archetipi Avversari)]
-P-value: 0.603072 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.733633 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 Bucket: 4500-6000 | Orario: 16:00-24:00 | Players: 6 | Battles: 560
 Matrice: [Righe = 16 (Tuoi Archetipi)] x [Colonne = 20 (Archetipi Avversari)]
-P-value: 0.099683 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.098951 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 Bucket: 6000-7500 | Orario: 00:00-08:00 | Players: 7 | Battles: 184
 Matrice: [Righe = 6 (Tuoi Archetipi)] x [Colonne = 7 (Archetipi Avversari)]
-P-value: 0.110357 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.018491 (Monte Carlo) -> SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)
 --------------------------------------------------------------------------------
 Bucket: 6000-7500 | Orario: 08:00-16:00 | Players: 7 | Battles: 628
 Matrice: [Righe = 16 (Tuoi Archetipi)] x [Colonne = 43 (Archetipi Avversari)]
-P-value: 0.428303 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.459270 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 Bucket: 6000-7500 | Orario: 16:00-24:00 | Players: 7 | Battles: 603
 Matrice: [Righe = 17 (Tuoi Archetipi)] x [Colonne = 41 (Archetipi Avversari)]
-P-value: 0.001873 -> SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)
+P-value: 0.014993 (Monte Carlo) -> SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)
 --------------------------------------------------------------------------------
 Bucket: 7500-9000 | Orario: 08:00-16:00 | Players: 8 | Battles: 185
 Matrice: [Righe = 13 (Tuoi Archetipi)] x [Colonne = 5 (Archetipi Avversari)]
-P-value: 0.225859 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.191404 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 Bucket: 7500-9000 | Orario: 16:00-24:00 | Players: 8 | Battles: 382
 Matrice: [Righe = 15 (Tuoi Archetipi)] x [Colonne = 14 (Archetipi Avversari)]
-P-value: 0.052659 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
---------------------------------------------------------------------------------
-Bucket: 9000-10500 | Orario: 00:00-08:00 | Players: 14 | Battles: 385
-Matrice: [Righe = 8 (Tuoi Archetipi)] x [Colonne = 2 (Archetipi Avversari)]
-P-value: 0.252656 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
---------------------------------------------------------------------------------
-Bucket: 9000-10500 | Orario: 08:00-16:00 | Players: 14 | Battles: 493
-Matrice: [Righe = 8 (Tuoi Archetipi)] x [Colonne = 4 (Archetipi Avversari)]
-P-value: 0.362005 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.026987 (Monte Carlo) -> SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)
 --------------------------------------------------------------------------------
 Bucket: 9000-10500 | Orario: 16:00-24:00 | Players: 14 | Battles: 757
 Matrice: [Righe = 15 (Tuoi Archetipi)] x [Colonne = 11 (Archetipi Avversari)]
-P-value: 0.232058 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.192404 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 Bucket: 10500-12000 | Orario: 00:00-08:00 | Players: 15 | Battles: 572
 Matrice: [Righe = 11 (Tuoi Archetipi)] x [Colonne = 7 (Archetipi Avversari)]
-P-value: 0.062141 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.006997 (Monte Carlo) -> SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)
 --------------------------------------------------------------------------------
 Bucket: 10500-12000 | Orario: 08:00-16:00 | Players: 17 | Battles: 762
 Matrice: [Righe = 14 (Tuoi Archetipi)] x [Colonne = 9 (Archetipi Avversari)]
-P-value: 0.299304 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.274363 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 Bucket: 10500-12000 | Orario: 16:00-24:00 | Players: 16 | Battles: 1032
 Matrice: [Righe = 19 (Tuoi Archetipi)] x [Colonne = 21 (Archetipi Avversari)]
-P-value: 0.379284 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+P-value: 0.411294 (Monte Carlo) -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
 --------------------------------------------------------------------------------
 SKIP 12000-13500 | 00:00-08:00 | Players: 1: 2 battles < 20 (Min richiesto)
 
 ====================================================================================================
-Totale Bucket Testati: 14
-Bucket con Dipendenza Significativa: 1
-Percentuale Sospetta: 7.14%
+Totale Bucket Testati: 11
+Bucket con Dipendenza Significativa: 4
+Percentuale Sospetta: 36.36%
 ====================================================================================================

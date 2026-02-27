@@ -6,6 +6,7 @@ from datetime import datetime
 from scipy.stats import chi2_contingency, kruskal, levene
 import pytz
 from collections import defaultdict
+import numpy as np
 
 # Add parent directory to path to import api_client
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -314,36 +315,67 @@ def analyze_matchmaking_fairness(players_sessions, output_dir=None):
             if len(top_o_decks) < 2: continue
             
             # 3. Costruisci Tabella di Contingenza (Player Arch vs Opponent Arch)
-            matrix = []
-            valid_p_decks = []
+            # FIX: Use Monte Carlo simulation for robustness against low expected frequencies
             
-            for p_d in top_p_decks:
-                row = []
-                # Prendi tutti gli avversari incontrati da questo archetipo
-                opps_for_p = [b[2] for b in relevant_battles if b[1] == p_d]
-                
-                for o_d in top_o_decks:
-                    count = opps_for_p.count(o_d)
-                    row.append(count)
-                
-                if sum(row) > 0:
-                    matrix.append(row)
-                    valid_p_decks.append(p_d)
+            # Filter battles to closed set (only top decks)
+            matrix_battles = [b for b in relevant_battles if b[2] in top_o_decks]
             
-            if len(matrix) < 2: continue
+            if len(matrix_battles) < 20:
+                f.write(f"SKIP {bucket_desc}: Matrice sparsa ({len(matrix_battles)} battaglie utili < 20).\n")
+                continue
+
+            # Map to indices
+            unique_p = sorted(list(set(b[1] for b in matrix_battles)))
+            unique_o = sorted(list(set(b[2] for b in matrix_battles)))
+            
+            if len(unique_p) < 2 or len(unique_o) < 2:
+                f.write(f"SKIP {bucket_desc}: Dimensioni insufficienti ({len(unique_p)}x{len(unique_o)}).\n")
+                continue
+
+            p_map = {d: i for i, d in enumerate(unique_p)}
+            o_map = {d: i for i, d in enumerate(unique_o)}
+            
+            p_ints = np.array([p_map[b[1]] for b in matrix_battles])
+            o_ints = np.array([o_map[b[2]] for b in matrix_battles])
+            
+            # Observed Matrix
+            matrix_np = np.histogram2d(p_ints, o_ints, bins=[len(unique_p), len(unique_o)])[0]
+            matrix = matrix_np.tolist()
             
             total_tested_buckets += 1
             
             try:
                 chi2, p, dof, ex = chi2_contingency(matrix)
                 
+                # Monte Carlo if needed
+                is_monte_carlo = False
+                if (ex < 5).any():
+                    is_monte_carlo = True
+                    n_sims = 2000
+                    better_count = 0
+                    o_sim = o_ints.copy()
+                    
+                    for _ in range(n_sims):
+                        np.random.shuffle(o_sim)
+                        sim_tab = np.histogram2d(p_ints, o_sim, bins=[len(unique_p), len(unique_o)])[0]
+                        try:
+                            c2_sim, _, _, _ = chi2_contingency(sim_tab)
+                            if c2_sim >= chi2:
+                                better_count += 1
+                        except ValueError:
+                            pass
+                    
+                    p = (better_count + 1) / (n_sims + 1)
+
                 if p < 0.05:
                     significant_buckets += 1
                 
                 sig_label = "SIGNIFICATIVO -> SOSPETTO (Dipendenza rilevata)" if p < 0.05 else "NON SIGNIFICATIVO -> FAIR (Indipendenza)"
+                mc_label = " (Monte Carlo)" if is_monte_carlo else ""
+                
                 f.write(f"Bucket: {range_label} | Orario: {time_label} | Players: {len(unique_players)} | Battles: {len(relevant_battles)}\n")
-                f.write(f"Matrice: [Righe = {len(valid_p_decks)} (Tuoi Archetipi)] x [Colonne = {len(top_o_decks)} (Archetipi Avversari)]\n")
-                f.write(f"P-value: {p:.6f} -> {sig_label}\n")
+                f.write(f"Matrice: [Righe = {len(unique_p)} (Tuoi Archetipi)] x [Colonne = {len(unique_o)} (Archetipi Avversari)]\n")
+                f.write(f"P-value: {p:.6f}{mc_label} -> {sig_label}\n")
                 f.write("-" * 80 + "\n")
             
             except Exception as e:

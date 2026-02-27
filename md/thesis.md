@@ -221,6 +221,16 @@ Per quanto riguarda la selezione del campione, è stata adottata una tecnica di 
 
 Il dataset finale comprende 40 giocatori per un totale di circa 8.700 partite, filtrate includendo esclusivamente la modalità ladder e profili con almeno 50 incontri registrati.
 
+\subsection{Definizione di sessione di gioco}
+
+Per analizzare correttamente il comportamento dei giocatori e del sistema nel tempo, è stato necessario strutturare il flusso continuo delle partite in unità discrete denominate \textit{sessioni di gioco}.
+
+Una sessione è definita come una sequenza ininterrotta di partite giocate dallo stesso utente. Per identificare i confini tra una sessione e l'altra, è stato applicato un criterio basato sull'intervallo temporale tra due match consecutivi.
+
+Nello specifico, è stata fissata una soglia (\textit{threshold}) di 20 minuti: se il tempo trascorso tra la fine di una partita e l'inizio della successiva supera tale valore, la sequenza corrente viene considerata conclusa e la nuova partita segna l'inizio di una nuova sessione.
+
+Questa suddivisione è fondamentale per isolare fenomeni come l'\textit{hook effect} (l'analisi delle prime partite dopo una pausa) e per valutare la persistenza di determinati stati del matchmaking tra sessioni distinte.
+
 \section{Variabili analizzate}
 
 Le metriche raccolte costituiscono il nucleo dell'analisi statistica successiva e richiedono quindi una definizione dettagliata.
@@ -310,3 +320,1017 @@ Per verificarlo, cerchiamo tre fenomeni tipici dello SBMM:
 \end{itemize}
 
 Se troviamo evidenze di questi meccanismi, significa che il sistema fa più di quanto dichiarato.
+
+
+\section{Definizioni preliminari e metodologia dei test}
+
+Prima di procedere è necessario chiarire alcuni concetti utili per comprendere la struttura delle analisi e la corretta interpretazione dei risultati.
+
+In precedenza è stato definito \textit{counter} un avversario che possiede un mazzo in grado, per composizione e sinergia delle carte, di neutralizzare efficacemente le strategie offensive avversarie o di difendere le proprie torri con un consumo inferiore di elisir, realizzando il cosiddetto ``positive elixir trade''.
+
+A questa definizione si affianca il concetto di \textit{meta}. Con il termine meta si identifica l’insieme delle carte o degli archetipi che, in un determinato periodo, risultano più efficaci e quindi maggiormente utilizzati rispetto agli altri.
+
+Questi concetti assumono rilevanza metodologica poiché la progressione in \textit{Clash Royale} non avviene esclusivamente attraverso i trofei, ma è fortemente legata anche allo sblocco e al potenziamento delle carte. La modalità principale, la ladder, prevede il raggiungimento progressivo di arene che consentono l’accesso a nuove carte.
+
+Ne consegue che il meta non è uniforme lungo tutta la scala dei trofei, ma varia in funzione delle carte disponibili e del livello medio dei giocatori presenti in ciascuna fascia.
+
+Inoltre, i livelli delle carte modificano in modo statisticamente significativo il valore del matchup (cfr. Sezione~XXXX).
+
+Per questo motivo risulta necessario analizzare separatamente la componente strutturale del mazzo e quella legata ai livelli, calcolando sia un matchup comprensivo dei livelli sia una versione che li esclude (matchup no-level).
+
+Infine, la distribuzione del meta e dei livelli degli avversari potrebbe dipendere anche dalla composizione della \textit{playerbase} attiva in una determinata fascia oraria.
+
+Diventa pertanto necessario applicare test che consentano di isolare tali fattori prima di formulare interpretazioni sul comportamento del sistema di matchmaking.
+
+\subsection{Strumenti statistici utilizzati}
+Nella nostra analisi abbiamo utilizzato diversi test statistici particolarmente rinomati in questo ambito~\cite{sheskin2020handbook}.
+Di seguito ne presentiamo una panoramica.
+
+\subsubsection{Correlazione di Spearman}
+La correlazione di Spearman ($\rho$) è un test non parametrico che misura la forza e la direzione della relazione monotona tra due variabili. A differenza della correlazione di Pearson, che richiede una relazione lineare, Spearman lavora sui \textbf{ranghi} dei dati anziché sui valori assoluti.
+
+I ranghi rappresentano semplicemente le posizioni ordinali dei dati quando vengono ordinati. Ad esempio, i valori $[10, 5, 20, 15]$ hanno ranghi $[2, 1, 4, 3]$. Questa trasformazione rende il test robusto rispetto agli \textit{outlier} e permette di rilevare qualsiasi relazione in cui le variabili crescono o decrescono insieme, anche se non in modo proporzionale.
+
+Il coefficiente varia tra $-1$ e $+1$:
+\begin{itemize}
+    \item $\rho = +1$: relazione monotona crescente perfetta (al crescere di una variabile, cresce anche l'altra)
+    \item $\rho = -1$: relazione monotona decrescente perfetta (al crescere di una variabile, l'altra diminuisce)
+    \item $\rho = 0$: assenza di relazione monotona
+\end{itemize}
+
+Questo test risulta particolarmente utile nel nostro contesto per tre motivi: è robusto rispetto agli \textit{outlier}, non assume che i dati seguano una distribuzione normale e permette di rilevare relazioni non lineari ma comunque monotone. 
+
+Nel caso specifico, lo utilizziamo per verificare se variabili come i livelli degli avversari o il \textit{matchup} siano correlati con fattori confondenti quali i trofei, l'orario di gioco o il mazzo utilizzato.
+
+\subsubsection{Test di Wilcoxon}
+Il test di Wilcoxon per ranghi con segno è un test non parametrico utilizzato per confrontare due campioni appaiati, ovvero coppie di osservazioni sullo stesso soggetto in condizioni diverse. Il test lavora sui ranghi delle differenze tra le coppie anziché sui valori assoluti, rendendolo robusto rispetto agli \textit{outlier} e non richiedendo assunzioni di normalità.
+
+Nel nostro contesto, lo utilizziamo per verificare se determinate condizioni (ad esempio, vittoria vs sconfitta nella partita precedente) producano cambiamenti sistematici in variabili come il \textit{matchup} o il \textit{level difference} della partita successiva, analizzando lo stesso giocatore in momenti diversi.
+
+\subsubsection{Test $\chi^2$ (Chi-quadro)}
+Il test Chi-quadro di indipendenza verifica se esiste una relazione statisticamente significativa tra due variabili categoriali. Il test confronta le frequenze osservate in una tabella di contingenza con le frequenze attese sotto l'ipotesi di indipendenza.
+
+Un p-value inferiore a 0.05 indica che le due variabili sono dipendenti, ovvero che la distribuzione di una è influenzata dai valori dell'altra.
+
+Nel contesto del \textit{matchmaking}, questo test è fondamentale per verificare due aspetti:
+\begin{itemize}
+    \item \textbf{Indipendenza tra mazzi}: se l'archetipo del mazzo utilizzato dal giocatore influenza la distribuzione degli archetipi avversari incontrati
+    \item \textbf{Memoria del sistema}: se lo stato di una partita (ad esempio, \textit{matchup} favorevole/sfavorevole) influenza probabilisticamente lo stato della partita successiva nelle catene di Markov
+\end{itemize}
+
+\subsubsection{Catene di Markov}
+Le catene di Markov non sono un test statistico in senso stretto, ma un framework matematico per modellare sequenze di eventi in cui la probabilità di transizione verso uno stato futuro dipende esclusivamente dallo stato corrente.
+
+Nel nostro caso, trattiamo le partite come una sequenza di stati (ad esempio: \textit{matchup} favorevole, equilibrato, sfavorevole) e costruiamo una \textbf{matrice di transizione} che registra con quale frequenza, dopo essere stati nello stato $i$, ci si trova nello stato $j$.
+
+L'\textbf{ipotesi nulla} che vogliamo verificare è l'indipendenza: se il sistema non ha memoria, la probabilità di trovarsi in uno stato al tempo $t+1$ dovrebbe corrispondere alla frequenza globale di quello stato, indipendentemente dallo stato al tempo $t$. Per verificarlo, applichiamo il test Chi-quadro alla matrice di transizione.
+
+Se il test risulta significativo (p-value < 0.05), significa che il sistema possiede \textbf{memoria}: lo stato della partita precedente influenza sistematicamente quello della successiva.
+
+\subsubsection{Probabilità $p^k$}
+Questo non è un test ma un metodo per calcolare la probabilità teorica di osservare $k$ eventi consecutivi dello stesso tipo, assumendo che gli eventi siano indipendenti tra loro.
+
+Se un determinato tipo di \textit{matchup} (ad esempio, sfavorevole) ha una probabilità globale $p$ di verificarsi, la probabilità di osservare $k$ occorrenze consecutive è semplicemente:
+\[
+P(\text{streak di lunghezza } k) = p^k
+\]
+
+Nel nostro contesto, lo utilizziamo come \textbf{baseline teorico} per confrontare il numero di \textit{streak} (filotti) osservate con quello atteso sotto ipotesi di indipendenza. Ad esempio, se i \textit{matchup} sfavorevoli hanno frequenza globale del 40\%, la probabilità di trovarne tre consecutivi in una sessione dovrebbe essere $0.4^3 = 6.4\%$.
+
+Se il numero di \textit{streak} osservate supera significativamente questo valore, è un indizio che il sistema sta manipolando l'ordine delle partite.
+
+\subsubsection{Z-score}
+Lo Z-score è una trasformazione statistica che normalizza i dati esprimendoli in termini di deviazioni standard dalla media:
+\[
+Z = \frac{X - \mu}{\sigma}
+\]
+dove $X$ è il valore osservato, $\mu$ la media della popolazione e $\sigma$ la deviazione standard.
+
+Un valore assoluto di Z-score superiore a 2 indica che l'osservazione è anomala (si trova oltre il 95\% della distribuzione normale).
+
+Nel nostro contesto, lo utilizziamo per normalizzare il \textit{level difference} rispetto alla fascia di trofei. Poiché i livelli degli avversari crescono naturalmente con i trofei, non ha senso confrontare un \textit{level diff} di $-1$ a 5000 trofei con lo stesso valore a 10000 trofei. Normalizzando per fascia, possiamo identificare partite con livelli \textbf{anomali rispetto alla norma della fascia}, indipendentemente dalla progressione naturale.
+
+Uno Z-score inferiore a $-2$ indica un \textit{match} in cui l'avversario ha livelli significativamente più alti del normale per quella fascia.
+
+\subsubsection{Shuffle globale e intra-sessione}
+Questi sono due metodi di permutazione che abbiamo sviluppato per creare \textbf{baseline empirici} contro cui confrontare le \textit{streak} osservate.
+
+\textbf{Global Shuffle}: Mescoliamo tutte le partite del giocatore mantenendo però intatte le sessioni di gioco (ovvero, ogni sessione conserva lo stesso numero di partite). Questo test verifica se i \textit{matchup} estremi tendono ad ``aggrumarsi'' in determinate sessioni piuttosto che distribuirsi uniformemente nel tempo.
+
+Se le \textit{streak} osservate superano significativamente il global shuffle, significa che esistono ``bad sessions'' o ``good sessions'' programmate dal sistema.
+
+\textbf{Intra-Session Shuffle}: Mescoliamo le partite solo all'interno di ciascuna sessione, mantenendo invariata la composizione della sessione stessa. Questo test verifica se l'ordine delle partite dentro la sessione è manipolato.
+
+Se le \textit{streak} osservate superano l'intra-session shuffle, significa che il sistema sta costruendo intenzionalmente sequenze favorevoli o sfavorevoli all'interno delle sessioni.
+
+\subsubsection{Test di Mann–Whitney U}
+Il test di Mann-Whitney U (equivalente al test di Wilcoxon rank-sum) è un test non parametrico utilizzato per confrontare due campioni indipendenti. Come gli altri test basati sui ranghi, non richiede che i dati seguano una distribuzione normale: ordina tutti i valori di entrambi i gruppi insieme e verifica se i ranghi di un gruppo tendono ad essere sistematicamente più alti o più bassi dell'altro.
+
+L'ipotesi nulla è che le due popolazioni abbiano la stessa distribuzione. Un p-value < 0.05 indica che una delle due popolazioni tende ad avere valori sistematicamente più alti (o più bassi) dell'altra.
+
+Nel nostro contesto, lo utilizziamo per confrontare il \textit{matchup} medio della partita successiva in due condizioni diverse, ad esempio:
+\begin{itemize}
+    \item Dopo una vittoria vs dopo una sconfitta
+    \item Dopo un \textit{matchup} favorevole vs dopo uno sfavorevole
+    \item Prima sessione della giornata vs sessioni successive
+\end{itemize}
+
+Questo ci permette di rilevare meccanismi di ``debito'' o ``credito'' implementati dal sistema.
+
+\subsubsection{T-test}
+Il t-test è un test parametrico utilizzato per confrontare le medie di due gruppi. A differenza dei test non parametrici, assume che i dati seguano una distribuzione normale (o che il campione sia sufficientemente grande da invocare il teorema del limite centrale).
+
+Esistono due varianti principali:
+\begin{itemize}
+    \item \textbf{T-test per campioni indipendenti}: confronta le medie di due gruppi diversi che non hanno relazione tra loro
+    \item \textbf{T-test per campioni appaiati}: confronta le medie dello stesso gruppo in due condizioni diverse
+\end{itemize}
+
+Nel nostro contesto, utilizziamo il \textbf{t-test per campioni indipendenti} per analizzare i \textbf{residui} del \textit{level difference}. Confrontiamo infatti due gruppi distinti di partite: quelle che seguono una vittoria ``eroica'' e quelle che seguono una sconfitta in ``debt''. Poiché le partite nei due gruppi si verificano in momenti e contesti diversi queste sono indipendenti.
+
+Dopo aver rimosso l'effetto naturale dei trofei sulla crescita dei livelli (calcolando i residui), verifichiamo se esistono differenze sistematiche nei livelli avversari tra i due gruppi. Se il test risulta significativo, indica che il \textit{matchmaking} sta aggiustando i livelli oltre quanto spiegabile dalla sola progressione naturale, suggerendo un meccanismo di compensazione basato sulle prestazioni recenti.
+
+\subsubsection{Indice di Jaccard}
+L'indice di Jaccard è una misura di similarità tra due insiemi, definito come il rapporto tra l'intersezione e l'unione:
+\[
+J(A, B) = \frac{|A \cap B|}{|A \cup B|}
+\]
+
+Il valore varia tra 0 (insiemi completamente disgiunti) e 1 (insiemi identici).
+
+Nel contesto del \textit{matchmaking}, lo utilizziamo per quantificare la similarità tra il pool di carte disponibili in diverse arene o fasce di trofei. Questo ci permette di comprendere quanto il \textit{meta} cambi tra le varie fasi di progressione e di controllare che eventuali differenze nei \textit{matchup} non siano dovute semplicemente a una diversa disponibilità di carte.
+
+\subsubsection{Test di Kruskal-Wallis}
+Il test di Kruskal-Wallis è un test non parametrico utilizzato per confrontare tre o più gruppi indipendenti. Rappresenta l'estensione del test di Mann-Whitney U al caso di gruppi multipli ed è l'alternativa non parametrica all'ANOVA a una via.
+
+Come gli altri test basati sui ranghi, non richiede che i dati seguano una distribuzione normale: tutti i valori vengono ordinati insieme indipendentemente dal gruppo di appartenenza, e il test verifica se i ranghi medi dei diversi gruppi differiscono significativamente tra loro.
+
+L'ipotesi nulla è che tutte le popolazioni abbiano la stessa distribuzione. Un p-value < 0.05 indica che almeno uno dei gruppi tende ad avere valori sistematicamente diversi dagli altri.
+
+Nel nostro contesto, lo utilizziamo per confrontare il \textit{matchup} o il \textit{level difference} in diverse condizioni simultaneamente, ad esempio:
+\begin{itemize}
+    \item Confronto tra diverse fasce orarie (mattina, pomeriggio, sera, notte)
+    \item Confronto tra diversi tipi di mazzo utilizzato (Beatdown, Control, Cycle, etc.)
+    \item Confronto tra diverse fasi di progressione (arena iniziale, intermedia, avanzata)
+\end{itemize}
+
+Questo test è particolarmente utile quando vogliamo verificare l'effetto di variabili categoriali con più di due livelli, permettendoci di identificare se esiste una dipendenza generale prima di eventualmente procedere con confronti post-hoc tra coppie specifiche di gruppi.
+
+\subsubsection{Test esatto di Fisher}
+Il test esatto di Fisher è un test statistico utilizzato per verificare l'indipendenza tra due variabili categoriali in tabelle di contingenza, tipicamente 2×2. A differenza del test Chi-quadro, che si basa su approssimazioni asintotiche, il test di Fisher calcola la probabilità esatta di osservare la distribuzione dei dati (o una più estrema) sotto l'ipotesi nulla di indipendenza.
+
+Questo test è particolarmente indicato quando:
+\begin{itemize}
+    \item I campioni sono di dimensioni ridotte (tipicamente con celle della tabella di contingenza < 5)
+    \item Si vuole ottenere un p-value esatto senza ricorrere ad approssimazioni
+    \item Le assunzioni del test Chi-quadro non sono soddisfatte
+\end{itemize}
+
+L'ipotesi nulla è che non esista associazione tra le due variabili categoriali. Un p-value < 0.05 indica che l'associazione osservata è statisticamente significativa e non è dovuta al caso.
+
+\section{Verifica delle ipotesi}
+
+\subsection{Test propedeutico}
+
+è ormai risaputo nella community di Clash Royale che i livelli delle carte hanno un impatto sulle probabilità di vittoria di una partita. Com'è giusto che sia in questo contesto non si è voluto dare nulla per scontato.
+
+Come primo test, soprattutto per prendere confidenza con i dati e i vari strumenti, si è voluto cercare di capire se questa convinzione è fondata.
+
+Nello specifico abbiamo confrontato per ogni partita del dataset il matchup e il matchup no lvl, con l'obiettivo di osservare se e in che modo si relazionano i due parametri.
+
+A questo scopo gli strumenti utilizzati sono due:
+
+\begin{itemize}
+    \item Correlazione di Spearman
+    \item Test di Wilcoxon
+\end{itemize}
+
+Il coefficiente di Spearman ($\rho$) ha permesso di verificare la relazione presente. Un valore elevato significherebbe che i livelli hanno un basso impatto sulla probabilità di vittoria, al contrario un valore basso sta a significare un alto impatto.
+
+Il p-value del test di Wilcoxon ci permette di verificare se tale differenza sia sistematica o casuale.
+
+\begin{listing}[t]
+\caption{Risultato dei test sull'impatto dei livelli}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+IMPATTO DEI LIVELLI
+Media Matchup REALE:   49.79%
+Media Matchup NO-LVL:  49.33%
+Delta Medio (Real-No): +0.46% (Positivo = Vantaggio Livelli)
+Correlazione (Real vs NoLvl): 0.4549 (p=0.0000)
+(Alta correlazione = I livelli contano poco; Bassa = I livelli stravolgono il matchup)
+
+Test Wilcoxon (Differenza Significativa): p-value = 0.0030
+RISULTATO: SIGNIFICATIVO
+\end{minted}
+\label{lst:test-livelli}
+\end{listing}
+
+I risultati indicano una correlazione moderata (0,45). Questo indica che l'inclusione dei livelli influisce significativamente sul matchup.
+
+Un p-value inferiore a 0,05 indica che la differenza non è frutto di una casualità. In questo caso il valore (0,0030) è di molto inferiore, permettendo di rifiutare l'ipotesi nulla.
+
+
+\subsection{H1 - Indipendenza dalla composizione del mazzo}
+
+Nell'ipotesi H1 volevamo verificare se la composizione del mazzo non influenzasse, come da dichiarazioni, sulle logiche di matchmaking.
+
+Per fare ciò abbiamo svolto i seguenti passaggi:
+\begin{itemize}
+    \item Analisi sequenziale del \textit{matchup no-level} tramite catene di Markov
+    \item Test $\chi^2$ di indipendenza su matrici di transizione
+    \item Analisi della probabilità di streak di matchup no lvl estremi
+    \item Analisi controllata per fascia trofei (bucket) rispetto a orario e mazzo
+    \item Test $\chi^2$ inter-player su archetipi player vs archetipi avversari
+\end{itemize}
+
+\subsubsection{Analisi catene di markov}
+
+Come prima cosa abbiamo suddiviso i matchup no lvl in tre categorie:
+\begin{itemize}
+    \item Sfavorevole (Unfavorable): $\text{matchup no-lvl} < 45\%$
+    \item Neutro (Even): $45\% \leq \text{matchup no-lvl} \leq 55\%$
+    \item Favorevole (Favorable): $\text{matchup no-lvl} > 55\%$
+\end{itemize}
+
+A partire da queste categorie è stata costruita una matrice di transizione che mostra la probabilità di ottenere da un tempo $t$ a un tempo $t+1$.
+
+Se il sistema fosse completamente privo di memoria rispetto alla composizione del mazzo, la distribuzione degli stati successivi dovrebbe essere coerente con la distribuzione globale attesa.
+
+\begin{listing}[t]
+\caption{Risultato test markov per indipendenza dei matchup no lvl}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+Totale Transizioni: 5533
+------------------------------------------------------------------------------
+STATO PREC.  | NEXT: Unfavorable   | NEXT: Even        | NEXT: Favorable                
+------------------------------------------------------------------------------
+Unfavorable  | 46.9% (Exp 38.1%) ! | 27.9% (Exp 29.9%) | 25.1% (Exp 32.0%) ! | 
+Even         | 36.0% (Exp 38.1%)   | 31.8% (Exp 29.9%) | 32.1% (Exp 32.0%)   | 
+Favorable    | 30.0% (Exp 38.1%) ! | 30.3% (Exp 29.9%) | 39.6% (Exp 32.0%) ! | 
+------------------------------------------------------------------------------
+Test Chi-Quadro: p-value = 0.000000
+RISULTATO: DIPENDENZA SIGNIFICATIVA (Memoria presente).
+\end{minted}
+\label{lst:test-markov-matchup-no-lvl}
+\end{listing}
+
+Il test $\chi^2$ eseguito sulla matrice ha evidenziato una dipendenza statisticamente significativa tra stati consecutivi.
+
+Questo risultato suggerisce la presenza di memoria nella sequenza dei \textit{matchup} strutturali.
+
+\subsubsection{Analisi streak di matchup no lvl estremi}
+
+Per approfondire tale dipendenza è stata analizzata la probabilità di osservare streak di matchup no lvl estremi ($>80\%$ o $<30\%$). Confrontando gli eventi osservati rispetto alla probabilità in caso di indipendenza, con il global shuffle e l'intra-session shuffle.
+
+\begin{listing}[t]
+\caption{Analisi streak matchup estremi}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+--- MATCHUP SFAVOREVOLI (< 30.0%) ---
+Metodo                    | Count      | Prob %     | Ratio (Obs/Exp)
+----------------------------------------------------------------------
+Osservato                 | 5          | 0.1227     | 1.00x          
+Teorico (p^3)             | 1.20       | 0.0296     | 4.15           
+Global Shuffle            | 4.89       | 0.1201     | 1.02           
+Intra-Session Shuffle     | 6.91       | 0.1695     | 0.72           
+\end{minted}
+\label{lst:test-no-lvl-streak}
+\end{listing}
+
+Nonostante il valore osservato risulta superiore all'ipotesi di indipendenza ($p^3$), è in linea con i valori degli shuffle.   
+Di conseguenza le streak non sembrano essere organizzate in modo intenzionale ma potrebbe trattarsi di raggruppamenti dovuti alla popolazione attiva nella fascia oraria o al meta locale.
+
+\subsubsection{Analisi fattori fasce di trofei e orario}
+
+Prima di trarre conclusioni definitive è quindi necessario controllare che questa dipendenza non sia causata da alcuni fattori esterni, quali i trofei, l'orario, o il meta locale.
+
+Per la prima verifica abbiamo utilizzato la correlazione di spearman tra i matchup no lvl e i trofei. Nonostante la correlazione sia significativa questa risulta molto debole ($\rho=0.07$). 
+
+il dataset è stato suddiviso in bucket (fasce) da 500 trofei e, per ognuno di questi, è stata testata (tramite test di Kruskal-Wallis) la dipendenza tra il matchup no lvl e la fascia oraria ma anche tra il matchup no lvl e il mazzo del giocatore.
+
+I risultati mostrano che l'effetto dell'orario è sporadico e non consistente. Mentre la dipendenza dal mazzo tende a risultare significativa soprattutto nelle fasce medio alte.
+
+Per cui si rafforza l'ipotesi per cui la variazione è giustificabile dal meta locale.
+
+\subsubsection{Analisi meta ranges}
+
+Per verificare se i cambi di meta sono così repentini da poter giustificare il cambio di matchup no lvl abbiamo analizzato i vari deck utilizzati nelle varie fasce, riportando il tasso di transizione (rispetto alla fascia precedente) tramite l'indice di Jaccard e identificato le carte in meta in quella fascia (frequenza nella fascia > $\mu_{globale}+2\sigma$).
+
+\begin{listing}[t]
+\caption{Risultato analisi variazione meta}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines,
+    escapeinside=@@
+  ]{text}
+CARTE DOMINANTI & TASSO DI TRANSIZIONE
+Dominant: Frequenza > Media Globale + 2*StdDev.
+Transition: 1 - Jaccard Index (Top 15 Cards) rispetto al bucket precedente.
+----------------------------------------------------------------------------------------------------
+BUCKET     | N. DECKS | TRANSITION | DOMINANT CARDS (Anomalie)
+----------------------------------------------------------------------------------------------------
+5400-5550  | 142      | 0.12       | Mini P.E.K.K.A (+2.1@$\sigma$@), Tombstone (+2.4@$\sigma$@)
+5550-5700  | 157      | 0.24       | Skeleton Army (+2.1@$\sigma$@)
+5700-5850  | 103      | 0.24       | Goblin Curse (+2.3@$\sigma$@), Goblin Giant (+2.5@$\sigma$@), Sparky (+2.2@$\sigma$@), Skeleton King (+3.0@$\sigma$@), Goblins (+2.8@$\sigma$@)
+5850-6000  | 151      | 0.42       | Bomb Tower (+2.8@$\sigma$@), Zappies (+2.2@$\sigma$@)
+ ...       | ...      | ...        | ...
+\end{minted}
+\label{lst:test-micro-meta}
+\end{listing}
+
+I risultati mostrano variazioni nette nella composizione del meta tra le varie fasce, con valori di transizione anche superiori a 0.5 (cioè la metà delle carte utilizzate è diverso), coerente con l'ipotesi che la variazione del matchup derivi dal cambio del meta.
+
+\subsubsection{Analisi conclusiva}
+
+Infine, si è voluto verificare che a parità di trofei e di orario uno specifico mazzo non porti a incontrare mazzi avversari diversi.
+
+\begin{listing}[t]
+\caption{Risultato test dipendenza tra archetipi player e archetipi avversari}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+Totale Battaglie Analizzate: 8093
+
+Bucket: 4500-6000 | Orario: 00:00-08:00 | Players: 6 | Battles: 195
+Matrice: [Righe = 5 (Tuoi Archetipi)] x [Colonne = 4 (Archetipi Avversari)]
+P-value: 0.631797 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+--------------------------------------------------------------------------------
+Bucket: 4500-6000 | Orario: 08:00-16:00 | Players: 6 | Battles: 311
+Matrice: [Righe = 10 (Tuoi Archetipi)] x [Colonne = 15 (Archetipi Avversari)]
+P-value: 0.603072 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+--------------------------------------------------------------------------------
+Bucket: 4500-6000 | Orario: 16:00-24:00 | Players: 6 | Battles: 560
+Matrice: [Righe = 16 (Tuoi Archetipi)] x [Colonne = 20 (Archetipi Avversari)]
+P-value: 0.099683 -> NON SIGNIFICATIVO -> FAIR (Indipendenza)
+--------------------------------------------------------------------------------
+...
+
+================================================================================
+Totale Bucket Testati: 14
+Bucket con Dipendenza Significativa: 1
+Percentuale Sospetta: 7.14%
+================================================================================
+\end{minted}
+\label{lst:test-fairness}
+\end{listing}
+
+Abbiamo utilizzato il test $\chi^2$ su una tabella di contingenza tra archetipi player e archetipi avversari.
+
+Su 14 bucket analizzati:
+
+\begin{itemize}
+    \item 13 risultano non significativi
+    \item 1 risulta significativo (7.14\%)
+\end{itemize}
+
+La percentuale di bucket significativi è compatibile con la probabilità di errore di tipo I attesa con soglia 0.05.
+
+\subsubsection{Interpretazione finale}
+
+A seguito dei test abbiamo riscontrato la presenza di dipendenza tra matchup successivi che suggerisce una memoria nella sequenza.
+
+Memoria che tuttavia è compatibile con la variazione del meta locale osservata nelle varie fasce di trofei.
+
+Visto anche il risultato dell'analisi della distribuzione dei mazzi avversari non abbiamo alcuna evidenza che il sistema assegni deliberatamente counter specifici in funzione del mazzo utilizzato.
+
+\subsection{H2: Indipendenza dai livelli}
+
+L'ipotesi H2 è speculare alla precedente ma riguarda i livelli.
+
+Anche in questo caso l'analisi è stata condotta in tre fasi:
+
+\begin{itemize}
+    \item analisi delle transizioni tramite le catene di markov
+    \item verifica della dipendenza rispetto a orario, trofei e mazzo
+    \item analisi delle streak anomale tramite normalizzazione
+\end{itemize}
+
+\subsubsection{Analisi catene di markov}
+
+Come prima il dataset è stato suddiviso in tre categorie:
+
+\begin{itemize}
+    \item Svantaggio (Disadvantage): $\text{lvl diff} < -0.5\%$
+    \item Neutro (Even): $-0.5\% \leq \text{lvl diff} \leq 0.5\%$
+    \item Vantaggio (Advantage): $\text{lvl diff} > 0.5\%$
+\end{itemize}
+
+E analogamente è stata costruita la matrice di transizione.
+
+\begin{listing}[t]
+\caption{Risultato test markov per indipendenza dei matchup no lvl}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+--- 3. LEVEL DIFFERENCE ---
+Totale Transizioni: 5534
+--------------------------------------------------------------------------
+PREC.  | NEXT: Disadvantage  | NEXT: Even          | NEXT: Advantage                
+--------------------------------------------------------------------------
+Disad. | 46.5% (Exp 16.0%) ! | 48.5% (Exp 69.6%) ! | 5.1% (Exp 14.4%) !  | 
+Even   | 11.5% (Exp 16.0%)   | 75.2% (Exp 69.6%) ! | 13.4% (Exp 14.4%)   | 
+Ad.    | 4.1% (Exp 16.0%) !  | 66.2% (Exp 69.6%)   | 29.7% (Exp 14.4%) ! | 
+-----------------------------------------------------------------
+Test Chi-Quadro: p-value = 0.000000
+RISULTATO: DIPENDENZA SIGNIFICATIVA (Memoria presente).
+\end{minted}
+\label{lst:test-markov-lvl-diff}
+\end{listing}
+
+I risultati ottenuti sono molto simili all'ipotesi precedente, con un livello di significatività ben sotto la soglia di indipendenza.
+Come prima emerge una memoria nella sequenza.
+
+\subsubsection{Dipendenza dai treofei}
+
+Ovviamente prima di continuare dobbiamo verificare alcune possibili correlazioni significative:
+
+\begin{itemize}
+    \item livello medio carte avversario e trofei
+    \item livello medio carte giocatore e trofei
+    \item livello medio carte giocatore e avversario
+    \item livello torri e livello carte
+\end{itemize}
+
+\begin{listing}[t]
+\caption{Analisi correlazione livelli}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+Opponent Avg Deck Level vs Trophies:      Corr=0.9594, p=0.0000
+Player Avg Deck Level vs Trophies:        Corr=0.9665, p=0.0000
+Player Deck Level vs Opponent Deck Level: Corr=0.9370, p=0.0000
+Player Tower Level vs Player Deck Level:  Corr=0.9189, p=0.0000
+Player Tower Level vs Opponent Tower Level: Corr=0.9013, p=0.0000
+-> MATCHMAKING EQUILIBRATO: I livelli carte player/opponent sono fortemente legati.
+   (Probabilmente mediato dal Livello Torre, usato dal matchmaking).
+\end{minted}
+\label{lst:correlation-lvl}
+\end{listing}
+
+Tutte le correlazioni sono molto forti ($\rho>0.90$).
+Per cui i livelli tendono a crescere lungo la scala dei trofei (più sali e più i livelli degli avversari sono maggiori). 
+Ma non solo, le correlazioni tra livello dei giocatori e livelli degli avversari ci fa capire che il sistema è strutturalmente equilibrato, verosimilmente a causa della relazione tra livello delle torri e livello medio delle carte del mazzo.
+
+\subsubsection{Analisi per fasce di trofei}
+
+La dipendenza osservata può essere ulteriormente compatibile con una dipendenza a livello di orario.
+
+Come prima segmentiamo il dataset in fasce di trofei e controlliamo un eventuale dipendenza.
+
+Nella maggior parte dei bucket risulta non significativa.
+
+Prima di concludere questa sezione affrontiamo un discorso un po più complesso, che comprende un ultimo tipo di dipendenza testata, quella tra il livello medio delle carte dell'avversario e il nostro mazzo.
+
+Analizzando i dati, emerge un netto cambio di comportamento intorno ai 5000 trofei. Mentre inizialmente non vediamo alcuna relazione, dopo questa soglia i test diventano significativi.
+
+Questo, al contrario di quanto ci aspetti, non significa necessariamente che il gioco decide il livello degli avversari in base alle mie carte. 
+
+Il fatto che la variazione avviene dopo un certo punto è cruciale nella nostra interpretazione. Ad alti trofei troviamo generalmente due tipi di giocatori. Quelli con mazzi meta, che riescono a scalare anche avendo livelli più bassi e quelli con mazzi normali che, nonostante abbiano livelli superiori si trovano bloccati.
+
+Il nostro mazzo diventa quindi indirettamente un buon predittore dei livelli avversari.
+
+\subsubsection{Analisi streak di partite con svantaggio di livelli normalizzati}
+
+Per eseguire i test con il $p^3$ e gli shuffle abbiamo bisogno di normalizzare la differenza di livelli rispetto ai trofei.
+
+Mentre nel matchup no lvl non era necessario perchè in quel caso non esiste una correlazione tra matchup no lvl e trofei, quì risulta indispensabile.
+
+la normalizzazione è avvenuta tramite lo z-score: 
+\[
+Z = \frac{Diff - \mu_{bucket}}{\sigma_{bucket}}
+\]
+
+In questo modo confrontiamo la differenza eliminando dall'equazione la crescita dovuta ai trofei.
+
+Sono state considerate come anomalie le partite con $Z < -2$.
+
+\begin{listing}[t]
+\caption{Analisi streak matchup estremi}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+ANALISI STREAK LIVELLI NORMALIZZATI (Z-SCORE)
+Metodo: Normalizzazione per fascia trofei (Bucket 200). Z = (Diff - Mean) / Std.
+Obiettivo: Rilevare anomalie di matchmaking indipendenti dalla progressione naturale.
+================================================================================
+Soglia Z-Score (Svantaggio Anomalo): < -2
+Totale Opportunità: 4076
+--------------------------------------------------------------------------------
+METODO                    | STREAK COUNT    | RATIO     
+--------------------------------------------------------------------------------
+Osservato                 | 7               | 1.00x
+Global Shuffle            | 2.44            | 2.86x
+Intra-Session Shuffle     | 6.33            | 1.11x
+--------------------------------------------------------------------------------
+INTERPRETAZIONE:
+1. Ratio Global > 1: Le partite 'sfortunate' sono raggruppate in sessioni specifiche (Bad Sessions).
+2. Ratio Intra > 1: L'ordine delle partite nella sessione è manipolato per creare filotti negativi.
+================================================================================     
+\end{minted}
+\label{lst:test-lvl-streak}
+\end{listing}
+
+Il numero osservato di streak (7) risulta superiore a quello ottenuto tramite global shuffle (2.44), ma molto vicino a quello ottenuto tramite intra-session shuffle (6.33).
+
+Questi dati ci portano a pensare che le partite con svantaggi anomali tendono a concentrarsi in specifiche sessioni. L'ordine interno invece non presenta anomalie significative.
+
+Non emergono quindi evidenze robuste di manipolazione sequenziale dell’assegnazione dei livelli.
+
+\subsubsection{Interpretazione fionale}
+Nel complesso, pur emergendo una memoria statistica nella sequenza delle differenze di livello, l’elevata correlazione con i trofei e l’assenza di anomalie interne alle sessioni suggeriscono che tale dipendenza sia compatibile con la struttura del sistema di progressione, piuttosto che con un intervento sequenziale deliberato.
+
+\subsection{H3: presenza di un sistema EOMM}
+
+Per verificare se il matchup della partita $t+1$ dipende dal risultato della parita $t$ o dalla situazione in cui ci troviamo abbiamo eseguito i seguenti test:
+
+\begin{itemize}
+    \item test $\chi^2$ applicato sulla matrice di transizione di markov
+    \item test $\chi^2$ singoli per ogni giocatore
+\end{itemize}
+
+Analogamente alle matrici costruite nelle ipotesi precedenti dividiamo il matchup (comprensivo di livelli) in tre categorie:
+\begin{itemize}
+    \item Sfavorevole (Unfavorable): $\text{matchup} < 45\%$
+    \item Neutro (Even): $45\% \leq \text{matchup} \leq 55\%$
+    \item Favorevole (Favorable): $\text{matchup} > 55\%$
+\end{itemize}
+
+e l'outcome della partita precedente in due categorie:
+\begin{itemize}
+    \item sconfitta (lose)
+    \item vittoria (win)
+\end{itemize}
+
+\begin{listing}[t]
+\caption{Risultato test markov per indipendenza dei matchup no lvl}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+Totale Transizioni: 5532
+-------------------------------------------------------------------------
+STATO PREC. | NEXT: Unfavorable | NEXT: Even        | NEXT: Favorable                
+-------------------------------------------------------------------------
+Loss        | 40.4% (Exp 41.8%) | 20.7% (Exp 20.7%) | 38.9% (Exp 37.5%) | 
+Win         | 42.9% (Exp 41.8%) | 20.7% (Exp 20.7%) | 36.5% (Exp 37.5%) | 
+-------------------------------------------------------------------------
+\end{minted}
+\label{lst:test-markov-outcome-matchup}
+\end{listing}
+
+In questo caso non riscontriamo alcuna memoria nel sistema. 
+Poiché questo tipo di sistema non avrebbe gli stessi effetti su tutti i player abbiamo eseguito un test $\chi^2$ per ogni giocatore, confrontando questa volta la situazione in cui si trovava. 
+Ovvero:
+\begin{itemize}
+    \item tre o più sconfitte consecutive (losing streak)
+    \item nessuna streak (no streak)
+    \item tre o più vittorie consecutive (winning streak) 
+\end{itemize} 
+
+Eseguendo i vari test abbiamo ottenuto un numero di risultati significativi pari a 4, rispetto ai 40 giocatori analizzati. 
+
+Generalmente ci aspetteremmo un numero di falsi positivi sul totale dei giocatori pari al 5\%, ovvero 2.
+
+Nonostante troviamo il doppio dei risultati questi sono al limite della significatività. 
+
+Applicando la correzione per test multipli (Bonferroni) otteniamo come nuova soglia di significatività $\alpha = 0.05/40 = 0.00125$. 
+
+Nessuno dei risultati si avvicina minimamente a questa soglia, per cui il risultato è puramente frutto del caso.
+
+In alcune dette tabelle però erano presenti delle celle con frequenze inferiori a 5.
+
+Poiché in tali condizioni l'approssimazione del $\chi^2$ può non essere affidabile abbiamo deciso di eseguire un ultimo test di Fischer exact come verifica di robustezza.
+
+Anche questo test ha portato a risultati analoghi.
+
+\subsubsection{Interpretazioni finali}
+
+Dati i risultati ottenuti possiamo affermare con buona certezza che nel sistema di matchmaking non viene considerato in alcun modo il risultato delle partite precedenti.
+
+\subsection{H4: SBMM}
+
+Esclusa la possibilità di un sistema di tipo EOMM ci rimane un ultima ipotesi da verificare; la presenza, all'interno del matchmaking, di un indicatore MMR nascosto utilizzato per l'accoppiamento dei giocatori.
+
+A tale scopo vogliamo ricercare nei nostri dati tre delle meccaniche peculiari di tale sistema, utilizzando i seguenti metodi:
+\begin{itemize}
+    \item presenza di meccanismi di debito/credito, verificando le differenze tramite il Test Mann-Whitney U
+    \item persistenza del debito anche in sessioni successive, sempre utilizzando il Test Mann-Whitney U
+    \item presenza di una fase di hook all'inizio delle sessioni, testata tramite Test Wilcoxon
+\end{itemize}
+
+\subsubsection{Meccanismi di debito/credito}
+
+Per verificare la presenza di tali meccanismi abbaiamo calcolato il matchup medio delle partite successive ad una con matchup estremamente sfavorevole, dividendole in base al risultato di tale partita.
+
+In un sistema di tipo SBMM la vittoria di una partita fortemente sfavorevole dovrebbe portare ad una partita ancora sfavorevole (debito). Perdendola invece la stima dovrebbe riassestarsi, riportando ad un matchup più equo.
+
+La stessa cosa vale per il credito ma all'opposto.
+
+\begin{listing}[t]
+\caption{Risultato test debito/credito}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+ANALISI COMBINATA DEBITO/CREDITO
+Include: Debt Extinction, Favorable Outcome Impact.
+================================================================================
+
+PARTE 1: ESTINZIONE DEBITO (MMR DEBT)
+Ipotesi: Vincere un matchup sfavorevole NON estingue il debito. Perdere lo estingue.
+Definizione Unfavorable: Matchup < 45.0%
+---------------------------------------------------------------
+ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
+Unfavorable + WIN (Debito?)    | 962    | 42.71               %
+Unfavorable + LOSS (Pagato?)   | 1264   | 45.86               %
+Delta: -3.15%
+Test Mann-Whitney U (Win < Loss): p-value = 0.0000
+
+COMPONENTI DEL MATCHUP SUCCESSIVO:
+1. Level Diff: Win=-0.22 vs Loss=-0.14 (Delta: -0.08, p=0.0004)
+2. Matchup No-Lvl: Win=48.06% vs Loss=48.73% (Delta: -0.67%, p=0.1708)
+
+CONTROLLI DI VALIDITÀ:
+Matchup Iniziale (Avg): Win=33.85% vs Loss=31.27%
+Elixir Advantage (Win): +2.42
+
+====================================================================================
+
+PARTE 2: IMPATTO ESITO SU MATCHUP FAVOREVOLE
+Domanda: Come reagisce il sistema quando vinci o perdi una partita che 'dovevi' vincere?
+Definizione Favorable: Matchup > 55.0%
+----------------------------------------------------------------
+ESITO MATCH PRECEDENTE         | N      | NEXT MATCHUP (Avg)  
+Favorable + WIN (Atteso)       | 1533   | 52.93               %
+Favorable + LOSS (Inatteso)    | 597    | 56.01               %
+Delta: -3.08%
+Test Mann-Whitney U (Diff Significativa): p-value = 0.0002
+
+COMPONENTI DEL MATCHUP SUCCESSIVO:
+1. Level Diff: Win=+0.11 vs Loss=+0.15 (Delta: -0.04, p=0.1315)
+2. Matchup No-Lvl: Win=49.56% vs Loss=50.43% (Delta: -0.87%, p=0.1618)
+Elixir Advantage (Loss): -0.45
+
+======================================================================================
+\end{minted}
+\label{lst:test-debt}
+\end{listing}
+
+I risultati ottenuti evidenziano una variazione sistematica nei matchup.
+
+Nel caso di matchup inizialmente sfavorevole (<45\%), la vittoria è seguita da un matchup medio del 42.71\%, mentre la sconfitta porta ad un valore medio del 45.86\%.  
+La differenza (−3.15\%) risulta altamente significativa (p < 0.001).
+
+Un comportamento analogo emerge nel caso dei matchup favorevoli (>55\%).  
+Dopo una vittoria il matchup medio scende a 52.93\%, mentre dopo una sconfitta sale a 56.01\%, con una differenza significativa (p < 0.001).
+
+A prima vista questi pattern sono compatibili con un meccanismo di compensazione:  
+vincere una partita inattesa è seguito da una partita con alta difficoltà, mentre perderla porta ad un matchup più equo.
+
+
+\textbf{Regressione verso la media}
+
+A prima vista, il riavvicinamento dei valori verso una soglia più neutrale potrebbe far pensare a una semplice \textbf{regressione verso la media}. Tuttavia, un'analisi più attenta delle condizioni iniziali smentisce questa ipotesi.
+
+Osservando i dati di partenza, notiamo che il gruppo che ha poi vinto la partita si trovava in una condizione iniziale leggermente migliore (matchup medio 33.85\%) rispetto al gruppo che ha perso (31.27\%), con un delta positivo di circa +2.58\%.
+
+Se il fenomeno fosse governato esclusivamente dalla regressione statistica, ci aspetteremmo che questa differenza si mantenga o si riduca nel match successivo, ma senza invertire il proprio segno: chi partiva da una condizione migliore dovrebbe, in media, atterrare su una condizione migliore o uguale.
+
+I dati mostrano invece l'opposto: nel match successivo, il gruppo dei vincitori crolla a un livello inferiore (42.71\%) rispetto a quello degli sconfitti (45.86\%), ribaltando il delta a -3.15\%.
+
+Questa inversione di segno — dove chi partiva avvantaggiato finisce svantaggiato solo perché ha vinto — è incompatibile con la pura regressione verso la media e costituisce un forte indizio di un intervento attivo del sistema (aggiornamento della stima di skill).
+
+\textbf{Scomposizione in componenti}
+
+L'analisi precedente è stata eseguita considerando il matchup complessivo ma le due componenti agiscono in modo diverso?
+
+Questa scomposizione mostra come, nel caso del debito, la variazione sia principalmente guidata dai livelli (p=0.0004), mentre la componente del mazzo risulta non significativa (p=0.170).
+
+Nel caso del credito, nonostante si osserva una variazione complessiva significativa, entrambe le componenti non risultano significative.
+
+Questo può essere spiegato da una possibile asimmetria strutturale della ladder: salendo di trofei è più probabile incontrare giocatori con livelli superiori, mentre scendendo la riduzione della difficoltà può manifestarsi più attraverso differenze di skill che di livelli.
+
+\textbf{Ruolo della performance dei giocatori}
+
+L'analisi dell'elisir leaked rafforza l'ipotesi fatta poco fa.
+
+Mentre nel caso del debito la vittoria la differenza risulta di +2.42, nel caso del credito questa è di -0.45.
+
+I dati suggeriscono che la vittoria nel caso del debito sia strettamente legata a gravi errori da parte dell'avversario più che a una superiorità in termini di bravura.
+
+Un sistema che aggiorna la stima di skill principalmente sulla base dell’esito potrebbe quindi reagire in modo marcato anche a vittorie “anomale”.
+
+% rimando al test sul peso della sconfitta? va inserito?
+questo risultato è ulteriormente rafforzato dal risultato del test X presente in appendice. dove si dimostra che la qualità della sconfitta non influenza il matchup della partita successiva. Sconfitte nette (0-3) non portano a matchup più favorevoli rispetto a sconfitte combattute (p=0.9854). Inoltre la media di elisir leaked nelle sconfitte, pari a 7, dimostra che molte crushing lose sono causate da quit del giocatore. 
+
+\textbf{Relazione con i trofei}
+
+Prima di riportare le considerazioni finali dobbiamo fare un ultima analisi. 
+Nella prima ipotesi avevamo visto come i livelli delle carte varia in modo significativo con il numero di trofei. 
+Per eliminare questo fattore abbiamo calcolato il livello medio degli avversari nelle varie fasce di trofei (in bucket da 100 trofei), calcolando poi l'incremento per singola fascia e l'incremento medio totale.
+
+Il risultato mostra un aumento medio di $+0.0971$ livelli.
+
+Con questo dato è stato eseguito nuovamente il test precedente, confrontando il livello medio nel caso di sconfitta e nel caso di vittoria e verificando il delta rispetto all'incremento medio registrato.
+
+Ma non solo, per avere un risultato più robusto, è stato sottratto ad ogni partita la variazione specifica della fascia di trofei in questione, ottenendo così l'effetto "pulito". 
+
+\begin{listing}[t]
+\caption{Risultato test variazione livelli rispetto alla media}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+ANALISI VOLATILITÀ LIVELLI POST-DEBT (WIN vs LOSE)
+Obiettivo: Verificare se il livello dell'avversario cambia coerentemente con i trofei dopo una vittoria 'Heroic' o una sconfitta in Debt.
+Condizione Debt: Matchup < 45%.
+Condizione Controllo: Il mazzo del giocatore deve rimanere invariato tra i due match.
+================================================================================
+
+BASELINE GLOBALE:
+Aumento medio livello avversario per 100 trofei: 0.0838
+Variazione attesa per swing di ~60 trofei (+30 vs -30): 0.0503 livelli
+--------------------------------------------------------------------------------
+
+TEST 1: LIVELLI ASSOLUTI (Raw Opponent Level)
+Dopo Heroic Win (N=931): 13.5275
+Dopo Debt Lose  (N=1144): 13.2991
+Delta Rilevato: +0.2284
+Delta Atteso (~60 trofei): +0.0503
+Differenza dal modello naturale: +0.1781
+Significatività statistica (T-test): p=0.00990
+>> ANOMALIA: La variazione di livello è ECCESSIVA rispetto alla sola differenza di trofei.
+
+--------------------------------------------------------------------------------
+
+TEST 2: ANALISI RESIDUI (Opp Level - Avg Level @ Trophies)
+Questo test rimuove l'effetto 'trofei' per vedere se il matchmaking 'punisce' o 'aiuta' relativamente alla fascia.
+Residuo Medio dopo Heroic Win: +0.0387
+Residuo Medio dopo Debt Lose:  -0.0087
+Delta Residui: +0.0474
+Significatività (T-test): p=0.00829
+>> RISULTATO: Dopo una vittoria, affronti avversari RELATIVAMENTE più forti rispetto alla media della fascia (Punizione/Challenge).
+================================================================================
+\end{minted}
+\label{lst:test-lvl-volability}
+\end{listing}
+
+In entrambi i test abbiamo ottenuto un risultato significativo, dimostrando che l'effetto rimane presente indipendentemente dall'effetto "scalata"
+
+\textbf{Interpretazione finale}
+
+Nel complesso, l’effetto osservato:
+
+\begin{itemize}
+    \item è significativo;
+    \item presenta una direzione non coerente con la sola regressione verso la media;
+    \item è mediato prevalentemente dalla componente livelli;
+    \item è compatibile con un aggiornamento non simmetrico della stima di skill.
+\end{itemize}
+
+L’evidenza risulta quindi coerente con un sistema di tipo SBMM implementato indirettamente tramite modulazione dei livelli degli avversari, piuttosto che attraverso una manipolazione diretta del matchup strutturale del deck.
+
+\subsubsection{Persistenza del debito/credito}
+
+Un'analisi molto interessante e particolarmente correlata ai punti ache abbiamo appena affrontato riguarda la continuazione del debito (o del credito) anche in sessioni diverse.
+
+In un sistema che calcola e tiene in considerazione l'MMR lo stato in cui si trova il giocatore dovrebbe continuare anche in sessioni diverse. 
+
+Per verificare tale fenomeno le sessioni sono state divise in tre gruppi:
+\begin{itemize}
+    \item terminate con due o più matchup sfavorevoli (bad streak)
+    \item terminate in uno stato neutro (control)
+    \item terminate con due o più matchup favorevoli (good streak)
+\end{itemize}
+
+Infine per ognuna di queste è stata presa la media del primo matchup della sessione successiva. 
+Il matchup per le sessioni good e bad sono poi state confrontate con quella control tramite test Mann-Whitney U.
+
+Per isolare il fattore mazzo e ladder l'analisi è stata eseguita dividendo il matchup no lvl dai livelli e analizzato il residuo dopo la normalizzazione 
+
+\begin{listing}[t]
+\caption{Risultato persistenza del debito/credito}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK (DETTAGLIO COMPONENTI & RESIDUI)
+Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,
+         al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?
+         Analisi componenti: Matchup Reale vs No-Lvl (Deck) vs Level Diff vs RESIDUO.
+         RESIDUO = Level Diff Osservato - Level Diff Atteso per la fascia trofei.
+         (Serve a isolare l'effetto 'Climbing' dall'effetto 'MMR/Punizione').
+Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
+Definizione Good Streak: Ultimi 2 match con Matchup > 55.0%
+Definizione Control: Nessuna streak attiva (Matchup misti o neutri)
+====================================================================================================
+
+--- STOP TYPE: Short (20 min <= T < 2 ore) ---
+Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Netto)
+------------------------------------------------------------------------------------------
+Bad Streak      | 112   | 40.62     % | 46.33     % | -0.20      | -0.1991        
+Good Streak     | 96    | 58.37     % | 52.08     % | 0.19       | 0.2013         
+Control         | 568   | 51.35     % | 49.11     % | 0.05       | 0.0462         
+------------------------------------------------------------------------------------------
+1. Bad Streak vs Control (RESIDUO):
+   Delta Residuo: -0.2453
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.
+      (Fortemente compatibile con MMR nascosto).
+
+2. Good Streak vs Control (RESIDUO):
+   Delta Residuo: +0.1551
+   Test Mann-Whitney U (Good > Control): p-value = 0.0248
+   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.
+      (Compatibile con MMR).
+
+--- STOP TYPE: Long (2 ore <= T < 20 ore) ---
+Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Netto)
+------------------------------------------------------------------------------------------
+Bad Streak      | 151   | 41.77     % | 49.65     % | -0.32      | -0.2354        
+Good Streak     | 132   | 58.65     % | 51.26     % | 0.21       | 0.2485         
+Control         | 894   | 50.96     % | 49.49     % | 0.03       | 0.0622         
+------------------------------------------------------------------------------------------
+1. Bad Streak vs Control (RESIDUO):
+   Delta Residuo: -0.2976
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.
+      (Fortemente compatibile con MMR nascosto).
+
+2. Good Streak vs Control (RESIDUO):
+   Delta Residuo: +0.1862
+   Test Mann-Whitney U (Good > Control): p-value = 0.0010
+   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.
+      (Compatibile con MMR).
+
+--- STOP TYPE: Quit (T >= 20 ore) ---
+Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Netto)
+------------------------------------------------------------------------------------------
+Bad Streak      | 53    | 42.71     % | 52.77     % | -0.46      | -0.3493        
+Good Streak     | 62    | 61.42     % | 49.45     % | 0.35       | 0.3377         
+Control         | 323   | 51.39     % | 51.23     % | -0.00      | 0.0441         
+------------------------------------------------------------------------------------------
+1. Bad Streak vs Control (RESIDUO):
+   Delta Residuo: -0.3934
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
+   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.
+      (Fortemente compatibile con MMR nascosto).
+
+2. Good Streak vs Control (RESIDUO):
+   Delta Residuo: +0.2936
+   Test Mann-Whitney U (Good > Control): p-value = 0.0004
+   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.
+      (Compatibile con MMR).
+
+====================================================================================================
+\end{minted}
+\label{lst:test-debt-persistance}
+\end{listing}
+
+In tutti i test abbiamo ottenuto risultati significativi e soprattutto coerenti nel tempo. 
+Non sembrerebbe quindi che il matchup al ritorno da una bad o good streak ritorni verso l'equità.
+
+Il fenomeno è principalmente spiegato dalla differenza dei livelli e non completamente attribuibile alla scalata.
+
+\textbf{Interpretazione dei risultati}
+
+Anche se i risultati sono forte indizio della presenza di un MMR nascosto non è possibile escludere che il comportamento sia causato da fattori non presi in considerazione in questa analisi (ad esempio fattori di rete).
+
+\subsubsection{Hook effect}
+
+I sistemi di matchmaking basati sulla skill che includono nel loro funzionamento l'incertezza tendono ad avere dei dubbi sulla stima del giocatore.
+
+Questo si traduce spesso nel cosiddetto hook effect. All'inizio della sessione l'incertezza è alta, per cui il sistema tende a dare al giocatore dei matchup più favorevoli, per poi tornare alla normalità una volta ridotta l'incertezza.
+
+Per testarlo abbiamo usato ancora una volta il test Wilcoxon, confrontando il matchup medio delle prime partite rispetto alle ultime, e successivamente anche confrontando il matchup delle prime partite rispetto al resto della sessione.
+
+\begin{listing}[t]
+\caption{Risultato test hook effect}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+ANALISI TREND INTRA-SESSIONE (HOOK & FRUSTRATION)
+Obiettivo: Verificare se le sessioni iniziano con vittorie/matchup facili (Hook) e finiscono con sconfitte/matchup difficili (Frustration/Churn).
+Criteri: Sessioni con almeno 4 partite. Confronto Primi k vs Ultimi k match.
+================================================================================
+
+Totale Sessioni Analizzate: 735
+--------------------------------------------------------------------------------
+1. WIN RATE (Inizio vs Fine)
+   Media Win Rate INIZIO: 59.12%
+   Media Win Rate FINE:   52.54%
+   Delta:                 -6.58%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0001
+   RISULTATO: SIGNIFICATIVO. I giocatori vincono significativamente di più all'inizio della sessione.
+
+2. MATCHUP QUALITY (Inizio vs Fine)
+   Media Matchup INIZIO: 50.17%
+   Media Matchup FINE:   48.56%
+   Delta:                -1.62%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0020
+   RISULTATO: SIGNIFICATIVO. I matchup sono significativamente migliori all'inizio della sessione.
+
+3. MATCHUP NO-LVL (Fair Play) (Inizio vs Fine)
+   Media Matchup No-Lvl INIZIO: 49.08%
+   Media Matchup No-Lvl FINE:   49.05%
+   Delta:                       -0.03%
+   Test Wilcoxon (Inizio > Fine): p-value = 0.4611
+   RISULTATO: NON SIGNIFICATIVO.
+
+4. LEVEL DIFFERENCE (Inizio vs Fine)
+   Media Level Diff INIZIO: +0.00
+   Media Level Diff FINE:   -0.05
+   Delta:                   -0.05
+   Test Wilcoxon (Inizio > Fine): p-value = 0.0001
+   RISULTATO: SIGNIFICATIVO (Livelli peggiori alla fine)
+\end{minted}
+\label{lst:test-hook-effect}
+\end{listing}
+
+
+\begin{listing}[t]
+\caption{Risultato test hook effect}
+\begin{minted}[
+    frame=lines,
+    framerule=0.8pt,
+    fontsize=\footnotesize,
+    breaklines
+  ]{text}
+================================================================================
+ANALISI 2: HOOK PHASE (Primi 3) vs RESTO DELLA SESSIONE
+Obiettivo: Verificare se le prime partite sono sistematicamente più facili del resto della sessione.
+Criteri: Sessioni con > 3 partite. Confronto Primi 3 vs Rimanenti.
+Sessioni valide per questo test: 735
+--------------------------------------------------------------------------------
+1. WIN RATE (Hook vs Resto)
+   Media Win Rate HOOK (Primi 3): 59.68%
+   Media Win Rate RESTO:          50.20%
+   Delta:                         -9.48%
+   Test Wilcoxon (Hook > Resto): p-value = 0.0000
+   RISULTATO: SIGNIFICATIVO
+
+2. MATCHUP QUALITY (Hook vs Resto)
+   Media Matchup HOOK:  50.01%
+   Media Matchup RESTO: 48.30%
+   Delta:               -1.71%
+   Test Wilcoxon (Hook > Resto): p-value = 0.0010
+   RISULTATO: SIGNIFICATIVO
+
+3. MATCHUP NO-LVL (Hook vs Resto)
+   Media Matchup No-Lvl HOOK:  49.18%
+   Media Matchup No-Lvl RESTO: 48.87%
+   Delta:                      -0.31%
+   Test Wilcoxon (Hook > Resto): p-value = 0.1632
+   RISULTATO: NON SIGNIFICATIVO
+
+4. LEVEL DIFFERENCE (Hook vs Resto)
+   Media Level Diff HOOK:  -0.00
+   Media Level Diff RESTO: -0.05
+   Delta:                  -0.05
+   Test Wilcoxon (Hook > Resto): p-value = 0.0005
+   RISULTATO: SIGNIFICATIVO (Livelli peggiori nel resto)
+\end{minted}
+\label{lst:test-hook-effect-2}
+\end{listing}
+
+I seguenti risultati mostrano come ci sia un effettivo aumento del winrate nelle prime partite della sessione. Questo però non è solo causato come ci potremmo aspettare dalla maggiore concentrazione del giocatore, anche la variazione del matchup risulta significativa e come prima principalmente dovuta ai livelli.
+
+Compatibile ancora una volta con un sistema di tipo skill based.

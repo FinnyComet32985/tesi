@@ -4,62 +4,62 @@ Definizione Vulnerabile: 0 Hard Counters E < 2 Soft Counters nel mazzo.
 ================================================================================
 
 >>> ANALISI CARTA: GRAVEYARD
-    Hard Counters: Mother Witch, Poison...
+    Hard Counters: Poison, Mother Witch...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 3943       | 125        | 3.17      %
-    NON-VULNERABILI      | 2337       | 87         | 3.72      %
-    RATIO (Vuln/Safe): 0.85x
+    VULNERABILI          | 4023       | 129        | 3.21      %
+    NON-VULNERABILI      | 2351       | 88         | 3.74      %
+    RATIO (Vuln/Safe): 0.86x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: ELECTRO GIANT
-    Hard Counters: Elite Barbarians, Mini P.E.K.K.A, Inferno Tower, P.E.K.K.A...
+    Hard Counters: Inferno Tower, Mini P.E.K.K.A, Inferno Dragon, Elite Barbarians...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 3009       | 66         | 2.19      %
-    NON-VULNERABILI      | 3271       | 84         | 2.57      %
-    RATIO (Vuln/Safe): 0.85x
+    VULNERABILI          | 3064       | 67         | 2.19      %
+    NON-VULNERABILI      | 3310       | 84         | 2.54      %
+    RATIO (Vuln/Safe): 0.86x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: SPARKY
-    Hard Counters: Lightning, Electro Wizard, Electro Dragon, Zappies...
+    Hard Counters: Lightning, Zappies, Electro Wizard, Electro Dragon...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 4078       | 178        | 4.36      %
-    NON-VULNERABILI      | 2202       | 117        | 5.31      %
-    RATIO (Vuln/Safe): 0.82x
+    VULNERABILI          | 4174       | 187        | 4.48      %
+    NON-VULNERABILI      | 2200       | 117        | 5.32      %
+    RATIO (Vuln/Safe): 0.84x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: BALLOON
-    Hard Counters: Ram Rider, Mega Minion, Minion Horde, Hunter...
+    Hard Counters: Minion Horde, Inferno Tower, Mega Minion, Ram Rider...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 1786       | 140        | 7.84      %
-    NON-VULNERABILI      | 4494       | 338        | 7.52      %
-    RATIO (Vuln/Safe): 1.04x
+    VULNERABILI          | 1813       | 144        | 7.94      %
+    NON-VULNERABILI      | 4561       | 341        | 7.48      %
+    RATIO (Vuln/Safe): 1.06x
     -> NEUTRO
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: LAVA HOUND
-    Hard Counters: Inferno Dragon, Executioner, Inferno Tower...
+    Hard Counters: Inferno Tower, Executioner, Inferno Dragon...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 3462       | 42         | 1.21      %
-    NON-VULNERABILI      | 2818       | 37         | 1.31      %
-    RATIO (Vuln/Safe): 0.92x
+    VULNERABILI          | 3514       | 43         | 1.22      %
+    NON-VULNERABILI      | 2860       | 37         | 1.29      %
+    RATIO (Vuln/Safe): 0.95x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
 >>> ANALISI CARTA: GOLEM
-    Hard Counters: Elite Barbarians, Mini P.E.K.K.A, Inferno Tower, P.E.K.K.A...
+    Hard Counters: Inferno Tower, Mini P.E.K.K.A, Inferno Dragon, Elite Barbarians...
     GRUPPO               | N. MATCH   | VS SNIPER  | RATE %    
     ------------------------------------------------------------
-    VULNERABILI          | 3363       | 169        | 5.03      %
-    NON-VULNERABILI      | 2917       | 155        | 5.31      %
-    RATIO (Vuln/Safe): 0.95x
+    VULNERABILI          | 3416       | 168        | 4.92      %
+    NON-VULNERABILI      | 2958       | 156        | 5.27      %
+    RATIO (Vuln/Safe): 0.93x
     -> NESSUN TARGETING (Paradosso)
 --------------------------------------------------------------------------------
 
