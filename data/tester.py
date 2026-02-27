@@ -126,7 +126,7 @@ def main():
     # analyze_matchup_no_lvl_stats(players_sessions, output_dir=results_dir)
     # analyze_short_session_bonus(players_sessions, output_dir=results_dir)
     # analyze_markov_chains(players_sessions, output_dir=results_dir)
-    #analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
+    analyze_return_after_bad_streak(players_sessions, output_dir=results_dir)
     # analyze_defeat_quality_impact(players_sessions, output_dir=results_dir)
     # analyze_debt_credit_combined(players_sessions, output_dir=results_dir)
     # analyze_punish_outcome_worsening(players_sessions, output_dir=results_dir)
@@ -152,7 +152,7 @@ def main():
     # analyze_card_meta_vs_counter(players_sessions, output_dir=results_dir)
     #analyze_matchmaking_fairness(players_sessions, output_dir=results_dir)
     # analyze_level_saturation(players_sessions, output_dir=results_dir)
-    analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
+    #analyze_all_snipers_targeting(players_sessions, output_dir=results_dir)
     # analyze_sniper_confounding(players_sessions, output_dir=results_dir)
 
     # analyze_micro_meta(players_sessions, output_dir=results_dir)

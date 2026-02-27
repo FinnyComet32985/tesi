@@ -1396,6 +1396,26 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             expected_curve[b_idx] = statistics.mean(diffs)
     # ----------------------------------------------------------------------
 
+    # --- 2. Calculate Player Bias (Self-Normalization) ---
+    # Calcoliamo il residuo medio PER GIOCATORE per centrare lo zero su di lui.
+    # Questo rimuove il bias "Giocatore Underleveled perde spesso -> finisce spesso in Bad Streak"
+    player_bias = {}
+    
+    for p in players_sessions:
+        residuals = []
+        for s in p['sessions']:
+            for b in s['battles']:
+                if b['game_mode'] in ['Ladder', 'Ranked'] and b.get('trophies_before') and b.get('level_diff') is not None:
+                    t = b['trophies_before']
+                    b_idx = (t // BUCKET_SIZE) * BUCKET_SIZE
+                    if b_idx in expected_curve:
+                        expected = expected_curve[b_idx]
+                        res_pop = b['level_diff'] - expected
+                        residuals.append(res_pop)
+        
+        if residuals:
+            player_bias[p['tag']] = statistics.mean(residuals)
+
     # Config
     BAD_THRESH = 45.0
     GOOD_THRESH = 55.0
@@ -1438,7 +1458,13 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
                 b_idx = (trophies // BUCKET_SIZE) * BUCKET_SIZE
                 if b_idx in expected_curve:
                     expected = expected_curve[b_idx]
-                    residual = lvl - expected
+                    # Residuo Raw (vs Popolazione)
+                    raw_residual = lvl - expected
+                    
+                    # Residuo Centrato (vs Se Stesso)
+                    # Sottraiamo la "normalità" del giocatore per vedere solo le variazioni anomale
+                    bias = player_bias.get(p['tag'], 0)
+                    residual = raw_residual - bias
 
             record = {'mu': mu, 'mnl': mnl, 'lvl': lvl, 'res': residual}
             
@@ -1467,8 +1493,8 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
         f.write("Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,\n")
         f.write("         al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?\n")
         f.write("         Analisi componenti: Matchup Reale vs No-Lvl (Deck) vs Level Diff vs RESIDUO.\n")
-        f.write("         RESIDUO = Level Diff Osservato - Level Diff Atteso per la fascia trofei.\n")
-        f.write("         (Serve a isolare l'effetto 'Climbing' dall'effetto 'MMR/Punizione').\n")
+        f.write("         RESIDUO = (Level Diff Osservato - Atteso Fascia) - Bias Storico Giocatore.\n")
+        f.write("         (Normalizzato sul singolo giocatore per evitare bias 'Underleveled Player').\n")
         f.write(f"Definizione Bad Streak: Ultimi {STREAK_LEN} match con Matchup < {BAD_THRESH}%\n")
         f.write(f"Definizione Good Streak: Ultimi {STREAK_LEN} match con Matchup > {GOOD_THRESH}%\n")
         f.write("Definizione Control: Nessuna streak attiva (Matchup misti o neutri)\n")
@@ -1521,7 +1547,7 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
             avg_good_res = statistics.mean(good_res) if good_res else 0
             avg_ctrl_res = statistics.mean(ctrl_res)
             
-            f.write(f"{'Condizione':<15} | {'N':<5} | {'Matchup':<10} | {'No-Lvl':<10} | {'Lvl Diff':<10} | {'RESIDUO (Netto)':<15}\n")
+            f.write(f"{'Condizione':<15} | {'N':<5} | {'Matchup':<10} | {'No-Lvl':<10} | {'Lvl Diff':<10} | {'RESIDUO (Self)':<15}\n")
             f.write("-" * 90 + "\n")
             f.write(f"{'Bad Streak':<15} | {len(bad_mu):<5} | {avg_bad_mu:<10.2f}% | {avg_bad_mnl:<10.2f}% | {avg_bad_lvl:<10.2f} | {avg_bad_res:<15.4f}\n")
             f.write(f"{'Good Streak':<15} | {len(good_mu):<5} | {avg_good_mu:<10.2f}% | {avg_good_mnl:<10.2f}% | {avg_good_lvl:<10.2f} | {avg_good_res:<15.4f}\n")
@@ -1535,10 +1561,10 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
                 f.write(f"   Delta Residuo: {avg_bad_res - avg_ctrl_res:+.4f}\n")
                 f.write(f"   Test Mann-Whitney U (Bad < Control): p-value = {p_val:.4f}\n")
                 if p_val < 0.05:
-                    f.write("   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.\n")
+                    f.write("   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per il giocatore.\n")
                     f.write("      (Fortemente compatibile con MMR nascosto).\n")
                 else:
-                    f.write("   -> NON SIGNIFICATIVO. La differenza è spiegata dalla fascia trofei.\n")
+                    f.write("   -> NON SIGNIFICATIVO. La differenza era dovuta al bias del giocatore.\n")
             else:
                 f.write("1. Bad Streak vs Control: Dati insufficienti per Residuo.\n")
 
@@ -1557,6 +1583,44 @@ def analyze_return_after_bad_streak(players_sessions, output_dir=None):
                 f.write("\n2. Good Streak vs Control: Dati insufficienti per Residuo.\n")
 
             f.write("\n")
+            
+        # --- Trend Analysis (Shift of Punishment) ---
+        f.write("="*100 + "\n")
+        f.write("ANALISI TREND TEMPORALE (BAD STREAK): SHIFT DELLA PUNIZIONE\n")
+        f.write("Ipotesi: Con l'aumentare della pausa, la punizione si sposta dal Deck (No-Lvl) ai Livelli (Lvl Diff)?\n")
+        f.write("         (Short=0, Long=1, Quit=2)\n")
+        f.write("-" * 100 + "\n")
+
+        trend_mnl = []
+        trend_lvl = []
+        trend_time = []
+        
+        # Map categories to ordinal
+        time_map = {'Short': 0, 'Long': 1, 'Quit': 2}
+        
+        for stop_type in ['Short', 'Long', 'Quit']:
+            ordinal = time_map[stop_type]
+            recs = data[stop_type]['bad_streak']
+            for r in recs:
+                if r['mnl'] is not None and r['lvl'] is not None:
+                    trend_mnl.append(r['mnl'])
+                    trend_lvl.append(r['lvl'])
+                    trend_time.append(ordinal)
+        
+        if len(trend_time) > 10:
+            corr_mnl, p_mnl = spearmanr(trend_time, trend_mnl)
+            corr_lvl, p_lvl = spearmanr(trend_time, trend_lvl)
+            
+            f.write(f"Correlazione Tempo vs Matchup No-Lvl: {corr_mnl:+.4f} (p={p_mnl:.4f})\n")
+            if p_mnl < 0.05 and corr_mnl > 0:
+                f.write("-> SIGNIFICATIVO POSITIVO. Più lunga la pausa, migliore è il mazzo (Deck Fair).\n")
+            
+            f.write(f"Correlazione Tempo vs Level Diff:     {corr_lvl:+.4f} (p={p_lvl:.4f})\n")
+            if p_lvl < 0.05 and corr_lvl < 0:
+                f.write("-> SIGNIFICATIVO NEGATIVO. Più lunga la pausa, peggiori sono i livelli (Paywall).\n")
+        else:
+            f.write("Dati insufficienti per trend.\n")
+            
         f.write("="*100 + "\n")
 
 def analyze_debt_extinction(players_sessions, output_dir=None):

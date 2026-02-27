@@ -2,68 +2,74 @@ ANALISI RETURN MATCHUP DOPO BAD/GOOD STREAK (DETTAGLIO COMPONENTI & RESIDUI)
 Domanda: Se un giocatore chiude la sessione dopo una serie di matchup estremi,
          al ritorno viene 'punito'/'aiutato' (memoria) o il sistema si resetta (coin flip)?
          Analisi componenti: Matchup Reale vs No-Lvl (Deck) vs Level Diff vs RESIDUO.
-         RESIDUO = Level Diff Osservato - Level Diff Atteso per la fascia trofei.
-         (Serve a isolare l'effetto 'Climbing' dall'effetto 'MMR/Punizione').
+         RESIDUO = (Level Diff Osservato - Atteso Fascia) - Bias Storico Giocatore.
+         (Normalizzato sul singolo giocatore per evitare bias 'Underleveled Player').
 Definizione Bad Streak: Ultimi 2 match con Matchup < 45.0%
 Definizione Good Streak: Ultimi 2 match con Matchup > 55.0%
 Definizione Control: Nessuna streak attiva (Matchup misti o neutri)
 ====================================================================================================
 
 --- STOP TYPE: Short (20 min <= T < 2 ore) ---
-Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Netto)
+Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Self) 
 ------------------------------------------------------------------------------------------
-Bad Streak      | 112   | 40.62     % | 46.33     % | -0.20      | -0.1991        
-Good Streak     | 96    | 58.37     % | 52.08     % | 0.19       | 0.2013         
-Control         | 568   | 51.35     % | 49.11     % | 0.05       | 0.0462         
+Bad Streak      | 112   | 40.62     % | 46.33     % | -0.20      | -0.0673        
+Good Streak     | 96    | 58.37     % | 52.08     % | 0.19       | 0.0948         
+Control         | 568   | 51.35     % | 49.11     % | 0.05       | 0.0130         
 ------------------------------------------------------------------------------------------
 1. Bad Streak vs Control (RESIDUO):
-   Delta Residuo: -0.2453
-   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
-   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.
+   Delta Residuo: -0.0803
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0359
+   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per il giocatore.
       (Fortemente compatibile con MMR nascosto).
 
 2. Good Streak vs Control (RESIDUO):
-   Delta Residuo: +0.1551
-   Test Mann-Whitney U (Good > Control): p-value = 0.0248
-   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.
-      (Compatibile con MMR).
+   Delta Residuo: +0.0818
+   Test Mann-Whitney U (Good > Control): p-value = 0.1576
+   -> NON SIGNIFICATIVO.
 
 --- STOP TYPE: Long (2 ore <= T < 20 ore) ---
-Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Netto)
+Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Self) 
 ------------------------------------------------------------------------------------------
-Bad Streak      | 151   | 41.77     % | 49.65     % | -0.32      | -0.2354        
-Good Streak     | 132   | 58.65     % | 51.26     % | 0.21       | 0.2485         
-Control         | 894   | 50.96     % | 49.49     % | 0.03       | 0.0622         
+Bad Streak      | 151   | 41.77     % | 49.65     % | -0.32      | -0.0903        
+Good Streak     | 132   | 58.65     % | 51.26     % | 0.21       | 0.0797         
+Control         | 894   | 50.96     % | 49.49     % | 0.03       | 0.0053         
 ------------------------------------------------------------------------------------------
 1. Bad Streak vs Control (RESIDUO):
-   Delta Residuo: -0.2976
-   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
-   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.
+   Delta Residuo: -0.0957
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0276
+   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per il giocatore.
       (Fortemente compatibile con MMR nascosto).
 
 2. Good Streak vs Control (RESIDUO):
-   Delta Residuo: +0.1862
-   Test Mann-Whitney U (Good > Control): p-value = 0.0010
-   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.
-      (Compatibile con MMR).
+   Delta Residuo: +0.0743
+   Test Mann-Whitney U (Good > Control): p-value = 0.1184
+   -> NON SIGNIFICATIVO.
 
 --- STOP TYPE: Quit (T >= 20 ore) ---
-Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Netto)
+Condizione      | N     | Matchup    | No-Lvl     | Lvl Diff   | RESIDUO (Self) 
 ------------------------------------------------------------------------------------------
-Bad Streak      | 53    | 42.71     % | 52.77     % | -0.46      | -0.3493        
-Good Streak     | 62    | 61.42     % | 49.45     % | 0.35       | 0.3377         
-Control         | 323   | 51.39     % | 51.23     % | -0.00      | 0.0441         
+Bad Streak      | 53    | 42.71     % | 52.77     % | -0.46      | -0.2081        
+Good Streak     | 62    | 61.42     % | 49.45     % | 0.35       | 0.0104         
+Control         | 323   | 51.39     % | 51.23     % | -0.00      | -0.0180        
 ------------------------------------------------------------------------------------------
 1. Bad Streak vs Control (RESIDUO):
-   Delta Residuo: -0.3934
-   Test Mann-Whitney U (Bad < Control): p-value = 0.0000
-   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per i trofei.
+   Delta Residuo: -0.1901
+   Test Mann-Whitney U (Bad < Control): p-value = 0.0127
+   -> SIGNIFICATIVO. La punizione persiste anche normalizzando per il giocatore.
       (Fortemente compatibile con MMR nascosto).
 
 2. Good Streak vs Control (RESIDUO):
-   Delta Residuo: +0.2936
-   Test Mann-Whitney U (Good > Control): p-value = 0.0004
-   -> SIGNIFICATIVO. Vantaggio persistente oltre i trofei.
-      (Compatibile con MMR).
+   Delta Residuo: +0.0284
+   Test Mann-Whitney U (Good > Control): p-value = 0.2084
+   -> NON SIGNIFICATIVO.
 
+====================================================================================================
+ANALISI TREND TEMPORALE (BAD STREAK): SHIFT DELLA PUNIZIONE
+Ipotesi: Con l'aumentare della pausa, la punizione si sposta dal Deck (No-Lvl) ai Livelli (Lvl Diff)?
+         (Short=0, Long=1, Quit=2)
+----------------------------------------------------------------------------------------------------
+Correlazione Tempo vs Matchup No-Lvl: +0.1665 (p=0.0030)
+-> SIGNIFICATIVO POSITIVO. Più lunga la pausa, migliore è il mazzo (Deck Fair).
+Correlazione Tempo vs Level Diff:     -0.1483 (p=0.0083)
+-> SIGNIFICATIVO NEGATIVO. Più lunga la pausa, peggiori sono i livelli (Paywall).
 ====================================================================================================
